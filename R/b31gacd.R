@@ -1,0 +1,55 @@
+#' @title
+#'  ASME B31G. Allowable corrosion depth in pipe
+#'
+#' @family ASME B31G functions
+#'
+#' @description
+#'  Calculate allowable depth of the corroded area in the pipe.
+#'
+#' @param dep
+#'   design pressure of the pipe, [\emph{PSI}], numeric vector
+#'
+#' @param maop
+#'  maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}], numeric
+#'  vector
+#'
+#' @param d
+#'  nominal outside diameter of the pipe, [\emph{inch}], numeric vector
+#'
+#' @param wth
+#'  nominal wall thickness of the pipe, [\emph{inch}], numeric vector
+#'
+#' @param l
+#'  measured maximum longitudial length of corroded area, [\emph{inch}],
+#'  numeric vector
+#'
+#' @return
+#'  allowable depth of the corroded area in the pipe, [\emph{inch}], numeric
+#'  vector
+#'
+#' @references
+#'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.
+#'  Manual for determining the remaining strength of corroded pipelines. A
+#'  supplement to \emph{ASTME B31} code for pressure piping.
+#'
+#' @export
+#'
+#' @examples
+#'  b31gacd(1093, 910, 30, .438, 7.5)
+#'  # [1] 0.249  # [inch]
+#'
+#'  ## unit test:
+#'  data(b31gdata)
+#'  with(b31gdata,
+#'       stopifnot(all(b31gacd(design_pressure, maop, d, wth, l) ==
+#'                             allowed_corrosion_depth)))
+#'
+b31gacd <- function(dep, maop, d, wth, l){
+  A <- b31gafr(d, wth, l)
+  mcp <-
+    ifelse(A > 4,
+           wth - wth*maop/1.1/dep,
+           1e-3*trunc(1e3*(maop - 1.1*dep)*3*wth*sqrt(A^2 + 1) /
+             (2*maop - 2.2*dep*sqrt(A^2 + 1))))
+  1e-3*trunc(1e3*ifelse(mcp > .8*wth, .8*wth, mcp) + .5)
+}

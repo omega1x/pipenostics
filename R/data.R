@@ -1,0 +1,35 @@
+#' ASME B31G. Corrosion state of 12 pipes
+#'
+#' Data represents examples used for verification of computer program
+#' \emph{CRVL.BAS} listed in \emph{Appendix A} of
+#' \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.
+#'
+#' @format A data frame with 12 rows and 15 variables:
+#' \describe{
+#'   \item{maop}{maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]}
+#'   \item{d}{nominal outside diameter of the pipe, [\emph{inch}]}
+#'   \item{wth}{nominal wall thickness of the pipe, [\emph{inch}]}
+#'   \item{smys}{specified minimum yield of stress (\emph{SMYS}) as a
+#'               characteristics of steel strength, [\emph{PSI}]}
+#'   \item{def}{appropriate (combined) design factor from
+#'              \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.4.2002.pdf}{ASME B31.4},
+#'              \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.8.2003.pdf}{ASME B31.8},
+#'              or \href{https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems}{ASME B31.11}, []}
+#'   \item{depth}{measured maximum depth of the corroded area, [\emph{inch}]}
+#'   \item{l}{measured maximum longitudial length of corroded area, [\emph{inch}]}
+#'   \item{status}{Operational status of pipe:
+#'                 \emph{1} - excellent,
+#'                 \emph{2} - monitoring is recommended,
+#'                 \emph{3} - alert! replace the pipe immediately!}
+#'   \item{design_pressure}{design pressure of the pipe, [\emph{PSI}]}
+#'   \item{safe_pressure}{safe maximum pressure for the corroded area, [\emph{PSI}]}
+#'   \item{pressure_exceeding}{whether operator's action is required to reduce
+#'                             \emph{MOAP} lower than the maximum safe pressure
+#'                             of the corroded area}
+#'   \item{allowed_corrosion_depth}{allowable depth of the corroded area, [\emph{inch}]}
+#'   \item{A}{intermediate factor related to the geometry of the corroded area, []}
+#'   \item{allowed_corrosion_length}{allowable length of the corroded area, [\emph{inch}]}
+#'   \item{AP}{another intermediate factor related to the geometry of the corroded area, []}
+#'  }
+#' @source \url{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}
+"b31gdata"
