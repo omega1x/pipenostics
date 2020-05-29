@@ -1,8 +1,8 @@
-#' Diagnostics, reliability and predictive maintanence of pipeline systems
+#' Diagnostics, reliability and predictive maintenance of pipeline systems
 #'
 #'
 #' The motivation for the package was to aggregate to some extent the separate
-#' knowledge about reliability, diagnostics and predictive maintanence of
+#' knowledge about reliability, diagnostics and predictive maintenance of
 #' pipeline systems suitable for pipe holders. Distributing such knowledge
 #' with \emph{R}-package seemed the most attractive option for white-collar
 #' engineers, having utilized spreadsheet software as a mainstream.

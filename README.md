@@ -9,8 +9,7 @@ seemed the most attractive option for white-collar engineers, having utilized sp
 
 Aiming to avoid portability and accessibility problems made us search ways to restrict source code development by 
 functionality of _base R_ only, eluding as long as possible any external packages. The package also appeares to 
-promote [R-language](https://www.r-project.org/about.html) to those who want to survive in the belligerent environment of
-_green snake lovers_.
+promote [R-language](https://www.r-project.org/about.html) to those who want to survive in the belligerent environment of _green snake lovers_.
 
 ASME B31G
 ----
@@ -29,11 +28,12 @@ The [ASME B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.
 in this determination.
 
 _Appendix A_ to [ASME B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf) shows the source code
-for determining the allowable length and maximum allowable working pressure. The _b31g*_ package functions reproduce
-the idea of _CRVL.BAS_. They are natively vectorized, but remain simple without argument checks. Thus, use only physically
+for determining the allowable length and maximum allowable working pressure. 
+The _b31g*_ and _crvl_ functions reproduce the idea of _CRVL.BAS_. They are natively vectorized, but 
+remain simple without argument checks. Thus, use only physically
 conditioned values as input to prevent erroneous and meaningless output.
 
-The next usage of _b31gcrvl_ function imitates the output of _CRVL.BAS_
+The next usage of _crvl_ function imitates the output of _CRVL.BAS_
 ```
 ## Example 1
 crvl(maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5)
