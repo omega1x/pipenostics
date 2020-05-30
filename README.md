@@ -9,10 +9,22 @@ and predictive maintenance of pipeline systems suitable for pipe holders. Distri
 seemed the most attractive option for white-collar engineers, having utilized spreadsheet software as a mainstream.
 
 Aiming to avoid portability and accessibility problems made us search ways to restrict source code development by 
-functionality of _base R_ only, eluding as long as possible any external packages. The package also appeares to 
-promote [R-language](https://www.r-project.org/about.html) to those who want to survive in the belligerent environment of _green snake lovers_.
+functionality of _base R_ only, eluding as long as possible any external packages. 
 
-ASME B31G
+The next values describing technological conditions, material properties of pipe and defect parameters are used
+as arguments of the most functions concerning corrosion diagnostics:
+
+- `maop` - maximum allowable operating pressure - [MAOP](https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure),
+  [[PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)]
+- `d` - nominal outside diameter of the pipe, [[inch](https://en.wikipedia.org/wiki/Inch)]
+- `wth` - nominal wall thickness of the pipe, [[inch](https://en.wikipedia.org/wiki/Inch)]
+- `smys` - specified minimum yield of stress ([SMYS](https://en.wikipedia.org/wiki/Specified_minimum_yield_strength))
+   as a characteristics of steel strength, [[PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)]
+- `depth` - measured maximum depth of the corroded area, [[inch](https://en.wikipedia.org/wiki/Inch)]
+- `l` - measured maximum longitudial length of the corroded area, [[inch](https://en.wikipedia.org/wiki/Inch)]
+
+
+ASME B31G-1991
 ----
 It is recognized by pipeline companies that some sections of high pressure pipelines particularly those installed
 a number of years ago, have experienced some corrosion. Where corrosion is found, pipeline operators have been deeply
@@ -48,5 +60,16 @@ With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A
 ```
 For further details and usage examples see package documentation.
 
+
+ASME B31G-2012
+----
+An effort was undertaken to update the [ASME B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf) up to
+[ASME B31G-2012](https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines)
+document to recognize certain other corrosion evaluation methods that have proven sound and that have seen successful
+use in the pipeline industry. Incorporation of these other methods provides us with a formalized framework within
+which to use such methodologies.
+
+Nevertheless, to preserve simplicity of traditional inline measurements during inspections we only consider _Analysis Level 1_.
+As noted in [ASME B31G-2012](https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines), _Level 1_ valuation is quite suitable for use in prioritizing corrosion defects identified by inline inspection.
 
 
