@@ -11,8 +11,8 @@ seemed the most attractive option for white-collar engineers, having utilized sp
 Aiming to avoid portability and accessibility problems made us search ways to restrict source code development by 
 functionality of _base R_ only, eluding as long as possible any external packages. 
 
-The next values describing technological conditions, material properties of pipe and defect parameters are used
-as arguments of the most functions concerning corrosion diagnostics:
+The next values describing technological conditions, material properties of pipe and defect parameters are used as arguments
+throughout the most functions concerning corrosion diagnostics:
 
 - `maop` - maximum allowable operating pressure - [MAOP](https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure),
   [[PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)]
