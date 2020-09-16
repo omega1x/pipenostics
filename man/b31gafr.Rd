@@ -38,7 +38,8 @@ Calculate intermediate factor related to the geometry of the corroded zone.
 \seealso{
 Other ASME B31G functions: \code{\link{b31gacd}},
   \code{\link{b31gacl}}, \code{\link{b31gdep}},
-  \code{\link{b31gops}}, \code{\link{b31gsap}},
+  \code{\link{b31gmodpf}}, \code{\link{b31gops}},
+  \code{\link{b31gpf}}, \code{\link{b31gsap}},
   \code{\link{crvl}}
 }
 \concept{ASME B31G functions}

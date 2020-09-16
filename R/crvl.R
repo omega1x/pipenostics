@@ -99,7 +99,7 @@
 #' # With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000
 #'
 #'
-#' ## Eaxmpe 2
+#' ## Example 2
 #' crvl(maop = 400, d = 20, wth = .25, smys = 35000, def  = 0.5, depth = 0.18, l = 10)
 #' #
 #' # -- Calculated data --
@@ -110,7 +110,7 @@
 #' # With corrosion depth 0.180 inch, maximum allowed corrosion length is 2.0180 inch; A = 0.806
 #'
 #'
-#' ## Exampe 3
+#' ## Example 3
 #' crvl(maop = 910, d = 24, wth = .432, smys = 52000, def  = .72, depth = 0.13, l = 30)
 #' #
 #' # -- Calculated data --
@@ -200,7 +200,7 @@
 #' # With corrosion depth 0.179 inch, maximum allowed corrosion length is 12.1820 inch; A = 3.140
 #'
 #'
-#' ## TEST 1B
+#' ## TEST #1B
 #' crvl(maop = 790, d = 24, wth = .5, smys = 42000, def  = .5, depth = .180, l = 12.182)
 #' #
 #' # -- Calculated data --

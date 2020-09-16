@@ -43,7 +43,8 @@ Determine the operational status of pipe: is it excellent? or is
 \seealso{
 Other ASME B31G functions: \code{\link{b31gacd}},
   \code{\link{b31gacl}}, \code{\link{b31gafr}},
-  \code{\link{b31gdep}}, \code{\link{b31gsap}},
+  \code{\link{b31gdep}}, \code{\link{b31gmodpf}},
+  \code{\link{b31gpf}}, \code{\link{b31gsap}},
   \code{\link{crvl}}
 }
 \concept{ASME B31G functions}

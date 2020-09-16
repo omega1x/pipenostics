@@ -72,4 +72,19 @@ which to use such methodologies.
 Nevertheless, to preserve simplicity of traditional inline measurements during inspections we only consider _Analysis Level 1_.
 As noted in [ASME B31G-2012](https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines), _Level 1_ valuation is quite suitable for use in prioritizing corrosion defects identified by inline inspection.
 
+TODO
+-----
+
+- program pf-function for Shell92
+- program pf-function for PCORRC
+- pf-functions that operate with [N/mm^2] pressure units 
+  should operate with [MPa]
+- describe api5l3t - table:
+  https://law.resource.org/pub/us/cfr/ibr/002/api.5l.2004.pdf
+- findout functions for critical corrosion depth
+- program first dignostic function using JCGM, MC and Timashev
+
+
+  
+
 

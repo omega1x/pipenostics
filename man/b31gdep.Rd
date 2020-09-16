@@ -49,7 +49,8 @@ Calculate the design pressure that according to
 \seealso{
 Other ASME B31G functions: \code{\link{b31gacd}},
   \code{\link{b31gacl}}, \code{\link{b31gafr}},
-  \code{\link{b31gops}}, \code{\link{b31gsap}},
+  \code{\link{b31gmodpf}}, \code{\link{b31gops}},
+  \code{\link{b31gpf}}, \code{\link{b31gsap}},
   \code{\link{crvl}}
 }
 \concept{ASME B31G functions}
