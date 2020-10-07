@@ -103,10 +103,14 @@ Since the definition of flow stress, \emph{Sflow}, in
 \seealso{
 Other fail pressure functions: \code{\link{b31gmodpf}}, \code{\link{dnvpf}}
 
-Other ASME B31G functions: \code{\link{b31gacd}},
-  \code{\link{b31gacl}}, \code{\link{b31gafr}},
-  \code{\link{b31gdep}}, \code{\link{b31gmodpf}},
-  \code{\link{b31gops}}, \code{\link{b31gsap}},
-  \code{\link{crvl}}
+Other ASME B31G functions: 
+\code{\link{b31gacd}()},
+\code{\link{b31gacl}()},
+\code{\link{b31gafr}()},
+\code{\link{b31gdep}()},
+\code{\link{b31gmodpf}()},
+\code{\link{b31gops}()},
+\code{\link{b31gsap}()},
+\code{\link{crvl}()}
 }
 \concept{ASME B31G functions}

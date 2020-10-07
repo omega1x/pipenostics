@@ -43,10 +43,14 @@ Calculate safe maximum pressure for the corroded area of pipe.
  supplement to \emph{ASTME B31} code for pressure piping.
 }
 \seealso{
-Other ASME B31G functions: \code{\link{b31gacd}},
-  \code{\link{b31gacl}}, \code{\link{b31gafr}},
-  \code{\link{b31gdep}}, \code{\link{b31gmodpf}},
-  \code{\link{b31gops}}, \code{\link{b31gpf}},
-  \code{\link{crvl}}
+Other ASME B31G functions: 
+\code{\link{b31gacd}()},
+\code{\link{b31gacl}()},
+\code{\link{b31gafr}()},
+\code{\link{b31gdep}()},
+\code{\link{b31gmodpf}()},
+\code{\link{b31gops}()},
+\code{\link{b31gpf}()},
+\code{\link{crvl}()}
 }
 \concept{ASME B31G functions}

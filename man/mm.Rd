@@ -27,7 +27,9 @@ Convert length measured in \href{https://en.wikipedia.org/wiki/Inch}{inches}
 \seealso{
 \code{\link{inch}} for converting \emph{mm} to \emph{inches}
 
-Other utils: \code{\link{inch}}, \code{\link{mpa}},
-  \code{\link{psi}}
+Other utils: 
+\code{\link{inch}()},
+\code{\link{mpa}()},
+\code{\link{psi}()}
 }
 \concept{utils}

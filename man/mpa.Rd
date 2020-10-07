@@ -27,7 +27,9 @@ Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pounds
 \seealso{
 \code{\link{psi}} for converting \emph{megapascals} to \emph{pounds per square inch}
 
-Other utils: \code{\link{inch}}, \code{\link{mm}},
-  \code{\link{psi}}
+Other utils: 
+\code{\link{inch}()},
+\code{\link{mm}()},
+\code{\link{psi}()}
 }
 \concept{utils}

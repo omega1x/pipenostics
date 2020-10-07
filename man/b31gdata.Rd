@@ -4,7 +4,8 @@
 \name{b31gdata}
 \alias{b31gdata}
 \title{ASME B31G. Corrosion state of 12 pipes}
-\format{A data frame with 12 rows and 15 variables:
+\format{
+A data frame with 12 rows and 15 variables:
 \describe{
   \item{maop}{maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]}
   \item{d}{nominal outside diameter of the pipe, [\emph{inch}]}
@@ -30,7 +31,8 @@
   \item{A}{intermediate factor related to the geometry of the corroded area, []}
   \item{allowed_corrosion_length}{allowable length of the corroded area, [\emph{inch}]}
   \item{AP}{another intermediate factor related to the geometry of the corroded area, []}
- }}
+ }
+}
 \source{
 \url{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}
 }
