@@ -1,6 +1,6 @@
-#' API SPECIFICATION 5L. SMYS vs UTS
+#' API 5L. Values of SMYS and UTS
 #'
-#' Data represents specified minimum yield strength (SMYS) vs ultimate
+#' Data represents specified minimum yield strength (SMYS) and ultimate
 #' tensile strength (UTS) both achieved when producing line pipes
 #' according to
 #' \href{https://law.resource.org/pub/us/cfr/ibr/002/api.5l.2004.pdf}{API SPECIFICATION 5L}.

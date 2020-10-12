@@ -25,4 +25,7 @@
 #'  ## unit test:
 #'  stopifnot(round(psi(c(6.89475728e-3, 1)), 4) == c(1, 145.0377))
 #'
-psi <- function(x) 145.03773800721814*x
+psi <- function(x) {
+  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE)
+  145.03773800721814*x
+}

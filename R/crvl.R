@@ -231,15 +231,22 @@
 #' stopifnot(all(is.nan(delta) | delta == 0))
 #'
 crvl <- function(maop, d, wth, smys, def = .72, depth, l){
+  checkmate::assert_double(maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(def, lower = 0, upper = 1, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
   pipe <- within(
     data.frame(
-      maop  = as.numeric(maop),
-      d     = as.numeric(d),
-      wth   = as.numeric(wth),
-      smys  = as.numeric(smys),
-      def   = as.numeric(def),
-      depth = as.numeric(depth),
-      l     = as.numeric(l)
+      maop  = maop,
+      d     = d,
+      wth   = wth,
+      smys  = smys,
+      def   = def,
+      depth = depth,
+      l     = l
     ),
     {
       design_pressure <- trunc(b31gdep(d, wth, smys, def))

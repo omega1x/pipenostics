@@ -81,6 +81,12 @@
 #'      dnvpf(d, wth, smts, depth, l), 4) == c(15.8663, 34.0118))))  # [N/mm^2]
 #'
 dnvpf <- function(d, wth, smts, depth, l){
+  checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(wth, lower = 0, upper = 5e2, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(smts, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE)
+
   Q <- sqrt(1 + .31*l^2/d/wth)
   Pf <- 2*wth*smts*(1 - depth/wth)/(d - wth)/(1 - depth/wth/Q)
   Pf[depth >= .85*wth] <- NA_real_

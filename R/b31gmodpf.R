@@ -103,6 +103,12 @@
 #'        1500.1792, 1497.9821, 1495.3120, 1496.6265))))
 #'
 b31gmodpf <- function(d, wth, smys, depth, l) {
+  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+
   z  <- l^2/d/wth
   s_flow <- 1.1*smys
 

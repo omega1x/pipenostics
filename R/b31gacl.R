@@ -52,6 +52,13 @@
 #'         allowed_corrosion_length)))
 #'
 b31gacl <- function(dep, maop, d, wth, depth, l){
+  checkmate::assert_double(dep, lower = 0, upper = 6e3, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+
   PS <- trunc(1.1*dep*(1 - depth/wth) + .5)
   PS[PS > dep] <- dep[PS > dep]
   J <- 2/3*depth/wth

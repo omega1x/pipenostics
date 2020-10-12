@@ -25,4 +25,7 @@
 #'  ## unit test:
 #'  stopifnot(round(inch(c(25.4, 1)), 8) == c(1.0, 0.03937008))
 #'
-inch <- function(x) x/25.4
+inch <- function(x) {
+  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE)
+  x/25.4
+}

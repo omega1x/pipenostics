@@ -25,4 +25,7 @@
 #'  ## unit test:
 #'  stopifnot(round(mpa(c(145.03773800721814, 1)), 8) == c(1, 6.89476e-3))
 #'
-mpa <- function(x) 6.89475728e-3*x
+mpa <- function(x) {
+  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE)
+  6.89475728e-3*x
+}

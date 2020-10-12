@@ -47,4 +47,10 @@
 #'    stopifnot(all(trunc(b31gdep(d, wth, smys, def)) == design_pressure))
 #'  )
 #'
-b31gdep <- function(d, wth, smys, def) 2*smys*wth*def/d + .5
+b31gdep <- function(d, wth, smys, def){
+  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(def, lower = 0, upper = 1, finite = TRUE, any.missing = FALSE)
+  2*smys*wth*def/d + .5
+}

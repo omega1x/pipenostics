@@ -35,4 +35,9 @@
 #'  data(b31gdata)
 #'  with(b31gdata, all.equal(b31gafr(d, wth, l), A))
 #'
-b31gafr <- function(d, wth, l) 1e-3*trunc(1e3*.893*l/sqrt(d*wth))
+b31gafr <- function(d, wth, l){
+  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  1e-3*trunc(1e3*.893*l/sqrt(d*wth))
+}

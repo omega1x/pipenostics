@@ -40,6 +40,9 @@
 #'  with(b31gdata, stopifnot(all(b31gops(wth, depth) & status)))
 #'
 b31gops <- function(wth, depth){
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE)
+
   a <- .8*wth  # alert setting
   1 + (depth > .1*wth & depth <= a) + 2*(depth > a)
 }
