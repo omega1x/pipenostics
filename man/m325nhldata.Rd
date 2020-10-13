@@ -43,6 +43,11 @@ combinations \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}
 does not provide values. For that cases values are postulated by practical
 reasons in Siberian cities and marked with source label \emph{sgc}.
 
-Usually the data is not used directly. Instead use function \code{m325nhl}.
+Usually the data is not used directly. Instead use function \code{\link{m325nhl}}.
 }
+\seealso{
+Other Minenergo: 
+\code{\link{m325nhl}()}
+}
+\concept{Minenergo}
 \keyword{datasets}

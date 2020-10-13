@@ -11,7 +11,9 @@
 #' does not provide values. For that cases values are postulated by practical
 #' reasons in Siberian cities and marked with source label \emph{sgc}.
 #'
-#' Usually the data is not used directly. Instead use function \code{m325nhl}.
+#' Usually the data is not used directly. Instead use function \code{\link{m325nhl}}.
+#'
+#' @family Minenergo
 #'
 #' @format A data frame with 17328 rows and 8 variables:
 #' \describe{
