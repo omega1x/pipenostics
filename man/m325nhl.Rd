@@ -13,6 +13,7 @@ m325nhl(
   temperature = 110,
   len = 1,
   duration = 1,
+  beta = FALSE,
   extra = 2
 )
 }
@@ -50,6 +51,8 @@ numeric vector.}
 
 \item{duration}{duration of heat flux emittance, [\emph{hour}], numeric vector.}
 
+\item{beta}{should they consider additional heat losses of fittings? Logical vector.}
+
 \item{extra}{number of points used for temperature extrapolation, single value.}
 }
 \value{
@@ -81,16 +84,39 @@ with(m325nhldata, {
  stopifnot(all(flux == foo))
  cat("\nDummy test: OK.")
 
- ## Linear extrapolation adopted in Minenergo's Order 325 using last 2 points:
+ ## Linear extrapolation adopted in Minenergo's Order 325 using last two points:
  temperature <- seq(0, 270, 10)  # [°C]
- flux <- m325nhl(1980, "underground", TRUE, 0, 70, temperature)  # [kcal/m/h]
+ flux <- m325nhl(1980, "underground", TRUE, 0, 73, temperature)  # [kcal/m/h]
  plot(temperature, flux, type = "b")
  cat("\nGraphic test: OK.")
+
+ ## Consider heat losses of fittings:
+ stopifnot(
+   ## when beta becomes 1.15
+   all(
+     round(
+       m325nhl(1980, "underground", d = 73, temperature = 65,
+               beta = c(FALSE, TRUE)),
+       3
+     ) == c(65.500, 75.325)
+   ),
+
+   ## when beta becomes 1.2
+   all(
+     round(
+       m325nhl(2000, "channel", d = 73, temperature = 65,
+               beta = c(FALSE, TRUE)),
+       3
+     ) == c(17.533, 21.040)
+   )
+ )
 })
 
 }
 \seealso{
 Other Minenergo: 
+\code{\link{m278insdata}},
+\code{\link{m325beta}()},
 \code{\link{m325nhldata}}
 }
 \concept{Minenergo}

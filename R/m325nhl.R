@@ -49,6 +49,9 @@
 #' @param duration
 #'  duration of heat flux emittance, [\emph{hour}], numeric vector.
 #'
+#' @param beta
+#'  should they consider additional heat losses of fittings? Logical vector.
+#'
 #' @param extra
 #'   number of points used for temperature extrapolation, single value.
 #'
@@ -78,16 +81,37 @@
 #'  stopifnot(all(flux == foo))
 #'  cat("\nDummy test: OK.")
 #'
-#'  ## Linear extrapolation adopted in Minenergo's Order 325 using last 2 points:
+#'  ## Linear extrapolation adopted in Minenergo's Order 325 using last two points:
 #'  temperature <- seq(0, 270, 10)  # [°C]
-#'  flux <- m325nhl(1980, "underground", TRUE, 0, 70, temperature)  # [kcal/m/h]
+#'  flux <- m325nhl(1980, "underground", TRUE, 0, 73, temperature)  # [kcal/m/h]
 #'  plot(temperature, flux, type = "b")
 #'  cat("\nGraphic test: OK.")
+#'
+#'  ## Consider heat losses of fittings:
+#'  stopifnot(
+#'    ## when beta becomes 1.15
+#'    all(
+#'      round(
+#'        m325nhl(1980, "underground", d = 73, temperature = 65,
+#'                beta = c(FALSE, TRUE)),
+#'        3
+#'      ) == c(65.500, 75.325)
+#'    ),
+#'
+#'    ## when beta becomes 1.2
+#'    all(
+#'      round(
+#'        m325nhl(2000, "channel", d = 73, temperature = 65,
+#'                beta = c(FALSE, TRUE)),
+#'        3
+#'      ) == c(17.533, 21.040)
+#'    )
+#'  )
 #' })
 #'
 m325nhl <- function(year = 1986, laying = "underground", exp5k = TRUE,
                     insulation = 0, d = 700, temperature = 110, len = 1,
-                    duration = 1, extra = 2) {
+                    duration = 1, beta = FALSE, extra = 2) {
   norms <- pipenostics::m325nhldata
   checkmate::assert_integerish(year, lower = 1900L,
                                upper = max(norms$epoch),
@@ -103,11 +127,12 @@ m325nhl <- function(year = 1986, laying = "underground", exp5k = TRUE,
                            finite = TRUE, any.missing = FALSE)
   checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE)
   checkmate::assert_double(duration, lower = 0, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_logical(beta, any.missing = FALSE)
   checkmate::assert_choice(extra, 2:4)
 
   mapply(
     function(year_value, laying_value, exp5k_value, insulation_value,
-             d_value, temperature_value, len_value, duration_value) {
+             d_value, temperature_value, len_value, duration_value, beta_value) {
       epoch <- with(list(epochs = unique(norms$epoch)), {
         epochs[[findInterval(year_value, epochs, left.open = TRUE) + 1]]
       })
@@ -139,8 +164,10 @@ m325nhl <- function(year = 1986, laying = "underground", exp5k = TRUE,
       flux <-
         if (all(!is.na(flux))) stats::approx(neighbor_diameter, flux, d_value)$y else
           flux[!is.na(flux)][[1L]]
-      flux * len_value * duration_value
-  }, year, laying, exp5k, insulation, d, temperature, len, duration)
+      flux * len_value * duration_value * (
+        pipenostics::m325beta(laying_value, d_value) * beta_value + !beta_value
+      )
+  }, year, laying, exp5k, insulation, d, temperature, len, duration, beta)
 }
 
 

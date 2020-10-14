@@ -47,6 +47,8 @@ Usually the data is not used directly. Instead use function \code{\link{m325nhl}
 }
 \seealso{
 Other Minenergo: 
+\code{\link{m278insdata}},
+\code{\link{m325beta}()},
 \code{\link{m325nhl}()}
 }
 \concept{Minenergo}
