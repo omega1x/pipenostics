@@ -3,7 +3,7 @@
 \docType{data}
 \name{m278insdata}
 \alias{m278insdata}
-\title{Minenergo-278. Heat conductivity factors of pipe insulation materials}
+\title{Minenergo-278. Thermal conductivity terms of pipe insulation materials}
 \format{
 A data frame with 39 rows and 4 variables:
 \describe{
@@ -13,8 +13,8 @@ A data frame with 39 rows and 4 variables:
   \item{material}{Designation of insulation material more or less similar
   to those in table 5.1 of Appendix 5.3 in
   \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.}
-  \item{lambda}{Value for intercept, [mW/m/°C ]}
-  \item{k}{Value for factor}
+  \item{lambda}{Value for intercept, [\emph{mW/m/°C}].}
+  \item{k}{Value for factor.}
  }
 }
 \source{
@@ -24,17 +24,21 @@ A data frame with 39 rows and 4 variables:
 m278insdata
 }
 \description{
-Data represents values for calculating heat conductivity factor of pipe
-insulation as a linear function of temperature of water as a heat carrier.
+Data represent values of terms (intercept and factor) for calculating thermal
+conductivity of pipe insulation as a linear function of temperature of
+heat carrier (water).
 Those values are set for different insulation materials in
 Appendix 5.3 of \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}
 as norms.
 }
 \details{
-Usually the data is not used directly. Instead use function \code{m278ins}.
+Usually the data is not used directly. Instead use function \code{\link{m278inshcm}}.
 }
 \seealso{
 Other Minenergo: 
+\code{\link{m278hlcha}()},
+\code{\link{m278inshcm}()},
+\code{\link{m278soildata}},
 \code{\link{m325beta}()},
 \code{\link{m325nhldata}},
 \code{\link{m325nhl}()}

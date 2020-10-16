@@ -1,6 +1,6 @@
 #' Minenergo-325. Normative heat losses of pipe
 #'
-#' Data represents values of heat losses officially accepted by
+#' Data represent values of heat losses officially accepted by
 #' \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325} as
 #' norms. Those values represent heat flux that is legally
 #' affirmed to be emitted per meter during an hour by steel pipe of district

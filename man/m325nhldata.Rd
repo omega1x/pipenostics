@@ -31,7 +31,7 @@ A data frame with 17328 rows and 8 variables:
 m325nhldata
 }
 \description{
-Data represents values of heat losses officially accepted by
+Data represent values of heat losses officially accepted by
 \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325} as
 norms. Those values represent heat flux that is legally
 affirmed to be emitted per meter during an hour by steel pipe of district
@@ -47,7 +47,10 @@ Usually the data is not used directly. Instead use function \code{\link{m325nhl}
 }
 \seealso{
 Other Minenergo: 
+\code{\link{m278hlcha}()},
 \code{\link{m278insdata}},
+\code{\link{m278inshcm}()},
+\code{\link{m278soildata}},
 \code{\link{m325beta}()},
 \code{\link{m325nhl}()}
 }
