@@ -26,10 +26,11 @@
 #' @examples
 #'
 #' # Averaged thermal conductivity of pipe insulation at 110 °C
+#' print(m278insdata)
 #' stopifnot(
 #'   round(
 #'     mean(with(m278insdata, { m278inshcm(110, material)})),
-#'     2) == .09
+#'     2) == 9e-2
 #' )
 #'
 #' # Terms for linear connection between thermal conductivity of unknown
@@ -44,11 +45,11 @@
 #' )
 #'
 m278inshcm <- function(temperature = 110, material = "aerocrete"){
-  checkmate::assert_double(temperature, lower = 0, upper = 450, finite = TRUE,
-                           any.missing = FALSE)
-  norms <- pipenostics::m278insdata
-  checkmate::assert_subset(material, choices = norms$material)
+    checkmate::assert_double(temperature, lower = 0, upper = 450, finite = TRUE,
+                                                         any.missing = FALSE)
+    norms <- pipenostics::m278insdata
+    checkmate::assert_subset(material, choices = norms$material)
 
-  1e-3*norms[norms$material == material, "lambda"] +
-    1e-6*norms[norms$material == material, "k"] * .5 * (temperature + 40)
-}
+      1e-3*norms[norms$material == material, "lambda"] +
+        1e-6*norms[norms$material == material, "k"] * .5 * (temperature + 40)
+  }

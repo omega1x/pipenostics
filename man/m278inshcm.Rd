@@ -26,10 +26,11 @@ Get normative values of thermal conductivity of pipe insulation
 \examples{
 
 # Averaged thermal conductivity of pipe insulation at 110 °C
+print(m278insdata)
 stopifnot(
   round(
     mean(with(m278insdata, { m278inshcm(110, material)})),
-    2) == .09
+    2) == 9e-2
 )
 
 # Terms for linear connection between thermal conductivity of unknown

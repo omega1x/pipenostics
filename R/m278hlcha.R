@@ -98,55 +98,150 @@
 #'      )$par, 1) == c(4.3, 4.3) # c(k1, k2)
 #'  )
 #'
-m278hlcha <- function(t1 = 110, t2 = 60, t0 = 5, insd1 = 0.1, insd2 = insd1,
-                      d1 = .25, d2 = d1, lambda1 = 0.09, lambda2 = 0.07,
-                      k1 = 1, k2 = k1,
-                      lambda0 = 1.74, z = 2, b =0.5, h = 0.5,
-                      len = 1, duration = 1){
-  checkmate::assert_double(t1, lower = 0, upper = 450, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(t2, lower = 0, upper = 450, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(t0, lower = -15, upper = 30, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(insd1, lower = 0, upper = .5, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(insd2, lower = 0, upper = .5, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(d1, lower = .2, upper = 1.5, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(d2, lower = .2, upper = 1.5, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(lambda1, lower = 1e-3, upper = 1, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(lambda2, lower = 1e-3, upper = 1, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(k1, lower = 1, upper = 4.5, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(k2, lower = 1, upper = 4.5, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(lambda0, lower = 1e-3, upper = 3, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(z, lower = .1, upper = 10, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(b, lower = min(d1, d2), upper = 10, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(h, lower = min(d1, d2), upper = 10, finite = TRUE,
-                           any.missing = FALSE)
-  checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(duration, lower = 0, finite = TRUE, any.missing = FALSE)
+m278hlcha <-
+  function(t1 = 110,
+           t2 = 60,
+           t0 = 5,
+           insd1 = 0.1,
+           insd2 = insd1,
+           d1 = .25,
+           d2 = d1,
+           lambda1 = 0.09,
+           lambda2 = 0.07,
+           k1 = 1,
+           k2 = k1,
+           lambda0 = 1.74,
+           z = 2,
+           b = 0.5,
+           h = 0.5,
+           len = 1,
+           duration = 1) {
+    checkmate::assert_double(
+      t1,
+      lower = 0,
+      upper = 450,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      t2,
+      lower = 0,
+      upper = 450,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      t0,
+      lower = -15,
+      upper = 30,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      insd1,
+      lower = 0,
+      upper = .5,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      insd2,
+      lower = 0,
+      upper = .5,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      d1,
+      lower = .2,
+      upper = 1.5,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      d2,
+      lower = .2,
+      upper = 1.5,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      lambda1,
+      lower = 1e-3,
+      upper = 1,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      lambda2,
+      lower = 1e-3,
+      upper = 1,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      k1,
+      lower = 1,
+      upper = 4.5,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      k2,
+      lower = 1,
+      upper = 4.5,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      lambda0,
+      lower = 1e-3,
+      upper = 3,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      z,
+      lower = .1,
+      upper = 10,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      b,
+      lower = min(d1, d2),
+      upper = 10,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(
+      h,
+      lower = min(d1, d2),
+      upper = 10,
+      finite = TRUE,
+      any.missing = FALSE
+    )
+    checkmate::assert_double(len,
+                             lower = 0,
+                             finite = TRUE,
+                             any.missing = FALSE)
+    checkmate::assert_double(duration,
+                             lower = 0,
+                             finite = TRUE,
+                             any.missing = FALSE)
 
-  R0 <- log(3.5*z/h*(h/b)^.25)/lambda0/(5.7 + .5*b/h)
-  d <- 2*b*h/(b + h)
-  R_chan_air <- 1/(8*pi*d)
-  R1_air <- 1/(8*pi*(d1 + 2*insd1))
-  R2_air <- 1/(8*pi*(d2 + 2*insd2))
-  R1_ins <- log(1 + 2*insd1/d1)/(2*pi*k1*lambda1)
-  R2_ins <- log(1 + 2*insd2/d2)/(2*pi*k2*lambda2)
-  t_chan <- (t1/(R1_ins + R1_air) + t2/(R2_ins + R2_air) + t0/(R_chan_air + R0)) /
-            (1/(R1_ins + R1_air) + 1/(R2_ins + R2_air) + 1/(R_chan_air + R0))
-  q_p <- (t_chan - t0)/(R_chan_air + R0)
+    R0 <- log(3.5 * z / h * (h / b) ^ .25) / lambda0 / (5.7 + .5 * b /
+                                                          h)
+    d <- 2 * b * h / (b + h)
+    R_chan_air <- 1 / (8 * pi * d)
+    R1_air <- 1 / (8 * pi * (d1 + 2 * insd1))
+    R2_air <- 1 / (8 * pi * (d2 + 2 * insd2))
+    R1_ins <- log(1 + 2 * insd1 / d1) / (2 * pi * k1 * lambda1)
+    R2_ins <- log(1 + 2 * insd2 / d2) / (2 * pi * k2 * lambda2)
+    t_chan <-
+      (t1 / (R1_ins + R1_air) + t2 / (R2_ins + R2_air) + t0 / (R_chan_air + R0)) /
+      (1 / (R1_ins + R1_air) + 1 / (R2_ins + R2_air) + 1 / (R_chan_air + R0))
+    q_p <- (t_chan - t0) / (R_chan_air + R0)
 
-  q_p*len*duration
-}
-
+    q_p * len * duration
+  }

@@ -10,12 +10,10 @@
 #' Usually the data is not used directly. Instead use function \code{\link{m278inshcm}}.
 #'
 #' @family Minenergo
-#'
 #' @format A data frame with 39 rows and 4 variables:
 #' \describe{
-#'   \item{id}{Identifier of insulation material according to table 5.1 of
-#'     Appendix 5.3 in \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.
-#'   }
+#'   \item{id}{Number of insulation material table 5.1 of Appendix 5.3 in
+#'    \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}}.
 #'   \item{material}{Designation of insulation material more or less similar
 #'   to those in table 5.1 of Appendix 5.3 in
 #'   \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.}
