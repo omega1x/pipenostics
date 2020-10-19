@@ -1,4 +1,4 @@
-#' Engineering, diagnostics, reliability and predictive maintenance of pipeline systems
+#' Diagnostics, reliability and predictive maintenance of pipeline systems
 #'
 #'
 #' The motivation for the package was to aggregate to some extent the separate
@@ -84,8 +84,41 @@
 #'
 #' @section 2. Heat losses:
 #'
-#' Heat losses in district heating system is one of the biggest problem of
-#' city infrastructure.
+#' Heat loss is the energy characteristic of district heating networks. It is
+#' the amount of heat energy spent on the transportation and distribution of
+#' heat energy from the source to the consumers.
+#'
+#' Heat losses depend on the operating temperature, technical condition,
+#' volume and configuration of the district heating network, as well as on
+#' climatic factors. Heat losses are additive being the sum of the heat losses
+#' of individual pipeline segments.
+#'
+#' Determination of heat losses for pipeline segments hereinafter is called
+#' \emph{heat loss localization}.
+#'
+#' It is assumed that actual heat loss (\strong{AHL}) of pipeline segment has two
+#' contributions: normative heat loss (\strong{NHL}) and extra-normative heat loss
+#' (\strong{ExNHL}).So we can write:
+#'
+#' \deqn{
+#'  AHL = NHL + ExNHL, ExNHL > 0.
+#' }
+#'
+#' Localization of \strong{ExNHL} is an important part of health maintenance
+#' activities of district heating network operation. One can determine
+#' \strong{ExNHL} of pipeline segment as a positive difference between
+#' \strong{AHL} and \strong{NHL} and it is the most natural way. For that
+#' purpose \href{http://docs.cntd.ru/document/902148459}{Minenergo-325} and
+#' \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo-278} methods
+#' for postulating \strong{NHL} are considered.
+#' \href{http://docs.cntd.ru/document/902148459}{Minenergo-325} lists
+#' legally affirmed maximum values of heat flux that is allowed to be emitted by
+#' steel pipes (see \code{\link{m325nhl}}). Higher emission is treated as
+#' \strong{ExNHL}. \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo-278}
+#' gives method for engineering calculation of \strong{NHL} considering technical
+#' condition of pipeline segment (see \code{\link{m278hlcha}},
+#' \code{\link{m278hlund}}, and \code{\link{m278hlair}}).
+#'
 #'
 #' @docType package
 #' @name pipenostics
