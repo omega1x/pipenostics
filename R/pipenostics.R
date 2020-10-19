@@ -10,6 +10,7 @@
 #' Aiming to avoid portability and accessibility problems made us search ways to
 #' restrict source code development by functionality of few external packages.
 #'
+#' @section 1. Corrosion diagnostics:
 #' The next values describing technological conditions, material properties of
 #' pipe and defect parameters are used as arguments throughout the most
 #' functions concerning corrosion diagnostics:
@@ -24,7 +25,8 @@
 #'   \item{\emph{depth}}{measured maximum depth of the corroded area, [\href{https://en.wikipedia.org/wiki/Inch}{inch}]}
 #'   \item{\emph{l}}{measured maximum longitudial length of the corroded area, [\href{https://en.wikipedia.org/wiki/Inch}{inch}]}
 #'}
-#' @section ASME B31G-1991:
+#'
+#' @section 1.1 ASME B31G-1991:
 #'   It is recognized by pipeline companies that some sections of high pressure
 #'   pipelines particularly those installed a number of years ago, have
 #'   experienced some corrosion. Where corrosion is found, pipeline operators have
@@ -65,7 +67,7 @@
 #'  # With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847
 #'  # With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000
 #'
-#' @section ASME B31G-2012:
+#' @section 1.2 ASME B31G-2012:
 #' An effort was undertaken to update the \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991} up to
 #' \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012}
 #' document to recognize certain other corrosion evaluation methods that have
@@ -79,6 +81,11 @@
 #' As noted in \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012},
 #' \strong{Level 1} evaluation is quite suitable for use in prioritizing corrosion
 #' defects identified by inline inspection.
+#'
+#' @section 2. Heat losses:
+#'
+#' Heat losses in district heating system is one of the biggest problem of
+#' city infrastructure.
 #'
 #' @docType package
 #' @name pipenostics

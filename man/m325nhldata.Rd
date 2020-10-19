@@ -47,7 +47,9 @@ Usually the data is not used directly. Instead use function \code{\link{m325nhl}
 }
 \seealso{
 Other Minenergo: 
+\code{\link{m278hlair}()},
 \code{\link{m278hlcha}()},
+\code{\link{m278hlund}()},
 \code{\link{m278insdata}},
 \code{\link{m278inshcm}()},
 \code{\link{m278soildata}},

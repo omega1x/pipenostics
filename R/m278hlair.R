@@ -1,18 +1,18 @@
 #' @title
-#'  Minenergo-278. Calculate heat losses of pipeline segment in channel
+#'  Minenergo-278. Calculate heat losses of overhead pipeline segment
 #'
 #'
 #' @family Minenergo
 #'
 #' @description
-#'  Calculate values of heat flux emitted by pipeline segment mounted in channel
-#'  as a function of construction, operation, and technical condition
-#'  specifications according to
+#'  Calculate values of heat flux emitted by overhead pipeline segment
+#'  (surrounded by air) as a function of construction, operation,
+#'  and technical condition  specifications according to
 #'  Appendix 5.1 of \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.
 #'
 #'  This type of calculations is usually made on design stage of district
-#'  heating network (where water is a heat carrier) and is closely related
-#'  to building codes and regulations.
+#'  heating network (where water is a heat carrier) and is closely related to
+#'  building codes and regulations.
 #'
 #' @param t1
 #'   temperature of heat carrier (water) inside the supplying pipe, [\emph{°C}],
@@ -21,8 +21,8 @@
 #'   temperature of heat carrier (water) inside the returning pipe, [\emph{°C}],
 #'   numeric vector.
 #' @param t0
-#'   temperature of environment, [\emph{°C}]. In case of channel laying this is
-#'   the temperature of subsoil, numeric vector.
+#'   temperature of environment, [\emph{°C}]. In case of overhead laying this is
+#'   the ambient temperature, numeric vector.
 #' @param insd1
 #'   thickness of the insulator which covers the supplying pipe, [\emph{m}],
 #'   numeric vector.
@@ -44,14 +44,8 @@
 #' @param k2
 #'   technical condition factor for insulator of returning pipe, [], numeric vector.
 #' @param lambda0
-#'   thermal conductivity of environment, [\emph{W/m/°C}]. In case of channel
-#'   laying this is the thermal conductivity of subsoil, numeric vector.
-#' @param z
-#'   channel laying depth, [\emph{m}], numeric vector.
-#' @param b
-#'   channel width, [\emph{m}], numeric vector.
-#' @param h
-#'   channel height, [\emph{m}], numeric vector.
+#'   thermal conductivity of environment, [\emph{W/m/°C}]. In case of overhead
+#'   laying this is the thermal conductivity of open air, numeric vector.
 #' @param len
 #'  length of pipeline segment, [\emph{m}], numeric vector.
 #' @param duration
@@ -66,40 +60,15 @@
 #'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'
 #' @details
-#'   \code{k1} and \code{k2} factor values equal to one mean the best technical
-#'   condition of insulation of appropriate pipes, whereas for poor technical
-#'   state factor values tends to five or more.
-#'
-#'   Nevertheless, when \code{k1} and \code{k2} both equal to one the calculated
-#'   heat flux [\emph{kcal/m/h}] is sometimes higher than that listed in
-#'   \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
-#'   One should consider that situation when choosing method for heat loss
-#'   calculations.
+#'   Details on using \code{k1} and \code{k2} are the same as for
+#'   \code{\link{m278hlcha}}.
 #' @export
 #'
 #' @examples
 #'  ## Dummy test:
-#'  stopifnot(round(m278hlcha(), 3) == 86.930)
+#'  stopifnot(round(m278hlair(), 3) == 138.774)
 #'
-#'  ## Naive way to find out technical state (factors k1 and k2) for pipe
-#'  ## segments constructed in 1980:
-#'  stopifnot(
-#'    round(
-#'      optim(
-#'        par = c(1.5, 1.5),
-#'        fn = function(x) {
-#'          # functional to optimize
-#'          abs(
-#'            m278hlcha(k1 = x[1], k2 = x[2]) -
-#'              m325nhl(year = 1980, laying = "channel", d = 250, temperature = 110)
-#'          )
-#'        },
-#'        method = "L-BFGS-B",
-#'        lower = 1.01, upper = 4.4
-#'      )$par, 1) == c(4.3, 4.3) # c(k1, k2)
-#'  )
-#'
-m278hlcha <-
+m278hlair <-
   function(t1 = 110,
            t2 = 60,
            t0 = 5,
@@ -111,12 +80,10 @@ m278hlcha <-
            lambda2 = 0.07,
            k1 = 1,
            k2 = k1,
-           lambda0 = 1.74,
-           z = 2,
-           b = 0.5,
-           h = 0.5,
+           lambda0 = 26,
            len = 1,
-           duration = 1) {
+           duration = 1
+           ) {
     checkmate::assert_double(
       t1,
       lower = 0,
@@ -196,29 +163,8 @@ m278hlcha <-
     )
     checkmate::assert_double(
       lambda0,
-      lower = 1e-3,
-      upper = 3,
-      finite = TRUE,
-      any.missing = FALSE
-    )
-    checkmate::assert_double(
-      z,
-      lower = .1,
-      upper = 10,
-      finite = TRUE,
-      any.missing = FALSE
-    )
-    checkmate::assert_double(
-      b,
-      lower = min(d1, d2),
-      upper = 10,
-      finite = TRUE,
-      any.missing = FALSE
-    )
-    checkmate::assert_double(
-      h,
-      lower = min(d1, d2),
-      upper = 10,
+      lower = 1,
+      upper = 100,
       finite = TRUE,
       any.missing = FALSE
     )
@@ -231,18 +177,13 @@ m278hlcha <-
                              finite = TRUE,
                              any.missing = FALSE)
 
-    R0 <- log(3.5 * z / h * (h / b) ^ .25) / lambda0 / (5.7 + .5 * b /
-                                                          h)
-    d <- 2 * b * h / (b + h)
-    R_chan_air <- 1 / (8 * pi * d)
-    R1_air <- 1 / (8 * pi * (d1 + 2 * insd1))
-    R2_air <- 1 / (8 * pi * (d2 + 2 * insd2))
-    R1_ins <- log(1 + 2 * insd1 / d1) / (2 * pi * k1 * lambda1)
-    R2_ins <- log(1 + 2 * insd2 / d2) / (2 * pi * k2 * lambda2)
-    t_chan <-
-      (t1 / (R1_ins + R1_air) + t2 / (R2_ins + R2_air) + t0 / (R_chan_air + R0)) /
-      (1 / (R1_ins + R1_air) + 1 / (R2_ins + R2_air) + 1 / (R_chan_air + R0))
-    q <- (t_chan - t0) / (R_chan_air + R0)
-
+    q1 <-
+      pi * (t1 - t0) / (log((d1 + 2 * insd1) / d1) / (2 * k1 * lambda1) + 1 /
+                          (lambda0 * (d1 + 2 * insd1)))
+    q2 <-
+      pi * (t2 - t0) / (log((d2 + 2 * insd2) / d2) / (2 * k2 * lambda2) + 1 /
+                          (lambda0 * (d2 + 2 * insd2)))
+    q <- q1 + q2
     q * len * duration
+
 }

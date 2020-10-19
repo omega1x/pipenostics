@@ -14,6 +14,8 @@ engineers, having utilized spreadsheet software as a mainstream.
 \details{
 Aiming to avoid portability and accessibility problems made us search ways to
 restrict source code development by functionality of few external packages.
+}
+\section{1. Corrosion diagnostics}{
 
 The next values describing technological conditions, material properties of
 pipe and defect parameters are used as arguments throughout the most
@@ -30,7 +32,8 @@ functions concerning corrosion diagnostics:
   \item{\emph{l}}{measured maximum longitudial length of the corroded area, [\href{https://en.wikipedia.org/wiki/Inch}{inch}]}
 }
 }
-\section{ASME B31G-1991}{
+
+\section{1.1 ASME B31G-1991}{
 
   It is recognized by pipeline companies that some sections of high pressure
   pipelines particularly those installed a number of years ago, have
@@ -62,7 +65,7 @@ functions concerning corrosion diagnostics:
   is presentaed in \emph{Example 1}.
 }
 
-\section{ASME B31G-2012}{
+\section{1.2 ASME B31G-2012}{
 
 An effort was undertaken to update the \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991} up to
 \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012}
@@ -77,6 +80,13 @@ inspections we only consider \strong{Analysis Level 1}.
 As noted in \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012},
 \strong{Level 1} evaluation is quite suitable for use in prioritizing corrosion
 defects identified by inline inspection.
+}
+
+\section{2. Heat losses}{
+
+
+Heat losses in district heating system is one of the biggest problem of
+city infrastructure.
 }
 
 \examples{
