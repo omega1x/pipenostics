@@ -14,18 +14,18 @@
 #'  numeric vector of lengths measured in \emph{inches}
 #'
 #' @seealso
-#'  \code{\link{mm}} for converting \emph{inches} to \emph{mm}
+#'  \code{\link{mm_inch}} for converting \emph{inches} to \emph{mm}
 #'
 #' @export
 #'
 #' @examples
-#'  inch(c(25.4, 1))
+#'  inch_mm(c(25.4, 1))
 #'  # [1] 1.00000000 0.03937008  # [inch]
 #'
 #'  ## unit test:
-#'  stopifnot(round(inch(c(25.4, 1)), 8) == c(1.0, 0.03937008))
+#'  stopifnot(round(inch_mm(c(25.4, 1)), 8) == c(1.0, 0.03937008))
 #'
-inch <- function(x) {
+inch_mm <- function(x) {
   checkmate::assert_double(x, finite = TRUE, any.missing = FALSE)
   x/25.4
 }

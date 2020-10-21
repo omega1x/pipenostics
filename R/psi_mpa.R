@@ -14,18 +14,18 @@
 #'  numeric vector of pressure (stress) measured in \emph{pounds per square inch} (\emph{PSI})
 #'
 #' @seealso
-#'  \code{\link{mpa}} for converting \emph{pounds per square inch} to \emph{megapascals}
+#'  \code{\link{mpa_psi}} for converting \emph{pounds per square inch} to \emph{megapascals}
 #'
 #' @export
 #'
 #' @examples
-#'  psi(c(6.89475728e-3, 1))
+#'  psi_mpa(c(6.89475728e-3, 1))
 #'  # [1] 1.0000 145.0377 # [PSI]
 #'
 #'  ## unit test:
-#'  stopifnot(round(psi(c(6.89475728e-3, 1)), 4) == c(1, 145.0377))
+#'  stopifnot(round(psi_mpa(c(6.89475728e-3, 1)), 4) == c(1, 145.0377))
 #'
-psi <- function(x) {
+psi_mpa <- function(x) {
   checkmate::assert_double(x, finite = TRUE, any.missing = FALSE)
   145.03773800721814*x
 }
