@@ -2,7 +2,7 @@
 % Please edit documentation in R/m278hlair.R
 \name{m278hlair}
 \alias{m278hlair}
-\title{Minenergo-278. Calculate heat losses of overhead pipeline segment}
+\title{Minenergo-278. Heat losses of overhead pipeline segment}
 \usage{
 m278hlair(
   t1 = 110,

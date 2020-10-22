@@ -1,5 +1,5 @@
 #' @title
-#'  Convert pounds per square inch to megapascals
+#'  Pounds per square inch to megapascals
 #'
 #' @family utils
 #'

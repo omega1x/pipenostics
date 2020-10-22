@@ -1,4 +1,4 @@
-#' Minenergo-325. Normative heat losses of pipe
+#' Minenergo-325. Data for normative heat losses of pipe
 #'
 #' Data represent values of heat losses officially accepted by
 #' \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325} as

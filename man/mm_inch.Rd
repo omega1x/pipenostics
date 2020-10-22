@@ -29,6 +29,8 @@ Convert length measured in \href{https://en.wikipedia.org/wiki/Inch}{inches}
 
 Other utils: 
 \code{\link{inch_mm}()},
+\code{\link{kgf_mpa}()},
+\code{\link{mpa_kgf}()},
 \code{\link{mpa_psi}()},
 \code{\link{psi_mpa}()}
 }

@@ -1,5 +1,5 @@
 #' @title
-#'  Minenergo-278. Calculate heat losses of pipeline segment in channel
+#'  Minenergo-278. Heat losses of pipeline segment in channel
 #'
 #'
 #' @family Minenergo

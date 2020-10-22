@@ -3,7 +3,7 @@
 \docType{data}
 \name{m325nhldata}
 \alias{m325nhldata}
-\title{Minenergo-325. Normative heat losses of pipe}
+\title{Minenergo-325. Data for normative heat losses of pipe}
 \format{
 A data frame with 17328 rows and 8 variables:
 \describe{

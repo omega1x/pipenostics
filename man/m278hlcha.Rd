@@ -2,7 +2,7 @@
 % Please edit documentation in R/m278hlcha.R
 \name{m278hlcha}
 \alias{m278hlcha}
-\title{Minenergo-278. Calculate heat losses of pipeline segment in channel}
+\title{Minenergo-278. Heat losses of pipeline segment in channel}
 \usage{
 m278hlcha(
   t1 = 110,

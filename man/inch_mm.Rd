@@ -28,7 +28,9 @@ Convert length measured in \href{https://en.wikipedia.org/wiki/Millimetre}{milli
 \code{\link{mm_inch}} for converting \emph{inches} to \emph{mm}
 
 Other utils: 
+\code{\link{kgf_mpa}()},
 \code{\link{mm_inch}()},
+\code{\link{mpa_kgf}()},
 \code{\link{mpa_psi}()},
 \code{\link{psi_mpa}()}
 }

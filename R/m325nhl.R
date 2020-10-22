@@ -1,5 +1,5 @@
 #' @title
-#'  Minenergo-325. Calculate normative heat losses of pipe
+#'  Minenergo-325. Normative heat losses of pipe
 #'
 #' @family Minenergo
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/m278hlund.R
 \name{m278hlund}
 \alias{m278hlund}
-\title{Minenergo-278. Calculate heat losses of underground pipeline segment}
+\title{Minenergo-278. Heat losses of underground pipeline segment}
 \usage{
 m278hlund(
   t1 = 110,

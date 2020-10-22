@@ -2,7 +2,7 @@
 % Please edit documentation in R/psi_mpa.R
 \name{psi_mpa}
 \alias{psi_mpa}
-\title{Convert megapascals to pounds per square inch}
+\title{Megapascals to pounds per square inch}
 \usage{
 psi_mpa(x)
 }
@@ -29,7 +29,9 @@ Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pascal
 
 Other utils: 
 \code{\link{inch_mm}()},
+\code{\link{kgf_mpa}()},
 \code{\link{mm_inch}()},
+\code{\link{mpa_kgf}()},
 \code{\link{mpa_psi}()}
 }
 \concept{utils}

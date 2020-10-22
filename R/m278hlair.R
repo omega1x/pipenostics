@@ -1,5 +1,5 @@
 #' @title
-#'  Minenergo-278. Calculate heat losses of overhead pipeline segment
+#'  Minenergo-278. Heat losses of overhead pipeline segment
 #'
 #'
 #' @family Minenergo

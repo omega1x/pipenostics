@@ -2,7 +2,7 @@
 % Please edit documentation in R/m325nhl.R
 \name{m325nhl}
 \alias{m325nhl}
-\title{Minenergo-325. Calculate normative heat losses of pipe}
+\title{Minenergo-325. Normative heat losses of pipe}
 \usage{
 m325nhl(
   year = 1986,
