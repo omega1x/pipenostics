@@ -98,11 +98,11 @@ The underlying engineering model for calculation of pressure drop considers
  wall \href{https://en.wikipedia.org/wiki/Surface_roughness}{roughness} of pipe.
 }
 \examples{
-# Typical pressure drop for horizontal pipeline segment
+# Typical pressure drop for horizontal pipeline segments
 # in high-way heating network in Novosibirsk
-pdrop(len = 200)
+pdrop(len = c(200, 300))
 
-#0.0007000666
+#[1] 0.0007000666 0.0010500999
 
 }
 \references{

@@ -121,11 +121,11 @@
 #' @export
 #'
 #' @examples
-#' # Typical pressure drop for horizontal pipeline segment
+#' # Typical pressure drop for horizontal pipeline segments
 #' # in high-way heating network in Novosibirsk
-#' pdrop(len = 200)
+#' pdrop(len = c(200, 300))
 #'
-#' #0.0007000666
+#' #[1] 0.0007000666 0.0010500999
 #'
 pdrop <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.,
                   d = 1., len = 1., roughness = 6e-3,
@@ -145,8 +145,10 @@ pdrop <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.
   checkmate::assert_double(roughness, lower = 0, upper = .2, any.missing = FALSE)
   checkmate::assert_double(inlet, lower = 0, finite = TRUE, any.missing = FALSE)
   checkmate::assert_double(outlet, lower = 0, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_true(abs(outlet - inlet) < len)
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
+  dh <- outlet - inlet
+  checkmate::assert_true(all(abs(dh) < len))
+
 
   rho <- 1/v1_tp(temperature + 273.15, pressure)  # [kg/m^3]
   u <- consumption*1e3/rho/(.25*pi*d^2)/3600  # [ton/hour]*[kg/ton]/[kg/m^3]/[m^2]/[s/hour] == [m/s]
@@ -160,7 +162,7 @@ pdrop <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.
   ) * len/d*rho*u^2/2 * 1e-6  # [kg/m/s^2]*1e-6 == [MPa]
 
   # Hydrostatic component, [MPa]:
-  dph <- rho*9.80665*(outlet - inlet) * 1e-6  # [MPa]
+  dph <- rho*9.80665*dh * 1e-6  # [MPa]
 
   # Total pressure drop, [MPa]:
   dpf + dph
