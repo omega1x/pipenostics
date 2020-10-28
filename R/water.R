@@ -57,11 +57,39 @@ cp1_tp <- function(temperature = c(300, 300, 500), pressure = c(3, 80, 3)){
   R <- 0.461526  # [kJ/kg/K]
   pii <- pressure/16.53
   tau <- 1386/temperature
+  tau1 <- tau - 1.222
+  pii1 <- 7.1 - pii
 
+  # Use expanded expression to keep native vector operation for speed:
   with(r97t2, {
-    gamma_tau_tau <- function(pi_value, tau_value)
-      sum( n*(7.1 - pi_value)^I*J*(J - 1)*(tau_value - 1.222)^(J - 2) )
-    mapply(gamma_tau_tau, pii, tau)
+    # gamma_tau_tau, Region 1:
+    n[1]*J[1]*(J[1] - 1)*tau1^(J[1] - 2) +
+      n[2]*J[2]*(J[2] - 1)*tau1^(J[2] - 2) +
+      n[5]*J[5]*(J[5] - 1) +
+      n[6]*J[6]*(J[6] - 1)*tau1^(J[6] - 2) +
+      n[7]*J[7]*(J[7] - 1)*tau1^(J[7] - 2) +
+      n[8]*J[8]*(J[8] - 1)*tau1^(J[8] - 2) +
+      n[9]*pii1^I[9]*J[9]*(J[9] - 1)*tau1^(J[9] - 2) +
+      n[10]*pii1^I[10]*J[10]*(J[10] - 1)*tau1^(J[10] - 2) +
+      n[11]*pii1^I[11]*J[11]*(J[11] - 1)*tau1^(J[11] - 2) +
+      n[14]*pii1^I[14]*J[14]*(J[14] - 1)*tau1^(J[14] - 2) +
+      n[15]*pii1^I[15]*J[15]*(J[15] - 1)*tau1^(J[15] - 2) +
+      n[18]*pii1^I[18]*J[18]*(J[18] - 1)*tau1^(J[18] - 2) +
+      n[19]*pii1^I[19]*J[19]*(J[19] - 1)*tau1^(J[19] - 2) +
+      n[20]*pii1^I[20]*J[20]*(J[20] - 1)*tau1^(J[20] - 2) +
+      n[22]*pii1^I[22]*J[22]*(J[22] - 1)*tau1^(J[22] - 2) +
+      n[23]*pii1^I[23]*J[23]*(J[23] - 1)*tau1^(J[23] - 2) +
+      n[24]*pii1^I[24]*J[24]*(J[24] - 1)*tau1^(J[24] - 2) +
+      n[25]*pii1^I[25]*J[25]*(J[25] - 1)*tau1^(J[25] - 2) +
+      n[26]*pii1^I[26]*J[26]*(J[26] - 1)*tau1^(J[26] - 2) +
+      n[27]*pii1^I[27]*J[27]*(J[27] - 1)*tau1^(J[27] - 2) +
+      n[28]*pii1^I[28]*J[28]*(J[28] - 1)*tau1^(J[28] - 2) +
+      n[29]*pii1^I[29]*J[29]*(J[29] - 1)*tau1^(J[29] - 2) +
+      n[30]*pii1^I[30]*J[30]*(J[30] - 1)*tau1^(J[30] - 2) +
+      n[31]*pii1^I[31]*J[31]*(J[31] - 1)*tau1^(J[31] - 2) +
+      n[32]*pii1^I[32]*J[32]*(J[32] - 1)*tau1^(J[32] - 2) +
+      n[33]*pii1^I[33]*J[33]*(J[33] - 1)*tau1^(J[33] - 2) +
+      n[34]*pii1^I[34]*J[34]*(J[34] - 1)*tau1^(J[34] - 2)
   }) * R * -tau^2
 }
 
@@ -87,7 +115,8 @@ stopifnot(
   ),
   all.equal(
     cp1_tp(),
-    c(.417301218, .401008987, 0.465580682)*10)
+    c(.417301218, .401008987, 0.465580682)*10
+  )
 )
 
 # IAPWS R7-97(2012). Specific volume, [m^3/kg]:
@@ -100,11 +129,40 @@ v1_tp <- function(temperature = c(300, 300, 500), pressure = c(3, 80, 3)) {
   R <- 0.461526  # [kJ/kg/K]
   pii <- pressure/16.53
   tau <- 1386/temperature
+  tau1 <- tau - 1.222
+  pii1 <- 7.1 - pii
 
+  # Use expanded expression to keep native vector operation for speed:
   with(r97t2, {
-    gamma_pii <- function(pi_value, tau_value)
-      sum( -n*I*(7.1 - pi_value)^(I - 1)*(tau_value - 1.222)^J)
-    mapply(gamma_pii, pii, tau)
+    # gamma_pi, Region 1:
+    -n[ 9]*tau1^J[ 9] +
+      -n[10]*tau1^J[10] +
+      -n[11]*tau1^J[11] +
+      -n[12] +
+      -n[13]*tau1^J[13] +
+      -n[14]*tau1^J[14] +
+
+      -n[15]*I[15]*pii1*tau1^J[15] +
+      -n[16]*I[16]*pii1 +
+      -n[17]*I[17]*pii1*tau1^J[17] +
+      -n[18]*I[18]*pii1*tau1^J[18] +
+      -n[19]*I[19]*pii1*tau1^J[19] +
+
+      -n[20]*I[20]*pii1^(I[20] - 1)*tau1^J[20] +
+      -n[21]*I[21]*pii1^(I[21] - 1) +
+      -n[22]*I[22]*pii1^(I[22] - 1)*tau1^J[22] +
+      -n[23]*I[23]*pii1^(I[23] - 1)*tau1^J[23] +
+      -n[24]*I[24]*pii1^(I[24] - 1)*tau1^J[24] +
+      -n[25]*I[25]*pii1^(I[25] - 1)*tau1^J[25] +
+      -n[26]*I[26]*pii1^(I[26] - 1)*tau1^J[26] +
+      -n[27]*I[27]*pii1^(I[27] - 1)*tau1^J[27] +
+      -n[28]*I[28]*pii1^(I[28] - 1)*tau1^J[28] +
+      -n[29]*I[29]*pii1^(I[29] - 1)*tau1^J[29] +
+      -n[30]*I[30]*pii1^(I[30] - 1)*tau1^J[30] +
+      -n[31]*I[31]*pii1^(I[31] - 1)*tau1^J[31] +
+      -n[32]*I[32]*pii1^(I[32] - 1)*tau1^J[32] +
+      -n[33]*I[33]*pii1^(I[33] - 1)*tau1^J[33] +
+      -n[34]*I[34]*pii1^(I[34] - 1)*tau1^J[34]
   }) * R * temperature/16.53 * 1e-3  # Warning! No 1e-3 in IF97 document!
 }
 
@@ -157,22 +215,34 @@ dynvisc <- function(temperature, density){
   n <- list(i = 6, j = 7)
   h <- matrix(0, n$i, n$j)
   h[z[, c("i", "j")] + 1] <- z[, "Hij"]
+
+  # Use expanded expression to keep native vector operation for speed:
+  tau1 <- 1/tau - 1
+  rho1 <- rho - 1
+  rho2 <- rho1^2
+  rho3 <- rho1^3
+  rho4 <- rho1^4
+  rho6 <- rho1^6
+
   mu1 <- exp(
-    rho * mapply(
-      function(tau_value, rho_value)
-        (1/tau_value - 1)^(seq_len(n$i) - 1) %*%
-        (h %*% (rho_value - 1)^(seq_len(n$j) - 1)),
-      tau, rho)
+    rho * (
+      h[1, 1] + h[1, 2]*rho1 + h[1, 3]*rho2 + h[1, 4]*rho3 + h[1, 5]*rho4 +
+        tau1*(h[2, 1] + h[2, 2]*rho1 +  h[2, 3]*rho2 + h[2, 4]*rho3) +
+        tau1^2*(h[3, 1] + h[3, 2]*rho1 + h[3, 3]*rho2) +
+        tau1^3*(h[4, 1] + h[4, 2]*rho1 + h[4, 3]*rho2 + h[4, 5]*rho4 + h[4, 7]*rho6) +
+        tau1^4*(h[5, 3]*rho2 + h[5, 6] * rho1^5) +
+        tau1^5*(h[6, 2]*rho1 + h[6, 7]*rho6)
+    )
   )
   mu2 <- 1  # Since for industrial use
-  mu0*mu1*mu2  # 1e-6*[Pa*s] == 1e-6*[N*s/m^2] =- 1e-6*[kg/m/s]
+  mu0*mu1*mu2  # 1e-6*[Pa*s] == 1e-6*[N*s/m^2] == 1e-6*[kg/m/s]
 }
 
 ## IAPWS R12-08. Dynamic viscosity
 ## table 4, validation data
 r12t4 <- read.csv(text =
-#[ºC]        [kg/m^3][Pa*s]*1e-6
-"temperature,density,dynvisc
+                    #[ºC]        [kg/m^3][Pa*s]*1e-6
+                    "temperature,density,dynvisc
 298.15,998.,889.735100
 298.15,1200.,1437.649467
 373.15,1000.,307.883622
@@ -207,4 +277,60 @@ re_v <- function(d, nu, v, a = .25*pi*d^2){
 re_u <- function(d, nu, u){
   d/nu * u  ## [m]/[m^2/s] * [m/s] = []
 }
+
+## Friction factors as a function of Reynolds number and relative roughness:
+##
+## Use the next assertions for `fric_*`-functions when embedding in code:
+##  checkmate::assert_double(reynolds, lower = 1, finite = TRUE,
+##                          any.missing = FALSE)
+##  checkmate::assert_double(roughness, lower = 0,
+##                           upper = .2,  # According to Moody chart
+##                           any.missing = FALSE)
+
+## Romeo, Royo and Monzón approximation of Colebrook equation
+## Reference:
+##   Romeo, E., Royo, C., Monzon, A., 2002. Improved explicit equation for
+##   estimation of the friction factor in rough and smooth pipes.
+##   Chem. Eng. J. 86 (3), 369–374.
+fric_romeo <- function(reynolds, roughness = 0) {
+  C <- (roughness/7.7918)^.9924 + (5.3326/(208.815 + reynolds))^.9345
+  B <- roughness/3.827 - 4.567/reynolds*log10(C)
+  A <- roughness/3.7065 - 5.0272/reynolds*log10(B)
+  .25/log10(A)^2
+}
+
+## Vatankhan and Kouchakzadeh rearrangement of Sonnad approximation of Colebrook
+## equation
+## Reference:
+##   Vatankhah, A.R., Kouchakzadeh, S., 2009. Discussion: Exact equations for
+##   pipeflow problems, by P.K. Swamee and P.N. Rathie. J. Hydraul. Res. IAHR 47 (7),
+##   537–538.
+fric_vatankhan <- function(reynolds, roughness = 0) {
+  G <- .124*reynolds*roughness + log(.4587*reynolds)
+  (.8686*log(.4587*reynolds/(G - .31)^(G/(G + .9633))))^-2
+
+}
+
+
+## Buzelli approximation of Colebrook equation
+## Reference:
+##   Buzzelli, D., 2008. Calculating friction in one step. Mach. Des. 80 (12), 54–55.
+fric_buzelli <- function(reynolds, roughness = 0) {
+  B1 <- (.774*log(reynolds) - 1.41)/(1 + 1.32*sqrt(roughness))
+  B2 <- roughness/3.7 * reynolds + 2.51*B1
+  ( B1 - (B1 + 2*log10(B2/reynolds))/(1 + 2.18/B2) )^-2
+}
+
+with(list(reynolds = 2118517, roughness = c(0, 70e-3/1, 7e-3/1)),
+     stopifnot(
+       round(fric_romeo(reynolds, roughness), 3) ==
+         round(fric_buzelli(reynolds, roughness), 3),
+       round(fric_romeo(reynolds, roughness), 3) ==
+         round(fric_vatankhan(reynolds, roughness), 3),
+       all(
+         fric_romeo(reynolds, roughness) < .2 &
+         fric_romeo(reynolds, roughness) > 0
+       )
+     )
+)
 

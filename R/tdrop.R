@@ -33,7 +33,7 @@
 #'   \emph{district heating system} is always in that region.
 #'
 #' @seealso
-#'  \code{pdrop} for calculating pressure drop in pipe
+#'  \code{\link{pdrop}} for calculating pressure drop in pipe
 #'
 #' @export
 #'
