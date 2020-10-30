@@ -13,7 +13,7 @@ dnvpf(d, wth, smts, depth, l)
 
 \item{smts}{specified minimum tensile strength (\emph{SMTS}) or
 ultimate tensile strength (\emph{UTS}) as a
-characteristic of steel strength, [\eqn{N/mm^2}], numeric vector}
+characteristic of steel strength, [\emph{MPa}], numeric vector}
 
 \item{depth}{measured maximum depth of the corroded area, [\emph{mm}], numeric vector}
 
@@ -21,7 +21,7 @@ characteristic of steel strength, [\eqn{N/mm^2}], numeric vector}
 numeric vector}
 }
 \value{
-Estimated failure pressure of the corroded pipe, [\eqn{N/mm^2}], numeric
+Estimated failure pressure of the corroded pipe, [\emph{MPa}], numeric
  vector
 }
 \description{
@@ -31,6 +31,13 @@ Calculate failure pressure of the corroded pipe
  The estimation is valid for single isolated metal loss defects of
  the corrosion/erosion type and when only internal pressure loading
  is considered.
+
+ The next assumption of the corrosion shape is adopted by
+ \href{https://rules.dnvgl.com/docs/pdf/DNV/codes/docs/2010-10/RP-F101.pdf}{DNV-RP-F101}:
+
+ \figure{corrareadnvp.png}
+
+ There d\emph{cor} represents argument \code{depth}.
 }
 \details{
 In contrast to
@@ -76,6 +83,7 @@ In contrast to
  }
 }
 \seealso{
-Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{b31gmodpf}}
+Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{b31gmodpf}},
+  \code{\link{shell92pf}}, \code{\link{pcorrcpf}}
 }
 \concept{DNV-RP-F101 functions}

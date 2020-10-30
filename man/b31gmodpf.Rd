@@ -28,6 +28,12 @@ Calculate failure pressure of the corroded pipe
  according to \emph{Modified B31G},
  \emph{Level-1} algorithm listed
  in \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012}.
+
+ The next assumption of the corrosion shape is adopted by \emph{Modified B31G}:
+
+ \figure{corrareab31gmod.png}
+
+ There d\emph{cor} represents argument \code{depth}.
 }
 \details{
 Since the definition of flow stress, \emph{Sflow}, in
@@ -98,7 +104,8 @@ Since the definition of flow stress, \emph{Sflow}, in
  }
 }
 \seealso{
-Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{dnvpf}}
+Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{dnvpf}},
+  \code{\link{shell92pf}}, \code{\link{pcorrcpf}}
 
 Other ASME B31G functions: 
 \code{\link{b31gacd}()},

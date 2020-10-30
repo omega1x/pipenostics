@@ -14,6 +14,11 @@ engineers, having utilized spreadsheet software as a mainstream.
 \details{
 Aiming to avoid portability and accessibility problems made us search ways to
 restrict source code development by functionality of few external packages.
+
+Since most functions have native argument vectorization usage of those
+functions with fast
+\href{https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html}{data.table}
+framework is strongly encourage when processing large data sets.
 }
 \section{1. Corrosion diagnostics}{
 
@@ -80,6 +85,16 @@ inspections we only consider \strong{Analysis Level 1}.
 As noted in \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012},
 \strong{Level 1} evaluation is quite suitable for use in prioritizing corrosion
 defects identified by inline inspection.
+}
+
+\section{1.3 Other models}{
+
+Other approaches for operating with corrosion data are mostly aimed on
+failure pressure calculations. Models like \code{\link{dnvpf}},
+\code{\link{shell92pf}}, and \code{\link{pcorrcpf}} assume different shapes
+of corrosion defects and usage conditions for some cases. So, it is
+encouraged first to find out which model is most suitable for solving
+some real world problem.
 }
 
 \section{2. Heat losses}{

@@ -9,6 +9,14 @@
 #'  \emph{Level-1} algorithm listed
 #'  in \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012}.
 #'
+#'  The next assumption of the corrosion shape is adopted by
+#'  \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012}:
+#'
+#'  \figure{corrareab31g.png}
+#'
+#'  There (a) is a parabolic and (b) is a rectangular idealisations of a
+#'  corroded area, and d\emph{cor} represents argument \code{depth}.
+#'
 #' @details
 #'   Since the definition of flow stress, \emph{Sflow}, in
 #'   \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012}
@@ -62,7 +70,8 @@
 #'  }
 #'
 #' @seealso
-#'   Other fail pressure functions: \code{\link{b31gmodpf}}, \code{\link{dnvpf}}
+#'   Other fail pressure functions: \code{\link{b31gmodpf}}, \code{\link{dnvpf}},
+#'   \code{\link{shell92pf}}, \code{\link{pcorrcpf}}
 #'
 #' @export
 #'

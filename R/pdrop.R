@@ -93,27 +93,29 @@
 #'  pressure drop at the outlet of pipe, [\emph{MPa}], numeric vector
 #'
 #' @references
-#'  W.Wagner et al. \emph{The IAPWS Industrial Formulation 1997 for the Thermodynamic
-#'  Properties of Water and Steam}, J. Eng. Gas Turbines Power. Jan 2000,
-#'  \strong{122}(1): \emph{150-184} (35 pages)
+#'  \itemize{
+#'    \item W.Wagner et al. \emph{The IAPWS Industrial Formulation 1997 for the Thermodynamic
+#'          Properties of Water and Steam}, J. Eng. Gas Turbines Power. Jan 2000,
+#'          \strong{122}(1): \emph{150-184} (35 pages)
 #'
-#'  M.L.Huber et al.\emph{New International Formulation for the
-#'  Viscosity of \eqn{H_2O}}, Journal of Physical and Chemical Reference Data
-#'  \strong{38}, 101 (2009);
+#'    \item M.L.Huber et al.\emph{New International Formulation for the
+#'          Viscosity of \eqn{H_2O}}, Journal of Physical and Chemical Reference Data
+#'          \strong{38}, 101 (2009);
 #'
-#'  D.Brkic. \emph{Journal of Petroleum Science and Engineering}, Vol. \strong{77},
-#'  \emph{Issue 1}, April 2011, Pages \emph{34-48}.
+#'    \item D.Brkic. \emph{Journal of Petroleum Science and Engineering}, Vol. \strong{77},
+#'          \emph{Issue 1}, April 2011, Pages \emph{34-48}.
 #'
-#'  Romeo, E., Royo, C., Monzon, A., 2002. \emph{Improved explicit equation for
-#'  estimation of the friction factor in rough and smooth pipes.}
-#'  Chem. Eng. J. \strong{86} (3), \emph{369–374}.
+#'    \item Romeo, E., Royo, C., Monzon, A., 2002. \emph{Improved explicit equation for
+#'          estimation of the friction factor in rough and smooth pipes.}
+#'          Chem. Eng. J. \strong{86} (3), \emph{369–374}.
 #'
-#'  Vatankhah, A.R., Kouchakzadeh, S., 2009. \emph{Discussion: Exact equations
-#'  for pipeflow problems, by P.K. Swamee and P.N. Rathie}. J. Hydraul. Res.
-#'  IAHR \strong{47} (7), \emph{537–538}.
+#'    \item Vatankhah, A.R., Kouchakzadeh, S., 2009. \emph{Discussion: Exact equations
+#'          for pipeflow problems, by P.K. Swamee and P.N. Rathie}. J. Hydraul. Res.
+#'          IAHR \strong{47} (7), \emph{537–538}.
 #'
-#'  Buzzelli, D., 2008. \emph{Calculating friction in one step}.
-#'  Mach. Des. \strong{80} (12), \emph{54–55}.
+#'    \item Buzzelli, D., 2008. \emph{Calculating friction in one step}.
+#'          Mach. Des. \strong{80} (12), \emph{54–55}.
+#'  }
 #'
 #' @seealso
 #'  \code{\link{tdrop}} for calculating temperature drop in pipe
