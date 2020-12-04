@@ -56,7 +56,8 @@
 #'   number of points used for temperature extrapolation, single value.
 #'
 #' @return
-#'  Heat flux emitted by pipe during \code{duration}, [\emph{kcal}].
+#'  Heat flux emitted by pipe during \code{duration}, [\emph{kcal}],
+#'  numeric vector.
 #'  If \code{len} of pipe is 1 \emph{m} and \code{duration} of heat flux
 #'  emittance is set to 1 \emph{hour} then the return value is in the same
 #'  units as value of heat flux, [\emph{kcal/m/h}], accepted by

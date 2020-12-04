@@ -56,7 +56,8 @@ numeric vector.}
 \item{extra}{number of points used for temperature extrapolation, single value.}
 }
 \value{
-Heat flux emitted by pipe during \code{duration}, [\emph{kcal}].
+Heat flux emitted by pipe during \code{duration}, [\emph{kcal}],
+ numeric vector.
  If \code{len} of pipe is 1 \emph{m} and \code{duration} of heat flux
  emittance is set to 1 \emph{hour} then the return value is in the same
  units as value of heat flux, [\emph{kcal/m/h}], accepted by
@@ -122,6 +123,7 @@ Other Minenergo:
 \code{\link{m278inshcm}()},
 \code{\link{m278soildata}},
 \code{\link{m325beta}()},
-\code{\link{m325nhldata}}
+\code{\link{m325nhldata}},
+\code{\link{m325tdrop}()}
 }
 \concept{Minenergo}

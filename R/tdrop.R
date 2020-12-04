@@ -23,7 +23,7 @@
 #'  heat flux emitted by pipe during a period, [\emph{kcal/hour}], numeric vector
 #'
 #' @return
-#'  temperature drop at the outlet of pipe, [\emph{°C}], numeric vector
+#'  temperature drop at the outlet of pipe, [\emph{°C}], numeric vector.
 #'
 #' @details
 #'   Specific isobaric \href{https://en.wikipedia.org/wiki/Heat_capacity}{heat capacity}
@@ -33,30 +33,38 @@
 #'   \emph{district heating system} is always in that region.
 #'
 #' @seealso
-#'  \code{\link{pdrop}} for calculating pressure drop in pipe
+#'  \code{\link{m325tdrop}} for calculating normative values of temperature drop
 #'
 #' @export
 #'
 #' @examples
-#'  # Calculate normative temperature drop for pipe
+#'  # Calculate normative temperature drop based on Minenergo-325 for pipe segment
 #'  pipeline <- list(
 #'    year = 1968,
 #'    laying = "channel",
 #'    d = 700,
 #'    l = 1000
 #'  )
-#'  operation_temperature <- 130
+#'  operation_temperature <- c(130, 150)  # [°C]
 #'
-#'  tdrop(
+#'  foo <- tdrop(
 #'    temperature = operation_temperature,
 #'    flux = do.call(
 #'      m325nhl,
-#'      c(pipeline, temperature = operation_temperature)
+#'      c(pipeline, temperature = list(operation_temperature))
 #'    )
 #'  )
 #'
-#'
+#'  foo
 #'  # 1.37 [°C]
+#'
+#'  # This is the same as using m325tdrop:
+#'  bar <- m325tdrop(temperature = operation_temperature,
+#'    year = 1968, laying = "channel", d = 700, l = 1000
+#'  )
+#'
+#'  stopifnot(all.equal(foo, bar))
+#'
 
 tdrop <- function(
   temperature = 130,
