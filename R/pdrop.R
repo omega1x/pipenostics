@@ -31,10 +31,10 @@
 #'  roughness of internal wall of pipe, [\emph{m}], numeric vector
 #'
 #' @param inlet
-#'  elevation of pipe inlet, [\emph{m}]
+#'  elevation of pipe inlet, [\emph{m}], numeric vector
 #'
 #' @param outlet
-#'  elevation of pipe outlet, [\emph{m}]
+#'  elevation of pipe outlet, [\emph{m}], numeric vector
 #'
 #' @param method
 #'  method of determining \emph{Darcy friction factor}, character option

@@ -44,8 +44,8 @@
 #'  \describe{
 #'    \item{\code{0}}{no insulation}
 #'    \item{\code{1}}{foamed polyurethane or analogue}
-#'    \item{\code{2}}{polymer concrete}
-#'  },
+#'    \item{\code{2}}{polymer concrete},
+#'  }
 #'  numeric vector.
 #'
 #' @param laying
@@ -73,6 +73,10 @@
 #' @details
 #'  The function is a simple wrapper for call of \code{\link{tdrop}}
 #'  with parameter \code{flux} calculated by \code{\link{m325nhl}}.
+#'
+#' @seealso
+#'  \code{\link{tdrop}} for calculating temperature drop in pipe using
+#'  actual heat flux values
 #'
 #' @examples
 #'  stopifnot(

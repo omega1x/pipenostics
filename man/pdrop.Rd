@@ -32,9 +32,9 @@ entrance (inlet) of pipe, [\emph{MPa}], numeric vector}
 
 \item{roughness}{roughness of internal wall of pipe, [\emph{m}], numeric vector}
 
-\item{inlet}{elevation of pipe inlet, [\emph{m}]}
+\item{inlet}{elevation of pipe inlet, [\emph{m}], numeric vector}
 
-\item{outlet}{elevation of pipe outlet, [\emph{m}]}
+\item{outlet}{elevation of pipe outlet, [\emph{m}], numeric vector}
 
 \item{method}{method of determining \emph{Darcy friction factor}, character option
 (see \strong{Details})}

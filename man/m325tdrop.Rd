@@ -37,8 +37,8 @@ numeric vector.}
 \describe{
   \item{\code{0}}{no insulation}
   \item{\code{1}}{foamed polyurethane or analogue}
-  \item{\code{2}}{polymer concrete}
-},
+  \item{\code{2}}{polymer concrete},
+}
 numeric vector.}
 
 \item{laying}{type of pipe laying depicting the position of pipe in space:
@@ -88,6 +88,9 @@ The function is a simple wrapper for call of \code{\link{tdrop}}
  )
 }
 \seealso{
+\code{\link{tdrop}} for calculating temperature drop in pipe using
+ actual heat flux values
+
 Other Minenergo: 
 \code{\link{m278hlair}()},
 \code{\link{m278hlcha}()},
@@ -97,6 +100,7 @@ Other Minenergo:
 \code{\link{m278soildata}},
 \code{\link{m325beta}()},
 \code{\link{m325nhldata}},
-\code{\link{m325nhl}()}
+\code{\link{m325nhl}()},
+\code{\link{m325regtrace}()}
 }
 \concept{Minenergo}
