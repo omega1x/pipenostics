@@ -97,7 +97,7 @@ two subsequent pipes in the traced path, [\emph{m}], single number.}
   \item \code{vatankhan}
   \item \code{buzelli}
 }
-Character option. For more details see \code{\link{pdrop}}.}
+Character option. For more details see \code{\link{dropp}}.}
 
 \item{forward}{tracing direction flag: is it a forward direction of tracing?
 If \code{FALSE} the backward tracing is performed. Single logical option.}
@@ -235,7 +235,7 @@ if ("data.table" \%in\% rownames(installed.packages())) {
 
 }
 \seealso{
-\code{\link{m325tdrop}} for calculating normative temperature drop in
+\code{\link{m325dropt}} for calculating normative temperature drop in
  single pipeline segment
 
 Other Minenergo: 
@@ -246,8 +246,8 @@ Other Minenergo:
 \code{\link{m278inshcm}()},
 \code{\link{m278soildata}},
 \code{\link{m325beta}()},
+\code{\link{m325dropt}()},
 \code{\link{m325nhldata}},
-\code{\link{m325nhl}()},
-\code{\link{m325tdrop}()}
+\code{\link{m325nhl}()}
 }
 \concept{Minenergo}

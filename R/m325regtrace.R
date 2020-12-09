@@ -111,7 +111,7 @@
 #'    \item \code{vatankhan}
 #'    \item \code{buzelli}
 #'  }
-#'  Character option. For more details see \code{\link{pdrop}}.
+#'  Character option. For more details see \code{\link{dropp}}.
 #'
 #' @param elev_tol
 #'  maximum allowed discrepancy between adjacent outlet and inlet elevations of
@@ -130,7 +130,7 @@
 #'  }
 #'
 #' @seealso
-#'  \code{\link{m325tdrop}} for calculating normative temperature drop in
+#'  \code{\link{m325dropt}} for calculating normative temperature drop in
 #'  single pipeline segment
 #'
 #' @examples
@@ -301,7 +301,7 @@ m325regtrace <- function(
       g_value <- g_value + c(0, -g[[i]])[[forward + 1]]
       t_regime[[i]] <- t_value <- {
         t_value + (-1)^forward *
-        pipenostics::m325tdrop(
+        pipenostics::m325dropt(
           temperature = t_value, pressure = p_value, consumption = g_value,
           d = d[[i]], len = len[[i]], year = year[[i]],
           insulation = insulation[[i]], laying = laying[[i]], beta = beta[[i]],
@@ -310,7 +310,7 @@ m325regtrace <- function(
       }
       p_regime[[i]] <- p_value <- {
         p_value + (-1)^forward *
-        pipenostics::pdrop(
+        pipenostics::dropp(
           temperature = t_value, pressure = p_value, consumption = g_value,
           d = d[[i]]*1e-3, len = len[[i]], roughness = roughness[[i]],
           inlet = inlet[[i]], outlet = outlet[[i]], method = method

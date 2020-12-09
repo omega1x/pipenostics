@@ -71,23 +71,23 @@
 #'  numeric vector.
 #'
 #' @details
-#'  The function is a simple wrapper for call of \code{\link{tdrop}}
+#'  The function is a simple wrapper for call of \code{\link{dropt}}
 #'  with parameter \code{flux} calculated by \code{\link{m325nhl}}.
 #'
 #' @seealso
-#'  \code{\link{tdrop}} for calculating temperature drop in pipe using
+#'  \code{\link{dropt}} for calculating temperature drop in pipe using
 #'  actual heat flux values
 #'
 #' @examples
 #'  stopifnot(
 #'    round(
-#'      m325tdrop(
+#'      m325dropt(
 #'        temperature = 130, year = 1968, laying = "channel", d = 700, l = 1000
 #'      ), 2) == 1.37
 #'  )
 #'@export
 
-m325tdrop <- function(
+m325dropt <- function(
   temperature = 130, pressure = mpa_kgf(6), consumption = 250,
   d = 700, # [mm]
   len = 1, # [m]
@@ -126,5 +126,5 @@ m325tdrop <- function(
     year, laying, exp5k, insulation, d,
     temperature, len, duration, beta, extra
   )  # [kcal/hour]
-  pipenostics::tdrop(temperature, pressure, consumption, flux)
+  pipenostics::dropt(temperature, pressure, consumption, flux)
 }

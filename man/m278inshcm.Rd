@@ -53,9 +53,9 @@ Other Minenergo:
 \code{\link{m278insdata}},
 \code{\link{m278soildata}},
 \code{\link{m325beta}()},
+\code{\link{m325dropt}()},
 \code{\link{m325nhldata}},
 \code{\link{m325nhl}()},
-\code{\link{m325regtrace}()},
-\code{\link{m325tdrop}()}
+\code{\link{m325regtrace}()}
 }
 \concept{Minenergo}

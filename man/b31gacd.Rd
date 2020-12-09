@@ -44,13 +44,13 @@ Calculate allowable depth of the corroded area in the pipe.
 }
 \seealso{
 Other ASME B31G functions: 
+\code{\link{b31crvl}()},
 \code{\link{b31gacl}()},
 \code{\link{b31gafr}()},
 \code{\link{b31gdep}()},
 \code{\link{b31gmodpf}()},
 \code{\link{b31gops}()},
 \code{\link{b31gpf}()},
-\code{\link{b31gsap}()},
-\code{\link{crvl}()}
+\code{\link{b31gsap}()}
 }
 \concept{ASME B31G functions}

@@ -33,7 +33,7 @@
 #'   \emph{district heating system} is always in that region.
 #'
 #' @seealso
-#'  \code{\link{m325tdrop}} for calculating normative values of temperature drop
+#'  \code{\link{m325dropt}} for calculating normative values of temperature drop
 #'
 #' @export
 #'
@@ -47,7 +47,7 @@
 #'  )
 #'  operation_temperature <- c(130, 150)  # [°C]
 #'
-#'  foo <- tdrop(
+#'  foo <- dropt(
 #'    temperature = operation_temperature,
 #'    flux = do.call(
 #'      m325nhl,
@@ -58,15 +58,15 @@
 #'  foo
 #'  # 1.37 [°C]
 #'
-#'  # This is the same as using m325tdrop:
-#'  bar <- m325tdrop(temperature = operation_temperature,
+#'  # This is the same as using m325dropt:
+#'  bar <- m325dropt(temperature = operation_temperature,
 #'    year = 1968, laying = "channel", d = 700, l = 1000
 #'  )
 #'
 #'  stopifnot(all.equal(foo, bar))
 #'
 
-tdrop <- function(
+dropt <- function(
   temperature = 130,
   pressure = mpa_kgf(6),
   consumption = 250,

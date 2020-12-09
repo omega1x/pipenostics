@@ -89,7 +89,7 @@
 #' ## ASME B31G-1991 to verify correct entry of CRVL.BAS source code
 #'
 #' ## Example 1
-#' crvl(maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5)
+#' b31crvl(maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5)
 #' #
 #' # -- Calculated data --
 #' # Intermediate factor (A) = 1.847
@@ -100,7 +100,7 @@
 #'
 #'
 #' ## Example 2
-#' crvl(maop = 400, d = 20, wth = .25, smys = 35000, def  = 0.5, depth = 0.18, l = 10)
+#' b31crvl(maop = 400, d = 20, wth = .25, smys = 35000, def  = 0.5, depth = 0.18, l = 10)
 #' #
 #' # -- Calculated data --
 #' # Intermediate factor (A) = 3.993
@@ -111,7 +111,7 @@
 #'
 #'
 #' ## Example 3
-#' crvl(maop = 910, d = 24, wth = .432, smys = 52000, def  = .72, depth = 0.13, l = 30)
+#' b31crvl(maop = 910, d = 24, wth = .432, smys = 52000, def  = .72, depth = 0.13, l = 30)
 #' #
 #' # -- Calculated data --
 #' # Intermediate factor (A) = 8.320
@@ -122,7 +122,7 @@
 #'
 #'
 #' ## Example 4
-#' crvl(maop = 910, d = 24, wth = .432, smys = 52000, def  = .72, depth = .3, l = 30)
+#' b31crvl(maop = 910, d = 24, wth = .432, smys = 52000, def  = .72, depth = .3, l = 30)
 #' #
 #' # -- Calculated data --
 #' # Intermediate factor (A) = 8.320
@@ -133,7 +133,7 @@
 #'
 #'
 #' ## Example 5
-#' crvl(maop = 731, d = 24, wth = .281, smys = 52000, def  = 0.72, depth = 0.08, l = 15)
+#' b31crvl(maop = 731, d = 24, wth = .281, smys = 52000, def  = 0.72, depth = 0.08, l = 15)
 #' #
 #' # -- Calculated data --
 #' # Intermediate factor (A) = 5.158
@@ -144,7 +144,7 @@
 #'
 #'
 #' ## Example 6
-#' crvl(maop = 1e3, d = 36, wth = .5, smys = 52000, def  = 0.72, depth = 0.41, l = 100)
+#' b31crvl(maop = 1e3, d = 36, wth = .5, smys = 52000, def  = 0.72, depth = 0.41, l = 100)
 #' # Alert! Corrosion depth exceeds 80 % of pipe wall! Pipe must be replaced!
 #' # -- Calculated data --
 #' # Intermediate factor (A) = 21.048
@@ -157,7 +157,7 @@
 #'
 #'
 #' ## Example 7
-#' crvl(maop = 877, d = 12.625, wth = .5, smys = 35000, def  = .4, depth = .035, l = 3)
+#' b31crvl(maop = 877, d = 12.625, wth = .5, smys = 35000, def  = .4, depth = .035, l = 3)
 #' # Corrosion depth is less than 10 % of pipe wall. No resrictions on operation
 #' # -- Calculated data --
 #' # Intermediate factor (A) = 1.066
@@ -168,7 +168,7 @@
 #'
 #'
 #' ## Example 8
-#' crvl(maop = 790, d = 24, wth = .5, smys = 42000, def  = .5, depth = .125, l = 12)
+#' b31crvl(maop = 790, d = 24, wth = .5, smys = 42000, def  = .5, depth = .125, l = 12)
 #' #
 #' # -- Calculated data --
 #' # Intermediate factor (A) = 3.093
@@ -179,7 +179,7 @@
 #'
 #'
 #' ## TEST #1
-#' crvl(maop = 790, d = 24, wth = .5, smys = 42000, def  = .5, depth = .179, l = 12)
+#' b31crvl(maop = 790, d = 24, wth = .5, smys = 42000, def  = .5, depth = .179, l = 12)
 #' #
 #' #-- Calculated data --
 #' # Intermediate factor (A) = 3.093
@@ -190,7 +190,7 @@
 #'
 #'
 #' ## TEST #1A
-#' crvl(maop = 790, d = 24, wth = .5, smys = 42000, def  = .5, depth = .179, l = 12.182)
+#' b31crvl(maop = 790, d = 24, wth = .5, smys = 42000, def  = .5, depth = .179, l = 12.182)
 #' #
 #' # -- Calculated data --
 #' # Intermediate factor (A) = 3.140
@@ -201,7 +201,7 @@
 #'
 #'
 #' ## TEST #1B
-#' crvl(maop = 790, d = 24, wth = .5, smys = 42000, def  = .5, depth = .180, l = 12.182)
+#' b31crvl(maop = 790, d = 24, wth = .5, smys = 42000, def  = .5, depth = .180, l = 12.182)
 #' #
 #' # -- Calculated data --
 #' # Intermediate factor (A) = 3.140
@@ -212,7 +212,7 @@
 #'
 #'
 #' ## TEST #2
-#' crvl(maop = 790, d = 24, wth = .5, smys = 42000, def  = .5, depth = .179, l = 12.297)
+#' b31crvl(maop = 790, d = 24, wth = .5, smys = 42000, def  = .5, depth = .179, l = 12.297)
 #' #
 #' # -- Calculated data --
 #' # Intermediate factor (A) = 3.170
@@ -224,13 +224,13 @@
 #'
 #' ## All examples at once:
 #' data(b31gdata)
-#' examples <- with(b31gdata, crvl(maop, d, wth, smys, def, depth, l))
+#' examples <- with(b31gdata, b31crvl(maop, d, wth, smys, def, depth, l))
 #'
 #' ## unit test:
 #' delta <- round(unlist(b31gdata - examples[colnames(b31gdata)]), 5)
 #' stopifnot(all(is.nan(delta) | delta == 0))
 #'
-crvl <- function(maop, d, wth, smys, def = .72, depth, l){
+b31crvl <- function(maop, d, wth, smys, def = .72, depth, l){
   checkmate::assert_double(maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
   checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
   checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)

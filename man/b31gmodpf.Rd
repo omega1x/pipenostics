@@ -108,13 +108,13 @@ Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{dnvpf}},
   \code{\link{shell92pf}}, \code{\link{pcorrcpf}}
 
 Other ASME B31G functions: 
+\code{\link{b31crvl}()},
 \code{\link{b31gacd}()},
 \code{\link{b31gacl}()},
 \code{\link{b31gafr}()},
 \code{\link{b31gdep}()},
 \code{\link{b31gops}()},
 \code{\link{b31gpf}()},
-\code{\link{b31gsap}()},
-\code{\link{crvl}()}
+\code{\link{b31gsap}()}
 }
 \concept{ASME B31G functions}

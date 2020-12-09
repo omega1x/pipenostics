@@ -56,15 +56,15 @@
 #'
 #'   \emph{Appendix A} to \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}
 #'   shows the source code for determining the allowable length and maximum
-#'   allowable working pressure. The \emph{b31g*} and \code{\link{crvl}}
+#'   allowable working pressure. The \emph{b31g*} and \code{\link{b31crvl}}
 #'   functions reproduce the idea of \emph{CRVL.BAS}. They are natively vectorized.
 #'
-#'   Usage of \code{\link{crvl}} function that imitates the output of _CRVL.BAS_
+#'   Usage of \code{\link{b31crvl}} function that imitates the output of _CRVL.BAS_
 #'   is presentaed in \emph{Example 1}.
 #'
 #' @examples
 #' ## Example 1
-#' crvl(maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5)
+#' b31crvl(maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5)
 #'
 #'  # -- Calculated data --
 #'  # Intermediate factor (A) = 1.847

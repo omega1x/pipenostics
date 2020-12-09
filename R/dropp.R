@@ -118,18 +118,18 @@
 #'  }
 #'
 #' @seealso
-#'  \code{\link{tdrop}} for calculating temperature drop in pipe
+#'  \code{\link{dropt}} for calculating temperature drop in pipe
 #'
 #' @export
 #'
 #' @examples
 #' # Typical pressure drop for horizontal pipeline segments
 #' # in high-way heating network in Novosibirsk
-#' pdrop(len = c(200, 300))
+#' dropp(len = c(200, 300))
 #'
 #' #[1] 0.0007000666 0.0010500999
 #'
-pdrop <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.,
+dropp <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.,
                   d = 1., len = 1., roughness = 6e-3,
                   inlet = 0., outlet = 0.,
                   method = "romeo"){
