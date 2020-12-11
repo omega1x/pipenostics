@@ -134,6 +134,7 @@ dropp(len = c(200, 300))
 \code{\link{dropt}} for calculating temperature drop in pipe
 
 Other district heating: 
+\code{\link{dropg}()},
 \code{\link{dropt}()}
 }
 \concept{district heating}

@@ -1,5 +1,5 @@
 #' @title
-#'  Minenergo-325. Trace parameters of thermal-hydraulic regime along the pipeline
+#'  Minenergo-325. Trace parameters of thermal-hydraulic regime
 #'
 #' @family Minenergo
 #'

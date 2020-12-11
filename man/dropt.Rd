@@ -65,6 +65,7 @@ Specific isobaric \href{https://en.wikipedia.org/wiki/Heat_capacity}{heat capaci
 \code{\link{m325dropt}} for calculating normative values of temperature drop
 
 Other district heating: 
+\code{\link{dropg}()},
 \code{\link{dropp}()}
 }
 \concept{district heating}

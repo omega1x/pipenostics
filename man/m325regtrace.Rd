@@ -2,7 +2,7 @@
 % Please edit documentation in R/m325regtrace.R
 \name{m325regtrace}
 \alias{m325regtrace}
-\title{Minenergo-325. Trace parameters of thermal-hydraulic regime along the pipeline}
+\title{Minenergo-325. Trace parameters of thermal-hydraulic regime}
 \usage{
 m325regtrace(
   temperature = 130,
