@@ -3,7 +3,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 
-Issues:
+General road-map to CRAN version:
 -----
 
 - add PD 10-249-98 (http://docs.cntd.ru/document/1200021653)
