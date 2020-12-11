@@ -18,8 +18,8 @@ m325nhl(
 )
 }
 \arguments{
-\item{year}{year when the pipe is put in operation after laying or total overhaul,
-numeric vector.}
+\item{year}{year when the pipe is put in operation after laying or total overhaul.
+Type: \code{[integerish]}.}
 
 \item{laying}{type of pipe laying depicting the position of pipe in space:
 \itemize{
@@ -27,33 +27,35 @@ numeric vector.}
   \item \code{channel},
   \item \code{room},
   \item \code{tunnel},
-  \item \code{underground},
+  \item \code{underground}.
 }
-character vector.}
+Type: \code{[character, subset]}.}
 
-\item{exp5k}{pipe regime flag: is pipe operated more that 5000 hours per year? Logical
-vector.}
+\item{exp5k}{pipe regime flag: is pipe operated more that 5000 hours per year?
+Type: \code{[logical]}.}
 
 \item{insulation}{insulation that covers the exterior of pipe:
 \describe{
   \item{\code{0}}{no insulation}
   \item{\code{1}}{foamed polyurethane or analogue}
   \item{\code{2}}{polymer concrete}
-},
-numeric vector.}
+}
+Type: \code{[double, subset]}.}
 
-\item{d}{internal diameter of pipe, [\emph{mm}], numeric vector.}
+\item{d}{internal diameter of pipe, [\emph{mm}]. Type: \code{[double]}.}
 
-\item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}],
-numeric vector.}
+\item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}].
+Type: \code{[double]}.}
 
-\item{len}{length of pipe, [\emph{m}], numeric vector.}
+\item{len}{length of pipe, [\emph{m}]. Type: \code{[double]}.}
 
-\item{duration}{duration of heat flux emittance, [\emph{hour}], numeric vector.}
+\item{duration}{duration of heat flux emittance, [\emph{hour}]. Type: \code{[double]}.}
 
-\item{beta}{should they consider additional heat losses of fittings? Logical vector.}
+\item{beta}{should they consider additional heat losses of fittings?
+Type: \code{[logical]}.}
 
-\item{extra}{number of points used for temperature extrapolation, single value.}
+\item{extra}{number of points used for temperature extrapolation.
+Type: \code{[integer, choice]}.}
 }
 \value{
 Heat flux emitted by pipe during \code{duration}, [\emph{kcal}],
@@ -62,6 +64,7 @@ Heat flux emitted by pipe during \code{duration}, [\emph{kcal}],
  emittance is set to 1 \emph{hour} then the return value is in the same
  units as value of heat flux, [\emph{kcal/m/h}], accepted by
  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+ Type: \code{[double]}.
 }
 \description{
 Calculate normative values of heat flux that is legally affirmed by

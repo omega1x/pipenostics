@@ -10,34 +10,35 @@
 #'  (hydrostatic component), and friction between water and internal wall of pipe.
 #'
 #' @param temperature
-#'  temperature of heat carrier (water) inside the pipe, [\emph{°C}],
-#'  numeric vector
+#'  temperature of heat carrier (water) inside the pipe, [\emph{°C}].
+#'  Type: \code{[double]}.
 #'
 #' @param pressure
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 #'  of heat carrier (water) measured at the
-#'  entrance (inlet) of pipe, [\emph{MPa}], numeric vector
+#'  entrance (inlet) of pipe, [\emph{MPa}]. Type: \code{[double]}.
 #'
 #' @param consumption
-#'  amount of heat carrier (water) that is transferred by pipe during a period, [\emph{ton/hour}], numeric vector
+#'  amount of heat carrier (water) that is transferred by pipe during a period,
+#'  [\emph{ton/hour}]. Type: \code{[double]}.
 #'
 #' @param d
-#'  internal diameter of pipe, [\emph{m}], numeric vector
+#'  internal diameter of pipe, [\emph{m}]. Type: \code{[double]}.
 #'
 #' @param len
-#'  pipe length, [\emph{m}], numeric vector
+#'  pipe length, [\emph{m}]. Type: \code{[double]}.
 #'
 #' @param roughness
-#'  roughness of internal wall of pipe, [\emph{m}], numeric vector
+#'  roughness of internal wall of pipe, [\emph{m}]. Type: \code{[double]}.
 #'
 #' @param inlet
-#'  elevation of pipe inlet, [\emph{m}], numeric vector
+#'  elevation of pipe inlet, [\emph{m}]. Type: \code{[double]}.
 #'
 #' @param outlet
-#'  elevation of pipe outlet, [\emph{m}], numeric vector
+#'  elevation of pipe outlet, [\emph{m}]. Type: \code{[double]}.
 #'
 #' @param method
-#'  method of determining \emph{Darcy friction factor}, character option
+#'  method of determining \emph{Darcy friction factor}. Type: \code{[character, choice]}.
 #'  (see \strong{Details})
 #'
 #' @details
@@ -90,7 +91,7 @@
 #'  wall \href{https://en.wikipedia.org/wiki/Surface_roughness}{roughness} of pipe.
 #'
 #' @return
-#'  pressure drop at the outlet of pipe, [\emph{MPa}], numeric vector
+#'  pressure drop at the outlet of pipe, [\emph{MPa}]. Type: \code{[double]}.
 #'
 #' @references
 #'  \itemize{
@@ -134,19 +135,19 @@ dropp <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.
                   inlet = 0., outlet = 0.,
                   method = "romeo"){
   checkmate::assert_double(
-    temperature, lower = 0, upper = 350, any.missing = FALSE
+    temperature, lower = 0, upper = 350, any.missing = FALSE, min.len = 1
   )
   checkmate::assert_double(
-    pressure, lower = 8.4e-2, upper = 100, any.missing = FALSE
+    pressure, lower = 8.4e-2, upper = 100, any.missing = FALSE, min.len = 1
   )
   checkmate::assert_double(
-    consumption, lower = 1e-3, upper = 1e5, any.missing = FALSE
+    consumption, lower = 1e-3, upper = 1e5, any.missing = FALSE, min.len = 1
   )
-  checkmate::assert_double(d, lower = .1, upper = 2.0, any.missing = FALSE)
-  checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(roughness, lower = 0, upper = .2, any.missing = FALSE)
-  checkmate::assert_double(inlet, lower = 0, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(outlet, lower = 0, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(d, lower = .1, upper = 2.0, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(roughness, lower = 0, upper = .2, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(inlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(outlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
   dh <- outlet - inlet
   checkmate::assert_true(all(abs(dh) < len))

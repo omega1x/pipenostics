@@ -7,9 +7,9 @@
 b31gops(wth, depth)
 }
 \arguments{
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}], numeric vector}
+\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.r}
 
-\item{depth}{measured maximum depth of the corroded area, [\emph{inch}], numeric vector}
+\item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
 }
 \value{
 Operational status of pipe, numeric vector of 3 possible values:
@@ -18,6 +18,7 @@ Operational status of pipe, numeric vector of 3 possible values:
    \item \emph{2} - monitoring is recommended
    \item \emph{3} - alert! replace the pipe immediately!
  }
+ Type: \code{[double, choice]}.
 }
 \description{
 Determine the operational status of pipe: is it excellent? or is

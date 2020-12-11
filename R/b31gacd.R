@@ -7,25 +7,23 @@
 #'  Calculate allowable depth of the corroded area in the pipe.
 #'
 #' @param dep
-#'   design pressure of the pipe, [\emph{PSI}], numeric vector
+#'   design pressure of the pipe, [\emph{PSI}]. Type: \code{[double]}.
 #'
 #' @param maop
-#'  maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}], numeric
-#'  vector
+#'  maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]. Type: \code{[double]}.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}], numeric vector
+#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}], numeric vector
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param l
-#'  measured maximum longitudial length of corroded area, [\emph{inch}],
-#'  numeric vector
+#'  measured maximum longitudial length of corroded area, [\emph{inch}].
+#'  Type: \code{[double]}.
 #'
 #' @return
-#'  allowable depth of the corroded area in the pipe, [\emph{inch}], numeric
-#'  vector
+#'  allowable depth of the corroded area in the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @references
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.
@@ -45,11 +43,11 @@
 #'                             allowed_corrosion_depth)))
 #'
 b31gacd <- function(dep, maop, d, wth, l){
-  checkmate::assert_double(dep, lower = 0, upper = 6e3, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(dep, lower = 0, upper = 6e3, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
 
   A <- b31gafr(d, wth, l)
   mcp <-

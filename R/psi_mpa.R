@@ -8,10 +8,12 @@
 #'  to \href{https://en.wikipedia.org/wiki/Pounds_per_square_inch}{pounds per square inch} (PSI)
 #'
 #' @param x
-#'  numeric vector of pressure (stress) measured in \emph{megapascals} (\emph{MPa})
+#'  numeric vector of pressure (stress) measured in \emph{megapascals}. [\emph{MPa}].
+#'  Type: \code{[double]}.
 #'
 #' @return
-#'  numeric vector of pressure (stress) measured in \emph{pounds per square inch} (\emph{PSI})
+#'  numeric vector of pressure (stress) measured in \emph{pounds per square inch},
+#'  [\emph{PSI}]. Type: \code{[double]}.
 #'
 #' @seealso
 #'  \code{\link{mpa_psi}} for converting \emph{pounds per square inch} to \emph{megapascals}
@@ -26,6 +28,6 @@
 #'  stopifnot(round(psi_mpa(c(6.89475728e-3, 1)), 4) == c(1, 145.0377))
 #'
 psi_mpa <- function(x) {
-  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE, min.len = 1)
   145.03773800721814*x
 }

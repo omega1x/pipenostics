@@ -39,25 +39,24 @@
 #'   use are offended.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}], numeric vector
+#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}], numeric vector
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param smys
 #'  specified minimum yield of stress (\emph{SMYS}) as a
-#'  characteristics of steel strength, [\emph{PSI}], numeric vector
+#'  characteristics of steel strength, [\emph{PSI}]. Type: \code{[double]}.
 #'
 #' @param depth
-#'   measured maximum depth of the corroded area, [\emph{inch}], numeric vector
+#'   measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param l
-#'  measured maximum longitudial length of corroded area, [\emph{inch}],
-#'  numeric vector
+#'  measured maximum longitudinal length of corroded area, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @return
-#'  Estimated failure pressure of the corroded pipe, [\emph{PSI}], numeric
-#'  vector
+#'  Estimated failure pressure of the corroded pipe, [\emph{PSI}].
+#'  Type: \code{[double]}.
 #'
 #' @references
 #'  \enumerate{
@@ -115,11 +114,11 @@
 #'        1579.8054, 1577.7257, 1578.7589))))
 #'
 b31gpf <- function(d, wth, smys, depth, l) {
-  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
 
   z  <- l^2/d/wth
   s_flow <- 1.1*smys

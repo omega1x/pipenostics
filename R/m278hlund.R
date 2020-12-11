@@ -15,45 +15,52 @@
 #'  related to building codes and regulations.
 #'
 #' @param t1
-#'   temperature of heat carrier (water) inside the supplying pipe, [\emph{°C}],
-#'   numeric vector.
+#'   temperature of heat carrier (water) inside the supplying pipe, [\emph{°C}].
+#'   Type: \code{[double]}.
 #' @param t2
-#'   temperature of heat carrier (water) inside the returning pipe, [\emph{°C}],
-#'   numeric vector.
+#'   temperature of heat carrier (water) inside the returning pipe, [\emph{°C}].
+#'   Type: \code{[double]}.
 #' @param t0
 #'   temperature of environment, [\emph{°C}]. In case of underground laying this is
 #'   the temperature of subsoil, numeric vector.
 #' @param insd1
-#'   thickness of the insulator which covers the supplying pipe, [\emph{m}],
-#'   numeric vector.
+#'   thickness of the insulator which covers the supplying pipe, [\emph{m}].
+#'   Type: \code{[double]}.
 #' @param insd2
-#'   thickness of the insulator which covers the returning pipe, [\emph{m}],
-#'   numeric vector.
+#'   thickness of the insulator which covers the returning pipe, [\emph{m}].
+#'   Type: \code{[double]}.
 #' @param d1
-#'   external diameter of supplying pipe, [\emph{m}], numeric vector.
+#'   external diameter of supplying pipe, [\emph{m}]. Type: \code{[double]}.
 #' @param d2
-#'   external diameter of returning pipe, [\emph{m}], numeric vector.
+#'   external diameter of returning pipe, [\emph{m}]. Type: \code{[double]}.
 #' @param lambda1
 #'   thermal conductivity of insulator which covers the supplying pipe
-#'   [\emph{W/m/°C}], numeric vector.
+#'   [\emph{W/m/°C}]. Type: \code{[double]}.
 #' @param lambda2
 #'   thermal conductivity of insulator which covers the returning pipe
-#'   [\emph{W/m/°C}], numeric vector.
+#'   [\emph{W/m/°C}]. Type: \code{[double]}.
 #' @param k1
-#'   technical condition factor for insulator of supplying pipe, [], numeric vector.
+#'   technical condition factor for insulator of supplying pipe, [].
+#'   Type: \code{[double]}.
 #' @param k2
-#'   technical condition factor for insulator of returning pipe, [], numeric vector.
+#'   technical condition factor for insulator of returning pipe, [].
+#'   Type: \code{[double]}.
 #' @param lambda0
 #'   thermal conductivity of environment, [\emph{W/m/°C}]. In case of underground
-#'   laying this is the thermal conductivity of subsoil, numeric vector.
+#'   laying this is the thermal conductivity of subsoil.
+#'   Type: \code{[double]}.
 #' @param z
-#'   underground laying depth, [\emph{m}], numeric vector.
+#'   underground laying depth, [\emph{m}].
+#'   Type: \code{[double]}.
 #' @param s
-#'   distance between supplying and returning types, [\emph{m}], numeric vector.
+#'   distance between supplying and returning pipes, [\emph{m}].
+#'   Type: \code{[double]}.
 #' @param len
-#'  length of pipeline segment, [\emph{m}], numeric vector.
+#'  length of pipeline segment, [\emph{m}].
+#'  Type: \code{[double]}.
 #' @param duration
-#'  duration of heat flux emittance, [\emph{hour}], numeric vector.
+#'  duration of heat flux emittance, [\emph{hour}].
+#'  Type: \code{[double]}.
 #'
 #' @return
 #'  Heat flux emitted by pipeline segment during \code{duration}, [\emph{kcal}].
@@ -62,6 +69,7 @@
 #'  to that in [\emph{kcal/m/h}] units and so comparable with values of
 #'  heat flux listed in
 #'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  Type: \code{[double]}.
 #'
 #' @details
 #'   Details on using \code{k1} and \code{k2} are the same as for
@@ -94,107 +102,125 @@ m278hlund <-
       lower = 0,
       upper = 450,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       t2,
       lower = 0,
       upper = 450,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       t0,
       lower = -15,
       upper = 30,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       insd1,
       lower = 0,
       upper = .5,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       insd2,
       lower = 0,
       upper = .5,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       d1,
       lower = .2,
       upper = 1.5,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       d2,
       lower = .2,
       upper = 1.5,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       lambda1,
       lower = 1e-3,
       upper = 1,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       lambda2,
       lower = 1e-3,
       upper = 1,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       k1,
       lower = 1,
       upper = 4.5,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       k2,
       lower = 1,
       upper = 4.5,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       lambda0,
       lower = 1e-3,
       upper = 3,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       z,
       lower = .1,
       upper = 10,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(
       s,
       lower = .5*(d1 + d2),
       upper = 10,
       finite = TRUE,
-      any.missing = FALSE
+      any.missing = FALSE,
+      min.len = 1
     )
     checkmate::assert_double(len,
                              lower = 0,
                              finite = TRUE,
-                             any.missing = FALSE)
+                             any.missing = FALSE,
+                             min.len = 1
+                             )
     checkmate::assert_double(duration,
                              lower = 0,
                              finite = TRUE,
-                             any.missing = FALSE)
+                             any.missing = FALSE,
+                             min.len = 1
+                             )
 
     R12 <- log(sqrt(1 + (2 * z / s) ^ 2)) / (2 * pi * lambda0)
     R1_soil <- log(4 * z / (d1 + 2 * insd1)) / (2 * pi * lambda0)

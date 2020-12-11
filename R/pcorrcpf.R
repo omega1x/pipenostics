@@ -29,26 +29,28 @@
 #'  }
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{mm}], numeric vector
+#'  nominal outside diameter of the pipe, [\emph{mm}].
+#'  Type: \code{[double]}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{mm}], numeric vector
+#'  nominal wall thickness of the pipe, [\emph{mm}]. Type: \code{[double]}.
 #'
 #' @param uts
 #'  ultimate tensile strength (\emph{UTS}) or
 #'  specified minimum tensile strength (\emph{SMTS}) as a
-#'  characteristic of steel strength, [\eqn{MPa}], numeric vector
+#'  characteristic of steel strength, [\eqn{MPa}]. Type: \code{[double]}.
 #'
 #' @param depth
-#'  measured maximum depth of the corroded area, [\emph{mm}], numeric vector
+#'  measured maximum depth of the corroded area, [\emph{mm}].
+#'  Type: \code{[double]}.
 #'
 #' @param l
-#'  measured maximum longitudial length of corroded area, [\emph{mm}],
-#'  numeric vector
+#'  measured maximum longitudial length of corroded area, [\emph{mm}].
+#'  Type: \code{[double]}.
 #'
 #' @return
-#'  Estimated failure pressure of the corroded pipe, [\eqn{MPa}], numeric
-#'  vector
+#'  Estimated failure pressure of the corroded pipe, [\eqn{MPa}].
+#'  Type: \code{[double]}.
 #'
 #' @references
 #'  \enumerate{
@@ -84,11 +86,11 @@
 #'  )
 #'
 pcorrcpf <- function(d, wth, uts, depth, l){
-  checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(wth, lower = 0, upper = 5e2, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(uts, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(wth, lower = 0, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(uts, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
 
   Q <- 1 - exp(-.16*l/sqrt(.5*d*(wth - depth)))
   2*wth*uts/d*(1 - depth/wth*Q)

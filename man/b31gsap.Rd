@@ -7,19 +7,18 @@
 b31gsap(dep, d, wth, depth, l)
 }
 \arguments{
-\item{dep}{design pressure of the pipe, [\emph{PSI}], numeric vector}
+\item{dep}{design pressure of the pipe, [\emph{PSI}]. Type: \code{[double]}.}
 
-\item{d}{nominal outside diameter of the pipe, [\emph{inch}], numeric vector}
+\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}], numeric vector}
+\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.}
 
-\item{depth}{measured maximum depth of the corroded area, [\emph{inch}], numeric vector}
+\item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
 
-\item{l}{measured maximum longitudial length of the corroded area, [\emph{inch}],
-numeric vector}
+\item{l}{measured maximum longitudial length of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
 }
 \value{
-Safe maximum pressure for the corroded area of pipe, [PSI], numeric vector
+Safe maximum pressure for the corroded area of pipe, [PSI]. Type: \code{[double]}.
 }
 \description{
 Calculate safe maximum pressure for the corroded area of pipe.

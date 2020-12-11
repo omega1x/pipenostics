@@ -19,27 +19,28 @@ m325dropt(
 }
 \arguments{
 \item{temperature}{temperature of heat carrier (water) inside the pipe measured at the
-entrance of pipe, [\emph{°C}], numeric vector}
+entrance of pipe, [\emph{°C}]. Type: \code{[double]}.}
 
 \item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-of heat carrier (water) inside the pipe, [\emph{MPa}], numeric vector}
+of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{[double]}.}
 
-\item{consumption}{amount of heat carrier (water) that is transferred by pipe during a period, [\emph{ton/hour}], numeric vector}
+\item{consumption}{amount of heat carrier (water) that is transferred by pipe during a period,
+[\emph{ton/hour}]. Type: \code{[double]}.}
 
-\item{d}{internal diameter of pipe, [\emph{mm}], numeric vector.}
+\item{d}{internal diameter of pipe, [\emph{mm}]. Type: \code{[double]}.}
 
-\item{len}{length of pipe, [\emph{m}], numeric vector.}
+\item{len}{length of pipe, [\emph{m}]. Type: \code{[double]}.}
 
-\item{year}{year when the pipe is put in operation after laying or total overhaul,
-numeric vector.}
+\item{year}{year when the pipe is put in operation after laying or total overhaul.
+Type: \code{[integerish]}.}
 
 \item{insulation}{insulation that covers the exterior of pipe:
 \describe{
   \item{\code{0}}{no insulation}
   \item{\code{1}}{foamed polyurethane or analogue}
-  \item{\code{2}}{polymer concrete},
+  \item{\code{2}}{polymer concrete}
 }
-numeric vector.}
+Type: \code{[double, subset]}.}
 
 \item{laying}{type of pipe laying depicting the position of pipe in space:
 \itemize{
@@ -47,18 +48,19 @@ numeric vector.}
   \item \code{channel},
   \item \code{room},
   \item \code{tunnel},
-  \item \code{underground},
+  \item \code{underground}.
 }
-character vector.}
+Type: \code{[character, subset]}.}
 
-\item{beta}{should they consider additional heat losses of fittings? Logical vector.}
+\item{beta}{should they consider additional heat losses of fittings?
+Type: \code{[logical]}.}
 
-\item{exp5k}{pipe regime flag: is pipe operated more that 5000 hours per year? Logical
-vector.}
+\item{exp5k}{pipe regime flag: is pipe operated more that 5000 hours per year?
+Type: \code{[logical]}.}
 }
 \value{
-\emph{normative temperature drop} at the outlet of pipe, [\emph{°C}],
- numeric vector.
+\emph{normative temperature drop} at the outlet of pipe, [\emph{°C}].
+ Type: \code{[double]}.
 }
 \description{
 Calculate temperature drop in steel pipe of \emph{district heating system}

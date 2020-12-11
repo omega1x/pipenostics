@@ -22,41 +22,47 @@ m278hlair(
 )
 }
 \arguments{
-\item{t1}{temperature of heat carrier (water) inside the supplying pipe, [\emph{°C}],
-numeric vector.}
+\item{t1}{temperature of heat carrier (water) inside the supplying pipe, [\emph{°C}].
+Type: \code{[double]}.}
 
-\item{t2}{temperature of heat carrier (water) inside the returning pipe, [\emph{°C}],
-numeric vector.}
+\item{t2}{temperature of heat carrier (water) inside the returning pipe, [\emph{°C}].
+Type: \code{[double]}.}
 
 \item{t0}{temperature of environment, [\emph{°C}]. In case of overhead laying this is
-the ambient temperature, numeric vector.}
+the ambient temperature. Type: \code{[double]}.}
 
-\item{insd1}{thickness of the insulator which covers the supplying pipe, [\emph{m}],
-numeric vector.}
+\item{insd1}{thickness of the insulator which covers the supplying pipe, [\emph{m}].
+Type: \code{[double]}.}
 
-\item{insd2}{thickness of the insulator which covers the returning pipe, [\emph{m}],
-numeric vector.}
+\item{insd2}{thickness of the insulator which covers the returning pipe, [\emph{m}].
+Type: \code{[double]}.}
 
-\item{d1}{external diameter of supplying pipe, [\emph{m}], numeric vector.}
+\item{d1}{external diameter of supplying pipe, [\emph{m}].
+Type: \code{[double]}.}
 
-\item{d2}{external diameter of returning pipe, [\emph{m}], numeric vector.}
+\item{d2}{external diameter of returning pipe, [\emph{m}].
+Type: \code{[double]}.}
 
 \item{lambda1}{thermal conductivity of insulator which covers the supplying pipe
-[\emph{W/m/°C}], numeric vector.}
+[\emph{W/m/°C}]. Type: \code{[double]}.}
 
 \item{lambda2}{thermal conductivity of insulator which covers the returning pipe
-[\emph{W/m/°C}], numeric vector.}
+[\emph{W/m/°C}]. Type: \code{[double]}.}
 
-\item{k1}{technical condition factor for insulator of supplying pipe, [], numeric vector.}
+\item{k1}{technical condition factor for insulator of supplying pipe, [].
+Type: \code{[double]}.}
 
-\item{k2}{technical condition factor for insulator of returning pipe, [], numeric vector.}
+\item{k2}{technical condition factor for insulator of returning pipe, [].
+Type: \code{[double]}.}
 
 \item{lambda0}{thermal conductivity of environment, [\emph{W/m/°C}]. In case of overhead
-laying this is the thermal conductivity of open air, numeric vector.}
+laying this is the thermal conductivity of open air.
+Type: \code{[double]}.}
 
-\item{len}{length of pipeline segment, [\emph{m}], numeric vector.}
+\item{len}{length of pipeline segment, [\emph{m}].
+Type: \code{[double]}.}
 
-\item{duration}{duration of heat flux emittance, [\emph{hour}], numeric vector.}
+\item{duration}{duration of heat flux emittance, [\emph{hour}]. Type: \code{[double]}.}
 }
 \value{
 Heat flux emitted by pipeline segment during \code{duration}, [\emph{kcal}].
@@ -65,6 +71,7 @@ Heat flux emitted by pipeline segment during \code{duration}, [\emph{kcal}].
  to that in [\emph{kcal/m/h}] units and so comparable with values of
  heat flux listed in
  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+ Type: \code{[double]}.
 }
 \description{
 Calculate values of heat flux emitted by overhead pipeline segment

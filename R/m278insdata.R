@@ -13,12 +13,18 @@
 #' @format A data frame with 39 rows and 4 variables:
 #' \describe{
 #'   \item{id}{Number of insulation material table 5.1 of Appendix 5.3 in
-#'    \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}}.
+#'    \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.
+#'    Type: \code{[integer]}.
+#'    }
 #'   \item{material}{Designation of insulation material more or less similar
 #'   to those in table 5.1 of Appendix 5.3 in
-#'   \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.}
-#'   \item{lambda}{Value for intercept, [\emph{mW/m/°C}].}
-#'   \item{k}{Value for factor.}
+#'   \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.
+#'   Type: \code{[character]}.
+#'   }
+#'   \item{lambda}{Value for intercept, [\emph{mW/m/°C}].
+#'   Type: \code{[integer]}.
+#'   }
+#'   \item{k}{Value for factor. Type: \code{[integer]}.}
 #'  }
 #' @source \url{http://www.complexdoc.ru/ntdtext/547103/}
 "m278insdata"

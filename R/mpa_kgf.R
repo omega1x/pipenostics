@@ -8,10 +8,12 @@
 #'  to \href{https://en.wikipedia.org/wiki/Pascal_(unit)}{megapascals} (MPa)
 #'
 #' @param x
-#'  numeric vector of pressure (stress) measured in \emph{kilogram-force per square cm} (\emph{kgf/cm^2})
+#'  numeric vector of pressure (stress) measured in \emph{kilogram-force per square cm},
+#'  [\emph{kgf/cm^2}]. Type: \code{[double]}.
 #'
 #' @return
-#'  numeric vector of pressure (stress) measured in \emph{megapascals} (\emph{MPa})
+#'  numeric vector of pressure (stress) measured in \emph{megapascals}, [\emph{MPa}].
+#'  Type: \code{[double]}.
 #'
 #' @seealso
 #'  \code{\link{kgf_mpa}} for converting \emph{megapascals} to \emph{kilogram-force per square cm}
@@ -29,6 +31,6 @@
 #'  )
 #'
 mpa_kgf <- function(x) {
-  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE, min.len = 1)
   9.806650125e-2*x
 }

@@ -17,11 +17,13 @@
 #'
 #' @param adj
 #'  diameters of adjacent pipes through which discharges to and recharges from
-#'  network occur, [\emph{mm}], numeric vector or list of numeric vectors:
+#'  network occur, [\emph{mm}].
+#'
+#'  Types:
 #'
 #'  \describe{
-#'    \item{numeric vector}{total diameter of all adjacent pipes (total diameter case)}
-#'    \item{\code{list} of numeric vectors}{a set of diameters of adjacent pipes (particular diameter case)}
+#'    \item{\code{[double]}}{total diameter of all adjacent pipes (total diameter case)}
+#'    \item{\code{[list]} of \code{[double]}}{a set of diameters of adjacent pipes (particular diameter case)}
 #'  }
 #'
 #'  Positive values of diameters of adjacent pipes correspond to discharging
@@ -29,11 +31,11 @@
 #'  recharging. See \emph{Details} and \emph{Examples} for further explanations.
 #'
 #' @param d
-#'   diameter of pipe under consideration, [\emph{mm}], numeric vector
+#'   diameter of pipe under consideration, [\emph{mm}]. Type: \code{[double]}.
 #'
 #' @param consumption
 #'   sensor-measured amount of heat carrier (water) that is transferred through
-#'   the inlet of pipe during a period, [\emph{ton/hour}], numeric vector.
+#'   the inlet of pipe during a period, [\emph{ton/hour}]. Type: \code{[double]}.
 #'
 #' @return
 #'  consumption \emph{drop} or \emph{recovery} at the outlet of pipe,
@@ -41,6 +43,7 @@
 #'  whereas for \emph{recovery} it is negative. In both cases to calculate
 #'  consumption on the outlet of pipe under consideration simply subtract the
 #'  calculated value from the sensor-measured consumption on the inlet.
+#'  Type: \code{[double]}.
 #'
 #' @details
 #'  It is common that sensor-measured consumption undergoes discharges to

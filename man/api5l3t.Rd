@@ -7,9 +7,9 @@
 \format{
 A data frame with 11 rows and 3 variables:
 \describe{
-  \item{grade}{designation of standard grade of manufactured pipe}
-  \item{smys}{SMYS - specified minimum yield strength, [\emph{psi}]}
-  \item{uts}{UTS - ultimate tensile strength, [\emph{psi}]}
+  \item{grade}{designation of standard grade of manufactured pipe. Type: \code{[character]}}
+  \item{smys}{SMYS - specified minimum yield strength, [\emph{psi}]. Type: \code{[double]}}
+  \item{uts}{UTS - ultimate tensile strength, [\emph{psi}]. Type: \code{[double]}}
  }
 }
 \source{

@@ -19,6 +19,11 @@ Since most functions have native argument vectorization usage of those
 functions with fast
 \href{https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html}{data.table}
 framework is strongly encourage when processing large data sets.
+
+For that purpose arguments for all package functions are thoroughly checked
+for type consistency and physical sense using asserts and tests from
+\code{\link{checkmate}} package. Moreover, in package documentation we
+borrow type designations according to \code{\link{checkmate}} notation.
 }
 \section{1. Corrosion diagnostics}{
 

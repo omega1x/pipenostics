@@ -10,62 +10,62 @@
 #'  pressure
 #'
 #' @param maop
-#'  maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}],
-#'  numeric vector
+#'  maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]. Type: \code{[double]}.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}], numeric vector
+#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}], numeric vector
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param smys
 #'  specified minimum yield of stress (\emph{SMYS}) as a
-#'  characteristics of steel strength, [\emph{PSI}], numeric vector
+#'  characteristics of steel strength, [\emph{PSI}]. Type: \code{[double]}.
 #'
 #' @param def
 #'  appropriate (combined) design factor from
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.4.2002.pdf}{ASME B31.4},
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.8.2003.pdf}{ASME B31.8},
 #'  or \href{https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems}{ASME B31.11},
-#'  [], numeric vector
+#'  []. Type: \code{[double]}.
 #'
 #' @param depth
-#'   measured maximum depth of the corroded area, [\emph{inch}], numeric vector
+#'   measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param l
-#'  measured maximum longitudial length of the corroded area, [\emph{inch}],
-#'  numeric vector
+#'  measured maximum longitudial length of the corroded area, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @return
 #'  Object of \emph{S3}-class \emph{crvl} which is a \emph{data.frame} with
 #'  the next numeric columns:
 #'
 #'  \describe{
-#'   \item{maop}{maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]}
-#'   \item{d}{nominal outside diameter of the pipe, [\emph{inch}]}
-#'   \item{wth}{nominal wall thickness of the pipe, [\emph{inch}]}
+#'   \item{maop}{maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]. Type: \code{[double]}.}
+#'   \item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.}
+#'   \item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.}
 #'   \item{smys}{specified minimum yield of stress (\emph{SMYS}) as a
-#'               characteristics of steel strength, [\emph{PSI}]}
+#'               characteristics of steel strength, [\emph{PSI}]. Type: \code{[double]}.}
 #'   \item{def}{appropriate (combined) design factor from
 #'              \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.4.2002.pdf}{ASME B31.4},
 #'              \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.8.2003.pdf}{ASME B31.8},
-#'              or \href{https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems}{ASME B31.11}, []}
-#'   \item{depth}{measured maximum depth of the corroded area, [\emph{inch}]}
-#'   \item{l}{measured maximum longitudial length of corroded area, [\emph{inch}]}
+#'              or \href{https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems}{ASME B31.11}, [].
+#'              Type: \code{[double]}.}
+#'   \item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
+#'   \item{l}{measured maximum longitudial length of corroded area, [\emph{inch}]. Type: \code{[double]}.}
 #'   \item{status}{Operational status of pipe:
 #'                 \emph{1} - excellent,
 #'                 \emph{2} - monitoring is recommended,
-#'                 \emph{3} - alert! replace the pipe immediately!}
-#'   \item{design_pressure}{design pressure of the pipe, [\emph{PSI}]}
-#'   \item{safe_pressure}{safe maximum pressure for the corroded area, [\emph{PSI}]}
+#'                 \emph{3} - alert! replace the pipe immediately!
+#'        Type: \code{[double, choice]}.}
+#'   \item{design_pressure}{design pressure of the pipe, [\emph{PSI}]. Type: \code{[double]}.}
+#'   \item{safe_pressure}{safe maximum pressure for the corroded area, [\emph{PSI}]. Type: \code{[double]}.}
 #'   \item{pressure_exceeding}{whether operator's action is required to reduce
 #'                             \emph{MOAP} lower than the maximum safe pressure
-#'                             of the corroded area}
-#'   \item{allowed_corrosion_depth}{allowable depth of the corroded area, [\emph{inch}]}
-#'   \item{A}{intermediate factor related to the geometry of the corroded area, []}
-#'   \item{allowed_corrosion_length}{allowable length of the corroded area, [\emph{inch}]}
-#'   \item{AP}{another intermediate factor related to the geometry of the corroded area, []}
+#'                             of the corroded area. Type: \code{[logical]}.}
+#'   \item{allowed_corrosion_depth}{allowable depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
+#'   \item{A}{intermediate factor related to the geometry of the corroded area, []. Type: \code{[double]}.}
+#'   \item{allowed_corrosion_length}{allowable length of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
+#'   \item{AP}{another intermediate factor related to the geometry of the corroded area, []. Type: \code{[double]}.}
 #'  }
 #'
 #' @details
@@ -231,13 +231,13 @@
 #' stopifnot(all(is.nan(delta) | delta == 0))
 #'
 b31crvl <- function(maop, d, wth, smys, def = .72, depth, l){
-  checkmate::assert_double(maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(def, lower = 0, upper = 1, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(def, lower = 0, upper = 1, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
   pipe <- within(
     data.frame(
       maop  = maop,

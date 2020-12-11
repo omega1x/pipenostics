@@ -29,36 +29,39 @@
 #'
 #' @param temperature
 #'  temperature of heat carrier (water) inside the pipe sensor-measured at the inlet
-#'  (forward tracing) or at the outlet (backward tracing) of path, [\emph{°C}],
-#'  single number.
+#'  (forward tracing) or at the outlet (backward tracing) of path, [\emph{°C}].
+#'  Type: \code{[number]}.
 #'
 #' @param pressure
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 #'  of heat carrier (water) sensor-measured at the inlet
-#'  (forward tracing) or at the outlet (backward tracing) of path, [\emph{MPa}],
-#'  single number.
+#'  (forward tracing) or at the outlet (backward tracing) of path, [\emph{MPa}].
+#'  Type: \code{[number]}.
 #'
 #' @param consumption
 #'  amount of heat carrier (water) sensor-measured at the inlet (forward tracing) or at
-#'  the outlet (backward tracing) of path, [\emph{ton/hour}], single number.
+#'  the outlet (backward tracing) of path, [\emph{ton/hour}].
+#'  Type: \code{[number]}.
 #'
 #' @param g
 #'  amount of heat carrier discharge to network for each pipe segment in the
-#'  tracing path enumerated along the direction of flow, [\emph{ton/hour}],
-#'  numeric vector.
+#'  tracing path enumerated along the direction of flow, [\emph{ton/hour}].
+#'  Type: \code{[double]}.
 #'
 #' @param d
 #'  internal diameters of subsequent pipes in tracing path that are enumerated
-#'  along the direction of flow, [\emph{mm}], numeric vector.
+#'  along the direction of flow, [\emph{mm}].
+#'  Type: \code{[double]}.
 #'
 #' @param len
 #'  length of subsequent pipes in tracing path that are enumerated
-#'  along the direction of flow, [\emph{m}], numeric vector.
+#'  along the direction of flow, [\emph{m}].
+#'  Type: \code{[double]}.
 #'
 #' @param year
 #'   year when pipe is put in operation after laying or total overhaul for
-#'   each pipe in tracing path enumerated along the direction of flow,
-#'   numeric vector.
+#'   each pipe in tracing path enumerated along the direction of flow.
+#'   Type: \code{[integerish]}.
 #'
 #' @param insulation
 #'  insulation that covers the exterior of pipe:
@@ -67,8 +70,8 @@
 #'    \item{\code{1}}{foamed polyurethane or analogue}
 #'    \item{\code{2}}{polymer concrete}
 #'  }
-#'  for each pipe in tracing path enumerated along the direction of flow,
-#'  numeric vector.
+#'  for each pipe in tracing path enumerated along the direction of flow.
+#'  Type: \code{[double, subset]}.
 #'
 #' @param laying
 #'  type of pipe laying depicting the position of pipe in space:
@@ -79,30 +82,30 @@
 #'    \item \code{tunnel}
 #'    \item \code{underground}
 #'  }
-#'  for each pipe in tracing path enumerated along the direction of flow,
-#'  character vector.
+#'  for each pipe in tracing path enumerated along the direction of flow.
+#'  Type: \code{[character, subset]}.
 #'
 #' @param beta
 #'  should they consider additional heat losses of fittings? Logical value
-#'  for each pipe in tracing path enumerated along the direction of flow,
-#'  logical vector.
+#'  for each pipe in tracing path enumerated along the direction of flow.
+#'  Type: \code{[logical]}.
 #'
 #' @param exp5k
 #'  pipe regime flag: is pipe operated more that \code{5000} hours per year? Logical
-#'  value for each pipe in tracing path enumerated along the direction of flow,
-#'  logical vector.
+#'  value for each pipe in tracing path enumerated along the direction of flow.
+#'  Type: \code{[logical]}.
 #'
 #' @param roughness
 #'  roughness of internal wall for each pipe in tracing path enumerated along
-#'  the direction of flow, [\emph{m}], numeric vector.
+#'  the direction of flow, [\emph{m}]. Type: \code{[double]}.
 #'
 #' @param inlet
 #'  elevation of pipe inlet for each pipe in tracing path enumerated along
-#'  the direction of flow, [\emph{m}], numeric vector.
+#'  the direction of flow, [\emph{m}]. Type: \code{[double]}.
 #'
 #' @param outlet
 #'  elevation of pipe outlet for each pipe in tracing path enumerated along
-#'  the direction of flow, [\emph{m}], numeric vector.
+#'  the direction of flow, [\emph{m}]. Type: \code{[double]}.
 #'
 #' @param method
 #'  method of determining \emph{Darcy friction factor}
@@ -111,22 +114,26 @@
 #'    \item \code{vatankhan}
 #'    \item \code{buzelli}
 #'  }
-#'  Character option. For more details see \code{\link{dropp}}.
+#'  Type: \code{[character, choice]}. For more details see \code{\link{dropp}}.
 #'
 #' @param elev_tol
 #'  maximum allowed discrepancy between adjacent outlet and inlet elevations of
-#'  two subsequent pipes in the traced path, [\emph{m}], single number.
+#'  two subsequent pipes in the traced path, [\emph{m}]. Type: \code{[number]}.
 #'
 #' @param forward
 #'  tracing direction flag: is it a forward direction of tracing?
-#'  If \code{FALSE} the backward tracing is performed. Single logical option.
+#'  If \code{FALSE} the backward tracing is performed.
+#'  Type: \code{[flag]}.
 #'
 #' @return
 #'   named list of regime parameters for the traced path with the next elements:
 #'  \describe{
-#'    \item{\code{temperature}}{calculated temperatures of heat carrier for all pipeline segments, [\emph{°C}], numeric vector}
-#'    \item{\code{pressure}}{calculated pressures of heat carrier for all pipeline segments, [\emph{MPa}], numeric vector}
-#'    \item{\code{consumption}}{calculated consumption(s) of heat carrier for all pipeline segments, [\emph{ton/hour}], numeric vector}
+#'    \item{\code{temperature}}{calculated temperatures of heat carrier for all pipeline segments, [\emph{°C}].
+#'    Type: \code{[double]}.}
+#'    \item{\code{pressure}}{calculated pressures of heat carrier for all pipeline segments, [\emph{MPa}].
+#'    Type: \code{[double]}.}
+#'    \item{\code{consumption}}{calculated consumption(s) of heat carrier for all pipeline segments, [\emph{ton/hour}].
+#'    Type: \code{[double]}.}
 #'  }
 #'
 #' @seealso
@@ -265,15 +272,15 @@ m325regtrace <- function(
                            min.len = 1)
   checkmate::assert_integerish(year, lower = 1900L,
                                upper = max(norms$epoch),
-                               any.missing = FALSE)
+                               any.missing = FALSE, min.len = 1)
   checkmate::assert_subset(insulation, choices = unique(norms$insulation))
   checkmate::assert_subset(laying, choices = unique(norms$laying),
                            empty.ok = FALSE)
-  checkmate::assert_logical(beta, any.missing = FALSE)
-  checkmate::assert_logical(exp5k, any.missing = FALSE)
-  checkmate::assert_double(roughness, lower = 0, upper = .2, any.missing = FALSE)
-  checkmate::assert_double(inlet, lower = 0, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(outlet, lower = 0, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1)
+  checkmate::assert_logical(exp5k, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(roughness, lower = 0, upper = .2, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(inlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(outlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
   checkmate::assert_number(elev_tol, lower = 0, upper = 10, finite = TRUE)
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
   checkmate::assert_flag(forward)

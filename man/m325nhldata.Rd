@@ -12,16 +12,21 @@ A data frame with 17328 rows and 8 variables:
     \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325};
     identifier \emph{sgc} means that values are additionally
     postulated (see \emph{Details}).
+    Type: \code{[character]}.
   }
-  \item{epoch}{Year depicting the epoch when the pipe is put in operation after laying or total overhaul.}
+  \item{epoch}{Year depicting the epoch when the pipe is put in operation after laying or total overhaul.
+  Type: \code{[integer]}.}
   \item{laying}{Type of pipe laying depicting the position of pipe in space. Only five types of
-  pipe laying are considered.}
-  \item{exp5k}{Logical indicator for pipe regime: if \code{TRUE} pipe is operated more that 5000 hours per year.}
+  pipe laying are considered. Type: \code{[character]}.}
+  \item{exp5k}{Logical indicator for pipe regime: if \code{TRUE} pipe is operated more that 5000 hours per year.
+  Type: \code{[logical]}.}
   \item{insulation}{Identifier of insulation that covers the exterior of pipe:
-  \code{0} - no insulation; \code{1} - foamed polyurethane or analogue; \code{2} - polymer concrete.}
-  \item{diameter}{Nominal internal diameter of pipe, [mm].}
-  \item{temperature}{Operational temperature of pipe, [°C].}
-  \item{flux}{Heat flux emitted by every meter of pipe during an hour, [kcal/m/hour].}
+  \code{0} - no insulation; \code{1} - foamed polyurethane or analogue; \code{2} - polymer concrete.
+  Type: \code{[double]}.}
+  \item{diameter}{Nominal internal diameter of pipe, [mm]. Type: \code{[double]}.}
+  \item{temperature}{Operational temperature of pipe, [°C]. Type: \code{[double]}.}
+  \item{flux}{Heat flux emitted by every meter of pipe during an hour, [kcal/m/hour].
+  Type: \code{[double]}.}
  }
 }
 \source{

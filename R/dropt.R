@@ -10,20 +10,22 @@
 #'
 #' @param temperature
 #'  temperature of heat carrier (water) inside the pipe measured at the
-#'  entrance of pipe, [\emph{°C}], numeric vector
+#'  entrance of pipe, [\emph{°C}]. Type: \code{[double]}.
 #'
 #' @param pressure
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-#'  of heat carrier (water) inside the pipe, [\emph{MPa}], numeric vector
+#'  of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{[double]}.
 #'
 #' @param consumption
-#'  amount of heat carrier (water) that is transferred by pipe during a period, [\emph{ton/hour}], numeric vector
+#'  amount of heat carrier (water) that is transferred by pipe during a period,
+#'  [\emph{ton/hour}]. Type: \code{[double]}.
 #'
 #' @param flux
-#'  heat flux emitted by pipe during a period, [\emph{kcal/hour}], numeric vector
+#'  heat flux emitted by pipe during a period, [\emph{kcal/hour}].
+#'  Type: \code{[double]}.
 #'
 #' @return
-#'  temperature drop at the outlet of pipe, [\emph{°C}], numeric vector.
+#'  temperature drop at the outlet of pipe, [\emph{°C}]. Type: \code{[double]}.
 #'
 #' @details
 #'   Specific isobaric \href{https://en.wikipedia.org/wiki/Heat_capacity}{heat capacity}
@@ -74,16 +76,16 @@ dropt <- function(
   ){
 
   checkmate::assert_double(
-    temperature, lower = 0, upper = 350, finite = TRUE,  any.missing = FALSE
+    temperature, lower = 0, upper = 350, finite = TRUE,  any.missing = FALSE, min.len = 1
   )
   checkmate::assert_double(
-    pressure, lower = 8.4e-2, upper = 100, finite = TRUE, any.missing = FALSE
+    pressure, lower = 8.4e-2, upper = 100, finite = TRUE, any.missing = FALSE, min.len = 1
   )
   checkmate::assert_double(
-    consumption, lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = FALSE
+    consumption, lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = FALSE, min.len = 1
   )
   checkmate::assert_double(
-    flux, lower = 0, finite = TRUE, any.missing = FALSE
+    flux, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1
   )
   JOULE <- 0.2388458966  # [cal/J]
   pipe_heat_loss <- flux/JOULE  # [kJ/hour]

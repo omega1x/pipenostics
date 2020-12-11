@@ -20,33 +20,34 @@
 #'
 #' @param temperature
 #'  temperature of heat carrier (water) inside the pipe measured at the
-#'  entrance of pipe, [\emph{°C}], numeric vector
+#'  entrance of pipe, [\emph{°C}]. Type: \code{[double]}.
 #'
 #' @param pressure
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-#'  of heat carrier (water) inside the pipe, [\emph{MPa}], numeric vector
+#'  of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{[double]}.
 #'
 #' @param consumption
-#'  amount of heat carrier (water) that is transferred by pipe during a period, [\emph{ton/hour}], numeric vector
+#'  amount of heat carrier (water) that is transferred by pipe during a period,
+#'  [\emph{ton/hour}]. Type: \code{[double]}.
 #'
 #' @param d
-#'  internal diameter of pipe, [\emph{mm}], numeric vector.
+#'  internal diameter of pipe, [\emph{mm}]. Type: \code{[double]}.
 #'
 #' @param len
-#'  length of pipe, [\emph{m}], numeric vector.
+#'  length of pipe, [\emph{m}]. Type: \code{[double]}.
 #'
 #' @param year
-#'   year when the pipe is put in operation after laying or total overhaul,
-#'   numeric vector.
+#'   year when the pipe is put in operation after laying or total overhaul.
+#'   Type: \code{[integerish]}.
 #'
 #' @param insulation
 #'  insulation that covers the exterior of pipe:
 #'  \describe{
 #'    \item{\code{0}}{no insulation}
 #'    \item{\code{1}}{foamed polyurethane or analogue}
-#'    \item{\code{2}}{polymer concrete},
+#'    \item{\code{2}}{polymer concrete}
 #'  }
-#'  numeric vector.
+#'  Type: \code{[double, subset]}.
 #'
 #' @param laying
 #'  type of pipe laying depicting the position of pipe in space:
@@ -55,20 +56,21 @@
 #'    \item \code{channel},
 #'    \item \code{room},
 #'    \item \code{tunnel},
-#'    \item \code{underground},
+#'    \item \code{underground}.
 #'  }
-#'  character vector.
+#'  Type: \code{[character, subset]}.
 #'
 #' @param beta
-#'  should they consider additional heat losses of fittings? Logical vector.
+#'  should they consider additional heat losses of fittings?
+#'  Type: \code{[logical]}.
 #'
 #' @param exp5k
-#'  pipe regime flag: is pipe operated more that 5000 hours per year? Logical
-#'  vector.
+#'  pipe regime flag: is pipe operated more that 5000 hours per year?
+#'  Type: \code{[logical]}.
 #'
 #' @return
-#'  \emph{normative temperature drop} at the outlet of pipe, [\emph{°C}],
-#'  numeric vector.
+#'  \emph{normative temperature drop} at the outlet of pipe, [\emph{°C}].
+#'  Type: \code{[double]}.
 #'
 #' @details
 #'  The function is a simple wrapper for call of \code{\link{dropt}}
@@ -99,26 +101,31 @@ m325dropt <- function(
   ){
   norms <- pipenostics::m325nhldata
   checkmate::assert_double(
-    temperature, lower = 0, upper = 350, finite = TRUE,  any.missing = FALSE
+    temperature, lower = 0, upper = 350, finite = TRUE,  any.missing = FALSE,
+    min.len = 1
   )
   checkmate::assert_double(
-    pressure, lower = 8.4e-2, upper = 100, finite = TRUE, any.missing = FALSE
+    pressure, lower = 8.4e-2, upper = 100, finite = TRUE, any.missing = FALSE,
+    min.len = 1
   )
   checkmate::assert_double(
-    consumption, lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = FALSE
+    consumption, lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = FALSE,
+    min.len = 1
   )
   checkmate::assert_double(d, lower = min(norms$diameter),
                            upper = max(norms$diameter),
-                           finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE)
+                           finite = TRUE, any.missing = FALSE,
+                           min.len = 1)
+  checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE,
+                           min.len = 1)
   checkmate::assert_integerish(year, lower = 1900L,
                                upper = max(norms$epoch),
-                               any.missing = FALSE)
+                               any.missing = FALSE, min.len = 1)
   checkmate::assert_subset(insulation, choices = unique(norms$insulation))
   checkmate::assert_subset(laying, choices = unique(norms$laying),
                            empty.ok = FALSE)
-  checkmate::assert_logical(beta, any.missing = FALSE)
-  checkmate::assert_logical(exp5k, any.missing = FALSE)
+  checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1)
+  checkmate::assert_logical(exp5k, any.missing = FALSE, min.len = 1)
 
   duration <- 1  # [hour]
   extra <- 2

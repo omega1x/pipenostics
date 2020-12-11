@@ -7,21 +7,20 @@
 b31gpf(d, wth, smys, depth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of the pipe, [\emph{inch}], numeric vector}
+\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}], numeric vector}
+\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.}
 
 \item{smys}{specified minimum yield of stress (\emph{SMYS}) as a
-characteristics of steel strength, [\emph{PSI}], numeric vector}
+characteristics of steel strength, [\emph{PSI}]. Type: \code{[double]}.}
 
-\item{depth}{measured maximum depth of the corroded area, [\emph{inch}], numeric vector}
+\item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
 
-\item{l}{measured maximum longitudial length of corroded area, [\emph{inch}],
-numeric vector}
+\item{l}{measured maximum longitudinal length of corroded area, [\emph{inch}]. Type: \code{[double]}.}
 }
 \value{
-Estimated failure pressure of the corroded pipe, [\emph{PSI}], numeric
- vector
+Estimated failure pressure of the corroded pipe, [\emph{PSI}].
+ Type: \code{[double]}.
 }
 \description{
 Calculate failure pressure of the corroded pipe

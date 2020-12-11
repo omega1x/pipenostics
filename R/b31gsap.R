@@ -7,23 +7,22 @@
 #'  Calculate safe maximum pressure for the corroded area of pipe.
 #'
 #' @param dep
-#'  design pressure of the pipe, [\emph{PSI}], numeric vector
+#'  design pressure of the pipe, [\emph{PSI}]. Type: \code{[double]}.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}], numeric vector
+#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}], numeric vector
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param depth
-#'   measured maximum depth of the corroded area, [\emph{inch}], numeric vector
+#'   measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param l
-#'  measured maximum longitudial length of the corroded area, [\emph{inch}],
-#'  numeric vector
+#'  measured maximum longitudial length of the corroded area, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @return
-#'  Safe maximum pressure for the corroded area of pipe, [PSI], numeric vector
+#'  Safe maximum pressure for the corroded area of pipe, [PSI]. Type: \code{[double]}.
 #'
 #' @references
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.
@@ -45,11 +44,11 @@
 #'       stopifnot(b31gsap(design_pressure, d, wth, depth, l) == safe_pressure))
 #'
 b31gsap <- function(dep, d, wth, depth, l){
-  checkmate::assert_double(dep, lower = 0, upper = 6e3, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(dep, lower = 0, upper = 6e3, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
 
   A <- b31gafr(d, wth, l)
   d2w <- depth/wth

@@ -7,18 +7,18 @@
 #'  Calculate intermediate factor related to the geometry of the corroded zone.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}], numeric vector
+#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}], numeric vector
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param l
-#'  measured maximum longitudial length of the corroded area, [\emph{inch}],
-#'  numeric vector
+#'  measured maximum longitudial length of the corroded area, [\emph{inch}].
+#'  Type: \code{[double]}.
 #'
 #' @return
-#'  Intermediate factor related to the geometry of the corroded area, [],
-#'  numeric vector
+#'  Intermediate factor related to the geometry of the corroded area, [].
+#'  Type: \code{[double]}.
 #'
 #' @references
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.
@@ -36,8 +36,8 @@
 #'  with(b31gdata, all.equal(b31gafr(d, wth, l), A))
 #'
 b31gafr <- function(d, wth, l){
-  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
   1e-3*trunc(1e3*.893*l/sqrt(d*wth))
 }

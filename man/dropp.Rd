@@ -17,30 +17,31 @@ dropp(
 )
 }
 \arguments{
-\item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}],
-numeric vector}
+\item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}].
+Type: \code{[double]}.}
 
 \item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 of heat carrier (water) measured at the
-entrance (inlet) of pipe, [\emph{MPa}], numeric vector}
+entrance (inlet) of pipe, [\emph{MPa}]. Type: \code{[double]}.}
 
-\item{consumption}{amount of heat carrier (water) that is transferred by pipe during a period, [\emph{ton/hour}], numeric vector}
+\item{consumption}{amount of heat carrier (water) that is transferred by pipe during a period,
+[\emph{ton/hour}]. Type: \code{[double]}.}
 
-\item{d}{internal diameter of pipe, [\emph{m}], numeric vector}
+\item{d}{internal diameter of pipe, [\emph{m}]. Type: \code{[double]}.}
 
-\item{len}{pipe length, [\emph{m}], numeric vector}
+\item{len}{pipe length, [\emph{m}]. Type: \code{[double]}.}
 
-\item{roughness}{roughness of internal wall of pipe, [\emph{m}], numeric vector}
+\item{roughness}{roughness of internal wall of pipe, [\emph{m}]. Type: \code{[double]}.}
 
-\item{inlet}{elevation of pipe inlet, [\emph{m}], numeric vector}
+\item{inlet}{elevation of pipe inlet, [\emph{m}]. Type: \code{[double]}.}
 
-\item{outlet}{elevation of pipe outlet, [\emph{m}], numeric vector}
+\item{outlet}{elevation of pipe outlet, [\emph{m}]. Type: \code{[double]}.}
 
-\item{method}{method of determining \emph{Darcy friction factor}, character option
+\item{method}{method of determining \emph{Darcy friction factor}. Type: \code{[character, choice]}.
 (see \strong{Details})}
 }
 \value{
-pressure drop at the outlet of pipe, [\emph{MPa}], numeric vector
+pressure drop at the outlet of pipe, [\emph{MPa}]. Type: \code{[double]}.
 }
 \description{
 Calculate \href{https://en.wikipedia.org/wiki/Pressure_drop}{pressure drop}

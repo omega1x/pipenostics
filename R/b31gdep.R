@@ -10,24 +10,24 @@
 #'  exceeded.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}], numeric vector
+#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}], numeric vector
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param smys
 #'  specified minimum yield of stress (\emph{SMYS}) as a
-#'  characteristics of steel strength, [\emph{PSI}], numeric vector
+#'  characteristics of steel strength, [\emph{PSI}]. Type: \code{[double]}.
 #'
 #' @param def
 #'   appropriate (combined) design factor from
 #'   \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.4.2002.pdf}{ASME B31.4},
 #'   \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.8.2003.pdf}{ASME B31.8},
-#'   or \href{https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems}{ASME B31.11}, [],
-#'   numeric vector
+#'   or \href{https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems}{ASME B31.11}, [].
+#'   Type: \code{[double]}.
 #'
 #' @return
-#'  Design pressure of the pipe, [\emph{PSI}], numeric vector
+#'  Design pressure of the pipe, [\emph{PSI}]. Type: \code{[double]}.
 #'
 #' @references
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.
@@ -48,9 +48,9 @@
 #'  )
 #'
 b31gdep <- function(d, wth, smys, def){
-  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(def, lower = 0, upper = 1, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(def, lower = 0, upper = 1, finite = TRUE, any.missing = FALSE, min.len = 1)
   2*smys*wth*def/d + .5
 }

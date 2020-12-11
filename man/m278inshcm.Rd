@@ -7,15 +7,15 @@
 m278inshcm(temperature = 110, material = "aerocrete")
 }
 \arguments{
-\item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}],
-numeric vector.}
+\item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}].
+Type: \code{[double]}.}
 
 \item{material}{designation of insulation material as it stated in \code{\link{m278insdata}},
-character vector.}
+Type: \code{[character, subset]}.}
 }
 \value{
 Thermal conductivity of insulation materials [\emph{W/m/°C}] at given
- set of temperatures.
+ set of temperatures. Type: \code{[double]}.
 }
 \description{
 Get normative values of thermal conductivity of pipe insulation

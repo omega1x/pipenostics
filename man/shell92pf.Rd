@@ -7,22 +7,22 @@
 shell92pf(d, wth, uts, depth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of the pipe, [\emph{mm}], numeric vector}
+\item{d}{nominal outside diameter of the pipe, [\emph{mm}]. Type: \code{[double]}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{mm}], numeric vector}
+\item{wth}{nominal wall thickness of the pipe, [\emph{mm}]. Type: \code{[double]}.}
 
 \item{uts}{ultimate tensile strength (\emph{UTS}) or
 specified minimum tensile strength (\emph{SMTS}) as a
-characteristic of steel strength, [\emph{MPa}], numeric vector}
+characteristic of steel strength, [\emph{MPa}]. Type: \code{[double]}.}
 
-\item{depth}{measured maximum depth of the corroded area, [\emph{mm}], numeric vector}
+\item{depth}{measured maximum depth of the corroded area, [\emph{mm}]. Type: \code{[double]}.}
 
-\item{l}{measured maximum longitudial length of corroded area, [\emph{mm}],
-numeric vector}
+\item{l}{measured maximum longitudial length of corroded area, [\emph{mm}].
+Type: \code{[double]}.}
 }
 \value{
-Estimated failure pressure of the corroded pipe, [\emph{MPa}], numeric
- vector
+Estimated failure pressure of the corroded pipe, [\emph{MPa}].
+ Type: \code{[double]}.
 }
 \description{
 Calculate failure pressure of the corroded pipe according to \emph{Shell92}

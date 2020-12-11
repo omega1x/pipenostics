@@ -10,16 +10,16 @@
 #'  a function of temperature of heat carrier (water).
 #'
 #' @param temperature
-#'  temperature of heat carrier (water) inside the pipe, [\emph{°C}],
-#'  numeric vector.
+#'  temperature of heat carrier (water) inside the pipe, [\emph{°C}].
+#'  Type: \code{[double]}.
 #'
 #' @param material
 #'  designation of insulation material as it stated in \code{\link{m278insdata}},
-#'  character vector.
+#'  Type: \code{[character, subset]}.
 #'
 #' @return
 #'  Thermal conductivity of insulation materials [\emph{W/m/°C}] at given
-#'  set of temperatures.
+#'  set of temperatures. Type: \code{[double]}.
 #'
 #' @export
 #'
@@ -46,7 +46,7 @@
 #'
 m278inshcm <- function(temperature = 110, material = "aerocrete"){
     checkmate::assert_double(temperature, lower = 0, upper = 450, finite = TRUE,
-                                                         any.missing = FALSE)
+                             any.missing = FALSE, min.len = 1)
     norms <- pipenostics::m278insdata
     checkmate::assert_subset(material, choices = norms$material)
 

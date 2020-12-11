@@ -8,10 +8,10 @@
 #'  technological control required? or is it critical situation?
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}], numeric vector
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.r
 #'
 #' @param depth
-#'  measured maximum depth of the corroded area, [\emph{inch}], numeric vector
+#'  measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @return
 #'  Operational status of pipe, numeric vector of 3 possible values:
@@ -20,6 +20,7 @@
 #'    \item \emph{2} - monitoring is recommended
 #'    \item \emph{3} - alert! replace the pipe immediately!
 #'  }
+#'  Type: \code{[double, choice]}.
 #'
 #' @references
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.
@@ -40,8 +41,8 @@
 #'  with(b31gdata, stopifnot(all(b31gops(wth, depth) & status)))
 #'
 b31gops <- function(wth, depth){
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE)
+  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE, min.len = 1)
 
   a <- .8*wth  # alert setting
   1 + (depth > .1*wth & depth <= a) + 2*(depth > a)

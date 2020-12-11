@@ -9,8 +9,8 @@
 #'  emitted by steel pipe of district heating system with water as a heat carrier.
 #'
 #' @param year
-#'   year when the pipe is put in operation after laying or total overhaul,
-#'   numeric vector.
+#'   year when the pipe is put in operation after laying or total overhaul.
+#'   Type: \code{[integerish]}.
 #'
 #' @param laying
 #'  type of pipe laying depicting the position of pipe in space:
@@ -19,13 +19,13 @@
 #'    \item \code{channel},
 #'    \item \code{room},
 #'    \item \code{tunnel},
-#'    \item \code{underground},
+#'    \item \code{underground}.
 #'  }
-#'  character vector.
+#'  Type: \code{[character, subset]}.
 #'
 #' @param exp5k
-#'  pipe regime flag: is pipe operated more that 5000 hours per year? Logical
-#'  vector.
+#'  pipe regime flag: is pipe operated more that 5000 hours per year?
+#'  Type: \code{[logical]}.
 #'
 #' @param insulation
 #'  insulation that covers the exterior of pipe:
@@ -33,27 +33,29 @@
 #'    \item{\code{0}}{no insulation}
 #'    \item{\code{1}}{foamed polyurethane or analogue}
 #'    \item{\code{2}}{polymer concrete}
-#'  },
-#'  numeric vector.
+#'  }
+#'  Type: \code{[double, subset]}.
 #'
 #' @param d
-#'   internal diameter of pipe, [\emph{mm}], numeric vector.
+#'   internal diameter of pipe, [\emph{mm}]. Type: \code{[double]}.
 #'
 #' @param temperature
-#'  temperature of heat carrier (water) inside the pipe, [\emph{°C}],
-#'  numeric vector.
+#'  temperature of heat carrier (water) inside the pipe, [\emph{°C}].
+#'  Type: \code{[double]}.
 #'
 #' @param len
-#'  length of pipe, [\emph{m}], numeric vector.
+#'  length of pipe, [\emph{m}]. Type: \code{[double]}.
 #'
 #' @param duration
-#'  duration of heat flux emittance, [\emph{hour}], numeric vector.
+#'  duration of heat flux emittance, [\emph{hour}]. Type: \code{[double]}.
 #'
 #' @param beta
-#'  should they consider additional heat losses of fittings? Logical vector.
+#'  should they consider additional heat losses of fittings?
+#'  Type: \code{[logical]}.
 #'
 #' @param extra
-#'   number of points used for temperature extrapolation, single value.
+#'   number of points used for temperature extrapolation.
+#'   Type: \code{[integer, choice]}.
 #'
 #' @return
 #'  Heat flux emitted by pipe during \code{duration}, [\emph{kcal}],
@@ -62,6 +64,7 @@
 #'  emittance is set to 1 \emph{hour} then the return value is in the same
 #'  units as value of heat flux, [\emph{kcal/m/h}], accepted by
 #'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  Type: \code{[double]}.
 #'
 #' @details
 #'  Temperature extrapolation and pipe diameter interpolation are leveraged
@@ -116,19 +119,21 @@ m325nhl <- function(year = 1986, laying = "underground", exp5k = TRUE,
   norms <- pipenostics::m325nhldata
   checkmate::assert_integerish(year, lower = 1900L,
                                upper = max(norms$epoch),
-                               any.missing = FALSE)
+                               any.missing = FALSE,
+                               min.len = 1)
   checkmate::assert_subset(laying, choices = unique(norms$laying),
                            empty.ok = FALSE)
-  checkmate::assert_logical(exp5k, any.missing = FALSE)
+  checkmate::assert_logical(exp5k, any.missing = FALSE, min.len = 1)
   checkmate::assert_subset(insulation, choices = unique(norms$insulation))
   checkmate::assert_double(d, lower = min(norms$diameter),
                            upper = max(norms$diameter),
-                           finite = TRUE, any.missing = FALSE)
+                           finite = TRUE, any.missing = FALSE,
+                           min.len = 1)
   checkmate::assert_double(temperature, lower = 0, upper = max(norms$temperature),
-                           finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_double(duration, lower = 0, finite = TRUE, any.missing = FALSE)
-  checkmate::assert_logical(beta, any.missing = FALSE)
+                           finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(duration, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1)
   checkmate::assert_choice(extra, 2:4)
 
   mapply(

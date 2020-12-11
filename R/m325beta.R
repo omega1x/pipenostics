@@ -19,16 +19,16 @@
 #'    \item \code{channel},
 #'    \item \code{room},
 #'    \item \code{tunnel},
-#'    \item \code{underground},
+#'    \item \code{underground}.
 #'  }
-#'  character vector.
+#'  Type: \code{[character, subset]}.
 #'
 #' @param d
-#'   internal diameter of pipe, [\emph{mm}], numeric vector.
+#'   internal diameter of pipe, [\emph{mm}]. Type: \code{[double]}.
 #'
 #' @return
 #'  Two possible values of \eqn{\beta}: \code{1.2} or \code{1.15} depending on
-#'  pipe laying and its diameter (numeric vector).
+#'  pipe laying and its diameter. Type: \code{[double]}.
 #'
 #' @export
 #'
@@ -41,7 +41,8 @@ m325beta <- function(laying = "channel", d = 700){
   norms <- pipenostics::m325nhldata
   checkmate::assert_double(d, lower = min(norms$diameter),
                            upper = max(norms$diameter),
-                           finite = TRUE, any.missing = FALSE)
+                           finite = TRUE, any.missing = FALSE,
+                           min.len = 1)
   checkmate::assert_subset(laying, choices = unique(norms$laying),
                            empty.ok = FALSE)
   type <- "channel"

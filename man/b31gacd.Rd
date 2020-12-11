@@ -7,21 +7,19 @@
 b31gacd(dep, maop, d, wth, l)
 }
 \arguments{
-\item{dep}{design pressure of the pipe, [\emph{PSI}], numeric vector}
+\item{dep}{design pressure of the pipe, [\emph{PSI}]. Type: \code{[double]}.}
 
-\item{maop}{maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}], numeric
-vector}
+\item{maop}{maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]. Type: \code{[double]}.}
 
-\item{d}{nominal outside diameter of the pipe, [\emph{inch}], numeric vector}
+\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}], numeric vector}
+\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.}
 
-\item{l}{measured maximum longitudial length of corroded area, [\emph{inch}],
-numeric vector}
+\item{l}{measured maximum longitudial length of corroded area, [\emph{inch}].
+Type: \code{[double]}.}
 }
 \value{
-allowable depth of the corroded area in the pipe, [\emph{inch}], numeric
- vector
+allowable depth of the corroded area in the pipe, [\emph{inch}]. Type: \code{[double]}.
 }
 \description{
 Calculate allowable depth of the corroded area in the pipe.

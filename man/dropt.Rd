@@ -8,17 +8,19 @@ dropt(temperature = 130, pressure = mpa_kgf(6), consumption = 250, flux = 7000)
 }
 \arguments{
 \item{temperature}{temperature of heat carrier (water) inside the pipe measured at the
-entrance of pipe, [\emph{°C}], numeric vector}
+entrance of pipe, [\emph{°C}]. Type: \code{[double]}.}
 
 \item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-of heat carrier (water) inside the pipe, [\emph{MPa}], numeric vector}
+of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{[double]}.}
 
-\item{consumption}{amount of heat carrier (water) that is transferred by pipe during a period, [\emph{ton/hour}], numeric vector}
+\item{consumption}{amount of heat carrier (water) that is transferred by pipe during a period,
+[\emph{ton/hour}]. Type: \code{[double]}.}
 
-\item{flux}{heat flux emitted by pipe during a period, [\emph{kcal/hour}], numeric vector}
+\item{flux}{heat flux emitted by pipe during a period, [\emph{kcal/hour}].
+Type: \code{[double]}.}
 }
 \value{
-temperature drop at the outlet of pipe, [\emph{°C}], numeric vector.
+temperature drop at the outlet of pipe, [\emph{°C}]. Type: \code{[double]}.
 }
 \description{
 Calculate temperature drop in steel pipe of \emph{district heating system}

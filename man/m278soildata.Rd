@@ -7,9 +7,11 @@
 \format{
 A data frame with 15 rows and 3 variables:
 \describe{
-  \item{subsoil}{Geological name of subsoil}
-  \item{state}{The degree of water penetration to the subsoil}
-  \item{lambda}{Value of thermal conductivity of subsoil regarding water penetration, [\emph{W/m/°C}].}
+  \item{subsoil}{Geological name of subsoil. Type: \code{[character]}.}
+  \item{state}{The degree of water penetration to the subsoil. Type: \code{[character]}.}
+  \item{lambda}{Value of thermal conductivity of subsoil regarding water penetration, [\emph{W/m/°C}].
+  Type: \code{[double]}.
+  }
  }
 }
 \source{
