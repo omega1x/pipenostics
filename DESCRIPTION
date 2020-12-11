@@ -1,7 +1,7 @@
 Package: pipenostics
 Type: Package
 Title: 
-    Diagnostics, reliability and predictive maintenance of pipeline systems
+    Diagnostics, Reliability and Predictive Maintenance of Pipeline Systems
 Version: 0.1.0
 Author: Yuri Possokhov
 Maintainer: Yuri Possokhov <PosokhovIuM@sibgenco.ru>
