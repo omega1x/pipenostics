@@ -128,6 +128,6 @@ Other Minenergo:
 \code{\link{m325beta}()},
 \code{\link{m325dropt}()},
 \code{\link{m325nhldata}},
-\code{\link{m325regtrace}()}
+\code{\link{m325traceline}()}
 }
 \concept{Minenergo}

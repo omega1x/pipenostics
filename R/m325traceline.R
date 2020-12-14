@@ -1,12 +1,14 @@
 #' @title
-#'  Minenergo-325. Trace parameters of thermal-hydraulic regime
+#'  Minenergo-325. Trace parameters of thermal-hydraulic regime for linear
+#'  segment
 #'
 #' @family Minenergo
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
-#'  consumption) along the  pipeline using norms of heat flux values prescribed
-#'  by \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  consumption) along the adjacent linear segments of pipeline using norms of
+#'  heat flux values prescribed by
+#'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'
 #' @details
 #'  The calculated (values of) regime may be considered as representation of
@@ -151,7 +153,7 @@
 #' discharges <- seq(0, 30, 10)  # [ton/hour]
 #'
 #' # Then the calculated regime (red squares) for forward tracing is
-#' regime_fw <- m325regtrace(t_fw, p_fw, g_fw, discharges, forward = TRUE)
+#' regime_fw <- m325traceline(t_fw, p_fw, g_fw, discharges, forward = TRUE)
 #' print(regime_fw)
 #'
 #' # $temperature
@@ -169,7 +171,7 @@
 #' g_bw <- 190  # [ton/hour]
 #'
 #' # Then the calculated regime (red squares) for backward tracing is
-#' regime_bw <- m325regtrace(t_bw, p_bw, g_bw, discharges, forward = FALSE)
+#' regime_bw <- m325traceline(t_bw, p_bw, g_bw, discharges, forward = FALSE)
 #' print(regime_bw)
 #'
 #' # $temperature
@@ -240,7 +242,7 @@
 #'}
 #'
 #' @export
-m325regtrace <- function(
+m325traceline <- function(
   temperature = 130, pressure = mpa_kgf(6), consumption = 250,
   g = 0,  # [ton/hour]
   d = 700,  # [mm]

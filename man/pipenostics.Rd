@@ -17,7 +17,7 @@ restrict source code development by functionality of few external packages.
 
 Since most functions have native argument vectorization usage of those
 functions with fast
-\href{https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html}{data.table}
+\href{https://cran.r-project.org/package=data.table}{data.table}
 framework is strongly encourage when processing large data sets.
 
 For that purpose arguments for all package functions are thoroughly checked
