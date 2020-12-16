@@ -10,7 +10,7 @@
 #'
 #' @param temperature
 #'  temperature of heat carrier (water) inside the pipe measured at the
-#'  entrance of pipe, [\emph{°C}]. Type: \code{[double]}.
+#'  inlet of pipe, [\emph{°C}]. Type: \code{[double]}.
 #'
 #' @param pressure
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}

@@ -27,16 +27,41 @@
 #'   \item{epoch}{Year depicting the epoch when the pipe is put in operation after laying or total overhaul.
 #'   Type: \code{[integer]}.}
 #'   \item{laying}{Type of pipe laying depicting the position of pipe in space. Only five types of
-#'   pipe laying are considered. Type: \code{[character]}.}
-#'   \item{exp5k}{Logical indicator for pipe regime: if \code{TRUE} pipe is operated more that 5000 hours per year.
-#'   Type: \code{[logical]}.}
-#'   \item{insulation}{Identifier of insulation that covers the exterior of pipe:
-#'   \code{0} - no insulation; \code{1} - foamed polyurethane or analogue; \code{2} - polymer concrete.
-#'   Type: \code{[double]}.}
+#'     pipe laying are considered:
+#'     \itemize{
+#'      \item \code{air},
+#'      \item \code{channel},
+#'      \item \code{room},
+#'      \item \code{tunnel},
+#'      \item \code{underground}.
+#'     }
+#'     Type: \code{[character, subset]}.
+#'   }
+#'
+#'   \item{exp5k}{
+#'     Logical indicator for pipe regime: if \code{TRUE} pipe is
+#'     operated more that \code{5000} hours per year.
+#'     Type: \code{[logical]}.
+#'   }
+#'
+#'   \item{insulation}{
+#'     Identifier of insulation that covers the exterior of pipe:
+#'     \describe{
+#'       \item{\code{0}}{no insulation}
+#'       \item{\code{1}}{foamed polyurethane or analogue}
+#'       \item{\code{2}}{polymer concrete}
+#'     }
+#'    Type: \code{[double, subset]}.
+#'   }
+#'
 #'   \item{diameter}{Nominal internal diameter of pipe, [mm]. Type: \code{[double]}.}
+#'
 #'   \item{temperature}{Operational temperature of pipe, [°C]. Type: \code{[double]}.}
-#'   \item{flux}{Heat flux emitted by every meter of pipe during an hour, [kcal/m/hour].
-#'   Type: \code{[double]}.}
+#'
+#'   \item{flux}{
+#'     Heat flux emitted by every meter of pipe during an hour, [kcal/m/hour].
+#'     Type: \code{[double]}.}
 #'  }
+#'
 #' @source \url{http://docs.cntd.ru/document/902148459}
 "m325nhldata"

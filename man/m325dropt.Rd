@@ -103,6 +103,7 @@ Other Minenergo:
 \code{\link{m325beta}()},
 \code{\link{m325nhldata}},
 \code{\link{m325nhl}()},
+\code{\link{m325testbench}},
 \code{\link{m325traceline}()}
 }
 \concept{Minenergo}

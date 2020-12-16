@@ -8,7 +8,7 @@ dropt(temperature = 130, pressure = mpa_kgf(6), consumption = 250, flux = 7000)
 }
 \arguments{
 \item{temperature}{temperature of heat carrier (water) inside the pipe measured at the
-entrance of pipe, [\emph{°C}]. Type: \code{[double]}.}
+inlet of pipe, [\emph{°C}]. Type: \code{[double]}.}
 
 \item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{[double]}.}
