@@ -143,7 +143,7 @@ dropp <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.
   checkmate::assert_double(
     consumption, lower = 1e-3, upper = 1e5, any.missing = FALSE, min.len = 1
   )
-  checkmate::assert_double(d, lower = .1, upper = 2.0, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(d, lower = 25e-3, upper = 2.0, any.missing = FALSE, min.len = 1)
   checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
   checkmate::assert_double(roughness, lower = 0, upper = .2, any.missing = FALSE, min.len = 1)
   checkmate::assert_double(inlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
