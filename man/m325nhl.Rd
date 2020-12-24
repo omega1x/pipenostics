@@ -129,6 +129,7 @@ Other Minenergo:
 \code{\link{m325dropt}()},
 \code{\link{m325nhldata}},
 \code{\link{m325testbench}},
+\code{\link{m325tracebw}()},
 \code{\link{m325traceline}()}
 }
 \concept{Minenergo}

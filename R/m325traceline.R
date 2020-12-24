@@ -1,6 +1,5 @@
 #' @title
-#'  Minenergo-325. Trace parameters of thermal-hydraulic regime for linear
-#'  segment
+#'  Minenergo-325. Trace thermal-hydraulic regime for linear segment
 #'
 #' @family Minenergo
 #'

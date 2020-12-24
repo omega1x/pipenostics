@@ -42,9 +42,10 @@
 #'   }
 #'
 #'   \item{temperature}{
-#'     Snapshot of thermal-hydraulic regime state: temperature of heat carrier (water)
-#'     sensor-measured on acceptor node, [\emph{°C}]. Type: \code{[double]}.
-#'     \code{NA}s are introduced for nodes without temperature sensor.
+#'     Snapshot of thermal-hydraulic regime state: temperature of heat carrier
+#'     (water) sensor-measured on terminal acceptor node, [\emph{°C}].
+#'     Type: \code{[double]}. \code{NA}s are introduced for nodes without
+#'     temperature sensor.
 #'   }
 #'
 #'   \item{pressure}{
@@ -59,10 +60,10 @@
 #'
 #'   \item{consumption}{
 #'     Snapshot of thermal-hydraulic regime state:
-#'     sensor-measured amount of heat carrier (water) that is transferred by
-#'     pipe (i.e. acceptor's incoming edge) during a period, [\emph{ton/hour}].
-#'     Type: \code{[double]}. \code{NA}s are introduced for nodes without
-#'     consumption sensor.
+#'     sensor-measured amount of heat carrier (water) on terminal node that is
+#'     transferred by pipe (i.e. acceptor's incoming edge) during a period,
+#'     [\emph{ton/hour}]. Type: \code{[double]}. \code{NA}s are introduced for
+#'     nodes without consumption sensor.
 #'   }
 #'
 #'  \item{d}{
@@ -83,7 +84,7 @@
 #'  }
 #'
 #'  \item{insulation}{
-#'     Identifier of insulation that covers the exterior of pipe (i.e. acceptor's
+#'     identifier of insulation that covers the exterior of pipe (i.e. acceptor's
 #'     incoming edge):
 #'     \describe{
 #'       \item{\code{0}}{no insulation}
@@ -94,7 +95,7 @@
 #'  }
 #'
 #'  \item{laying}{
-#'     Type of pipe laying depicting the position of pipe in space. Only five
+#'     type of pipe laying depicting the position of pipe in space. Only five
 #'     types of pipe laying are considered:
 #'     \itemize{
 #'       \item \code{air},
@@ -107,30 +108,30 @@
 #'   }
 #'
 #'  \item{beta}{
-#'    Logical indicator: should they consider additional heat losses of fittings
+#'    logical indicator: should they consider additional heat losses of fittings
 #'    located on this pipe (i.e. acceptor's incoming edge)?
 #'    Type: \code{[logical]}.
 #'  }
 #'
 #'  \item{exp5k}{
-#'     Logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
+#'     logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
 #'     \code{TRUE} pipe is operated more that \code{5000} hours per year.
 #'     Type: \code{[logical]}.
 #'   }
 #'
 #'  \item{roughness}{
-#'    Roughness of internal wall of pipe (i.e. acceptor's incoming edge),
+#'    roughness of internal wall of pipe (i.e. acceptor's incoming edge),
 #'    [\emph{m}].
 #'    Type: \code{[double]}.
 #'  }
 #'
 #'  \item{inlet}{
-#'     Elevation of pipe inlet, [\emph{m}].
+#'     elevation of pipe inlet, [\emph{m}].
 #'     Type: \code{[double]}.
 #'  }
 #'
 #'  \item{outlet}{
-#'     Elevation of pipe outlet, [\emph{m}].
+#'     elevation of pipe outlet, [\emph{m}].
 #'     Type: \code{[double]}.
 #'  }
 #'}

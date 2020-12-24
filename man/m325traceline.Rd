@@ -2,8 +2,7 @@
 % Please edit documentation in R/m325traceline.R
 \name{m325traceline}
 \alias{m325traceline}
-\title{Minenergo-325. Trace parameters of thermal-hydraulic regime for linear
- segment}
+\title{Minenergo-325. Trace thermal-hydraulic regime for linear segment}
 \usage{
 m325traceline(
   temperature = 130,
@@ -258,6 +257,7 @@ Other Minenergo:
 \code{\link{m325dropt}()},
 \code{\link{m325nhldata}},
 \code{\link{m325nhl}()},
-\code{\link{m325testbench}}
+\code{\link{m325testbench}},
+\code{\link{m325tracebw}()}
 }
 \concept{Minenergo}
