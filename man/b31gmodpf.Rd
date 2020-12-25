@@ -29,7 +29,7 @@ Calculate failure pressure of the corroded pipe
 
  The next assumption of the corrosion shape is adopted by \emph{Modified B31G}:
 
- \figure{corrareab31gmod.png}
+ \figure{b31gmodpf.png}
 
  There d\emph{cor} represents argument \code{depth}.
 }

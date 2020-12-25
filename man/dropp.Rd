@@ -63,7 +63,7 @@ The underlying engineering model for calculation of pressure drop considers
  For the first component that depends on pipe position in space the next
  figure illustrates adopted disposition of pipe.
 
- \figure{pdrop.png}
+ \figure{dropp.png}
 
  So, the expression for the first component can be written as:
 

@@ -12,7 +12,7 @@
 #'  The next assumption of the corrosion shape is adopted by
 #'  \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012}:
 #'
-#'  \figure{corrareab31g.png}
+#'  \figure{b31gpf.png}
 #'
 #'  There (a) is a parabolic and (b) is a rectangular idealisations of a
 #'  corroded area, and d\emph{cor} represents argument \code{depth}.

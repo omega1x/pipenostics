@@ -34,7 +34,7 @@ Calculate failure pressure of the corroded pipe
  The next assumption of the corrosion shape is adopted by
  \href{https://rules.dnvgl.com/docs/pdf/DNV/codes/docs/2010-10/RP-F101.pdf}{DNV-RP-F101}:
 
- \figure{corrareadnvp.png}
+ \figure{dnvpf.png}
 
  There d\emph{cor} represents argument \code{depth}.
 }
