@@ -409,12 +409,10 @@ m325tracebw <- function(sender = 6, acceptor = 7,
   .func_name <- "m325tracebw"
 
   # Validate function input ----
-  checkmate::assert_true(
-    all(!is.na(acceptor))
-  ) #  consider single income edge only!
+  checkmate::assert_true(all(!is.na(acceptor)))
   acceptor <- as.character(acceptor)
+  checkmate::assert_true(!any(duplicated(acceptor)))  # only single income edge!
   n <- length(acceptor)
-  checkmate::assert_true(all(!is.na(sender)))  # only single income edge!
   sender <- as.character(sender)
   checkmate::assert_character(sender, any.missing = FALSE, len = n)
   checkmate::assert_double(
@@ -478,9 +476,9 @@ m325tracebw <- function(sender = 6, acceptor = 7,
   }
   # Validate method aspects ----
   is_terminal_node <- !(acceptor %in% sender)
-  checkmate::assert_double(temperature[is_terminal_node], any.missing = FALSE)
-  checkmate::assert_double(pressure[is_terminal_node], any.missing = FALSE)
-  checkmate::assert_double(consumption[is_terminal_node], any.missing = FALSE)
+  checkmate::assert_double(temperature[is_terminal_node], any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(pressure[is_terminal_node], any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(consumption[is_terminal_node], any.missing = FALSE, min.len = 1)
 
   # Conf: list of aggregation functions ----
   agg_func <- list(
