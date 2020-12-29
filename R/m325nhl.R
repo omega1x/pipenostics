@@ -58,8 +58,7 @@
 #'   Type: \code{[integer, choice]}.
 #'
 #' @return
-#'  Heat flux emitted by pipe during \code{duration}, [\emph{kcal}],
-#'  numeric vector.
+#'  Heat flux emitted by pipe during \code{duration}, [\emph{kcal}].
 #'  If \code{len} of pipe is 1 \emph{m} and \code{duration} of heat flux
 #'  emittance is set to 1 \emph{hour} then the return value is in the same
 #'  units as value of heat flux, [\emph{kcal/m/h}], accepted by
@@ -136,7 +135,7 @@ m325nhl <- function(year = 1986, laying = "underground", exp5k = TRUE,
   checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1)
   checkmate::assert_choice(extra, 2:4)
 
-  mapply(
+  worker <-
     function(year_value, laying_value, exp5k_value, insulation_value,
              d_value, temperature_value, len_value, duration_value, beta_value) {
       epoch <- with(list(epochs = unique(norms$epoch)), {
@@ -173,7 +172,13 @@ m325nhl <- function(year = 1986, laying = "underground", exp5k = TRUE,
       flux * len_value * duration_value * (
         pipenostics::m325beta(laying_value, d_value) * beta_value + !beta_value
       )
-  }, year, laying, exp5k, insulation, d, temperature, len, duration, beta)
+  }
+  unlist(
+    Map(
+      worker, year, laying, exp5k, insulation, d, temperature, len, duration,
+      beta
+    )
+  )
 }
 
 

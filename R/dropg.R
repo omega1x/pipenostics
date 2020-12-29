@@ -175,7 +175,7 @@ dropg.list <- function(adj = 0, d = 700, consumption = 250){
                            any.missing = FALSE, min.len = 1)
   checkmate::assert_double(consumption, lower = 1e-3, upper = 1e5,
                            finite = TRUE, min.len = 1)
-  adj <- sapply(adj, sum)
+  adj <- vapply(adj, sum, FUN.VALUE = .1)
   NextMethod("dropg")
 }
 
