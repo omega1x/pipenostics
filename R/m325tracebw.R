@@ -467,7 +467,7 @@ m325tracebw <- function(sender = 6, acceptor = 7,
   checkmate::assert_flag(verbose)
   checkmate::assert_choice(opinion, c("median", "mean"))
   checkmate::assert_flag(csv)
-  if (csv){
+  if (csv) {
     checkmate::assert_character(
       basename(file), pattern = "^[[:alnum:]_\\.\\-]+$",
       any.missing = FALSE, len = 1
@@ -540,19 +540,19 @@ m325tracebw <- function(sender = 6, acceptor = 7,
     # Make up job aggregations ----
     agg_log <- lapply(
       structure(names(agg_func), names = names(agg_func)),
-      function(func_name, log_df)
-        with(log_df,{
-          trace <- tapply(trace, node, "paste", collapse = "|")
-          data.frame(
-            node = names(trace),
-            trace = trace,
-            backward = TRUE,
-            aggregation = func_name,
-            temperature = tapply(temperature, node, agg_func[[func_name]]),
-            pressure = tapply(pressure, node, agg_func[[func_name]]),
-            consumption = tapply(consumption, node, sum),
-            job = job_num
-        )}),
+      function(func_name, log_df) {
+        trace <- tapply(log_df$trace, log_df$node, "paste", collapse = "|")
+        data.frame(
+             node = names(trace),
+             trace = trace,
+             backward = TRUE,
+             aggregation = func_name,
+             temperature = tapply(log_df$temperature, log_df$node, agg_func[[func_name]]),
+             pressure = tapply(log_df$pressure, log_df$node, agg_func[[func_name]]),
+             consumption = tapply(log_df$consumption, log_df$node, sum),
+             job = job_num
+        )
+      }  ,
       log_df = job_log[job_log$node %in% ready_nodes &
                        job_log$aggregation == "identity",]
 

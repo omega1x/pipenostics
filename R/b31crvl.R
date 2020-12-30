@@ -238,34 +238,26 @@ b31crvl <- function(maop, d, wth, smys, def = .72, depth, l){
   checkmate::assert_double(def, lower = 0, upper = 1, finite = TRUE, any.missing = FALSE, min.len = 1)
   checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE, min.len = 1)
   checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
-  pipe <- within(
-    data.frame(
-      maop  = maop,
-      d     = d,
-      wth   = wth,
-      smys  = smys,
-      def   = def,
-      depth = depth,
-      l     = l
-    ),
-    {
-      design_pressure <- trunc(b31gdep(d, wth, smys, def))
-      status          <- b31gops(wth, depth)
-      A               <- b31gafr(d, wth, l)
-
-      allowed_corrosion_depth <-
-        b31gacd(design_pressure, maop, d, wth, l)
-      safe_pressure <- b31gsap(design_pressure, d, wth, depth, l)
-      pressure_exceeding <- maop > safe_pressure
-      allowed_corrosion_length <-
-        b31gacl(design_pressure, maop, d, wth, depth, l)
-      AP <- ifelse(
-        is.infinite(allowed_corrosion_length),
-        5,
-        round(allowed_corrosion_length / sqrt(d * wth) / 1.12, 3)
-      )
-    }
+  pipe <- data.frame(
+    maop = maop,  d = d, wth = wth, smys  = smys, def = def, depth = depth, l = l
   )
+  pipe$design_pressure <- trunc(b31gdep(pipe$d, pipe$wth, pipe$smys, pipe$def))
+  pipe$status <- b31gops(pipe$wth, pipe$depth)
+  pipe$A <- b31gafr(pipe$d, pipe$wth, pipe$l)
+
+  pipe$allowed_corrosion_depth <-
+        b31gacd(pipe$design_pressure, pipe$maop, pipe$d, pipe$wth, pipe$l)
+  pipe$safe_pressure <-
+    b31gsap(pipe$design_pressure, pipe$d, pipe$wth, pipe$depth, pipe$l)
+  pipe$pressure_exceeding <- pipe$maop > pipe$safe_pressure
+  pipe$allowed_corrosion_length <- b31gacl(
+    pipe$design_pressure, pipe$maop, pipe$d, pipe$wth, pipe$depth, pipe$l
+  )
+  pipe$AP <- ifelse(
+        is.infinite(pipe$allowed_corrosion_length),
+        5,
+        round(pipe$allowed_corrosion_length / sqrt(pipe$d * pipe$wth) / 1.12, 3)
+      )
   class(pipe) <- c("crvl", class(pipe))
   return(pipe)
 }

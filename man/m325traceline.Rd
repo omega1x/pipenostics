@@ -21,7 +21,8 @@ m325traceline(
   outlet = 0,
   elev_tol = 0.1,
   method = "romeo",
-  forward = TRUE
+  forward = TRUE,
+  absg = TRUE
 )
 }
 \arguments{
@@ -39,7 +40,10 @@ the outlet (backward tracing) of path, [\emph{ton/hour}].
 Type: \code{[number]}.}
 
 \item{g}{amount of heat carrier discharge to network for each pipe segment in the
-tracing path enumerated along the direction of flow, [\emph{ton/hour}].
+tracing path enumerated along the direction of flow. If flag \code{absg}
+is \code{TRUE} then they treat argument \code{g} as absolute value in
+[\emph{ton/hour}], otherwise they do as percentage of consumption in the
+pipe segment.
 Type: \code{[double]}.}
 
 \item{d}{internal diameters of subsequent pipes in tracing path that are enumerated
@@ -104,6 +108,11 @@ Type: \code{[character, choice]}. For more details see \code{\link{dropp}}.}
 
 \item{forward}{tracing direction flag: is it a forward direction of tracing?
 If \code{FALSE} the backward tracing is performed.
+Type: \code{[flag]}.}
+
+\item{absg}{Whether argument \code{g} (amount of heat carrier discharge to network) is an
+absolute value in [\emph{ton/hour}] (\code{TRUE}) or is it a percentage of
+consumption in the pipe segment (\code{FALSE})?
 Type: \code{[flag]}.}
 }
 \value{

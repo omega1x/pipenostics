@@ -46,7 +46,10 @@
 #'
 #' @param g
 #'  amount of heat carrier discharge to network for each pipe segment in the
-#'  tracing path enumerated along the direction of flow, [\emph{ton/hour}].
+#'  tracing path enumerated along the direction of flow. If flag \code{absg}
+#'  is \code{TRUE} then they treat argument \code{g} as absolute value in
+#'  [\emph{ton/hour}], otherwise they do as percentage of consumption in the
+#'  pipe segment.
 #'  Type: \code{[double]}.
 #'
 #' @param d
@@ -124,6 +127,12 @@
 #' @param forward
 #'  tracing direction flag: is it a forward direction of tracing?
 #'  If \code{FALSE} the backward tracing is performed.
+#'  Type: \code{[flag]}.
+#'
+#' @param absg
+#'  Whether argument \code{g} (amount of heat carrier discharge to network) is an
+#'  absolute value in [\emph{ton/hour}] (\code{TRUE}) or is it a percentage of
+#'  consumption in the pipe segment (\code{FALSE})?
 #'  Type: \code{[flag]}.
 #'
 #' @return
@@ -243,7 +252,7 @@
 #' @export
 m325traceline <- function(
   temperature = 130, pressure = mpa_kgf(6), consumption = 250,
-  g = 0,  # [ton/hour]
+  g = 0,  # [ton/hour] or [] depending on
   d = 700,  # [mm]
   len = c(600, 530, 300, 350),  # [m]
   year = 1986,
@@ -255,14 +264,16 @@ m325traceline <- function(
   inlet = 0., outlet = 0.,  # [m]
   elev_tol = .1,  # [m]
   method = "romeo",
-  forward = TRUE
+  forward = TRUE,
+  absg = TRUE
   ){
   norms <- pipenostics::m325nhldata
   checkmate::assert_number(temperature, lower = 0, upper = 350, finite = TRUE)
   checkmate::assert_number(pressure, lower = 8.4e-2, upper = 100, finite = TRUE)
   checkmate::assert_number(consumption, lower = 1e-3, upper = 1e5, finite = TRUE)
+  checkmate::assert_flag(absg)
   checkmate::assert_double(g, lower = 0,
-                           upper = consumption,
+                           upper = c(1, consumption)[[1 + absg]],
                            finite = TRUE, any.missing = FALSE,
                            min.len = 1)
   checkmate::assert_double(d, lower = min(norms$diameter),
@@ -306,7 +317,7 @@ m325traceline <- function(
       if (forward) enum else rev(enum)
     })
     for (i in pipe_enum) {
-      g_value <- g_value + c(0, -g[[i]])[[forward + 1]]
+      g_value <- g_value + c(0, -g[[i]])[[forward + 1]]*c(g_value, 1)[[1 + absg]]
       t_regime[[i]] <- t_value <- {
         t_value + (-1)^forward *
         pipenostics::m325dropt(
@@ -324,7 +335,8 @@ m325traceline <- function(
           inlet = inlet[[i]], outlet = outlet[[i]], method = method
         )
       }
-      g_regime[[i]] <- g_value <- g_value + c(0, g[[i]])[2 - forward]
+      g_regime[[i]] <- g_value <-
+        g_value + c(0, g[[i]])[[2 - forward]]*c(g_value, 1)[[1 + absg]]
     }
   list(temperature = t_regime, pressure = p_regime, consumption = g_regime)
   })

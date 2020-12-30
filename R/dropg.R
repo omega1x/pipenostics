@@ -165,7 +165,7 @@
 #'}
 
 dropg <- function(adj = 0, d = 700, consumption = 250) {
-  UseMethod("dropg")
+  UseMethod("dropg", adj)
 }
 
 #' @export

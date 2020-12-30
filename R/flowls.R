@@ -108,7 +108,7 @@ flowls <- function(sender = "A", acceptor = "B"){
     segment_counter <- 1L
     idx <- terminal_node_idx[[path_id]]  # get *terminal_node_idx* from parent env
     path[[segment_counter]] <- idx
-    while(idx != starting_node_idx){  # get *starting_node_idx* from parent env
+    while (idx != starting_node_idx) {  # get *starting_node_idx* from parent env
       segment_counter <- segment_counter + 1L
       # get *acceptor* and *sender* from parent env
       idx <- which(acceptor == sender[acceptor == acceptor[[idx]]])
