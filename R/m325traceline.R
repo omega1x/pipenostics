@@ -1,7 +1,7 @@
 #' @title
 #'  Minenergo-325. Trace thermal-hydraulic regime for linear segment
 #'
-#' @family Minenergo
+#' @family Regime tracing
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,

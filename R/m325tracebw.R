@@ -2,7 +2,7 @@
 #'  Minenergo-325. Trace backwards thermal-hydraulic regime for district heating
 #'  network
 #'
-#' @family Minenergo
+#' @family Regime tracing
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
@@ -67,7 +67,7 @@
 #'    sensor-measured amount of heat carrier (water) on terminal node that is
 #'    transferred by pipe (i.e. acceptor's incoming edge) during a period,
 #'    [\emph{ton/hour}]. Type: \code{[double]}. Use \code{NA_float_}s for nodes
-#'    without consumtion sensor.
+#'    without consumption sensor.
 #'
 #' @param d
 #'    internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
@@ -217,7 +217,7 @@
 #'      Type: \code{[double]}.
 #'    }
 #'
-#'    \item{\code{consumtion}}{
+#'    \item{\code{consumption}}{
 #'      \emph{snapshot of thermal-hydraulic regime state}: traced pressure of heat
 #'      carrier (water) that is associated with the node, [\emph{ton/hour}]
 #'      Type: \code{[double]}.
