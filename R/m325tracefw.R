@@ -18,14 +18,16 @@
 #'  They consider the topology of district heating network much similar to
 #'  \code{\link{m325testbench}}:
 #'
-#'  \figure{m325tracebw.png}
+#'  \figure{m325tracefw.png}
 #'
 #'  Tracing starts from sensor-equipped root node and goes forward, i.e along
 #'  the flow direction. Function \code{\link{m325traceline}} serves under the
 #'  hood for tracing identified linear segments from root node to every
-#'  terminal node.
+#'  terminal node. Hence they only need root node to be equipped with sensors.
+#'  Sensors at other nodes are redundant in forward tracing, since the tracing
+#'  algorithm by no means consider them for tracing.
 #'
-#'  In the forward tracing algorithm they assume the flow of heat carrier is
+#'  Moreover in the forward tracing algorithm they assume the flow of heat carrier is
 #'  distributed proportionally to the cross-sectional area of the outgoing
 #'  pipeline. Actually, a lot of reasons may cause significant deviations from
 #'  this assumption. As a result, the sequence of paired backward/forward
@@ -130,13 +132,8 @@
 #'     Type: \code{[double]}.
 #'
 #' @param elev_tol
-#'    method of determining \emph{Darcy friction factor}:
-#'    \itemize{
-#'      \item \code{romeo}
-#'      \item \code{vatankhan}
-#'      \item \code{buzelli}
-#'    }
-#'    Type: \code{[character, choice]}. For more details see \code{\link{dropp}}.
+#'    maximum allowed discrepancy between adjacent outlet and inlet elevations of
+#'    two subsequent pipes in the traced path, [\emph{m}]. Type: \code{[number]}.
 #'
 #'
 #' @param method
@@ -368,7 +365,7 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
 
   # Compute discharges ----
   discharge <-
-    setNames(1 - d ^ 2 / tapply(d ^ 2, sender, sum)[sender], acceptor)
+    structure(1 - d ^ 2 / tapply(d ^ 2, sender, sum)[sender], names = acceptor)
 
   # List search paths ----
   tracing_path <- flowls(sender, acceptor)

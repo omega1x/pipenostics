@@ -53,7 +53,7 @@ without pressure sensor.}
 sensor-measured amount of heat carrier (water) on terminal node that is
 transferred by pipe (i.e. acceptor's incoming edge) during a period,
 [\emph{ton/hour}]. Type: \code{[double]}. Use \code{NA_float_}s for nodes
-without consumtion sensor.}
+without consumption sensor.}
 
 \item{d}{internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
 [\emph{mm}].
@@ -135,7 +135,8 @@ Type: \code{[character]} of length 1.}
 \value{
 \code{data.frame} containing results of tracing in
    long format
-   (\href{https://en.wikipedia.org/wiki/Wide_and_narrow_data}{narrow format}):
+   (\href{https://en.wikipedia.org/wiki/Wide_and_narrow_data}{narrow format})
+   mostly like it returned by function \code{\link{m325tracefw}}:
    \describe{
      \item{\code{node}}{
        identifier of the node for which regime parameters is calculated.
@@ -188,7 +189,7 @@ Type: \code{[character]} of length 1.}
      Type: \code{[double]}.
    }
 
-   \item{\code{consumtion}}{
+   \item{\code{consumption}}{
      \emph{snapshot of thermal-hydraulic regime state}: traced pressure of heat
      carrier (water) that is associated with the node, [\emph{ton/hour}]
      Type: \code{[double]}.
@@ -402,18 +403,8 @@ stopifnot(
 
 }
 \seealso{
-Other Minenergo: 
-\code{\link{m278hlair}()},
-\code{\link{m278hlcha}()},
-\code{\link{m278hlund}()},
-\code{\link{m278insdata}},
-\code{\link{m278inshcm}()},
-\code{\link{m278soildata}},
-\code{\link{m325beta}()},
-\code{\link{m325dropt}()},
-\code{\link{m325nhldata}},
-\code{\link{m325nhl}()},
-\code{\link{m325testbench}},
+Other Regime tracing: 
+\code{\link{m325tracefw}()},
 \code{\link{m325traceline}()}
 }
-\concept{Minenergo}
+\concept{Regime tracing}

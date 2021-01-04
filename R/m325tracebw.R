@@ -164,7 +164,8 @@
 #' @return
 #'    \code{data.frame} containing results of tracing in
 #'    long format
-#'    (\href{https://en.wikipedia.org/wiki/Wide_and_narrow_data}{narrow format}):
+#'    (\href{https://en.wikipedia.org/wiki/Wide_and_narrow_data}{narrow format})
+#'    mostly like it returned by function \code{\link{m325tracefw}}:
 #'    \describe{
 #'      \item{\code{node}}{
 #'        identifier of the node for which regime parameters is calculated.

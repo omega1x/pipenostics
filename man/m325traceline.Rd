@@ -255,18 +255,8 @@ if ("data.table" \%in\% rownames(installed.packages())) {
 \code{\link{m325dropt}} for calculating normative temperature drop in
  single pipeline segment
 
-Other Minenergo: 
-\code{\link{m278hlair}()},
-\code{\link{m278hlcha}()},
-\code{\link{m278hlund}()},
-\code{\link{m278insdata}},
-\code{\link{m278inshcm}()},
-\code{\link{m278soildata}},
-\code{\link{m325beta}()},
-\code{\link{m325dropt}()},
-\code{\link{m325nhldata}},
-\code{\link{m325nhl}()},
-\code{\link{m325testbench}},
-\code{\link{m325tracebw}()}
+Other Regime tracing: 
+\code{\link{m325tracebw}()},
+\code{\link{m325tracefw}()}
 }
-\concept{Minenergo}
+\concept{Regime tracing}
