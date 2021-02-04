@@ -6,7 +6,7 @@
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
-#'  consumption) in bunched pipeline against the flow direction using norms of
+#'  consumption) in the bunched pipeline against the flow direction using norms of
 #'  heat flux values prescribed by
 #'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'
@@ -239,16 +239,8 @@
 #' nx <- pipenostics::m325testbench
 #' nx$d <- 1e3*nx$d  # convert [m] to [mm]
 #'
-#' # When tracing large network graphs put screen log to file:
-#' while(sink.number() > 0) sink()  # clear all previously initiated diversions
-#' sink(file = "m325tracebw.log", split = TRUE)
+#' # When tracing large network graphs put screen log to file
 #' output <- do.call("m325tracebw", c(as.list(nx), verbose = TRUE))
-#' sink()
-#' rm(output)
-#' screen_log <- read.table(file = "m325tracebw.log", sep = ";", header = FALSE)
-#' print(screen_log)
-#' rm(screen_log)
-#'
 #'
 #' # Distinct options for opinion aggregation lead to distinct traced
 #' # temperature and pressure:

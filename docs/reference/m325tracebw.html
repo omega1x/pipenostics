@@ -43,7 +43,7 @@
 <meta property="og:title" content="Minenergo-325. Trace backwards thermal-hydraulic regime for district heating
  network — m325tracebw" />
 <meta property="og:description" content="Trace values of thermal-hydraulic regime (temperature, pressure,
- consumption) in bunched pipeline against the flow direction using norms of
+ consumption) in the bunched pipeline against the flow direction using norms of
  heat flux values prescribed by
  Minenergo Order 325." />
 
@@ -85,7 +85,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -94,7 +94,12 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/omega1x/pipenostics/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -110,13 +115,13 @@
     <div class="page-header">
     <h1>Minenergo-325. Trace backwards thermal-hydraulic regime for district heating
  network</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/omega1x/pipenostics/blob/master/R/m325tracebw.R'><code>R/m325tracebw.R</code></a></small>
     <div class="hidden name"><code>m325tracebw.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Trace values of thermal-hydraulic regime (temperature, pressure,
- consumption) in bunched pipeline against the flow direction using norms of
+ consumption) in the bunched pipeline against the flow direction using norms of
  heat flux values prescribed by
  <a href='http://docs.cntd.ru/document/902148459'>Minenergo Order 325</a>.</p>
     </div>
@@ -364,13 +369,13 @@ Type: <code>[character]</code> of length 1.</p></td>
     <pre class="examples"><div class='input'><span class='co'># It is possible to run without specification of argument values:</span>
 <span class='fu'>m325tracebw</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 
-#&gt; 2021-01-18 19:20:29 m325tracebw | start backward tracing; segments 1;
-#&gt; 2021-01-18 19:20:29 m325tracebw | start job; job 0;
-#&gt; 2021-01-18 19:20:29 m325tracebw | now process; 1 node(s); [7]
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | finish job; job 0; processed node(s) 1
-#&gt; 2021-01-18 19:20:29 m325tracebw | finish backward tracing;;</div><div class='output co'>#&gt;        node  trace backward aggregation temperature pressure consumption job
+#&gt; 2021-02-04 17:21:08 m325tracebw | start backward tracing; segments 1;
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 0;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 1 node(s); [7]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 0; processed node(s) 1
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish backward tracing;;</div><div class='output co'>#&gt;        node  trace backward aggregation temperature pressure consumption job
 #&gt; 1         7 sensor     TRUE    identity          70 0.588399          20   0
 #&gt; span      7 sensor     TRUE        span           0 0.000000          20   0
 #&gt; median    7 sensor     TRUE      median          70 0.588399          20   0
@@ -379,54 +384,46 @@ Type: <code>[character]</code> of length 1.</p></td>
 <span class='va'>nx</span> <span class='op'>&lt;-</span> <span class='fu'>pipenostics</span><span class='fu'>::</span><span class='va'><a href='m325testbench.html'>m325testbench</a></span>
 <span class='va'>nx</span><span class='op'>$</span><span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fl'>1e3</span><span class='op'>*</span><span class='va'>nx</span><span class='op'>$</span><span class='va'>d</span>  <span class='co'># convert [m] to [mm]</span>
 
-<span class='co'># When tracing large network graphs put screen log to file:</span>
-<span class='kw'>while</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sink.html'>sink.number</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>&gt;</span> <span class='fl'>0</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/sink.html'>sink</a></span><span class='op'>(</span><span class='op'>)</span>  <span class='co'># clear all previously initiated diversions</span>
-<span class='fu'><a href='https://rdrr.io/r/base/sink.html'>sink</a></span><span class='op'>(</span>file <span class='op'>=</span> <span class='st'>"m325tracebw.log"</span>, split <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='co'># When tracing large network graphs put screen log to file</span>
 <span class='va'>output</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/do.call.html'>do.call</a></span><span class='op'>(</span><span class='st'>"m325tracebw"</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>as.list</a></span><span class='op'>(</span><span class='va'>nx</span><span class='op'>)</span>, verbose <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 
-#&gt; 2021-01-18 19:20:29 m325tracebw | start backward tracing; segments 26;
-#&gt; 2021-01-18 19:20:29 m325tracebw | start job; job 0;
-#&gt; 2021-01-18 19:20:29 m325tracebw | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | finish job; job 0; processed node(s) 13
-#&gt; 2021-01-18 19:20:29 m325tracebw | start job; job 1;
-#&gt; 2021-01-18 19:20:29 m325tracebw | now process; 5 node(s); [14,22,23,4,5]
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | finish job; job 1; processed node(s) 5
-#&gt; 2021-01-18 19:20:29 m325tracebw | start job; job 2;
-#&gt; 2021-01-18 19:20:29 m325tracebw | now process; 2 node(s); [20,6]
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | finish job; job 2; processed node(s) 2
-#&gt; 2021-01-18 19:20:29 m325tracebw | start job; job 3;
-#&gt; 2021-01-18 19:20:29 m325tracebw | now process; 2 node(s); [18,8]
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | finish job; job 3; processed node(s) 2
-#&gt; 2021-01-18 19:20:29 m325tracebw | start job; job 4;
-#&gt; 2021-01-18 19:20:29 m325tracebw | now process; 2 node(s); [11,16]
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | finish job; job 4; processed node(s) 2
-#&gt; 2021-01-18 19:20:29 m325tracebw | start job; job 5;
-#&gt; 2021-01-18 19:20:29 m325tracebw | now process; 1 node(s); [13]
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | finish job; job 5; processed node(s) 1
-#&gt; 2021-01-18 19:20:29 m325tracebw | start job; job 6;
-#&gt; 2021-01-18 19:20:29 m325tracebw | now process; 1 node(s); [12]
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:29 m325tracebw | finish job; job 6; processed node(s) 1
-#&gt; 2021-01-18 19:20:29 m325tracebw | finish backward tracing;;</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/sink.html'>sink</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span><span class='va'>output</span><span class='op'>)</span>
-<span class='va'>screen_log</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.table</a></span><span class='op'>(</span>file <span class='op'>=</span> <span class='st'>"m325tracebw.log"</span>, sep <span class='op'>=</span> <span class='st'>";"</span>, header <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in read.table(file = "m325tracebw.log", sep = ";", header = FALSE): no lines available in input</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>screen_log</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in print(screen_log): object 'screen_log' not found</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/rm.html'>rm</a></span><span class='op'>(</span><span class='va'>screen_log</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: object 'screen_log' not found</span></div><div class='input'>
-
+#&gt; 2021-02-04 17:21:08 m325tracebw | start backward tracing; segments 26;
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 0;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 0; processed node(s) 13
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 1;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 5 node(s); [14,22,23,4,5]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 1; processed node(s) 5
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 2;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 2 node(s); [20,6]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 2; processed node(s) 2
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 3;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 2 node(s); [18,8]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 3; processed node(s) 2
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 4;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 2 node(s); [11,16]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 4; processed node(s) 2
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 5;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 1 node(s); [13]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 5; processed node(s) 1
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 6;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 1 node(s); [12]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 6; processed node(s) 1
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish backward tracing;;</div><div class='input'>
 <span class='co'># Distinct options for opinion aggregation lead to distinct traced</span>
 <span class='co'># temperature and pressure:</span>
 <span class='va'>output</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
@@ -468,43 +465,43 @@ Type: <code>[character]</code> of length 1.</p></td>
 <span class='co'># Raw unit tests used for debugging  ----</span>
 <span class='va'>output</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/do.call.html'>do.call</a></span><span class='op'>(</span><span class='st'>"m325tracebw"</span>, <span class='va'>nx</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 
-#&gt; 2021-01-18 19:20:30 m325tracebw | start backward tracing; segments 26;
-#&gt; 2021-01-18 19:20:30 m325tracebw | start job; job 0;
-#&gt; 2021-01-18 19:20:30 m325tracebw | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | finish job; job 0; processed node(s) 13
-#&gt; 2021-01-18 19:20:30 m325tracebw | start job; job 1;
-#&gt; 2021-01-18 19:20:30 m325tracebw | now process; 5 node(s); [14,22,23,4,5]
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | finish job; job 1; processed node(s) 5
-#&gt; 2021-01-18 19:20:30 m325tracebw | start job; job 2;
-#&gt; 2021-01-18 19:20:30 m325tracebw | now process; 2 node(s); [20,6]
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | finish job; job 2; processed node(s) 2
-#&gt; 2021-01-18 19:20:30 m325tracebw | start job; job 3;
-#&gt; 2021-01-18 19:20:30 m325tracebw | now process; 2 node(s); [18,8]
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | finish job; job 3; processed node(s) 2
-#&gt; 2021-01-18 19:20:30 m325tracebw | start job; job 4;
-#&gt; 2021-01-18 19:20:30 m325tracebw | now process; 2 node(s); [11,16]
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | finish job; job 4; processed node(s) 2
-#&gt; 2021-01-18 19:20:30 m325tracebw | start job; job 5;
-#&gt; 2021-01-18 19:20:30 m325tracebw | now process; 1 node(s); [13]
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | finish job; job 5; processed node(s) 1
-#&gt; 2021-01-18 19:20:30 m325tracebw | start job; job 6;
-#&gt; 2021-01-18 19:20:30 m325tracebw | now process; 1 node(s); [12]
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace temperature;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | trace pressure;;
-#&gt; 2021-01-18 19:20:30 m325tracebw | finish job; job 6; processed node(s) 1
-#&gt; 2021-01-18 19:20:30 m325tracebw | finish backward tracing;;</div><div class='input'>
+#&gt; 2021-02-04 17:21:08 m325tracebw | start backward tracing; segments 26;
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 0;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 0; processed node(s) 13
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 1;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 5 node(s); [14,22,23,4,5]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 1; processed node(s) 5
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 2;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 2 node(s); [20,6]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 2; processed node(s) 2
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 3;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 2 node(s); [18,8]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 3; processed node(s) 2
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 4;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 2 node(s); [11,16]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 4; processed node(s) 2
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 5;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 1 node(s); [13]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 5; processed node(s) 1
+#&gt; 2021-02-04 17:21:08 m325tracebw | start job; job 6;
+#&gt; 2021-02-04 17:21:08 m325tracebw | now process; 1 node(s); [12]
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace temperature;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | trace pressure;;
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish job; job 6; processed node(s) 1
+#&gt; 2021-02-04 17:21:08 m325tracebw | finish backward tracing;;</div><div class='input'>
 <span class='co'># * Tests for losses ----</span>
 <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/subset.data.table.html'>subset</a></span><span class='op'>(</span><span class='va'>nx</span>, <span class='va'>acceptor</span> <span class='op'>==</span> <span class='fl'>2</span><span class='op'>)</span>,
      <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span>

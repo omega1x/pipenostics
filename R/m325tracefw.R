@@ -6,7 +6,7 @@
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
-#'  consumption) in bunched pipeline along the flow direction using norms of
+#'  consumption) in the bunched pipeline along the flow direction using norms of
 #'  heat flux values prescribed by
 #'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'

@@ -40,11 +40,11 @@
 
 
 <meta property="og:title" content="Diagnostics, reliability and predictive maintenance of pipeline systems — pipenostics" />
-<meta property="og:description" content="The motivation for the package was to aggregate to some extent the separate
-knowledge about engineering, reliability, diagnostics and predictive maintenance of
-pipeline systems suitable for pipe holders. Distributing such knowledge
-with R-package seemed the most attractive option for white-collar
-engineers, having utilized spreadsheet software as a mainstream." />
+<meta property="og:description" content="Functions representing some useful empirical and data-driven models of heat
+losses, corrosion diagnostics, reliability and predictive maintenance of
+pipeline systems. The package is an option for digital transformation of
+technical engineering departments of heat generating and heat transferring
+companies." />
 
 
 
@@ -84,7 +84,7 @@ engineers, having utilized spreadsheet software as a mainstream." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -93,7 +93,12 @@ engineers, having utilized spreadsheet software as a mainstream." />
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/omega1x/pipenostics/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -108,157 +113,25 @@ engineers, having utilized spreadsheet software as a mainstream." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Diagnostics, reliability and predictive maintenance of pipeline systems</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/omega1x/pipenostics/blob/master/R/pipenostics.R'><code>R/pipenostics.R</code></a></small>
     <div class="hidden name"><code>pipenostics.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The motivation for the package was to aggregate to some extent the separate
-knowledge about engineering, reliability, diagnostics and predictive maintenance of
-pipeline systems suitable for pipe holders. Distributing such knowledge
-with <em>R</em>-package seemed the most attractive option for white-collar
-engineers, having utilized spreadsheet software as a mainstream.</p>
+    <p>Functions representing some useful empirical and data-driven models of heat
+losses, corrosion diagnostics, reliability and predictive maintenance of
+pipeline systems. The package is an option for digital transformation of
+technical engineering departments of heat generating and heat transferring
+companies.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Aiming to avoid portability and accessibility problems made us search ways to
-restrict source code development by functionality of few external packages.</p>
-<p>Since most functions have native argument vectorization usage of those
-functions with fast
-<a href='https://cran.r-project.org/package=data.table'>data.table</a>
-framework is strongly encourage when processing large data sets.</p>
-<p>For that purpose arguments for all package functions are thoroughly checked
-for type consistency and physical sense using asserts and tests from
-<code>checkmate</code> package. Moreover, in package documentation we
-borrow type designations according to <code>checkmate</code> notation.</p>
-    <h2 class="hasAnchor" id="-corrosion-diagnostics"><a class="anchor" href="#-corrosion-diagnostics"></a>1. Corrosion diagnostics</h2>
+    <p>For further details visit the
+<a href='https://omega1x.github.io/pipenostics'>package site</a>.</p>
 
-    
-
-<p>The next values describing technological conditions, material properties of
-pipe and defect parameters are used as arguments throughout the most
-functions concerning corrosion diagnostics:</p>
-<dl>
-  <dt><em>maop</em></dt><dd><p>maximum allowable operating pressure - <a href='https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure)'>MAOP</a>,
-     [<a href='https://en.wikipedia.org/wiki/Pounds_per_square_inch'>PSI</a>]</p></dd>
-  <dt><em>d</em></dt><dd><p>nominal outside diameter of the pipe, [<a href='https://en.wikipedia.org/wiki/Inch)'>inch</a>]</p></dd>
-  <dt><em>wth</em></dt><dd><p>nominal wall thickness of the pipe, [<a href='https://en.wikipedia.org/wiki/Inch'>inch</a>]</p></dd>
-  <dt><em>smys</em></dt><dd><p>specified minimum yield of stress (<a href='https://en.wikipedia.org/wiki/Specified_minimum_yield_strength'>SMYS</a>)
-    as a characteristics of steel strength, [<a href='https://en.wikipedia.org/wiki/Pounds_per_square_inch'>PSI</a>]</p></dd>
-  <dt><em>depth</em></dt><dd><p>measured maximum depth of the corroded area, [<a href='https://en.wikipedia.org/wiki/Inch'>inch</a>]</p></dd>
-  <dt><em>l</em></dt><dd><p>measured maximum longitudial length of the corroded area, [<a href='https://en.wikipedia.org/wiki/Inch'>inch</a>]</p></dd>
-
-</dl>
-
-    <h2 class="hasAnchor" id="-asme-b-g-"><a class="anchor" href="#-asme-b-g-"></a>1.1 ASME B31G-1991</h2>
-
-    
-
-<p>It is recognized by pipeline companies that some sections of high pressure
-  pipelines particularly those installed a number of years ago, have
-  experienced some corrosion. Where corrosion is found, pipeline operators have
-  been deeply concerned about the need for a method of determining the
-  remaining strength of these corroded areas. If the corrosion does not
-  penetrate the pipe wall, what is the pressure containing capability of
-  the remaining pipe metal in terms of its ability to continue to operate
-  safely at the maximum allowable operating pressure (<em>MAOP</em>) of the
-  pipeline system?</p>
-<p>Thus, one of the needs of the pipeline industry has been a procedure that
-  will help operators, particularly field personnel, make decisions on existing
-  pipelines, when exposed for any purpose, as to whether any corroded region
-  may be left in service or whether it needs to be repaired or replaced.
-  Such determinations must be based upon sound research and extensive testing
-  in order to provide safe and conservative guidelines on which to base field
-  decisions.</p>
-<p>The <a href='https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf'>ASME B31G-1991</a>
-  provides procedures to assist in this determination.</p>
-<p><em>Appendix A</em> to <a href='https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf'>ASME B31G-1991</a>
-  shows the source code for determining the allowable length and maximum
-  allowable working pressure. The <em>b31g*</em> and <code><a href='b31crvl.html'>b31crvl</a></code>
-  functions reproduce the idea of <em>CRVL.BAS</em>. They are natively vectorized.</p>
-<p>Usage of <code><a href='b31crvl.html'>b31crvl</a></code> function that imitates the output of _CRVL.BAS_
-  is presentaed in <em>Example 1</em>.</p>
-    <h2 class="hasAnchor" id="-asme-b-g-"><a class="anchor" href="#-asme-b-g-"></a>1.2 ASME B31G-2012</h2>
-
-    
-
-<p>An effort was undertaken to update the <a href='https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf'>ASME B31G-1991</a> up to
-<a href='https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines'>ASME B31G-2012</a>
-document to recognize certain other corrosion evaluation methods that have
-proven sound and that have seen successful use in the pipeline industry.
-Incorporation of these other methods provides us with a formalized framework
-within which to use such methodologies.</p>
-<p>Nevertheless, to preserve simplicity of traditional inline measurements during
-inspections we only consider <strong>Analysis Level 1</strong>.</p>
-<p>As noted in <a href='https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines'>ASME B31G-2012</a>,
-<strong>Level 1</strong> evaluation is quite suitable for use in prioritizing corrosion
-defects identified by inline inspection.</p>
-    <h2 class="hasAnchor" id="-other-models"><a class="anchor" href="#-other-models"></a>1.3 Other models</h2>
-
-    
-
-<p>Other approaches for operating with corrosion data are mostly aimed on
-failure pressure calculations. Models like <code><a href='dnvpf.html'>dnvpf</a></code>,
-<code><a href='shell92pf.html'>shell92pf</a></code>, and <code><a href='pcorrcpf.html'>pcorrcpf</a></code> assume different shapes
-of corrosion defects and usage conditions for some cases. So, it is
-encouraged first to find out which model is most suitable for solving
-some real world problem.</p>
-    <h2 class="hasAnchor" id="-heat-losses"><a class="anchor" href="#-heat-losses"></a>2. Heat losses</h2>
-
-    
-
-
-<p>Heat loss is the energy characteristic of district heating networks. It is
-the amount of heat energy spent on the transportation and distribution of
-heat energy from the source to the consumers.</p>
-<p>Heat losses depend on the operating temperature, technical condition,
-volume and configuration of the district heating network, as well as on
-climatic factors. Heat losses are additive being the sum of the heat losses
-of individual pipeline segments.</p>
-<p>Determination of heat losses for pipeline segments hereinafter is called
-<em>heat loss localization</em>.</p>
-<p>It is assumed that actual heat loss (<strong>AHL</strong>) of pipeline segment has two
-contributions: normative heat loss (<strong>NHL</strong>) and extra-normative heat loss
-(<strong>ExNHL</strong>).So we can write:</p>
-<p>$$
- AHL = NHL + ExNHL, ExNHL &gt; 0.
-$$</p>
-<p>Localization of <strong>ExNHL</strong> is an important part of health maintenance
-activities of district heating network operation. One can determine
-<strong>ExNHL</strong> of pipeline segment as a positive difference between
-<strong>AHL</strong> and <strong>NHL</strong> and it is the most natural way. For that
-purpose <a href='http://docs.cntd.ru/document/902148459'>Minenergo-325</a> and
-<a href='http://www.complexdoc.ru/ntdtext/547103/'>Minenergo-278</a> methods
-for postulating <strong>NHL</strong> are considered.
-<a href='http://docs.cntd.ru/document/902148459'>Minenergo-325</a> lists
-legally affirmed maximum values of heat flux that is allowed to be emitted by
-steel pipes (see <code><a href='m325nhl.html'>m325nhl</a></code>). Higher emission is treated as
-<strong>ExNHL</strong>. <a href='http://www.complexdoc.ru/ntdtext/547103/'>Minenergo-278</a>
-gives method for engineering calculation of <strong>NHL</strong> considering technical
-condition of pipeline segment (see <code><a href='m278hlcha.html'>m278hlcha</a></code>,
-<code><a href='m278hlund.html'>m278hlund</a></code>, and <code><a href='m278hlair.html'>m278hlair</a></code>).</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Example 1</span>
-<span class='fu'><a href='b31crvl.html'>b31crvl</a></span><span class='op'>(</span>maop <span class='op'>=</span> <span class='fl'>910</span>, d <span class='op'>=</span> <span class='fl'>30</span>, wth <span class='op'>=</span> <span class='fl'>.438</span>, smys <span class='op'>=</span> <span class='fl'>52000</span>, def  <span class='op'>=</span> <span class='fl'>.72</span>, depth <span class='op'>=</span> <span class='fl'>.1</span>, l <span class='op'>=</span> <span class='fl'>7.5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 
-#&gt; -- Calculated data --
-#&gt; Intermediate factor (A) = 1.847
-#&gt; Design pressure = 1093 PSI; Safe pressure = 1093 PSI
-#&gt; Pipe may be operated safely at MAOP, 910 PSI
-#&gt; With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847
-#&gt; With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000</div><div class='input'>
- <span class='co'># -- Calculated data --</span>
- <span class='co'># Intermediate factor (A) = 1.847</span>
- <span class='co'># Design pressure = 1093 PSI; Safe pressure = 1093 PSI</span>
- <span class='co'># Pipe may be operated safely at MAOP, 910 PSI</span>
- <span class='co'># With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847</span>
- <span class='co'># With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

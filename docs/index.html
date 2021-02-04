@@ -14,12 +14,11 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="
     Diagnostics, Reliability and Predictive Maintenance of Pipeline Systems">
-<meta property="og:description" content="
-    Functions representing some useful empirical and data-driven models of heat
-    losses, corrosion diagnostics, reliability and predictive maintenance of 
-    pipeline systems. The package is an option for digital transformation of 
-    technical engineering departments of heat generating and heat transferring
-    companies.">
+<meta property="og:description" content="Functions representing some useful empirical and data-driven 
+    models of heat losses, corrosion diagnostics, reliability and predictive 
+    maintenance of pipeline systems. The package is an option for digital 
+    transformation of technical engineering departments of heat generating and 
+    heat transferring companies.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -46,7 +45,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -54,7 +53,14 @@
   <a href="reference/index.html">Reference</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/omega1x/pipenostics/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -66,18 +72,116 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="pipenostics---r-package-for-diagnostics-reliability-and-predictive-maintenance-of-pipeline-systems" class="section level1">
+<div id="pipenostics" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#pipenostics---r-package-for-diagnostics-reliability-and-predictive-maintenance-of-pipeline-systems" class="anchor"></a><em>pipenostics</em> - <em>R</em>-package for diagnostics, reliability and predictive maintenance of pipeline systems</h1></div>
+<a href="#pipenostics" class="anchor"></a>pipenostics</h1></div>
 
-<blockquote>
-<p>🚧 NOTE! At present the package is under intensive development</p>
-</blockquote>
+<p><a href="https://cran.r-project.org/package=pipenostics">R-package</a> for diagnostics, reliability and predictive maintenance of pipeline systems.</p>
+<hr>
+<p>{:toc}</p>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<hr>
+<p>For the stable release (if any), just install the latest version from <a href="https://cran.r-project.org/package=pipenostics">CRAN</a>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pipenostics"</span>)</span></code></pre></div>
+<p>For the development version, use <a href="https://cran.r-project.org/package=devtools">devtools</a>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"omega1x/pipenostics"</span>)</span></code></pre></div>
+</div>
+<div id="description" class="section level2">
+<h2 class="hasAnchor">
+<a href="#description" class="anchor"></a>Description</h2>
+<p>The motivation for the package was to aggregate to some extent the separate knowledge about engineering, reliability, diagnostics and predictive maintenance of pipeline systems suitable for pipe holders. Distributing such knowledge with <a href="https://cran.r-project.org/package=pipenostics">R-package</a> seemed the most attractive option for white-collar engineers, having utilized spreadsheet software as a mainstream.</p>
+<p>Aiming to avoid portability and accessibility problems made us search ways to restrict source code development by functionality of few external packages. It reasonably helps to use the package inside <a href="https://docs.microsoft.com/en-us/sql/machine-learning/sql-server-machine-learning-services">ML-services</a> traditionally leveraged in large companies maintaining district heating systems.</p>
+</div>
+<div id="details" class="section level2">
+<h2 class="hasAnchor">
+<a href="#details" class="anchor"></a>Details</h2>
+<p>Since most functions have native argument vectorization usage of those functions with fast <a href="https://cran.r-project.org/package=data.table">data.table</a> framework is strongly encourage when processing large data sets. For that purpose arguments for all package functions are thoroughly checked for type consistency and physical sense using asserts and tests from <a href="https://cran.r-project.org/package=checkmate">checkmate</a> package. Moreover, in package documentation we borrow type designations according to <a href="https://cran.r-project.org/package=checkmate">checkmate</a> notation.</p>
+<div id="corrosion-diagnostics" class="section level3">
+<h3 class="hasAnchor">
+<a href="#corrosion-diagnostics" class="anchor"></a>Corrosion diagnostics</h3>
+<p>The next values describing technological conditions, material properties of pipe and defect parameters are used as arguments throughout the most functions concerning corrosion diagnostics:</p>
+<ul>
+<li>
+<em>maop</em> - maximum allowable operating pressure - <a href="https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure">MAOP</a> in <a href="https://en.wikipedia.org/wiki/Pounds_per_square_inch">PSI</a>
+</li>
+<li>
+<em>d</em> - nominal outside diameter of the pipe, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>
+</li>
+<li>
+<em>wth</em> - nominal wall thickness of the pipe, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>
+</li>
+<li>
+<em>smys</em> - specified minimum yield of stress - <a href="https://en.wikipedia.org/wiki/Specified_minimum_yield_strength">SMYS</a> as a characteristics of steel strength, <a href="https://en.wikipedia.org/wiki/Pounds_per_square_inch">PSI</a>
+</li>
+<li>
+<em>depth</em> - measured maximum depth of the corroded area, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>
+</li>
+<li>
+<em>l</em> - measured maximum longitudial length of the corroded area, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>
+</li>
+</ul>
+<div id="asme-b31g-1991" class="section level4">
+<h4 class="hasAnchor">
+<a href="#asme-b31g-1991" class="anchor"></a>ASME B31G-1991</h4>
+<p>It is recognized by pipeline companies that some sections of high pressure pipelines particularly those installed a number of years ago, have experienced some corrosion. Where corrosion is found, pipeline operators have been deeply concerned about the need for a method of determining the remaining strength of these corroded areas. If the corrosion does not penetrate the pipe wall, what is the pressure containing capability of the remaining pipe metal in terms of its ability to continue to operate safely at the maximum allowable operating pressure (<a href="https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure">MAOP</a>) of the pipeline system?</p>
+<p>Thus, one of the needs of the pipeline industry has been a procedure that will help operators, particularly field personnel, make decisions on existing pipelines, when exposed for any purpose, as to whether any corroded region may be left in service or whether it needs to be repaired or replaced. Such determinations must be based upon sound research and extensive testing in order to provide safe and conservative guidelines on which to base field decisions.</p>
+<p><a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf">ASME B31G-1991</a> provides procedures to assist in this determination.</p>
+<p><em>Appendix A</em> to <a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf">ASME B31G-1991</a> shows the source code for determining the allowable length and maximum allowable working pressure. The <em>b31g-</em> and <code><a href="reference/b31crvl.html">b31crvl()</a></code> functions reproduce the idea of <em>CRVL.BAS</em>. They are natively vectorized.</p>
+<p>Usage of <code><a href="reference/b31crvl.html">b31crvl()</a></code> function that imitates the output of <em>CRVL.BAS</em> is presented in the next example:</p>
+<pre><code>b31crvl(maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5)
+
+-- Calculated data --
+Intermediate factor (A) = 1.847
+Design pressure = 1093 PSI; Safe pressure = 1093 PSI
+Pipe may be operated safely at MAOP, 910 PSI
+With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847
+With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000</code></pre>
+</div>
+<div id="asme-b31g-2012" class="section level4">
+<h4 class="hasAnchor">
+<a href="#asme-b31g-2012" class="anchor"></a>ASME B31G-2012</h4>
+<p>An effort was undertaken to update <a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf">ASME B31G-1991</a> up to <a href="https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines">ASME B31G-2012</a> document to recognize certain other corrosion evaluation methods that have proven sound and that have seen successful use in the pipeline industry. Incorporation of these other methods provides us with a formalized framework within which to use such methodologies.</p>
+<p>Nevertheless, to preserve simplicity of traditional inline measurements during inspections we only consider <strong>Analysis Level 1</strong>. As noted in <a href="https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines">ASME B31G-2012</a> <strong>Level 1</strong> evaluation is quite suitable for use in prioritizing corrosion defects identified by inline inspection.</p>
+</div>
+<div id="other-models" class="section level4">
+<h4 class="hasAnchor">
+<a href="#other-models" class="anchor"></a>Other models</h4>
+<p>Other approaches for operating with corrosion data are mostly aimed on failure pressure calculations. Models like <code><a href="reference/dnvpf.html">dnvpf()</a></code>, <code><a href="reference/shell92pf.html">shell92pf()</a></code>, and <code><a href="reference/pcorrcpf.html">pcorrcpf()</a></code> assume different shapes of corrosion defects and usage conditions for some cases. So, it is encouraged first to find out which model is most suitable for solving some real world problem.</p>
+</div>
+</div>
+<div id="heat-losses" class="section level3">
+<h3 class="hasAnchor">
+<a href="#heat-losses" class="anchor"></a>Heat losses</h3>
+<p>Heat loss is the energy characteristic of district heating networks. It is the amount of heat energy spent on the transportation and distribution of heat energy from the source to the consumers.</p>
+<p>Heat losses depend on the operating temperature, technical condition, volume and configuration of the district heating network, as well as on climatic factors. Heat losses are additive being the sum of the heat losses of individual pipeline segments.</p>
+<p>Determination of heat losses for pipeline segments hereinafter is called <em>heat loss localization</em>.</p>
+<p>It is assumed that actual heat loss (<span class="math inline"><em>Q</em><sub><em>A</em><em>H</em><em>L</em></sub></span>) of pipeline segment has two contributions: normative heat loss (<span class="math inline"><em>Q</em><sub><em>N</em><em>H</em><em>L</em></sub></span>) and extra-normative heat loss (<span class="math inline"><em>Q</em><sub><em>E</em><em>x</em><em>N</em><em>H</em><em>L</em></sub></span>).So we can write:</p>
+<p><span class="math display"><em>Q</em><sub><em>A</em><em>H</em><em>L</em></sub> = <em>Q</em><sub><em>N</em><em>H</em><em>L</em></sub> + <em>Q</em><sub><em>E</em><em>x</em><em>N</em><em>H</em><em>L</em></sub>, <em>Q</em><sub><em>E</em><em>x</em><em>N</em><em>H</em><em>L</em></sub> &gt; 0</span></p>
+<p>Localization of <span class="math inline"><em>Q</em><sub><em>E</em><em>x</em><em>N</em><em>H</em><em>L</em></sub></span> is an important part of health maintenance activities of district heating network operation. One can determine <span class="math inline"><em>Q</em><sub><em>E</em><em>x</em><em>N</em><em>H</em><em>L</em></sub></span> of pipeline segment as a positive difference between <span class="math inline"><em>Q</em><sub><em>A</em><em>H</em><em>L</em></sub></span> and <span class="math inline"><em>Q</em><sub><em>N</em><em>H</em><em>L</em></sub></span> and it is the most natural way. For that purpose <a href="http://docs.cntd.ru/document/902148459">Minenergo-325</a> and <a href="http://www.complexdoc.ru/ntdtext/547103">Minenergo-278</a> methods for postulating <span class="math inline"><em>Q</em><sub><em>N</em><em>H</em><em>L</em></sub></span> are considered.</p>
+<p><a href="http://docs.cntd.ru/document/902148459">Minenergo-325</a> lists legally affirmed maximum values of heat flux that is allowed to be emitted by steel pipes (see <code><a href="reference/m325nhl.html">m325nhl()</a></code>). Higher emission is treated as <span class="math inline"><em>Q</em><sub><em>E</em><em>x</em><em>N</em><em>H</em><em>L</em></sub></span>. <a href="http://www.complexdoc.ru/ntdtext/547103">Minenergo-278</a> gives method for engineering calculation of <span class="math inline"><em>Q</em><sub><em>N</em><em>H</em><em>L</em></sub></span> considering technical condition of pipeline segment (see <code><a href="reference/m278hlcha.html">m278hlcha()</a></code>, <code><a href="reference/m278hlund.html">m278hlund()</a></code>, and <code><a href="reference/m278hlair.html">m278hlair()</a></code>).</p>
+</div>
+<div id="tracing-of-thermal-hydraulic-regime" class="section level3">
+<h3 class="hasAnchor">
+<a href="#tracing-of-thermal-hydraulic-regime" class="anchor"></a>Tracing of thermal-hydraulic regime</h3>
+<p>Localization of extra-normative heat losses <span class="math inline"><em>Q</em><sub><em>E</em><em>x</em><em>N</em><em>H</em><em>L</em></sub></span> could be performed if they know thermal-hydraulic regime of district heating network for each pipeline segment. In most cases thermal-hydraulic field (values of temperature, pressure and heat carrier consumption) is measured only on heat-supply origins and near consumers, i.e. mostly on terminal nodes of the pipeline network. Middle segments of the network are rarely equipped and thus are not sensor-measured. For restoring of thermal-hydraulic field at each pipeline segment they can trace temperature, pressure and heat-carrier consumption using hydraulic and thermal laws and engineering characteristics of each pipe. Since only normative values of heat flux are accessible for calculations the restored thermal-hydraulic field is a normative (not actual) one. Nevertheless, even tracing small networks may produce local inconsistencies in restored normative field and those facts signal for possible extra-normative heat-losses in-situ. In accordance to sensor positions forward (see <code><a href="reference/m325tracefw.html">m325tracefw()</a></code>, <code><a href="reference/m325traceline.html">m325traceline()</a></code>) and backward (see <code><a href="reference/m325tracebw.html">m325tracebw()</a></code>, <code><a href="reference/m325traceline.html">m325traceline(forward = FALSE)</a></code>) tracing can be performed for the linear and the bunched pipelines on the basis of <a href="http://docs.cntd.ru/document/902148459">Minenergo-325</a> norms.</p>
+</div>
+</div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="license">
+    <div class="links">
+<h2>Links</h2>
+<ul class="list-unstyled">
+<li>Browse source code at <br><a href="https://github.com/omega1x/pipenostics/">https://​github.com/​omega1x/​pipenostics/​</a>
+</li>
+<li>Report a bug at <br><a href="https://github.com/omega1x/pipenostics/issues">https://​github.com/​omega1x/​pipenostics/​issues</a>
+</li>
+</ul>
+</div>
+<div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
@@ -86,16 +190,17 @@
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Yuri Possokhov <br><small class="roles"> Maintainer </small>  </li>
+<li>Yuri Possokhov <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-3570-4337" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.com/omega1x/pipenostics"><img src="https://travis-ci.com/omega1x/pipenostics.svg?branch=master" alt="Build Status"></a></li>
-<li><a href="https://www.codefactor.io/repository/github/omega1x/pipenostics"><img src="https://www.codefactor.io/repository/github/omega1x/pipenostics/badge" alt="CodeFactor"></a></li>
 <li><a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></li>
+<li><a href="https://cran.r-project.org/package=pipenostics"><img src="https://www.r-pkg.org/badges/version/pipenostics" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/omega1x/pipenostics"><img src="https://www.codefactor.io/repository/github/omega1x/pipenostics/badge" alt="CodeFactor"></a></li>
+<li><a href="https://travis-ci.com/omega1x/pipenostics"><img src="https://travis-ci.com/omega1x/pipenostics.svg?branch=master" alt="Build Status"></a></li>
 </ul>
 </div>
 </div>
