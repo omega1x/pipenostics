@@ -4,15 +4,15 @@
 \alias{dnvpf}
 \title{DNV-RP-F101. Failure pressure of the corroded pipe}
 \usage{
-dnvpf(d, wth, smts, depth, l)
+dnvpf(d, wth, uts, depth, l)
 }
 \arguments{
 \item{d}{nominal outside diameter of the pipe, [\emph{mm}]. Type: \code{[double]}.}
 
 \item{wth}{nominal wall thickness of the pipe, [\emph{mm}]. Type: \code{[double]}.}
 
-\item{smts}{specified minimum tensile strength (\emph{SMTS}) or
-ultimate tensile strength (\emph{UTS}) as a
+\item{uts}{ultimate tensile strength (\emph{UTS}) or
+specified minimum tensile strength (\emph{SMTS}) as a
 characteristic of steel strength, [\emph{MPa}]. Type: \code{[double]}.}
 
 \item{depth}{measured maximum depth of the corroded area, [\emph{mm}]. Type: \code{[double]}.}
@@ -61,12 +61,12 @@ In contrast to
  with(data.frame(
    d     = c(812.8, 219.0),  # [mm]
    wth   = c( 19.1,  14.5),  # [mm]
-   smts  = c(530.9, 455.1),  # [N/mm^2]
+   uts   = c(530.9, 455.1),  # [N/mm^2]
    l     = c(203.2, 200.0),  # [mm]
    depth = c( 13.4,   9.0)   # [mm]
  ),
    stopifnot(all(round(
-     dnvpf(d, wth, smts, depth, l), 4) == c(15.8663, 34.0118))))  # [N/mm^2]
+     dnvpf(d, wth, uts, depth, l), 4) == c(15.8663, 34.0118))))  # [N/mm^2]
 
 }
 \references{
@@ -84,5 +84,8 @@ In contrast to
 \seealso{
 Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{b31gmodpf}},
   \code{\link{shell92pf}}, \code{\link{pcorrcpf}}
+
+Other DNV-RP-F101 functions: 
+\code{\link{strderate}()}
 }
 \concept{DNV-RP-F101 functions}

@@ -41,9 +41,9 @@
 #' @param wth
 #'  nominal wall thickness of the pipe, [\emph{mm}]. Type: \code{[double]}.
 #'
-#' @param smts
-#'  specified minimum tensile strength (\emph{SMTS}) or
-#'  ultimate tensile strength (\emph{UTS}) as a
+#' @param uts
+#'  ultimate tensile strength (\emph{UTS}) or
+#'  specified minimum tensile strength (\emph{SMTS}) as a
 #'  characteristic of steel strength, [\emph{MPa}]. Type: \code{[double]}.
 #'
 #' @param depth
@@ -80,22 +80,22 @@
 #'  with(data.frame(
 #'    d     = c(812.8, 219.0),  # [mm]
 #'    wth   = c( 19.1,  14.5),  # [mm]
-#'    smts  = c(530.9, 455.1),  # [N/mm^2]
+#'    uts   = c(530.9, 455.1),  # [N/mm^2]
 #'    l     = c(203.2, 200.0),  # [mm]
 #'    depth = c( 13.4,   9.0)   # [mm]
 #'  ),
 #'    stopifnot(all(round(
-#'      dnvpf(d, wth, smts, depth, l), 4) == c(15.8663, 34.0118))))  # [N/mm^2]
+#'      dnvpf(d, wth, uts, depth, l), 4) == c(15.8663, 34.0118))))  # [N/mm^2]
 #'
-dnvpf <- function(d, wth, smts, depth, l){
+dnvpf <- function(d, wth, uts, depth, l){
   checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
   checkmate::assert_double(wth, lower = 0, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(smts, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(uts, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
   checkmate::assert_double(depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE, min.len = 1)
   checkmate::assert_double(l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
 
   Q <- sqrt(1 + .31*l^2/d/wth)
-  Pf <- 2*wth*smts*(1 - depth/wth)/(d - wth)/(1 - depth/wth/Q)
+  Pf <- 2*wth*uts*(1 - depth/wth)/(d - wth)/(1 - depth/wth/Q)
   Pf[depth >= .85*wth] <- NA_real_
   Pf
 }
