@@ -3,5 +3,5 @@
 ^\.travis\.yml$
 ^\.src$
 ^\.github$
-^\docs$
+^docs$
 
