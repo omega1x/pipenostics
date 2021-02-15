@@ -7,23 +7,23 @@
 #'  Calculate allowable depth of the corroded area in the pipe.
 #'
 #' @param dep
-#'   design pressure of the pipe, [\emph{PSI}]. Type: \code{[double]}.
+#'   design pressure of the pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.
 #'
 #' @param maop
-#'  maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]. Type: \code{[double]}.
+#'  maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]. Type: \code{\link{assert_double}}.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.
+#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param l
 #'  measured maximum longitudial length of corroded area, [\emph{inch}].
-#'  Type: \code{[double]}.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @return
-#'  allowable depth of the corroded area in the pipe, [\emph{inch}]. Type: \code{[double]}.
+#'  allowable depth of the corroded area in the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @references
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.

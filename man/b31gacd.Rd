@@ -7,19 +7,19 @@
 b31gacd(dep, maop, d, wth, l)
 }
 \arguments{
-\item{dep}{design pressure of the pipe, [\emph{PSI}]. Type: \code{[double]}.}
+\item{dep}{design pressure of the pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
 
-\item{maop}{maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]. Type: \code{[double]}.}
+\item{maop}{maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
 
-\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.}
+\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.}
+\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
 \item{l}{measured maximum longitudial length of corroded area, [\emph{inch}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 }
 \value{
-allowable depth of the corroded area in the pipe, [\emph{inch}]. Type: \code{[double]}.
+allowable depth of the corroded area in the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 }
 \description{
 Calculate allowable depth of the corroded area in the pipe.

@@ -7,18 +7,18 @@
 #'  Calculate intermediate factor related to the geometry of the corroded zone.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.
+#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param l
-#'  measured maximum longitudial length of the corroded area, [\emph{inch}].
-#'  Type: \code{[double]}.
+#'  measured maximum longitudinal length of the corroded area, [\emph{inch}].
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @return
 #'  Intermediate factor related to the geometry of the corroded area, [].
-#'  Type: \code{[double]}.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @references
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.
