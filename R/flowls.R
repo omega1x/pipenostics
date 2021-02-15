@@ -119,7 +119,8 @@ flowls <- function(sender = "A", acceptor = "B"){
 
   # Run workers in parallel ----
   cluster <- parallel::makeCluster(
-    max(1, min(length(terminal_node_idx), parallel::detectCores() - 1))
+    #max(1, min(length(terminal_node_idx), parallel::detectCores() - 1))
+    2
   )
   parallel::clusterExport(
     cluster,

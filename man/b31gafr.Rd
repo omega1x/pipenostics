@@ -7,16 +7,21 @@
 b31gafr(d, wth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.}
+\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.}
+\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
+<<<<<<< HEAD
 \item{l}{measured maximum longitudinal length of the corroded area, [\emph{inch}].
 Type: \code{[double]}.}
+=======
+\item{l}{measured maximum longitudial length of the corroded area, [\emph{inch}].
+Type: \code{\link{assert_double}}.}
+>>>>>>> 5a0c9affb362dad0196021bf6d3505bf5741918f
 }
 \value{
 Intermediate factor related to the geometry of the corroded area, [].
- Type: \code{[double]}.
+ Type: \code{\link{assert_double}}.
 }
 \description{
 Calculate intermediate factor related to the geometry of the corroded zone.
