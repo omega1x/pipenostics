@@ -24,13 +24,8 @@
 #'   Type: \code{\link{assert_double}}.
 #'
 #' @param l
-<<<<<<< HEAD
 #'  measured maximum longitudinal length of the corroded area, [\emph{inch}].
-#'  Type: \code{[double]}.
-=======
-#'  measured maximum longitudial length of the corroded area, [\emph{inch}].
 #'  Type: \code{\link{assert_double}}.
->>>>>>> 5a0c9affb362dad0196021bf6d3505bf5741918f
 #'
 #' @return
 #'  allowable depth of the corroded area in the pipe, [\emph{inch}].

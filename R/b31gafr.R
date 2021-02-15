@@ -14,11 +14,7 @@
 #'
 #' @param l
 #'  measured maximum longitudinal length of the corroded area, [\emph{inch}].
-<<<<<<< HEAD
-#'  Type: \code{[double]}.
-=======
 #'  Type: \code{\link{assert_double}}.
->>>>>>> 5a0c9affb362dad0196021bf6d3505bf5741918f
 #'
 #' @return
 #'  Intermediate factor related to the geometry of the corroded area, [].

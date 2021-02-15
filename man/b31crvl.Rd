@@ -24,11 +24,7 @@ or \href{https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry
 
 \item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
-<<<<<<< HEAD
-\item{l}{measured maximum longitudinal length of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
-=======
 \item{l}{measured maximum longitudinal length of the corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.}
->>>>>>> 5a0c9affb362dad0196021bf6d3505bf5741918f
 }
 \value{
 Object of \emph{S3}-class \emph{crvl} which is a \emph{data.frame} with
