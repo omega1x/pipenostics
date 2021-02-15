@@ -19,7 +19,7 @@ Type: \code{[double]}.}
 \item{depth}{measured maximum depth of the corroded area, [\emph{inch}].
 Type: \code{[double]}.}
 
-\item{l}{measured maximum longitudial length of the corroded area, [\emph{inch}].
+\item{l}{measured maximum longitudinal length of the corroded area, [\emph{inch}].
 Type: \code{[double]}.}
 }
 \value{

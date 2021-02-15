@@ -19,7 +19,7 @@
 #'   measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param l
-#'  measured maximum longitudial length of the corroded area, [\emph{inch}]. Type: \code{[double]}.
+#'  measured maximum longitudinal length of the corroded area, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @return
 #'  Safe maximum pressure for the corroded area of pipe, [PSI]. Type: \code{[double]}.

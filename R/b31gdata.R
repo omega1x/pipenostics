@@ -18,7 +18,7 @@
 #'              []. Type: \code{[double]}.}
 #'   \item{depth}{measured maximum depth of the corroded area, [\emph{inch}].
 #'         Type: \code{[double]}.}
-#'   \item{l}{measured maximum longitudial length of corroded area, [\emph{inch}].
+#'   \item{l}{measured maximum longitudinal length of corroded area, [\emph{inch}].
 #'    Type: \code{[double]}.}
 #'   \item{status}{Operational status of pipe:
 #'                 \emph{1} - excellent,

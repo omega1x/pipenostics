@@ -47,7 +47,7 @@
 #'   measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param l
-#'  measured maximum longitudial length of corroded area, [\emph{inch}]. Type: \code{[double]}.
+#'  measured maximum longitudinal length of corroded area, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @return
 #'  Estimated failure pressure of the corroded pipe, [\emph{PSI}]. Type: \code{[double]}.
@@ -108,18 +108,18 @@
 #'        1500.1792, 1497.9821, 1495.3120, 1496.6265))))
 #'
 b31gmodpf <- function(d, wth, smys, depth, l) {
-  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(d, lower = .03937008, upper = 196.8504, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(wth, lower = 0, upper = 19.68504, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(smys, lower = 725.1887, upper = 290075.4760, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(depth, lower = 0, upper = 39.37008, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(l, lower = 0, upper = 196.8504, finite = TRUE, any.missing = FALSE, min.len = 1)
 
   z  <- l^2/d/wth
   s_flow <- 1.1*smys
 
   # Operate with M^2 to avoid sqrt warning when negative argument
   M2  <- ifelse(z > 50, (3.2e-2*z + 3.3)^2, 1 + .6275*z - 3.375e-3*z^2)
-  M2[M2 < .Machine$double.eps] <- NA
+  M2[M2 < .Machine$double.eps] <- NA_real_
 
   dw <- depth/wth
   sf <- s_flow*(1 - .85*dw)/(1 - .85*dw/sqrt(M2))

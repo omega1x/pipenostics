@@ -19,7 +19,7 @@
 #'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
 #'
 #' @param l
-#'  measured maximum longitudial length of corroded area, [\emph{inch}].
+#'  measured maximum longitudinal length of corroded area, [\emph{inch}].
 #'  Type: \code{[double]}.
 #'
 #' @return

@@ -15,7 +15,7 @@ b31gacd(dep, maop, d, wth, l)
 
 \item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.}
 
-\item{l}{measured maximum longitudial length of corroded area, [\emph{inch}].
+\item{l}{measured maximum longitudinal length of corroded area, [\emph{inch}].
 Type: \code{[double]}.}
 }
 \value{

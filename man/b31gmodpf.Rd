@@ -16,7 +16,7 @@ characteristics of steel strength, [\emph{PSI}]. Type: \code{[double]}.}
 
 \item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
 
-\item{l}{measured maximum longitudial length of corroded area, [\emph{inch}]. Type: \code{[double]}.}
+\item{l}{measured maximum longitudinal length of corroded area, [\emph{inch}]. Type: \code{[double]}.}
 }
 \value{
 Estimated failure pressure of the corroded pipe, [\emph{PSI}]. Type: \code{[double]}.

@@ -15,7 +15,7 @@ b31gsap(dep, d, wth, depth, l)
 
 \item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
 
-\item{l}{measured maximum longitudial length of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
+\item{l}{measured maximum longitudinal length of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
 }
 \value{
 Safe maximum pressure for the corroded area of pipe, [PSI]. Type: \code{[double]}.

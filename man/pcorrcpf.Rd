@@ -19,7 +19,7 @@ characteristic of steel strength, [\eqn{MPa}]. Type: \code{[double]}.}
 \item{depth}{measured maximum depth of the corroded area, [\emph{mm}].
 Type: \code{[double]}.}
 
-\item{l}{measured maximum longitudial length of corroded area, [\emph{mm}].
+\item{l}{measured maximum longitudinal length of corroded area, [\emph{mm}].
 Type: \code{[double]}.}
 }
 \value{

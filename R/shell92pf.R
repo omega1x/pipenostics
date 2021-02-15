@@ -40,7 +40,7 @@
 #'  measured maximum depth of the corroded area, [\emph{mm}]. Type: \code{[double]}.
 #'
 #' @param l
-#'  measured maximum longitudial length of corroded area, [\emph{mm}].
+#'  measured maximum longitudinal length of corroded area, [\emph{mm}].
 #'  Type: \code{[double]}.
 #'
 #' @return
@@ -82,7 +82,7 @@
 shell92pf <- function(d, wth, uts, depth, l){
   checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
   checkmate::assert_double(wth, lower = 0, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(uts, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(uts, lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1)
   checkmate::assert_double(depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE, min.len = 1)
   checkmate::assert_double(l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
 
