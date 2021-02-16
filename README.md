@@ -14,16 +14,20 @@ diagnostics, reliability and predictive maintenance of pipeline systems.
 ------------------------------------------------------------------------
 
 ## Table of contents
--   [Preface](#preface)
+-   [Intro](#intro)
 -   [Installation](#installation)
--   [Description](#description)
--   [Details](#details)
+-   [Usage examples](#usage-examples)
     -   [Corrosion diagnostics](#corrosion-diagnostics)
+    -   [Probability of failure](#probability-of-failure)
+    -   [Tracing of regime](#tracing-of-regime)
+-   [Development notes](#development-notes)
+-   [Underlying concepts](#underlying-concepts)
+    -   [Corrosion diagnostics and probability of failure](#corrosion-diagnostics-and-probability-of-failure)
     -   [Heat losses](#heat-losses)
     -   [Tracing of thermal-hydraulic regime](#tracing-of-thermal-hydraulic-regime)
 
 
-## Preface
+## Intro
 
 Aiming for digital transformation of technical engineering departments
 of heat generating and heat transferring companies the package
@@ -33,7 +37,6 @@ For the present time the package contains utilities for processing
 corrosion data commonly gathered by *inline inspection*, as well as
 emperical models for calculations of local thermal-hydraulic regimes of
 district heating network.
-
 
 ## Installation
 
@@ -47,15 +50,29 @@ For the development version, use
 
     devtools::install_github("omega1x/pipenostics")
 
-## Description
+## Usage examples
 
-The motivation for the package was to aggregate to some extent the
-separate knowledge about engineering, reliability, diagnostics and
-predictive maintenance of pipeline systems suitable for pipe holders.
-Distributing such knowledge with
-[R-package](https://cran.r-project.org/package=pipenostics) seemed the
-most attractive option for white-collar engineers, having utilized
-spreadsheet software as a mainstream.
+### Corrosion diagnostics
+By using of `b31crvl()` imitate the output of *CRVL.BAS* - the old software for determining the allowable length and maximum
+allowable working pressure presented in [ASME B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf):
+
+    b31crvl(maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5)
+
+    -- Calculated data --
+    Intermediate factor (A) = 1.847
+    Design pressure = 1093 PSI; Safe pressure = 1093 PSI
+    Pipe may be operated safely at MAOP, 910 PSI
+    With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847
+    With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000
+
+### Probability of failure
+Example
+
+### Tracing of regime
+Example
+
+
+## Development notes
 
 Aiming to avoid portability and accessibility problems made us search
 ways to restrict source code development by functionality of few
@@ -63,8 +80,6 @@ external packages. It reasonably helps to use the package inside
 [ML-services](https://docs.microsoft.com/en-us/sql/machine-learning/sql-server-machine-learning-services)
 traditionally leveraged in large companies maintaining district heating
 systems.
-
-## Details
 
 Since most functions have native argument vectorization usage of those
 functions with fast
@@ -76,29 +91,9 @@ consistency and physical sense using asserts and tests from
 Moreover, in package documentation we borrow type designations according
 to [checkmate](https://cran.r-project.org/package=checkmate) notation.
 
-### Corrosion diagnostics
+## Underlying concepts
 
-The next values describing technological conditions, material properties
-of pipe and defect parameters are used as arguments throughout the most
-functions concerning corrosion diagnostics:
-
--   *maop* - maximum allowable operating pressure -
-    [MAOP](https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure)
-    in [PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)
--   *d* - nominal outside diameter of the pipe,
-    [inch](https://en.wikipedia.org/wiki/Inch)
--   *wth* - nominal wall thickness of the pipe,
-    [inch](https://en.wikipedia.org/wiki/Inch)
--   *smys* - specified minimum yield of stress -
-    [SMYS](https://en.wikipedia.org/wiki/Specified_minimum_yield_strength)
-    as a characteristics of steel strength,
-    [PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)
--   *depth* - measured maximum depth of the corroded area,
-    [inch](https://en.wikipedia.org/wiki/Inch)
--   *l* - measured maximum longitudial length of the corroded area,
-    [inch](https://en.wikipedia.org/wiki/Inch)
-
-#### ASME B31G-1991
+### Corrosion diagnostics and probability of failure
 
 It is recognized by pipeline companies that some sections of high
 pressure pipelines particularly those installed a number of years ago,
@@ -122,51 +117,43 @@ guidelines on which to base field decisions.
 
 [ASME
 B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf)
-provides procedures to assist in this determination.
-
-*Appendix A* to [ASME
-B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf)
-shows the source code for determining the allowable length and maximum
-allowable working pressure. The *b31g-* and `b31crvl()` functions
-reproduce the idea of *CRVL.BAS*. They are natively vectorized.
-
-Usage of `b31crvl()` function that imitates the output of *CRVL.BAS* is
-presented in the next example:
-
-    b31crvl(maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5)
-
-    -- Calculated data --
-    Intermediate factor (A) = 1.847
-    Design pressure = 1093 PSI; Safe pressure = 1093 PSI
-    Pipe may be operated safely at MAOP, 910 PSI
-    With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847
-    With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000
-
-#### ASME B31G-2012
-
-An effort was undertaken to update [ASME
-B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf)
-up to [ASME
+and [ASME
 B31G-2012](https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines)
-document to recognize certain other corrosion evaluation methods that
-have proven sound and that have seen successful use in the pipeline
-industry. Incorporation of these other methods provides us with a
-formalized framework within which to use such methodologies.
+codes have proven sound and have seen successful use in the pipeline
+industry providing users with such required formalized framework.
 
-Nevertheless, to preserve simplicity of traditional inline measurements
-during inspections we only consider **Analysis Level 1**. As noted in
+To preserve simplicity of traditional inline measurements
+during inspections they consider only **Analysis Level 1** in this *R*-package, since as noted in
 [ASME
 B31G-2012](https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines)
 **Level 1** evaluation is quite suitable for use in prioritizing
 corrosion defects identified by inline inspection.
-
-#### Other models
 
 Other approaches for operating with corrosion data are mostly aimed on
 failure pressure calculations. Models like `dnvpf()`, `shell92pf()`, and
 `pcorrcpf()` assume different shapes of corrosion defects and usage
 conditions for some cases. So, it is encouraged first to find out which
 model is most suitable for solving some real world problem.
+
+The next values describing technological conditions, material properties
+of pipe and defect parameters are used as arguments throughout the most
+functions concerning corrosion diagnostics:
+
+-   *maop* - maximum allowable operating pressure -
+    [MAOP](https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure)
+    in [PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)
+-   *d* - nominal outside diameter of the pipe,
+    [inch](https://en.wikipedia.org/wiki/Inch)
+-   *wth* - nominal wall thickness of the pipe,
+    [inch](https://en.wikipedia.org/wiki/Inch)
+-   *smys* - specified minimum yield of stress -
+    [SMYS](https://en.wikipedia.org/wiki/Specified_minimum_yield_strength)
+    as a characteristics of steel strength,
+    [PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)
+-   *depth* - measured maximum depth of the corroded area,
+    [inch](https://en.wikipedia.org/wiki/Inch)
+-   *l* - measured maximum longitudial length of the corroded area,
+    [inch](https://en.wikipedia.org/wiki/Inch)
 
 ### Heat losses
 
