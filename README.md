@@ -14,6 +14,7 @@ diagnostics, reliability and predictive maintenance of pipeline systems.
 ------------------------------------------------------------------------
 
 ## Table of contents
+-   [Preface](#preface)
 -   [Installation](#installation)
 -   [Description](#description)
 -   [Details](#details)
@@ -22,9 +23,19 @@ diagnostics, reliability and predictive maintenance of pipeline systems.
     -   [Tracing of thermal-hydraulic regime](#tracing-of-thermal-hydraulic-regime)
 
 
-## Installation
+## Preface
 
-------------------------------------------------------------------------
+Aiming for digital transformation of technical engineering departments
+of heat generating and heat transferring companies the package
+aggregates to some extent the separate knowledge about engineering,
+reliability, diagnostics and predictive maintenance of pipeline systems.
+For the present time the package contains utilities for processing
+corrosion data commonly gathered by *inline inspection*, as well as
+emperical models for calculations of local thermal-hydraulic regimes of
+district heating network.
+
+
+## Installation
 
 For the stable release (if any), just install the latest version from
 [CRAN](https://cran.r-project.org/package=pipenostics):
