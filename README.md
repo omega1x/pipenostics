@@ -19,8 +19,8 @@ diagnostics, reliability and predictive maintenance of pipeline systems.
 -   [Usage examples](#usage-examples)
     -   [Corrosion diagnostics](#corrosion-diagnostics)
     -   [Probability of failure](#probability-of-failure)
-    -   [Tracing of regime](#tracing-of-regime)
--   [Development notes](#development-notes)
+    -   [Regime tracing](#regime-tracing)
+-   [Developer notes](#developer-notes)
 -   [Underlying concepts](#underlying-concepts)
     -   [Corrosion diagnostics and probability of failure](#corrosion-diagnostics-and-probability-of-failure)
     -   [Heat losses](#heat-losses)
@@ -31,7 +31,7 @@ diagnostics, reliability and predictive maintenance of pipeline systems.
 
 Aiming for digital transformation of technical engineering departments
 of heat generating and heat transferring companies the package
-aggregates to some extent the separate knowledge about engineering,
+aggregates to some extent the separate knowledge concerning engineering,
 reliability, diagnostics and predictive maintenance of pipeline systems.
 For the present time the package contains utilities for processing
 corrosion data commonly gathered by *inline inspection*, as well as
@@ -40,7 +40,7 @@ district heating network.
 
 ## Installation
 
-For the stable release (if any), just install the latest version from
+For the stable release just install the latest version from
 [CRAN](https://cran.r-project.org/package=pipenostics):
 
     install.packages("pipenostics")
@@ -53,7 +53,7 @@ For the development version, use
 ## Usage examples
 
 ### Corrosion diagnostics
-By using of `b31crvl()` imitate the output of *CRVL.BAS* - the old software for determining the allowable length and maximum
+By using of `b31crvl()` simply imitate the output of *CRVL.BAS* which is the honored software for determining the allowable length and maximum
 allowable working pressure presented in [ASME B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf):
 
     b31crvl(maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5)
@@ -65,14 +65,81 @@ allowable working pressure presented in [ASME B31G-1991](https://law.resource.or
     With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847
     With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000
 
+
 ### Probability of failure
+
+Let's consider a pipe in district heating network with
+   
+    diameter           <- 762         # [mm]
+    wall_thickness     <-  10         # [mm]
+    UTS                <- 434.3697    # [MPa]
+
+which transfers heat-carrier (water) at
+    
+    operating_pressure <-   0.588399  # [MPa]
+    temperature        <-  95         # [°C]
+
+During *inline inspection* four corroded areas (defects) are detected with:
+
+    depth  <- c(2.45,  7.86,   7.93,   8.15)  # [mm]
+
+whereas the length of all defects is not greater 200 mm:
+
+    length <- rep(200, 4)  # [mm]
+
+Corrosion rates in radial and in longitudinal directions are not well-known and
+may vary in range `.01` - `.30` mm/year:
+
+    rar = function(n) stats::runif(n, .01, .30) / 365
+    ral = function(n) stats::runif(n, .01, .30) / 365
+
+Then probabilities of failure (POFs) related to each corroded area are near:
+    
+    pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
+                 rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
+                 rar, ral, method = "dnv")
+    print(pof)
+    # 0.000000 0.252510 0.368275 0.771595
+
+So, the POF of the pipe is near
+
+    print(max(pof))
+    # 0.771595
+
+The value of POF changes in time. So, in a year after *inline inspection* of
+the pipe we can get something near
+
+    pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
+                 rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
+                 rar, ral, method = "dnv", days = 365)
+    print(pof)
+    # 0.000000 0.525539 0.648359 0.929099
+
+For entire pipe we get something near:
+    
+    print(max(pof))
+    0.929099
+
+Two years ago before *inline inspection* the pipe state was rather good:
+
+    pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
+                 rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
+                rar, ral, method = "dnv", days = -2 * 365)
+
+    print(pof)
+    # 0.000000 0.040780 0.072923 0.271751
+
+For entire pipe we get something near:
+    
+    print(max(pof))
+    # 0.271751
+
+
+### Regime tracing
 Example
 
-### Tracing of regime
-Example
 
-
-## Development notes
+## Developer notes
 
 Aiming to avoid portability and accessibility problems made us search
 ways to restrict source code development by functionality of few
@@ -84,7 +151,7 @@ systems.
 Since most functions have native argument vectorization usage of those
 functions with fast
 [data.table](https://cran.r-project.org/package=data.table) framework is
-strongly encourage when processing large data sets. For that purpose
+strongly encouraged when processing large data sets. For that purpose
 arguments for all package functions are thoroughly checked for type
 consistency and physical sense using asserts and tests from
 [checkmate](https://cran.r-project.org/package=checkmate) package.
@@ -120,22 +187,23 @@ B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf)
 and [ASME
 B31G-2012](https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines)
 codes have proven sound and have seen successful use in the pipeline
-industry providing users with such required formalized framework.
+industry providing users with such required formalized framework for a very long period of time. That is why failure pressure calculators 
+`b31gpf()` and `b31gmodpf()` are widely used in assessment of POFs.
 
 To preserve simplicity of traditional inline measurements
-during inspections they consider only **Analysis Level 1** in this *R*-package, since as noted in
+during inspections we hereinafter consider only **Analysis Level 1** in this *R*-package, since as noted in
 [ASME
 B31G-2012](https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines)
 **Level 1** evaluation is quite suitable for use in prioritizing
-corrosion defects identified by inline inspection.
+corrosion defects identified by *inline inspection*.
 
-Other approaches for operating with corrosion data are mostly aimed on
+Other approaches for operating with corrosion data presented in the package are aimed on
 failure pressure calculations. Models like `dnvpf()`, `shell92pf()`, and
 `pcorrcpf()` assume different shapes of corrosion defects and usage
 conditions for some cases. So, it is encouraged first to find out which
 model is most suitable for solving some real world problem.
 
-The next values describing technological conditions, material properties
+For the sake of simplicity and transparency the next values describing technological conditions, material properties
 of pipe and defect parameters are used as arguments throughout the most
 functions concerning corrosion diagnostics:
 
@@ -143,17 +211,21 @@ functions concerning corrosion diagnostics:
     [MAOP](https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure)
     in [PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)
 -   *d* - nominal outside diameter of the pipe,
-    [inch](https://en.wikipedia.org/wiki/Inch)
+    [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
 -   *wth* - nominal wall thickness of the pipe,
-    [inch](https://en.wikipedia.org/wiki/Inch)
+    [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
 -   *smys* - specified minimum yield of stress -
     [SMYS](https://en.wikipedia.org/wiki/Specified_minimum_yield_strength)
-    as a characteristics of steel strength,
-    [PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)
+    as a characteristics of steel strength, [PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)
+-   *uts* - ultimate tensile strength - [UTS](https://en.wikipedia.org/wiki/Ultimate_tensile_strength) or
+    specified minimum tensile strength (SMTS) as another characteristic of steel strength, [MPa](https://en.wikipedia.org/wiki/Pascal_(unit))
 -   *depth* - measured maximum depth of the corroded area,
-    [inch](https://en.wikipedia.org/wiki/Inch)
+    [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
 -   *l* - measured maximum longitudial length of the corroded area,
-    [inch](https://en.wikipedia.org/wiki/Inch)
+    [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
+    
+In the course of further development of the functionality of this package,
+some revisions or supplements to the existing concept are not excepted.
 
 ### Heat losses
 
