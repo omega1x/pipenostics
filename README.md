@@ -133,7 +133,7 @@ Two years ago before *inline inspection* the pipe state was rather good:
     pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
                  rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
                 rar, ral, method = "dnv", days = -2 * 365)
-    # pipenostics::pof: process case [4/4] - 100 % . All done, thanks!
+    # pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!
     print(pof)
     # [1] 0.000000 0.040849 0.072734 0.272358
 
