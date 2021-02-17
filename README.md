@@ -145,6 +145,7 @@ For entire pipe we get something near:
 
 ### Regime tracing
 Let's consider the next 4-segment tracing path:
+
 ![m325regtrace](.src/svg-graphics/m325regtrace.svg)
 
 Suppose we have the next sensor readings for *forward tracing*:
