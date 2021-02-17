@@ -25,51 +25,51 @@ m278hlund(
 }
 \arguments{
 \item{t1}{temperature of heat carrier (water) inside the supplying pipe, [\emph{°C}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{t2}{temperature of heat carrier (water) inside the returning pipe, [\emph{°C}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{t0}{temperature of environment, [\emph{°C}]. In case of underground laying this is
-the temperature of subsoil, numeric vector.}
+the temperature of subsoil. Type: \code{\link{assert_double}}.}
 
 \item{insd1}{thickness of the insulator which covers the supplying pipe, [\emph{m}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{insd2}{thickness of the insulator which covers the returning pipe, [\emph{m}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
-\item{d1}{external diameter of supplying pipe, [\emph{m}]. Type: \code{[double]}.}
+\item{d1}{external diameter of supplying pipe, [\emph{m}]. Type: \code{\link{assert_double}}.}
 
-\item{d2}{external diameter of returning pipe, [\emph{m}]. Type: \code{[double]}.}
+\item{d2}{external diameter of returning pipe, [\emph{m}]. Type: \code{\link{assert_double}}.}
 
 \item{lambda1}{thermal conductivity of insulator which covers the supplying pipe
-[\emph{W/m/°C}]. Type: \code{[double]}.}
+[\emph{W/m/°C}]. Type: \code{\link{assert_double}}.}
 
 \item{lambda2}{thermal conductivity of insulator which covers the returning pipe
-[\emph{W/m/°C}]. Type: \code{[double]}.}
+[\emph{W/m/°C}]. Type: \code{\link{assert_double}}.}
 
 \item{k1}{technical condition factor for insulator of supplying pipe, [].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{k2}{technical condition factor for insulator of returning pipe, [].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{lambda0}{thermal conductivity of environment, [\emph{W/m/°C}]. In case of underground
 laying this is the thermal conductivity of subsoil.
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{z}{underground laying depth, [\emph{m}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{s}{distance between supplying and returning pipes, [\emph{m}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{len}{length of pipeline segment, [\emph{m}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{duration}{duration of heat flux emittance, [\emph{hour}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 }
 \value{
 Heat flux emitted by pipeline segment during \code{duration}, [\emph{kcal}].
@@ -78,7 +78,7 @@ Heat flux emitted by pipeline segment during \code{duration}, [\emph{kcal}].
  to that in [\emph{kcal/m/h}] units and so comparable with values of
  heat flux listed in
  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
- Type: \code{[double]}.
+ Type: \code{\link{assert_double}}.
 }
 \description{
 Calculate values of heat flux emitted by underground pipeline segment

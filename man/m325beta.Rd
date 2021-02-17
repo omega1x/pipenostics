@@ -15,13 +15,13 @@ m325beta(laying = "channel", d = 700)
   \item \code{tunnel},
   \item \code{underground}.
 }
-Type: \code{[character, subset]}.}
+Type: \code{\link{assert_subset}}.}
 
-\item{d}{internal diameter of pipe, [\emph{mm}]. Type: \code{[double]}.}
+\item{d}{internal diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 }
 \value{
 Two possible values of \eqn{\beta}: \code{1.2} or \code{1.15} depending on
- pipe laying and its diameter. Type: \code{[double]}.
+ pipe laying and its diameter. Type: \code{\link{assert_double}}.
 }
 \description{
 Calculate \eqn{\beta} - \emph{local heat loss coefficient} according to rule \emph{11.3.3}

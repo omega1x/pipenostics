@@ -28,35 +28,35 @@ m325traceline(
 \arguments{
 \item{temperature}{temperature of heat carrier (water) inside the pipe sensor-measured at the inlet
 (forward tracing) or at the outlet (backward tracing) of path, [\emph{°C}].
-Type: \code{[number]}.}
+Type: \code{\link{assert_number}}.}
 
 \item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 of heat carrier (water) sensor-measured at the inlet
 (forward tracing) or at the outlet (backward tracing) of path, [\emph{MPa}].
-Type: \code{[number]}.}
+Type: \code{\link{assert_number}}.}
 
 \item{consumption}{amount of heat carrier (water) sensor-measured at the inlet (forward tracing) or at
 the outlet (backward tracing) of path, [\emph{ton/hour}].
-Type: \code{[number]}.}
+Type: \code{\link{assert_number}}.}
 
 \item{g}{amount of heat carrier discharge to network for each pipe segment in the
 tracing path enumerated along the direction of flow. If flag \code{absg}
 is \code{TRUE} then they treat argument \code{g} as absolute value in
 [\emph{ton/hour}], otherwise they do as percentage of consumption in the
 pipe segment.
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{d}{internal diameters of subsequent pipes in tracing path that are enumerated
 along the direction of flow, [\emph{mm}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{len}{length of subsequent pipes in tracing path that are enumerated
 along the direction of flow, [\emph{m}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{year}{year when pipe is put in operation after laying or total overhaul for
 each pipe in tracing path enumerated along the direction of flow.
-Type: \code{[integerish]}.}
+Type: \code{\link{assert_integerish}}.}
 
 \item{insulation}{insulation that covers the exterior of pipe:
 \describe{
@@ -65,7 +65,7 @@ Type: \code{[integerish]}.}
   \item{\code{2}}{polymer concrete}
 }
 for each pipe in tracing path enumerated along the direction of flow.
-Type: \code{[double, subset]}.}
+Type: \code{\link{assert_numeric}} and \code{\link{assert_subset}}.}
 
 \item{laying}{type of pipe laying depicting the position of pipe in space:
 \itemize{
@@ -76,27 +76,28 @@ Type: \code{[double, subset]}.}
   \item \code{underground}
 }
 for each pipe in tracing path enumerated along the direction of flow.
-Type: \code{[character, subset]}.}
+Type: \code{\link{assert_character}} and \code{\link{assert_subset}}.}
 
 \item{beta}{should they consider additional heat losses of fittings? Logical value
 for each pipe in tracing path enumerated along the direction of flow.
-Type: \code{[logical]}.}
+Type: \code{\link{assert_logical}}.}
 
 \item{exp5k}{pipe regime flag: is pipe operated more that \code{5000} hours per year? Logical
 value for each pipe in tracing path enumerated along the direction of flow.
-Type: \code{[logical]}.}
+Type: \code{\link{assert_logical}}.}
 
 \item{roughness}{roughness of internal wall for each pipe in tracing path enumerated along
-the direction of flow, [\emph{m}]. Type: \code{[double]}.}
+the direction of flow, [\emph{m}]. Type: \code{\link{assert_double}}.}
 
 \item{inlet}{elevation of pipe inlet for each pipe in tracing path enumerated along
-the direction of flow, [\emph{m}]. Type: \code{[double]}.}
+the direction of flow, [\emph{m}]. Type: \code{\link{assert_double}}.}
 
 \item{outlet}{elevation of pipe outlet for each pipe in tracing path enumerated along
-the direction of flow, [\emph{m}]. Type: \code{[double]}.}
+the direction of flow, [\emph{m}]. Type: \code{\link{assert_double}}.}
 
 \item{elev_tol}{maximum allowed discrepancy between adjacent outlet and inlet elevations of
-two subsequent pipes in the traced path, [\emph{m}]. Type: \code{[number]}.}
+two subsequent pipes in the traced path, [\emph{m}].
+Type: \code{\link{assert_number}}.}
 
 \item{method}{method of determining \emph{Darcy friction factor}
 \itemize{
@@ -104,26 +105,26 @@ two subsequent pipes in the traced path, [\emph{m}]. Type: \code{[number]}.}
   \item \code{vatankhan}
   \item \code{buzelli}
 }
-Type: \code{[character, choice]}. For more details see \code{\link{dropp}}.}
+Type: \code{\link{assert_choice}}. For more details see \code{\link{dropp}}.}
 
 \item{forward}{tracing direction flag: is it a forward direction of tracing?
 If \code{FALSE} the backward tracing is performed.
-Type: \code{[flag]}.}
+Type: \code{\link{assert_flag}}.}
 
 \item{absg}{Whether argument \code{g} (amount of heat carrier discharge to network) is an
 absolute value in [\emph{ton/hour}] (\code{TRUE}) or is it a percentage of
 consumption in the pipe segment (\code{FALSE})?
-Type: \code{[flag]}.}
+Type: \code{\link{assert_flag}}.}
 }
 \value{
 named list of regime parameters for the traced path with the next elements:
  \describe{
    \item{\code{temperature}}{calculated temperatures of heat carrier for all pipeline segments, [\emph{°C}].
-   Type: \code{[double]}.}
+   Type: \code{\link{assert_double}}.}
    \item{\code{pressure}}{calculated pressures of heat carrier for all pipeline segments, [\emph{MPa}].
-   Type: \code{[double]}.}
+   Type: \code{\link{assert_double}}.}
    \item{\code{consumption}}{calculated consumption(s) of heat carrier for all pipeline segments, [\emph{ton/hour}].
-   Type: \code{[double]}.}
+   Type: \code{\link{assert_double}}.}
  }
 }
 \description{

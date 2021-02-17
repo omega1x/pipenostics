@@ -14,17 +14,17 @@
 #' \describe{
 #'   \item{id}{Number of insulation material table 5.1 of Appendix 5.3 in
 #'    \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.
-#'    Type: \code{[integer]}.
+#'    Type: \code{\link{assert_integerish}}.
 #'    }
 #'   \item{material}{Designation of insulation material more or less similar
 #'   to those in table 5.1 of Appendix 5.3 in
 #'   \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.
-#'   Type: \code{[character]}.
+#'   Type: \code{\link{assert_character}}.
 #'   }
 #'   \item{lambda}{Value for intercept, [\emph{mW/m/°C}].
-#'   Type: \code{[integer]}.
+#'   Type: \code{\link{assert_integer}}.
 #'   }
-#'   \item{k}{Value for factor. Type: \code{[integer]}.}
+#'   \item{k}{Value for factor. Type: \code{\link{assert_integer}}.}
 #'  }
 #' @source \url{http://www.complexdoc.ru/ntdtext/547103/}
 "m278insdata"

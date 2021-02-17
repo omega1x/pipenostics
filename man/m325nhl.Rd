@@ -19,7 +19,7 @@ m325nhl(
 }
 \arguments{
 \item{year}{year when the pipe is put in operation after laying or total overhaul.
-Type: \code{[integerish]}.}
+Type: \code{\link{assert_integerish}}}
 
 \item{laying}{type of pipe laying depicting the position of pipe in space:
 \itemize{
@@ -29,10 +29,10 @@ Type: \code{[integerish]}.}
   \item \code{tunnel},
   \item \code{underground}.
 }
-Type: \code{[character, subset]}.}
+Type: \code{\link{assert_subset}}.}
 
 \item{exp5k}{pipe regime flag: is pipe operated more that 5000 hours per year?
-Type: \code{[logical]}.}
+Type: \code{\link{assert_logical}}.}
 
 \item{insulation}{insulation that covers the exterior of pipe:
 \describe{
@@ -40,22 +40,22 @@ Type: \code{[logical]}.}
   \item{\code{1}}{foamed polyurethane or analogue}
   \item{\code{2}}{polymer concrete}
 }
-Type: \code{[double, subset]}.}
+Type: \code{\link{assert_integer}} and \code{\link{assert_subset}}.}
 
-\item{d}{internal diameter of pipe, [\emph{mm}]. Type: \code{[double]}.}
+\item{d}{internal diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 
 \item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
-\item{len}{length of pipe, [\emph{m}]. Type: \code{[double]}.}
+\item{len}{length of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.}
 
-\item{duration}{duration of heat flux emittance, [\emph{hour}]. Type: \code{[double]}.}
+\item{duration}{duration of heat flux emittance, [\emph{hour}]. Type: \code{\link{assert_double}}.}
 
 \item{beta}{should they consider additional heat losses of fittings?
-Type: \code{[logical]}.}
+Type: \code{\link{assert_logical}}.}
 
-\item{extra}{number of points used for temperature extrapolation.
-Type: \code{[integer, choice]}.}
+\item{extra}{number of points used for temperature extrapolation: \code{2}, \code{3},
+or \code{4}. Type: \code{\link{assert_choice}}.}
 }
 \value{
 Heat flux emitted by pipe during \code{duration}, [\emph{kcal}].
@@ -63,7 +63,7 @@ Heat flux emitted by pipe during \code{duration}, [\emph{kcal}].
  emittance is set to 1 \emph{hour} then the return value is in the same
  units as value of heat flux, [\emph{kcal/m/h}], accepted by
  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
- Type: \code{[double]}.
+ Type: \code{\link{assert_double}}.
 }
 \description{
 Calculate normative values of heat flux that is legally affirmed by

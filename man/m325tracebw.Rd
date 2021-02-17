@@ -41,30 +41,29 @@ Type: any type that can be painlessly coerced to character by
 \item{temperature}{\emph{snapshot of thermal-hydraulic regime state}: temperature of heat carrier
 (water) sensor-measured on the terminal acceptor node, [\emph{°C}].
 Use \code{NA_float_}s for nodes without temperature sensor.
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{pressure}{\emph{snapshot of thermal-hydraulic regime state}: sensor-measured
 \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
-[\emph{MPa}]. Type: \code{[double]}. Use \code{NA_float_}s for nodes
-without pressure sensor.}
+[\emph{MPa}]. Type: \code{\link{assert_double}}.}
 
 \item{consumption}{\emph{snapshot of thermal-hydraulic regime state}:
 sensor-measured amount of heat carrier (water) on terminal node that is
 transferred by pipe (i.e. acceptor's incoming edge) during a period,
-[\emph{ton/hour}]. Type: \code{[double]}. Use \code{NA_float_}s for nodes
-without consumption sensor.}
+[\emph{ton/hour}]. Type: \code{\link{assert_double}}.
+Use \code{NA_float_}s for nodes without consumption sensor.}
 
 \item{d}{internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
 [\emph{mm}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{len}{pipe length (i.e. length of acceptor's incoming edge), [\emph{m}].
-Type: \code{[double]}.}
+Type: \code{\link{assert_double}}.}
 
 \item{year}{year when the pipe (i.e. acceptor's incoming edge) is put in operation
 after laying or total overhaul.
-Type: \code{[integerish]}.}
+Type: \code{\link{assert_integerish}}.}
 
 \item{insulation}{identifier of insulation that covers the exterior of pipe (i.e. acceptor's
 incoming edge):
@@ -73,7 +72,7 @@ incoming edge):
    \item{\code{1}}{foamed polyurethane or analogue}
    \item{\code{2}}{polymer concrete}
  }
-Type: \code{[integerish, subset]}.}
+Type: \code{\link{assert_subset}}.}
 
 \item{laying}{type of pipe laying depicting the position of pipe in space. Only five
 types of pipe laying are considered:
@@ -84,25 +83,22 @@ types of pipe laying are considered:
   \item \code{tunnel},
   \item \code{underground}.
 }
-Type: \code{[character, subset]}.}
+Type: \code{\link{assert_subset}}.}
 
 \item{beta}{logical indicator: should they consider additional heat losses of fittings
 located on this pipe (i.e. acceptor's incoming edge)?
-Type: \code{[logical]}.}
+Type: \code{\link{assert_logical}}.}
 
 \item{exp5k}{logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
 \code{TRUE} pipe is operated more that \code{5000} hours per year.
-Type: \code{[logical]}.}
+Type: \code{\link{assert_logical}}.}
 
 \item{roughness}{roughness of internal wall of pipe (i.e. acceptor's incoming edge),
-[\emph{m}].
-Type: \code{[double]}.}
+[\emph{m}]. Type: \code{\link{assert_logical}}.}
 
-\item{inlet}{elevation of pipe inlet, [\emph{m}].
-Type: \code{[double]}.}
+\item{inlet}{elevation of pipe inlet, [\emph{m}]. Type: \code{\link{assert_double}}.}
 
-\item{outlet}{elevation of pipe outlet, [\emph{m}].
-Type: \code{[double]}.}
+\item{outlet}{elevation of pipe outlet, [\emph{m}]. Type: \code{\link{assert_double}}.}
 
 \item{method}{method of determining \emph{Darcy friction factor}:
 \itemize{
@@ -110,7 +106,8 @@ Type: \code{[double]}.}
   \item \code{vatankhan}
   \item \code{buzelli}
 }
-Type: \code{[character, choice]}. For more details see \code{\link{dropp}}.}
+Type: \code{\link{assert_choice}}.
+For more details see \code{\link{dropp}}.}
 
 \item{opinion}{method for aggregating values of regime parameters on each node for the
 next tracing step:
@@ -120,17 +117,18 @@ next tracing step:
    \item{\code{median}}{median of parameter values are used for the next
    tracing step}
  }
-Type: \code{[character, choice]}.}
+Type: \code{\link{assert_choice}}.}
 
 \item{verbose}{logical indicator: should they watch tracing process on console?
-Type: \code{[flag]}.}
+Type: \code{\link{assert_flag}}.}
 
 \item{csv}{logical indicator: should they incrementally dump results to \emph{csv}-file
 while tracing?
-Type: \code{[flag]}.}
+Type: \code{\link{assert_flag}}.}
 
 \item{file}{name of \emph{csv}-file which they dump results to.
-Type: \code{[character]} of length 1.}
+Type: \code{\link{assert_character}} of length 1 that can be used safely
+to create a file and write to it.}
 }
 \value{
 \code{data.frame} containing results of tracing in
@@ -141,19 +139,19 @@ Type: \code{[character]} of length 1.}
      \item{\code{node}}{
        identifier of the node for which regime parameters is calculated.
        Values in this vector are identical to those in argument \code{acceptor}.
-       Type: \code{[character]}.
+       Type: \code{\link{assert_character}}.
      }
 
     \item{\code{trace}}{
       concatenated identifiers of nodes from which regime parameters are
       traced for the given node. Identifier \code{sensor} is used when
       values of regime parameters for the node are sensor readings.
-      Type: \code{[character]}.
+      Type: \code{\link{assert_character}}.
     }
 
     \item{\code{backward}}{
       identifier of tracing direction. It constantly equals to \code{TRUE}.
-      Type: \code{[logical]}.
+      Type: \code{\link{assert_logical}}.
     }
 
     \item{\code{aggregation}}{
@@ -174,32 +172,31 @@ Type: \code{[character]} of length 1.}
            avaraged values (opinions) temperature or pressure for the node
          }
       }
-      Type: \code{[character, choice]}.
+      Type: \code{\link{assert_character}}.
     }
 
    \item{\code{temperature}}{
      \emph{snapshot of thermal-hydraulic regime state}: traced temperature of heat
      carrier (water) that is associated with the node, [\emph{°C}]
-     Type: \code{[double]}.
+     Type: \code{\link{assert_double}}.
    }
 
    \item{\code{pressure}}{
      \emph{snapshot of thermal-hydraulic regime state}: traced pressure of heat
      carrier (water) that is associated with the node, [\emph{MPa}]
-     Type: \code{[double]}.
+     Type: \code{\link{assert_double}}.
    }
 
    \item{\code{consumption}}{
      \emph{snapshot of thermal-hydraulic regime state}: traced pressure of heat
      carrier (water) that is associated with the node, [\emph{ton/hour}]
-     Type: \code{[double]}.
+     Type: \code{\link{assert_double}}.
    }
 
    \item{\code{job}}{
      value of trace step counter.
-     Type: \code{[integer]}.
+     Type: \code{\link{assert_integer}}.
    }
-
  }
 }
 \description{

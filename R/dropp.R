@@ -11,34 +11,35 @@
 #'
 #' @param temperature
 #'  temperature of heat carrier (water) inside the pipe, [\emph{°C}].
-#'  Type: \code{[double]}.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @param pressure
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 #'  of heat carrier (water) measured at the
-#'  entrance (inlet) of pipe, [\emph{MPa}]. Type: \code{[double]}.
+#'  entrance (inlet) of pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.
 #'
 #' @param consumption
 #'  amount of heat carrier (water) that is transferred by pipe during a period,
-#'  [\emph{ton/hour}]. Type: \code{[double]}.
+#'  [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
 #'
 #' @param d
-#'  internal diameter of pipe, [\emph{m}]. Type: \code{[double]}.
+#'  internal diameter of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
 #'
 #' @param len
-#'  pipe length, [\emph{m}]. Type: \code{[double]}.
+#'  pipe length, [\emph{m}]. Type: \code{\link{assert_double}}.
 #'
 #' @param roughness
-#'  roughness of internal wall of pipe, [\emph{m}]. Type: \code{[double]}.
+#'  roughness of internal wall of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
 #'
 #' @param inlet
-#'  elevation of pipe inlet, [\emph{m}]. Type: \code{[double]}.
+#'  elevation of pipe inlet, [\emph{m}]. Type: \code{\link{assert_double}}.
 #'
 #' @param outlet
-#'  elevation of pipe outlet, [\emph{m}]. Type: \code{[double]}.
+#'  elevation of pipe outlet, [\emph{m}]. Type: \code{\link{assert_double}}.
 #'
 #' @param method
-#'  method of determining \emph{Darcy friction factor}. Type: \code{[character, choice]}.
+#'  method of determining \emph{Darcy friction factor}.
+#'  Type: \code{\link{assert_choice}}.
 #'  (see \strong{Details})
 #'
 #' @details
@@ -91,7 +92,7 @@
 #'  wall \href{https://en.wikipedia.org/wiki/Surface_roughness}{roughness} of pipe.
 #'
 #' @return
-#'  pressure drop at the outlet of pipe, [\emph{MPa}]. Type: \code{[double]}.
+#'  pressure drop at the outlet of pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.
 #'
 #' @references
 #'  \itemize{

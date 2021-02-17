@@ -14,8 +14,8 @@
 #'
 #'  \figure{b31gpf.png}
 #'
-#'  There (a) is a parabolic and (b) is a rectangular idealisations of a
-#'  corroded area, and d\emph{cor} represents argument \code{depth}.
+#'  There (a) is a parabolic and (b) is a rectangular idealizations of a
+#'  corroded area.
 #'
 #' @details
 #'   Since the definition of flow stress, \emph{Sflow}, in
@@ -39,24 +39,24 @@
 #'   use are offended.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.
+#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param smys
 #'  specified minimum yield of stress (\emph{SMYS}) as a
-#'  characteristics of steel strength, [\emph{PSI}]. Type: \code{[double]}.
+#'  characteristics of steel strength, [\emph{PSI}]. Type: \code{\link{assert_double}}.
 #'
 #' @param depth
-#'   measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.
+#'   measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param l
-#'  measured maximum longitudinal length of corroded area, [\emph{inch}]. Type: \code{[double]}.
+#'  measured maximum longitudinal length of corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @return
 #'  Estimated failure pressure of the corroded pipe, [\emph{PSI}].
-#'  Type: \code{[double]}.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @references
 #'  \enumerate{

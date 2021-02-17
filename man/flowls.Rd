@@ -4,7 +4,7 @@
 \alias{flowls}
 \title{List all possible flow paths in district heating network}
 \usage{
-flowls(sender = "A", acceptor = "B")
+flowls(sender = "A", acceptor = "B", maxcores = 2)
 }
 \arguments{
 \item{sender}{identifier of the node which heat carrier flows out.
@@ -15,6 +15,9 @@ Type: any type that can be painlessly coerced to character by
 of test bench considered this identifier should be unique.
 Type: any type that can be painlessly coerced to character by
 \code{\link{as.character}}.}
+
+\item{maxcores}{maximum cores of CPU to use in parallel processing.
+Type: \code{\link{assert_count}}.}
 }
 \value{
 named \code{list} that contains integer vectors as its elements. The name
@@ -23,7 +26,7 @@ named \code{list} that contains integer vectors as its elements. The name
  \code{list} represents an ordered sequence of indexes in \code{acceptor}
  that enumerates incoming edges from starting node to terminal one. The
  length of returned \code{list} is equal to number of terminal nodes for
- topology considered.
+ topology considered. Type: \code{\link{assert_list}}.
 }
 \description{
 Find and list all possible paths of heat carrier flow (water) in the given

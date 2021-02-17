@@ -8,11 +8,12 @@
 #'  to \href{https://en.wikipedia.org/wiki/Inch}{inches}
 #'
 #' @param x
-#'  numeric vector of lengths measured in \emph{millimeters}, [\emph{mm}].
-#'  Type: \code{[double]}.
+#'  length measured in \emph{millimeters}, [\emph{mm}].
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @return
-#'  numeric vector of lengths measured in \emph{inches}, [\emph{inch}]. Type: \code{[double]}.
+#'  length in \emph{inches}, [\emph{inch}].
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @seealso
 #'  \code{\link{mm_inch}} for converting \emph{inches} to \emph{mm}

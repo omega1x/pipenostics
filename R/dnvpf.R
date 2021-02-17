@@ -36,25 +36,25 @@
 #'   use are offended.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{mm}]. Type: \code{[double]}.
+#'  nominal outside diameter of the pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{mm}]. Type: \code{[double]}.
+#'  nominal wall thickness of the pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
 #'
 #' @param uts
 #'  ultimate tensile strength (\emph{UTS}) or
 #'  specified minimum tensile strength (\emph{SMTS}) as a
-#'  characteristic of steel strength, [\emph{MPa}]. Type: \code{[double]}.
+#'  characteristic of steel strength, [\emph{MPa}]. Type: \code{\link{assert_double}}.
 #'
 #' @param depth
-#'  measured maximum depth of the corroded area, [\emph{mm}]. Type: \code{[double]}.
+#'  measured maximum depth of the corroded area, [\emph{mm}]. Type: \code{\link{assert_double}}.
 #'
 #' @param l
-#'  measured maximum longitudinal length of corroded area, [\emph{mm}]. Type: \code{[double]}.
+#'  measured maximum longitudinal length of corroded area, [\emph{mm}]. Type: \code{\link{assert_double}}.
 #'
 #' @return
 #'  Estimated failure pressure of the corroded pipe, [\emph{MPa}].
-#'  Type: \code{[double]}.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @references
 #'  \enumerate{
@@ -65,7 +65,7 @@
 #'    supplement to \emph{B31 Code} for pressure piping.
 #'  \item  S. Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
 #'    of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
-#'    \strong{DOI 10.1007/978-3-319-25307-7}
+#'    \strong{DOI 10.1007/978-3-319-25307-7}.
 #'  }
 #'
 #' @seealso

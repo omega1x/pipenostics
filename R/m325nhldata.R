@@ -22,10 +22,10 @@
 #'     \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325};
 #'     identifier \emph{sgc} means that values are additionally
 #'     postulated (see \emph{Details}).
-#'     Type: \code{[character]}.
+#'     Type: \code{\link{assert_character}}.
 #'   }
 #'   \item{epoch}{Year depicting the epoch when the pipe is put in operation after laying or total overhaul.
-#'   Type: \code{[integer]}.}
+#'   Type: \code{\link{assert_integer}}.}
 #'   \item{laying}{Type of pipe laying depicting the position of pipe in space. Only five types of
 #'     pipe laying are considered:
 #'     \itemize{
@@ -35,13 +35,13 @@
 #'      \item \code{tunnel},
 #'      \item \code{underground}.
 #'     }
-#'     Type: \code{[character, subset]}.
+#'     Type: \code{\link{assert_character}}.
 #'   }
 #'
 #'   \item{exp5k}{
 #'     Logical indicator for pipe regime: if \code{TRUE} pipe is
 #'     operated more that \code{5000} hours per year.
-#'     Type: \code{[logical]}.
+#'     Type: \code{\link{assert_logical}}.
 #'   }
 #'
 #'   \item{insulation}{
@@ -51,16 +51,16 @@
 #'       \item{\code{1}}{foamed polyurethane or analogue}
 #'       \item{\code{2}}{polymer concrete}
 #'     }
-#'    Type: \code{[double, subset]}.
+#'    Type: \code{\link{assert_integerish}}.
 #'   }
 #'
-#'   \item{diameter}{Nominal internal diameter of pipe, [mm]. Type: \code{[double]}.}
+#'   \item{diameter}{Nominal internal diameter of pipe, [mm]. Type: \code{\link{assert_double}}.}
 #'
-#'   \item{temperature}{Operational temperature of pipe, [°C]. Type: \code{[double]}.}
+#'   \item{temperature}{Operational temperature of pipe, [°C]. Type: \code{\link{assert_double}}.}
 #'
 #'   \item{flux}{
 #'     Heat flux emitted by every meter of pipe during an hour, [kcal/m/hour].
-#'     Type: \code{[double]}.}
+#'     Type: \code{\link{assert_double}}.}
 #'  }
 #'
 #' @source \url{http://docs.cntd.ru/document/902148459}

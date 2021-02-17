@@ -7,11 +7,12 @@
 inch_mm(x)
 }
 \arguments{
-\item{x}{numeric vector of lengths measured in \emph{millimeters}, [\emph{mm}].
-Type: \code{[double]}.}
+\item{x}{length measured in \emph{millimeters}, [\emph{mm}].
+Type: \code{\link{assert_double}}.}
 }
 \value{
-numeric vector of lengths measured in \emph{inches}, [\emph{inch}]. Type: \code{[double]}.
+length in \emph{inches}, [\emph{inch}].
+ Type: \code{\link{assert_double}}.
 }
 \description{
 Convert length measured in \href{https://en.wikipedia.org/wiki/Millimetre}{millimeters} (mm)

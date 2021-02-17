@@ -10,24 +10,24 @@
 #'  exceeded.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.
+#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param smys
 #'  specified minimum yield of stress (\emph{SMYS}) as a
-#'  characteristics of steel strength, [\emph{PSI}]. Type: \code{[double]}.
+#'  characteristics of steel strength, [\emph{PSI}]. Type: \code{\link{assert_double}}.
 #'
 #' @param def
 #'   appropriate (combined) design factor from
 #'   \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.4.2002.pdf}{ASME B31.4},
 #'   \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.8.2003.pdf}{ASME B31.8},
 #'   or \href{https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems}{ASME B31.11}, [].
-#'   Type: \code{[double]}.
+#'   Type: \code{\link{assert_double}}.
 #'
 #' @return
-#'  Design pressure of the pipe, [\emph{PSI}]. Type: \code{[double]}.
+#'  Design pressure of the pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.
 #'
 #' @references
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.

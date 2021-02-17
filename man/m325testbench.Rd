@@ -23,8 +23,8 @@ A data frame with 22 rows (number of nodes and incoming edges) and 15 variables:
   \item{temperature}{
     Snapshot of thermal-hydraulic regime state: temperature of heat carrier
     (water) sensor-measured on terminal acceptor node, [\emph{°C}].
-    Type: \code{[double]}. \code{NA}s are introduced for nodes without
-    temperature sensor.
+    Type: \code{\link{assert_double}}. \code{NA}s are introduced for nodes
+    without temperature sensor.
   }
 
   \item{pressure}{
@@ -33,33 +33,33 @@ A data frame with 22 rows (number of nodes and incoming edges) and 15 variables:
     \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
     of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
     [\emph{MPa}].
-    Type: \code{[double]}. \code{NA}s are introduced for nodes without
-    pressure sensor.
+    Type: \code{\link{assert_double}}. \code{NA}s are introduced for nodes
+    without pressure sensor.
   }
 
   \item{consumption}{
     Snapshot of thermal-hydraulic regime state:
     sensor-measured amount of heat carrier (water) on terminal node that is
     transferred by pipe (i.e. acceptor's incoming edge) during a period,
-    [\emph{ton/hour}]. Type: \code{[double]}. \code{NA}s are introduced for
-    nodes without consumption sensor.
+    [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
+    \code{NA}s are introduced for nodes without consumption sensor.
   }
 
  \item{d}{
    internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
    [\emph{m}].
-   Type: \code{[double]}.
+   Type: \code{\link{assert_double}}.
  }
 
  \item{len}{
    pipe length (i.e. length of acceptor's incoming edge), [\emph{m}].
-   Type: \code{[double]}.
+   Type: \code{\link{assert_double}}.
  }
 
  \item{year}{
    year when the pipe (i.e. acceptor's incoming edge) is put in operation after
    laying or total overhaul.
-   Type: \code{[integerish]}
+   Type: \code{\link{assert_integerish}}.
  }
 
  \item{insulation}{
@@ -70,7 +70,7 @@ A data frame with 22 rows (number of nodes and incoming edges) and 15 variables:
       \item{\code{1}}{foamed polyurethane or analogue}
       \item{\code{2}}{polymer concrete}
     }
-   Type: \code{[integerish, subset]}.
+   Type: \code{\link{assert_integerish}}.
  }
 
  \item{laying}{
@@ -83,35 +83,35 @@ A data frame with 22 rows (number of nodes and incoming edges) and 15 variables:
       \item \code{tunnel},
       \item \code{underground}.
     }
-    Type: \code{[character, subset]}.
+    Type: \code{\link{assert_character}}.
   }
 
  \item{beta}{
    logical indicator: should they consider additional heat losses of fittings
    located on this pipe (i.e. acceptor's incoming edge)?
-   Type: \code{[logical]}.
+   Type: \code{\link{assert_logical}}.
  }
 
  \item{exp5k}{
     logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
     \code{TRUE} pipe is operated more that \code{5000} hours per year.
-    Type: \code{[logical]}.
+    Type: \code{\link{assert_logical}}.
   }
 
  \item{roughness}{
    roughness of internal wall of pipe (i.e. acceptor's incoming edge),
    [\emph{m}].
-   Type: \code{[double]}.
+   Type: \code{\link{assert_double}}.
  }
 
  \item{inlet}{
     elevation of pipe inlet, [\emph{m}].
-    Type: \code{[double]}.
+    Type: \code{\link{assert_double}}.
  }
 
  \item{outlet}{
     elevation of pipe outlet, [\emph{m}].
-    Type: \code{[double]}.
+    Type: \code{\link{assert_double}}.
  }
 }
 }

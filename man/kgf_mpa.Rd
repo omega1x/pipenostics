@@ -7,17 +7,17 @@
 kgf_mpa(x)
 }
 \arguments{
-\item{x}{numeric vector of pressure (stress) measured in \emph{megapascals},
-[\emph{MPa}]. Type: \code{[double]}.}
+\item{x}{pressure (stress) measured in \emph{megapascals},
+[\emph{MPa}]. Type: \code{\link{assert_double}}.}
 }
 \value{
-numeric vector of pressure (stress) measured in
+pressure (stress) in
  \emph{kilogram-force per square cm}, [\emph{kgf/cm^2}].
- Type: \code{[double]}.
+ Type: \code{\link{assert_double}}.
 }
 \description{
 Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pascal_(unit)}{megapascals} (MPa)
- to \href{https://en.wikipedia.org/wiki/Kilogram-force_per_square_centimetre}{kilogram-force per square cm} (\eqn{kgf/cm^2})
+ to \href{https://en.wikipedia.org/wiki/Kilogram-force_per_square_centimetre}{kilogram-force per square cm} (\eqn{kgf/cm^2}).
 }
 \examples{
 

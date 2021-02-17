@@ -8,10 +8,10 @@
 #'
 #' @format A data frame with 15 rows and 3 variables:
 #' \describe{
-#'   \item{subsoil}{Geological name of subsoil. Type: \code{[character]}.}
-#'   \item{state}{The degree of water penetration to the subsoil. Type: \code{[character]}.}
+#'   \item{subsoil}{Geological name of subsoil. Type: \code{\link{assert_character}}.}
+#'   \item{state}{The degree of water penetration to the subsoil. Type: \code{\link{assert_character}}.}
 #'   \item{lambda}{Value of thermal conductivity of subsoil regarding water penetration, [\emph{W/m/°C}].
-#'   Type: \code{[double]}.
+#'   Type: \code{\link{assert_double}}.
 #'   }
 #'  }
 #' @source \url{http://www.complexdoc.ru/ntdtext/547103/}

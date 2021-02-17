@@ -21,14 +21,14 @@
 #'    \item \code{tunnel},
 #'    \item \code{underground}.
 #'  }
-#'  Type: \code{[character, subset]}.
+#'  Type: \code{\link{assert_subset}}.
 #'
 #' @param d
-#'   internal diameter of pipe, [\emph{mm}]. Type: \code{[double]}.
+#'   internal diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
 #'
 #' @return
 #'  Two possible values of \eqn{\beta}: \code{1.2} or \code{1.15} depending on
-#'  pipe laying and its diameter. Type: \code{[double]}.
+#'  pipe laying and its diameter. Type: \code{\link{assert_double}}.
 #'
 #' @export
 #'

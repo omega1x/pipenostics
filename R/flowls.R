@@ -30,6 +30,10 @@
 #'    Type: any type that can be painlessly coerced to character by
 #'    \code{\link{as.character}}.
 #'
+#' @param maxcores
+#'    maximum cores of CPU to use in parallel processing.
+#'    Type: \code{\link{assert_count}}.
+#'
 #' @return
 #'  named \code{list} that contains integer vectors as its elements. The name
 #'  of each element in the \code{list} is the name of \code{acceptor} associated
@@ -37,7 +41,7 @@
 #'  \code{list} represents an ordered sequence of indexes in \code{acceptor}
 #'  that enumerates incoming edges from starting node to terminal one. The
 #'  length of returned \code{list} is equal to number of terminal nodes for
-#'  topology considered.
+#'  topology considered. Type: \code{\link{assert_list}}.
 #'
 #' @seealso
 #'  \code{\link{m325testbench}} for example of topology of district heating
@@ -87,7 +91,7 @@
 #' for (i in union(seq_along(path), seq_along(all_paths)))
 #'   stopifnot(path[[i]] == all_paths[[i]])
 #'
-flowls <- function(sender = "A", acceptor = "B"){
+flowls <- function(sender = "A", acceptor = "B", maxcores = 2){
   # Validate function input ----
   checkmate::assert_true(all(!is.na(acceptor)))
   acceptor <- as.character(acceptor)
@@ -95,6 +99,7 @@ flowls <- function(sender = "A", acceptor = "B"){
   n <- length(acceptor)
   sender <- as.character(sender)
   checkmate::assert_character(sender, any.missing = FALSE, len = n)
+  checkmate::assert_count(maxcores, positive = TRUE)
 
   # Validate topology ----
   starting_node_idx <- which(!(sender %in% acceptor))
@@ -119,8 +124,7 @@ flowls <- function(sender = "A", acceptor = "B"){
 
   # Run workers in parallel ----
   cluster <- parallel::makeCluster(
-    #max(1, min(length(terminal_node_idx), parallel::detectCores() - 1))
-    2
+    max(1, min(parallel::detectCores() - 1), maxcores)
   )
   parallel::clusterExport(
     cluster,

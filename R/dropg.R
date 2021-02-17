@@ -22,8 +22,10 @@
 #'  Types:
 #'
 #'  \describe{
-#'    \item{\code{[double]}}{total diameter of all adjacent pipes (total diameter case)}
-#'    \item{\code{[list]} of \code{[double]}}{a set of diameters of adjacent pipes (particular diameter case)}
+#'    \item{\code{\link{assert_double}}}{
+#'      total diameter of all adjacent pipes (total diameter case)}
+#'    \item{\code{\link{assert_list}} of \code{\link{assert_double}}}{a set of
+#'       diameters of adjacent pipes (particular diameter case)}
 #'  }
 #'
 #'  Positive values of diameters of adjacent pipes correspond to discharging
@@ -31,11 +33,11 @@
 #'  recharging. See \emph{Details} and \emph{Examples} for further explanations.
 #'
 #' @param d
-#'   diameter of pipe under consideration, [\emph{mm}]. Type: \code{[double]}.
+#'   diameter of pipe under consideration, [\emph{mm}]. Type: \code{\link{assert_double}}.
 #'
 #' @param consumption
 #'   sensor-measured amount of heat carrier (water) that is transferred through
-#'   the inlet of pipe during a period, [\emph{ton/hour}]. Type: \code{[double]}.
+#'   the inlet of pipe during a period, [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
 #'
 #' @return
 #'  consumption \emph{drop} or \emph{recovery} at the outlet of pipe,
@@ -43,7 +45,7 @@
 #'  whereas for \emph{recovery} it is negative. In both cases to calculate
 #'  consumption on the outlet of pipe under consideration simply subtract the
 #'  calculated value from the sensor-measured consumption on the inlet.
-#'  Type: \code{[double]}.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @details
 #'  It is common that sensor-measured consumption undergoes discharges to

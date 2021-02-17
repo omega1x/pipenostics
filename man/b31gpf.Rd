@@ -7,20 +7,20 @@
 b31gpf(d, wth, smys, depth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.}
+\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.}
+\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
 \item{smys}{specified minimum yield of stress (\emph{SMYS}) as a
-characteristics of steel strength, [\emph{PSI}]. Type: \code{[double]}.}
+characteristics of steel strength, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
 
-\item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.}
+\item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
-\item{l}{measured maximum longitudinal length of corroded area, [\emph{inch}]. Type: \code{[double]}.}
+\item{l}{measured maximum longitudinal length of corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 }
 \value{
 Estimated failure pressure of the corroded pipe, [\emph{PSI}].
- Type: \code{[double]}.
+ Type: \code{\link{assert_double}}.
 }
 \description{
 Calculate failure pressure of the corroded pipe
@@ -33,8 +33,8 @@ Calculate failure pressure of the corroded pipe
 
  \figure{b31gpf.png}
 
- There (a) is a parabolic and (b) is a rectangular idealisations of a
- corroded area, and d\emph{cor} represents argument \code{depth}.
+ There (a) is a parabolic and (b) is a rectangular idealizations of a
+ corroded area.
 }
 \details{
 Since the definition of flow stress, \emph{Sflow}, in

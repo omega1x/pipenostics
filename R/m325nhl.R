@@ -10,7 +10,7 @@
 #'
 #' @param year
 #'   year when the pipe is put in operation after laying or total overhaul.
-#'   Type: \code{[integerish]}.
+#'   Type: \code{\link{assert_integerish}}
 #'
 #' @param laying
 #'  type of pipe laying depicting the position of pipe in space:
@@ -21,11 +21,11 @@
 #'    \item \code{tunnel},
 #'    \item \code{underground}.
 #'  }
-#'  Type: \code{[character, subset]}.
+#'  Type: \code{\link{assert_subset}}.
 #'
 #' @param exp5k
 #'  pipe regime flag: is pipe operated more that 5000 hours per year?
-#'  Type: \code{[logical]}.
+#'  Type: \code{\link{assert_logical}}.
 #'
 #' @param insulation
 #'  insulation that covers the exterior of pipe:
@@ -34,28 +34,28 @@
 #'    \item{\code{1}}{foamed polyurethane or analogue}
 #'    \item{\code{2}}{polymer concrete}
 #'  }
-#'  Type: \code{[double, subset]}.
+#'  Type: \code{\link{assert_integer}} and \code{\link{assert_subset}}.
 #'
 #' @param d
-#'   internal diameter of pipe, [\emph{mm}]. Type: \code{[double]}.
+#'   internal diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
 #'
 #' @param temperature
 #'  temperature of heat carrier (water) inside the pipe, [\emph{°C}].
-#'  Type: \code{[double]}.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @param len
-#'  length of pipe, [\emph{m}]. Type: \code{[double]}.
+#'  length of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
 #'
 #' @param duration
-#'  duration of heat flux emittance, [\emph{hour}]. Type: \code{[double]}.
+#'  duration of heat flux emittance, [\emph{hour}]. Type: \code{\link{assert_double}}.
 #'
 #' @param beta
 #'  should they consider additional heat losses of fittings?
-#'  Type: \code{[logical]}.
+#'  Type: \code{\link{assert_logical}}.
 #'
 #' @param extra
-#'   number of points used for temperature extrapolation.
-#'   Type: \code{[integer, choice]}.
+#'   number of points used for temperature extrapolation: \code{2}, \code{3},
+#'   or \code{4}. Type: \code{\link{assert_choice}}.
 #'
 #' @return
 #'  Heat flux emitted by pipe during \code{duration}, [\emph{kcal}].
@@ -63,7 +63,7 @@
 #'  emittance is set to 1 \emph{hour} then the return value is in the same
 #'  units as value of heat flux, [\emph{kcal/m/h}], accepted by
 #'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
-#'  Type: \code{[double]}.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @details
 #'  Temperature extrapolation and pipe diameter interpolation are leveraged

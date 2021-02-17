@@ -7,21 +7,21 @@
 dnvpf(d, wth, uts, depth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of the pipe, [\emph{mm}]. Type: \code{[double]}.}
+\item{d}{nominal outside diameter of the pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{mm}]. Type: \code{[double]}.}
+\item{wth}{nominal wall thickness of the pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 
 \item{uts}{ultimate tensile strength (\emph{UTS}) or
 specified minimum tensile strength (\emph{SMTS}) as a
-characteristic of steel strength, [\emph{MPa}]. Type: \code{[double]}.}
+characteristic of steel strength, [\emph{MPa}]. Type: \code{\link{assert_double}}.}
 
-\item{depth}{measured maximum depth of the corroded area, [\emph{mm}]. Type: \code{[double]}.}
+\item{depth}{measured maximum depth of the corroded area, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 
-\item{l}{measured maximum longitudinal length of corroded area, [\emph{mm}]. Type: \code{[double]}.}
+\item{l}{measured maximum longitudinal length of corroded area, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 }
 \value{
 Estimated failure pressure of the corroded pipe, [\emph{MPa}].
- Type: \code{[double]}.
+ Type: \code{\link{assert_double}}.
 }
 \description{
 Calculate failure pressure of the corroded pipe
@@ -78,7 +78,7 @@ In contrast to
    supplement to \emph{B31 Code} for pressure piping.
  \item  S. Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
    of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
-   \strong{DOI 10.1007/978-3-319-25307-7}
+   \strong{DOI 10.1007/978-3-319-25307-7}.
  }
 }
 \seealso{

@@ -11,14 +11,14 @@ strderate(x, temperature = 24.3)
 \item{x}{specified minimum yield of stress (\emph{SMYS}), or ultimate tensile
 strength (\emph{UTS}), or specified minimum tensile strength (\emph{SMTS})
 as a characteristic of steel strength \strong{at room temperature},
-[\emph{MPa}]. Type: \code{[double]}.}
+[\emph{MPa}]. Type: \code{\link{assert_double}}.}
 
-\item{temperature}{temperature of pipe wall, [\emph{°C}]. Type: \code{[double]}.}
+\item{temperature}{temperature of pipe wall, [\emph{°C}]. Type: \code{\link{assert_double}}.}
 }
 \value{
 de-rated value of \emph{x}, i.e. of appropriate pipe material property,
   [\emph{MPa}] .
-  Type: \code{[double]}.
+  Type: \code{\link{assert_double}}.
 }
 \description{
 Temperature is highly influence on pipe material properties and especially

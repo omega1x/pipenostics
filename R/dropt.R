@@ -10,22 +10,22 @@
 #'
 #' @param temperature
 #'  temperature of heat carrier (water) inside the pipe measured at the
-#'  inlet of pipe, [\emph{°C}]. Type: \code{[double]}.
+#'  inlet of pipe, [\emph{°C}]. Type: \code{\link{assert_double}}.
 #'
 #' @param pressure
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-#'  of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{[double]}.
+#'  of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.
 #'
 #' @param consumption
 #'  amount of heat carrier (water) that is transferred by pipe during a period,
-#'  [\emph{ton/hour}]. Type: \code{[double]}.
+#'  [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
 #'
 #' @param flux
 #'  heat flux emitted by pipe during a period, [\emph{kcal/hour}].
-#'  Type: \code{[double]}.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @return
-#'  temperature drop at the outlet of pipe, [\emph{°C}]. Type: \code{[double]}.
+#'  temperature drop at the outlet of pipe, [\emph{°C}]. Type: \code{\link{assert_double}}.
 #'
 #' @details
 #'   Specific isobaric \href{https://en.wikipedia.org/wiki/Heat_capacity}{heat capacity}

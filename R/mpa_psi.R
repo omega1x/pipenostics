@@ -8,10 +8,12 @@
 #'  to \href{https://en.wikipedia.org/wiki/Pascal_(unit)}{megapascals} (MPa)
 #'
 #' @param x
-#'  numeric vector of pressure (stress) measured in \emph{pounds per square inch} (\emph{PSI})
+#'  pressure (stress) measured in \emph{pounds per square inch} (\emph{PSI}).
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @return
-#'  numeric vector of pressure (stress) measured in \emph{megapascals} (\emph{MPa})
+#'  pressure (stress) in \emph{megapascals} (\emph{MPa}).
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @seealso
 #'  \code{\link{psi_mpa}} for converting \emph{megapascals} to \emph{pounds per square inch}

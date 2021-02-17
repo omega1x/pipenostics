@@ -16,46 +16,46 @@
 #'
 #' @param t1
 #'   temperature of heat carrier (water) inside the supplying pipe, [\emph{°C}].
-#'   Type: \code{[double]}.
+#'   Type: \code{\link{assert_double}}.
 #' @param t2
 #'   temperature of heat carrier (water) inside the returning pipe, [\emph{°C}].
-#'   Type: \code{[double]}.
+#'   Type: \code{\link{assert_double}}.
 #' @param t0
 #'   temperature of environment, [\emph{°C}]. In case of overhead laying this is
-#'   the ambient temperature. Type: \code{[double]}.
+#'   the ambient temperature. Type: \code{\link{assert_double}}.
 #' @param insd1
 #'   thickness of the insulator which covers the supplying pipe, [\emph{m}].
-#'   Type: \code{[double]}.
+#'   Type: \code{\link{assert_double}}.
 #' @param insd2
 #'   thickness of the insulator which covers the returning pipe, [\emph{m}].
-#'   Type: \code{[double]}.
+#'   Type: \code{\link{assert_double}}.
 #' @param d1
 #'   external diameter of supplying pipe, [\emph{m}].
-#'   Type: \code{[double]}.
+#'   Type: \code{\link{assert_double}}.
 #' @param d2
 #'   external diameter of returning pipe, [\emph{m}].
-#'   Type: \code{[double]}.
+#'   Type: \code{\link{assert_double}}.
 #' @param lambda1
 #'   thermal conductivity of insulator which covers the supplying pipe
-#'   [\emph{W/m/°C}]. Type: \code{[double]}.
+#'   [\emph{W/m/°C}]. Type: \code{\link{assert_double}}.
 #' @param lambda2
 #'   thermal conductivity of insulator which covers the returning pipe
-#'   [\emph{W/m/°C}]. Type: \code{[double]}.
+#'   [\emph{W/m/°C}]. \code{\link{assert_double}}.
 #' @param k1
 #'   technical condition factor for insulator of supplying pipe, [].
-#'   Type: \code{[double]}.
+#'   Type: \code{\link{assert_double}}.
 #' @param k2
 #'   technical condition factor for insulator of returning pipe, [].
-#'   Type: \code{[double]}.
+#'   Type: \code{\link{assert_double}}.
 #' @param lambda0
 #'   thermal conductivity of environment, [\emph{W/m/°C}]. In case of overhead
 #'   laying this is the thermal conductivity of open air.
-#'   Type: \code{[double]}.
+#'   Type: \code{\link{assert_double}}.
 #' @param len
 #'  length of pipeline segment, [\emph{m}].
-#'  Type: \code{[double]}.
+#'  Type: \code{\link{assert_double}}.
 #' @param duration
-#'  duration of heat flux emittance, [\emph{hour}]. Type: \code{[double]}.
+#'  duration of heat flux emittance, [\emph{hour}]. Type: \code{\link{assert_double}}.
 #'
 #' @return
 #'  Heat flux emitted by pipeline segment during \code{duration}, [\emph{kcal}].
@@ -64,7 +64,7 @@
 #'  to that in [\emph{kcal/m/h}] units and so comparable with values of
 #'  heat flux listed in
 #'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
-#'  Type: \code{[double]}.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @details
 #'   Details on using \code{k1} and \code{k2} are the same as for

@@ -7,22 +7,22 @@
 #'  Calculate safe maximum pressure for the corroded area of pipe.
 #'
 #' @param dep
-#'  design pressure of the pipe, [\emph{PSI}]. Type: \code{[double]}.
+#'  design pressure of the pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{[double]}.
+#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{[double]}.
+#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param depth
-#'   measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{[double]}.
+#'   measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param l
-#'  measured maximum longitudinal length of the corroded area, [\emph{inch}]. Type: \code{[double]}.
+#'  measured maximum longitudinal length of the corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @return
-#'  Safe maximum pressure for the corroded area of pipe, [PSI]. Type: \code{[double]}.
+#'  Safe maximum pressure for the corroded area of pipe, [PSI]. Type: \code{\link{assert_double}}.
 #'
 #' @references
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.

@@ -19,20 +19,20 @@ m325dropt(
 }
 \arguments{
 \item{temperature}{temperature of heat carrier (water) inside the pipe measured at the
-entrance of pipe, [\emph{°C}]. Type: \code{[double]}.}
+entrance of pipe, [\emph{°C}]. Type: \code{\link{assert_double}}.}
 
 \item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{[double]}.}
+of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.}
 
 \item{consumption}{amount of heat carrier (water) that is transferred by pipe during a period,
-[\emph{ton/hour}]. Type: \code{[double]}.}
+[\emph{ton/hour}]. Type: \code{\link{assert_double}}.}
 
-\item{d}{internal diameter of pipe, [\emph{mm}]. Type: \code{[double]}.}
+\item{d}{internal diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 
-\item{len}{length of pipe, [\emph{m}]. Type: \code{[double]}.}
+\item{len}{length of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.}
 
 \item{year}{year when the pipe is put in operation after laying or total overhaul.
-Type: \code{[integerish]}.}
+Type: \code{\link{assert_integerish}}.}
 
 \item{insulation}{insulation that covers the exterior of pipe:
 \describe{
@@ -40,7 +40,7 @@ Type: \code{[integerish]}.}
   \item{\code{1}}{foamed polyurethane or analogue}
   \item{\code{2}}{polymer concrete}
 }
-Type: \code{[double, subset]}.}
+Type: \code{\link{assert_subset}}.}
 
 \item{laying}{type of pipe laying depicting the position of pipe in space:
 \itemize{
@@ -50,17 +50,17 @@ Type: \code{[double, subset]}.}
   \item \code{tunnel},
   \item \code{underground}.
 }
-Type: \code{[character, subset]}.}
+Type: \code{\link{assert_subset}}.}
 
 \item{beta}{should they consider additional heat losses of fittings?
-Type: \code{[logical]}.}
+Type: \code{\link{assert_logical}}.}
 
 \item{exp5k}{pipe regime flag: is pipe operated more that 5000 hours per year?
-Type: \code{[logical]}.}
+Type: \code{\link{assert_logical}}.}
 }
 \value{
 \emph{normative temperature drop} at the outlet of pipe, [\emph{°C}].
- Type: \code{[double]}.
+ Type: \code{\link{assert_double}}.
 }
 \description{
 Calculate temperature drop in steel pipe of \emph{district heating system}
@@ -74,7 +74,7 @@ Calculate temperature drop in steel pipe of \emph{district heating system}
  drop may be considered as a \emph{normative temperature drop}. If the actual
  (somehow measured) temperature drop is more than this
  \emph{normative temperature drop} they may consider such difference to be
- due to \emph{over-normative heat losses}. The presence of the latter
+ due to \emph{extra-normative heat losses}. The presence of the latter
  requires appropriate maintenance activities.
 }
 \details{

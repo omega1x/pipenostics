@@ -7,12 +7,12 @@
 psi_mpa(x)
 }
 \arguments{
-\item{x}{numeric vector of pressure (stress) measured in \emph{megapascals}. [\emph{MPa}].
-Type: \code{[double]}.}
+\item{x}{pressure (stress) measured in \emph{megapascals}. [\emph{MPa}].
+Type: \code{\link{assert_double}}.}
 }
 \value{
-numeric vector of pressure (stress) measured in \emph{pounds per square inch},
- [\emph{PSI}]. Type: \code{[double]}.
+pressure (stress) in \emph{pounds per square inch},
+ [\emph{PSI}]. Type: \code{\link{assert_double}}.
 }
 \description{
 Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pascal_(unit)}{megapascals} (MPa)
