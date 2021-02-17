@@ -74,18 +74,14 @@
 #'
 #' @examples
 #'
-#'  ## unit test:
-#'  with(data.frame(
-#'    d     = c(812.8, 219.0),  # [mm]
-#'    wth   = c( 19.1,  14.5),  # [mm]
-#'    uts  = c(530.9, 455.1),  # [N/mm^2]
-#'    l     = c(203.2, 200.0),  # [mm]
-#'    depth = c( 13.4,   9.0)   # [mm]
-#'    ),
-#'      stopifnot(
-#'         all(round(pcorrcpf(d, wth, uts, depth, l), 4) == c(16.3545, 33.0129))
-#'      )
-#'  )
+#' d     <- c(812.8, 219.0)  # [mm]
+#' wth   <- c( 19.1,  14.5)  # [mm]
+#' uts   <- c(530.9, 455.1)   # [N/mm^2]
+#' l     <- c(203.2, 200.0)  # [mm]
+#' depth <- c( 13.4,   9.0)   # [mm]
+#'
+#' pcorrcpf(d, wth, uts, depth, l)
+#' # [1] 16.35449 33.01288
 #'
 pcorrcpf <- function(d, wth, uts, depth, l){
   checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)

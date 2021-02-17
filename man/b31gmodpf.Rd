@@ -82,14 +82,6 @@ Since the definition of flow stress, \emph{Sflow}, in
           lty = 'solid')
  })
 
- ## unit test:
- data(b31gdata)
- with(b31gdata[-(6:7), ],
-   stopifnot(all(round(
-     b31gmodpf(d, wth, smys, depth, l), 4) ==
-     c(1498.8988, 452.7847, 1599.8124, 934.4549, 1076.3933, 1638.7173,
-       1500.1792, 1497.9821, 1495.3120, 1496.6265))))
-
 }
 \references{
 \enumerate{

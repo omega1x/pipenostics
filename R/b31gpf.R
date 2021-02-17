@@ -105,13 +105,6 @@
 #'           lty = 'solid')
 #'  })
 #'
-#'  ## unit test:
-#'  data(b31gdata)
-#'  with(b31gdata[-(6:7), ],
-#'    stopifnot(all(round(
-#'      b31gpf(d, wth, smys, depth, l), 4) ==
-#'      c(1526.4724, 566.4437, 1439.5333, 629.2, 958.1, 1690.7166, 1581.4999,
-#'        1579.8054, 1577.7257, 1578.7589))))
 #'
 b31gpf <- function(d, wth, smys, depth, l) {
   checkmate::assert_double(d, lower = .03937008, upper = 196.8504, finite = TRUE, any.missing = FALSE, min.len = 1)
