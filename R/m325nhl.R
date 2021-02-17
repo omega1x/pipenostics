@@ -77,7 +77,8 @@
 #' @export
 #'
 #' @examples
-#' with(m325nhldata, {
+#' \dontrun{
+#'  with(m325nhldata, {
 #'
 #'  ## Dummy test:
 #'  foo <- m325nhl(epoch, laying, exp5k, insulation, as.double(diameter), temperature)
@@ -111,6 +112,7 @@
 #'    )
 #'  )
 #' })
+#'}
 #'
 m325nhl <- function(year = 1986, laying = "underground", exp5k = TRUE,
                     insulation = 0, d = 700, temperature = 110, len = 1,

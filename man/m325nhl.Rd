@@ -80,7 +80,8 @@ Temperature extrapolation and pipe diameter interpolation are leveraged
  of extrapolation.
 }
 \examples{
-with(m325nhldata, {
+\dontrun{
+ with(m325nhldata, {
 
  ## Dummy test:
  foo <- m325nhl(epoch, laying, exp5k, insulation, as.double(diameter), temperature)
@@ -114,6 +115,7 @@ with(m325nhldata, {
    )
  )
 })
+}
 
 }
 \seealso{

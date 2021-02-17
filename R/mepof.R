@@ -173,6 +173,7 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' # Let's consider a pipe in district heating network with
 #' diameter           <- 762         # [mm]
 #' wall_thickness     <-  10         # [mm]
@@ -233,7 +234,7 @@
 #' stopifnot(
 #'   max(pof) > .270 && max(pof) < .274
 #')
-#'
+#'}
 mepof <- function(depth = seq(0, 10, length.out = 100),
                 l = seq(40, 50, length.out = 100),
                 d = rep(762, 100),

@@ -162,6 +162,7 @@ Since for all influence factors they can more or less assume range limits,
  corrosion rate.
 }
 \examples{
+\dontrun{
 # Let's consider a pipe in district heating network with
 diameter           <- 762         # [mm]
 wall_thickness     <-  10         # [mm]
@@ -222,7 +223,7 @@ print(max(pof))
 stopifnot(
   max(pof) > .270 && max(pof) < .274
 )
-
+}
 }
 \references{
 \enumerate{
