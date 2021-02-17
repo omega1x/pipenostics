@@ -7,6 +7,7 @@ v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/li
 ![R-CMD-check](https://github.com/omega1x/pipenostics/workflows/R-CMD-check/badge.svg)
 [![Build
 Status](https://travis-ci.com/omega1x/pipenostics.svg?branch=master)](https://travis-ci.com/omega1x/pipenostics)
+ [![Codecov test coverage](https://codecov.io/gh/omega1x/pipenostics/branch/master/graph/badge.svg)](https://codecov.io/gh/omega1x/pipenostics?branch=master)
 
 [R-package](https://cran.r-project.org/package=pipenostics) for
 diagnostics, reliability and predictive maintenance of pipeline systems.

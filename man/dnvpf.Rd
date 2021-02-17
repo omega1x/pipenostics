@@ -57,16 +57,14 @@ In contrast to
 }
 \examples{
 
- ## unit test:
- with(data.frame(
-   d     = c(812.8, 219.0),  # [mm]
-   wth   = c( 19.1,  14.5),  # [mm]
-   uts   = c(530.9, 455.1),  # [N/mm^2]
-   l     = c(203.2, 200.0),  # [mm]
-   depth = c( 13.4,   9.0)   # [mm]
- ),
-   stopifnot(all(round(
-     dnvpf(d, wth, uts, depth, l), 4) == c(15.8663, 34.0118))))  # [N/mm^2]
+d     <- c(812.8, 219.0)  # [mm]
+wth   <- c( 19.1,  14.5)  # [mm]
+uts   <- c(530.9, 455.1)  # [N/mm^2]
+l     <- c(203.2, 200.0)  # [mm]
+depth <- c( 13.4,   9.0)  # [mm]
+
+dnvpf(d, wth, uts, depth, l)
+# [1] 15.86626 34.01183
 
 }
 \references{

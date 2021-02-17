@@ -2,7 +2,7 @@ Package: pipenostics
 Type: Package
 Title: 
     Diagnostics, Reliability and Predictive Maintenance of Pipeline Systems
-Version: 0.1.3
+Version: 0.1.4
 Authors@R: person("Yuri", "Possokhov", email = "possokhoff@gmail.com",
   role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3570-4337"))
 Description: Functions representing some useful empirical and data-driven 
@@ -18,3 +18,7 @@ LazyData: true
 Depends: R (>= 3.5.0)
 Imports: checkmate
 RoxygenNote: 7.1.1
+Suggests: 
+    testthat (>= 3.0.0),
+    covr
+Config/testthat/edition: 3
