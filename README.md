@@ -22,7 +22,8 @@ diagnostics, reliability and predictive maintenance of pipeline systems.
     -   [Regime tracing](#regime-tracing)
 -   [Developer notes](#developer-notes)
 -   [Underlying concepts](#underlying-concepts)
-    -   [Corrosion diagnostics and probability of failure](#corrosion-diagnostics-and-probability-of-failure)
+    -   [Corrosion diagnostics](#corrosion-diagnostics)
+    -   [Probability of failure](#probability-of-failure)
     -   [Heat losses](#heat-losses)
     -   [Tracing of thermal-hydraulic regime](#tracing-of-thermal-hydraulic-regime)
 
