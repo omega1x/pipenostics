@@ -47,6 +47,7 @@ For possibly better performance, they search paths of heat carrier flow
 in parallel leveraging the functionality of package \code{\link{parallel}}.
 }
 \examples{
+\dontrun{
 # Find path from A to B in trivial line topology:
 flowls("A", "B")
 
@@ -87,7 +88,7 @@ path <- with(pipenostics::m325testbench, {
 # dummy element-wise test:
 for (i in union(seq_along(path), seq_along(all_paths)))
   stopifnot(path[[i]] == all_paths[[i]])
-
+}
 }
 \seealso{
 \code{\link{m325testbench}} for example of topology of district heating

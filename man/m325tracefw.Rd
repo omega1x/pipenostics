@@ -230,7 +230,7 @@ The calculated (values of) regime may be considered as representation of
 }
 \examples{
 # Minimum two nodes should be in district heating network graph:
-m325tracefw(verbose = FALSE)
+m325tracefw(verbose = FALSE, maxcores = 1)
 
 # node  trace backward aggregation temperature  pressure consumption job
 # 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0
@@ -261,7 +261,7 @@ rm(root_node, root_node_idx)
 
 # Trace the test bench forward for the first time:
 fw_report <- do.call("m325tracefw",
-                     c(as.list(nx), verbose = FALSE, elev_tol = .5))
+                     c(as.list(nx), verbose = FALSE, elev_tol = .5, maxcores = 1))
 
 # Let's compare traced regime at terminal nodes back to test bench:
 report <- subset(

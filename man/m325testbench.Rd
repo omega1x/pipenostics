@@ -141,7 +141,7 @@ Since they deal with incoming edges and hence nodes are all flow acceptors
 the natural enumeration of nodes is by acceptor id.
 
 Note that to leverage
-\href{https://cran.r-project.org/web/packages/igraph/index.html}{igraph}
+\href{https://cran.r-project.org/package=igraph}{igraph}
 functionality for plotting there is a zero sender of flow.
 }
 \examples{

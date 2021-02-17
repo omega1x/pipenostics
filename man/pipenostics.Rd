@@ -13,7 +13,7 @@ companies.
 }
 \seealso{
 \itemize{
-  \item For further details visit the package site \href{https://omega1x.github.io/pipenostics}{omega1x.github.io/pipenostics}.
+  \item For further details visit the package site \href{https://github.com/omega1x/pipenostics}{https://github.com/omega1x/pipenostics}.
   \item Report bugs at \href{https://github.com/omega1x/pipenostics/issues}{github.com/omega1x/pipenostics/issues}.
 }
 }

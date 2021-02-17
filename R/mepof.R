@@ -81,7 +81,7 @@
 #'    of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
 #'    \strong{DOI 10.1007/978-3-319-25307-7}.
 #'
-#'  \item \href{www.bipm.org}{BIPM}. Guides in Metrology (GUM).
+#'  \item \href{https://www.bipm.org/en/about-us/}{BIPM}. Guides in Metrology (GUM).
 #'    \href{https://www.bipm.org/utils/common/documents/jcgm/JCGM_101_2008_E.pdf}{JCGM 101:2008}.
 #'    Evaluation of measurement data – \strong{Supplement 1} to the \emph{Guide to
 #'    the expression of uncertainty in measurement} –

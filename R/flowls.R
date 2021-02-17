@@ -50,6 +50,7 @@
 #' @export
 #'
 #' @examples
+#'\dontrun{
 #' # Find path from A to B in trivial line topology:
 #' flowls("A", "B")
 #'
@@ -90,7 +91,7 @@
 #' # dummy element-wise test:
 #' for (i in union(seq_along(path), seq_along(all_paths)))
 #'   stopifnot(path[[i]] == all_paths[[i]])
-#'
+#'}
 flowls <- function(sender = "A", acceptor = "B", maxcores = 2){
   # Validate function input ----
   checkmate::assert_true(all(!is.na(acceptor)))
