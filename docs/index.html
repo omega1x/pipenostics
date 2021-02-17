@@ -96,7 +96,8 @@
 <li>
 <a href="#underlying-concepts">Underlying concepts</a>
 <ul>
-<li><a href="#corrosion-diagnostics-and-probability-of-failure">Corrosion diagnostics and probability of failure</a></li>
+<li><a href="#corrosion-diagnostics">Corrosion diagnostics</a></li>
+<li><a href="#probability-of-failure">Probability of failure</a></li>
 <li><a href="#heat-losses">Heat losses</a></li>
 <li><a href="#tracing-of-thermal-hydraulic-regime">Tracing of thermal-hydraulic regime</a></li>
 </ul>
@@ -190,7 +191,7 @@
 <h3 class="hasAnchor">
 <a href="#regime-tracing" class="anchor"></a>Regime tracing</h3>
 <p>Let’s consider the next 4-segment tracing path:</p>
-<p><img src=".src/svg-graphics/m325regtrace.svg" alt="m325regtrace"></p>
+<p><img src="https://raw.githubusercontent.com/omega1x/pipenostics/a26e1171f05d3cd4f2c25a71ccde9947a095409f/.src/svg-graphics/m325regtrace.svg" alt="m325regtrace"></p>
 <p>Suppose we have the next sensor readings for <em>forward tracing</em>:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>t_fw <span class="ot">&lt;-</span> <span class="dv">130</span>         <span class="co"># [°C]</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>p_fw <span class="ot">&lt;-</span>   <span class="fl">0.588399</span>  <span class="co"># [MPa]</span></span>
