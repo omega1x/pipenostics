@@ -224,8 +224,9 @@
 #'  }
 #'
 #' @examples
+#' \dontrun{
 #' # Minimum two nodes should be in district heating network graph:
-#' m325tracefw(verbose = FALSE, maxcores = 1)
+#' m325tracefw(verbose = FALSE)
 #'
 #' # node  trace backward aggregation temperature  pressure consumption job
 #' # 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0
@@ -256,7 +257,7 @@
 #'
 #' # Trace the test bench forward for the first time:
 #' fw_report <- do.call("m325tracefw",
-#'                      c(as.list(nx), verbose = FALSE, elev_tol = .5, maxcores = 1))
+#'                      c(as.list(nx), verbose = FALSE, elev_tol = .5))
 #'
 #' # Let's compare traced regime at terminal nodes back to test bench:
 #' report <- subset(
@@ -274,7 +275,7 @@
 #' # -4.640201e-01 -5.208802e-03 -5.465713e-16
 #'
 #' stopifnot(sqrt(regime_delta %*% regime_delta) < 0.5)
-#'
+#'}
 #' @export
 m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
                         temperature = c(70.0, NA_real_),

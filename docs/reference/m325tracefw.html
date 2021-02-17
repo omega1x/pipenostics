@@ -77,7 +77,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -370,11 +370,10 @@ Type: <code>assert_count</code>.</p></td>
 <code><a href='m325traceline.html'>m325traceline</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Minimum two nodes should be in district heating network graph:</span>
-<span class='fu'>m325tracefw</span><span class='op'>(</span>verbose <span class='op'>=</span> <span class='cn'>FALSE</span>, maxcores <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   node  trace backward aggregation temperature  pressure consumption job
-#&gt; 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0
-#&gt; 2    2      1    FALSE    identity    69.71603 0.5813153          20   1</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='co'># Minimum two nodes should be in district heating network graph:</span>
+<span class='fu'>m325tracefw</span><span class='op'>(</span>verbose <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+
 <span class='co'># node  trace backward aggregation temperature  pressure consumption job</span>
 <span class='co'># 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0</span>
 <span class='co'># 2    2      1    FALSE    identity    69.71603 0.5813153          20   1</span>
@@ -404,7 +403,7 @@ Type: <code>assert_count</code>.</p></td>
 
 <span class='co'># Trace the test bench forward for the first time:</span>
 <span class='va'>fw_report</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/do.call.html'>do.call</a></span><span class='op'>(</span><span class='st'>"m325tracefw"</span>,
-                     <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>as.list</a></span><span class='op'>(</span><span class='va'>nx</span><span class='op'>)</span>, verbose <span class='op'>=</span> <span class='cn'>FALSE</span>, elev_tol <span class='op'>=</span> <span class='fl'>.5</span>, maxcores <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+                     <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>as.list</a></span><span class='op'>(</span><span class='va'>nx</span><span class='op'>)</span>, verbose <span class='op'>=</span> <span class='cn'>FALSE</span>, elev_tol <span class='op'>=</span> <span class='fl'>.5</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='co'># Let's compare traced regime at terminal nodes back to test bench:</span>
 <span class='va'>report</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/subset.data.table.html'>subset</a></span><span class='op'>(</span>
@@ -418,12 +417,11 @@ Type: <code>assert_count</code>.</p></td>
     <span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/subset.data.table.html'>subset</a></span><span class='op'>(</span><span class='va'>report</span>, <span class='op'>!</span><span class='va'>backward</span>, <span class='va'>regime_param</span><span class='op'>)</span>
 <span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>regime_delta</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   temperature      pressure   consumption 
-#&gt; -4.640201e-01 -5.208802e-03 -5.465713e-16 </div><div class='input'><span class='co'># temperature      pressure   consumption</span>
+<span class='co'># temperature      pressure   consumption</span>
 <span class='co'># -4.640201e-01 -5.208802e-03 -5.465713e-16</span>
 
 <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>regime_delta</span> <span class='op'>%*%</span> <span class='va'>regime_delta</span><span class='op'>)</span> <span class='op'>&lt;</span> <span class='fl'>0.5</span><span class='op'>)</span>
-
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

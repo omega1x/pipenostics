@@ -229,8 +229,9 @@ The calculated (values of) regime may be considered as representation of
  They are welcome to couple the algorithm with functionality of data.table.
 }
 \examples{
+\dontrun{
 # Minimum two nodes should be in district heating network graph:
-m325tracefw(verbose = FALSE, maxcores = 1)
+m325tracefw(verbose = FALSE)
 
 # node  trace backward aggregation temperature  pressure consumption job
 # 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0
@@ -261,7 +262,7 @@ rm(root_node, root_node_idx)
 
 # Trace the test bench forward for the first time:
 fw_report <- do.call("m325tracefw",
-                     c(as.list(nx), verbose = FALSE, elev_tol = .5, maxcores = 1))
+                     c(as.list(nx), verbose = FALSE, elev_tol = .5))
 
 # Let's compare traced regime at terminal nodes back to test bench:
 report <- subset(
@@ -279,7 +280,7 @@ print(regime_delta)
 # -4.640201e-01 -5.208802e-03 -5.465713e-16
 
 stopifnot(sqrt(regime_delta \%*\% regime_delta) < 0.5)
-
+}
 }
 \seealso{
 Other Regime tracing: 
