@@ -2,6 +2,7 @@
 
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![GitHub R package version](https://img.shields.io/github/r-package/v/omega1x/pipenostics)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/pipenostics)](https://cran.r-project.org/package=pipenostics)
 [![CodeFactor](https://www.codefactor.io/repository/github/omega1x/pipenostics/badge)](https://www.codefactor.io/repository/github/omega1x/pipenostics)
 ![R-CMD-check](https://github.com/omega1x/pipenostics/workflows/R-CMD-check/badge.svg)
