@@ -56,6 +56,8 @@ For the development version, use
 By using of `b31crvl()` simply imitate the output of *CRVL.BAS* which is the honored software for determining the allowable length and maximum
 allowable working pressure presented in [ASME B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf):
 
+    library(pipenostics)
+    
     b31crvl(maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5)
 
     -- Calculated data --
@@ -86,6 +88,8 @@ During *inline inspection* four corroded areas (defects) are detected with:
 whereas the length of all defects is not greater 200 mm:
 
     length <- rep(200, 4)  # [mm]
+    print(length)
+    # [1] 200 200 200 200
 
 Corrosion rates in radial and in longitudinal directions are not well-known and
 may vary in range `.01` - `.30` mm/year:
@@ -98,13 +102,15 @@ Then probabilities of failure (POFs) related to each corroded area are near:
     pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
                  rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
                  rar, ral, method = "dnv")
+    # pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!                 
+    
     print(pof)
-    # 0.000000 0.252510 0.368275 0.771595
+    # [1] 0.000000 0.252935 0.368741 0.771299
 
 So, the POF of the pipe is near
 
     print(max(pof))
-    # 0.771595
+    # [1] 0.771299
 
 The value of POF changes in time. So, in a year after *inline inspection* of
 the pipe we can get something near
@@ -112,32 +118,63 @@ the pipe we can get something near
     pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
                  rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
                  rar, ral, method = "dnv", days = 365)
+    # pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!             
+    
     print(pof)
-    # 0.000000 0.525539 0.648359 0.929099
+    # [1] 0.000000 0.526646 0.647422 0.928825
 
 For entire pipe we get something near:
     
     print(max(pof))
-    0.929099
+    # [1] 0.928825
 
 Two years ago before *inline inspection* the pipe state was rather good:
 
     pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
                  rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
                 rar, ral, method = "dnv", days = -2 * 365)
-
+    # pipenostics::pof: process case [4/4] - 100 % . All done, thanks!
     print(pof)
-    # 0.000000 0.040780 0.072923 0.271751
+    # [1] 0.000000 0.040849 0.072734 0.272358
 
 For entire pipe we get something near:
     
     print(max(pof))
-    # 0.271751
+    # [1] 0.272358
 
 
 ### Regime tracing
-Example
+Let's consider the next 4-segment tracing path:
+![m325regtrace](.src/svg-graphics/m325regtrace.svg)
 
+Suppose we have the next sensor readings for *forward tracing*:
+
+    t_fw <- 130         # [°C]
+    p_fw <-   0.588399  # [MPa]
+    g_fw <- 250         # [ton/hour]
+    
+Let's discharges to network for each pipeline segment are somehow determined as
+
+    discharges <- seq(0, 30, 10)  # [ton/hour]
+    print(discharges)
+    # [1]  0 10 20 30
+    
+Then the calculated regime (red squares) for forward tracing is
+
+    regime_fw <- m325traceline(t_fw, p_fw, g_fw, discharges, forward = TRUE)
+    print(regime_fw)
+
+    # $temperature
+    # [1] 129.1799 128.4269 127.9628 127.3367
+    #
+    # $pressure
+    # [1] 0.5878607 0.5874226 0.5872143 0.5870330
+    #
+    # $consumption
+    # [1] 250 240 220 190
+    
+> For further examples go to package function descriptions.
+    
 
 ## Developer notes
 
@@ -158,9 +195,12 @@ consistency and physical sense using asserts and tests from
 Moreover, in package documentation we borrow type designations according
 to [checkmate](https://cran.r-project.org/package=checkmate) notation.
 
+As for present in order to provide faster release we incorporate unit tests in 
+example section of function description. So, unit tests are checked during *r-cmd-check*.
+
 ## Underlying concepts
 
-### Corrosion diagnostics and probability of failure
+### Corrosion diagnostics
 
 It is recognized by pipeline companies that some sections of high
 pressure pipelines particularly those installed a number of years ago,
@@ -223,9 +263,31 @@ functions concerning corrosion diagnostics:
     [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
 -   *l* - measured maximum longitudial length of the corroded area,
     [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
-    
+
 In the course of further development of the functionality of this package,
 some revisions or supplements to the existing concept are not excepted.
+
+### Probability of failure
+Consistent estimate of failure for pipeline systems plays a critical role in optimizing their operation. 
+To prevent pipeline failures due to growing corrosion defects it is necessary to assess the pipeline 
+failure probability (POF) during a certain period, taking into account its actual level of defectiveness.
+
+The pipeline failure is preceded by limit state which comes when the burst pressure, considered as a random 
+variable, reaches an unacceptable level, or when the defect depth, also a random variable, exceeds the
+predetermined limit value.
+
+Up to now no methods existed which would give absolutely correct POF assessments. Nevertheless the stochastic 
+nature of corrosion processes clearly suggests exploiting of 
+[Monte-Carlo simulations](https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers) (MC).
+Meanwhile the lack of comprehensive knowledge of stochastic properties of characteristics of pipe and 
+of its defects aids in embracing of  [Principle of maximum entropy](https://en.wikipedia.org/wiki/Principle_of_maximum_entropy)
+which allows to avoid doubtful and excessive preferences and detalization when choosing probability 
+distribution models for failure factors and for *inline inspection* measurements.
+
+Package function `mepof()` is designed to calculate probability of failure (POF) of the corroded pipe by
+[MC](https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers), assigning maximun entropy
+for stochastic nature of corroded area length and depth, as well as engineering characteristics of pipe with
+thermal-hydraulic regime perameters.
 
 ### Heat losses
 
