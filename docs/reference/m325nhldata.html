@@ -136,9 +136,9 @@ heating system with water as a heat carrier.</p>
     <a href='http://docs.cntd.ru/document/902148459'>Minenergo Order 325</a>;
     identifier <em>sgc</em> means that values are additionally
     postulated (see <em>Details</em>).
-    Type: <code>[character]</code>.</p></dd>
+    Type: <code>assert_character</code>.</p></dd>
   <dt>epoch</dt><dd><p>Year depicting the epoch when the pipe is put in operation after laying or total overhaul.
-  Type: <code>[integer]</code>.</p></dd>
+  Type: <code>assert_integer</code>.</p></dd>
   <dt>laying</dt><dd><p>Type of pipe laying depicting the position of pipe in space. Only five types of
     pipe laying are considered:
     <ul>
@@ -148,25 +148,25 @@ heating system with water as a heat carrier.</p>
 <li><p><code>tunnel</code>,</p></li>
 <li><p><code>underground</code>.</p></li>
 </ul>
-    Type: <code>[character, subset]</code>.</p></dd>
+    Type: <code>assert_character</code>.</p></dd>
 
   <dt>exp5k</dt><dd><p>Logical indicator for pipe regime: if <code>TRUE</code> pipe is
     operated more that <code>5000</code> hours per year.
-    Type: <code>[logical]</code>.</p></dd>
+    Type: <code>assert_logical</code>.</p></dd>
 
   <dt>insulation</dt><dd><p>Identifier of insulation that covers the exterior of pipe:
     <dl>
       <dt><code>0</code></dt><dd><p>no insulation</p></dd>
       <dt><code>1</code></dt><dd><p>foamed polyurethane or analogue</p></dd>
       <dt><code>2</code></dt><dd><p>polymer concrete</p></dd></dl>
-   Type: <code>[double, subset]</code>.</p></dd>
+   Type: <code>assert_integerish</code>.</p></dd>
 
-  <dt>diameter</dt><dd><p>Nominal internal diameter of pipe, [mm]. Type: <code>[double]</code>.</p></dd>
+  <dt>diameter</dt><dd><p>Nominal internal diameter of pipe, [mm]. Type: <code>assert_double</code>.</p></dd>
 
-  <dt>temperature</dt><dd><p>Operational temperature of pipe, [°C]. Type: <code>[double]</code>.</p></dd>
+  <dt>temperature</dt><dd><p>Operational temperature of pipe, [°C]. Type: <code>assert_double</code>.</p></dd>
 
   <dt>flux</dt><dd><p>Heat flux emitted by every meter of pipe during an hour, [kcal/m/hour].
-    Type: <code>[double]</code>.</p></dd>
+    Type: <code>assert_double</code>.</p></dd>
  
 </dl>
 

@@ -144,8 +144,9 @@ The calculated value may be positive or negative. When it is positive they
  network occur, [<em>mm</em>].</p>
 <p>Types:</p>
 <p></p><dl>
-   <dt><code>[double]</code></dt><dd><p>total diameter of all adjacent pipes (total diameter case)</p></dd>
-   <dt><code>[list]</code> of <code>[double]</code></dt><dd><p>a set of diameters of adjacent pipes (particular diameter case)</p></dd>
+   <dt><code>assert_double</code></dt><dd><p>total diameter of all adjacent pipes (total diameter case)</p></dd>
+   <dt><code>assert_list</code> of <code>assert_double</code></dt><dd><p>a set of
+      diameters of adjacent pipes (particular diameter case)</p></dd>
  
 </dl>
 
@@ -155,12 +156,12 @@ The calculated value may be positive or negative. When it is positive they
     </tr>
     <tr>
       <th>d</th>
-      <td><p>diameter of pipe under consideration, [<em>mm</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>diameter of pipe under consideration, [<em>mm</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>consumption</th>
       <td><p>sensor-measured amount of heat carrier (water) that is transferred through
-the inlet of pipe during a period, [<em>ton/hour</em>]. Type: <code>[double]</code>.</p></td>
+the inlet of pipe during a period, [<em>ton/hour</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     </table>
 
@@ -171,7 +172,7 @@ the inlet of pipe during a period, [<em>ton/hour</em>]. Type: <code>[double]</co
  whereas for <em>recovery</em> it is negative. In both cases to calculate
  consumption on the outlet of pipe under consideration simply subtract the
  calculated value from the sensor-measured consumption on the inlet.
- Type: <code>[double]</code>.</p>
+ Type: <code>assert_double</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>It is common that sensor-measured consumption undergoes discharges to

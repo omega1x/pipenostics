@@ -151,20 +151,20 @@
       <th>temperature</th>
       <td><p>temperature of heat carrier (water) inside the pipe sensor-measured at the inlet
 (forward tracing) or at the outlet (backward tracing) of path, [<em>°C</em>].
-Type: <code>[number]</code>.</p></td>
+Type: <code>assert_number</code>.</p></td>
     </tr>
     <tr>
       <th>pressure</th>
       <td><p><a href='https://en.wikipedia.org/wiki/Pressure_measurement#Absolute'>absolute pressure</a>
 of heat carrier (water) sensor-measured at the inlet
 (forward tracing) or at the outlet (backward tracing) of path, [<em>MPa</em>].
-Type: <code>[number]</code>.</p></td>
+Type: <code>assert_number</code>.</p></td>
     </tr>
     <tr>
       <th>consumption</th>
       <td><p>amount of heat carrier (water) sensor-measured at the inlet (forward tracing) or at
 the outlet (backward tracing) of path, [<em>ton/hour</em>].
-Type: <code>[number]</code>.</p></td>
+Type: <code>assert_number</code>.</p></td>
     </tr>
     <tr>
       <th>g</th>
@@ -173,25 +173,25 @@ tracing path enumerated along the direction of flow. If flag <code>absg</code>
 is <code>TRUE</code> then they treat argument <code>g</code> as absolute value in
 [<em>ton/hour</em>], otherwise they do as percentage of consumption in the
 pipe segment.
-Type: <code>[double]</code>.</p></td>
+Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>d</th>
       <td><p>internal diameters of subsequent pipes in tracing path that are enumerated
 along the direction of flow, [<em>mm</em>].
-Type: <code>[double]</code>.</p></td>
+Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>len</th>
       <td><p>length of subsequent pipes in tracing path that are enumerated
 along the direction of flow, [<em>m</em>].
-Type: <code>[double]</code>.</p></td>
+Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>year</th>
       <td><p>year when pipe is put in operation after laying or total overhaul for
 each pipe in tracing path enumerated along the direction of flow.
-Type: <code>[integerish]</code>.</p></td>
+Type: <code>assert_integerish</code>.</p></td>
     </tr>
     <tr>
       <th>insulation</th>
@@ -201,7 +201,7 @@ Type: <code>[integerish]</code>.</p></td>
   <dt><code>2</code></dt><dd><p>polymer concrete</p></dd>
 
 </dl><p>for each pipe in tracing path enumerated along the direction of flow.
-Type: <code>[double, subset]</code>.</p></td>
+Type: <code>assert_numeric</code> and <code>assert_subset</code>.</p></td>
     </tr>
     <tr>
       <th>laying</th>
@@ -212,39 +212,40 @@ Type: <code>[double, subset]</code>.</p></td>
 <li><p><code>tunnel</code></p></li>
 <li><p><code>underground</code></p></li>
 </ul><p>for each pipe in tracing path enumerated along the direction of flow.
-Type: <code>[character, subset]</code>.</p></td>
+Type: <code>assert_character</code> and <code>assert_subset</code>.</p></td>
     </tr>
     <tr>
       <th>beta</th>
       <td><p>should they consider additional heat losses of fittings? Logical value
 for each pipe in tracing path enumerated along the direction of flow.
-Type: <code>[logical]</code>.</p></td>
+Type: <code>assert_logical</code>.</p></td>
     </tr>
     <tr>
       <th>exp5k</th>
       <td><p>pipe regime flag: is pipe operated more that <code>5000</code> hours per year? Logical
 value for each pipe in tracing path enumerated along the direction of flow.
-Type: <code>[logical]</code>.</p></td>
+Type: <code>assert_logical</code>.</p></td>
     </tr>
     <tr>
       <th>roughness</th>
       <td><p>roughness of internal wall for each pipe in tracing path enumerated along
-the direction of flow, [<em>m</em>]. Type: <code>[double]</code>.</p></td>
+the direction of flow, [<em>m</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>inlet</th>
       <td><p>elevation of pipe inlet for each pipe in tracing path enumerated along
-the direction of flow, [<em>m</em>]. Type: <code>[double]</code>.</p></td>
+the direction of flow, [<em>m</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>outlet</th>
       <td><p>elevation of pipe outlet for each pipe in tracing path enumerated along
-the direction of flow, [<em>m</em>]. Type: <code>[double]</code>.</p></td>
+the direction of flow, [<em>m</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>elev_tol</th>
       <td><p>maximum allowed discrepancy between adjacent outlet and inlet elevations of
-two subsequent pipes in the traced path, [<em>m</em>]. Type: <code>[number]</code>.</p></td>
+two subsequent pipes in the traced path, [<em>m</em>].
+Type: <code>assert_number</code>.</p></td>
     </tr>
     <tr>
       <th>method</th>
@@ -252,20 +253,20 @@ two subsequent pipes in the traced path, [<em>m</em>]. Type: <code>[number]</cod
 <li><p><code>romeo</code></p></li>
 <li><p><code>vatankhan</code></p></li>
 <li><p><code>buzelli</code></p></li>
-</ul><p>Type: <code>[character, choice]</code>. For more details see <code><a href='dropp.html'>dropp</a></code>.</p></td>
+</ul><p>Type: <code>assert_choice</code>. For more details see <code><a href='dropp.html'>dropp</a></code>.</p></td>
     </tr>
     <tr>
       <th>forward</th>
       <td><p>tracing direction flag: is it a forward direction of tracing?
 If <code>FALSE</code> the backward tracing is performed.
-Type: <code>[flag]</code>.</p></td>
+Type: <code>assert_flag</code>.</p></td>
     </tr>
     <tr>
       <th>absg</th>
       <td><p>Whether argument <code>g</code> (amount of heat carrier discharge to network) is an
 absolute value in [<em>ton/hour</em>] (<code>TRUE</code>) or is it a percentage of
 consumption in the pipe segment (<code>FALSE</code>)?
-Type: <code>[flag]</code>.</p></td>
+Type: <code>assert_flag</code>.</p></td>
     </tr>
     </table>
 
@@ -273,11 +274,11 @@ Type: <code>[flag]</code>.</p></td>
 
     <p>named list of regime parameters for the traced path with the next elements:</p><dl>
    <dt><code>temperature</code></dt><dd><p>calculated temperatures of heat carrier for all pipeline segments, [<em>°C</em>].
-   Type: <code>[double]</code>.</p></dd>
+   Type: <code>assert_double</code>.</p></dd>
    <dt><code>pressure</code></dt><dd><p>calculated pressures of heat carrier for all pipeline segments, [<em>MPa</em>].
-   Type: <code>[double]</code>.</p></dd>
+   Type: <code>assert_double</code>.</p></dd>
    <dt><code>consumption</code></dt><dd><p>calculated consumption(s) of heat carrier for all pipeline segments, [<em>ton/hour</em>].
-   Type: <code>[double]</code>.</p></dd>
+   Type: <code>assert_double</code>.</p></dd>
  
 </dl>
 

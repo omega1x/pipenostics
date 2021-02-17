@@ -135,39 +135,39 @@ There dcor represents argument depth." />
 <p>There d<em>cor</em> represents argument <code>depth</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dnvpf</span><span class='op'>(</span><span class='va'>d</span>, <span class='va'>wth</span>, <span class='va'>smts</span>, <span class='va'>depth</span>, <span class='va'>l</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>dnvpf</span><span class='op'>(</span><span class='va'>d</span>, <span class='va'>wth</span>, <span class='va'>uts</span>, <span class='va'>depth</span>, <span class='va'>l</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>d</th>
-      <td><p>nominal outside diameter of the pipe, [<em>mm</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>nominal outside diameter of the pipe, [<em>mm</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>wth</th>
-      <td><p>nominal wall thickness of the pipe, [<em>mm</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>nominal wall thickness of the pipe, [<em>mm</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
-      <th>smts</th>
-      <td><p>specified minimum tensile strength (<em>SMTS</em>) or
-ultimate tensile strength (<em>UTS</em>) as a
-characteristic of steel strength, [<em>MPa</em>]. Type: <code>[double]</code>.</p></td>
+      <th>uts</th>
+      <td><p>ultimate tensile strength (<em>UTS</em>) or
+specified minimum tensile strength (<em>SMTS</em>) as a
+characteristic of steel strength, [<em>MPa</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>depth</th>
-      <td><p>measured maximum depth of the corroded area, [<em>mm</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>measured maximum depth of the corroded area, [<em>mm</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>l</th>
-      <td><p>measured maximum longitudial length of corroded area, [<em>mm</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>measured maximum longitudinal length of corroded area, [<em>mm</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Estimated failure pressure of the corroded pipe, [<em>MPa</em>].
- Type: <code>[double]</code>.</p>
+ Type: <code>assert_double</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>In contrast to
@@ -194,13 +194,15 @@ characteristic of steel strength, [<em>MPa</em>]. Type: <code>[double]</code>.</
    supplement to <em>B31 Code</em> for pressure piping.</p></li>
 <li><p>S. Timashev and A. Bushinskaya, <em>Diagnostics and Reliability
    of Pipeline Systems</em>, Topics in Safety, Risk, Reliability and Quality 30,
-   <strong>DOI 10.1007/978-3-319-25307-7</strong></p></li>
+   <strong>DOI 10.1007/978-3-319-25307-7</strong>.</p></li>
 </ol>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other fail pressure functions: <code><a href='b31gpf.html'>b31gpf</a></code>, <code><a href='b31gmodpf.html'>b31gmodpf</a></code>,
-  <code><a href='shell92pf.html'>shell92pf</a></code>, <code><a href='pcorrcpf.html'>pcorrcpf</a></code></p></div>
+  <code><a href='shell92pf.html'>shell92pf</a></code>, <code><a href='pcorrcpf.html'>pcorrcpf</a></code></p>
+<p>Other DNV-RP-F101 functions: 
+<code><a href='strderate.html'>strderate</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -208,12 +210,12 @@ characteristic of steel strength, [<em>MPa</em>]. Type: <code>[double]</code>.</
  <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
    d     <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>812.8</span>, <span class='fl'>219.0</span><span class='op'>)</span>,  <span class='co'># [mm]</span>
    wth   <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='fl'>19.1</span>,  <span class='fl'>14.5</span><span class='op'>)</span>,  <span class='co'># [mm]</span>
-   smts  <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>530.9</span>, <span class='fl'>455.1</span><span class='op'>)</span>,  <span class='co'># [N/mm^2]</span>
+   uts   <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>530.9</span>, <span class='fl'>455.1</span><span class='op'>)</span>,  <span class='co'># [N/mm^2]</span>
    l     <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>203.2</span>, <span class='fl'>200.0</span><span class='op'>)</span>,  <span class='co'># [mm]</span>
    depth <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='fl'>13.4</span>,   <span class='fl'>9.0</span><span class='op'>)</span>   <span class='co'># [mm]</span>
  <span class='op'>)</span>,
    <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span>
-     <span class='fu'>dnvpf</span><span class='op'>(</span><span class='va'>d</span>, <span class='va'>wth</span>, <span class='va'>smts</span>, <span class='va'>depth</span>, <span class='va'>l</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>)</span> <span class='op'>==</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15.8663</span>, <span class='fl'>34.0118</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># [N/mm^2]</span>
+     <span class='fu'>dnvpf</span><span class='op'>(</span><span class='va'>d</span>, <span class='va'>wth</span>, <span class='va'>uts</span>, <span class='va'>depth</span>, <span class='va'>l</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>)</span> <span class='op'>==</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15.8663</span>, <span class='fl'>34.0118</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># [N/mm^2]</span>
 
 </div></pre>
   </div>

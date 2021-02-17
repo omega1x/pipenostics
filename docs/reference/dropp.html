@@ -141,49 +141,50 @@
     <tr>
       <th>temperature</th>
       <td><p>temperature of heat carrier (water) inside the pipe, [<em>°C</em>].
-Type: <code>[double]</code>.</p></td>
+Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>pressure</th>
       <td><p><a href='https://en.wikipedia.org/wiki/Pressure_measurement#Absolute'>absolute pressure</a>
 of heat carrier (water) measured at the
-entrance (inlet) of pipe, [<em>MPa</em>]. Type: <code>[double]</code>.</p></td>
+entrance (inlet) of pipe, [<em>MPa</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>consumption</th>
       <td><p>amount of heat carrier (water) that is transferred by pipe during a period,
-[<em>ton/hour</em>]. Type: <code>[double]</code>.</p></td>
+[<em>ton/hour</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>d</th>
-      <td><p>internal diameter of pipe, [<em>m</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>internal diameter of pipe, [<em>m</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>len</th>
-      <td><p>pipe length, [<em>m</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>pipe length, [<em>m</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>roughness</th>
-      <td><p>roughness of internal wall of pipe, [<em>m</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>roughness of internal wall of pipe, [<em>m</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>inlet</th>
-      <td><p>elevation of pipe inlet, [<em>m</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>elevation of pipe inlet, [<em>m</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>outlet</th>
-      <td><p>elevation of pipe outlet, [<em>m</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>elevation of pipe outlet, [<em>m</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>method</th>
-      <td><p>method of determining <em>Darcy friction factor</em>. Type: <code>[character, choice]</code>.
+      <td><p>method of determining <em>Darcy friction factor</em>.
+Type: <code>assert_choice</code>.
 (see <strong>Details</strong>)</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>pressure drop at the outlet of pipe, [<em>MPa</em>]. Type: <code>[double]</code>.</p>
+    <p>pressure drop at the outlet of pipe, [<em>MPa</em>]. Type: <code>assert_double</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The underlying engineering model for calculation of pressure drop considers

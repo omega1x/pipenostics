@@ -119,7 +119,7 @@
  topology of district heating system.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>flowls</span><span class='op'>(</span>sender <span class='op'>=</span> <span class='st'>"A"</span>, acceptor <span class='op'>=</span> <span class='st'>"B"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>flowls</span><span class='op'>(</span>sender <span class='op'>=</span> <span class='st'>"A"</span>, acceptor <span class='op'>=</span> <span class='st'>"B"</span>, maxcores <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,6 +137,11 @@ of test bench considered this identifier should be unique.
 Type: any type that can be painlessly coerced to character by
 <code><a href='https://rdrr.io/r/base/character.html'>as.character</a></code>.</p></td>
     </tr>
+    <tr>
+      <th>maxcores</th>
+      <td><p>maximum cores of CPU to use in parallel processing.
+Type: <code>assert_count</code>.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -147,7 +152,7 @@ Type: any type that can be painlessly coerced to character by
  <code>list</code> represents an ordered sequence of indexes in <code>acceptor</code>
  that enumerates incoming edges from starting node to terminal one. The
  length of returned <code>list</code> is equal to number of terminal nodes for
- topology considered.</p>
+ topology considered. Type: <code>assert_list</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Only branched topology without cycles is considered where no more than one

@@ -130,20 +130,20 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>maop</th>
-      <td><p>maximum allowable operating pressure - <em>MAOP</em>, [<em>PSI</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>maximum allowable operating pressure - <em>MAOP</em>, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>d</th>
-      <td><p>nominal outside diameter of the pipe, [<em>inch</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>nominal outside diameter of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>wth</th>
-      <td><p>nominal wall thickness of the pipe, [<em>inch</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>nominal wall thickness of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>smys</th>
       <td><p>specified minimum yield of stress (<em>SMYS</em>) as a
-characteristics of steel strength, [<em>PSI</em>]. Type: <code>[double]</code>.</p></td>
+characteristics of steel strength, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>def</th>
@@ -151,15 +151,15 @@ characteristics of steel strength, [<em>PSI</em>]. Type: <code>[double]</code>.<
 <a href='https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.4.2002.pdf'>ASME B31.4</a>,
 <a href='https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.8.2003.pdf'>ASME B31.8</a>,
 or <a href='https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems'>ASME B31.11</a>,
-[]. Type: <code>[double]</code>.</p></td>
+[]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>depth</th>
-      <td><p>measured maximum depth of the corroded area, [<em>inch</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>measured maximum depth of the corroded area, [<em>inch</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>l</th>
-      <td><p>measured maximum longitudial length of the corroded area, [<em>inch</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>measured maximum longitudinal length of the corroded area, [<em>inch</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     </table>
 
@@ -168,32 +168,32 @@ or <a href='https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
     <p>Object of <em>S3</em>-class <em>crvl</em> which is a <em>data.frame</em> with
  the next numeric columns:</p>
 <p></p><dl>
-  <dt>maop</dt><dd><p>maximum allowable operating pressure - <em>MAOP</em>, [<em>PSI</em>]. Type: <code>[double]</code>.</p></dd>
-  <dt>d</dt><dd><p>nominal outside diameter of the pipe, [<em>inch</em>]. Type: <code>[double]</code>.</p></dd>
-  <dt>wth</dt><dd><p>nominal wall thickness of the pipe, [<em>inch</em>]. Type: <code>[double]</code>.</p></dd>
+  <dt>maop</dt><dd><p>maximum allowable operating pressure - <em>MAOP</em>, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></dd>
+  <dt>d</dt><dd><p>nominal outside diameter of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+  <dt>wth</dt><dd><p>nominal wall thickness of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
   <dt>smys</dt><dd><p>specified minimum yield of stress (<em>SMYS</em>) as a
-              characteristics of steel strength, [<em>PSI</em>]. Type: <code>[double]</code>.</p></dd>
+              characteristics of steel strength, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></dd>
   <dt>def</dt><dd><p>appropriate (combined) design factor from
              <a href='https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.4.2002.pdf'>ASME B31.4</a>,
              <a href='https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.8.2003.pdf'>ASME B31.8</a>,
              or <a href='https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems'>ASME B31.11</a>, [].
-             Type: <code>[double]</code>.</p></dd>
-  <dt>depth</dt><dd><p>measured maximum depth of the corroded area, [<em>inch</em>]. Type: <code>[double]</code>.</p></dd>
-  <dt>l</dt><dd><p>measured maximum longitudial length of corroded area, [<em>inch</em>]. Type: <code>[double]</code>.</p></dd>
+             Type: <code>assert_double</code>.</p></dd>
+  <dt>depth</dt><dd><p>measured maximum depth of the corroded area, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+  <dt>l</dt><dd><p>measured maximum longitudial length of corroded area, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
   <dt>status</dt><dd><p>Operational status of pipe:
                 <em>1</em> - excellent,
                 <em>2</em> - monitoring is recommended,
                 <em>3</em> - alert! replace the pipe immediately!
-       Type: <code>[double, choice]</code>.</p></dd>
-  <dt>design_pressure</dt><dd><p>design pressure of the pipe, [<em>PSI</em>]. Type: <code>[double]</code>.</p></dd>
-  <dt>safe_pressure</dt><dd><p>safe maximum pressure for the corroded area, [<em>PSI</em>]. Type: <code>[double]</code>.</p></dd>
+       Type: <code>assert_numeric</code>.</p></dd>
+  <dt>design_pressure</dt><dd><p>design pressure of the pipe, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></dd>
+  <dt>safe_pressure</dt><dd><p>safe maximum pressure for the corroded area, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></dd>
   <dt>pressure_exceeding</dt><dd><p>whether operator's action is required to reduce
                             <em>MOAP</em> lower than the maximum safe pressure
-                            of the corroded area. Type: <code>[logical]</code>.</p></dd>
-  <dt>allowed_corrosion_depth</dt><dd><p>allowable depth of the corroded area, [<em>inch</em>]. Type: <code>[double]</code>.</p></dd>
-  <dt>A</dt><dd><p>intermediate factor related to the geometry of the corroded area, []. Type: <code>[double]</code>.</p></dd>
-  <dt>allowed_corrosion_length</dt><dd><p>allowable length of the corroded area, [<em>inch</em>]. Type: <code>[double]</code>.</p></dd>
-  <dt>AP</dt><dd><p>another intermediate factor related to the geometry of the corroded area, []. Type: <code>[double]</code>.</p></dd>
+                            of the corroded area. Type: <code>assert_logical</code>.</p></dd>
+  <dt>allowed_corrosion_depth</dt><dd><p>allowable depth of the corroded area, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+  <dt>A</dt><dd><p>intermediate factor related to the geometry of the corroded area, []. Type: <code>assert_double</code>.</p></dd>
+  <dt>allowed_corrosion_length</dt><dd><p>allowable length of the corroded area, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+  <dt>AP</dt><dd><p>another intermediate factor related to the geometry of the corroded area, []. Type: <code>assert_double</code>.</p></dd>
  
 </dl>
 

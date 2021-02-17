@@ -140,7 +140,7 @@
     <tr>
       <th>year</th>
       <td><p>year when the pipe is put in operation after laying or total overhaul.
-Type: <code>[integerish]</code>.</p></td>
+Type: <code>assert_integerish</code></p></td>
     </tr>
     <tr>
       <th>laying</th>
@@ -150,12 +150,12 @@ Type: <code>[integerish]</code>.</p></td>
 <li><p><code>room</code>,</p></li>
 <li><p><code>tunnel</code>,</p></li>
 <li><p><code>underground</code>.</p></li>
-</ul><p>Type: <code>[character, subset]</code>.</p></td>
+</ul><p>Type: <code>assert_subset</code>.</p></td>
     </tr>
     <tr>
       <th>exp5k</th>
       <td><p>pipe regime flag: is pipe operated more that 5000 hours per year?
-Type: <code>[logical]</code>.</p></td>
+Type: <code>assert_logical</code>.</p></td>
     </tr>
     <tr>
       <th>insulation</th>
@@ -164,34 +164,34 @@ Type: <code>[logical]</code>.</p></td>
   <dt><code>1</code></dt><dd><p>foamed polyurethane or analogue</p></dd>
   <dt><code>2</code></dt><dd><p>polymer concrete</p></dd>
 
-</dl><p>Type: <code>[double, subset]</code>.</p></td>
+</dl><p>Type: <code>assert_integer</code> and <code>assert_subset</code>.</p></td>
     </tr>
     <tr>
       <th>d</th>
-      <td><p>internal diameter of pipe, [<em>mm</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>internal diameter of pipe, [<em>mm</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>temperature</th>
       <td><p>temperature of heat carrier (water) inside the pipe, [<em>°C</em>].
-Type: <code>[double]</code>.</p></td>
+Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>len</th>
-      <td><p>length of pipe, [<em>m</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>length of pipe, [<em>m</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>duration</th>
-      <td><p>duration of heat flux emittance, [<em>hour</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>duration of heat flux emittance, [<em>hour</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>beta</th>
       <td><p>should they consider additional heat losses of fittings?
-Type: <code>[logical]</code>.</p></td>
+Type: <code>assert_logical</code>.</p></td>
     </tr>
     <tr>
       <th>extra</th>
-      <td><p>number of points used for temperature extrapolation.
-Type: <code>[integer, choice]</code>.</p></td>
+      <td><p>number of points used for temperature extrapolation: <code>2</code>, <code>3</code>,
+or <code>4</code>. Type: <code>assert_choice</code>.</p></td>
     </tr>
     </table>
 
@@ -202,7 +202,7 @@ Type: <code>[integer, choice]</code>.</p></td>
  emittance is set to 1 <em>hour</em> then the return value is in the same
  units as value of heat flux, [<em>kcal/m/h</em>], accepted by
  <a href='http://docs.cntd.ru/document/902148459'>Minenergo Order 325</a>.
- Type: <code>[double]</code>.</p>
+ Type: <code>assert_double</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Temperature extrapolation and pipe diameter interpolation are leveraged

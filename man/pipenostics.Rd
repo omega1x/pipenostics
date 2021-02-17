@@ -11,7 +11,12 @@ pipeline systems. The package is an option for digital transformation of
 technical engineering departments of heat generating and heat transferring
 companies.
 }
-\details{
-For further details visit the
-\href{https://omega1x.github.io/pipenostics}{package site}.
+\seealso{
+\itemize{
+  \item For further details visit the package site \href{https://omega1x.github.io/pipenostics}{omega1x.github.io/pipenostics}.
+  \item Report bugs at \href{https://github.com/omega1x/pipenostics/issues}{github.com/omega1x/pipenostics/issues}.
+}
+}
+\author{
+Yuri Possokhov \email{possokhoff@gmail.com} \href{http://orcid.org/0000-0002-3570-4337}{ORCID}
 }

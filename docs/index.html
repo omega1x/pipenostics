@@ -82,89 +82,191 @@
 <h2 class="hasAnchor">
 <a href="#table-of-contents" class="anchor"></a>Table of contents</h2>
 <ul>
+<li><a href="#intro">Intro</a></li>
 <li><a href="#installation">Installation</a></li>
-<li><a href="#description">Description</a></li>
 <li>
-<a href="#details">Details</a>
+<a href="#usage-examples">Usage examples</a>
 <ul>
 <li><a href="#corrosion-diagnostics">Corrosion diagnostics</a></li>
+<li><a href="#probability-of-failure">Probability of failure</a></li>
+<li><a href="#regime-tracing">Regime tracing</a></li>
+</ul>
+</li>
+<li><a href="#developer-notes">Developer notes</a></li>
+<li>
+<a href="#underlying-concepts">Underlying concepts</a>
+<ul>
+<li><a href="#corrosion-diagnostics-and-probability-of-failure">Corrosion diagnostics and probability of failure</a></li>
 <li><a href="#heat-losses">Heat losses</a></li>
 <li><a href="#tracing-of-thermal-hydraulic-regime">Tracing of thermal-hydraulic regime</a></li>
 </ul>
 </li>
 </ul>
 </div>
+<div id="intro" class="section level2">
+<h2 class="hasAnchor">
+<a href="#intro" class="anchor"></a>Intro</h2>
+<p>Aiming for digital transformation of technical engineering departments of heat generating and heat transferring companies the package aggregates to some extent the separate knowledge concerning engineering, reliability, diagnostics and predictive maintenance of pipeline systems. For the present time the package contains utilities for processing corrosion data commonly gathered by <em>inline inspection</em>, as well as emperical models for calculations of local thermal-hydraulic regimes of district heating network.</p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<hr>
-<p>For the stable release (if any), just install the latest version from <a href="https://cran.r-project.org/package=pipenostics">CRAN</a>:</p>
+<p>For the stable release just install the latest version from <a href="https://cran.r-project.org/package=pipenostics">CRAN</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pipenostics"</span>)</span></code></pre></div>
 <p>For the development version, use <a href="https://cran.r-project.org/package=devtools">devtools</a>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"omega1x/pipenostics"</span>)</span></code></pre></div>
 </div>
-<div id="description" class="section level2">
+<div id="usage-examples" class="section level2">
 <h2 class="hasAnchor">
-<a href="#description" class="anchor"></a>Description</h2>
-<p>The motivation for the package was to aggregate to some extent the separate knowledge about engineering, reliability, diagnostics and predictive maintenance of pipeline systems suitable for pipe holders. Distributing such knowledge with <a href="https://cran.r-project.org/package=pipenostics">R-package</a> seemed the most attractive option for white-collar engineers, having utilized spreadsheet software as a mainstream.</p>
-<p>Aiming to avoid portability and accessibility problems made us search ways to restrict source code development by functionality of few external packages. It reasonably helps to use the package inside <a href="https://docs.microsoft.com/en-us/sql/machine-learning/sql-server-machine-learning-services">ML-services</a> traditionally leveraged in large companies maintaining district heating systems.</p>
-</div>
-<div id="details" class="section level2">
-<h2 class="hasAnchor">
-<a href="#details" class="anchor"></a>Details</h2>
-<p>Since most functions have native argument vectorization usage of those functions with fast <a href="https://cran.r-project.org/package=data.table">data.table</a> framework is strongly encourage when processing large data sets. For that purpose arguments for all package functions are thoroughly checked for type consistency and physical sense using asserts and tests from <a href="https://cran.r-project.org/package=checkmate">checkmate</a> package. Moreover, in package documentation we borrow type designations according to <a href="https://cran.r-project.org/package=checkmate">checkmate</a> notation.</p>
+<a href="#usage-examples" class="anchor"></a>Usage examples</h2>
 <div id="corrosion-diagnostics" class="section level3">
 <h3 class="hasAnchor">
 <a href="#corrosion-diagnostics" class="anchor"></a>Corrosion diagnostics</h3>
-<p>The next values describing technological conditions, material properties of pipe and defect parameters are used as arguments throughout the most functions concerning corrosion diagnostics:</p>
+<p>By using of <code><a href="reference/b31crvl.html">b31crvl()</a></code> simply imitate the output of <em>CRVL.BAS</em> which is the honored software for determining the allowable length and maximum allowable working pressure presented in <a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf">ASME B31G-1991</a>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pipenostics)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">b31crvl</span>(<span class="at">maop =</span> <span class="dv">910</span>, <span class="at">d =</span> <span class="dv">30</span>, <span class="at">wth =</span> .<span class="dv">438</span>, <span class="at">smys =</span> <span class="dv">52000</span>, <span class="at">def  =</span> .<span class="dv">72</span>, <span class="at">depth =</span> .<span class="dv">1</span>, <span class="at">l =</span> <span class="fl">7.5</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="sc">--</span> Calculated data <span class="sc">--</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>Intermediate <span class="fu">factor</span> (A) <span class="ot">=</span> <span class="fl">1.847</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Design pressure <span class="ot">=</span> <span class="dv">1093</span> PSI; Safe pressure <span class="ot">=</span> <span class="dv">1093</span> PSI</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>Pipe may be operated safely at MAOP, <span class="dv">910</span> PSI</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>With corrosion length <span class="fl">7.500</span> inch, maximum allowed corrosion depth is <span class="fl">0.2490</span> inch; A <span class="ot">=</span> <span class="fl">1.847</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>With corrosion depth <span class="fl">0.100</span> inch, maximum allowed corrosion length is <span class="cn">Inf</span> inch; A <span class="ot">=</span> <span class="fl">5.000</span></span></code></pre></div>
+</div>
+<div id="probability-of-failure" class="section level3">
+<h3 class="hasAnchor">
+<a href="#probability-of-failure" class="anchor"></a>Probability of failure</h3>
+<p>Let’s consider a pipe in district heating network with</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>diameter           <span class="ot">&lt;-</span> <span class="dv">762</span>         <span class="co"># [mm]</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>wall_thickness     <span class="ot">&lt;-</span>  <span class="dv">10</span>         <span class="co"># [mm]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>UTS                <span class="ot">&lt;-</span> <span class="fl">434.3697</span>    <span class="co"># [MPa]</span></span></code></pre></div>
+<p>which transfers heat-carrier (water) at</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>operating_pressure <span class="ot">&lt;-</span>   <span class="fl">0.588399</span>  <span class="co"># [MPa]</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>temperature        <span class="ot">&lt;-</span>  <span class="dv">95</span>         <span class="co"># [°C]</span></span></code></pre></div>
+<p>During <em>inline inspection</em> four corroded areas (defects) are detected with:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>depth  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2.45</span>,  <span class="fl">7.86</span>,   <span class="fl">7.93</span>,   <span class="fl">8.15</span>)  <span class="co"># [mm]</span></span></code></pre></div>
+<p>whereas the length of all defects is not greater 200 mm:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>length <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">200</span>, <span class="dv">4</span>)  <span class="co"># [mm]</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(length)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 200 200 200 200</span></span></code></pre></div>
+<p>Corrosion rates in radial and in longitudinal directions are not well-known and may vary in range <code>.01</code> - <code>.30</code> mm/year:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rar <span class="ot">=</span> <span class="cf">function</span>(n) stats<span class="sc">::</span><span class="fu">runif</span>(n, .<span class="dv">01</span>, .<span class="dv">30</span>) <span class="sc">/</span> <span class="dv">365</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ral <span class="ot">=</span> <span class="cf">function</span>(n) stats<span class="sc">::</span><span class="fu">runif</span>(n, .<span class="dv">01</span>, .<span class="dv">30</span>) <span class="sc">/</span> <span class="dv">365</span></span></code></pre></div>
+<p>Then probabilities of failure (POFs) related to each corroded area are near:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pof <span class="ot">&lt;-</span> <span class="fu">mepof</span>(depth, length, <span class="fu">rep</span>(diameter, <span class="dv">4</span>), <span class="fu">rep</span>(wall_thickness, <span class="dv">4</span>),</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rep</span>(UTS, <span class="dv">4</span>), <span class="fu">rep</span>(operating_pressure, <span class="dv">4</span>), <span class="fu">rep</span>(temperature, <span class="dv">4</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>             rar, ral, <span class="at">method =</span> <span class="st">"dnv"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!                 </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pof)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 0.000000 0.252935 0.368741 0.771299</span></span></code></pre></div>
+<p>So, the POF of the pipe is near</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">max</span>(pof))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 0.771299</span></span></code></pre></div>
+<p>The value of POF changes in time. So, in a year after <em>inline inspection</em> of the pipe we can get something near</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pof <span class="ot">&lt;-</span> <span class="fu">mepof</span>(depth, length, <span class="fu">rep</span>(diameter, <span class="dv">4</span>), <span class="fu">rep</span>(wall_thickness, <span class="dv">4</span>),</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rep</span>(UTS, <span class="dv">4</span>), <span class="fu">rep</span>(operating_pressure, <span class="dv">4</span>), <span class="fu">rep</span>(temperature, <span class="dv">4</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>             rar, ral, <span class="at">method =</span> <span class="st">"dnv"</span>, <span class="at">days =</span> <span class="dv">365</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!             </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pof)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 0.000000 0.526646 0.647422 0.928825</span></span></code></pre></div>
+<p>For entire pipe we get something near:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">max</span>(pof))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 0.928825</span></span></code></pre></div>
+<p>Two years ago before <em>inline inspection</em> the pipe state was rather good:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pof <span class="ot">&lt;-</span> <span class="fu">mepof</span>(depth, length, <span class="fu">rep</span>(diameter, <span class="dv">4</span>), <span class="fu">rep</span>(wall_thickness, <span class="dv">4</span>),</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>             <span class="fu">rep</span>(UTS, <span class="dv">4</span>), <span class="fu">rep</span>(operating_pressure, <span class="dv">4</span>), <span class="fu">rep</span>(temperature, <span class="dv">4</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>            rar, ral, <span class="at">method =</span> <span class="st">"dnv"</span>, <span class="at">days =</span> <span class="sc">-</span><span class="dv">2</span> <span class="sc">*</span> <span class="dv">365</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pof)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 0.000000 0.040849 0.072734 0.272358</span></span></code></pre></div>
+<p>For entire pipe we get something near:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">max</span>(pof))</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 0.272358</span></span></code></pre></div>
+</div>
+<div id="regime-tracing" class="section level3">
+<h3 class="hasAnchor">
+<a href="#regime-tracing" class="anchor"></a>Regime tracing</h3>
+<p>Let’s consider the next 4-segment tracing path:</p>
+<p><img src=".src/svg-graphics/m325regtrace.svg" alt="m325regtrace"></p>
+<p>Suppose we have the next sensor readings for <em>forward tracing</em>:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>t_fw <span class="ot">&lt;-</span> <span class="dv">130</span>         <span class="co"># [°C]</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>p_fw <span class="ot">&lt;-</span>   <span class="fl">0.588399</span>  <span class="co"># [MPa]</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>g_fw <span class="ot">&lt;-</span> <span class="dv">250</span>         <span class="co"># [ton/hour]</span></span></code></pre></div>
+<p>Let’s discharges to network for each pipeline segment are somehow determined as</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>discharges <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">30</span>, <span class="dv">10</span>)  <span class="co"># [ton/hour]</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(discharges)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># [1]  0 10 20 30</span></span></code></pre></div>
+<p>Then the calculated regime (red squares) for forward tracing is</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>regime_fw <span class="ot">&lt;-</span> <span class="fu">m325traceline</span>(t_fw, p_fw, g_fw, discharges, <span class="at">forward =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(regime_fw)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># $temperature</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 129.1799 128.4269 127.9628 127.3367</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># $pressure</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 0.5878607 0.5874226 0.5872143 0.5870330</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># $consumption</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] 250 240 220 190</span></span></code></pre></div>
+<blockquote>
+<p>For further examples go to package function descriptions.</p>
+</blockquote>
+</div>
+</div>
+<div id="developer-notes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#developer-notes" class="anchor"></a>Developer notes</h2>
+<p>Aiming to avoid portability and accessibility problems made us search ways to restrict source code development by functionality of few external packages. It reasonably helps to use the package inside <a href="https://docs.microsoft.com/en-us/sql/machine-learning/sql-server-machine-learning-services">ML-services</a> traditionally leveraged in large companies maintaining district heating systems.</p>
+<p>Since most functions have native argument vectorization usage of those functions with fast <a href="https://cran.r-project.org/package=data.table">data.table</a> framework is strongly encouraged when processing large data sets. For that purpose arguments for all package functions are thoroughly checked for type consistency and physical sense using asserts and tests from <a href="https://cran.r-project.org/package=checkmate">checkmate</a> package. Moreover, in package documentation we borrow type designations according to <a href="https://cran.r-project.org/package=checkmate">checkmate</a> notation.</p>
+<p>As for present in order to provide faster release we incorporate unit tests in example section of function description. So, unit tests are checked during <em>r-cmd-check</em>.</p>
+</div>
+<div id="underlying-concepts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#underlying-concepts" class="anchor"></a>Underlying concepts</h2>
+<div id="corrosion-diagnostics-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#corrosion-diagnostics-1" class="anchor"></a>Corrosion diagnostics</h3>
+<p>It is recognized by pipeline companies that some sections of high pressure pipelines particularly those installed a number of years ago, have experienced some corrosion. Where corrosion is found, pipeline operators have been deeply concerned about the need for a method of determining the remaining strength of these corroded areas. If the corrosion does not penetrate the pipe wall, what is the pressure containing capability of the remaining pipe metal in terms of its ability to continue to operate safely at the maximum allowable operating pressure (<a href="https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure">MAOP</a>) of the pipeline system?</p>
+<p>Thus, one of the needs of the pipeline industry has been a procedure that will help operators, particularly field personnel, make decisions on existing pipelines, when exposed for any purpose, as to whether any corroded region may be left in service or whether it needs to be repaired or replaced. Such determinations must be based upon sound research and extensive testing in order to provide safe and conservative guidelines on which to base field decisions.</p>
+<p><a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf">ASME B31G-1991</a> and <a href="https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines">ASME B31G-2012</a> codes have proven sound and have seen successful use in the pipeline industry providing users with such required formalized framework for a very long period of time. That is why failure pressure calculators <code><a href="reference/b31gpf.html">b31gpf()</a></code> and <code><a href="reference/b31gmodpf.html">b31gmodpf()</a></code> are widely used in assessment of POFs.</p>
+<p>To preserve simplicity of traditional inline measurements during inspections we hereinafter consider only <strong>Analysis Level 1</strong> in this <em>R</em>-package, since as noted in <a href="https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines">ASME B31G-2012</a> <strong>Level 1</strong> evaluation is quite suitable for use in prioritizing corrosion defects identified by <em>inline inspection</em>.</p>
+<p>Other approaches for operating with corrosion data presented in the package are aimed on failure pressure calculations. Models like <code><a href="reference/dnvpf.html">dnvpf()</a></code>, <code><a href="reference/shell92pf.html">shell92pf()</a></code>, and <code><a href="reference/pcorrcpf.html">pcorrcpf()</a></code> assume different shapes of corrosion defects and usage conditions for some cases. So, it is encouraged first to find out which model is most suitable for solving some real world problem.</p>
+<p>For the sake of simplicity and transparency the next values describing technological conditions, material properties of pipe and defect parameters are used as arguments throughout the most functions concerning corrosion diagnostics:</p>
 <ul>
 <li>
 <em>maop</em> - maximum allowable operating pressure - <a href="https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure">MAOP</a> in <a href="https://en.wikipedia.org/wiki/Pounds_per_square_inch">PSI</a>
 </li>
 <li>
-<em>d</em> - nominal outside diameter of the pipe, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>
+<em>d</em> - nominal outside diameter of the pipe, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>, or <a href="https://en.wikipedia.org/wiki/Millimetre">mm</a>
 </li>
 <li>
-<em>wth</em> - nominal wall thickness of the pipe, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>
+<em>wth</em> - nominal wall thickness of the pipe, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>, or <a href="https://en.wikipedia.org/wiki/Millimetre">mm</a>
 </li>
 <li>
 <em>smys</em> - specified minimum yield of stress - <a href="https://en.wikipedia.org/wiki/Specified_minimum_yield_strength">SMYS</a> as a characteristics of steel strength, <a href="https://en.wikipedia.org/wiki/Pounds_per_square_inch">PSI</a>
 </li>
 <li>
-<em>depth</em> - measured maximum depth of the corroded area, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>
+<em>uts</em> - ultimate tensile strength - <a href="https://en.wikipedia.org/wiki/Ultimate_tensile_strength">UTS</a> or specified minimum tensile strength (SMTS) as another characteristic of steel strength, <a href="https://en.wikipedia.org/wiki/Pascal_(unit)">MPa</a>
 </li>
 <li>
-<em>l</em> - measured maximum longitudial length of the corroded area, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>
+<em>depth</em> - measured maximum depth of the corroded area, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>, or <a href="https://en.wikipedia.org/wiki/Millimetre">mm</a>
+</li>
+<li>
+<em>l</em> - measured maximum longitudial length of the corroded area, <a href="https://en.wikipedia.org/wiki/Inch">inch</a>, or <a href="https://en.wikipedia.org/wiki/Millimetre">mm</a>
 </li>
 </ul>
-<div id="asme-b31g-1991" class="section level4">
-<h4 class="hasAnchor">
-<a href="#asme-b31g-1991" class="anchor"></a>ASME B31G-1991</h4>
-<p>It is recognized by pipeline companies that some sections of high pressure pipelines particularly those installed a number of years ago, have experienced some corrosion. Where corrosion is found, pipeline operators have been deeply concerned about the need for a method of determining the remaining strength of these corroded areas. If the corrosion does not penetrate the pipe wall, what is the pressure containing capability of the remaining pipe metal in terms of its ability to continue to operate safely at the maximum allowable operating pressure (<a href="https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure">MAOP</a>) of the pipeline system?</p>
-<p>Thus, one of the needs of the pipeline industry has been a procedure that will help operators, particularly field personnel, make decisions on existing pipelines, when exposed for any purpose, as to whether any corroded region may be left in service or whether it needs to be repaired or replaced. Such determinations must be based upon sound research and extensive testing in order to provide safe and conservative guidelines on which to base field decisions.</p>
-<p><a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf">ASME B31G-1991</a> provides procedures to assist in this determination.</p>
-<p><em>Appendix A</em> to <a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf">ASME B31G-1991</a> shows the source code for determining the allowable length and maximum allowable working pressure. The <em>b31g-</em> and <code><a href="reference/b31crvl.html">b31crvl()</a></code> functions reproduce the idea of <em>CRVL.BAS</em>. They are natively vectorized.</p>
-<p>Usage of <code><a href="reference/b31crvl.html">b31crvl()</a></code> function that imitates the output of <em>CRVL.BAS</em> is presented in the next example:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">b31crvl</span>(<span class="at">maop =</span> <span class="dv">910</span>, <span class="at">d =</span> <span class="dv">30</span>, <span class="at">wth =</span> .<span class="dv">438</span>, <span class="at">smys =</span> <span class="dv">52000</span>, <span class="at">def  =</span> .<span class="dv">72</span>, <span class="at">depth =</span> .<span class="dv">1</span>, <span class="at">l =</span> <span class="fl">7.5</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="sc">--</span> Calculated data <span class="sc">--</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Intermediate <span class="fu">factor</span> (A) <span class="ot">=</span> <span class="fl">1.847</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Design pressure <span class="ot">=</span> <span class="dv">1093</span> PSI; Safe pressure <span class="ot">=</span> <span class="dv">1093</span> PSI</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>Pipe may be operated safely at MAOP, <span class="dv">910</span> PSI</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>With corrosion length <span class="fl">7.500</span> inch, maximum allowed corrosion depth is <span class="fl">0.2490</span> inch; A <span class="ot">=</span> <span class="fl">1.847</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>With corrosion depth <span class="fl">0.100</span> inch, maximum allowed corrosion length is <span class="cn">Inf</span> inch; A <span class="ot">=</span> <span class="fl">5.000</span></span></code></pre></div>
+<p>In the course of further development of the functionality of this package, some revisions or supplements to the existing concept are not excepted.</p>
 </div>
-<div id="asme-b31g-2012" class="section level4">
-<h4 class="hasAnchor">
-<a href="#asme-b31g-2012" class="anchor"></a>ASME B31G-2012</h4>
-<p>An effort was undertaken to update <a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf">ASME B31G-1991</a> up to <a href="https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines">ASME B31G-2012</a> document to recognize certain other corrosion evaluation methods that have proven sound and that have seen successful use in the pipeline industry. Incorporation of these other methods provides us with a formalized framework within which to use such methodologies.</p>
-<p>Nevertheless, to preserve simplicity of traditional inline measurements during inspections we only consider <strong>Analysis Level 1</strong>. As noted in <a href="https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines">ASME B31G-2012</a> <strong>Level 1</strong> evaluation is quite suitable for use in prioritizing corrosion defects identified by inline inspection.</p>
-</div>
-<div id="other-models" class="section level4">
-<h4 class="hasAnchor">
-<a href="#other-models" class="anchor"></a>Other models</h4>
-<p>Other approaches for operating with corrosion data are mostly aimed on failure pressure calculations. Models like <code><a href="reference/dnvpf.html">dnvpf()</a></code>, <code><a href="reference/shell92pf.html">shell92pf()</a></code>, and <code><a href="reference/pcorrcpf.html">pcorrcpf()</a></code> assume different shapes of corrosion defects and usage conditions for some cases. So, it is encouraged first to find out which model is most suitable for solving some real world problem.</p>
-</div>
+<div id="probability-of-failure-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#probability-of-failure-1" class="anchor"></a>Probability of failure</h3>
+<p>Consistent estimate of failure for pipeline systems plays a critical role in optimizing their operation. To prevent pipeline failures due to growing corrosion defects it is necessary to assess the pipeline failure probability (POF) during a certain period, taking into account its actual level of defectiveness.</p>
+<p>The pipeline failure is preceded by limit state which comes when the burst pressure, considered as a random variable, reaches an unacceptable level, or when the defect depth, also a random variable, exceeds the predetermined limit value.</p>
+<p>Up to now no methods existed which would give absolutely correct POF assessments. Nevertheless the stochastic nature of corrosion processes clearly suggests exploiting of <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers">Monte-Carlo simulations</a> (MC). Meanwhile the lack of comprehensive knowledge of stochastic properties of characteristics of pipe and of its defects aids in embracing of <a href="https://en.wikipedia.org/wiki/Principle_of_maximum_entropy">Principle of maximum entropy</a> which allows to avoid doubtful and excessive preferences and detalization when choosing probability distribution models for failure factors and for <em>inline inspection</em> measurements.</p>
+<p>Package function <code><a href="reference/mepof.html">mepof()</a></code> is designed to calculate probability of failure (POF) of the corroded pipe by <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers">MC</a>, assigning maximun entropy for stochastic nature of corroded area length and depth, as well as engineering characteristics of pipe with thermal-hydraulic regime perameters.</p>
 </div>
 <div id="heat-losses" class="section level3">
 <h3 class="hasAnchor">

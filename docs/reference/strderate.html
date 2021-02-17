@@ -6,7 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Megapascals to kilogram-force per square — kgf_mpa • pipenostics</title>
+<title>DNV-RP-F101. De-rate yield stress and tensile strength of pipe due to
+ temperature — strderate • pipenostics</title>
 
 
 <!-- jquery -->
@@ -39,9 +40,17 @@
 
 
 
-<meta property="og:title" content="Megapascals to kilogram-force per square — kgf_mpa" />
-<meta property="og:description" content="Convert pressure (stress) measured in megapascals (MPa)
- to kilogram-force per square cm (\(kgf/cm^2\))." />
+<meta property="og:title" content="DNV-RP-F101. De-rate yield stress and tensile strength of pipe due to
+ temperature — strderate" />
+<meta property="og:description" content="Temperature is highly influence on pipe material properties and especially
+  on its strength. Since in
+  API SPECIFICATION 5L
+  values of SMYS or UTS are postulated at room conditions, in
+  case of higher temperature magnitudes they should be corrected. For that
+  purpose
+  DNV-RP-F101
+  offers linear de-rating for SMYS or SMYS according to
+  figure 2-3." />
 
 
 
@@ -109,52 +118,73 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Megapascals to kilogram-force per square</h1>
-    <small class="dont-index">Source: <a href='https://github.com/omega1x/pipenostics/blob/master/R/kgf_mpa.R'><code>R/kgf_mpa.R</code></a></small>
-    <div class="hidden name"><code>kgf_mpa.Rd</code></div>
+    <h1>DNV-RP-F101. De-rate yield stress and tensile strength of pipe due to
+ temperature</h1>
+    <small class="dont-index">Source: <a href='https://github.com/omega1x/pipenostics/blob/master/R/strderate.R'><code>R/strderate.R</code></a></small>
+    <div class="hidden name"><code>strderate.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Convert pressure (stress) measured in <a href='https://en.wikipedia.org/wiki/Pascal_(unit)'>megapascals</a> (MPa)
- to <a href='https://en.wikipedia.org/wiki/Kilogram-force_per_square_centimetre'>kilogram-force per square cm</a> (\(kgf/cm^2\)).</p>
+    <p>Temperature is highly influence on pipe material properties and especially
+  on its strength. Since in
+  <a href='https://law.resource.org/pub/us/cfr/ibr/002/api.5l.2004.pdf'>API SPECIFICATION 5L</a>
+  values of <em>SMYS</em> or <em>UTS</em> are postulated at room conditions, in
+  case of higher temperature magnitudes they should be corrected. For that
+  purpose
+  <a href='https://rules.dnvgl.com/docs/pdf/DNV/codes/docs/2010-10/RP-F101.pdf'>DNV-RP-F101</a>
+  offers linear de-rating for <em>SMYS</em> or <em>SMYS</em> according to
+  figure 2-3.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kgf_mpa</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>strderate</span><span class='op'>(</span><span class='va'>x</span>, temperature <span class='op'>=</span> <span class='fl'>24.3</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>pressure (stress) measured in <em>megapascals</em>,
+      <td><p>specified minimum yield of stress (<em>SMYS</em>), or ultimate tensile
+strength (<em>UTS</em>), or specified minimum tensile strength (<em>SMTS</em>)
+as a characteristic of steel strength <strong>at room temperature</strong>,
 [<em>MPa</em>]. Type: <code>assert_double</code>.</p></td>
+    </tr>
+    <tr>
+      <th>temperature</th>
+      <td><p>temperature of pipe wall, [<em>°C</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>pressure (stress) in
- <em>kilogram-force per square cm</em>, [<em>kgf/cm^2</em>].
- Type: <code>assert_double</code>.</p>
+    <p>de-rated value of <em>x</em>, i.e. of appropriate pipe material property,
+  [<em>MPa</em>] .
+  Type: <code>assert_double</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='mpa_kgf.html'>mpa_kgf</a></code> for converting <em>kilogram-force per square cm</em> to <em>megapascals</em></p>
-<p>Other utils: 
-<code><a href='inch_mm.html'>inch_mm</a>()</code>,
-<code><a href='mm_inch.html'>mm_inch</a>()</code>,
-<code><a href='mpa_kgf.html'>mpa_kgf</a>()</code>,
-<code><a href='mpa_psi.html'>mpa_psi</a>()</code>,
-<code><a href='psi_mpa.html'>psi_mpa</a>()</code></p></div>
+    <div class='dont-index'><p>Other DNV-RP-F101 functions: 
+<code><a href='dnvpf.html'>dnvpf</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
- <span class='co'>## unit test:</span>
- <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span>
-   <span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span><span class='op'>(</span>
-     <span class='fu'>kgf_mpa</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.0980665</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,
-     <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1.0000000</span>, <span class='fl'>10.197162</span><span class='op'>)</span>
-   <span class='op'>)</span>
- <span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='va'>api5l3t</span>, <span class='op'>{</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'>strderate</span><span class='op'>(</span><span class='fu'><a href='mpa_psi.html'>mpa_psi</a></span><span class='op'>(</span><span class='va'>smys</span><span class='op'>)</span>, <span class='fl'>53</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span>
+  <span class='fu'>strderate</span><span class='op'>(</span><span class='fu'><a href='mpa_psi.html'>mpa_psi</a></span><span class='op'>(</span><span class='va'>uts</span><span class='op'>)</span>,<span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>250</span>, length.out <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>smys</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='op'>}</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] 170.5689 205.0427 239.5165 287.7798 315.3588 356.7274 384.3064 411.8854
+#&gt;  [9] 446.3592 480.8330 549.7806
+#&gt;  [1] 310.2641 330.9483 413.6854 398.6854 404.3697 415.0540 439.5278 457.1068
+#&gt;  [9] 460.8963 485.3701 530.5282</div><div class='input'><span class='co'># [1] 170.5689 205.0427 239.5165 287.7798 315.3588 356.7274 384.3064 411.8854 446.3592 480.8330</span>
+<span class='co'># [11] 549.7806</span>
+<span class='co'># [1] 310.2641 330.9483 413.6854 398.6854 404.3697 415.0540 439.5278 457.1068 460.8963 485.3701</span>
+<span class='co'># [11] 530.5282</span>
+
+<span class='co'># Unit test:</span>
+<span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='va'>api5l3t</span>,
+     <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span>
+       <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'>strderate</span><span class='op'>(</span><span class='fu'><a href='mpa_psi.html'>mpa_psi</a></span><span class='op'>(</span><span class='va'>uts</span><span class='op'>)</span>, <span class='fl'>0</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='mpa_psi.html'>mpa_psi</a></span><span class='op'>(</span><span class='va'>uts</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>0</span><span class='op'>)</span>
+     <span class='op'>)</span>
+<span class='op'>)</span>
 
 </div></pre>
   </div>

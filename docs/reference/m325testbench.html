@@ -142,33 +142,33 @@ primarily for static thermal-hydraulic computations and topology effects.</p>
 
   <dt>temperature</dt><dd><p>Snapshot of thermal-hydraulic regime state: temperature of heat carrier
     (water) sensor-measured on terminal acceptor node, [<em>°C</em>].
-    Type: <code>[double]</code>. <code>NA</code>s are introduced for nodes without
-    temperature sensor.</p></dd>
+    Type: <code>assert_double</code>. <code>NA</code>s are introduced for nodes
+    without temperature sensor.</p></dd>
 
   <dt>pressure</dt><dd><p>Snapshot of thermal-hydraulic regime state:
     sensor-measured
     <a href='https://en.wikipedia.org/wiki/Pressure_measurement#Absolute'>absolute pressure</a>
     of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
     [<em>MPa</em>].
-    Type: <code>[double]</code>. <code>NA</code>s are introduced for nodes without
-    pressure sensor.</p></dd>
+    Type: <code>assert_double</code>. <code>NA</code>s are introduced for nodes
+    without pressure sensor.</p></dd>
 
   <dt>consumption</dt><dd><p>Snapshot of thermal-hydraulic regime state:
     sensor-measured amount of heat carrier (water) on terminal node that is
     transferred by pipe (i.e. acceptor's incoming edge) during a period,
-    [<em>ton/hour</em>]. Type: <code>[double]</code>. <code>NA</code>s are introduced for
-    nodes without consumption sensor.</p></dd>
+    [<em>ton/hour</em>]. Type: <code>assert_double</code>.
+    <code>NA</code>s are introduced for nodes without consumption sensor.</p></dd>
 
  <dt>d</dt><dd><p>internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
    [<em>m</em>].
-   Type: <code>[double]</code>.</p></dd>
+   Type: <code>assert_double</code>.</p></dd>
 
  <dt>len</dt><dd><p>pipe length (i.e. length of acceptor's incoming edge), [<em>m</em>].
-   Type: <code>[double]</code>.</p></dd>
+   Type: <code>assert_double</code>.</p></dd>
 
  <dt>year</dt><dd><p>year when the pipe (i.e. acceptor's incoming edge) is put in operation after
    laying or total overhaul.
-   Type: <code>[integerish]</code></p></dd>
+   Type: <code>assert_integerish</code>.</p></dd>
 
  <dt>insulation</dt><dd><p>identifier of insulation that covers the exterior of pipe (i.e. acceptor's
     incoming edge):
@@ -176,7 +176,7 @@ primarily for static thermal-hydraulic computations and topology effects.</p>
       <dt><code>0</code></dt><dd><p>no insulation</p></dd>
       <dt><code>1</code></dt><dd><p>foamed polyurethane or analogue</p></dd>
       <dt><code>2</code></dt><dd><p>polymer concrete</p></dd></dl>
-   Type: <code>[integerish, subset]</code>.</p></dd>
+   Type: <code>assert_integerish</code>.</p></dd>
 
  <dt>laying</dt><dd><p>type of pipe laying depicting the position of pipe in space. Only five
     types of pipe laying are considered:
@@ -187,25 +187,25 @@ primarily for static thermal-hydraulic computations and topology effects.</p>
 <li><p><code>tunnel</code>,</p></li>
 <li><p><code>underground</code>.</p></li>
 </ul>
-    Type: <code>[character, subset]</code>.</p></dd>
+    Type: <code>assert_character</code>.</p></dd>
 
  <dt>beta</dt><dd><p>logical indicator: should they consider additional heat losses of fittings
    located on this pipe (i.e. acceptor's incoming edge)?
-   Type: <code>[logical]</code>.</p></dd>
+   Type: <code>assert_logical</code>.</p></dd>
 
  <dt>exp5k</dt><dd><p>logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
     <code>TRUE</code> pipe is operated more that <code>5000</code> hours per year.
-    Type: <code>[logical]</code>.</p></dd>
+    Type: <code>assert_logical</code>.</p></dd>
 
  <dt>roughness</dt><dd><p>roughness of internal wall of pipe (i.e. acceptor's incoming edge),
    [<em>m</em>].
-   Type: <code>[double]</code>.</p></dd>
+   Type: <code>assert_double</code>.</p></dd>
 
  <dt>inlet</dt><dd><p>elevation of pipe inlet, [<em>m</em>].
-    Type: <code>[double]</code>.</p></dd>
+    Type: <code>assert_double</code>.</p></dd>
 
  <dt>outlet</dt><dd><p>elevation of pipe outlet, [<em>m</em>].
-    Type: <code>[double]</code>.</p></dd>
+    Type: <code>assert_double</code>.</p></dd>
 
 </dl>
 

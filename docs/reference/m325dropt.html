@@ -50,7 +50,7 @@ Since Minenergo Order 325 is
  drop may be considered as a normative temperature drop. If the actual
  (somehow measured) temperature drop is more than this
  normative temperature drop they may consider such difference to be
- due to over-normative heat losses. The presence of the latter
+ due to extra-normative heat losses. The presence of the latter
  requires appropriate maintenance activities." />
 
 
@@ -135,7 +135,7 @@ Since Minenergo Order 325 is
  drop may be considered as a <em>normative temperature drop</em>. If the actual
  (somehow measured) temperature drop is more than this
  <em>normative temperature drop</em> they may consider such difference to be
- due to <em>over-normative heat losses</em>. The presence of the latter
+ due to <em>extra-normative heat losses</em>. The presence of the latter
  requires appropriate maintenance activities.</p>
     </div>
 
@@ -158,30 +158,30 @@ Since Minenergo Order 325 is
     <tr>
       <th>temperature</th>
       <td><p>temperature of heat carrier (water) inside the pipe measured at the
-entrance of pipe, [<em>°C</em>]. Type: <code>[double]</code>.</p></td>
+entrance of pipe, [<em>°C</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>pressure</th>
       <td><p><a href='https://en.wikipedia.org/wiki/Pressure_measurement#Absolute'>absolute pressure</a>
-of heat carrier (water) inside the pipe, [<em>MPa</em>]. Type: <code>[double]</code>.</p></td>
+of heat carrier (water) inside the pipe, [<em>MPa</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>consumption</th>
       <td><p>amount of heat carrier (water) that is transferred by pipe during a period,
-[<em>ton/hour</em>]. Type: <code>[double]</code>.</p></td>
+[<em>ton/hour</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>d</th>
-      <td><p>internal diameter of pipe, [<em>mm</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>internal diameter of pipe, [<em>mm</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>len</th>
-      <td><p>length of pipe, [<em>m</em>]. Type: <code>[double]</code>.</p></td>
+      <td><p>length of pipe, [<em>m</em>]. Type: <code>assert_double</code>.</p></td>
     </tr>
     <tr>
       <th>year</th>
       <td><p>year when the pipe is put in operation after laying or total overhaul.
-Type: <code>[integerish]</code>.</p></td>
+Type: <code>assert_integerish</code>.</p></td>
     </tr>
     <tr>
       <th>insulation</th>
@@ -190,7 +190,7 @@ Type: <code>[integerish]</code>.</p></td>
   <dt><code>1</code></dt><dd><p>foamed polyurethane or analogue</p></dd>
   <dt><code>2</code></dt><dd><p>polymer concrete</p></dd>
 
-</dl><p>Type: <code>[double, subset]</code>.</p></td>
+</dl><p>Type: <code>assert_subset</code>.</p></td>
     </tr>
     <tr>
       <th>laying</th>
@@ -200,24 +200,24 @@ Type: <code>[integerish]</code>.</p></td>
 <li><p><code>room</code>,</p></li>
 <li><p><code>tunnel</code>,</p></li>
 <li><p><code>underground</code>.</p></li>
-</ul><p>Type: <code>[character, subset]</code>.</p></td>
+</ul><p>Type: <code>assert_subset</code>.</p></td>
     </tr>
     <tr>
       <th>beta</th>
       <td><p>should they consider additional heat losses of fittings?
-Type: <code>[logical]</code>.</p></td>
+Type: <code>assert_logical</code>.</p></td>
     </tr>
     <tr>
       <th>exp5k</th>
       <td><p>pipe regime flag: is pipe operated more that 5000 hours per year?
-Type: <code>[logical]</code>.</p></td>
+Type: <code>assert_logical</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><em>normative temperature drop</em> at the outlet of pipe, [<em>°C</em>].
- Type: <code>[double]</code>.</p>
+ Type: <code>assert_double</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The function is a simple wrapper for call of <code><a href='dropt.html'>dropt</a></code>

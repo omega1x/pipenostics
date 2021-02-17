@@ -6,8 +6,16 @@
 #' technical engineering departments of heat generating and heat transferring
 #' companies.
 #'
-#' For further details visit the
-#' \href{https://omega1x.github.io/pipenostics}{package site}.
+#' @author
+#'   Yuri Possokhov \email{possokhoff@@gmail.com} \href{http://orcid.org/0000-0002-3570-4337}{ORCID}
+#'
+#' @seealso
+#'
+#' \itemize{
+#'   \item For further details visit the package site \href{https://omega1x.github.io/pipenostics}{omega1x.github.io/pipenostics}.
+#'   \item Report bugs at \href{https://github.com/omega1x/pipenostics/issues}{github.com/omega1x/pipenostics/issues}.
+#' }
+#'
 #'
 #' @docType package
 #' @name pipenostics
