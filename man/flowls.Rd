@@ -47,7 +47,7 @@ For possibly better performance, they search paths of heat carrier flow
 in parallel leveraging the functionality of package \code{\link{parallel}}.
 }
 \examples{
-\dontrun{
+\donttest{
 # Find path from A to B in trivial line topology:
 flowls("A", "B")
 

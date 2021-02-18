@@ -224,7 +224,7 @@
 #'  }
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Minimum two nodes should be in district heating network graph:
 #' m325tracefw(verbose = FALSE)
 #'

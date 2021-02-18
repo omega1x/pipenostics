@@ -229,7 +229,7 @@ The calculated (values of) regime may be considered as representation of
  They are welcome to couple the algorithm with functionality of data.table.
 }
 \examples{
-\dontrun{
+\donttest{
 # Minimum two nodes should be in district heating network graph:
 m325tracefw(verbose = FALSE)
 
