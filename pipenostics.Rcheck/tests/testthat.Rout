@@ -1,0 +1,65 @@
+
+R version 4.0.4 (2021-02-15) -- "Lost Library Book"
+Copyright (C) 2021 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(pipenostics)
+> 
+> test_check("pipenostics")
+
+2021-02-19 22:00:58 m325tracebw | start backward tracing; segments 26;
+2021-02-19 22:00:58 m325tracebw | start job; job 0;
+2021-02-19 22:00:58 m325tracebw | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]
+2021-02-19 22:00:58 m325tracebw | trace temperature;;
+2021-02-19 22:00:58 m325tracebw | trace pressure;;
+2021-02-19 22:00:58 m325tracebw | finish job; job 0; processed node(s) 13
+2021-02-19 22:00:58 m325tracebw | start job; job 1;
+2021-02-19 22:00:58 m325tracebw | now process; 5 node(s); [14,22,23,4,5]
+2021-02-19 22:00:58 m325tracebw | trace temperature;;
+2021-02-19 22:00:58 m325tracebw | trace pressure;;
+2021-02-19 22:00:58 m325tracebw | finish job; job 1; processed node(s) 5
+2021-02-19 22:00:58 m325tracebw | start job; job 2;
+2021-02-19 22:00:58 m325tracebw | now process; 2 node(s); [20,6]
+2021-02-19 22:00:58 m325tracebw | trace temperature;;
+2021-02-19 22:00:58 m325tracebw | trace pressure;;
+2021-02-19 22:00:58 m325tracebw | finish job; job 2; processed node(s) 2
+2021-02-19 22:00:58 m325tracebw | start job; job 3;
+2021-02-19 22:00:58 m325tracebw | now process; 2 node(s); [18,8]
+2021-02-19 22:00:58 m325tracebw | trace temperature;;
+2021-02-19 22:00:58 m325tracebw | trace pressure;;
+2021-02-19 22:00:58 m325tracebw | finish job; job 3; processed node(s) 2
+2021-02-19 22:00:58 m325tracebw | start job; job 4;
+2021-02-19 22:00:58 m325tracebw | now process; 2 node(s); [11,16]
+2021-02-19 22:00:58 m325tracebw | trace temperature;;
+2021-02-19 22:00:58 m325tracebw | trace pressure;;
+2021-02-19 22:00:58 m325tracebw | finish job; job 4; processed node(s) 2
+2021-02-19 22:00:58 m325tracebw | start job; job 5;
+2021-02-19 22:00:58 m325tracebw | now process; 1 node(s); [13]
+2021-02-19 22:00:58 m325tracebw | trace temperature;;
+2021-02-19 22:00:58 m325tracebw | trace pressure;;
+2021-02-19 22:00:58 m325tracebw | finish job; job 5; processed node(s) 1
+2021-02-19 22:00:58 m325tracebw | start job; job 6;
+2021-02-19 22:00:58 m325tracebw | now process; 1 node(s); [12]
+2021-02-19 22:00:58 m325tracebw | trace temperature;;
+2021-02-19 22:00:58 m325tracebw | trace pressure;;
+2021-02-19 22:00:58 m325tracebw | finish job; job 6; processed node(s) 1
+2021-02-19 22:00:58 m325tracebw | finish backward tracing;;
+pipenostics::mepof: process case [1/4] - 25 % processed.pipenostics::mepof: process case [2/4] - 50 % processed.pipenostics::mepof: process case [3/4] - 75 % processed.pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!
+[ [33mFAIL[39m 0 | [35mWARN[39m 0 | [34mSKIP[39m 0 | [32mPASS[39m 72 ]
+> 
+> proc.time()
+   user  system elapsed 
+ 23.042   2.609  26.168 

@@ -199,9 +199,6 @@ consistency and physical sense using asserts and tests from
 Moreover, in package documentation we borrow type designations according
 to [checkmate](https://cran.r-project.org/package=checkmate) notation.
 
-As for present in order to provide faster release we incorporate unit tests in 
-example section of function description. So, unit tests are checked during *r-cmd-check*.
-
 ## Underlying concepts
 
 ### Corrosion diagnostics
