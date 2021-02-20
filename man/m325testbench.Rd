@@ -145,10 +145,7 @@ Note that to leverage
 functionality for plotting there is a zero sender of flow.
 }
 \examples{
-\dontrun{
-# Do not hesitate to use data.table for larger chunks of network:
-library(data.table)
-setDT(m325testbench)
+# Do not hesitate to use data.table and igraph for larger chunks of network.
 
 # Check for declared topology isomorphism:
 stopifnot(
@@ -156,40 +153,11 @@ stopifnot(
 )
 
 # Do all terminal nodes have sensor-measured regime parameters?:
-terminal_nodes <- m325testbench[!(acceptor \%in\% sender)]
+terminal_nodes <- subset(m325testbench, !(acceptor \%in\% sender))
 stopifnot(
-  all(!is.na(terminal_nodes[, .(temperature, pressure, consumption)]))
+  all(!is.na(subset(terminal_nodes, select = c(temperature, pressure, consumption))))
 )
 
-# Welcome to use igraph for topology investigations:
-library(igraph)
-g <- graph_from_data_frame(
-# provide edge list with edge attributes:
-  d = m325testbench[,
-                    .SD,
-                    .SDcols = !c("temperature", "pressure", "consumption", "inlet", "outlet")
-  ],
-
-  # provide node attributes:
-  v = rbind(
-    # attributes for zero sender
-    list(
-      acceptor = 0, elevation = NA_real_, temperature = NA_real_,
-      pressure = NA_real_, consumption= NA_real_
-    ),
-    m325testbench[,
-                  .(
-                    # Since every row describes node with its incoming edge:
-                    acceptor, elevation = outlet,
-                    # sensor readings (if any):
-                    temperature, pressure, consumption
-                  )
-    ]
-  )
-)
-
-plot(g, layout = layout_as_tree(g, root = 1))
-}
 }
 \seealso{
 Other Minenergo: 

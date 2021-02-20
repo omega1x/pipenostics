@@ -268,20 +268,6 @@ stopifnot(
     # difference between aggregation options
   ) == c(dt = 0.03732, dp = 0.00139, dg = 0)
 )
-
-# Do not hesitate to use along with data.table...
-\dontrun{
-data.table::setDT(nx)
-result <-
-  nx[, m325tracebw(sender, acceptor, temperature, pressure, consumption, d, len,
-                   year, insulation, laying, beta, exp5k, roughness, inlet,
-                   outlet, method = "romeo", verbose = TRUE, opinion = "median",
-                   csv = FALSE, file = "m325tracebw.csv")]
-
-# ...but mind that the obtained result should go to independent data.frame:
-stopifnot(is.data.frame(result) & !is.data.table(result))
-}
-
 }
 \seealso{
 Other Regime tracing: 

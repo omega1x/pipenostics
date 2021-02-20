@@ -74,7 +74,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -184,14 +184,15 @@ Type: <code>assert_double</code>.</p></td>
  <span class='op'>)</span>
 
  <span class='va'>foo</span>
-</div><div class='output co'>#&gt; [1] 1.366806 1.433840</div><div class='input'> <span class='co'># 1.37 [°C]</span>
+</div><div class='output co'>#&gt; [1] 1.366806 1.433840</div><div class='input'> <span class='co'># [1] 1.366806 1.433840</span>
 
  <span class='co'># This is the same as using m325dropt:</span>
  <span class='va'>bar</span> <span class='op'>&lt;-</span> <span class='fu'><a href='m325dropt.html'>m325dropt</a></span><span class='op'>(</span>temperature <span class='op'>=</span> <span class='va'>operation_temperature</span>,
-   year <span class='op'>=</span> <span class='fl'>1968</span>, laying <span class='op'>=</span> <span class='st'>"channel"</span>, d <span class='op'>=</span> <span class='fl'>700</span>, l <span class='op'>=</span> <span class='fl'>1000</span>
+   year <span class='op'>=</span> <span class='fl'>1968</span>, laying <span class='op'>=</span> <span class='st'>"channel"</span>, d <span class='op'>=</span> <span class='fl'>700</span>, len <span class='op'>=</span> <span class='fl'>1000</span>
  <span class='op'>)</span>
 
- <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/all.equal.html'>all.equal</a></span><span class='op'>(</span><span class='va'>foo</span>, <span class='va'>bar</span><span class='op'>)</span><span class='op'>)</span>
+ <span class='va'>bar</span>
+</div><div class='output co'>#&gt; [1] 1.366806 1.433840</div><div class='input'> <span class='co'># [1] 1.366806 1.433840</span>
 
 </div></pre>
   </div>

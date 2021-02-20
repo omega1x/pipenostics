@@ -63,15 +63,9 @@ shell92pf(d, wth, uts, depth, l)
 
 }
 \references{
-\enumerate{
-   \item  D. Ritchie, S. Last, \emph{Burst criteria of corroded pipelines -
-          defect acceptance criteria}, in Proceedings of the EPRG/PRC
-          10th Biennial Joint Technical Meeting on Line Pipe Research
-          (Cambridge, UK, 1995)
-   \item S. Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
-         of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
-         \strong{DOI 10.1007/978-3-319-25307-7}
- }
+Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
+ of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
+ \strong{DOI 10.1007/978-3-319-25307-7}
 }
 \seealso{
 Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{b31gmodpf}},

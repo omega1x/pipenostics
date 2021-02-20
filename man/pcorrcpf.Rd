@@ -75,6 +75,7 @@ pcorrcpf(d, wth, uts, depth, l)
          Pipes for Dry Chlorine Transport using Finite Element Analysis}
          Materials today: proceedings, Vol. \strong{4}(8), 2017,
          pp. \strong{7498}-\strong{7506}.
+         \strong{DOI 10.1016/j.matpr.2017.07.081}
  }
 }
 \seealso{

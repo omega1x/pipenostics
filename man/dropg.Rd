@@ -96,74 +96,7 @@ print(result)
 
 # [1]  75.96439 134.72222  65.70302 180.80580  78.05995
 
-# For more clarity they may perform calculations in data.table:
-\dontrun{
-dataset <- data.table::data.table(adj, d, consumption)
-print(dataset)
-
-#     adj    d consumption
-# 1:  450  800       100.0
-# 2: -400  900       112.5
-# 3:  950 1000       125.0
-# 4: -255 1400       175.0
-# 5: 1152 1200       150.0
-
-dataset[, drop := dropg(adj, d, consumption)]  # calculate drop and recovery
-dataset[, result := consumption - drop]
-print(dataset)
-
-#     adj    d consumption       drop    result
-# 1:  450  800       100.0  24.035608  75.96439
-# 2: -400  900       112.5 -22.222222 134.72222
-# 3:  950 1000       125.0  59.296978  65.70302
-# 4: -255 1400       175.0  -5.805804 180.80580
-# 5: 1152 1200       150.0  71.940050  78.05995
-}
-
-# Now let consider particular diameter case with the same total diameters of
-# adjacent pipes, [mm]:
-
-adjp <- list(
-  c(100, 175, 175, -65, 125, -60),  # diameters of 4 discharge pipes and 2 recharge pipes, [mm]
-  c(-300, -100, -65, 125, -60),  # diameter of 1 discharge pipe and 4 recharge pipes, [mm]
-  c(950),  # diameter of 1 discharge pipe, [mm]
-  c(-255), # diameter of 1 recharge pipe, [mm]
-  c(50, 70, 1000, 32)  # diameter of 4 discharge pipes, [mm]
-)
-
-stopifnot(
-  all(sapply(adjp, sum) == adj)
-)
-
-# Recalculate the result:
-result2 <- consumption - dropg(adjp, d, consumption)
-stopifnot(
-  all(result == result2)
-)
-
-# They may do it in data.table:
-\dontrun{
-dataset <- data.table::data.table(adjp, d, consumption)
-print(dataset)
-
-#                        adjp    d consumption
-# 1:  100,175,175,-65,125,-60  800       100.0
-# 2: -300,-100, -65, 125, -60  900       112.5
-# 3:                      950 1000       125.0
-# 4:                     -255 1400       175.0
-# 5:        50,  70,1000,  32 1200       150.0
-
-dataset[, drop := dropg(adj, d, consumption)]  # calculate drop and recovery
-dataset[, result := consumption - drop]
-print(dataset)
-
-#                         adjp    d consumption       drop    result
-# 1:  100,175,175,-65,125,-60  800       100.0  24.035608  75.96439
-# 2: -300,-100, -65, 125, -60  900       112.5 -22.222222 134.72222
-# 3:                      950 1000       125.0  59.296978  65.70302
-# 4:                     -255 1400       175.0  -5.805804 180.80580
-# 5:        50,  70,1000,  32 1200       150.0  71.940050  78.05995
-}
+# For more clarity they may perform calculations in data.table.
 }
 \seealso{
 Other district heating: 

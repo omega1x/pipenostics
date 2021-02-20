@@ -75,7 +75,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -201,11 +201,8 @@ Type: <code>assert_subset</code>.</p></td>
 #&gt; 36 36           porous_plastic     50   0
 #&gt; 37 37    mineral_wool_200_cord     56 185
 #&gt; 38 38    mineral_wool_250_cord     58 185
-#&gt; 39 39    mineral_wool_300_cord     61 185</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='va'>m278insdata</span>, <span class='op'>{</span> <span class='fu'>m278inshcm</span><span class='op'>(</span><span class='fl'>110</span>, <span class='va'>material</span><span class='op'>)</span><span class='op'>}</span><span class='op'>)</span><span class='op'>)</span>,
-    <span class='fl'>2</span><span class='op'>)</span> <span class='op'>==</span> <span class='fl'>9e-2</span>
-<span class='op'>)</span>
+#&gt; 39 39    mineral_wool_300_cord     61 185</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'>m278inshcm</span><span class='op'>(</span><span class='fl'>110</span>, <span class='va'>m278insdata</span><span class='op'>[[</span><span class='st'>"material"</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.09600 0.07525 0.14950 0.14325 0.14950 0.10800</div><div class='input'><span class='co'># [1] 0.09600 0.07525 0.14950 0.14325 0.14950 0.10800</span>
 
 <span class='co'># Terms for linear connection between thermal conductivity of unknown</span>
 <span class='co'># (averaged) pipe insulator vs temperature:</span>

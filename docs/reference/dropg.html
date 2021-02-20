@@ -80,7 +80,7 @@ The calculated value may be positive or negative. When it is positive they
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -223,74 +223,7 @@ the inlet of pipe during a period, [<em>ton/hour</em>]. Type: <code>assert_doubl
 </div><div class='output co'>#&gt; [1]  75.96439 134.72222  65.70302 180.80580  78.05995</div><div class='input'>
 <span class='co'># [1]  75.96439 134.72222  65.70302 180.80580  78.05995</span>
 
-<span class='co'># For more clarity they may perform calculations in data.table:</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>dataset</span> <span class='op'>&lt;-</span> <span class='fu'>data.table</span><span class='fu'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span><span class='va'>adj</span>, <span class='va'>d</span>, <span class='va'>consumption</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>dataset</span><span class='op'>)</span>
-
-<span class='co'>#     adj    d consumption</span>
-<span class='co'># 1:  450  800       100.0</span>
-<span class='co'># 2: -400  900       112.5</span>
-<span class='co'># 3:  950 1000       125.0</span>
-<span class='co'># 4: -255 1400       175.0</span>
-<span class='co'># 5: 1152 1200       150.0</span>
-
-<span class='va'>dataset</span><span class='op'>[</span>, <span class='va'>drop</span> <span class='op'>:=</span> <span class='fu'>dropg</span><span class='op'>(</span><span class='va'>adj</span>, <span class='va'>d</span>, <span class='va'>consumption</span><span class='op'>)</span><span class='op'>]</span>  <span class='co'># calculate drop and recovery</span>
-<span class='va'>dataset</span><span class='op'>[</span>, <span class='va'>result</span> <span class='op'>:=</span> <span class='va'>consumption</span> <span class='op'>-</span> <span class='va'>drop</span><span class='op'>]</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>dataset</span><span class='op'>)</span>
-
-<span class='co'>#     adj    d consumption       drop    result</span>
-<span class='co'># 1:  450  800       100.0  24.035608  75.96439</span>
-<span class='co'># 2: -400  900       112.5 -22.222222 134.72222</span>
-<span class='co'># 3:  950 1000       125.0  59.296978  65.70302</span>
-<span class='co'># 4: -255 1400       175.0  -5.805804 180.80580</span>
-<span class='co'># 5: 1152 1200       150.0  71.940050  78.05995</span>
-<span class='op'>}</span>
-
-<span class='co'># Now let consider particular diameter case with the same total diameters of</span>
-<span class='co'># adjacent pipes, [mm]:</span>
-
-<span class='va'>adjp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>100</span>, <span class='fl'>175</span>, <span class='fl'>175</span>, <span class='op'>-</span><span class='fl'>65</span>, <span class='fl'>125</span>, <span class='op'>-</span><span class='fl'>60</span><span class='op'>)</span>,  <span class='co'># diameters of 4 discharge pipes and 2 recharge pipes, [mm]</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>300</span>, <span class='op'>-</span><span class='fl'>100</span>, <span class='op'>-</span><span class='fl'>65</span>, <span class='fl'>125</span>, <span class='op'>-</span><span class='fl'>60</span><span class='op'>)</span>,  <span class='co'># diameter of 1 discharge pipe and 4 recharge pipes, [mm]</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>950</span><span class='op'>)</span>,  <span class='co'># diameter of 1 discharge pipe, [mm]</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>255</span><span class='op'>)</span>, <span class='co'># diameter of 1 recharge pipe, [mm]</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>50</span>, <span class='fl'>70</span>, <span class='fl'>1000</span>, <span class='fl'>32</span><span class='op'>)</span>  <span class='co'># diameter of 4 discharge pipes, [mm]</span>
-<span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>adjp</span>, <span class='va'>sum</span><span class='op'>)</span> <span class='op'>==</span> <span class='va'>adj</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='co'># Recalculate the result:</span>
-<span class='va'>result2</span> <span class='op'>&lt;-</span> <span class='va'>consumption</span> <span class='op'>-</span> <span class='fu'>dropg</span><span class='op'>(</span><span class='va'>adjp</span>, <span class='va'>d</span>, <span class='va'>consumption</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='va'>result</span> <span class='op'>==</span> <span class='va'>result2</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='co'># They may do it in data.table:</span>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>dataset</span> <span class='op'>&lt;-</span> <span class='fu'>data.table</span><span class='fu'>::</span><span class='fu'><a href='https://Rdatatable.gitlab.io/data.table/reference/data.table.html'>data.table</a></span><span class='op'>(</span><span class='va'>adjp</span>, <span class='va'>d</span>, <span class='va'>consumption</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>dataset</span><span class='op'>)</span>
-
-<span class='co'>#                        adjp    d consumption</span>
-<span class='co'># 1:  100,175,175,-65,125,-60  800       100.0</span>
-<span class='co'># 2: -300,-100, -65, 125, -60  900       112.5</span>
-<span class='co'># 3:                      950 1000       125.0</span>
-<span class='co'># 4:                     -255 1400       175.0</span>
-<span class='co'># 5:        50,  70,1000,  32 1200       150.0</span>
-
-<span class='va'>dataset</span><span class='op'>[</span>, <span class='va'>drop</span> <span class='op'>:=</span> <span class='fu'>dropg</span><span class='op'>(</span><span class='va'>adj</span>, <span class='va'>d</span>, <span class='va'>consumption</span><span class='op'>)</span><span class='op'>]</span>  <span class='co'># calculate drop and recovery</span>
-<span class='va'>dataset</span><span class='op'>[</span>, <span class='va'>result</span> <span class='op'>:=</span> <span class='va'>consumption</span> <span class='op'>-</span> <span class='va'>drop</span><span class='op'>]</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>dataset</span><span class='op'>)</span>
-
-<span class='co'>#                         adjp    d consumption       drop    result</span>
-<span class='co'># 1:  100,175,175,-65,125,-60  800       100.0  24.035608  75.96439</span>
-<span class='co'># 2: -300,-100, -65, 125, -60  900       112.5 -22.222222 134.72222</span>
-<span class='co'># 3:                      950 1000       125.0  59.296978  65.70302</span>
-<span class='co'># 4:                     -255 1400       175.0  -5.805804 180.80580</span>
-<span class='co'># 5:        50,  70,1000,  32 1200       150.0  71.940050  78.05995</span>
-<span class='op'>}</span>
+<span class='co'># For more clarity they may perform calculations in data.table.</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -102,8 +102,18 @@ test_that("*m325tracebw* errs in balance calculation", {
   )
 })
 
+test_that("*m325tracebw* does not write csv-file", {
+  file_name <- tempfile()
+  m325tracebw(csv = TRUE, file = file_name)
+  expect_equal(
+    file.exists(file_name),
+    TRUE
+  )
+  unlink(file_name)
+})
 
 test_that("*m325tracefw* errs in calculation", {
+  skip_on_cran()
   result <- m325tracefw(verbose = FALSE)
   expect_equal(
     result[["node"]],
@@ -138,6 +148,20 @@ test_that("*m325tracefw* errs in calculation", {
     result[["job"]],
     c(0, 1)
   )
+
+
+})
+
+
+test_that("*m325tracefw* does not write csv-file", {
+  skip_on_cran()
+  file_name <- tempfile()
+  m325tracefw(csv = TRUE, file = file_name)
+  expect_equal(
+    file.exists(file_name),
+    TRUE
+  )
+  unlink(file_name)
 })
 
 

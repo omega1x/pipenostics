@@ -7,6 +7,16 @@ test_that("*crvl* errs in pipe diagnostics", {
     all(is.nan(delta) | delta == 0),
     TRUE
   )
+
+  expect_equal(
+    capture.output(with(b31gdata[1, ], b31crvl(maop, d, wth, smys, def, depth, l))),
+    c("", "-- Calculated data --", "Intermediate factor (A) = 1.847",
+      "Design pressure = 1093 PSI; Safe pressure = 1093 PSI",
+      "Pipe may be operated safely at MAOP, 910 PSI",
+      "With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847",
+      "With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000"
+    )
+  )
 })
 
 test_that("*b31gacd* errs in allowable depth of the corroded area", {

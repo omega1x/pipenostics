@@ -13,7 +13,15 @@ test_that("*mepof* produces valuable probability assesment", {
    method = "dnv", days = -2 * 365)
 
   expect_equal(
-    max(pof) > .270 && max(pof) < .274,
-    TRUE
+    mepof(8.2, 200, 762, 10, 289.5798, 0.588399, 95, method = "b31g"),
+    0.843593,
+    tolerance = 1e-2
   )
+
+  expect_equal(
+    mepof(8.2, 200, 762, 10, 289.5798, 0.588399, 95, method = "b31gmod"),
+    0.843534,
+    tolerance = 1e-2
+  )
+
 })

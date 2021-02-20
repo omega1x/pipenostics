@@ -9,6 +9,22 @@ test_that("*dropg* errs in consumption drop", {
     c(75.96439, 134.72222, 65.70302,180.80580,  78.05995),
     tolerance = 1e-5
   )
+
+  adjp <- list(
+    c(100, 175, 175, -65, 125, -60),  # diameters of 4 discharge pipes and 2 recharge pipes, [mm]
+    c(-300, -100, -65, 125, -60),  # diameter of 1 discharge pipe and 4 recharge pipes, [mm]
+    c(950),  # diameter of 1 discharge pipe, [mm]
+    c(-255), # diameter of 1 recharge pipe, [mm]
+    c(50, 70, 1000, 32)  # diameter of 4 discharge pipes, [mm]
+  )
+  d <- c(800, 900, 1000, 1400, 1200)
+  consumption <- .125*d
+
+  expect_equal(
+    consumption - dropg(adjp, d, consumption),
+    c(75.96439, 134.72222, 65.70302, 180.80580, 78.05995),
+    tolerance = 1e-5
+  )
 })
 
 

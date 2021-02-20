@@ -84,7 +84,7 @@ As in the case of dnvpf, the defect is approximated by a
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -185,17 +185,9 @@ Type: <code>assert_double</code>.</p></td>
   use are offended.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    
-<ol>
-<li><p>D. Ritchie, S. Last, <em>Burst criteria of corroded pipelines -
-          defect acceptance criteria</em>, in Proceedings of the EPRG/PRC
-          10th Biennial Joint Technical Meeting on Line Pipe Research
-          (Cambridge, UK, 1995)</p></li>
-<li><p>S. Timashev and A. Bushinskaya, <em>Diagnostics and Reliability
-         of Pipeline Systems</em>, Topics in Safety, Risk, Reliability and Quality 30,
-         <strong>DOI 10.1007/978-3-319-25307-7</strong></p></li>
-</ol>
-
+    <p>Timashev and A. Bushinskaya, <em>Diagnostics and Reliability
+ of Pipeline Systems</em>, Topics in Safety, Risk, Reliability and Quality 30,
+ <strong>DOI 10.1007/978-3-319-25307-7</strong></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other fail pressure functions: <code><a href='b31gpf.html'>b31gpf</a></code>, <code><a href='b31gmodpf.html'>b31gmodpf</a></code>,
@@ -203,18 +195,14 @@ Type: <code>assert_double</code>.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
- <span class='co'>## unit test:</span>
- <span class='fu'><a href='https://rdrr.io/r/base/with.html'>with</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-   d     <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>812.8</span>, <span class='fl'>219.0</span><span class='op'>)</span>,  <span class='co'># [mm]</span>
-   wth   <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='fl'>19.1</span>,  <span class='fl'>14.5</span><span class='op'>)</span>,  <span class='co'># [mm]</span>
-   uts  <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>530.9</span>, <span class='fl'>455.1</span><span class='op'>)</span>,  <span class='co'># [N/mm^2]</span>
-   l     <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>203.2</span>, <span class='fl'>200.0</span><span class='op'>)</span>,  <span class='co'># [mm]</span>
-   depth <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='fl'>13.4</span>,   <span class='fl'>9.0</span><span class='op'>)</span>   <span class='co'># [mm]</span>
-   <span class='op'>)</span>,
-     <span class='fu'><a href='https://rdrr.io/r/base/stopifnot.html'>stopifnot</a></span><span class='op'>(</span>
-        <span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fu'>shell92pf</span><span class='op'>(</span><span class='va'>d</span>, <span class='va'>wth</span>, <span class='va'>uts</span>, <span class='va'>depth</span>, <span class='va'>l</span><span class='op'>)</span>, <span class='fl'>4</span><span class='op'>)</span> <span class='op'>==</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>11.0926</span>, <span class='fl'>25.2729</span><span class='op'>)</span><span class='op'>)</span>
-     <span class='op'>)</span>
- <span class='op'>)</span>
+<span class='va'>d</span>     <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>812.8</span>, <span class='fl'>219.0</span><span class='op'>)</span>  <span class='co'># [mm]</span>
+<span class='va'>wth</span>   <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='fl'>19.1</span>,  <span class='fl'>14.5</span><span class='op'>)</span>  <span class='co'># [mm]</span>
+<span class='va'>uts</span>  <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>530.9</span>, <span class='fl'>455.1</span><span class='op'>)</span>   <span class='co'># [N/mm^2]</span>
+<span class='va'>l</span>     <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>203.2</span>, <span class='fl'>200.0</span><span class='op'>)</span>  <span class='co'># [mm]</span>
+<span class='va'>depth</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='fl'>13.4</span>,   <span class='fl'>9.0</span><span class='op'>)</span>  <span class='co'># [mm]</span>
+
+<span class='fu'>shell92pf</span><span class='op'>(</span><span class='va'>d</span>, <span class='va'>wth</span>, <span class='va'>uts</span>, <span class='va'>depth</span>, <span class='va'>l</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 11.09262 25.27286</div><div class='input'><span class='co'># [1] 11.09262 25.27286</span>
 
 </div></pre>
   </div>

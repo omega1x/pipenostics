@@ -251,17 +251,17 @@ re_r <- function(d, mu, rho, u){
   d/mu * rho*u  ## [m]/[kg/m/s] * [kg/m^3] * [m/s] = []
 }
 
-re_m <- function(d, mu, m, a = .25*pi*d^2){
-  d/mu/a * m  ## [m]/[kg/m/s]/[m^2] * [kg/s] = []
-}
-
-re_v <- function(d, nu, v, a = .25*pi*d^2){
-  d/nu/a * v  ## [m]/[m^2/s]/[m^2] * [m^3/s] = []
-}
-
-re_u <- function(d, nu, u){
-  d/nu * u  ## [m]/[m^2/s] * [m/s] = []
-}
+# re_m <- function(d, mu, m, a = .25*pi*d^2){
+#   d/mu/a * m  ## [m]/[kg/m/s]/[m^2] * [kg/s] = []
+# }
+#
+# re_v <- function(d, nu, v, a = .25*pi*d^2){
+#   d/nu/a * v  ## [m]/[m^2/s]/[m^2] * [m^3/s] = []
+# }
+#
+# re_u <- function(d, nu, u){
+#   d/nu * u  ## [m]/[m^2/s] * [m/s] = []
+# }
 
 ## Friction factors as a function of Reynolds number and relative roughness:
 ##
