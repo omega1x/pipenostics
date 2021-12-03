@@ -46,12 +46,16 @@ district heating network.
 For the stable release just install the latest version from
 [CRAN](https://cran.r-project.org/package=pipenostics):
 
-    install.packages("pipenostics")
+```R
+install.packages("pipenostics")
+```
 
 For the development version, use
 [devtools](https://cran.r-project.org/package=devtools):
 
-    devtools::install_github("omega1x/pipenostics")
+```R
+devtools::install_github("omega1x/pipenostics")
+```
 
 ## Usage examples
 
