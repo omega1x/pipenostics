@@ -226,6 +226,7 @@ print(tracing)
  single pipeline segment
 
 Other Regime tracing: 
+\code{\link{m325tracebwm}()},
 \code{\link{m325tracebw}()},
 \code{\link{m325tracefw}()}
 }

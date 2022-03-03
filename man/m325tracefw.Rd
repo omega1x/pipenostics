@@ -284,6 +284,7 @@ stopifnot(sqrt(regime_delta \%*\% regime_delta) < 0.5)
 }
 \seealso{
 Other Regime tracing: 
+\code{\link{m325tracebwm}()},
 \code{\link{m325tracebw}()},
 \code{\link{m325traceline}()}
 }

@@ -63,7 +63,7 @@ test_that("*m325traceline* errs in tracing regime parameters", {
   )
 })
 
-
+# Test m325tracebw
 nx <- pipenostics::m325testbench
 nx[["d"]] <- 1e3*nx[["d"]]  # convert [m] to [mm]
 output <- do.call("m325tracebw", nx)
@@ -110,6 +110,27 @@ test_that("*m325tracebw* does not write csv-file", {
     TRUE
   )
   unlink(file_name)
+})
+
+
+# Test m325tracebwm
+outputm <- do.call("m325tracebwm", nx)
+
+test_that("*m325tracebwm* does not write csv-file", {
+  file_name <- tempfile()
+  m325tracebwm(csv = TRUE, file = file_name)
+  expect_equal(
+    file.exists(file_name),
+    TRUE
+  )
+  unlink(file_name)
+})
+
+test_that("*m325tracebwm* does not produce the same result as *m325tracebw*", {
+  expect_equal(
+    all(output == outputm),
+    TRUE
+  )
 })
 
 test_that("*m325tracefw* errs in calculation", {

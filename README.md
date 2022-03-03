@@ -5,10 +5,7 @@ v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/li
 ![GitHub R package version](https://img.shields.io/github/r-package/v/omega1x/pipenostics)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/pipenostics)](https://cran.r-project.org/package=pipenostics)
 [![CodeFactor](https://www.codefactor.io/repository/github/omega1x/pipenostics/badge)](https://www.codefactor.io/repository/github/omega1x/pipenostics)
-![R-CMD-check](https://github.com/omega1x/pipenostics/workflows/R-CMD-check/badge.svg)
-[![Build
-Status](https://travis-ci.com/omega1x/pipenostics.svg?branch=master)](https://travis-ci.com/omega1x/pipenostics)
- [![Codecov test coverage](https://codecov.io/gh/omega1x/pipenostics/branch/master/graph/badge.svg)](https://codecov.io/gh/omega1x/pipenostics?branch=master)
+[![pipenostics status badge](https://omega1x.r-universe.dev/badges/pipenostics)](https://omega1x.r-universe.dev)
 
 [R-package](https://cran.r-project.org/package=pipenostics) for
 diagnostics, reliability and predictive maintenance of pipeline systems.
@@ -43,18 +40,17 @@ district heating network.
 
 ## Installation
 
-For the stable release just install the latest version from
+For the stable release just install from
 [CRAN](https://cran.r-project.org/package=pipenostics):
 
 ```R
 install.packages("pipenostics")
 ```
 
-For the development version, use
-[devtools](https://cran.r-project.org/package=devtools):
+For the latest version leverage [r-universe](https://omega1x.r-universe.dev/ui#builds):
 
 ```R
-devtools::install_github("omega1x/pipenostics")
+install.packages("pipenostics", repos = "https://omega1x.r-universe.dev")
 ```
 
 ## Usage examples
@@ -355,3 +351,9 @@ In accordance to sensor positions forward (see `m325tracefw()`,
 `m325traceline(forward = FALSE)`) tracing can be performed for the
 linear and the bunched pipelines on the basis of
 [Minenergo-325](http://docs.cntd.ru/document/902148459) norms.
+
+For more realistic cases when there are only partially measurable district 
+heating network with massive data lack they may use `m325tracebwm()` for tracing
+values of thermal-hydraulic regime (temperature, pressure, consumption) in the
+bunched pipeline against the flow direction using norms of heat flux values 
+prescribed by [Minenergo-325](http://docs.cntd.ru/document/902148459) norms.

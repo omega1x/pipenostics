@@ -2,7 +2,7 @@ Package: pipenostics
 Type: Package
 Title: 
     Diagnostics, Reliability and Predictive Maintenance of Pipeline Systems
-Version: 0.1.7
+Version: 0.1.8
 Authors@R: person("Yuri", "Possokhov", email = "possokhoff@gmail.com",
   role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3570-4337"))
 Description: Functions representing some useful empirical and data-driven 
