@@ -77,20 +77,27 @@ dropt <- function(
   ){
 
   checkmate::assert_double(
-    temperature, lower = 0, upper = 350, finite = TRUE,  any.missing = FALSE, min.len = 1
+    temperature, lower = 0, upper = 350, finite = TRUE,  any.missing = FALSE,
+    min.len = 1L
   )
   checkmate::assert_double(
-    pressure, lower = 8.4e-2, upper = 100, finite = TRUE, any.missing = FALSE, min.len = 1
+    pressure, lower = 8.4e-2, upper = 100, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
   )
   checkmate::assert_double(
-    consumption, lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = FALSE, min.len = 1
+    consumption, lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
   )
   checkmate::assert_double(
-    flux, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1
+    flux, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
+   checkmate::assert_true(all.commensurable(c(
+   length(temperature), length(pressure), length(consumption), length(flux)
+  )))
+
   JOULE <- 0.2388458966  # [cal/J]
   pipe_heat_loss <- flux/JOULE  # [kJ/hour]
   g <- consumption * 1e3  # [kg/hour]
-  pipe_heat_loss / g / cp1_tp(temperature + 273.15, pressure)  # [°C]=[°K]
+  pipe_heat_loss / g / if97cptp1(temperature + 273.15, pressure)  # [°C]=[°K]
 }
 

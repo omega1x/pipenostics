@@ -4,7 +4,7 @@
 \alias{flowls}
 \title{List all possible flow paths in district heating network}
 \usage{
-flowls(sender = "A", acceptor = "B", maxcores = 2)
+flowls(sender = "A", acceptor = "B", maxcores = 2L)
 }
 \arguments{
 \item{sender}{identifier of the node which heat carrier flows out.

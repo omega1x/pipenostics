@@ -74,11 +74,14 @@
 #' # [1] 11.09262 25.27286
 #'
 shell92pf <- function(d, wth, uts, depth, l){
-  checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(wth, lower = 0, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(uts, lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_double(wth, lower = 0, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_double(uts, lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_double(depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_double(l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_true(all.commensurable(c(
+    length(d), length(wth), length(uts), length(depth), length(l)
+  )))
 
   Q <- sqrt(1 + .805*l^2/d/wth)
   Pf <- 2*wth*.9*uts*(1 - depth/wth)/d/(1 - depth/wth/Q)

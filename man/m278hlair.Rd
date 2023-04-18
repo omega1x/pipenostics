@@ -77,7 +77,7 @@ Heat flux emitted by pipeline segment during \code{duration}, [\emph{kcal}].
 Calculate values of heat flux emitted by overhead pipeline segment
  (surrounded by air) as a function of construction, operation,
  and technical condition  specifications according to
- Appendix 5.1 of \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.
+ Appendix 5.1 of \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
 
  This type of calculations is usually made on design stage of district
  heating network (where water is a heat carrier) and is closely related to

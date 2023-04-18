@@ -41,12 +41,16 @@
 #'
 m325beta <- function(laying = "channel", d = 700){
   norms <- pipenostics::m325nhldata
-  checkmate::assert_double(d, lower = min(norms$diameter),
-                           upper = max(norms$diameter),
+  checkmate::assert_double(d, lower = min(norms[["diameter"]]),
+                           upper = max(norms[["diameter"]]),
                            finite = TRUE, any.missing = FALSE,
-                           min.len = 1)
-  checkmate::assert_subset(laying, choices = unique(norms$laying),
+                           min.len = 1L)
+  checkmate::assert_subset(laying, choices = unique(norms[["laying"]]),
                            empty.ok = FALSE)
+  checkmate::assert_true(all.commensurable(c(
+    length(laying), length(d)
+  )))
+
   type <- "channel"
   1.2*(d < 150 & laying == type) + 1.15*(laying != type | d >= 150)
 }

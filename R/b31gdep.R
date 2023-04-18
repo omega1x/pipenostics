@@ -41,9 +41,24 @@
 #'  # [1] 1093.748  # [PSI]
 #'
 b31gdep <- function(d, wth, smys, def){
-  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(def, lower = 0, upper = 1, finite = TRUE, any.missing = FALSE, min.len = 1)
-  2*smys*wth*def/d + .5
+  checkmate::assert_double(
+    d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    def, lower = 0, upper = 1, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_true(all.commensurable(c(
+    length(d), length(wth), length(smys), length(def)
+  )))
+
+  2.0*smys*wth*def/d + .5
 }

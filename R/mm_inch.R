@@ -25,6 +25,6 @@
 #'  # [1]  1.0 25.4  # [mm]
 #'
 mm_inch <- function(x) {
-  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE, min.len = 1L)
   25.4*x
 }

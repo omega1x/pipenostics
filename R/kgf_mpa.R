@@ -27,6 +27,6 @@
 #'
 #'
 kgf_mpa <- function(x) {
-  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE, min.len = 1L)
   10.197162*x
 }

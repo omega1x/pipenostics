@@ -4,7 +4,7 @@
 #' conductivity of pipe insulation as a linear function of temperature of
 #' heat carrier (water).
 #' Those values are set for different insulation materials in
-#' Appendix 5.3 of \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}
+#' Appendix 5.3 of \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}
 #' as norms.
 #'
 #' Usually the data is not used directly. Instead use function \code{\link{m278inshcm}}.
@@ -13,12 +13,12 @@
 #' @format A data frame with 39 rows and 4 variables:
 #' \describe{
 #'   \item{id}{Number of insulation material table 5.1 of Appendix 5.3 in
-#'    \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.
+#'    \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
 #'    Type: \code{\link{assert_integerish}}.
 #'    }
 #'   \item{material}{Designation of insulation material more or less similar
 #'   to those in table 5.1 of Appendix 5.3 in
-#'   \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.
+#'   \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
 #'   Type: \code{\link{assert_character}}.
 #'   }
 #'   \item{lambda}{Value for intercept, [\emph{mW/m/°C}].
@@ -26,5 +26,5 @@
 #'   }
 #'   \item{k}{Value for factor. Type: \code{\link{assert_integer}}.}
 #'  }
-#' @source \url{http://www.complexdoc.ru/ntdtext/547103/}
+#' @source \url{https://docs.cntd.ru/document/1200035568}
 "m278insdata"

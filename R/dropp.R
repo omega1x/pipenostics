@@ -136,32 +136,50 @@ dropp <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.
                   inlet = 0., outlet = 0.,
                   method = "romeo"){
   checkmate::assert_double(
-    temperature, lower = 0, upper = 350, any.missing = FALSE, min.len = 1
+    temperature, lower = 0, upper = 350, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
-    pressure, lower = 8.4e-2, upper = 100, any.missing = FALSE, min.len = 1
+    pressure, lower = 8.4e-2, upper = 100, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
-    consumption, lower = 1e-3, upper = 1e5, any.missing = FALSE, min.len = 1
+    consumption, lower = 1e-3, upper = 1e5, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_double(d, lower = 25e-3, upper = 2.0, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(roughness, lower = 0, upper = .2, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(inlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(outlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(
+    d, lower = 25e-3, upper = 2.0, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    len, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    roughness, lower = 0, upper = .2, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    inlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    outlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_true(all.commensurable(c(
+    length(temperature), length(pressure), length(consumption), length(d),
+    length(len), length(roughness), length(inlet), length(outlet)
+  )))
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
   dh <- outlet - inlet
   checkmate::assert_true(all(abs(dh) < len))
 
 
-  rho <- 1/v1_tp(temperature + 273.15, pressure)  # [kg/m^3]
+  rho <- 1/if97vtp1(temperature + 273.15, pressure)  # [kg/m^3]
   u <- consumption*1e3/rho/(.25*pi*d^2)/3600  # [ton/hour]*[kg/ton]/[kg/m^3]/[m^2]/[s/hour] == [m/s]
   fric <- get(sprintf("fric_%s", method))
 
   # Friction component, [MPa]:
   dpf <- fric(
-    reynolds = re_r(d, mu = dynvisc(temperature + 273.15, rho)*1e-6, # [kg/m/s]
-      rho = rho, u = u),  # []
+    reynolds = re_u(
+      d,
+      mu = r12dv(temperature + 273.15, rho)*1e-6, # [kg/m/s]
+      u = u,
+      rho = rho
+  ),  # []
     roughness = roughness/d
   ) * len/d*rho*u^2/2 * 1e-6  # [kg/m/s^2]*1e-6 == [MPa]
 

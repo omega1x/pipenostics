@@ -318,7 +318,7 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
   norms <- pipenostics::m325nhldata  # use brief name
   checkmate::assert_double(
     d,
-    lower = min(norms$diameter), upper = max(norms$diameter), finite = TRUE,
+    lower = min(norms[["diameter"]]), upper = max(norms[["diameter"]]), finite = TRUE,
     any.missing = FALSE, len = n
   )
   checkmate::assert_double(
@@ -327,12 +327,12 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
   )
   checkmate::assert_integerish(
     year,
-    lower = 1900L, upper = max(norms$epoch), any.missing = FALSE, len = n
+    lower = 1900L, upper = max(norms[["epoch"]]), any.missing = FALSE, len = n
   )
-  checkmate::assert_subset(insulation, choices = unique(norms$insulation))
+  checkmate::assert_subset(insulation, choices = unique(norms[["insulation"]]))
   checkmate::assert_subset(
     laying,
-    choices = unique(norms$laying), empty.ok = FALSE
+    choices = unique(norms[["laying"]]), empty.ok = FALSE
   )
   rm(norms)  # no need in any norms further
   checkmate::assert_logical(beta, any.missing = FALSE, len = n)
@@ -388,9 +388,9 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
   checkmate::assert_count(root_node, positive = TRUE)
 
   # Validate initial data ----
-  checkmate::assert_double(temperature[[root_node]], any.missing = FALSE, len = 1)
-  checkmate::assert_double(pressure[[root_node]], any.missing = FALSE, len = 1)
-  checkmate::assert_double(consumption[[root_node]], any.missing = FALSE, len = 1)
+  checkmate::assert_double(temperature[[root_node]], any.missing = FALSE, len = 1L)
+  checkmate::assert_double(pressure[[root_node]], any.missing = FALSE, len = 1L)
+  checkmate::assert_double(consumption[[root_node]], any.missing = FALSE, len = 1L)
 
 
   job_log <- data.frame(
@@ -441,16 +441,16 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
       absg = FALSE
     )
     regime <- as.data.frame(regime)
-    regime$node <- acceptor[current_path]
-    regime$trace <- sender[current_path]
-    regime$backward <- FALSE
-    regime$aggregation <- "identity"
-    regime$job <- job_num
+    regime[["node"]] <- acceptor[current_path]
+    regime[["trace"]] <- sender[current_path]
+    regime[["backward"]] <- FALSE
+    regime[["aggregation"]] <- "identity"
+    regime[["job"]] <- job_num
     job_log <- rbind(job_log, regime)
 
     if (csv)
       utils::write.table(
-        job_log[job_log$job == job_num,],
+        job_log[job_log[["job"]] == job_num,],
         file = file, append = TRUE, quote = FALSE, sep = ",",
         col.names = FALSE, row.names = FALSE
       )

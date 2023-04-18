@@ -104,11 +104,11 @@ dropg <- function(adj = 0, d = 700, consumption = 250) {
 
 #' @export
 dropg.list <- function(adj = 0, d = 700, consumption = 250){
-  checkmate::assert_list(adj, types = "double", any.missing = FALSE, min.len = 1)
+  checkmate::assert_list(adj, types = "double", any.missing = FALSE, min.len = 1L)
   checkmate::assert_double(d, lower = 25, upper = 2500, finite = TRUE,
-                           any.missing = FALSE, min.len = 1)
+                           any.missing = FALSE, min.len = 1L)
   checkmate::assert_double(consumption, lower = 1e-3, upper = 1e5,
-                           finite = TRUE, min.len = 1)
+                           finite = TRUE, min.len = 1L)
   adj <- vapply(adj, sum, FUN.VALUE = .1)
   NextMethod("dropg")
 }
@@ -116,11 +116,15 @@ dropg.list <- function(adj = 0, d = 700, consumption = 250){
 #' @export
 dropg.default <- function(adj = 0, d = 700, consumption = 250){
   checkmate::assert_double(adj, finite = TRUE,
-                           any.missing = FALSE, min.len = 1)
+                           any.missing = FALSE, min.len = 1L)
   checkmate::assert_double(d, lower = 25, upper = 2500, finite = TRUE,
-                           any.missing = FALSE, min.len = 1)
+                           any.missing = FALSE, min.len = 1L)
   checkmate::assert_double(consumption, lower = 1e-3, upper = 1e5,
-                           finite = TRUE, min.len = 1)
+                           finite = TRUE, min.len = 1L)
+  checkmate::assert_true(all.commensurable(c(
+    length(adj), length(d), length(consumption)
+  )))
+
   sign(adj) * consumption * adj^2/(adj^2 * (adj > 0) + d^2)
 }
 

@@ -14,32 +14,22 @@ Type: \code{\link{assert_double}}.}
 Type: \code{\link{assert_subset}}.}
 }
 \value{
-Thermal conductivity of insulation materials [\emph{W/m/°C}] at given
- set of temperatures. Type: \code{\link{assert_double}}.
+Thermal conductivity of insulation materials at given
+ set of temperatures, [\emph{W/m/°C}], [\emph{W/m/K}].
+ Type: \code{\link{assert_double}}.
 }
 \description{
 Get normative values of thermal conductivity of pipe insulation
  materials affirmed by
- \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278} as
+ \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278} as
  a function of temperature of heat carrier (water).
 }
 \examples{
 
 # Averaged thermal conductivity of pipe insulation at 110 °C
 print(m278insdata)
-head(m278inshcm(110, m278insdata[["material"]]))
-# [1] 0.09600 0.07525 0.14950 0.14325 0.14950 0.10800
-
-# Terms for linear connection between thermal conductivity of unknown
-# (averaged) pipe insulator vs temperature:
-temperature <- as.double(1:450)
-lambda_ins <- with(m278insdata, {
-  vapply(temperature, function(x) mean(m278inshcm(x, material)), .1)
-})
-C <- coef(lsfit(temperature, lambda_ins))  # c(Intercept, X)
-stopifnot(
-  all(abs(C - c(7.963590e-02, 9.730769e-05)) < 1e-8)
-)
+mean(m278inshcm(110, m278insdata[["material"]]))
+# [1] 0.09033974  # [\emph{W/m/°C}]
 
 }
 \seealso{

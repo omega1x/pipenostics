@@ -112,37 +112,54 @@ m325nhl <- function(year = 1986, laying = "underground", exp5k = TRUE,
                     insulation = 0, d = 700, temperature = 110, len = 1,
                     duration = 1, beta = FALSE, extra = 2) {
   norms <- pipenostics::m325nhldata
-  checkmate::assert_integerish(year, lower = 1900L,
-                               upper = max(norms$epoch),
-                               any.missing = FALSE,
-                               min.len = 1)
-  checkmate::assert_subset(laying, choices = unique(norms$laying),
-                           empty.ok = FALSE)
-  checkmate::assert_logical(exp5k, any.missing = FALSE, min.len = 1)
-  checkmate::assert_subset(insulation, choices = unique(norms$insulation))
-  checkmate::assert_double(d, lower = min(norms$diameter),
-                           upper = max(norms$diameter),
-                           finite = TRUE, any.missing = FALSE,
-                           min.len = 1)
-  checkmate::assert_double(temperature, lower = 0, upper = max(norms$temperature),
-                           finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(duration, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1)
-  checkmate::assert_choice(extra, 2:4)
+  checkmate::assert_integerish(
+    year, lower = 1900L,
+    upper = max(norms[["epoch"]]),
+    any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_subset(
+    laying, choices = unique(norms[["laying"]]),
+    empty.ok = FALSE
+  )
+  checkmate::assert_logical(exp5k, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_subset(insulation, choices = unique(norms[["insulation"]]))
+  checkmate::assert_double(
+    d, lower = min(norms[["diameter"]]),
+    upper = max(norms[["diameter"]]),
+    finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    temperature, lower = 0, upper = max(norms[["temperature"]]),
+    finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    len, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    duration, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_true(all.commensurable(c(
+    length(year), length(laying), length(exp5k), length(insulation), length(d),
+    length(temperature), length(len), length(duration), length(beta)
+  )))
+
+  checkmate::assert_choice(extra, c(2, 3, 4))
 
   worker <-
     function(year_value, laying_value, exp5k_value, insulation_value,
              d_value, temperature_value, len_value, duration_value, beta_value) {
-      epoch <- with(list(epochs = unique(norms$epoch)), {
-        epochs[[findInterval(year_value, epochs, left.open = TRUE) + 1]]
+      epoch <- with(list(epochs = unique(norms[["epoch"]])), {
+        epochs[[findInterval(year_value, epochs, left.open = TRUE) + 1L]]
       })
-      norms <- norms[norms$epoch == epoch &
-                     norms$laying == laying_value &
-                     norms$exp5k == exp5k_value &
-                     norms$insulation == insulation_value, ]
+      norms <- norms[norms[["epoch"]] == epoch &
+                     norms[["laying"]] == laying_value &
+                     norms[["exp5k"]] == exp5k_value &
+                     norms[["insulation"]] == insulation_value, ]
       neighbor_diameter <-
-        with(list(norms_diameter = unique(norms$diameter)), {
+        with(list(norms_diameter = unique(norms[["diameter"]])), {
           checkmate::assert_double(
             d_value, lower = min(norms_diameter), upper = max(norms_diameter),
             finite = TRUE, any.missing = FALSE, unique = TRUE)
@@ -151,11 +168,11 @@ m325nhl <- function(year = 1986, laying = "underground", exp5k = TRUE,
         })
       flux <- vapply(neighbor_diameter, function(x, t_carrier) {
         if (is.na(x)) return(NA_real_)
-        with(norms[norms$diameter == x, c("temperature", "flux")], {
+        with(norms[norms[["diameter"]] == x, c("temperature", "flux")], {
           zone <- findInterval(t_carrier, range(temperature),
                                rightmost.closed = TRUE)
           if (zone == 1L) {
-            stats::approx(x = temperature, y = flux, xout = t_carrier)$y
+            stats::approx(x = temperature, y = flux, xout = t_carrier)[["y"]]
           } else {
             j <- order(temperature, decreasing = as.logical(zone))[1:extra]
             drop(coef(lsfit(temperature[j], flux[j])) %*% c(1., t_carrier))
@@ -163,7 +180,7 @@ m325nhl <- function(year = 1986, laying = "underground", exp5k = TRUE,
         })
       }, FUN.VALUE = 1., t_carrier = temperature_value)
       flux <-
-        if (all(!is.na(flux))) stats::approx(neighbor_diameter, flux, d_value)$y else
+        if (all(!is.na(flux))) stats::approx(neighbor_diameter, flux, d_value)[["y"]] else
           flux[!is.na(flux)][[1L]]
       flux * len_value * duration_value * (
         pipenostics::m325beta(laying_value, d_value) * beta_value + !beta_value

@@ -301,7 +301,7 @@ m325tracebw <- function(sender = 6, acceptor = 7,
   norms <- pipenostics::m325nhldata  # use brief name
   checkmate::assert_double(
     d,
-    lower = min(norms$diameter), upper = max(norms$diameter), finite = TRUE,
+    lower = min(norms[["diameter"]]), upper = max(norms[["diameter"]]), finite = TRUE,
     any.missing = FALSE, len = n
   )
   checkmate::assert_double(
@@ -310,12 +310,12 @@ m325tracebw <- function(sender = 6, acceptor = 7,
   )
   checkmate::assert_integerish(
     year,
-    lower = 1900L, upper = max(norms$epoch), any.missing = FALSE, len = n
+    lower = 1900L, upper = max(norms[["epoch"]]), any.missing = FALSE, len = n
   )
-  checkmate::assert_subset(insulation, choices = unique(norms$insulation))
+  checkmate::assert_subset(insulation, choices = unique(norms[["insulation"]]))
   checkmate::assert_subset(
     laying,
-    choices = unique(norms$laying), empty.ok = FALSE
+    choices = unique(norms[["laying"]]), empty.ok = FALSE
   )
   rm(norms)  # no need in any norms further
   checkmate::assert_logical(beta, any.missing = FALSE, len = n)
@@ -345,9 +345,9 @@ m325tracebw <- function(sender = 6, acceptor = 7,
   }
   # Validate method aspects ----
   is_terminal_node <- !(acceptor %in% sender)
-  checkmate::assert_double(temperature[is_terminal_node], any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(pressure[is_terminal_node], any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(consumption[is_terminal_node], any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(temperature[is_terminal_node], any.missing = FALSE, min.len = 1L)
+  checkmate::assert_double(pressure[is_terminal_node], any.missing = FALSE, min.len = 1L)
+  checkmate::assert_double(consumption[is_terminal_node], any.missing = FALSE, min.len = 1L)
 
   # Conf: list of aggregation functions ----
   agg_func <- list(
@@ -410,20 +410,20 @@ m325tracebw <- function(sender = 6, acceptor = 7,
     agg_log <- lapply(
       structure(names(agg_func), names = names(agg_func)),
       function(func_name, log_df) {
-        trace <- tapply(log_df$trace, log_df$node, "paste", collapse = "|")
+        trace <- tapply(log_df[["trace"]], log_df[["node"]], "paste", collapse = "|")
         data.frame(
              node = names(trace),
              trace = trace,
              backward = TRUE,
              aggregation = func_name,
-             temperature = tapply(log_df$temperature, log_df$node, agg_func[[func_name]]),
-             pressure = tapply(log_df$pressure, log_df$node, agg_func[[func_name]]),
-             consumption = tapply(log_df$consumption, log_df$node, sum),
+             temperature = tapply(log_df[["temperature"]], log_df[["node"]], agg_func[[func_name]]),
+             pressure = tapply(log_df[["pressure"]], log_df[["node"]], agg_func[[func_name]]),
+             consumption = tapply(log_df[["consumption"]], log_df[["node"]], sum),
              job = job_num
         )
       }  ,
-      log_df = job_log[job_log$node %in% ready_nodes &
-                       job_log$aggregation == "identity",]
+      log_df = job_log[job_log[["node"]] %in% ready_nodes &
+                       job_log[["aggregation"]] == "identity",]
 
     )
 
@@ -432,14 +432,14 @@ m325tracebw <- function(sender = 6, acceptor = 7,
     # Dump log to file ----
     if (csv)
       utils::write.table(
-        job_log[job_log$job == job_num,],
+        job_log[job_log[["job"]] == job_num,],
         file = file, append = TRUE, quote = FALSE, sep = ",",
         col.names = FALSE, row.names = FALSE
       )
 
     # Calculate ThHy-regime ----
     is_processed_pipe <- which(acceptor %in% ready_nodes)
-    regime <- job_log[job_log$job == job_num & job_log$aggregation == opinion,]
+    regime <- job_log[job_log[["job"]] == job_num & job_log[["aggregation"]] == opinion,]
     checkmate::assert_true(
       all(acceptor[is_processed_pipe] %in% regime[["node"]]) &&
       all(regime[["node"]] %in% acceptor[is_processed_pipe])
@@ -527,7 +527,7 @@ m325tracebw <- function(sender = 6, acceptor = 7,
   # Log last cycle data ----
   if (csv)
     utils::write.table(
-      job_log[job_log$job == job_num & job_log$node %in% acceptor,],
+      job_log[job_log[["job"]] == job_num & job_log[["node"]] %in% acceptor,],
       file = file, append = TRUE, quote = FALSE, sep = ",",
       col.names = FALSE, row.names = FALSE
     )
@@ -540,5 +540,5 @@ m325tracebw <- function(sender = 6, acceptor = 7,
       )
     )
   # Finish backward tracing ----
-  job_log[job_log$job != job_num, ]
+  job_log[job_log[["job"]] != job_num, ]
 }

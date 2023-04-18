@@ -23,9 +23,9 @@
 #' @examples
 #'
 #'  mpa_kgf(c(10.1971619998, 1))
-#'  # [1] 1.0000000 0.0980665#'
+#'  # [1] 1.0000000 0.0980665  # [MPa]
 #'
 mpa_kgf <- function(x) {
-  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE, min.len = 1L)
   9.806650125e-2*x
 }

@@ -12,7 +12,7 @@ b31gops(wth, depth)
 \item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 }
 \value{
-Operational status of pipe:
+Operational status of pipe as an integer value:
  \itemize{
    \item \emph{1} - excellent
    \item \emph{2} - monitoring is recommended

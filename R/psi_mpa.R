@@ -25,6 +25,6 @@
 #'  # [1] 1.0000 145.0377 # [PSI]
 #'
 psi_mpa <- function(x) {
-  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(x, finite = TRUE, any.missing = FALSE, min.len = 1L)
   145.03773800721814*x
 }

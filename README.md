@@ -2,9 +2,10 @@
 
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![R-CMD-check](https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml)
 [![pipenostics status badge](https://omega1x.r-universe.dev/badges/pipenostics)](https://omega1x.r-universe.dev)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/pipenostics)](https://cran.r-project.org/package=pipenostics)
 [![CodeFactor](https://www.codefactor.io/repository/github/omega1x/pipenostics/badge)](https://www.codefactor.io/repository/github/omega1x/pipenostics)
+[![codecov](https://codecov.io/gh/omega1x/pipenostics/branch/master/graph/badge.svg?token=LMVLTBPAY5)](https://codecov.io/gh/omega1x/pipenostics)
 
 [R-package](https://cran.r-project.org/package=pipenostics) for
 diagnostics, reliability and predictive maintenance of pipeline systems.
@@ -12,19 +13,19 @@ diagnostics, reliability and predictive maintenance of pipeline systems.
 ------------------------------------------------------------------------
 
 ## Table of contents
--   [Intro](#intro)
--   [Installation](#installation)
--   [Usage examples](#usage-examples)
-    -   [Corrosion diagnostics](#corrosion-diagnostics)
-    -   [Probability of failure](#probability-of-failure)
-    -   [Regime tracing](#regime-tracing)
--   [Developer notes](#developer-notes)
--   [Underlying concepts](#underlying-concepts)
-    -   [Corrosion diagnostics](#corrosion-diagnostics)
-    -   [Probability of failure](#probability-of-failure)
-    -   [Heat losses](#heat-losses)
-    -   [Tracing of thermal-hydraulic regime](#tracing-of-thermal-hydraulic-regime)
 
+- [Intro](#intro)
+- [Installation](#installation)
+- [Usage examples](#usage-examples)
+  - [Corrosion diagnostics](#corrosion-diagnostics)
+  - [Probability of failure](#probability-of-failure)
+  - [Regime tracing](#regime-tracing)
+- [Developer notes](#developer-notes)
+- [Underlying concepts](#underlying-concepts)
+  - [Corrosion diagnostics](#corrosion-diagnostics)
+  - [Probability of failure](#probability-of-failure)
+  - [Heat losses](#heat-losses)
+  - [Tracing of thermal-hydraulic regime](#tracing-of-thermal-hydraulic-regime)
 
 ## Intro
 
@@ -34,17 +35,10 @@ aggregates to some extent the separate knowledge concerning engineering,
 reliability, diagnostics and predictive maintenance of pipeline systems.
 For the present time the package contains utilities for processing
 corrosion data commonly gathered by *inline inspection*, as well as
-emperical models for calculations of local thermal-hydraulic regimes of
+empirical models for calculations of local thermal-hydraulic regimes of
 district heating network.
 
 ## Installation
-
-For the stable release just install from
-[CRAN](https://cran.r-project.org/package=pipenostics):
-
-```R
-install.packages("pipenostics")
-```
 
 For the latest version leverage [r-universe](https://omega1x.r-universe.dev/ui#builds):
 
@@ -52,9 +46,12 @@ For the latest version leverage [r-universe](https://omega1x.r-universe.dev/ui#b
 install.packages("pipenostics", repos = "https://omega1x.r-universe.dev")
 ```
 
+> &#9888; Starting from version 0.1.8 the package is not supported on [CRAN](https://cran.r-project.org/) due to its resource limitations of checking parallel algorithms
+
 ## Usage examples
 
-### Corrosion diagnostics
+### Corrosion diagnostics examples
+
 By using of `b31crvl()` simply imitate the output of *CRVL.BAS* which is the honored software for determining the allowable length and maximum
 allowable working pressure presented in [ASME B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf):
 
@@ -64,7 +61,7 @@ library(pipenostics)
 b31crvl(maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5)
 ```
 
-```
+```txt
 -- Calculated data --
 Intermediate factor (A) = 1.847
 Design pressure = 1093 PSI; Safe pressure = 1093 PSI
@@ -73,7 +70,7 @@ With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch
 With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000
 ```
 
-### Probability of failure
+### Probability of failure examples
 
 Let's consider a pipe in district heating network with
 
@@ -103,7 +100,7 @@ length <- rep(200, 4)  # [mm]
 print(length)
 ```
 
-```
+```R
 [1] 200 200 200 200
 ```
 
@@ -123,7 +120,7 @@ pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
              rar, ral, method = "dnv")
 ```
 
-```
+```txt
 pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!                 
 ```
 
@@ -131,7 +128,7 @@ pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!
 print(pof)
 ```
 
-```
+```R
 [1] 0.000000 0.252935 0.368741 0.771299
 ```
 
@@ -141,7 +138,7 @@ So, the POF of the pipe is near
 print(max(pof))
 ```
 
-```
+```R
 [1] 0.771299
 ```
 
@@ -154,7 +151,7 @@ pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
              rar, ral, method = "dnv", days = 365)
 ```
 
-```
+```txt
 pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!             
 ```
 
@@ -162,7 +159,7 @@ pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!
 print(pof)
 ```
 
-```
+```R
 [1] 0.000000 0.526646 0.647422 0.928825
 ```
 
@@ -172,7 +169,7 @@ For entire pipe we get something near:
 print(max(pof))
 ```
 
-```
+```R
 [1] 0.928825
 ```
 
@@ -184,7 +181,7 @@ pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
              rar, ral, method = "dnv", days = -2 * 365)
 ```
 
-```
+```txt
 pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!
 ```
 
@@ -192,7 +189,7 @@ pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!
 print(pof)
 ```
 
-```
+```R
 [1] 0.000000 0.040849 0.072734 0.272358
 ```
 
@@ -202,11 +199,12 @@ For entire pipe we get something near:
 print(max(pof))
 ```
 
-```
+```R
 [1] 0.272358
 ```
 
 ### Regime tracing
+
 Let's consider the next 4-segment tracing path:
 
 ![m325regtrace](https://raw.githubusercontent.com/omega1x/pipenostics/a26e1171f05d3cd4f2c25a71ccde9947a095409f/.src/svg-graphics/m325regtrace.svg)
@@ -226,7 +224,7 @@ discharges <- seq(0, 30, 10)  # [ton/hour]
 print(discharges)
 ```
 
-```
+```R
 [1]  0 10 20 30
 ```
 
@@ -237,7 +235,7 @@ regime_fw <- m325traceline(t_fw, p_fw, g_fw, discharges, forward = TRUE)
 print(regime_fw)
 ```
 
-```
+```R
 $temperature
 [1] 129.1799 128.4269 127.9628 127.3367
 
@@ -249,7 +247,6 @@ $consumption
 ```
 
 > For further examples go to package function descriptions.
-    
 
 ## Developer notes
 
@@ -299,7 +296,7 @@ B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf)
 and [ASME
 B31G-2012](https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines)
 codes have proven sound and have seen successful use in the pipeline
-industry providing users with such required formalized framework for a very long period of time. That is why failure pressure calculators 
+industry providing users with such required formalized framework for a very long period of time. That is why failure pressure calculators
 `b31gpf()` and `b31gmodpf()` are widely used in assessment of POFs.
 
 To preserve simplicity of traditional inline measurements
@@ -319,47 +316,43 @@ For the sake of simplicity and transparency the next values describing technolog
 of pipe and defect parameters are used as arguments throughout the most
 functions concerning corrosion diagnostics:
 
--   *maop* - maximum allowable operating pressure -
-    [MAOP](https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure)
-    in [PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)
--   *d* - nominal outside diameter of the pipe,
+- *maop* - maximum allowable operating pressure -
+  [MAOP](https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure)
+  in [PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)
+- *d* - nominal outside diameter of the pipe,
     [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
--   *wth* - nominal wall thickness of the pipe,
+- *wth* - nominal wall thickness of the pipe,
     [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
--   *smys* - specified minimum yield of stress -
+- *smys* - specified minimum yield of stress -
     [SMYS](https://en.wikipedia.org/wiki/Specified_minimum_yield_strength)
     as a characteristics of steel strength, [PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)
--   *uts* - ultimate tensile strength - [UTS](https://en.wikipedia.org/wiki/Ultimate_tensile_strength) or
-    specified minimum tensile strength (SMTS) as another characteristic of steel strength, [MPa](https://en.wikipedia.org/wiki/Pascal_(unit))
--   *depth* - measured maximum depth of the corroded area,
+- *uts* - ultimate tensile strength -
+  [UTS](https://en.wikipedia.org/wiki/Ultimate_tensile_strength) or
+  specified minimum tensile strength (SMTS) as another characteristic of steel strength, [MPa](https://en.wikipedia.org/wiki/Pascal_(unit))
+- *depth* - measured maximum depth of the corroded area,
     [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
--   *l* - measured maximum longitudial length of the corroded area,
+- *l* - measured maximum longitudinal length of the corroded area,
     [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
 
 In the course of further development of the functionality of this package,
 some revisions or supplements to the existing concept are not excepted.
 
 ### Probability of failure
-Consistent estimate of failure for pipeline systems plays a critical role in optimizing their operation. 
-To prevent pipeline failures due to growing corrosion defects it is necessary to assess the pipeline 
-failure probability (POF) during a certain period, taking into account its actual level of defectiveness.
 
-The pipeline failure is preceded by limit state which comes when the burst pressure, considered as a random 
-variable, reaches an unacceptable level, or when the defect depth, also a random variable, exceeds the
+Consistent estimate of failure for pipeline systems plays a critical role in optimizing their operation.
+To prevent pipeline failures due to growing corrosion defects it is necessary to assess the pipeline failure probability (POF) during a certain period, taking into account its actual level of defectiveness.
+
+The pipeline failure is preceded by limit state which comes when the burst pressure, considered as a random variable, reaches an unacceptable level, or when the defect depth, also a random variable, exceeds the
 predetermined limit value.
 
-Up to now no methods existed which would give absolutely correct POF assessments. Nevertheless the stochastic 
-nature of corrosion processes clearly suggests exploiting of 
-[Monte-Carlo simulations](https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers) (MC).
-Meanwhile the lack of comprehensive knowledge of stochastic properties of characteristics of pipe and 
-of its defects aids in embracing of  [Principle of maximum entropy](https://en.wikipedia.org/wiki/Principle_of_maximum_entropy)
-which allows to avoid doubtful and excessive preferences and detalization when choosing probability 
-distribution models for failure factors and for *inline inspection* measurements.
+Up to now no methods existed which would give absolutely correct POF assessments. Nevertheless the stochastic nature of corrosion processes clearly suggests exploiting of [Monte-Carlo simulations](https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers) (MC).
+Meanwhile the lack of comprehensive knowledge of stochastic properties of characteristics of pipe and of its defects aids in embracing of  [Principle of maximum entropy](https://en.wikipedia.org/wiki/Principle_of_maximum_entropy)
+which allows to avoid doubtful and excessive preferences and specifications when choosing probability distribution models for failure factors and for *inline inspection* measurements.
 
 Package function `mepof()` is designed to calculate probability of failure (POF) of the corroded pipe by
-[MC](https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers), assigning maximun entropy
+[MC](https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers), assigning maximum entropy
 for stochastic nature of corroded area length and depth, as well as engineering characteristics of pipe with
-thermal-hydraulic regime perameters.
+thermal-hydraulic regime parameters.
 
 ### Heat losses
 
@@ -375,35 +368,35 @@ losses of individual pipeline segments.
 Determination of heat losses for pipeline segments hereinafter is called
 *heat loss localization*.
 
-It is assumed that actual heat loss (*Q*<sub>*A**H**L*</sub>) of
+It is assumed that actual heat loss ($Q_{\text{AHL}}$) of
 pipeline segment has two contributions: normative heat loss
-(*Q*<sub>*N**H**L*</sub>) and extra-normative heat loss
-(*Q*<sub>*E**x**N**H**L*</sub>). So we can write:
+($Q_{\text{NHL}}$) and extra-normative heat loss
+($Q_{\text{ExNHL}}$). So we can write:
 
-*Q*<sub>*A**H**L*</sub> = *Q*<sub>*N**H**L*</sub> + *Q*<sub>*E**x**N**H**L*</sub>, *Q*<sub>*E**x**N**H**L*</sub> &gt; 0
+$$ Q_{\text{AHL}} = Q_{\text{NHL}} + Q_{\text{ExNHL}},\  Q_{\text{ExNHL}}> 0 $$
 
-Localization of *Q*<sub>*E**x**N**H**L*</sub> is an important part of
+Localization of $Q_{\text{ExNHL}}$ is an important part of
 health maintenance activities of district heating network operation. One
-can determine *Q*<sub>*E**x**N**H**L*</sub> of pipeline segment as a
-positive difference between *Q*<sub>*A**H**L*</sub> and
-*Q*<sub>*N**H**L*</sub> and it is the most natural way. For that purpose
+can determine $Q_{\text{ExNHL}}$ of pipeline segment as a
+positive difference between $Q_{\text{AHL}}$ and
+$Q_{\text{NHL}}$ and it is the most natural way. For that purpose
 [Minenergo-325](http://docs.cntd.ru/document/902148459) and
 [Minenergo-278](http://www.complexdoc.ru/ntdtext/547103) methods for
-postulating *Q*<sub>*N**H**L*</sub> are considered.
+postulating $Q_{\text{NHL}}$ are considered.
 
 [Minenergo-325](http://docs.cntd.ru/document/902148459) lists legally
 affirmed maximum values of heat flux that is allowed to be emitted by
 steel pipes (see `m325nhl()`). Higher emission is treated as
-*Q*<sub>*E**x**N**H**L*</sub>.
+$Q_{\text{ExNHL}}$.
 [Minenergo-278](http://www.complexdoc.ru/ntdtext/547103) gives method
-for engineering calculation of *Q*<sub>*N**H**L*</sub> considering
+for engineering calculation of $Q_{\text{NHL}}$ considering
 technical condition of pipeline segment (see `m278hlcha()`,
 `m278hlund()`, and `m278hlair()`).
 
 ### Tracing of thermal-hydraulic regime
 
 Localization of extra-normative heat losses
-*Q*<sub>*E**x**N**H**L*</sub> could be performed if they know
+$Q_{\text{ExNHL}}$ could be performed if they know
 thermal-hydraulic regime of district heating network for each pipeline
 segment. In most cases thermal-hydraulic field (values of temperature,
 pressure and heat carrier consumption) is measured only on heat-supply
@@ -423,8 +416,6 @@ In accordance to sensor positions forward (see `m325tracefw()`,
 linear and the bunched pipelines on the basis of
 [Minenergo-325](http://docs.cntd.ru/document/902148459) norms.
 
-For more realistic cases when there are only partially measurable district 
-heating network with massive data lack they may use `m325tracebwm()` for tracing
+For more realistic cases when there are only partially measurable district heating network with massive data lack they may use `m325tracebwm()` for tracing
 values of thermal-hydraulic regime (temperature, pressure, consumption) in the
-bunched pipeline against the flow direction using norms of heat flux values 
-prescribed by [Minenergo-325](http://docs.cntd.ru/document/902148459) norms.
+bunched pipeline against the flow direction using norms of heat flux values prescribed by [Minenergo-325](http://docs.cntd.ru/document/902148459) norms.

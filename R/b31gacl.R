@@ -47,28 +47,51 @@
 #'
 #'
 b31gacl <- function(dep, maop, d, wth, depth, l){
-  checkmate::assert_double(dep, lower = 0, upper = 6e3, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(
+    dep, lower = 0, upper = 6e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_true(all.commensurable(c(
+    length(dep), length(maop), length(d), length(wth), length(depth), length(l)
+  )))
 
-  PS <- trunc(1.1*dep*(1 - depth/wth) + .5)
+  PS <- trunc(1.1*dep*(1.0 - depth/wth) + .5)
   PS[PS > dep] <- dep[PS > dep]
   J <- 2/3*depth/wth
-  AP <- rep(Inf, length(J))
-  x  <- rep(0  , length(J))
+  n <- length(J)
+  AP <- rep_len(Inf, n)
+  x  <- double(n)
+  rm(n)
   cnd <- maop > PS
   AP[cnd] <- 1e-3*trunc(
-    1e3*sqrt((J[cnd]/(1 - 1.1*dep[cnd]*(1 - J[cnd])/maop[cnd]))^2 - 1) + .5)
+    1e3*sqrt((J[cnd]/(1.0 - 1.1*dep[cnd]*(1.0 - J[cnd])/maop[cnd]))^2 - 1.0) + .5
+  )
   x[cnd] <- trunc(
-    1.1*dep[cnd]*(1 - J[cnd])/(1 - 2/3*depth[cnd]/sqrt(
-      wth[cnd]*AP[cnd]^2 + 1)) + .5)
+    1.1*dep[cnd]*(1.0 - J[cnd])/(1.0 - 2/3*depth[cnd]/sqrt(
+      wth[cnd]*AP[cnd]^2 + 1.0)) + .5)
   cnd2 <- cnd & (x > dep)
   x[cnd2] <- dep[cnd2]
-  AP[cnd & (x > maop | AP > 4)] <- 4
+  AP[cnd & (x > maop | AP > 4.0)] <- 4.0
 
   # Allowable corrosion length, [inch]
-  trunc(1000*sqrt(d*wth)*1.12*AP)*.001
+  trunc(1e3*sqrt(d*wth)*1.12*AP)*1e-3
 }

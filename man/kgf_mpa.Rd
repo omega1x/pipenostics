@@ -29,7 +29,10 @@ Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pascal
 \code{\link{mpa_kgf}} for converting \emph{kilogram-force per square cm} to \emph{megapascals}
 
 Other utils: 
+\code{\link{c_k}()},
+\code{\link{f_k}()},
 \code{\link{inch_mm}()},
+\code{\link{k_c}()},
 \code{\link{mm_inch}()},
 \code{\link{mpa_kgf}()},
 \code{\link{mpa_psi}()},

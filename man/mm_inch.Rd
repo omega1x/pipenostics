@@ -27,7 +27,10 @@ Convert length measured in \href{https://en.wikipedia.org/wiki/Inch}{inches}
 \code{\link{inch_mm}} for converting \emph{mm} to \emph{inches}
 
 Other utils: 
+\code{\link{c_k}()},
+\code{\link{f_k}()},
 \code{\link{inch_mm}()},
+\code{\link{k_c}()},
 \code{\link{kgf_mpa}()},
 \code{\link{mpa_kgf}()},
 \code{\link{mpa_psi}()},

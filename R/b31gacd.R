@@ -37,17 +37,35 @@
 #'  # [1] 0.249  # [inch]
 #'
 b31gacd <- function(dep, maop, d, wth, l){
-  checkmate::assert_double(dep, lower = 0, upper = 6e3, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(
+    dep, lower = 0, upper = 6e3, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_true(all.commensurable(c(
+    length(dep), length(maop),  length(d), length(wth), length(l)
+  )))
 
   A <- b31gafr(d, wth, l)
   mcp <-
     ifelse(A > 4,
            wth - wth*maop/1.1/dep,
-           1e-3*trunc(1e3*(maop - 1.1*dep)*3*wth*sqrt(A^2 + 1) /
-             (2*maop - 2.2*dep*sqrt(A^2 + 1))))
+           1e-3*trunc(1e3*(maop - 1.1*dep)*3.0*wth*sqrt(A^2 + 1.0) /
+             (2.0*maop - 2.2*dep*sqrt(A^2 + 1.0))))
   1e-3*trunc(1e3*ifelse(mcp > .8*wth, .8*wth, mcp) + .5)
 }

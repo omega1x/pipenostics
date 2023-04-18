@@ -100,22 +100,40 @@
 #'  })
 #'
 b31gmodpf <- function(d, wth, smys, depth, l) {
-  checkmate::assert_double(d, lower = .03937008, upper = 196.8504, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(wth, lower = 0, upper = 19.68504, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(smys, lower = 725.1887, upper = 290075.4760, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(depth, lower = 0, upper = 39.37008, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(l, lower = 0, upper = 196.8504, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(
+    d, lower = .03937008, upper = 196.8504, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    wth, lower = 0, upper = 19.68504, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    smys, lower = 725.1887, upper = 290075.4760, finite = TRUE,
+    any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    depth, lower = 0, upper = 39.37008, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    l, lower = 0, upper = 196.8504, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_true(all.commensurable(c(
+    length(d), length(wth), length(smys), length(depth), length(l)
+  )))
 
   z  <- l^2/d/wth
   s_flow <- 1.1*smys
 
   # Operate with M^2 to avoid sqrt warning when negative argument
-  M2  <- ifelse(z > 50, (3.2e-2*z + 3.3)^2, 1 + .6275*z - 3.375e-3*z^2)
-  M2[M2 < .Machine$double.eps] <- NA_real_
+  M2  <- ifelse(z > 50, (3.2e-2*z + 3.3)^2, 1.0 + .6275*z - 3.375e-3*z^2)
+  M2[ M2 < .Machine[["double.eps"]] ] <- NA_real_
 
   dw <- depth/wth
-  sf <- s_flow*(1 - .85*dw)/(1 - .85*dw/sqrt(M2))
-  Pf <- 2*sf*wth/d
+  sf <- s_flow*(1.0 - .85*dw)/(1.0 - .85*dw/sqrt(M2))
+  Pf <- 2.0*sf*wth/d
   Pf[smys > 55984.57 | depth < .1*wth | depth > .85*wth] <- NA_real_
   Pf  # Failure pressure, Pf, [PSI]
 }

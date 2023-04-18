@@ -32,8 +32,21 @@
 #'  # [1] 1.847  # A-factor is less than 5, so the corrosion is not critical
 #'
 b31gafr <- function(d, wth, l){
-  checkmate::assert_double(d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(
+    d, lower = 3.93e-2, upper = 1.27e5, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_true(all.commensurable(c(
+    length(d), length(wth), length(l)
+  )))
+
   1e-3*trunc(1e3*.893*l/sqrt(d*wth))
 }

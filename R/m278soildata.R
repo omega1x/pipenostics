@@ -2,7 +2,7 @@
 #'
 #' Data represent normative values of thermal conductivity of subsoils
 #' which can surround pipes according to Table 5.3 of Appendix 5.3 in
-#' \href{http://www.complexdoc.ru/ntdtext/547103/}{Minenergo Method 278}.
+#' \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
 #'
 #' @family Minenergo
 #'
@@ -14,5 +14,5 @@
 #'   Type: \code{\link{assert_double}}.
 #'   }
 #'  }
-#' @source \url{http://www.complexdoc.ru/ntdtext/547103/}
+#' @source \url{https://docs.cntd.ru/document/1200035568}
 "m278soildata"

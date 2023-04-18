@@ -21,14 +21,17 @@ Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Kilogr
 \examples{
 
  mpa_kgf(c(10.1971619998, 1))
- # [1] 1.0000000 0.0980665#'
+ # [1] 1.0000000 0.0980665  # [MPa]
 
 }
 \seealso{
 \code{\link{kgf_mpa}} for converting \emph{megapascals} to \emph{kilogram-force per square cm}
 
 Other utils: 
+\code{\link{c_k}()},
+\code{\link{f_k}()},
 \code{\link{inch_mm}()},
+\code{\link{k_c}()},
 \code{\link{kgf_mpa}()},
 \code{\link{mm_inch}()},
 \code{\link{mpa_psi}()},

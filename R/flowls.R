@@ -92,7 +92,7 @@
 #' # [1] 12 13 11  8  6  7
 #'
 #'}
-flowls <- function(sender = "A", acceptor = "B", maxcores = 2){
+flowls <- function(sender = "A", acceptor = "B", maxcores = 2L){
   # Validate function input ----
   checkmate::assert_true(all(!is.na(acceptor)))
   acceptor <- as.character(acceptor)
@@ -106,7 +106,7 @@ flowls <- function(sender = "A", acceptor = "B", maxcores = 2){
   starting_node_idx <- which(!(sender %in% acceptor))
   checkmate::assert_count(starting_node_idx, positive = TRUE)
   terminal_node_idx <- which(!(acceptor %in% sender))
-  checkmate::assert_integer(terminal_node_idx, min.len = 1)
+  checkmate::assert_integer(terminal_node_idx, min.len = 1L)
 
   # Search algorithm (worker) ----
   worker <- function(path_id){
@@ -120,12 +120,12 @@ flowls <- function(sender = "A", acceptor = "B", maxcores = 2){
       idx <- which(acceptor == sender[acceptor == acceptor[[idx]]])
       path[[segment_counter]] <- idx
     }
-    rev(path[path > 0])
+    rev(path[path > 0L])
   }
 
   # Run workers in parallel ----
   cluster <- parallel::makeCluster(
-    max(1, min(parallel::detectCores() - 1), maxcores)
+    max(1L, min(parallel::detectCores() - 1L), maxcores)
   )
   parallel::clusterExport(
     cluster,

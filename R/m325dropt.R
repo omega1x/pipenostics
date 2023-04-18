@@ -90,42 +90,50 @@
 #'@export
 
 m325dropt <- function(
-  temperature = 130, pressure = mpa_kgf(6), consumption = 250,
-  d = 700, # [mm]
+  temperature = 130, pressure = mpa_kgf(6), consumption = 250, d = 700, # [mm]
   len = 1, # [m]
-  year = 1986,
-  insulation = 0,
-  laying = "underground",
-  beta = FALSE,
-  exp5k = TRUE
+  year = 1986, insulation = 0, laying = "underground", beta = FALSE, exp5k = TRUE
   ){
   norms <- pipenostics::m325nhldata
   checkmate::assert_double(
     temperature, lower = 0, upper = 350, finite = TRUE,  any.missing = FALSE,
-    min.len = 1
+    min.len = 1L
   )
   checkmate::assert_double(
     pressure, lower = 8.4e-2, upper = 100, finite = TRUE, any.missing = FALSE,
-    min.len = 1
+    min.len = 1L
   )
   checkmate::assert_double(
     consumption, lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = FALSE,
-    min.len = 1
+    min.len = 1L
   )
-  checkmate::assert_double(d, lower = min(norms$diameter),
-                           upper = max(norms$diameter),
-                           finite = TRUE, any.missing = FALSE,
-                           min.len = 1)
-  checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE,
-                           min.len = 1)
-  checkmate::assert_integerish(year, lower = 1900L,
-                               upper = max(norms$epoch),
-                               any.missing = FALSE, min.len = 1)
-  checkmate::assert_subset(insulation, choices = unique(norms$insulation))
-  checkmate::assert_subset(laying, choices = unique(norms$laying),
-                           empty.ok = FALSE)
-  checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1)
-  checkmate::assert_logical(exp5k, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(
+    d, lower = min(norms[["diameter"]]),
+    upper = max(norms[["diameter"]]),
+    finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    len, lower = 0, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_integerish(
+    year, lower = 1900L,
+    upper = max(norms[["epoch"]]),
+   any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_subset(insulation, choices = unique(norms[["insulation"]]))
+  checkmate::assert_subset(
+    laying, choices = unique(norms[["laying"]]),
+    empty.ok = FALSE
+  )
+  checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_logical(exp5k, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_true(all.commensurable(c(
+    length(temperature), length(pressure), length(consumption), length(d),
+    length(len), length(year), length(insulation), length(laying), length(beta),
+    length(exp5k)
+  )))
 
   duration <- 1  # [hour]
   extra <- 2

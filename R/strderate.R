@@ -52,8 +52,9 @@ strderate <- function(x, temperature = 24.3){
     temperature,
     lower = 0, upper = 350, finite = TRUE, any.missing = FALSE, min.len = 1
   )
-  if (length(temperature) != 1)
-    checkmate::assert_true(length(temperature) == length(x))
+  checkmate::assert_true(all.commensurable(c(
+    length(x), length(temperature)
+  )))
 
   # Stress de-rating according to DNV-RP-F101, figure 2-3:
   derating <-

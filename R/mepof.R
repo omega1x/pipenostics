@@ -111,7 +111,7 @@
 #'          strength (\emph{SMTS}) for use with other failure pressure codes
 #'          (\code{\link{dnvpf}}, \code{\link{pcorrcpf}}, \code{\link{shell92pf}}).
 #'  }
-#'  Type: \code{\link{assert_choice}}.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @param pressure
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
@@ -231,20 +231,13 @@
 #'
 #'
 #'}
-mepof <- function(depth = seq(0, 10, length.out = 100),
-                l = seq(40, 50, length.out = 100),
-                d = rep(762, 100),
-                wth = rep(10, 100),
-                strength = rep(358.5274, 100),
-                pressure = rep(.588, 100),
-                temperature = rep(150, 100),
-
-                rar = function(n) stats::runif(n, .01, .30) / 365,
-                ral = function(n) stats::runif(n, .01, .30) / 365,
-                days = 0,
-                k = .8,
-                method = "b31g",
-                n = 1e6
+mepof <- function(
+  depth = seq(0, 10, length.out = 100), l = seq(40, 50, length.out = 100),
+  d = rep.int(762, 100),  wth = rep.int(10, 100), strength = rep.int(358.5274, 100),
+  pressure = rep.int(.588, 100), temperature = rep.int(150, 100),
+  rar = function(n) stats::runif(n, .01, .30) / 365,
+  ral = function(n) stats::runif(n, .01, .30) / 365, days = 0, k = .8,
+  method = "b31g", n = 1e6
 ){
 
   # Checkmates ----
@@ -379,8 +372,8 @@ mepof <- function(depth = seq(0, 10, length.out = 100),
 
     # Probability of failure ----
     sum(
-      p_set > (pf_set - .Machine$double.eps) |
-        depth_set > (k*wth_set - .Machine$double.eps)
+      p_set > (pf_set - .Machine[["double.eps"]]) |
+        depth_set > (k*wth_set - .Machine[["double.eps"]])
     )/n
   }
   # Loop over segments in cluster:

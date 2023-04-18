@@ -85,11 +85,25 @@
 #' # [1] 16.35449 33.01288
 #'
 pcorrcpf <- function(d, wth, uts, depth, l){
-  checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(wth, lower = 0, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(uts, lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_double(
+    d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    wth, lower = 0, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    uts, lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE,
+    min.len = 1L
+  )
+  checkmate::assert_double(
+    l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_true(all.commensurable(c(
+    length(d), length(wth), length(uts), length(depth), length(l)
+  )))
 
   Q <- 1 - exp(-.16*l/sqrt(.5*d*(wth - depth)))
   2*wth*uts/d*(1 - depth/wth*Q)

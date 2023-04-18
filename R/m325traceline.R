@@ -245,24 +245,30 @@ m325traceline <- function(
   checkmate::assert_double(g, lower = 0,
                            upper = c(1, consumption)[[1 + absg]],
                            finite = TRUE, any.missing = FALSE,
-                           min.len = 1)
-  checkmate::assert_double(d, lower = min(norms$diameter),
-                           upper = max(norms$diameter),
+                           min.len = 1L)
+  checkmate::assert_double(d, lower = min(norms[["diameter"]]),
+                           upper = max(norms[["diameter"]]),
                            finite = TRUE, any.missing = FALSE,
-                           min.len = 1)
+                           min.len = 1L)
   checkmate::assert_double(len, lower = 0, finite = TRUE, any.missing = FALSE,
-                           min.len = 1)
+                           min.len = 1L)
   checkmate::assert_integerish(year, lower = 1900L,
-                               upper = max(norms$epoch),
-                               any.missing = FALSE, min.len = 1)
-  checkmate::assert_subset(insulation, choices = unique(norms$insulation))
-  checkmate::assert_subset(laying, choices = unique(norms$laying),
+                               upper = max(norms[["epoch"]]),
+                               any.missing = FALSE, min.len = 1L)
+  checkmate::assert_subset(insulation, choices = unique(norms[["insulation"]]))
+  checkmate::assert_subset(laying, choices = unique(norms[["laying"]]),
                            empty.ok = FALSE)
-  checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1)
-  checkmate::assert_logical(exp5k, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(roughness, lower = 0, upper = .2, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(inlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
-  checkmate::assert_double(outlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1)
+  checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_logical(exp5k, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_double(roughness, lower = 0, upper = .2, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_double(inlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_double(outlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_true(all.commensurable(c(
+    length(d), length(len), length(year), length(insulation), length(laying),
+    length(beta), length(exp5k), length(roughness), length(inlet),
+    length(outlet)
+  )))
+
   checkmate::assert_number(elev_tol, lower = 0, upper = 10, finite = TRUE)
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
   checkmate::assert_flag(forward)
