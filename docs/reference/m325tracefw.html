@@ -245,7 +245,7 @@ Type: <code>assert_count</code>.</p></dd>
        Type: <code>assert_character</code>.</p></dd>
 
 
-    <dt><code>trace</code></dt>
+    <dt><code>tracing</code></dt>
 <dd><p>identifiers of nodes from which regime parameters are
       traced for the given node. Identifier <code>sensor</code> is used when
       values of regime parameters for the node are sensor readings.
@@ -283,7 +283,7 @@ Type: <code>assert_count</code>.</p></dd>
 
 
    <dt><code>job</code></dt>
-<dd><p>value of trace step counter. For forward tracing value of <code>job</code>
+<dd><p>value of tracing step counter. For forward tracing value of <code>job</code>
      counts the number of traced paths from root node.
      Type: <code>assert_integer</code>.</p></dd>
 
@@ -329,11 +329,11 @@ Type: <code>assert_count</code>.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># Minimum two nodes should be in district heating network graph:</span></span></span>
 <span class="r-in"><span><span class="fu">m325tracefw</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   node  trace backward aggregation temperature  pressure consumption job</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2    2      1    FALSE    identity    69.71603 0.5813153          20   1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   node tracing backward aggregation temperature  pressure consumption job</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1    1  sensor    FALSE    identity    70.00000 0.5883990          20   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    2       1    FALSE    identity    69.71603 0.5813153          20   1</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">#   node  trace backward aggregation temperature  pressure consumption job</span></span></span>
+<span class="r-in"><span><span class="co">#   node  tracing backward aggregation temperature  pressure consumption job</span></span></span>
 <span class="r-in"><span><span class="co"># 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0</span></span></span>
 <span class="r-in"><span><span class="co"># 2    2      1    FALSE    identity    69.71603 0.5813153          20   1</span></span></span>
 <span class="r-in"><span></span></span>

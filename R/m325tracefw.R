@@ -178,7 +178,7 @@
 #'        Type: \code{\link{assert_character}}.
 #'      }
 #'
-#'     \item{\code{trace}}{
+#'     \item{\code{tracing}}{
 #'       identifiers of nodes from which regime parameters are
 #'       traced for the given node. Identifier \code{sensor} is used when
 #'       values of regime parameters for the node are sensor readings.
@@ -216,7 +216,7 @@
 #'    }
 #'
 #'    \item{\code{job}}{
-#'      value of trace step counter. For forward tracing value of \code{job}
+#'      value of tracing step counter. For forward tracing value of \code{job}
 #'      counts the number of traced paths from root node.
 #'      Type: \code{\link{assert_integer}}.
 #'    }
@@ -228,7 +228,7 @@
 #' # Minimum two nodes should be in district heating network graph:
 #' m325tracefw(verbose = FALSE)
 #'
-#' #   node  trace backward aggregation temperature  pressure consumption job
+#' #   node  tracing backward aggregation temperature  pressure consumption job
 #' # 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0
 #' # 2    2      1    FALSE    identity    69.71603 0.5813153          20   1
 #'
@@ -395,7 +395,7 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
 
   job_log <- data.frame(
     node = acceptor[root_node],
-    trace = "sensor",
+    tracing = "sensor",
     backward = FALSE,
     aggregation = "identity",
     temperature = temperature[root_node],
@@ -442,7 +442,7 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
     )
     regime <- as.data.frame(regime)
     regime[["node"]] <- acceptor[current_path]
-    regime[["trace"]] <- sender[current_path]
+    regime[["tracing"]] <- sender[current_path]
     regime[["backward"]] <- FALSE
     regime[["aggregation"]] <- "identity"
     regime[["job"]] <- job_num

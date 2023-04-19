@@ -303,12 +303,12 @@ Type: <code>assert_count</code>.</p></dd>
 <span class="r-in"><span>             <span class="va">rar</span>, <span class="va">ral</span>, method <span class="op">=</span> <span class="st">"dnv"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> pipenostics::mepof: process case [1/4] - 25 % processed.pipenostics::mepof: process case [2/4] - 50 % processed.pipenostics::mepof: process case [3/4] - 75 % processed.pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.253463 0.368194 0.770886</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.253109 0.368248 0.771403</span>
 <span class="r-in"><span><span class="co"># 0.000000 0.252510 0.368275 0.771595</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># So, the POF of the pipe is near</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.770886</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.771403</span>
 <span class="r-in"><span><span class="co"># 0.771595</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># The value of POF changes in time. So, in a year after inline inspection of</span></span></span>
@@ -318,12 +318,12 @@ Type: <code>assert_count</code>.</p></dd>
 <span class="r-in"><span>             <span class="va">rar</span>, <span class="va">ral</span>, method <span class="op">=</span> <span class="st">"dnv"</span>, days <span class="op">=</span> <span class="fl">365</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> pipenostics::mepof: process case [1/4] - 25 % processed.pipenostics::mepof: process case [2/4] - 50 % processed.pipenostics::mepof: process case [3/4] - 75 % processed.pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.526081 0.646595 0.929259</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.526926 0.647812 0.929434</span>
 <span class="r-in"><span><span class="co"># 0.000000 0.525539 0.648359 0.929099</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># for entire pipe we get something near:</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.929259</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.929434</span>
 <span class="r-in"><span><span class="co"># 0.929099</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Two years ago before inline inspection the pipe state was rather good:</span></span></span>
@@ -333,12 +333,12 @@ Type: <code>assert_count</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> pipenostics::mepof: process case [1/4] - 25 % processed.pipenostics::mepof: process case [2/4] - 50 % processed.pipenostics::mepof: process case [3/4] - 75 % processed.pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.040993 0.072506 0.271086</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.040971 0.072262 0.272526</span>
 <span class="r-in"><span><span class="co"># 0.000000 0.040780 0.072923 0.271751</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># for entire pipe we get something near:</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.271086</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.272526</span>
 <span class="r-in"><span><span class="co"># 0.271751</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>

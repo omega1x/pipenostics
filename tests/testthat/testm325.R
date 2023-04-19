@@ -140,7 +140,7 @@ test_that("*m325tracefw* errs in calculation", {
     c("1", "2")
   )
   expect_equal(
-    result[["trace"]],
+    result[["tracing"]],
     c("sensor", "1")
   )
   expect_equal(

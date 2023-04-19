@@ -277,73 +277,73 @@ to create a file and write to it.</p></dd>
 <span class="r-in"><span><span class="co"># Trace thermal-hydraulic regime</span></span></span>
 <span class="r-in"><span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracebwm"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">nx</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | start backward tracing; segments 26;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | start job; job 0;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | seen trace; [9/13] are TP-sensored;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Temperature traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Pressure traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace consumption;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | finish job; job 0; processed node(s) 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | start job; job 1;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | now process; 5 node(s); [14,22,23,4,5]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | seen trace; [5/5] are TP-sensored;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Temperature traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Pressure traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace consumption;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | finish job; job 1; processed node(s) 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | start job; job 2;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | now process; 2 node(s); [20,6]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | seen trace; [2/2] are TP-sensored;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Temperature traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Pressure traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace consumption;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | finish job; job 2; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | start job; job 3;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | now process; 2 node(s); [18,8]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | seen trace; [2/2] are TP-sensored;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Temperature traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Pressure traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace consumption;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | finish job; job 3; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | start job; job 4;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | now process; 2 node(s); [11,16]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | seen trace; [2/2] are TP-sensored;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Temperature traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Pressure traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace consumption;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | finish job; job 4; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | start job; job 5;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | now process; 1 node(s); [13]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | seen trace; [1/1] are TP-sensored;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Temperature traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Pressure traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace consumption;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | finish job; job 5; processed node(s) 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | start job; job 6;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | now process; 1 node(s); [12]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | seen trace; [1/1] are TP-sensored;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Temperature traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | OK! Pressure traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | trace consumption;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | finish job; job 6; processed node(s) 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:12 m325tracebwm | finish backward tracing;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | start backward tracing; segments 26;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | start job; job 0;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | seen tracing; [9/13] are TP-sensored;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Temperature traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Pressure traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing consumption;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | finish job; job 0; processed node(s) 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | start job; job 1;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | now process; 5 node(s); [14,22,23,4,5]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | seen tracing; [5/5] are TP-sensored;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Temperature traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Pressure traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing consumption;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | finish job; job 1; processed node(s) 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | start job; job 2;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | now process; 2 node(s); [20,6]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | seen tracing; [2/2] are TP-sensored;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Temperature traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Pressure traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing consumption;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | finish job; job 2; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | start job; job 3;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | now process; 2 node(s); [18,8]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | seen tracing; [2/2] are TP-sensored;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Temperature traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Pressure traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing consumption;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | finish job; job 3; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | start job; job 4;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | now process; 2 node(s); [11,16]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | seen tracing; [2/2] are TP-sensored;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Temperature traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Pressure traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing consumption;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | finish job; job 4; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | start job; job 5;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | now process; 1 node(s); [13]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | seen tracing; [1/1] are TP-sensored;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Temperature traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Pressure traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing consumption;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | finish job; job 5; processed node(s) 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | start job; job 6;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | now process; 1 node(s); [12]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | seen tracing; [1/1] are TP-sensored;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Temperature traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | OK! Pressure traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | tracing consumption;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | finish job; job 6; processed node(s) 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 17:17:09 m325tracebwm | finish backward tracing;;</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           node    trace backward aggregation temperature     pressure</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           node  tracing backward aggregation temperature     pressure</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1            1   sensor     TRUE    identity 69.30000000 5.883990e-01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2            2   sensor     TRUE    identity 69.40000000 5.883990e-01</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3            3   sensor     TRUE    identity 68.60000000 5.883990e-01</span>

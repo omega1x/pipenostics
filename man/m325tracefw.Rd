@@ -146,7 +146,7 @@ Type: \code{\link{assert_count}}.}
        Type: \code{\link{assert_character}}.
      }
 
-    \item{\code{trace}}{
+    \item{\code{tracing}}{
       identifiers of nodes from which regime parameters are
       traced for the given node. Identifier \code{sensor} is used when
       values of regime parameters for the node are sensor readings.
@@ -184,7 +184,7 @@ Type: \code{\link{assert_count}}.}
    }
 
    \item{\code{job}}{
-     value of trace step counter. For forward tracing value of \code{job}
+     value of tracing step counter. For forward tracing value of \code{job}
      counts the number of traced paths from root node.
      Type: \code{\link{assert_integer}}.
    }
@@ -233,7 +233,7 @@ The calculated (values of) regime may be considered as representation of
 # Minimum two nodes should be in district heating network graph:
 m325tracefw(verbose = FALSE)
 
-#   node  trace backward aggregation temperature  pressure consumption job
+#   node  tracing backward aggregation temperature  pressure consumption job
 # 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0
 # 2    2      1    FALSE    identity    69.71603 0.5813153          20   1
 
