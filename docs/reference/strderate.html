@@ -27,7 +27,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -37,7 +37,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -69,7 +69,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">strderate</span><span class="op">(</span><span class="va">x</span>, temperature <span class="op">=</span> <span class="fl">24.3</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">strderate</span><span class="op">(</span><span class="va">x</span>, temperature <span class="op">=</span> <span class="fl">24.3</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -79,12 +79,17 @@
 strength (<em>UTS</em>), or specified minimum tensile strength (<em>SMTS</em>)
 as a characteristic of steel strength <strong>at room temperature</strong>,
 [<em>MPa</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>temperature</dt>
 <dd><p>temperature of pipe wall, [<em>°C</em>]. Type: <code>assert_double</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>de-rated value of <em>x</em>, i.e. of appropriate pipe material property,
+    
+
+<p>de-rated value of <em>x</em>, i.e. of appropriate pipe material property,
   [<em>MPa</em>] .
   Type: <code>assert_double</code>.</p>
     </div>
@@ -96,22 +101,22 @@ as a characteristic of steel strength <strong>at room temperature</strong>,
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">api5l3t</span>, <span class="op">{</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">strderate</span><span class="op">(</span><span class="fu"><a href="mpa_psi.html">mpa_psi</a></span><span class="op">(</span><span class="va">smys</span><span class="op">)</span>, <span class="fl">53</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu">strderate</span><span class="op">(</span><span class="fu"><a href="mpa_psi.html">mpa_psi</a></span><span class="op">(</span><span class="va">uts</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">250</span>, length.out <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">smys</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">api5l3t</span>, <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu">strderate</span><span class="op">(</span><span class="fu"><a href="mpa_psi.html">mpa_psi</a></span><span class="op">(</span><span class="va">smys</span><span class="op">)</span>, <span class="fl">53</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu">strderate</span><span class="op">(</span><span class="fu"><a href="mpa_psi.html">mpa_psi</a></span><span class="op">(</span><span class="va">uts</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">250</span>, length.out <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">smys</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 170.5689 205.0427 239.5165 287.7798 315.3588 356.7274 384.3064 411.8854</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 446.3592 480.8330 549.7806</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 310.2641 330.9483 413.6854 398.6854 404.3697 415.0540 439.5278 457.1068</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] 460.8963 485.3701 530.5282</span>
-<span class="r-in"><span class="co"># [1] 170.5689 205.0427 239.5165 287.7798 315.3588 356.7274 384.3064 411.8854 446.3592 480.8330</span></span>
-<span class="r-in"><span class="co"># [11] 549.7806</span></span>
-<span class="r-in"><span class="co"># [1] 310.2641 330.9483 413.6854 398.6854 404.3697 415.0540 439.5278 457.1068 460.8963 485.3701</span></span>
-<span class="r-in"><span class="co"># [11] 530.5282</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="co"># [1] 170.5689 205.0427 239.5165 287.7798 315.3588 356.7274 384.3064 411.8854 446.3592 480.8330</span></span></span>
+<span class="r-in"><span><span class="co"># [11] 549.7806</span></span></span>
+<span class="r-in"><span><span class="co"># [1] 310.2641 330.9483 413.6854 398.6854 404.3697 415.0540 439.5278 457.1068 460.8963 485.3701</span></span></span>
+<span class="r-in"><span><span class="co"># [11] 530.5282</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -126,7 +131,7 @@ as a characteristic of steel strength <strong>at room temperature</strong>,
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

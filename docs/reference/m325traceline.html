@@ -20,7 +20,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -30,7 +30,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -56,26 +56,26 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">m325traceline</span><span class="op">(</span>
-  temperature <span class="op">=</span> <span class="fl">130</span>,
-  pressure <span class="op">=</span> <span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>,
-  consumption <span class="op">=</span> <span class="fl">250</span>,
-  g <span class="op">=</span> <span class="fl">0</span>,
-  d <span class="op">=</span> <span class="fl">700</span>,
-  len <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">600</span>, <span class="fl">530</span>, <span class="fl">300</span>, <span class="fl">350</span><span class="op">)</span>,
-  year <span class="op">=</span> <span class="fl">1986</span>,
-  insulation <span class="op">=</span> <span class="fl">0</span>,
-  laying <span class="op">=</span> <span class="st">"underground"</span>,
-  beta <span class="op">=</span> <span class="cn">FALSE</span>,
-  exp5k <span class="op">=</span> <span class="cn">TRUE</span>,
-  roughness <span class="op">=</span> <span class="fl">0.006</span>,
-  inlet <span class="op">=</span> <span class="fl">0</span>,
-  outlet <span class="op">=</span> <span class="fl">0</span>,
-  elev_tol <span class="op">=</span> <span class="fl">0.1</span>,
-  method <span class="op">=</span> <span class="st">"romeo"</span>,
-  forward <span class="op">=</span> <span class="cn">TRUE</span>,
-  absg <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">m325traceline</span><span class="op">(</span></span>
+<span>  temperature <span class="op">=</span> <span class="fl">130</span>,</span>
+<span>  pressure <span class="op">=</span> <span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>,</span>
+<span>  consumption <span class="op">=</span> <span class="fl">250</span>,</span>
+<span>  g <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  d <span class="op">=</span> <span class="fl">700</span>,</span>
+<span>  len <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">600</span>, <span class="fl">530</span>, <span class="fl">300</span>, <span class="fl">350</span><span class="op">)</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">1986</span>,</span>
+<span>  insulation <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  laying <span class="op">=</span> <span class="st">"underground"</span>,</span>
+<span>  beta <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  exp5k <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  roughness <span class="op">=</span> <span class="fl">0.006</span>,</span>
+<span>  inlet <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  outlet <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  elev_tol <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"romeo"</span>,</span>
+<span>  forward <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  absg <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -84,15 +84,21 @@
 <dd><p>temperature of heat carrier (water) inside the pipe sensor-measured at the inlet
 (forward tracing) or at the outlet (backward tracing) of path, [<em>°C</em>].
 Type: <code>assert_number</code>.</p></dd>
+
+
 <dt>pressure</dt>
 <dd><p><a href="https://en.wikipedia.org/wiki/Pressure_measurement#Absolute" class="external-link">absolute pressure</a>
 of heat carrier (water) sensor-measured at the inlet
 (forward tracing) or at the outlet (backward tracing) of path, [<em>MPa</em>].
 Type: <code>assert_number</code>.</p></dd>
+
+
 <dt>consumption</dt>
 <dd><p>amount of heat carrier (water) sensor-measured at the inlet (forward tracing) or at
 the outlet (backward tracing) of path, [<em>ton/hour</em>].
 Type: <code>assert_number</code>.</p></dd>
+
+
 <dt>g</dt>
 <dd><p>amount of heat carrier discharge to network for each pipe segment in the
 tracing path enumerated along the direction of flow. If flag <code>absg</code>
@@ -100,18 +106,26 @@ is <code>TRUE</code> then they treat argument <code>g</code> as absolute value i
 [<em>ton/hour</em>], otherwise they do as percentage of consumption in the
 pipe segment.
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>d</dt>
 <dd><p>internal diameters of subsequent pipes in tracing path that are enumerated
 along the direction of flow, [<em>mm</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>len</dt>
 <dd><p>length of subsequent pipes in tracing path that are enumerated
 along the direction of flow, [<em>m</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>year</dt>
 <dd><p>year when pipe is put in operation after laying or total overhaul for
 each pipe in tracing path enumerated along the direction of flow.
 Type: <code>assert_integerish</code>.</p></dd>
+
+
 <dt>insulation</dt>
 <dd><p>insulation that covers the exterior of pipe:</p><dl><dt><code>0</code></dt>
 <dd><p>no insulation</p></dd>
@@ -125,6 +139,8 @@ Type: <code>assert_integerish</code>.</p></dd>
 
 </dl><p>for each pipe in tracing path enumerated along the direction of flow.
 Type: <code>assert_numeric</code> and <code>assert_subset</code>.</p></dd>
+
+
 <dt>laying</dt>
 <dd><p>type of pipe laying depicting the position of pipe in space:</p><ul><li><p><code>air</code></p></li>
 <li><p><code>channel</code></p></li>
@@ -133,45 +149,68 @@ Type: <code>assert_numeric</code> and <code>assert_subset</code>.</p></dd>
 <li><p><code>underground</code></p></li>
 </ul><p>for each pipe in tracing path enumerated along the direction of flow.
 Type: <code>assert_character</code> and <code>assert_subset</code>.</p></dd>
+
+
 <dt>beta</dt>
 <dd><p>should they consider additional heat losses of fittings? Logical value
 for each pipe in tracing path enumerated along the direction of flow.
 Type: <code>assert_logical</code>.</p></dd>
+
+
 <dt>exp5k</dt>
 <dd><p>pipe regime flag: is pipe operated more that <code>5000</code> hours per year? Logical
 value for each pipe in tracing path enumerated along the direction of flow.
 Type: <code>assert_logical</code>.</p></dd>
+
+
 <dt>roughness</dt>
 <dd><p>roughness of internal wall for each pipe in tracing path enumerated along
 the direction of flow, [<em>m</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>inlet</dt>
 <dd><p>elevation of pipe inlet for each pipe in tracing path enumerated along
 the direction of flow, [<em>m</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>outlet</dt>
 <dd><p>elevation of pipe outlet for each pipe in tracing path enumerated along
 the direction of flow, [<em>m</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>elev_tol</dt>
 <dd><p>maximum allowed discrepancy between adjacent outlet and inlet elevations of
 two subsequent pipes in the traced path, [<em>m</em>].
 Type: <code>assert_number</code>.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>method of determining <em>Darcy friction factor</em></p><ul><li><p><code>romeo</code></p></li>
 <li><p><code>vatankhan</code></p></li>
 <li><p><code>buzelli</code></p></li>
 </ul><p>Type: <code>assert_choice</code>. For more details see <code><a href="dropp.html">dropp</a></code>.</p></dd>
+
+
 <dt>forward</dt>
 <dd><p>tracing direction flag: is it a forward direction of tracing?
 If <code>FALSE</code> the backward tracing is performed.
 Type: <code>assert_flag</code>.</p></dd>
+
+
 <dt>absg</dt>
 <dd><p>Whether argument <code>g</code> (amount of heat carrier discharge to network) is an
 absolute value in [<em>ton/hour</em>] (<code>TRUE</code>) or is it a percentage of
 consumption in the pipe segment (<code>FALSE</code>)?
 Type: <code>assert_flag</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>named list of regime parameters for the traced path with the next elements:</p><dl><dt><code>temperature</code></dt>
+    
+
+<p>named list of regime parameters for the traced path with the next elements:</p>
+<p></p>
+<dl><dt><code>temperature</code></dt>
 <dd><p>calculated temperatures of heat carrier for all pipeline segments, [<em>°C</em>].
    Type: <code>assert_double</code>.</p></dd>
 
@@ -214,19 +253,19 @@ Type: <code>assert_flag</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Consider 4-segment tracing path depicted in ?m325regtrace help page.</span></span>
-<span class="r-in"><span class="co"># First, let sensor readings for forward tracing:</span></span>
-<span class="r-in"><span class="va">t_fw</span> <span class="op">&lt;-</span> <span class="fl">130</span>  <span class="co"># [°C]</span></span>
-<span class="r-in"><span class="va">p_fw</span> <span class="op">&lt;-</span> <span class="fl">.588399</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fl">.588399</span>, <span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span>  <span class="co"># [MPa]</span></span>
-<span class="r-in"><span class="va">g_fw</span> <span class="op">&lt;-</span> <span class="fl">250</span>  <span class="co"># [ton/hour]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Let discharges to network for each pipeline segment are somehow determined as</span></span>
-<span class="r-in"><span class="va">discharges</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">10</span><span class="op">)</span>  <span class="co"># [ton/hour]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="co"># Then the calculated regime (red squares) for forward tracing is</span></span>
-<span class="r-in"><span class="va">regime_fw</span> <span class="op">&lt;-</span> <span class="fu">m325traceline</span><span class="op">(</span><span class="va">t_fw</span>, <span class="va">p_fw</span>, <span class="va">g_fw</span>, <span class="va">discharges</span>, forward <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">regime_fw</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Consider 4-segment tracing path depicted in ?m325regtrace help page.</span></span></span>
+<span class="r-in"><span><span class="co"># First, let sensor readings for forward tracing:</span></span></span>
+<span class="r-in"><span><span class="va">t_fw</span> <span class="op">&lt;-</span> <span class="fl">130</span>  <span class="co"># [°C]</span></span></span>
+<span class="r-in"><span><span class="va">p_fw</span> <span class="op">&lt;-</span> <span class="fl">.588399</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/all.equal.html" class="external-link">all.equal</a></span><span class="op">(</span><span class="fl">.588399</span>, <span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">)</span>  <span class="co"># [MPa]</span></span></span>
+<span class="r-in"><span><span class="va">g_fw</span> <span class="op">&lt;-</span> <span class="fl">250</span>  <span class="co"># [ton/hour]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Let discharges to network for each pipeline segment are somehow determined as</span></span></span>
+<span class="r-in"><span><span class="va">discharges</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">10</span><span class="op">)</span>  <span class="co"># [ton/hour]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># Then the calculated regime (red squares) for forward tracing is</span></span></span>
+<span class="r-in"><span><span class="va">regime_fw</span> <span class="op">&lt;-</span> <span class="fu">m325traceline</span><span class="op">(</span><span class="va">t_fw</span>, <span class="va">p_fw</span>, <span class="va">g_fw</span>, <span class="va">discharges</span>, forward <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">regime_fw</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $temperature</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 129.1799 128.4269 127.9628 127.3367</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -236,25 +275,25 @@ Type: <code>assert_flag</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $consumption</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 250 240 220 190</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># $temperature</span></span>
-<span class="r-in"><span class="co"># [1] 129.1799 128.4269 127.9628 127.3367</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># $pressure</span></span>
-<span class="r-in"><span class="co"># [1] 0.5878607 0.5874226 0.5872143 0.5870330</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># $consumption</span></span>
-<span class="r-in"><span class="co"># [1] 250 240 220 190</span></span>
-<span class="r-in"><span class="co"># }</span></span>
-<span class="r-in"><span class="co"># Next consider values of traced regime as sensor readings for backward tracing:</span></span>
-<span class="r-in"><span class="va">t_bw</span> <span class="op">&lt;-</span> <span class="fl">127.3367</span>  <span class="co"># [°C]</span></span>
-<span class="r-in"><span class="va">p_bw</span> <span class="op">&lt;-</span> <span class="fl">.5870330</span>  <span class="co"># [MPa]</span></span>
-<span class="r-in"><span class="va">g_bw</span> <span class="op">&lt;-</span> <span class="fl">190</span>  <span class="co"># [ton/hour]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Then the calculated regime (red squares) for backward tracing is</span></span>
-<span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="va">regime_bw</span> <span class="op">&lt;-</span> <span class="fu">m325traceline</span><span class="op">(</span><span class="va">t_bw</span>, <span class="va">p_bw</span>, <span class="va">g_bw</span>, <span class="va">discharges</span>, forward <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">regime_bw</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># $temperature</span></span></span>
+<span class="r-in"><span><span class="co"># [1] 129.1799 128.4269 127.9628 127.3367</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># $pressure</span></span></span>
+<span class="r-in"><span><span class="co"># [1] 0.5878607 0.5874226 0.5872143 0.5870330</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># $consumption</span></span></span>
+<span class="r-in"><span><span class="co"># [1] 250 240 220 190</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span><span class="co"># Next consider values of traced regime as sensor readings for backward tracing:</span></span></span>
+<span class="r-in"><span><span class="va">t_bw</span> <span class="op">&lt;-</span> <span class="fl">127.3367</span>  <span class="co"># [°C]</span></span></span>
+<span class="r-in"><span><span class="va">p_bw</span> <span class="op">&lt;-</span> <span class="fl">.5870330</span>  <span class="co"># [MPa]</span></span></span>
+<span class="r-in"><span><span class="va">g_bw</span> <span class="op">&lt;-</span> <span class="fl">190</span>  <span class="co"># [ton/hour]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Then the calculated regime (red squares) for backward tracing is</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="va">regime_bw</span> <span class="op">&lt;-</span> <span class="fu">m325traceline</span><span class="op">(</span><span class="va">t_bw</span>, <span class="va">p_bw</span>, <span class="va">g_bw</span>, <span class="va">discharges</span>, forward <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">regime_bw</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $temperature</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 129.9953 129.1769 128.4254 127.9619</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -264,45 +303,45 @@ Type: <code>assert_flag</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $consumption</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 250 250 240 220</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># $temperature</span></span>
-<span class="r-in"><span class="co"># [1] 129.9953 129.1769 128.4254 127.9619</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># $pressure</span></span>
-<span class="r-in"><span class="co"># [1] 0.5883998 0.5878611 0.5874228 0.5872144</span></span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># $consumption</span></span>
-<span class="r-in"><span class="co"># [1] 250 250 240 220</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Let compare sensor readings with backward tracing results:</span></span>
-<span class="r-in"><span class="va">tracing</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">regime_bw</span>, <span class="op">{</span></span>
-<span class="r-in">  <span class="va">lambda</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">val</span>, <span class="va">constraint</span><span class="op">)</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">val</span>, <span class="va">constraint</span>, <span class="va">constraint</span> <span class="op">-</span> <span class="va">val</span>,</span>
-<span class="r-in">      <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">constraint</span> <span class="op">-</span> <span class="va">val</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span><span class="op">/</span><span class="va">constraint</span><span class="op">)</span></span>
-<span class="r-in">  <span class="va">first</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span></span>
-<span class="r-in">      <span class="fu">lambda</span><span class="op">(</span><span class="va">temperature</span><span class="op">[</span><span class="va">first</span><span class="op">]</span>, <span class="va">t_fw</span><span class="op">)</span>,</span>
-<span class="r-in">      <span class="fu">lambda</span><span class="op">(</span><span class="va">pressure</span><span class="op">[</span><span class="va">first</span><span class="op">]</span>,    <span class="va">p_fw</span><span class="op">)</span>,</span>
-<span class="r-in">      <span class="fu">lambda</span><span class="op">(</span><span class="va">consumption</span><span class="op">[</span><span class="va">first</span><span class="op">]</span>, <span class="va">g_fw</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    dimnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature"</span>, <span class="st">"pressure"</span>, <span class="st">"consumption"</span><span class="op">)</span>,</span>
-<span class="r-in">      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sensor.value"</span>, <span class="st">"traced.value"</span>, <span class="st">"abs.discr"</span>, <span class="st">"rel.discr"</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">tracing</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># $temperature</span></span></span>
+<span class="r-in"><span><span class="co"># [1] 129.9953 129.1769 128.4254 127.9619</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># $pressure</span></span></span>
+<span class="r-in"><span><span class="co"># [1] 0.5883998 0.5878611 0.5874228 0.5872144</span></span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># $consumption</span></span></span>
+<span class="r-in"><span><span class="co"># [1] 250 250 240 220</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Let compare sensor readings with backward tracing results:</span></span></span>
+<span class="r-in"><span><span class="va">tracing</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">regime_bw</span>, <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">lambda</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">val</span>, <span class="va">constraint</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">val</span>, <span class="va">constraint</span>, <span class="va">constraint</span> <span class="op">-</span> <span class="va">val</span>,</span></span>
+<span class="r-in"><span>      <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">constraint</span> <span class="op">-</span> <span class="va">val</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span><span class="op">/</span><span class="va">constraint</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">first</span> <span class="op">&lt;-</span> <span class="fl">1</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/structure.html" class="external-link">structure</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      <span class="fu">lambda</span><span class="op">(</span><span class="va">temperature</span><span class="op">[</span><span class="va">first</span><span class="op">]</span>, <span class="va">t_fw</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      <span class="fu">lambda</span><span class="op">(</span><span class="va">pressure</span><span class="op">[</span><span class="va">first</span><span class="op">]</span>,    <span class="va">p_fw</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      <span class="fu">lambda</span><span class="op">(</span><span class="va">consumption</span><span class="op">[</span><span class="va">first</span><span class="op">]</span>, <span class="va">g_fw</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    dimnames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature"</span>, <span class="st">"pressure"</span>, <span class="st">"consumption"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"sensor.value"</span>, <span class="st">"traced.value"</span>, <span class="st">"abs.discr"</span>, <span class="st">"rel.discr"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">tracing</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             sensor.value traced.value     abs.discr    rel.discr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> temperature  129.9952943   130.000000  4.705723e-03 0.0036197868</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> pressure       0.5883998     0.588399 -8.290938e-07 0.0001409067</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> consumption  250.0000000   250.000000  0.000000e+00 0.0000000000</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># sensor.value traced.value     abs.discr    rel.discr</span></span>
-<span class="r-in"><span class="co"># temperature   130.000000  129.9952943  4.705723e-03 0.0036197868</span></span>
-<span class="r-in"><span class="co"># pressure        0.588399    0.5883998 -8.290938e-07 0.0001409067</span></span>
-<span class="r-in"><span class="co"># consumption   250.000000  250.0000000  0.000000e+00 0.0000000000</span></span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># sensor.value traced.value     abs.discr    rel.discr</span></span></span>
+<span class="r-in"><span><span class="co"># temperature   130.000000  129.9952943  4.705723e-03 0.0036197868</span></span></span>
+<span class="r-in"><span><span class="co"># pressure        0.588399    0.5883998 -8.290938e-07 0.0001409067</span></span></span>
+<span class="r-in"><span><span class="co"># consumption   250.000000  250.0000000  0.000000e+00 0.0000000000</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -317,7 +356,7 @@ Type: <code>assert_flag</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

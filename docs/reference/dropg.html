@@ -25,7 +25,7 @@ The calculated value may be positive or negative. When it is positive they
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -35,7 +35,7 @@ The calculated value may be positive or negative. When it is positive they
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -66,7 +66,7 @@ The calculated value may be positive or negative. When it is positive they
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dropg</span><span class="op">(</span>adj <span class="op">=</span> <span class="fl">0</span>, d <span class="op">=</span> <span class="fl">700</span>, consumption <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dropg</span><span class="op">(</span>adj <span class="op">=</span> <span class="fl">0</span>, d <span class="op">=</span> <span class="fl">700</span>, consumption <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -86,15 +86,22 @@ The calculated value may be positive or negative. When it is positive they
 </dl><p>Positive values of diameters of adjacent pipes correspond to discharging
  process through those pipe, whereas negative values of diameters mean
  recharging. See <em>Details</em> and <em>Examples</em> for further explanations.</p></dd>
+
+
 <dt>d</dt>
 <dd><p>diameter of pipe under consideration, [<em>mm</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>consumption</dt>
 <dd><p>sensor-measured amount of heat carrier (water) that is transferred through
 the inlet of pipe during a period, [<em>ton/hour</em>]. Type: <code>assert_double</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>consumption <em>drop</em> or <em>recovery</em> at the outlet of pipe,
+    
+
+<p>consumption <em>drop</em> or <em>recovery</em> at the outlet of pipe,
  [<em>ton/hour</em>], numeric vector. The value is positive for <em>drop</em>,
  whereas for <em>recovery</em> it is negative. In both cases to calculate
  consumption on the outlet of pipe under consideration simply subtract the
@@ -130,32 +137,32 @@ the inlet of pipe during a period, [<em>ton/hour</em>]. Type: <code>assert_doubl
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Let consider pipes according to network segment scheme depicted in figure</span></span>
-<span class="r-in"><span class="co"># in ?dropg help-page.</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Typical large diameters of pipes under consideration, [mm]:</span></span>
-<span class="r-in"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">as.double</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="fu">pipenostics</span><span class="fu">::</span><span class="va"><a href="m325nhldata.html">m325nhldata</a></span>, <span class="va">diameter</span> <span class="op">&gt;</span> <span class="fl">700</span><span class="op">)</span><span class="op">$</span><span class="va">diameter</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Let sensor-measured consumption in the inlet of the pipe</span></span>
-<span class="r-in"><span class="co"># under consideration be proportional to d, [ton/hour]:</span></span>
-<span class="r-in"><span class="va">consumption</span> <span class="op">&lt;-</span> <span class="fl">.125</span><span class="op">*</span><span class="va">d</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Let consider total diameter case when total diameters of adjacent pipes are no</span></span>
-<span class="r-in"><span class="co"># more than d, [mm]:</span></span>
-<span class="r-in"><span class="va">adj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">450</span>, <span class="op">-</span><span class="fl">400</span>, <span class="fl">950</span>, <span class="op">-</span><span class="fl">255</span>, <span class="fl">1152</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># As at may be seen for the second and fourth cases they predominantly have</span></span>
-<span class="r-in"><span class="co"># recharges from network.</span></span>
-<span class="r-in"><span class="co"># Let calculate consumption on the outlet of the pipe under consideration,</span></span>
-<span class="r-in"><span class="co"># [ton/hour]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">result</span> <span class="op">&lt;-</span> <span class="va">consumption</span> <span class="op">-</span> <span class="fu">dropg</span><span class="op">(</span><span class="va">adj</span>, <span class="va">d</span>, <span class="va">consumption</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Let consider pipes according to network segment scheme depicted in figure</span></span></span>
+<span class="r-in"><span><span class="co"># in ?dropg help-page.</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Typical large diameters of pipes under consideration, [mm]:</span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">as.double</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="fu">pipenostics</span><span class="fu">::</span><span class="va"><a href="m325nhldata.html">m325nhldata</a></span>, <span class="va">diameter</span> <span class="op">&gt;</span> <span class="fl">700</span><span class="op">)</span><span class="op">$</span><span class="va">diameter</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Let sensor-measured consumption in the inlet of the pipe</span></span></span>
+<span class="r-in"><span><span class="co"># under consideration be proportional to d, [ton/hour]:</span></span></span>
+<span class="r-in"><span><span class="va">consumption</span> <span class="op">&lt;-</span> <span class="fl">.125</span><span class="op">*</span><span class="va">d</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Let consider total diameter case when total diameters of adjacent pipes are no</span></span></span>
+<span class="r-in"><span><span class="co"># more than d, [mm]:</span></span></span>
+<span class="r-in"><span><span class="va">adj</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">450</span>, <span class="op">-</span><span class="fl">400</span>, <span class="fl">950</span>, <span class="op">-</span><span class="fl">255</span>, <span class="fl">1152</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># As at may be seen for the second and fourth cases they predominantly have</span></span></span>
+<span class="r-in"><span><span class="co"># recharges from network.</span></span></span>
+<span class="r-in"><span><span class="co"># Let calculate consumption on the outlet of the pipe under consideration,</span></span></span>
+<span class="r-in"><span><span class="co"># [ton/hour]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="va">consumption</span> <span class="op">-</span> <span class="fu">dropg</span><span class="op">(</span><span class="va">adj</span>, <span class="va">d</span>, <span class="va">consumption</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1]  75.96439 134.72222  65.70302 180.80580  78.05995</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># [1]  75.96439 134.72222  65.70302 180.80580  78.05995</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># For more clarity they may perform calculations in data.table.</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># [1]  75.96439 134.72222  65.70302 180.80580  78.05995</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># For more clarity they may perform calculations in data.table.</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -170,7 +177,7 @@ the inlet of pipe during a period, [<em>ton/hour</em>]. Type: <code>assert_doubl
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

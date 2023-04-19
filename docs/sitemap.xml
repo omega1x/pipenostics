@@ -43,6 +43,9 @@
     <loc>/reference/b31gsap.html</loc>
   </url>
   <url>
+    <loc>/reference/celsius.html</loc>
+  </url>
+  <url>
     <loc>/reference/dnvpf.html</loc>
   </url>
   <url>
@@ -55,13 +58,37 @@
     <loc>/reference/dropt.html</loc>
   </url>
   <url>
+    <loc>/reference/fahrenheit.html</loc>
+  </url>
+  <url>
     <loc>/reference/flowls.html</loc>
+  </url>
+  <url>
+    <loc>/reference/fric_buzelli.html</loc>
+  </url>
+  <url>
+    <loc>/reference/fric_romeo.html</loc>
+  </url>
+  <url>
+    <loc>/reference/fric_vatankhan.html</loc>
+  </url>
+  <url>
+    <loc>/reference/if97cptp1.html</loc>
+  </url>
+  <url>
+    <loc>/reference/if97pt4.html</loc>
+  </url>
+  <url>
+    <loc>/reference/if97vtp1.html</loc>
   </url>
   <url>
     <loc>/reference/inch_mm.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/kelvin.html</loc>
   </url>
   <url>
     <loc>/reference/kgf_mpa.html</loc>
@@ -131,6 +158,12 @@
   </url>
   <url>
     <loc>/reference/psi_mpa.html</loc>
+  </url>
+  <url>
+    <loc>/reference/r12dv.html</loc>
+  </url>
+  <url>
+    <loc>/reference/reynolds.html</loc>
   </url>
   <url>
     <loc>/reference/shell92pf.html</loc>

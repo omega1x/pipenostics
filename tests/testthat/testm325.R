@@ -76,7 +76,7 @@ test_that("*m325tracebw* errs in losses", {
         temperature, pressure, consumption,
         d, len, year, insulation, laying, beta, exp5k
       ),
-      subset(output, node == 4 & trace == 2 & aggregation == "identity",
+      subset(output, node == 4 & tracing == 2 & aggregation == "identity",
              "temperature")[[1]]
     )
 
@@ -86,7 +86,7 @@ test_that("*m325tracebw* errs in losses", {
           temperature, pressure, consumption,
           d*1e-3, len, roughness, inlet, outlet, "romeo"
         ),
-        subset(output, node == 4 & trace == 2 & aggregation == "identity",
+        subset(output, node == 4 & tracing == 2 & aggregation == "identity",
                "pressure")[[1]]
     )
   })
@@ -134,7 +134,6 @@ test_that("*m325tracebwm* does not produce the same result as *m325tracebw*", {
 })
 
 test_that("*m325tracefw* errs in calculation", {
-  skip_on_cran()
   result <- m325tracefw(verbose = FALSE)
   expect_equal(
     result[["node"]],
@@ -175,7 +174,6 @@ test_that("*m325tracefw* errs in calculation", {
 
 
 test_that("*m325tracefw* does not write csv-file", {
-  skip_on_cran()
   file_name <- tempfile()
   m325tracefw(csv = TRUE, file = file_name)
   expect_equal(

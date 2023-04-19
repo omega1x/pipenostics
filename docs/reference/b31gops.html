@@ -18,7 +18,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -28,7 +28,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -52,19 +52,26 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">b31gops</span><span class="op">(</span><span class="va">wth</span>, <span class="va">depth</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">b31gops</span><span class="op">(</span><span class="va">wth</span>, <span class="va">depth</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>wth</dt>
 <dd><p>nominal wall thickness of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>depth</dt>
 <dd><p>measured maximum depth of the corroded area, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Operational status of pipe:</p><ul><li><p><em>1</em> - excellent</p></li>
+    
+
+<p>Operational status of pipe as an integer value:</p>
+<p></p>
+<ul><li><p><em>1</em> - excellent</p></li>
 <li><p><em>2</em> - monitoring is recommended</p></li>
 <li><p><em>3</em> - alert! replace the pipe immediately!</p></li>
 </ul><p>Type: <code>assert_numeric</code> and <code>assert_subset</code>.</p>
@@ -90,14 +97,14 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="fu">b31gops</span><span class="op">(</span><span class="fl">.438</span>, <span class="fl">.1</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="fu">b31gops</span><span class="op">(</span><span class="fl">.438</span>, <span class="fl">.1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
-<span class="r-in"> <span class="co"># [1] 2  # typical status for the most of pipes</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="fu">b31gops</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.41</span><span class="op">)</span></span>
+<span class="r-in"><span> <span class="co"># [1] 2  # typical status for the most of pipes</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="fu">b31gops</span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.41</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-in"> <span class="co"># [1] 3  # alert! Corrosion depth is too high! Replace the pipe!</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span> <span class="co"># [1] 3  # alert! Corrosion depth is too high! Replace the pipe!</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -112,7 +119,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

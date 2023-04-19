@@ -16,9 +16,6 @@
 #' directed graph of this network. For more details of isomorphic topology
 #' description see \code{\link{m325testbench}}.
 #'
-#' For possibly better performance, they search paths of heat carrier flow
-#' in parallel leveraging the functionality of package \code{\link{parallel}}.
-#'
 #' @param sender
 #'    identifier of the node which heat carrier flows out.
 #'    Type: any type that can be painlessly coerced to character by
@@ -110,7 +107,7 @@ flowls <- function(sender = "A", acceptor = "B", maxcores = 2L){
 
   # Search algorithm (worker) ----
   worker <- function(path_id){
-    path <- vector("integer", n)  # get *n* from parent env
+    path <- integer(n)  # get *n* from parent env
     segment_counter <- 1L
     idx <- terminal_node_idx[[path_id]]  # get *terminal_node_idx* from parent env
     path[[segment_counter]] <- idx
@@ -123,21 +120,10 @@ flowls <- function(sender = "A", acceptor = "B", maxcores = 2L){
     rev(path[path > 0L])
   }
 
-  # Run workers in parallel ----
-  cluster <- parallel::makeCluster(
-    max(1L, min(parallel::detectCores() - 1L), maxcores)
-  )
-  parallel::clusterExport(
-    cluster,
-    c("n", "terminal_node_idx", "starting_node_idx", "acceptor", "sender"),
-    envir = environment()
-  )
-  stream <- parallel::parLapply(
-    cluster,
+  lapply(
     structure(
       seq_along(terminal_node_idx), names = acceptor[terminal_node_idx]
     ),
-    worker)
-  parallel::stopCluster(cluster)
-  stream
+    worker
+  )
 }

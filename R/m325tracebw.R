@@ -172,7 +172,7 @@
 #'        Type: \code{\link{assert_character}}.
 #'      }
 #'
-#'     \item{\code{trace}}{
+#'     \item{\code{tracing}}{
 #'       concatenated identifiers of nodes from which regime parameters are
 #'       traced for the given node. Identifier \code{sensor} is used when
 #'       values of regime parameters for the node are sensor readings.
@@ -224,7 +224,7 @@
 #'    }
 #'
 #'    \item{\code{job}}{
-#'      value of trace step counter.
+#'      value of tracing step counter.
 #'      Type: \code{\link{assert_integer}}.
 #'    }
 #'  }
@@ -377,7 +377,7 @@ m325tracebw <- function(sender = 6, acceptor = 7,
   job_num <- 0L
   # Set up job log columns ----
   job_log <- data.frame(
-    node = acceptor, trace = "sensor", backward = TRUE,
+    node = acceptor, tracing = "sensor", backward = TRUE,
     aggregation = "identity", temperature, pressure, consumption, job = job_num
   )[is_terminal_node,]
   rm(is_terminal_node)
@@ -410,10 +410,10 @@ m325tracebw <- function(sender = 6, acceptor = 7,
     agg_log <- lapply(
       structure(names(agg_func), names = names(agg_func)),
       function(func_name, log_df) {
-        trace <- tapply(log_df[["trace"]], log_df[["node"]], "paste", collapse = "|")
+        tracing <- tapply(log_df[["tracing"]], log_df[["node"]], "paste", collapse = "|")
         data.frame(
-             node = names(trace),
-             trace = trace,
+             node = names(tracing),
+             tracing = tracing,
              backward = TRUE,
              aggregation = func_name,
              temperature = tapply(log_df[["temperature"]], log_df[["node"]], agg_func[[func_name]]),
@@ -450,7 +450,7 @@ m325tracebw <- function(sender = 6, acceptor = 7,
     if (verbose)
       cat(
         sprintf(
-          "\n%s %s | trace temperature;;", time_stamp_posixct, .func_name
+          "\n%s %s | tracing temperature;;", time_stamp_posixct, .func_name
         )
       )
 
@@ -469,7 +469,7 @@ m325tracebw <- function(sender = 6, acceptor = 7,
     if (verbose)
       cat(
         sprintf(
-          "\n%s %s | trace pressure;;", time_stamp_posixct, .func_name
+          "\n%s %s | tracing pressure;;", time_stamp_posixct, .func_name
         )
       )
     this_sender_pressure <-
@@ -493,7 +493,7 @@ m325tracebw <- function(sender = 6, acceptor = 7,
       job_log,
       data.frame(
         node = sender[is_processed_pipe],
-        trace = acceptor[is_processed_pipe],
+        tracing = acceptor[is_processed_pipe],
         backward = TRUE,
         aggregation = "identity",
         temperature = this_sender_temperature,

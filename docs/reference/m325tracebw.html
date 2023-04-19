@@ -22,7 +22,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -32,7 +32,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -59,28 +59,28 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">m325tracebw</span><span class="op">(</span>
-  sender <span class="op">=</span> <span class="fl">6</span>,
-  acceptor <span class="op">=</span> <span class="fl">7</span>,
-  temperature <span class="op">=</span> <span class="fl">70</span>,
-  pressure <span class="op">=</span> <span class="fu">pipenostics</span><span class="fu">::</span><span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>,
-  consumption <span class="op">=</span> <span class="fl">20</span>,
-  d <span class="op">=</span> <span class="fl">100</span>,
-  len <span class="op">=</span> <span class="fl">72.446</span>,
-  year <span class="op">=</span> <span class="fl">1986</span>,
-  insulation <span class="op">=</span> <span class="fl">0</span>,
-  laying <span class="op">=</span> <span class="st">"tunnel"</span>,
-  beta <span class="op">=</span> <span class="cn">FALSE</span>,
-  exp5k <span class="op">=</span> <span class="cn">TRUE</span>,
-  roughness <span class="op">=</span> <span class="fl">0.001</span>,
-  inlet <span class="op">=</span> <span class="fl">0.5</span>,
-  outlet <span class="op">=</span> <span class="fl">1</span>,
-  method <span class="op">=</span> <span class="st">"romeo"</span>,
-  opinion <span class="op">=</span> <span class="st">"median"</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>,
-  csv <span class="op">=</span> <span class="cn">FALSE</span>,
-  file <span class="op">=</span> <span class="st">"m325tracebw.csv"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">m325tracebw</span><span class="op">(</span></span>
+<span>  sender <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>  acceptor <span class="op">=</span> <span class="fl">7</span>,</span>
+<span>  temperature <span class="op">=</span> <span class="fl">70</span>,</span>
+<span>  pressure <span class="op">=</span> <span class="fu">pipenostics</span><span class="fu">::</span><span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>,</span>
+<span>  consumption <span class="op">=</span> <span class="fl">20</span>,</span>
+<span>  d <span class="op">=</span> <span class="fl">100</span>,</span>
+<span>  len <span class="op">=</span> <span class="fl">72.446</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">1986</span>,</span>
+<span>  insulation <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  laying <span class="op">=</span> <span class="st">"tunnel"</span>,</span>
+<span>  beta <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  exp5k <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  roughness <span class="op">=</span> <span class="fl">0.001</span>,</span>
+<span>  inlet <span class="op">=</span> <span class="fl">0.5</span>,</span>
+<span>  outlet <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"romeo"</span>,</span>
+<span>  opinion <span class="op">=</span> <span class="st">"median"</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  csv <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  file <span class="op">=</span> <span class="st">"m325tracebw.csv"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -89,38 +89,54 @@
 <dd><p>identifier of the node which heat carrier flows out.
 Type: any type that can be painlessly coerced to character by
 <code><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></code>.</p></dd>
+
+
 <dt>acceptor</dt>
 <dd><p>identifier of the node which heat carrier flows in. According to topology
 of test bench considered this identifier should be unique for every row.
 Type: any type that can be painlessly coerced to character by
 <code><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></code>.</p></dd>
+
+
 <dt>temperature</dt>
 <dd><p><em>snapshot of thermal-hydraulic regime state</em>: temperature of heat carrier
 (water) sensor-measured on the terminal acceptor node, [<em>°C</em>].
 Use <code>NA_float_</code>s for nodes without temperature sensor.
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>pressure</dt>
 <dd><p><em>snapshot of thermal-hydraulic regime state</em>: sensor-measured
 <a href="https://en.wikipedia.org/wiki/Pressure_measurement#Absolute" class="external-link">absolute pressure</a>
 of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
 [<em>MPa</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>consumption</dt>
 <dd><p><em>snapshot of thermal-hydraulic regime state</em>:
 sensor-measured amount of heat carrier (water) on terminal node that is
 transferred by pipe (i.e. acceptor's incoming edge) during a period,
 [<em>ton/hour</em>]. Type: <code>assert_double</code>.
 Use <code>NA_float_</code>s for nodes without consumption sensor.</p></dd>
+
+
 <dt>d</dt>
 <dd><p>internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
 [<em>mm</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>len</dt>
 <dd><p>pipe length (i.e. length of acceptor's incoming edge), [<em>m</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>year</dt>
 <dd><p>year when the pipe (i.e. acceptor's incoming edge) is put in operation
 after laying or total overhaul.
 Type: <code>assert_integerish</code>.</p></dd>
+
+
 <dt>insulation</dt>
 <dd><p>identifier of insulation that covers the exterior of pipe (i.e. acceptor's
 incoming edge):</p><dl><dt><code>0</code></dt>
@@ -134,6 +150,8 @@ incoming edge):</p><dl><dt><code>0</code></dt>
 
  
 </dl><p>Type: <code>assert_subset</code>.</p></dd>
+
+
 <dt>laying</dt>
 <dd><p>type of pipe laying depicting the position of pipe in space. Only five
 types of pipe laying are considered:</p><ul><li><p><code>air</code>,</p></li>
@@ -142,27 +160,41 @@ types of pipe laying are considered:</p><ul><li><p><code>air</code>,</p></li>
 <li><p><code>tunnel</code>,</p></li>
 <li><p><code>underground</code>.</p></li>
 </ul><p>Type: <code>assert_subset</code>.</p></dd>
+
+
 <dt>beta</dt>
 <dd><p>logical indicator: should they consider additional heat losses of fittings
 located on this pipe (i.e. acceptor's incoming edge)?
 Type: <code>assert_logical</code>.</p></dd>
+
+
 <dt>exp5k</dt>
 <dd><p>logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
 <code>TRUE</code> pipe is operated more that <code>5000</code> hours per year.
 Type: <code>assert_logical</code>.</p></dd>
+
+
 <dt>roughness</dt>
 <dd><p>roughness of internal wall of pipe (i.e. acceptor's incoming edge),
 [<em>m</em>]. Type: <code>assert_logical</code>.</p></dd>
+
+
 <dt>inlet</dt>
 <dd><p>elevation of pipe inlet, [<em>m</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>outlet</dt>
 <dd><p>elevation of pipe outlet, [<em>m</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>method of determining <em>Darcy friction factor</em>:</p><ul><li><p><code>romeo</code></p></li>
 <li><p><code>vatankhan</code></p></li>
 <li><p><code>buzelli</code></p></li>
 </ul><p>Type: <code>assert_choice</code>.
 For more details see <code><a href="dropp.html">dropp</a></code>.</p></dd>
+
+
 <dt>opinion</dt>
 <dd><p>method for aggregating values of regime parameters on each node for the
 next tracing step:</p><dl><dt><code>mean</code></dt>
@@ -175,24 +207,35 @@ next tracing step:</p><dl><dt><code>mean</code></dt>
 
  
 </dl><p>Type: <code>assert_choice</code>.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>logical indicator: should they watch tracing process on console?
 Type: <code>assert_flag</code>.</p></dd>
+
+
 <dt>csv</dt>
 <dd><p>logical indicator: should they incrementally dump results to <em>csv</em>-file
 while tracing?
 Type: <code>assert_flag</code>.</p></dd>
+
+
 <dt>file</dt>
 <dd><p>name of <em>csv</em>-file which they dump results to.
 Type: <code>assert_character</code> of length 1 that can be used safely
 to create a file and write to it.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>data.frame</code> containing results of tracing in
+    
+
+<p><code>data.frame</code> containing results of tracing in
    long format
    (<a href="https://en.wikipedia.org/wiki/Wide_and_narrow_data" class="external-link">narrow format</a>)
-   mostly like it returned by function <code><a href="m325tracefw.html">m325tracefw</a></code>:</p><dl><dt><code>node</code></dt>
+   mostly like it returned by function <code><a href="m325tracefw.html">m325tracefw</a></code>:</p>
+<p></p>
+<dl><dt><code>node</code></dt>
 <dd><p>identifier of the node for which regime parameters is calculated.
        Values in this vector are identical to those in argument <code>acceptor</code>.
        Type: <code>assert_character</code>.</p></dd>
@@ -286,91 +329,91 @@ to create a file and write to it.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># It is possible to run without specification of argument values:</span></span>
-<span class="r-in"><span class="fu">m325tracebw</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># It is possible to run without specification of argument values:</span></span></span>
+<span class="r-in"><span><span class="fu">m325tracebw</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | start backward tracing; segments 1;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | start job; job 0;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | now process; 1 node(s); [7]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | finish job; job 0; processed node(s) 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | finish backward tracing;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | start backward tracing; segments 1;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | start job; job 0;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | now process; 1 node(s); [7]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | finish job; job 0; processed node(s) 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | finish backward tracing;;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        node  trace backward aggregation temperature pressure consumption job</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1         7 sensor     TRUE    identity          70 0.588399          20   0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> span      7 sensor     TRUE        span           0 0.000000          20   0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> median    7 sensor     TRUE      median          70 0.588399          20   0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mean      7 sensor     TRUE        mean          70 0.588399          20   0</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Get isomorphic representation of district heating network graph:</span></span>
-<span class="r-in"><span class="va">nx</span> <span class="op">&lt;-</span> <span class="fu">pipenostics</span><span class="fu">::</span><span class="va"><a href="m325testbench.html">m325testbench</a></span></span>
-<span class="r-in"><span class="va">nx</span><span class="op">$</span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fl">1e3</span><span class="op">*</span><span class="va">nx</span><span class="op">$</span><span class="va">d</span>  <span class="co"># convert [m] to [mm]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># When tracing large network graphs put screen log to file</span></span>
-<span class="r-in"><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracebw"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">nx</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Get isomorphic representation of district heating network graph:</span></span></span>
+<span class="r-in"><span><span class="va">nx</span> <span class="op">&lt;-</span> <span class="fu">pipenostics</span><span class="fu">::</span><span class="va"><a href="m325testbench.html">m325testbench</a></span></span></span>
+<span class="r-in"><span><span class="va">nx</span><span class="op">$</span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fl">1e3</span><span class="op">*</span><span class="va">nx</span><span class="op">$</span><span class="va">d</span>  <span class="co"># convert [m] to [mm]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># When tracing large network graphs put screen log to file</span></span></span>
+<span class="r-in"><span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracebw"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">nx</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | start backward tracing; segments 26;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | start job; job 0;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | finish job; job 0; processed node(s) 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | start job; job 1;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | now process; 5 node(s); [14,22,23,4,5]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | finish job; job 1; processed node(s) 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | start job; job 2;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | now process; 2 node(s); [20,6]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | finish job; job 2; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | start job; job 3;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | now process; 2 node(s); [18,8]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | finish job; job 3; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | start job; job 4;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | now process; 2 node(s); [11,16]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | finish job; job 4; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | start job; job 5;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | now process; 1 node(s); [13]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | finish job; job 5; processed node(s) 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | start job; job 6;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | now process; 1 node(s); [12]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | trace pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | finish job; job 6; processed node(s) 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2022-03-03 18:48:29 m325tracebw | finish backward tracing;;</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Distinct options for opinion aggregation lead to distinct traced</span></span>
-<span class="r-in"><span class="co"># temperature and pressure:</span></span>
-<span class="r-in"><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">  mean   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracebw"</span>,</span>
-<span class="r-in">                   <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">nx</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, opinion <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracebw"</span>,</span>
-<span class="r-in">                   <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">nx</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, opinion <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span></span>
-<span class="r-in">      <span class="va">output</span><span class="op">$</span><span class="va">mean</span>,</span>
-<span class="r-in">      <span class="va">node</span> <span class="op">==</span> <span class="fl">13</span> <span class="op">&amp;</span> <span class="va">aggregation</span> <span class="op">==</span> <span class="st">"median"</span>,</span>
-<span class="r-in">      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature"</span>, <span class="st">"pressure"</span>, <span class="st">"consumption"</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span></span>
-<span class="r-in">      <span class="va">output</span><span class="op">$</span><span class="va">median</span>,</span>
-<span class="r-in">      <span class="va">node</span> <span class="op">==</span> <span class="fl">13</span> <span class="op">&amp;</span> <span class="va">aggregation</span> <span class="op">==</span> <span class="st">"median"</span>,</span>
-<span class="r-in">      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature"</span>, <span class="st">"pressure"</span>, <span class="st">"consumption"</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    <span class="fl">5</span></span>
-<span class="r-in">    <span class="co"># difference between aggregation options</span></span>
-<span class="r-in">  <span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>dt <span class="op">=</span> <span class="fl">0.03732</span>, dp <span class="op">=</span> <span class="fl">0.00139</span>, dg <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | start backward tracing; segments 26;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | start job; job 0;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | finish job; job 0; processed node(s) 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | start job; job 1;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | now process; 5 node(s); [14,22,23,4,5]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | finish job; job 1; processed node(s) 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | start job; job 2;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | now process; 2 node(s); [20,6]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | finish job; job 2; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | start job; job 3;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | now process; 2 node(s); [18,8]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | finish job; job 3; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | start job; job 4;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | now process; 2 node(s); [11,16]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | finish job; job 4; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | start job; job 5;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | now process; 1 node(s); [13]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | finish job; job 5; processed node(s) 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | start job; job 6;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | now process; 1 node(s); [12]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | trace pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | finish job; job 6; processed node(s) 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2023-04-19 10:18:11 m325tracebw | finish backward tracing;;</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Distinct options for opinion aggregation lead to distinct traced</span></span></span>
+<span class="r-in"><span><span class="co"># temperature and pressure:</span></span></span>
+<span class="r-in"><span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  mean   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracebw"</span>,</span></span>
+<span class="r-in"><span>                   <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">nx</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, opinion <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracebw"</span>,</span></span>
+<span class="r-in"><span>                   <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">nx</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, opinion <span class="op">=</span> <span class="st">"median"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      <span class="va">output</span><span class="op">$</span><span class="va">mean</span>,</span></span>
+<span class="r-in"><span>      <span class="va">node</span> <span class="op">==</span> <span class="fl">13</span> <span class="op">&amp;</span> <span class="va">aggregation</span> <span class="op">==</span> <span class="st">"median"</span>,</span></span>
+<span class="r-in"><span>      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature"</span>, <span class="st">"pressure"</span>, <span class="st">"consumption"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>      <span class="va">output</span><span class="op">$</span><span class="va">median</span>,</span></span>
+<span class="r-in"><span>      <span class="va">node</span> <span class="op">==</span> <span class="fl">13</span> <span class="op">&amp;</span> <span class="va">aggregation</span> <span class="op">==</span> <span class="st">"median"</span>,</span></span>
+<span class="r-in"><span>      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature"</span>, <span class="st">"pressure"</span>, <span class="st">"consumption"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span>,</span></span>
+<span class="r-in"><span>    <span class="fl">5</span></span></span>
+<span class="r-in"><span>    <span class="co"># difference between aggregation options</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>dt <span class="op">=</span> <span class="fl">0.03732</span>, dp <span class="op">=</span> <span class="fl">0.00139</span>, dg <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -385,7 +428,7 @@ to create a file and write to it.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -23,7 +23,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -33,7 +33,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -62,7 +62,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">m325beta</span><span class="op">(</span>laying <span class="op">=</span> <span class="st">"channel"</span>, d <span class="op">=</span> <span class="fl">700</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">m325beta</span><span class="op">(</span>laying <span class="op">=</span> <span class="st">"channel"</span>, d <span class="op">=</span> <span class="fl">700</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -74,12 +74,17 @@
 <li><p><code>tunnel</code>,</p></li>
 <li><p><code>underground</code>.</p></li>
 </ul><p>Type: <code>assert_subset</code>.</p></dd>
+
+
 <dt>d</dt>
 <dd><p>internal diameter of pipe, [<em>mm</em>]. Type: <code>assert_double</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Two possible values of \(\beta\): <code>1.2</code> or <code>1.15</code> depending on
+    
+
+<p>Two possible values of \(\beta\): <code>1.2</code> or <code>1.15</code> depending on
  pipe laying and its diameter. Type: <code>assert_double</code>.</p>
     </div>
     <div id="see-also">
@@ -99,13 +104,13 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">norms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">m325nhldata</span>, <span class="op">{</span></span>
-<span class="r-in">  <span class="va">beta</span> <span class="op">&lt;-</span> <span class="fu">m325beta</span><span class="op">(</span><span class="va">laying</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">as.double</a></span><span class="op">(</span><span class="va">diameter</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">norms</span><span class="op">$</span><span class="va">beta</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">norms</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">within</a></span><span class="op">(</span><span class="va">m325nhldata</span>, <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">beta</span> <span class="op">&lt;-</span> <span class="fu">m325beta</span><span class="op">(</span><span class="va">laying</span>, <span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">as.double</a></span><span class="op">(</span><span class="va">diameter</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">norms</span><span class="op">$</span><span class="va">beta</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.15 1.20</span>
-<span class="r-in"><span class="co"># [1] 1.15 1.20</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="co"># [1] 1.15 1.20</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -120,7 +125,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

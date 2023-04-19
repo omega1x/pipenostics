@@ -37,7 +37,7 @@ pipelines, which operate at temperatures exceeding the temperature
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -47,7 +47,7 @@ pipelines, which operate at temperatures exceeding the temperature
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -87,7 +87,7 @@ pipelines, which operate at temperatures exceeding the temperature
 </ul></div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">pcorrcpf</span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">uts</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pcorrcpf</span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">uts</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -95,24 +95,35 @@ pipelines, which operate at temperatures exceeding the temperature
     <dl><dt>d</dt>
 <dd><p>nominal outside diameter of the pipe, [<em>mm</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>wth</dt>
 <dd><p>nominal wall thickness of the pipe, [<em>mm</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>uts</dt>
 <dd><p>ultimate tensile strength (<em>UTS</em>) or
 specified minimum tensile strength (<em>SMTS</em>) as a
 characteristic of steel strength, [\(MPa\)].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>depth</dt>
 <dd><p>measured maximum depth of the corroded area, [<em>mm</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>l</dt>
 <dd><p>measured maximum longitudinal length of corroded area, [<em>mm</em>].
 Type: <code>assert_double</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Estimated failure pressure of the corroded pipe, [\(MPa\)].
+    
+
+<p>Estimated failure pressure of the corroded pipe, [\(MPa\)].
  Type: <code>assert_double</code>.</p>
     </div>
     <div id="references">
@@ -135,17 +146,17 @@ Type: <code>assert_double</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">d</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">812.8</span>, <span class="fl">219.0</span><span class="op">)</span>  <span class="co"># [mm]</span></span>
-<span class="r-in"><span class="va">wth</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="fl">19.1</span>,  <span class="fl">14.5</span><span class="op">)</span>  <span class="co"># [mm]</span></span>
-<span class="r-in"><span class="va">uts</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">530.9</span>, <span class="fl">455.1</span><span class="op">)</span>   <span class="co"># [N/mm^2]</span></span>
-<span class="r-in"><span class="va">l</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">203.2</span>, <span class="fl">200.0</span><span class="op">)</span>  <span class="co"># [mm]</span></span>
-<span class="r-in"><span class="va">depth</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="fl">13.4</span>,   <span class="fl">9.0</span><span class="op">)</span>   <span class="co"># [mm]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">pcorrcpf</span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">uts</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">d</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">812.8</span>, <span class="fl">219.0</span><span class="op">)</span>  <span class="co"># [mm]</span></span></span>
+<span class="r-in"><span><span class="va">wth</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="fl">19.1</span>,  <span class="fl">14.5</span><span class="op">)</span>  <span class="co"># [mm]</span></span></span>
+<span class="r-in"><span><span class="va">uts</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">530.9</span>, <span class="fl">455.1</span><span class="op">)</span>   <span class="co"># [N/mm^2]</span></span></span>
+<span class="r-in"><span><span class="va">l</span>     <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">203.2</span>, <span class="fl">200.0</span><span class="op">)</span>  <span class="co"># [mm]</span></span></span>
+<span class="r-in"><span><span class="va">depth</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span> <span class="fl">13.4</span>,   <span class="fl">9.0</span><span class="op">)</span>   <span class="co"># [mm]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">pcorrcpf</span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">uts</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 16.35449 33.01288</span>
-<span class="r-in"><span class="co"># [1] 16.35449 33.01288</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="co"># [1] 16.35449 33.01288</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -160,7 +171,7 @@ Type: <code>assert_double</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

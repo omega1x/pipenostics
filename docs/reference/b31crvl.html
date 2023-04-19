@@ -20,7 +20,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -30,7 +30,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -56,35 +56,52 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">b31crvl</span><span class="op">(</span><span class="va">maop</span>, <span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, def <span class="op">=</span> <span class="fl">0.72</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">b31crvl</span><span class="op">(</span><span class="va">maop</span>, <span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, def <span class="op">=</span> <span class="fl">0.72</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>maop</dt>
 <dd><p>maximum allowable operating pressure - <em>MAOP</em>, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>d</dt>
 <dd><p>nominal outside diameter of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>wth</dt>
 <dd><p>nominal wall thickness of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>smys</dt>
 <dd><p>specified minimum yield of stress (<em>SMYS</em>) as a
 characteristics of steel strength, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>def</dt>
 <dd><p>appropriate (combined) design factor from
 <a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.4.2002.pdf" class="external-link">ASME B31.4</a>,
 <a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.8.2003.pdf" class="external-link">ASME B31.8</a>,
 or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems" class="external-link">ASME B31.11</a>,
 []. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>depth</dt>
 <dd><p>measured maximum depth of the corroded area, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>l</dt>
 <dd><p>measured maximum longitudinal length of the corroded area, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Object of <em>S3</em>-class <em>crvl</em> which is a <em>data.frame</em> with
- the next numeric columns:</p><dl><dt>maop</dt>
+    
+
+<p>Object of <em>S3</em>-class <em>crvl</em> which is a <em>data.frame</em> with
+ the next numeric columns:</p>
+<p></p>
+<dl><dt>maop</dt>
 <dd><p>maximum allowable operating pressure - <em>MAOP</em>, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></dd>
 
   <dt>d</dt>
@@ -171,12 +188,12 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co">## Further examples are inspired by those used in Appendix A of</span></span>
-<span class="r-in"><span class="co">## ASME B31G-1991 to verify correct entry of CRVL.BAS source code</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Example 1</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">910</span>, d <span class="op">=</span> <span class="fl">30</span>, wth <span class="op">=</span> <span class="fl">.438</span>, smys <span class="op">=</span> <span class="fl">52000</span>, def  <span class="op">=</span> <span class="fl">.72</span>, depth <span class="op">=</span> <span class="fl">.1</span>, l <span class="op">=</span> <span class="fl">7.5</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Further examples are inspired by those used in Appendix A of</span></span></span>
+<span class="r-in"><span><span class="co">## ASME B31G-1991 to verify correct entry of CRVL.BAS source code</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Example 1</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">910</span>, d <span class="op">=</span> <span class="fl">30</span>, wth <span class="op">=</span> <span class="fl">.438</span>, smys <span class="op">=</span> <span class="fl">52000</span>, def  <span class="op">=</span> <span class="fl">.72</span>, depth <span class="op">=</span> <span class="fl">.1</span>, l <span class="op">=</span> <span class="fl">7.5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 1.847</span>
@@ -184,17 +201,17 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pipe may be operated safely at MAOP, 910 PSI</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># -- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 1.847</span></span>
-<span class="r-in"><span class="co"># Design pressure = 1093 PSI; Safe pressure = 1093 PSI</span></span>
-<span class="r-in"><span class="co"># Pipe may be operated safely at MAOP, 910 PSI</span></span>
-<span class="r-in"><span class="co"># With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Example 2</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">400</span>, d <span class="op">=</span> <span class="fl">20</span>, wth <span class="op">=</span> <span class="fl">.25</span>, smys <span class="op">=</span> <span class="fl">35000</span>, def  <span class="op">=</span> <span class="fl">0.5</span>, depth <span class="op">=</span> <span class="fl">0.18</span>, l <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># -- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 1.847</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 1093 PSI; Safe pressure = 1093 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Pipe may be operated safely at MAOP, 910 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Example 2</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">400</span>, d <span class="op">=</span> <span class="fl">20</span>, wth <span class="op">=</span> <span class="fl">.25</span>, smys <span class="op">=</span> <span class="fl">35000</span>, def  <span class="op">=</span> <span class="fl">0.5</span>, depth <span class="op">=</span> <span class="fl">0.18</span>, l <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 3.993</span>
@@ -202,17 +219,17 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> Reduce operating pressure so it will not exceed 284 PSI, and so operate legally and safely</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 10.000 inch, maximum allowed corrosion depth is 0.0790 inch; A = 3.993</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.180 inch, maximum allowed corrosion length is 2.0180 inch; A = 0.806</span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># -- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 3.993</span></span>
-<span class="r-in"><span class="co"># Design pressure = 438 PSI; Safe pressure = 284 PSI</span></span>
-<span class="r-in"><span class="co"># Reduce operating pressure so it will not exceed 284 PSI, and so operate legally and safely</span></span>
-<span class="r-in"><span class="co"># With corrosion length 10.000 inch, maximum allowed corrosion depth is 0.0790 inch; A = 3.993</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.180 inch, maximum allowed corrosion length is 2.0180 inch; A = 0.806</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Example 3</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">910</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.432</span>, smys <span class="op">=</span> <span class="fl">52000</span>, def  <span class="op">=</span> <span class="fl">.72</span>, depth <span class="op">=</span> <span class="fl">0.13</span>, l <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># -- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 3.993</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 438 PSI; Safe pressure = 284 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Reduce operating pressure so it will not exceed 284 PSI, and so operate legally and safely</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 10.000 inch, maximum allowed corrosion depth is 0.0790 inch; A = 3.993</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.180 inch, maximum allowed corrosion length is 2.0180 inch; A = 0.806</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Example 3</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">910</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.432</span>, smys <span class="op">=</span> <span class="fl">52000</span>, def  <span class="op">=</span> <span class="fl">.72</span>, depth <span class="op">=</span> <span class="fl">0.13</span>, l <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 8.320</span>
@@ -220,17 +237,17 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pipe may be operated safely at MAOP, 910 PSI</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 30.000 inch, maximum allowed corrosion depth is 0.1670 inch; A = 8.320</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.130 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># -- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 8.320</span></span>
-<span class="r-in"><span class="co"># Design pressure = 1348 PSI; Safe pressure = 1037 PSI</span></span>
-<span class="r-in"><span class="co"># Pipe may be operated safely at MAOP, 910 PSI</span></span>
-<span class="r-in"><span class="co"># With corrosion length 30.000 inch, maximum allowed corrosion depth is 0.1670 inch; A = 8.320</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.130 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Example 4</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">910</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.432</span>, smys <span class="op">=</span> <span class="fl">52000</span>, def  <span class="op">=</span> <span class="fl">.72</span>, depth <span class="op">=</span> <span class="fl">.3</span>, l <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># -- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 8.320</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 1348 PSI; Safe pressure = 1037 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Pipe may be operated safely at MAOP, 910 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 30.000 inch, maximum allowed corrosion depth is 0.1670 inch; A = 8.320</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.130 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Example 4</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">910</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.432</span>, smys <span class="op">=</span> <span class="fl">52000</span>, def  <span class="op">=</span> <span class="fl">.72</span>, depth <span class="op">=</span> <span class="fl">.3</span>, l <span class="op">=</span> <span class="fl">30</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 8.320</span>
@@ -238,17 +255,17 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> Reduce operating pressure so it will not exceed 453 PSI, and so operate legally and safely</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 30.000 inch, maximum allowed corrosion depth is 0.1670 inch; A = 8.320</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.300 inch, maximum allowed corrosion length is 12.8670 inch; A = 3.568</span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># -- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 8.320</span></span>
-<span class="r-in"><span class="co"># Design pressure = 1348 PSI; Safe pressure = 453 PSI</span></span>
-<span class="r-in"><span class="co"># Reduce operating pressure so it will not exceed 453 PSI, and so operate legally and safely</span></span>
-<span class="r-in"><span class="co"># With corrosion length 30.000 inch, maximum allowed corrosion depth is 0.1670 inch; A = 8.320</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.300 inch, maximum allowed corrosion length is 12.8670 inch; A = 3.568</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Example 5</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">731</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.281</span>, smys <span class="op">=</span> <span class="fl">52000</span>, def  <span class="op">=</span> <span class="fl">0.72</span>, depth <span class="op">=</span> <span class="fl">0.08</span>, l <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># -- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 8.320</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 1348 PSI; Safe pressure = 453 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Reduce operating pressure so it will not exceed 453 PSI, and so operate legally and safely</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 30.000 inch, maximum allowed corrosion depth is 0.1670 inch; A = 8.320</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.300 inch, maximum allowed corrosion length is 12.8670 inch; A = 3.568</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Example 5</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">731</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.281</span>, smys <span class="op">=</span> <span class="fl">52000</span>, def  <span class="op">=</span> <span class="fl">0.72</span>, depth <span class="op">=</span> <span class="fl">0.08</span>, l <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 5.158</span>
@@ -256,17 +273,17 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> Reduce operating pressure so it will not exceed 690 PSI, and so operate legally and safely</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 15.000 inch, maximum allowed corrosion depth is 0.0680 inch; A = 5.158</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.080 inch, maximum allowed corrosion length is 11.6340 inch; A = 4.000</span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># -- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 5.158</span></span>
-<span class="r-in"><span class="co"># Design pressure = 877 PSI; Safe pressure = 690 PSI</span></span>
-<span class="r-in"><span class="co"># Reduce operating pressure so it will not exceed 690 PSI, and so operate legally and safely</span></span>
-<span class="r-in"><span class="co"># With corrosion length 15.000 inch, maximum allowed corrosion depth is 0.0680 inch; A = 5.158</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.080 inch, maximum allowed corrosion length is 11.6340 inch; A = 4.000</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Example 6</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">1e3</span>, d <span class="op">=</span> <span class="fl">36</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">52000</span>, def  <span class="op">=</span> <span class="fl">0.72</span>, depth <span class="op">=</span> <span class="fl">0.41</span>, l <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># -- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 5.158</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 877 PSI; Safe pressure = 690 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Reduce operating pressure so it will not exceed 690 PSI, and so operate legally and safely</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 15.000 inch, maximum allowed corrosion depth is 0.0680 inch; A = 5.158</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.080 inch, maximum allowed corrosion length is 11.6340 inch; A = 4.000</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Example 6</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">1e3</span>, d <span class="op">=</span> <span class="fl">36</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">52000</span>, def  <span class="op">=</span> <span class="fl">0.72</span>, depth <span class="op">=</span> <span class="fl">0.41</span>, l <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Alert! Corrosion depth exceeds 80 % of pipe wall! Pipe must be replaced!</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 21.048</span>
@@ -276,19 +293,19 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 100.000 inch, maximum allowed corrosion depth is 0.0630 inch; A = 21.048</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.410 inch, maximum allowed corrosion length is 2.5560 inch; A = 0.538</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> But 0.410 inch exceeds allowable corrosion depth!!!</span>
-<span class="r-in"><span class="co"># Alert! Corrosion depth exceeds 80 % of pipe wall! Pipe must be replaced!</span></span>
-<span class="r-in"><span class="co"># -- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 21.048</span></span>
-<span class="r-in"><span class="co"># Design pressure = 1040 PSI; Safe pressure = 206 PSI</span></span>
-<span class="r-in"><span class="co"># Repair or replace pipe because corrosion depth exceeds 80 % of pipe wall!</span></span>
-<span class="r-in"><span class="co"># Reduce operating pressure so it will not exceed 206 PSI, and so operate legally and safely</span></span>
-<span class="r-in"><span class="co"># With corrosion length 100.000 inch, maximum allowed corrosion depth is 0.0630 inch; A = 21.048</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.410 inch, maximum allowed corrosion length is 2.5560 inch; A = 0.538</span></span>
-<span class="r-in"><span class="co"># But 0.410 inch exceeds allowable corrosion depth!!!</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Example 7</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">877</span>, d <span class="op">=</span> <span class="fl">12.625</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">35000</span>, def  <span class="op">=</span> <span class="fl">.4</span>, depth <span class="op">=</span> <span class="fl">.035</span>, l <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># Alert! Corrosion depth exceeds 80 % of pipe wall! Pipe must be replaced!</span></span></span>
+<span class="r-in"><span><span class="co"># -- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 21.048</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 1040 PSI; Safe pressure = 206 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Repair or replace pipe because corrosion depth exceeds 80 % of pipe wall!</span></span></span>
+<span class="r-in"><span><span class="co"># Reduce operating pressure so it will not exceed 206 PSI, and so operate legally and safely</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 100.000 inch, maximum allowed corrosion depth is 0.0630 inch; A = 21.048</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.410 inch, maximum allowed corrosion length is 2.5560 inch; A = 0.538</span></span></span>
+<span class="r-in"><span><span class="co"># But 0.410 inch exceeds allowable corrosion depth!!!</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Example 7</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">877</span>, d <span class="op">=</span> <span class="fl">12.625</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">35000</span>, def  <span class="op">=</span> <span class="fl">.4</span>, depth <span class="op">=</span> <span class="fl">.035</span>, l <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Corrosion depth is less than 10 % of pipe wall. No resrictions on operation</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 1.066</span>
@@ -296,17 +313,17 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pipe may be operated safely at MAOP, 877 PSI</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 3.000 inch, maximum allowed corrosion depth is 0.4000 inch; A = 1.066</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.035 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span>
-<span class="r-in"><span class="co"># Corrosion depth is less than 10 % of pipe wall. No resrictions on operation</span></span>
-<span class="r-in"><span class="co"># -- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 1.066</span></span>
-<span class="r-in"><span class="co"># Design pressure = 1109 PSI; Safe pressure = 1109 PSI</span></span>
-<span class="r-in"><span class="co"># Pipe may be operated safely at MAOP, 877 PSI</span></span>
-<span class="r-in"><span class="co"># With corrosion length 3.000 inch, maximum allowed corrosion depth is 0.4000 inch; A = 1.066</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.035 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Example 8</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">790</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">42000</span>, def  <span class="op">=</span> <span class="fl">.5</span>, depth <span class="op">=</span> <span class="fl">.125</span>, l <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># Corrosion depth is less than 10 % of pipe wall. No resrictions on operation</span></span></span>
+<span class="r-in"><span><span class="co"># -- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 1.066</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 1109 PSI; Safe pressure = 1109 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Pipe may be operated safely at MAOP, 877 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 3.000 inch, maximum allowed corrosion depth is 0.4000 inch; A = 1.066</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.035 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Example 8</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">790</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">42000</span>, def  <span class="op">=</span> <span class="fl">.5</span>, depth <span class="op">=</span> <span class="fl">.125</span>, l <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 3.093</span>
@@ -314,17 +331,17 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pipe may be operated safely at MAOP, 790 PSI</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 12.000 inch, maximum allowed corrosion depth is 0.1790 inch; A = 3.093</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.125 inch, maximum allowed corrosion length is 15.5190 inch; A = 4.000</span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># -- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 3.093</span></span>
-<span class="r-in"><span class="co"># Design pressure = 875 PSI; Safe pressure = 845 PSI</span></span>
-<span class="r-in"><span class="co"># Pipe may be operated safely at MAOP, 790 PSI</span></span>
-<span class="r-in"><span class="co"># With corrosion length 12.000 inch, maximum allowed corrosion depth is 0.1790 inch; A = 3.093</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.125 inch, maximum allowed corrosion length is 15.5190 inch; A = 4.000</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## TEST #1</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">790</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">42000</span>, def  <span class="op">=</span> <span class="fl">.5</span>, depth <span class="op">=</span> <span class="fl">.179</span>, l <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># -- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 3.093</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 875 PSI; Safe pressure = 845 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Pipe may be operated safely at MAOP, 790 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 12.000 inch, maximum allowed corrosion depth is 0.1790 inch; A = 3.093</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.125 inch, maximum allowed corrosion length is 15.5190 inch; A = 4.000</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## TEST #1</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">790</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">42000</span>, def  <span class="op">=</span> <span class="fl">.5</span>, depth <span class="op">=</span> <span class="fl">.179</span>, l <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 3.093</span>
@@ -332,17 +349,17 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pipe may be operated safely at MAOP, 790 PSI</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 12.000 inch, maximum allowed corrosion depth is 0.1790 inch; A = 3.093</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.179 inch, maximum allowed corrosion length is 12.1820 inch; A = 3.140</span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co">#-- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 3.093</span></span>
-<span class="r-in"><span class="co"># Design pressure = 875 PSI; Safe pressure = 791 PSI</span></span>
-<span class="r-in"><span class="co"># Pipe may be operated safely at MAOP, 790 PSI</span></span>
-<span class="r-in"><span class="co"># With corrosion length 12.000 inch, maximum allowed corrosion depth is 0.1790 inch; A = 3.093</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.179 inch, maximum allowed corrosion length is 12.1820 inch; A = 3.140</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## TEST #1A</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">790</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">42000</span>, def  <span class="op">=</span> <span class="fl">.5</span>, depth <span class="op">=</span> <span class="fl">.179</span>, l <span class="op">=</span> <span class="fl">12.182</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co">#-- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 3.093</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 875 PSI; Safe pressure = 791 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Pipe may be operated safely at MAOP, 790 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 12.000 inch, maximum allowed corrosion depth is 0.1790 inch; A = 3.093</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.179 inch, maximum allowed corrosion length is 12.1820 inch; A = 3.140</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## TEST #1A</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">790</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">42000</span>, def  <span class="op">=</span> <span class="fl">.5</span>, depth <span class="op">=</span> <span class="fl">.179</span>, l <span class="op">=</span> <span class="fl">12.182</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 3.140</span>
@@ -350,17 +367,17 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pipe may be operated safely at MAOP, 790 PSI</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 12.182 inch, maximum allowed corrosion depth is 0.1780 inch; A = 3.140</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.179 inch, maximum allowed corrosion length is 12.1820 inch; A = 3.140</span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># -- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 3.140</span></span>
-<span class="r-in"><span class="co"># Design pressure = 875 PSI; Safe pressure = 790 PSI</span></span>
-<span class="r-in"><span class="co"># Pipe may be operated safely at MAOP, 790 PSI</span></span>
-<span class="r-in"><span class="co"># With corrosion length 12.182 inch, maximum allowed corrosion depth is 0.1780 inch; A = 3.140</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.179 inch, maximum allowed corrosion length is 12.1820 inch; A = 3.140</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## TEST #1B</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">790</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">42000</span>, def  <span class="op">=</span> <span class="fl">.5</span>, depth <span class="op">=</span> <span class="fl">.180</span>, l <span class="op">=</span> <span class="fl">12.182</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># -- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 3.140</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 875 PSI; Safe pressure = 790 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Pipe may be operated safely at MAOP, 790 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 12.182 inch, maximum allowed corrosion depth is 0.1780 inch; A = 3.140</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.179 inch, maximum allowed corrosion length is 12.1820 inch; A = 3.140</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## TEST #1B</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">790</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">42000</span>, def  <span class="op">=</span> <span class="fl">.5</span>, depth <span class="op">=</span> <span class="fl">.180</span>, l <span class="op">=</span> <span class="fl">12.182</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 3.140</span>
@@ -368,17 +385,17 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> Reduce operating pressure so it will not exceed 789 PSI, and so operate legally and safely</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 12.182 inch, maximum allowed corrosion depth is 0.1780 inch; A = 3.140</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.180 inch, maximum allowed corrosion length is 11.9610 inch; A = 3.083</span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># -- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 3.140</span></span>
-<span class="r-in"><span class="co"># Design pressure = 875 PSI; Safe pressure = 789 PSI</span></span>
-<span class="r-in"><span class="co"># Reduce operating pressure so it will not exceed 789 PSI, and so operate legally and safely</span></span>
-<span class="r-in"><span class="co"># With corrosion length 12.182 inch, maximum allowed corrosion depth is 0.1780 inch; A = 3.140</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.180 inch, maximum allowed corrosion length is 11.9610 inch; A = 3.083</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## TEST #2</span></span>
-<span class="r-in"><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">790</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">42000</span>, def  <span class="op">=</span> <span class="fl">.5</span>, depth <span class="op">=</span> <span class="fl">.179</span>, l <span class="op">=</span> <span class="fl">12.297</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># -- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 3.140</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 875 PSI; Safe pressure = 789 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Reduce operating pressure so it will not exceed 789 PSI, and so operate legally and safely</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 12.182 inch, maximum allowed corrosion depth is 0.1780 inch; A = 3.140</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.180 inch, maximum allowed corrosion length is 11.9610 inch; A = 3.083</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## TEST #2</span></span></span>
+<span class="r-in"><span><span class="fu">b31crvl</span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">790</span>, d <span class="op">=</span> <span class="fl">24</span>, wth <span class="op">=</span> <span class="fl">.5</span>, smys <span class="op">=</span> <span class="fl">42000</span>, def  <span class="op">=</span> <span class="fl">.5</span>, depth <span class="op">=</span> <span class="fl">.179</span>, l <span class="op">=</span> <span class="fl">12.297</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -- Calculated data --</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intermediate factor (A) = 3.170</span>
@@ -386,19 +403,19 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 <span class="r-out co"><span class="r-pr">#&gt;</span> Reduce operating pressure so it will not exceed 789 PSI, and so operate legally and safely</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion length 12.297 inch, maximum allowed corrosion depth is 0.1780 inch; A = 3.170</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> With corrosion depth 0.179 inch, maximum allowed corrosion length is 12.1820 inch; A = 3.140</span>
-<span class="r-in"><span class="co">#</span></span>
-<span class="r-in"><span class="co"># -- Calculated data --</span></span>
-<span class="r-in"><span class="co"># Intermediate factor (A) = 3.170</span></span>
-<span class="r-in"><span class="co"># Design pressure = 875 PSI; Safe pressure = 789 PSI</span></span>
-<span class="r-in"><span class="co"># Reduce operating pressure so it will not exceed 789 PSI, and so operate legally and safely</span></span>
-<span class="r-in"><span class="co"># With corrosion length 12.297 inch, maximum allowed corrosion depth is 0.1780 inch; A = 3.170</span></span>
-<span class="r-in"><span class="co"># With corrosion depth 0.179 inch, maximum allowed corrosion length is 12.1820 inch; A = 3.140</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## All examples at once:</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">b31gdata</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">examples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">b31gdata</span>, <span class="fu">b31crvl</span><span class="op">(</span><span class="va">maop</span>, <span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">def</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="co">#</span></span></span>
+<span class="r-in"><span><span class="co"># -- Calculated data --</span></span></span>
+<span class="r-in"><span><span class="co"># Intermediate factor (A) = 3.170</span></span></span>
+<span class="r-in"><span><span class="co"># Design pressure = 875 PSI; Safe pressure = 789 PSI</span></span></span>
+<span class="r-in"><span><span class="co"># Reduce operating pressure so it will not exceed 789 PSI, and so operate legally and safely</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion length 12.297 inch, maximum allowed corrosion depth is 0.1780 inch; A = 3.170</span></span></span>
+<span class="r-in"><span><span class="co"># With corrosion depth 0.179 inch, maximum allowed corrosion length is 12.1820 inch; A = 3.140</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## All examples at once:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">b31gdata</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">examples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">b31gdata</span>, <span class="fu">b31crvl</span><span class="op">(</span><span class="va">maop</span>, <span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">def</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -413,7 +430,7 @@ or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slu
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

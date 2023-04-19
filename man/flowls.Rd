@@ -42,9 +42,6 @@ all relate to common part of district heating network, i.e. associated with
 common object. It is due to isomorphism between vector representation and
 directed graph of this network. For more details of isomorphic topology
 description see \code{\link{m325testbench}}.
-
-For possibly better performance, they search paths of heat carrier flow
-in parallel leveraging the functionality of package \code{\link{parallel}}.
 }
 \examples{
 \donttest{

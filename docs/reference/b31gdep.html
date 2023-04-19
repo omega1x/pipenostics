@@ -20,7 +20,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -30,7 +30,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -56,28 +56,37 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">b31gdep</span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">def</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">b31gdep</span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">def</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>d</dt>
 <dd><p>nominal outside diameter of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>wth</dt>
 <dd><p>nominal wall thickness of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>smys</dt>
 <dd><p>specified minimum yield of stress (<em>SMYS</em>) as a
 characteristics of steel strength, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>def</dt>
 <dd><p>appropriate (combined) design factor from
 <a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.4.2002.pdf" class="external-link">ASME B31.4</a>,
 <a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.8.2003.pdf" class="external-link">ASME B31.8</a>,
 or <a href="https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems" class="external-link">ASME B31.11</a>, [].
 Type: <code>assert_double</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Design pressure of the pipe, [<em>PSI</em>]. Type: <code>assert_double</code>.</p>
+    
+
+<p>Design pressure of the pipe, [<em>PSI</em>]. Type: <code>assert_double</code>.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -100,10 +109,10 @@ Type: <code>assert_double</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="fu">b31gdep</span><span class="op">(</span><span class="fl">30</span>, <span class="fl">.438</span>, <span class="fl">52e3</span>, <span class="fl">.72</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="fu">b31gdep</span><span class="op">(</span><span class="fl">30</span>, <span class="fl">.438</span>, <span class="fl">52e3</span>, <span class="fl">.72</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1093.748</span>
-<span class="r-in"> <span class="co"># [1] 1093.748  # [PSI]</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span> <span class="co"># [1] 1093.748  # [PSI]</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -118,7 +127,7 @@ Type: <code>assert_double</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

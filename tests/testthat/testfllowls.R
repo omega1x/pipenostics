@@ -1,7 +1,7 @@
 library(pipenostics)
 
 test_that("*flowls* errs in listing paths", {
-  skip_on_cran()
+  #skip_on_cran()
   all_paths <- list(
     c(12, 13, 11, 8, 4, 1),  # hereinafter indexes of acceptor nodes
     c(12, 13, 11, 8, 4, 2),

@@ -23,7 +23,7 @@ There dcor represents argument depth."><!-- mathjax --><script src="https://cdnj
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -33,7 +33,7 @@ There dcor represents argument depth."><!-- mathjax --><script src="https://cdnj
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -62,26 +62,37 @@ There dcor represents argument depth."><!-- mathjax --><script src="https://cdnj
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">b31gmodpf</span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">b31gmodpf</span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>d</dt>
 <dd><p>nominal outside diameter of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>wth</dt>
 <dd><p>nominal wall thickness of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>smys</dt>
 <dd><p>specified minimum yield of stress (<em>SMYS</em>) as a
 characteristics of steel strength, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>depth</dt>
 <dd><p>measured maximum depth of the corroded area, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>l</dt>
 <dd><p>measured maximum longitudinal length of corroded area, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Estimated failure pressure of the corroded pipe, [<em>PSI</em>]. Type: <code>assert_double</code>.</p>
+    
+
+<p>Estimated failure pressure of the corroded pipe, [<em>PSI</em>]. Type: <code>assert_double</code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -125,38 +136,38 @@ characteristics of steel strength, [<em>PSI</em>]. Type: <code>assert_double</co
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="co">## Example: maximum percentage disparity of original B31G</span></span>
-<span class="r-in"> <span class="co">## algorithm and modified B31G showed on CRVL.BAS data</span></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">b31gdata</span>, <span class="op">{</span></span>
-<span class="r-in">   <span class="va">original</span>  <span class="op">&lt;-</span> <span class="fu"><a href="b31gpf.html">b31gpf</a></span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span>
-<span class="r-in">   <span class="va">modified</span>  <span class="op">&lt;-</span> <span class="fu">b31gmodpf</span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">original</span><span class="op">/</span><span class="va">modified</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span></span>
-<span class="r-in"> <span class="op">}</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="co">## Example: maximum percentage disparity of original B31G</span></span></span>
+<span class="r-in"><span> <span class="co">## algorithm and modified B31G showed on CRVL.BAS data</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">b31gdata</span>, <span class="op">{</span></span></span>
+<span class="r-in"><span>   <span class="va">original</span>  <span class="op">&lt;-</span> <span class="fu"><a href="b31gpf.html">b31gpf</a></span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="va">modified</span>  <span class="op">&lt;-</span> <span class="fu">b31gmodpf</span><span class="op">(</span><span class="va">d</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="fl">100</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">original</span><span class="op">/</span><span class="va">modified</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">4</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32.6666</span>
-<span class="r-in"> <span class="co">## Output:</span></span>
-<span class="r-in"> <span class="co">#[1] 32.6666</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="co">## Example: plot disparity of original B31G algorithm and</span></span>
-<span class="r-in"> <span class="co">## modified B31G showed on CRVL data</span></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">b31gdata</span><span class="op">[</span><span class="op">-</span><span class="op">(</span><span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span>,<span class="op">]</span>, <span class="op">{</span></span>
-<span class="r-in">   <span class="va">b31g</span>  <span class="op">&lt;-</span> <span class="fu"><a href="b31gpf.html">b31gpf</a></span><span class="op">(</span><span class="va">depth</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span>
-<span class="r-in">   <span class="va">b31gmod</span>  <span class="op">&lt;-</span> <span class="fu">b31gmodpf</span><span class="op">(</span><span class="va">depth</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span>
-<span class="r-in">   <span class="va">axe_range</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">b31g</span>, <span class="va">b31gmod</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">b31g</span>, <span class="va">b31g</span>, type <span class="op">=</span> <span class="st">'b'</span>, pch <span class="op">=</span> <span class="fl">16</span>,</span>
-<span class="r-in">        xlab <span class="op">=</span> <span class="st">'Pressure, [PSI]'</span>,</span>
-<span class="r-in">        ylab <span class="op">=</span> <span class="st">'Pressure, [PSI]'</span>,</span>
-<span class="r-in">        main <span class="op">=</span> <span class="st">'Failure pressure method comparison'</span>,</span>
-<span class="r-in">        xlim <span class="op">=</span> <span class="va">axe_range</span>, ylim <span class="op">=</span> <span class="va">axe_range</span><span class="op">)</span></span>
-<span class="r-in">   <span class="va">inc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">b31g</span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">b31g</span><span class="op">[</span><span class="va">inc</span><span class="op">]</span>, <span class="va">b31gmod</span><span class="op">[</span><span class="va">inc</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">'b'</span>, col <span class="op">=</span> <span class="st">'red'</span><span class="op">)</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">'topleft'</span>,</span>
-<span class="r-in">          legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'B31G Original'</span>,</span>
-<span class="r-in">                     <span class="st">'B31G Modified'</span><span class="op">)</span>,</span>
-<span class="r-in">          col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'black'</span>, <span class="st">'red'</span><span class="op">)</span>,</span>
-<span class="r-in">          lty <span class="op">=</span> <span class="st">'solid'</span><span class="op">)</span></span>
-<span class="r-in"> <span class="op">}</span><span class="op">)</span></span>
+<span class="r-in"><span> <span class="co">## Output:</span></span></span>
+<span class="r-in"><span> <span class="co">#[1] 32.6666</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="co">## Example: plot disparity of original B31G algorithm and</span></span></span>
+<span class="r-in"><span> <span class="co">## modified B31G showed on CRVL data</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">b31gdata</span><span class="op">[</span><span class="op">-</span><span class="op">(</span><span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span>,<span class="op">]</span>, <span class="op">{</span></span></span>
+<span class="r-in"><span>   <span class="va">b31g</span>  <span class="op">&lt;-</span> <span class="fu"><a href="b31gpf.html">b31gpf</a></span><span class="op">(</span><span class="va">depth</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="va">b31gmod</span>  <span class="op">&lt;-</span> <span class="fu">b31gmodpf</span><span class="op">(</span><span class="va">depth</span>, <span class="va">wth</span>, <span class="va">smys</span>, <span class="va">depth</span>, <span class="va">l</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="va">axe_range</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html" class="external-link">range</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">b31g</span>, <span class="va">b31gmod</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">b31g</span>, <span class="va">b31g</span>, type <span class="op">=</span> <span class="st">'b'</span>, pch <span class="op">=</span> <span class="fl">16</span>,</span></span>
+<span class="r-in"><span>        xlab <span class="op">=</span> <span class="st">'Pressure, [PSI]'</span>,</span></span>
+<span class="r-in"><span>        ylab <span class="op">=</span> <span class="st">'Pressure, [PSI]'</span>,</span></span>
+<span class="r-in"><span>        main <span class="op">=</span> <span class="st">'Failure pressure method comparison'</span>,</span></span>
+<span class="r-in"><span>        xlim <span class="op">=</span> <span class="va">axe_range</span>, ylim <span class="op">=</span> <span class="va">axe_range</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="va">inc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">b31g</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span><span class="va">b31g</span><span class="op">[</span><span class="va">inc</span><span class="op">]</span>, <span class="va">b31gmod</span><span class="op">[</span><span class="va">inc</span><span class="op">]</span>, type <span class="op">=</span> <span class="st">'b'</span>, col <span class="op">=</span> <span class="st">'red'</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">'topleft'</span>,</span></span>
+<span class="r-in"><span>          legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'B31G Original'</span>,</span></span>
+<span class="r-in"><span>                     <span class="st">'B31G Modified'</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>          col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'black'</span>, <span class="st">'red'</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>          lty <span class="op">=</span> <span class="st">'solid'</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="b31gmodpf-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -171,7 +182,7 @@ characteristics of steel strength, [<em>PSI</em>]. Type: <code>assert_double</co
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

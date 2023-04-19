@@ -142,7 +142,7 @@ to create a file and write to it.}
        Type: \code{\link{assert_character}}.
      }
 
-    \item{\code{trace}}{
+    \item{\code{tracing}}{
       concatenated identifiers of nodes from which regime parameters are
       traced for the given node. Identifier \code{sensor} is used when
       values of regime parameters for the node are sensor readings.
@@ -194,7 +194,7 @@ to create a file and write to it.}
    }
 
    \item{\code{job}}{
-     value of trace step counter.
+     value of tracing step counter.
      Type: \code{\link{assert_integer}}.
    }
  }

@@ -23,7 +23,7 @@ This type of calculations is usually made on design stage of district
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -33,7 +33,7 @@ This type of calculations is usually made on design stage of district
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -55,29 +55,29 @@ This type of calculations is usually made on design stage of district
     <p>Calculate values of heat flux emitted by overhead pipeline segment
  (surrounded by air) as a function of construction, operation,
  and technical condition  specifications according to
- Appendix 5.1 of <a href="http://www.complexdoc.ru/ntdtext/547103/" class="external-link">Minenergo Method 278</a>.</p>
+ Appendix 5.1 of <a href="https://docs.cntd.ru/document/1200035568" class="external-link">Minenergo Method 278</a>.</p>
 <p>This type of calculations is usually made on design stage of district
  heating network (where water is a heat carrier) and is closely related to
  building codes and regulations.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">m278hlair</span><span class="op">(</span>
-  t1 <span class="op">=</span> <span class="fl">110</span>,
-  t2 <span class="op">=</span> <span class="fl">60</span>,
-  t0 <span class="op">=</span> <span class="fl">5</span>,
-  insd1 <span class="op">=</span> <span class="fl">0.1</span>,
-  insd2 <span class="op">=</span> <span class="va">insd1</span>,
-  d1 <span class="op">=</span> <span class="fl">0.25</span>,
-  d2 <span class="op">=</span> <span class="va">d1</span>,
-  lambda1 <span class="op">=</span> <span class="fl">0.09</span>,
-  lambda2 <span class="op">=</span> <span class="fl">0.07</span>,
-  k1 <span class="op">=</span> <span class="fl">1</span>,
-  k2 <span class="op">=</span> <span class="va">k1</span>,
-  lambda0 <span class="op">=</span> <span class="fl">26</span>,
-  len <span class="op">=</span> <span class="fl">1</span>,
-  duration <span class="op">=</span> <span class="fl">1</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">m278hlair</span><span class="op">(</span></span>
+<span>  t1 <span class="op">=</span> <span class="fl">110</span>,</span>
+<span>  t2 <span class="op">=</span> <span class="fl">60</span>,</span>
+<span>  t0 <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  insd1 <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>  insd2 <span class="op">=</span> <span class="va">insd1</span>,</span>
+<span>  d1 <span class="op">=</span> <span class="fl">0.25</span>,</span>
+<span>  d2 <span class="op">=</span> <span class="va">d1</span>,</span>
+<span>  lambda1 <span class="op">=</span> <span class="fl">0.09</span>,</span>
+<span>  lambda2 <span class="op">=</span> <span class="fl">0.07</span>,</span>
+<span>  k1 <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  k2 <span class="op">=</span> <span class="va">k1</span>,</span>
+<span>  lambda0 <span class="op">=</span> <span class="fl">26</span>,</span>
+<span>  len <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  duration <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -85,54 +85,84 @@ This type of calculations is usually made on design stage of district
     <dl><dt>t1</dt>
 <dd><p>temperature of heat carrier (water) inside the supplying pipe, [<em>°C</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>t2</dt>
 <dd><p>temperature of heat carrier (water) inside the returning pipe, [<em>°C</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>t0</dt>
 <dd><p>temperature of environment, [<em>°C</em>]. In case of overhead laying this is
 the ambient temperature. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>insd1</dt>
 <dd><p>thickness of the insulator which covers the supplying pipe, [<em>m</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>insd2</dt>
 <dd><p>thickness of the insulator which covers the returning pipe, [<em>m</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>d1</dt>
 <dd><p>external diameter of supplying pipe, [<em>m</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>d2</dt>
 <dd><p>external diameter of returning pipe, [<em>m</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>lambda1</dt>
 <dd><p>thermal conductivity of insulator which covers the supplying pipe
 [<em>W/m/°C</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>lambda2</dt>
 <dd><p>thermal conductivity of insulator which covers the returning pipe
 [<em>W/m/°C</em>]. <code>assert_double</code>.</p></dd>
+
+
 <dt>k1</dt>
 <dd><p>technical condition factor for insulator of supplying pipe, [].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>k2</dt>
 <dd><p>technical condition factor for insulator of returning pipe, [].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>lambda0</dt>
 <dd><p>thermal conductivity of environment, [<em>W/m/°C</em>]. In case of overhead
 laying this is the thermal conductivity of open air.
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>len</dt>
 <dd><p>length of pipeline segment, [<em>m</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>duration</dt>
 <dd><p>duration of heat flux emittance, [<em>hour</em>]. Type: <code>assert_double</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Heat flux emitted by pipeline segment during <code>duration</code>, [<em>kcal</em>].
+    
+
+<p>Heat flux emitted by pipeline segment during <code>duration</code>, [<em>kcal</em>].
  If <code>len</code> of pipeline segment is 1 <em>m</em> and <code>duration</code> of
  heat flux emittance is set to 1 <em>hour</em> then the return value is equal
  to that in [<em>kcal/m/h</em>] units and so comparable with values of
- heat flux listed in
-<a href="http://docs.cntd.ru/document/902148459" class="external-link">Minenergo Order 325</a>.
+ heat flux listed in</p>
+<p></p>
+<p><a href="http://docs.cntd.ru/document/902148459" class="external-link">Minenergo Order 325</a>.
  Type: <code>assert_double</code>.</p>
     </div>
     <div id="details">
@@ -157,10 +187,10 @@ Type: <code>assert_double</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="fu">m278hlair</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="fu">m278hlair</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 138.7736</span>
-<span class="r-in"> <span class="co"># [1] 138.7736</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span> <span class="co"># [1] 138.7736</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -175,7 +205,7 @@ Type: <code>assert_double</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -19,7 +19,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -29,7 +29,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -54,18 +54,18 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">m325nhl</span><span class="op">(</span>
-  year <span class="op">=</span> <span class="fl">1986</span>,
-  laying <span class="op">=</span> <span class="st">"underground"</span>,
-  exp5k <span class="op">=</span> <span class="cn">TRUE</span>,
-  insulation <span class="op">=</span> <span class="fl">0</span>,
-  d <span class="op">=</span> <span class="fl">700</span>,
-  temperature <span class="op">=</span> <span class="fl">110</span>,
-  len <span class="op">=</span> <span class="fl">1</span>,
-  duration <span class="op">=</span> <span class="fl">1</span>,
-  beta <span class="op">=</span> <span class="cn">FALSE</span>,
-  extra <span class="op">=</span> <span class="fl">2</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">m325nhl</span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="fl">1986</span>,</span>
+<span>  laying <span class="op">=</span> <span class="st">"underground"</span>,</span>
+<span>  exp5k <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  insulation <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  d <span class="op">=</span> <span class="fl">700</span>,</span>
+<span>  temperature <span class="op">=</span> <span class="fl">110</span>,</span>
+<span>  len <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  duration <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  beta <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  extra <span class="op">=</span> <span class="fl">2</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -73,6 +73,8 @@
     <dl><dt>year</dt>
 <dd><p>year when the pipe is put in operation after laying or total overhaul.
 Type: <code>assert_integerish</code></p></dd>
+
+
 <dt>laying</dt>
 <dd><p>type of pipe laying depicting the position of pipe in space:</p><ul><li><p><code>air</code>,</p></li>
 <li><p><code>channel</code>,</p></li>
@@ -80,9 +82,13 @@ Type: <code>assert_integerish</code></p></dd>
 <li><p><code>tunnel</code>,</p></li>
 <li><p><code>underground</code>.</p></li>
 </ul><p>Type: <code>assert_subset</code>.</p></dd>
+
+
 <dt>exp5k</dt>
 <dd><p>pipe regime flag: is pipe operated more that 5000 hours per year?
 Type: <code>assert_logical</code>.</p></dd>
+
+
 <dt>insulation</dt>
 <dd><p>insulation that covers the exterior of pipe:</p><dl><dt><code>0</code></dt>
 <dd><p>no insulation</p></dd>
@@ -95,29 +101,45 @@ Type: <code>assert_logical</code>.</p></dd>
 
 
 </dl><p>Type: <code>assert_integer</code> and <code>assert_subset</code>.</p></dd>
+
+
 <dt>d</dt>
 <dd><p>internal diameter of pipe, [<em>mm</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>temperature</dt>
 <dd><p>temperature of heat carrier (water) inside the pipe, [<em>°C</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>len</dt>
 <dd><p>length of pipe, [<em>m</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>duration</dt>
 <dd><p>duration of heat flux emittance, [<em>hour</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>beta</dt>
 <dd><p>should they consider additional heat losses of fittings?
 Type: <code>assert_logical</code>.</p></dd>
+
+
 <dt>extra</dt>
 <dd><p>number of points used for temperature extrapolation: <code>2</code>, <code>3</code>,
 or <code>4</code>. Type: <code>assert_choice</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Heat flux emitted by pipe during <code>duration</code>, [<em>kcal</em>].
+    
+
+<p>Heat flux emitted by pipe during <code>duration</code>, [<em>kcal</em>].
  If <code>len</code> of pipe is 1 <em>m</em> and <code>duration</code> of heat flux
  emittance is set to 1 <em>hour</em> then the return value is in the same
- units as value of heat flux, [<em>kcal/m/h</em>], accepted by
-<a href="http://docs.cntd.ru/document/902148459" class="external-link">Minenergo Order 325</a>.
+ units as value of heat flux, [<em>kcal/m/h</em>], accepted by</p>
+<p></p>
+<p><a href="http://docs.cntd.ru/document/902148459" class="external-link">Minenergo Order 325</a>.
  Type: <code>assert_double</code>.</p>
     </div>
     <div id="details">
@@ -147,38 +169,38 @@ or <code>4</code>. Type: <code>assert_choice</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">m325nhldata</span>, <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="co">## Linear extrapolation adopted in Minenergo's Order 325 using last two points:</span></span>
-<span class="r-in"> <span class="va">temperature</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">270</span>, <span class="fl">10</span><span class="op">)</span>  <span class="co"># [°C]</span></span>
-<span class="r-in"> <span class="va">flux</span> <span class="op">&lt;-</span> <span class="fu">m325nhl</span><span class="op">(</span><span class="fl">1980</span>, <span class="st">"underground"</span>, <span class="cn">TRUE</span>, <span class="fl">0</span>, <span class="fl">73</span>, <span class="va">temperature</span><span class="op">)</span>  <span class="co"># [kcal/m/h]</span></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">temperature</span>, <span class="va">flux</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="co">## Consider heat losses of fittings:</span></span>
-<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span></span>
-<span class="r-in">   <span class="co">## when beta becomes 1.15</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span></span>
-<span class="r-in">     <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span></span>
-<span class="r-in">       <span class="fu">m325nhl</span><span class="op">(</span><span class="fl">1980</span>, <span class="st">"underground"</span>, d <span class="op">=</span> <span class="fl">73</span>, temperature <span class="op">=</span> <span class="fl">65</span>,</span>
-<span class="r-in">               beta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">       <span class="fl">3</span></span>
-<span class="r-in">     <span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">65.500</span>, <span class="fl">75.325</span><span class="op">)</span></span>
-<span class="r-in">   <span class="op">)</span>,</span>
-<span class="r-in"></span>
-<span class="r-in">   <span class="co">## when beta becomes 1.2</span></span>
-<span class="r-in">   <span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span></span>
-<span class="r-in">     <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span></span>
-<span class="r-in">       <span class="fu">m325nhl</span><span class="op">(</span><span class="fl">2000</span>, <span class="st">"channel"</span>, d <span class="op">=</span> <span class="fl">73</span>, temperature <span class="op">=</span> <span class="fl">65</span>,</span>
-<span class="r-in">               beta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">       <span class="fl">3</span></span>
-<span class="r-in">     <span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17.533</span>, <span class="fl">21.040</span><span class="op">)</span></span>
-<span class="r-in">   <span class="op">)</span></span>
-<span class="r-in"> <span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="va">m325nhldata</span>, <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="co">## Linear extrapolation adopted in Minenergo's Order 325 using last two points:</span></span></span>
+<span class="r-in"><span> <span class="va">temperature</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">270</span>, <span class="fl">10</span><span class="op">)</span>  <span class="co"># [°C]</span></span></span>
+<span class="r-in"><span> <span class="va">flux</span> <span class="op">&lt;-</span> <span class="fu">m325nhl</span><span class="op">(</span><span class="fl">1980</span>, <span class="st">"underground"</span>, <span class="cn">TRUE</span>, <span class="fl">0</span>, <span class="fl">73</span>, <span class="va">temperature</span><span class="op">)</span>  <span class="co"># [kcal/m/h]</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">temperature</span>, <span class="va">flux</span>, type <span class="op">=</span> <span class="st">"b"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="co">## Consider heat losses of fittings:</span></span></span>
+<span class="r-in"><span> <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>   <span class="co">## when beta becomes 1.15</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>     <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>       <span class="fu">m325nhl</span><span class="op">(</span><span class="fl">1980</span>, <span class="st">"underground"</span>, d <span class="op">=</span> <span class="fl">73</span>, temperature <span class="op">=</span> <span class="fl">65</span>,</span></span>
+<span class="r-in"><span>               beta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>       <span class="fl">3</span></span></span>
+<span class="r-in"><span>     <span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">65.500</span>, <span class="fl">75.325</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="op">)</span>,</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>   <span class="co">## when beta becomes 1.2</span></span></span>
+<span class="r-in"><span>   <span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>     <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>       <span class="fu">m325nhl</span><span class="op">(</span><span class="fl">2000</span>, <span class="st">"channel"</span>, d <span class="op">=</span> <span class="fl">73</span>, temperature <span class="op">=</span> <span class="fl">65</span>,</span></span>
+<span class="r-in"><span>               beta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>       <span class="fl">3</span></span></span>
+<span class="r-in"><span>     <span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17.533</span>, <span class="fl">21.040</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="m325nhl-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -193,7 +215,7 @@ or <code>4</code>. Type: <code>assert_choice</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

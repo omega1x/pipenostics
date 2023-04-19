@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -27,7 +27,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -50,26 +50,37 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">b31gacd</span><span class="op">(</span><span class="va">dep</span>, <span class="va">maop</span>, <span class="va">d</span>, <span class="va">wth</span>, <span class="va">l</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">b31gacd</span><span class="op">(</span><span class="va">dep</span>, <span class="va">maop</span>, <span class="va">d</span>, <span class="va">wth</span>, <span class="va">l</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>dep</dt>
 <dd><p>design pressure of the pipe, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>maop</dt>
 <dd><p>maximum allowable operating pressure - <em>MAOP</em>, [<em>PSI</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>d</dt>
 <dd><p>nominal outside diameter of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>wth</dt>
 <dd><p>nominal wall thickness of the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>l</dt>
 <dd><p>measured maximum longitudinal length of corroded area, [<em>inch</em>].
 Type: <code>assert_double</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>allowable depth of the corroded area in the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p>
+    
+
+<p>allowable depth of the corroded area in the pipe, [<em>inch</em>]. Type: <code>assert_double</code>.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -92,10 +103,10 @@ Type: <code>assert_double</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="fu">b31gacd</span><span class="op">(</span><span class="fl">1093</span>, <span class="fl">910</span>, <span class="fl">30</span>, <span class="fl">.438</span>, <span class="fl">7.5</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="fu">b31gacd</span><span class="op">(</span><span class="fl">1093</span>, <span class="fl">910</span>, <span class="fl">30</span>, <span class="fl">.438</span>, <span class="fl">7.5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.249</span>
-<span class="r-in"> <span class="co"># [1] 0.249  # [inch]</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span> <span class="co"># [1] 0.249  # [inch]</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -110,7 +121,7 @@ Type: <code>assert_double</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

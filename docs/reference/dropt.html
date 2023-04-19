@@ -19,7 +19,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -29,7 +29,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -54,7 +54,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dropt</span><span class="op">(</span>temperature <span class="op">=</span> <span class="fl">130</span>, pressure <span class="op">=</span> <span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>, consumption <span class="op">=</span> <span class="fl">250</span>, flux <span class="op">=</span> <span class="fl">7000</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dropt</span><span class="op">(</span>temperature <span class="op">=</span> <span class="fl">130</span>, pressure <span class="op">=</span> <span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>, consumption <span class="op">=</span> <span class="fl">250</span>, flux <span class="op">=</span> <span class="fl">7000</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -62,19 +62,28 @@
     <dl><dt>temperature</dt>
 <dd><p>temperature of heat carrier (water) inside the pipe measured at the
 inlet of pipe, [<em>°C</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>pressure</dt>
 <dd><p><a href="https://en.wikipedia.org/wiki/Pressure_measurement#Absolute" class="external-link">absolute pressure</a>
 of heat carrier (water) inside the pipe, [<em>MPa</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>consumption</dt>
 <dd><p>amount of heat carrier (water) that is transferred by pipe during a period,
 [<em>ton/hour</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>flux</dt>
 <dd><p>heat flux emitted by pipe during a period, [<em>kcal/hour</em>].
 Type: <code>assert_double</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>temperature drop at the outlet of pipe, [<em>°C</em>]. Type: <code>assert_double</code>.</p>
+    
+
+<p>temperature drop at the outlet of pipe, [<em>°C</em>]. Type: <code>assert_double</code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -94,36 +103,36 @@ Type: <code>assert_double</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"> <span class="co"># Calculate normative temperature drop based on Minenergo-325 for pipe segment</span></span>
-<span class="r-in"> <span class="va">pipeline</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span class="r-in">   year <span class="op">=</span> <span class="fl">1968</span>,</span>
-<span class="r-in">   laying <span class="op">=</span> <span class="st">"channel"</span>,</span>
-<span class="r-in">   d <span class="op">=</span> <span class="fl">700</span>,</span>
-<span class="r-in">   l <span class="op">=</span> <span class="fl">1000</span></span>
-<span class="r-in"> <span class="op">)</span></span>
-<span class="r-in"> <span class="va">operation_temperature</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">130</span>, <span class="fl">150</span><span class="op">)</span>  <span class="co"># [°C]</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="va">foo</span> <span class="op">&lt;-</span> <span class="fu">dropt</span><span class="op">(</span></span>
-<span class="r-in">   temperature <span class="op">=</span> <span class="va">operation_temperature</span>,</span>
-<span class="r-in">   flux <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span></span>
-<span class="r-in">     <span class="va">m325nhl</span>,</span>
-<span class="r-in">     <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">pipeline</span>, temperature <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">operation_temperature</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">   <span class="op">)</span></span>
-<span class="r-in"> <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="va">foo</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="co"># Calculate normative temperature drop based on Minenergo-325 for pipe segment</span></span></span>
+<span class="r-in"><span> <span class="va">pipeline</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>   year <span class="op">=</span> <span class="fl">1968</span>,</span></span>
+<span class="r-in"><span>   laying <span class="op">=</span> <span class="st">"channel"</span>,</span></span>
+<span class="r-in"><span>   d <span class="op">=</span> <span class="fl">700</span>,</span></span>
+<span class="r-in"><span>   l <span class="op">=</span> <span class="fl">1000</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="va">operation_temperature</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">130</span>, <span class="fl">150</span><span class="op">)</span>  <span class="co"># [°C]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="va">foo</span> <span class="op">&lt;-</span> <span class="fu">dropt</span><span class="op">(</span></span></span>
+<span class="r-in"><span>   temperature <span class="op">=</span> <span class="va">operation_temperature</span>,</span></span>
+<span class="r-in"><span>   flux <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>     <span class="va">m325nhl</span>,</span></span>
+<span class="r-in"><span>     <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">pipeline</span>, temperature <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">operation_temperature</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>   <span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="va">foo</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.366806 1.433840</span>
-<span class="r-in"> <span class="co"># [1] 1.366806 1.433840</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="co"># This is the same as using m325dropt:</span></span>
-<span class="r-in"> <span class="va">bar</span> <span class="op">&lt;-</span> <span class="fu"><a href="m325dropt.html">m325dropt</a></span><span class="op">(</span>temperature <span class="op">=</span> <span class="va">operation_temperature</span>,</span>
-<span class="r-in">   year <span class="op">=</span> <span class="fl">1968</span>, laying <span class="op">=</span> <span class="st">"channel"</span>, d <span class="op">=</span> <span class="fl">700</span>, len <span class="op">=</span> <span class="fl">1000</span></span>
-<span class="r-in"> <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"> <span class="va">bar</span></span>
+<span class="r-in"><span> <span class="co"># [1] 1.366806 1.433840</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="co"># This is the same as using m325dropt:</span></span></span>
+<span class="r-in"><span> <span class="va">bar</span> <span class="op">&lt;-</span> <span class="fu"><a href="m325dropt.html">m325dropt</a></span><span class="op">(</span>temperature <span class="op">=</span> <span class="va">operation_temperature</span>,</span></span>
+<span class="r-in"><span>   year <span class="op">=</span> <span class="fl">1968</span>, laying <span class="op">=</span> <span class="st">"channel"</span>, d <span class="op">=</span> <span class="fl">700</span>, len <span class="op">=</span> <span class="fl">1000</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="va">bar</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1.366806 1.433840</span>
-<span class="r-in"> <span class="co"># [1] 1.366806 1.433840</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span> <span class="co"># [1] 1.366806 1.433840</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -138,7 +147,7 @@ Type: <code>assert_double</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

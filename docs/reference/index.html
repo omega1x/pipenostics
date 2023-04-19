@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -27,7 +27,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -92,6 +92,10 @@
         </td>
         <td><p>ASME B31G. Safe maximum pressure for the corroded area of pipe</p></td>
       </tr><tr><td>
+          <p><code><a href="celsius.html">c_k()</a></code> <code><a href="celsius.html">c_f()</a></code> </p>
+        </td>
+        <td><p>Covert to Celsius scale</p></td>
+      </tr><tr><td>
           <p><code><a href="dnvpf.html">dnvpf()</a></code> </p>
         </td>
         <td><p>DNV-RP-F101. Failure pressure of the corroded pipe</p></td>
@@ -108,13 +112,45 @@
         </td>
         <td><p>Temperature drop in pipe due heat losses</p></td>
       </tr><tr><td>
+          <p><code><a href="fahrenheit.html">f_k()</a></code> <code><a href="fahrenheit.html">f_c()</a></code> </p>
+        </td>
+        <td><p>Covert to Fahrenheit scale</p></td>
+      </tr><tr><td>
           <p><code><a href="flowls.html">flowls()</a></code> </p>
         </td>
         <td><p>List all possible flow paths in district heating network</p></td>
       </tr><tr><td>
+          <p><code><a href="fric_buzelli.html">fric_buzelli()</a></code> </p>
+        </td>
+        <td><p>Estimate pipe friction factor with Buzelli formula</p></td>
+      </tr><tr><td>
+          <p><code><a href="fric_romeo.html">fric_romeo()</a></code> </p>
+        </td>
+        <td><p>Estimate pipe friction factor with Romeo's formula</p></td>
+      </tr><tr><td>
+          <p><code><a href="fric_vatankhan.html">fric_vatankhan()</a></code> </p>
+        </td>
+        <td><p>Estimate pipe friction factor with Vatankhah formula</p></td>
+      </tr><tr><td>
+          <p><code><a href="if97cptp1.html">if97cptp1()</a></code> </p>
+        </td>
+        <td><p>IAPWS-IF97. Specific isobaric heat capacity of water</p></td>
+      </tr><tr><td>
+          <p><code><a href="if97pt4.html">if97pt4()</a></code> </p>
+        </td>
+        <td><p>IAPWS-IF97. Saturation pressure of water (steam)</p></td>
+      </tr><tr><td>
+          <p><code><a href="if97vtp1.html">if97vtp1()</a></code> </p>
+        </td>
+        <td><p>IAPWS-IF97. Specific volume of water</p></td>
+      </tr><tr><td>
           <p><code><a href="inch_mm.html">inch_mm()</a></code> </p>
         </td>
         <td><p>Millimeters to inches</p></td>
+      </tr><tr><td>
+          <p><code><a href="kelvin.html">k_c()</a></code> <code><a href="kelvin.html">k_f()</a></code> </p>
+        </td>
+        <td><p>Covert to Kelvin scale</p></td>
       </tr><tr><td>
           <p><code><a href="kgf_mpa.html">kgf_mpa()</a></code> </p>
         </td>
@@ -211,6 +247,14 @@
         </td>
         <td><p>Megapascals to pounds per square inch</p></td>
       </tr><tr><td>
+          <p><code><a href="r12dv.html">r12dv()</a></code> </p>
+        </td>
+        <td><p>IAPWS R12-08. Dynamic viscosity of water (steam)</p></td>
+      </tr><tr><td>
+          <p><code><a href="reynolds.html">re_u()</a></code> <code><a href="reynolds.html">re_v()</a></code> <code><a href="reynolds.html">re_m()</a></code> </p>
+        </td>
+        <td><p>Estimate Reynolds number</p></td>
+      </tr><tr><td>
           <p><code><a href="shell92pf.html">shell92pf()</a></code> </p>
         </td>
         <td><p>Shell92. Failure pressure of the corroded pipe</p></td>
@@ -232,7 +276,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

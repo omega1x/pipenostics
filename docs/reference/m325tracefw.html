@@ -22,7 +22,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -32,7 +32,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -59,29 +59,29 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">m325tracefw</span><span class="op">(</span>
-  sender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,
-  acceptor <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,
-  temperature <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">70</span>, <span class="cn">NA_real_</span><span class="op">)</span>,
-  pressure <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">pipenostics</span><span class="fu">::</span><span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>, <span class="cn">NA_real_</span><span class="op">)</span>,
-  consumption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="cn">NA_real_</span><span class="op">)</span>,
-  d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span>,
-  len <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fl">72.446</span>, <span class="fl">2</span><span class="op">)</span>,
-  year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fl">1986</span>, <span class="fl">2</span><span class="op">)</span>,
-  insulation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>,
-  laying <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="st">"tunnel"</span>, <span class="fl">2</span><span class="op">)</span>,
-  beta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="fl">2</span><span class="op">)</span>,
-  exp5k <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="fl">2</span><span class="op">)</span>,
-  roughness <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="fl">2</span><span class="op">)</span>,
-  inlet <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span>,
-  outlet <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,
-  elev_tol <span class="op">=</span> <span class="fl">0.1</span>,
-  method <span class="op">=</span> <span class="st">"romeo"</span>,
-  verbose <span class="op">=</span> <span class="cn">TRUE</span>,
-  csv <span class="op">=</span> <span class="cn">FALSE</span>,
-  file <span class="op">=</span> <span class="st">"m325tracefw.csv"</span>,
-  maxcores <span class="op">=</span> <span class="fl">2</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">m325tracefw</span><span class="op">(</span></span>
+<span>  sender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  acceptor <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  temperature <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">70</span>, <span class="cn">NA_real_</span><span class="op">)</span>,</span>
+<span>  pressure <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu">pipenostics</span><span class="fu">::</span><span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>, <span class="cn">NA_real_</span><span class="op">)</span>,</span>
+<span>  consumption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="cn">NA_real_</span><span class="op">)</span>,</span>
+<span>  d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  len <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fl">72.446</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fl">1986</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  insulation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  laying <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="st">"tunnel"</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  beta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  exp5k <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="cn">TRUE</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  roughness <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep_len</a></span><span class="op">(</span><span class="fl">0.001</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  inlet <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  outlet <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  elev_tol <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"romeo"</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  csv <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  file <span class="op">=</span> <span class="st">"m325tracefw.csv"</span>,</span>
+<span>  maxcores <span class="op">=</span> <span class="fl">2</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -90,16 +90,22 @@
 <dd><p>identifier of the node which heat carrier flows out.
 Type: any type that can be painlessly coerced to character by
 <code><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></code>.</p></dd>
+
+
 <dt>acceptor</dt>
 <dd><p>identifier of the node which heat carrier flows in. According to topology
 of test bench considered this identifier should be unique for every row.
 Type: any type that can be painlessly coerced to character by
 <code><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></code>.</p></dd>
+
+
 <dt>temperature</dt>
 <dd><p><em>snapshot of thermal-hydraulic regime state</em>: temperature of heat carrier
 (water) sensor-measured on the root node, [<em>°C</em>].
 Type: <code>assert_double</code>.
 Use <code>NA_float_</code>s for nodes without temperature sensor.</p></dd>
+
+
 <dt>pressure</dt>
 <dd><p><em>snapshot of thermal-hydraulic regime state</em>: sensor-measured
 <a href="https://en.wikipedia.org/wiki/Pressure_measurement#Absolute" class="external-link">absolute pressure</a>
@@ -107,6 +113,8 @@ of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
 [<em>MPa</em>].
 Type: <code>assert_double</code>.
 Use <code>NA_float_</code>s for nodes without pressure sensor.</p></dd>
+
+
 <dt>consumption</dt>
 <dd><p><em>snapshot of thermal-hydraulic regime state</em>:
 sensor-measured amount of heat carrier (water) on root node that is
@@ -114,17 +122,25 @@ transferred by pipe (i.e. acceptor's incoming edge) during a period,
 [<em>ton/hour</em>].
 Type: <code>assert_double</code>.
 Use <code>NA_float_</code>s for nodes without consumption sensor.</p></dd>
+
+
 <dt>d</dt>
 <dd><p>internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
 [<em>mm</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>len</dt>
 <dd><p>pipe length (i.e. length of acceptor's incoming edge), [<em>m</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>year</dt>
 <dd><p>year when the pipe (i.e. acceptor's incoming edge) is put in operation
 after laying or total overhaul.
 Type: <code>assert_integerish</code>.</p></dd>
+
+
 <dt>insulation</dt>
 <dd><p>identifier of insulation that covers the exterior of pipe (i.e. acceptor's
 incoming edge):</p><dl><dt><code>0</code></dt>
@@ -138,6 +154,8 @@ incoming edge):</p><dl><dt><code>0</code></dt>
 
  
 </dl><p>Type: <code>assert_subset</code>.</p></dd>
+
+
 <dt>laying</dt>
 <dd><p>type of pipe laying depicting the position of pipe in space. Only five
 types of pipe laying are considered:</p><ul><li><p><code>air</code>,</p></li>
@@ -146,55 +164,82 @@ types of pipe laying are considered:</p><ul><li><p><code>air</code>,</p></li>
 <li><p><code>tunnel</code>,</p></li>
 <li><p><code>underground</code>.</p></li>
 </ul><p>Type: <code>assert_subset</code>.</p></dd>
+
+
 <dt>beta</dt>
 <dd><p>logical indicator: should they consider additional heat losses of fittings
 located on this pipe (i.e. acceptor's incoming edge)?
 Type: <code>assert_logical</code>.</p></dd>
+
+
 <dt>exp5k</dt>
 <dd><p>logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
 <code>TRUE</code> pipe is operated more that <code>5000</code> hours per year.
 Type: <code>assert_logical</code>.</p></dd>
+
+
 <dt>roughness</dt>
 <dd><p>roughness of internal wall of pipe (i.e. acceptor's incoming edge),
 [<em>m</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>inlet</dt>
 <dd><p>elevation of pipe inlet, [<em>m</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>outlet</dt>
 <dd><p>elevation of pipe outlet, [<em>m</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>elev_tol</dt>
 <dd><p>maximum allowed discrepancy between adjacent outlet and inlet elevations of
 two subsequent pipes in the traced path, [<em>m</em>].
 Type: <code>assert_number</code>.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>method of determining <em>Darcy friction factor</em>:</p><ul><li><p><code>romeo</code></p></li>
 <li><p><code>vatankhan</code></p></li>
 <li><p><code>buzelli</code></p></li>
 </ul><p>Type: <code>assert_choice</code>.
 For more details see <code><a href="dropp.html">dropp</a></code>.</p></dd>
+
+
 <dt>verbose</dt>
 <dd><p>logical indicator: should they watch tracing process on console?
 Type: <code>assert_flag</code>.</p></dd>
+
+
 <dt>csv</dt>
 <dd><p>logical indicator: should they incrementally dump results to <em>csv</em>-file
 while tracing?
 Type: <code>assert_flag</code>.</p></dd>
+
+
 <dt>file</dt>
 <dd><p>name of <em>csv</em>-file which they dump results to.
 Type: <code>assert_character</code> of length 1 that can be used safely
 to create a file and write to it.</p></dd>
+
+
 <dt>maxcores</dt>
 <dd><p>maximum cores of CPU to use in parallel processing.
 Type: <code>assert_count</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>data.frame</code> containing results of tracing in
+    
+
+<p><code>data.frame</code> containing results of tracing in
    long format
    (<a href="https://en.wikipedia.org/wiki/Wide_and_narrow_data" class="external-link">narrow format</a>)
-   mostly like it returned by function <code><a href="m325tracebw.html">m325tracebw</a></code>:</p><dl><dt><code>node</code></dt>
+   mostly like it returned by function <code><a href="m325tracebw.html">m325tracebw</a></code>:</p>
+<p></p>
+<dl><dt><code>node</code></dt>
 <dd><p>identifier of the node for which regime parameters is calculated.
        Values in this vector are identical to those in argument <code>acceptor</code>.
        Type: <code>assert_character</code>.</p></dd>
@@ -281,63 +326,63 @@ Type: <code>assert_count</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="co"># Minimum two nodes should be in district heating network graph:</span></span>
-<span class="r-in"><span class="fu">m325tracefw</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># Minimum two nodes should be in district heating network graph:</span></span></span>
+<span class="r-in"><span><span class="fu">m325tracefw</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   node  trace backward aggregation temperature  pressure consumption job</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2    2      1    FALSE    identity    69.71603 0.5813153          20   1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#   node  trace backward aggregation temperature  pressure consumption job</span></span>
-<span class="r-in"><span class="co"># 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0</span></span>
-<span class="r-in"><span class="co"># 2    2      1    FALSE    identity    69.71603 0.5813153          20   1</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Example with the test bench:</span></span>
-<span class="r-in"><span class="va">nx</span> <span class="op">&lt;-</span> <span class="fu">pipenostics</span><span class="fu">::</span><span class="va"><a href="m325testbench.html">m325testbench</a></span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># avoid using numeric identifiers for nodes:</span></span>
-<span class="r-in"><span class="va">nx</span><span class="op">$</span><span class="va">sender</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"N"</span>, <span class="va">nx</span><span class="op">$</span><span class="va">sender</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">nx</span><span class="op">$</span><span class="va">acceptor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"N"</span>, <span class="va">nx</span><span class="op">$</span><span class="va">acceptor</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Alter units:</span></span>
-<span class="r-in"><span class="va">nx</span><span class="op">$</span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fl">1e3</span> <span class="op">*</span> <span class="va">nx</span><span class="op">$</span><span class="va">d</span>  <span class="co"># convert [m] to [mm]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Perform backward tracing to get regime on root node:</span></span>
-<span class="r-in"><span class="va">bw_report</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracebw"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">nx</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Put the traced values to the root node of the test bench:</span></span>
-<span class="r-in"><span class="va">root_node_idx</span> <span class="op">&lt;-</span> <span class="fl">12</span></span>
-<span class="r-in"><span class="va">root_node</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"N"</span>, <span class="va">root_node_idx</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">regime_param</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature"</span>, <span class="st">"pressure"</span>, <span class="st">"consumption"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">nx</span><span class="op">[</span><span class="va">root_node_idx</span>, <span class="va">regime_param</span><span class="op">]</span> <span class="op">&lt;-</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">bw_report</span>,</span>
-<span class="r-in">         <span class="va">node</span> <span class="op">==</span> <span class="va">root_node</span> <span class="op">&amp;</span> <span class="va">aggregation</span> <span class="op">==</span> <span class="st">"median"</span>,</span>
-<span class="r-in">         <span class="va">regime_param</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span><span class="va">root_node</span>, <span class="va">root_node_idx</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Trace the test bench forward for the first time:</span></span>
-<span class="r-in"><span class="va">fw_report</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracefw"</span>,</span>
-<span class="r-in">                     <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">nx</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, elev_tol <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Let's compare traced regime at terminal nodes back to test bench:</span></span>
-<span class="r-in"><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">bw_report</span>, <span class="va">fw_report</span><span class="op">)</span>,</span>
-<span class="r-in">  <span class="va">node</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">nx</span>, <span class="op">!</span><span class="op">(</span><span class="va">acceptor</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">sender</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">acceptor</span> <span class="op">&amp;</span></span>
-<span class="r-in">    <span class="va">aggregation</span> <span class="op">==</span> <span class="st">"identity"</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">regime_delta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colMeans</a></span><span class="op">(</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">report</span>, <span class="va">backward</span>, <span class="va">regime_param</span><span class="op">)</span> <span class="op">-</span></span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">report</span>, <span class="op">!</span><span class="va">backward</span>, <span class="va">regime_param</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">regime_delta</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#   node  trace backward aggregation temperature  pressure consumption job</span></span></span>
+<span class="r-in"><span><span class="co"># 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0</span></span></span>
+<span class="r-in"><span><span class="co"># 2    2      1    FALSE    identity    69.71603 0.5813153          20   1</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Example with the test bench:</span></span></span>
+<span class="r-in"><span><span class="va">nx</span> <span class="op">&lt;-</span> <span class="fu">pipenostics</span><span class="fu">::</span><span class="va"><a href="m325testbench.html">m325testbench</a></span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># avoid using numeric identifiers for nodes:</span></span></span>
+<span class="r-in"><span><span class="va">nx</span><span class="op">$</span><span class="va">sender</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"N"</span>, <span class="va">nx</span><span class="op">$</span><span class="va">sender</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">nx</span><span class="op">$</span><span class="va">acceptor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"N"</span>, <span class="va">nx</span><span class="op">$</span><span class="va">acceptor</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Alter units:</span></span></span>
+<span class="r-in"><span><span class="va">nx</span><span class="op">$</span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fl">1e3</span> <span class="op">*</span> <span class="va">nx</span><span class="op">$</span><span class="va">d</span>  <span class="co"># convert [m] to [mm]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Perform backward tracing to get regime on root node:</span></span></span>
+<span class="r-in"><span><span class="va">bw_report</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracebw"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">nx</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Put the traced values to the root node of the test bench:</span></span></span>
+<span class="r-in"><span><span class="va">root_node_idx</span> <span class="op">&lt;-</span> <span class="fl">12</span></span></span>
+<span class="r-in"><span><span class="va">root_node</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"N"</span>, <span class="va">root_node_idx</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">regime_param</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"temperature"</span>, <span class="st">"pressure"</span>, <span class="st">"consumption"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">nx</span><span class="op">[</span><span class="va">root_node_idx</span>, <span class="va">regime_param</span><span class="op">]</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">bw_report</span>,</span></span>
+<span class="r-in"><span>         <span class="va">node</span> <span class="op">==</span> <span class="va">root_node</span> <span class="op">&amp;</span> <span class="va">aggregation</span> <span class="op">==</span> <span class="st">"median"</span>,</span></span>
+<span class="r-in"><span>         <span class="va">regime_param</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html" class="external-link">rm</a></span><span class="op">(</span><span class="va">root_node</span>, <span class="va">root_node_idx</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Trace the test bench forward for the first time:</span></span></span>
+<span class="r-in"><span><span class="va">fw_report</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracefw"</span>,</span></span>
+<span class="r-in"><span>                     <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">nx</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span>, elev_tol <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Let's compare traced regime at terminal nodes back to test bench:</span></span></span>
+<span class="r-in"><span><span class="va">report</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">bw_report</span>, <span class="va">fw_report</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="va">node</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">nx</span>, <span class="op">!</span><span class="op">(</span><span class="va">acceptor</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">sender</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">acceptor</span> <span class="op">&amp;</span></span></span>
+<span class="r-in"><span>    <span class="va">aggregation</span> <span class="op">==</span> <span class="st">"identity"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">regime_delta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colMeans</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">report</span>, <span class="va">backward</span>, <span class="va">regime_param</span><span class="op">)</span> <span class="op">-</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">report</span>, <span class="op">!</span><span class="va">backward</span>, <span class="va">regime_param</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">regime_delta</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   temperature      pressure   consumption </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -4.640201e-01 -5.208802e-03 -5.465713e-16 </span>
-<span class="r-in"><span class="co"># temperature      pressure   consumption</span></span>
-<span class="r-in"><span class="co"># -4.640201e-01 -5.208802e-03 -5.465713e-16</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">regime_delta</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">regime_delta</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">0.5</span><span class="op">)</span></span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span><span class="co"># temperature      pressure   consumption</span></span></span>
+<span class="r-in"><span><span class="co"># -4.640201e-01 -5.208802e-03 -5.465713e-16</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html" class="external-link">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="va">regime_delta</span> <span class="op"><a href="https://rdrr.io/r/base/matmult.html" class="external-link">%*%</a></span> <span class="va">regime_delta</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">0.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -352,7 +397,7 @@ Type: <code>assert_count</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

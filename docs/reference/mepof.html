@@ -52,7 +52,7 @@ factors and for inline inspection measurements."><!-- mathjax --><script src="ht
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -62,7 +62,7 @@ factors and for inline inspection measurements."><!-- mathjax --><script src="ht
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -117,21 +117,21 @@ factors and for <em>inline inspection</em> measurements.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">mepof</span><span class="op">(</span>
-  depth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,
-  l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">50</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,
-  d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">762</span>, <span class="fl">100</span><span class="op">)</span>,
-  wth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">100</span><span class="op">)</span>,
-  strength <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">358.5274</span>, <span class="fl">100</span><span class="op">)</span>,
-  pressure <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0.588</span>, <span class="fl">100</span><span class="op">)</span>,
-  temperature <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">150</span>, <span class="fl">100</span><span class="op">)</span>,
-  rar <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0.01</span>, <span class="fl">0.3</span><span class="op">)</span><span class="op">/</span><span class="fl">365</span>,
-  ral <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0.01</span>, <span class="fl">0.3</span><span class="op">)</span><span class="op">/</span><span class="fl">365</span>,
-  days <span class="op">=</span> <span class="fl">0</span>,
-  k <span class="op">=</span> <span class="fl">0.8</span>,
-  method <span class="op">=</span> <span class="st">"b31g"</span>,
-  n <span class="op">=</span> <span class="fl">1e+06</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">mepof</span><span class="op">(</span></span>
+<span>  depth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">10</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,</span>
+<span>  l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">50</span>, length.out <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>,</span>
+<span>  d <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep.int</a></span><span class="op">(</span><span class="fl">762</span>, <span class="fl">100</span><span class="op">)</span>,</span>
+<span>  wth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep.int</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">100</span><span class="op">)</span>,</span>
+<span>  strength <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep.int</a></span><span class="op">(</span><span class="fl">358.5274</span>, <span class="fl">100</span><span class="op">)</span>,</span>
+<span>  pressure <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep.int</a></span><span class="op">(</span><span class="fl">0.588</span>, <span class="fl">100</span><span class="op">)</span>,</span>
+<span>  temperature <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep.int</a></span><span class="op">(</span><span class="fl">150</span>, <span class="fl">100</span><span class="op">)</span>,</span>
+<span>  rar <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0.01</span>, <span class="fl">0.3</span><span class="op">)</span><span class="op">/</span><span class="fl">365</span>,</span>
+<span>  ral <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">0.01</span>, <span class="fl">0.3</span><span class="op">)</span><span class="op">/</span><span class="fl">365</span>,</span>
+<span>  days <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  k <span class="op">=</span> <span class="fl">0.8</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"b31g"</span>,</span>
+<span>  n <span class="op">=</span> <span class="fl">1e+06</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -139,48 +139,70 @@ factors and for <em>inline inspection</em> measurements.</p>
     <dl><dt>depth</dt>
 <dd><p>maximum depth of the corroded area measured during <em>inline inspection</em>,
 [<em>mm</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>l</dt>
 <dd><p>maximum longitudinal length of corroded area measured during
 <em>inline inspection</em>, [<em>mm</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>d</dt>
 <dd><p>nominal outside diameter of the pipe, [<em>mm</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>wth</dt>
 <dd><p>nominal wall thickness of the pipe, [<em>mm</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>strength</dt>
 <dd><p>one of the next characteristics of steel strength, [<em>MPa</em>]:</p><ul><li><p>specified minimum yield of stress (<em>SMYS</em>)
         for use with <code><a href="b31gpf.html">b31gpf</a></code> and <code><a href="b31gmodpf.html">b31gmodpf</a></code>.</p></li>
 <li><p>ultimate tensile strength (<em>UTS</em>) or specified minimum tensile
         strength (<em>SMTS</em>) for use with other failure pressure codes
         (<code><a href="dnvpf.html">dnvpf</a></code>, <code><a href="pcorrcpf.html">pcorrcpf</a></code>, <code><a href="shell92pf.html">shell92pf</a></code>).</p></li>
-</ul><p>Type: <code>assert_choice</code>.</p></dd>
+</ul><p>Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>pressure</dt>
 <dd><p><a href="https://en.wikipedia.org/wiki/Pressure_measurement#Absolute" class="external-link">absolute pressure</a>
 of substance (i.e. heat carrier) inside the pipe measured near defect
 position, [<em>MPa</em>]. In most cases this is a nominal operating pressure.
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>temperature</dt>
 <dd><p>temperature of substance (i.e. heat carrier) inside the pipe measured near
 defect position, [<em>°C</em>]. In case of district heating network this is
 usually a calculated value according to actual or normative thermal-hydraulic
 regime. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>rar</dt>
 <dd><p>random number generator for simulating of distribution of radial corrosion
 rate in pipe wall, [<em>mm/day</em>]. The only
 argument <code>n</code> of the function should be the number of observations to
 generate. Type: <code>assert_function</code>.</p></dd>
+
+
 <dt>ral</dt>
 <dd><p>random number generator for simulating of distribution of longitudinal corrosion
 rate in pipe wall, [<em>mm/day</em>]. The only
 argument <code>n</code> of the function should be the number of observations to
 generate. Type: <code>assert_function</code>.</p></dd>
+
+
 <dt>days</dt>
 <dd><p>number of days that have passed after or preceded the <em>inline inspection</em>, [].
 Negative values are for retrospective assumptions whereas positives are for
 failure prognosis. Type: <code>assert_int</code>.</p></dd>
+
+
 <dt>k</dt>
 <dd><p>alarm threshold for leakage failure. It usually <code>0.6</code>, <code>0.7</code>, or
 <code>0.8</code>, []. If set to <code>1</code> no alarm before failure occurs.
 Type: <code>assert_number</code>.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>method for calculating failure pressure:</p><ul><li><p><em>b31g</em> - using <code><a href="b31gpf.html">b31gpf</a></code>.</p></li>
 <li><p><em>b31gmod</em> - using <code><a href="b31gmodpf.html">b31gmodpf</a></code>.</p></li>
@@ -188,15 +210,21 @@ Type: <code>assert_number</code>.</p></dd>
 <li><p><em>pcorrc</em> - using <code><a href="pcorrcpf.html">pcorrcpf</a></code>.</p></li>
 <li><p><em>shell92</em> - using <code><a href="shell92pf.html">shell92pf</a></code>.</p></li>
 </ul><p>Type: <code>assert_choice</code>.</p></dd>
+
+
 <dt>n</dt>
 <dd><p>number of observations to generate for
 <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers" class="external-link">Monte-Carlo simulations</a>,
 Type: <code>assert_count</code>.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Probability of pipe failure for each corroded area measured during
-<em>inline inspection</em>. Type: <code>assert_double</code>.
+    
+
+<p>Probability of pipe failure for each corroded area measured during</p>
+<p></p>
+<p><em>inline inspection</em>. Type: <code>assert_double</code>.
   If <code>NA</code>s returned use another method
   for calculating failure pressure.</p>
     </div>
@@ -248,73 +276,73 @@ Type: <code>assert_count</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="co"># Let's consider a pipe in district heating network with</span></span>
-<span class="r-in"><span class="va">diameter</span>           <span class="op">&lt;-</span> <span class="fl">762</span>         <span class="co"># [mm]</span></span>
-<span class="r-in"><span class="va">wall_thickness</span>     <span class="op">&lt;-</span>  <span class="fl">10</span>         <span class="co"># [mm]</span></span>
-<span class="r-in"><span class="va">UTS</span>                <span class="op">&lt;-</span> <span class="fl">434.3697</span>    <span class="co"># [MPa]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># which transfers heat-carrier (water) at</span></span>
-<span class="r-in"><span class="va">operating_pressure</span> <span class="op">&lt;-</span>   <span class="fl">0.588399</span>  <span class="co"># [MPa].</span></span>
-<span class="r-in"><span class="va">temperature</span>        <span class="op">&lt;-</span>  <span class="fl">95</span>         <span class="co"># [°C]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># During inline inspection four corroded areas (defects) are detected with:</span></span>
-<span class="r-in"><span class="va">depth</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.45</span>,  <span class="fl">7.86</span>,   <span class="fl">7.93</span>,   <span class="fl">8.15</span><span class="op">)</span>  <span class="co"># [mm]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># whereas the length of all defects is not greater 200 mm:</span></span>
-<span class="r-in"><span class="va">length</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">4</span><span class="op">)</span>  <span class="co"># [mm]</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Corrosion rates in radial and in longitudinal directions are not well-known and</span></span>
-<span class="r-in"><span class="co"># may vary in range .01 - .30 mm/year:</span></span>
-<span class="r-in"><span class="va">rar</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">.01</span>, <span class="fl">.30</span><span class="op">)</span> <span class="op">/</span> <span class="fl">365</span></span>
-<span class="r-in"><span class="va">ral</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">.01</span>, <span class="fl">.30</span><span class="op">)</span> <span class="op">/</span> <span class="fl">365</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Then POFs related to each corroded area are near:</span></span>
-<span class="r-in"><span class="va">pof</span> <span class="op">&lt;-</span> <span class="fu">mepof</span><span class="op">(</span><span class="va">depth</span>, <span class="va">length</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">diameter</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">wall_thickness</span>, <span class="fl">4</span><span class="op">)</span>,</span>
-<span class="r-in">             <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">UTS</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">operating_pressure</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">temperature</span>, <span class="fl">4</span><span class="op">)</span>,</span>
-<span class="r-in">             <span class="va">rar</span>, <span class="va">ral</span>, method <span class="op">=</span> <span class="st">"dnv"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># Let's consider a pipe in district heating network with</span></span></span>
+<span class="r-in"><span><span class="va">diameter</span>           <span class="op">&lt;-</span> <span class="fl">762</span>         <span class="co"># [mm]</span></span></span>
+<span class="r-in"><span><span class="va">wall_thickness</span>     <span class="op">&lt;-</span>  <span class="fl">10</span>         <span class="co"># [mm]</span></span></span>
+<span class="r-in"><span><span class="va">UTS</span>                <span class="op">&lt;-</span> <span class="fl">434.3697</span>    <span class="co"># [MPa]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># which transfers heat-carrier (water) at</span></span></span>
+<span class="r-in"><span><span class="va">operating_pressure</span> <span class="op">&lt;-</span>   <span class="fl">0.588399</span>  <span class="co"># [MPa].</span></span></span>
+<span class="r-in"><span><span class="va">temperature</span>        <span class="op">&lt;-</span>  <span class="fl">95</span>         <span class="co"># [°C]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># During inline inspection four corroded areas (defects) are detected with:</span></span></span>
+<span class="r-in"><span><span class="va">depth</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.45</span>,  <span class="fl">7.86</span>,   <span class="fl">7.93</span>,   <span class="fl">8.15</span><span class="op">)</span>  <span class="co"># [mm]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># whereas the length of all defects is not greater 200 mm:</span></span></span>
+<span class="r-in"><span><span class="va">length</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">4</span><span class="op">)</span>  <span class="co"># [mm]</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Corrosion rates in radial and in longitudinal directions are not well-known and</span></span></span>
+<span class="r-in"><span><span class="co"># may vary in range .01 - .30 mm/year:</span></span></span>
+<span class="r-in"><span><span class="va">rar</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">.01</span>, <span class="fl">.30</span><span class="op">)</span> <span class="op">/</span> <span class="fl">365</span></span></span>
+<span class="r-in"><span><span class="va">ral</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">.01</span>, <span class="fl">.30</span><span class="op">)</span> <span class="op">/</span> <span class="fl">365</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Then POFs related to each corroded area are near:</span></span></span>
+<span class="r-in"><span><span class="va">pof</span> <span class="op">&lt;-</span> <span class="fu">mepof</span><span class="op">(</span><span class="va">depth</span>, <span class="va">length</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">diameter</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">wall_thickness</span>, <span class="fl">4</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>             <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">UTS</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">operating_pressure</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">temperature</span>, <span class="fl">4</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>             <span class="va">rar</span>, <span class="va">ral</span>, method <span class="op">=</span> <span class="st">"dnv"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> pipenostics::mepof: process case [1/4] - 25 % processed.pipenostics::mepof: process case [2/4] - 50 % processed.pipenostics::mepof: process case [3/4] - 75 % processed.pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.251854 0.367305 0.771494</span>
-<span class="r-in"><span class="co"># 0.000000 0.252510 0.368275 0.771595</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># So, the POF of the pipe is near</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.771494</span>
-<span class="r-in"><span class="co"># 0.771595</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The value of POF changes in time. So, in a year after inline inspection of</span></span>
-<span class="r-in"><span class="co"># the pipe we can get something near</span></span>
-<span class="r-in"><span class="va">pof</span> <span class="op">&lt;-</span> <span class="fu">mepof</span><span class="op">(</span><span class="va">depth</span>, <span class="va">length</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">diameter</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">wall_thickness</span>, <span class="fl">4</span><span class="op">)</span>,</span>
-<span class="r-in">             <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">UTS</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">operating_pressure</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">temperature</span>, <span class="fl">4</span><span class="op">)</span>,</span>
-<span class="r-in">             <span class="va">rar</span>, <span class="va">ral</span>, method <span class="op">=</span> <span class="st">"dnv"</span>, days <span class="op">=</span> <span class="fl">365</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.253463 0.368194 0.770886</span>
+<span class="r-in"><span><span class="co"># 0.000000 0.252510 0.368275 0.771595</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># So, the POF of the pipe is near</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.770886</span>
+<span class="r-in"><span><span class="co"># 0.771595</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The value of POF changes in time. So, in a year after inline inspection of</span></span></span>
+<span class="r-in"><span><span class="co"># the pipe we can get something near</span></span></span>
+<span class="r-in"><span><span class="va">pof</span> <span class="op">&lt;-</span> <span class="fu">mepof</span><span class="op">(</span><span class="va">depth</span>, <span class="va">length</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">diameter</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">wall_thickness</span>, <span class="fl">4</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>             <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">UTS</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">operating_pressure</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">temperature</span>, <span class="fl">4</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>             <span class="va">rar</span>, <span class="va">ral</span>, method <span class="op">=</span> <span class="st">"dnv"</span>, days <span class="op">=</span> <span class="fl">365</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> pipenostics::mepof: process case [1/4] - 25 % processed.pipenostics::mepof: process case [2/4] - 50 % processed.pipenostics::mepof: process case [3/4] - 75 % processed.pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.526116 0.647543 0.928861</span>
-<span class="r-in"><span class="co"># 0.000000 0.525539 0.648359 0.929099</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># for entire pipe we get something near:</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.928861</span>
-<span class="r-in"><span class="co"># 0.929099</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Two years ago before inline inspection the pipe state was rather good:</span></span>
-<span class="r-in"><span class="va">pof</span> <span class="op">&lt;-</span> <span class="fu">mepof</span><span class="op">(</span><span class="va">depth</span>, <span class="va">length</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">diameter</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">wall_thickness</span>, <span class="fl">4</span><span class="op">)</span>,</span>
-<span class="r-in">             <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">UTS</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">operating_pressure</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">temperature</span>, <span class="fl">4</span><span class="op">)</span>,</span>
-<span class="r-in">             <span class="va">rar</span>, <span class="va">ral</span>, method <span class="op">=</span> <span class="st">"dnv"</span>, days <span class="op">=</span> <span class="op">-</span><span class="fl">2</span> <span class="op">*</span> <span class="fl">365</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.526081 0.646595 0.929259</span>
+<span class="r-in"><span><span class="co"># 0.000000 0.525539 0.648359 0.929099</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># for entire pipe we get something near:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.929259</span>
+<span class="r-in"><span><span class="co"># 0.929099</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Two years ago before inline inspection the pipe state was rather good:</span></span></span>
+<span class="r-in"><span><span class="va">pof</span> <span class="op">&lt;-</span> <span class="fu">mepof</span><span class="op">(</span><span class="va">depth</span>, <span class="va">length</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">diameter</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">wall_thickness</span>, <span class="fl">4</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>             <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">UTS</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">operating_pressure</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">temperature</span>, <span class="fl">4</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>             <span class="va">rar</span>, <span class="va">ral</span>, method <span class="op">=</span> <span class="st">"dnv"</span>, days <span class="op">=</span> <span class="op">-</span><span class="fl">2</span> <span class="op">*</span> <span class="fl">365</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> pipenostics::mepof: process case [1/4] - 25 % processed.pipenostics::mepof: process case [2/4] - 50 % processed.pipenostics::mepof: process case [3/4] - 75 % processed.pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.040995 0.072887 0.271658</span>
-<span class="r-in"><span class="co"># 0.000000 0.040780 0.072923 0.271751</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># for entire pipe we get something near:</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.271658</span>
-<span class="r-in"><span class="co"># 0.271751</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># }</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.000000 0.040993 0.072506 0.271086</span>
+<span class="r-in"><span><span class="co"># 0.000000 0.040780 0.072923 0.271751</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># for entire pipe we get something near:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.271086</span>
+<span class="r-in"><span><span class="co"># 0.271751</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -329,7 +357,7 @@ Type: <code>assert_count</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

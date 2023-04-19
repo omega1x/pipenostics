@@ -20,7 +20,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">pipenostics</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.9</span>
       </span>
     </div>
 
@@ -30,7 +30,7 @@
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
   <a href="https://github.com/omega1x/pipenostics/" class="external-link">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -56,17 +56,17 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dropp</span><span class="op">(</span>
-  temperature <span class="op">=</span> <span class="fl">130</span>,
-  pressure <span class="op">=</span> <span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>,
-  consumption <span class="op">=</span> <span class="fl">1276</span>,
-  d <span class="op">=</span> <span class="fl">1</span>,
-  len <span class="op">=</span> <span class="fl">1</span>,
-  roughness <span class="op">=</span> <span class="fl">0.006</span>,
-  inlet <span class="op">=</span> <span class="fl">0</span>,
-  outlet <span class="op">=</span> <span class="fl">0</span>,
-  method <span class="op">=</span> <span class="st">"romeo"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dropp</span><span class="op">(</span></span>
+<span>  temperature <span class="op">=</span> <span class="fl">130</span>,</span>
+<span>  pressure <span class="op">=</span> <span class="fu"><a href="mpa_kgf.html">mpa_kgf</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span>,</span>
+<span>  consumption <span class="op">=</span> <span class="fl">1276</span>,</span>
+<span>  d <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  len <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  roughness <span class="op">=</span> <span class="fl">0.006</span>,</span>
+<span>  inlet <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  outlet <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  method <span class="op">=</span> <span class="st">"romeo"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -74,31 +74,50 @@
     <dl><dt>temperature</dt>
 <dd><p>temperature of heat carrier (water) inside the pipe, [<em>°C</em>].
 Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>pressure</dt>
 <dd><p><a href="https://en.wikipedia.org/wiki/Pressure_measurement#Absolute" class="external-link">absolute pressure</a>
 of heat carrier (water) measured at the
 entrance (inlet) of pipe, [<em>MPa</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>consumption</dt>
 <dd><p>amount of heat carrier (water) that is transferred by pipe during a period,
 [<em>ton/hour</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>d</dt>
 <dd><p>internal diameter of pipe, [<em>m</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>len</dt>
 <dd><p>pipe length, [<em>m</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>roughness</dt>
 <dd><p>roughness of internal wall of pipe, [<em>m</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>inlet</dt>
 <dd><p>elevation of pipe inlet, [<em>m</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>outlet</dt>
 <dd><p>elevation of pipe outlet, [<em>m</em>]. Type: <code>assert_double</code>.</p></dd>
+
+
 <dt>method</dt>
 <dd><p>method of determining <em>Darcy friction factor</em>.
 Type: <code>assert_choice</code>.
 (see <strong>Details</strong>)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>pressure drop at the outlet of pipe, [<em>MPa</em>]. Type: <code>assert_double</code>.</p>
+    
+
+<p>pressure drop at the outlet of pipe, [<em>MPa</em>]. Type: <code>assert_double</code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -172,13 +191,13 @@ Type: <code>assert_choice</code>.
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Typical pressure drop for horizontal pipeline segments</span></span>
-<span class="r-in"><span class="co"># in high-way heating network in Novosibirsk</span></span>
-<span class="r-in"><span class="fu">dropp</span><span class="op">(</span>len <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">300</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Typical pressure drop for horizontal pipeline segments</span></span></span>
+<span class="r-in"><span><span class="co"># in high-way heating network in Novosibirsk</span></span></span>
+<span class="r-in"><span><span class="fu">dropp</span><span class="op">(</span>len <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">300</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.0007000666 0.0010500999</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#[1] 0.0007000666 0.0010500999</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#[1] 0.0007000666 0.0010500999</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -193,7 +212,7 @@ Type: <code>assert_choice</code>.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
