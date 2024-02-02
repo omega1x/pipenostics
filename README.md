@@ -398,11 +398,11 @@ for calculation of *specific heat loss power* ($q_s$) as a function of
 thermal-hydraulic regime and technical condition of pipeline segment (see `m278hlcha()`,
 `m278hlund()`, and `m278hlair()`).
 
-*Specific heat loss power* ($q_{m}$, *kcal/m/h*) of cylindrical pipe can be more naturally expressed via the value of [heat flux](https://en.wikipedia.org/wiki/Heat_flux) ($\phi_q$, [W/m^2](https://en.wikipedia.org/wiki/Heat_flux)) output by pipe wall through unit area:
+*Specific heat loss power* ($q_{s}$, *kcal/m/h*) of cylindrical pipe can be more naturally expressed via the value of [heat flux](https://en.wikipedia.org/wiki/Heat_flux) ($\phi_q$, [W/m^2](https://en.wikipedia.org/wiki/Heat_flux)) output by pipe wall through unit area:
 
 $$q_s = \frac{3600}{4186.8} \cdot \phi_q \cdot \pi d$$
 
-where $d$ [m](https://en.wikipedia.org/wiki/Metre) is an outside diameter of pipe, and $\frac{3600}{4186.8}\pi = 2.701283$ (*kcal/h/W*) is a dimension factor (see `qs_fx()`, `fx_qs()`).
+where $d$ [m](https://en.wikipedia.org/wiki/Metre) is an outside diameter of pipe, and $\frac{3600}{4186.8}\pi = 2.701283$ (*kcal/h/W*) is a dimension factor (see `loss_flux()`, `flux_loss()`).
 
 *Heat loss power for a pipe* ($q_p$, *kcal/hour*) may be calculated as 
 $$q_p = q_s L$$
