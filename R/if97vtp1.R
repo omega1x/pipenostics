@@ -1,4 +1,5 @@
-#' IAPWS-IF97. Specific volume of water
+#' @title
+#'   IAPWS-IF97. Specific volume of water
 #'
 #' @family Fluid properties
 #'
@@ -28,6 +29,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  # Typical usage in district heating:
 #'  rho <- 1/if97vtp1(temperature = k_c(65), pressure = mpa_kgf(6))
 #'  rho
@@ -116,5 +119,5 @@ if97vtp1 <- function(temperature = c(300, 300, 500), pressure = c(3, 80, 3)) {
       -n[32]*I[32]*pii1^(I[32] - 1)*tau1^J[32] +
       -n[33]*I[33]*pii1^(I[33] - 1)*tau1^J[33] +
       -n[34]*I[34]*pii1^(I[34] - 1)*tau1^J[34]
-  }) * R * temperature/16.53 * 1e-3  # Warning! No 1e-3 in IF97 document!
+  }) * R * temperature/16.53 * 1e-3  # Warning! No 1e-3 in IF97 document! 
 }

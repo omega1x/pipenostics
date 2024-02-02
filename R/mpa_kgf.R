@@ -21,6 +21,7 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
 #'
 #'  mpa_kgf(c(10.1971619998, 1))
 #'  # [1] 1.0000000 0.0980665  # [MPa]

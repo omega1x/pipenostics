@@ -1,13 +1,13 @@
-#' Minenergo-325. Data for normative heat losses of pipe
+#' Minenergo-325. Normative heat loss data
 #'
-#' Data represent values of heat losses officially accepted by
-#' \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325} as
-#' norms. Those values represent heat flux that is legally
-#' affirmed to be emitted per meter during an hour by steel pipe of district
-#' heating system with water as a heat carrier.
+#' Data represent values of specific heat loss power officially accepted by
+#' \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325} as
+#' norms. Those values are maximums which are legally
+#' affirmed to contribute to normative heat loss \eqn{Q_NHL} of
+#' district heating systems with water as a heat carrier.
 #'
 #' Data is organized as a full factorial design, whereas for some factorial
-#' combinations \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}
+#' combinations \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}
 #' does not provide values. For that cases values are postulated by practical
 #' reasons in Siberian cities and marked with source label \emph{sgc}.
 #'
@@ -19,7 +19,7 @@
 #' \describe{
 #'   \item{source}{Identifier of data source: identifiers suited with
 #'     glob \emph{t?p?} mean appropriate \emph{table ?.?} in
-#'     \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325};
+#'     \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325};
 #'     identifier \emph{sgc} means that values are additionally
 #'     postulated (see \emph{Details}).
 #'     Type: \code{\link{assert_character}}.
@@ -54,14 +54,16 @@
 #'    Type: \code{\link{assert_integerish}}.
 #'   }
 #'
-#'   \item{diameter}{Nominal internal diameter of pipe, [mm]. Type: \code{\link{assert_double}}.}
+#'   \item{diameter}{Nominal internal diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 #'
-#'   \item{temperature}{Operational temperature of pipe, [°C]. Type: \code{\link{assert_double}}.}
+#'   \item{temperature}{Operational temperature of pipe, [\emph{°C}]. Type: \code{\link{assert_double}}.}
 #'
-#'   \item{flux}{
-#'     Heat flux emitted by every meter of pipe during an hour, [kcal/m/hour].
+#'   \item{loss}{
+#'     Normative value of specific heat loss power equal to heat flux output by
+#'     1 meter length steel pipe during an hour,
+#'     [\emph{kcal/m/hour}].
 #'     Type: \code{\link{assert_double}}.}
 #'  }
 #'
-#' @source \url{http://docs.cntd.ru/document/902148459}
+#' @source \url{https://docs.cntd.ru/document/902148459}
 "m325nhldata"

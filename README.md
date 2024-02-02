@@ -26,16 +26,14 @@ diagnostics, reliability and predictive maintenance of pipeline systems.
 - [Underlying concepts](#underlying-concepts)
   - [Corrosion diagnostics](#corrosion-diagnostics)
   - [Probability of failure](#probability-of-failure)
-  - [Heat losses](#heat-losses)
+  - [Heat loss](#heat-loss)
   - [Tracing of thermal-hydraulic regime](#tracing-of-thermal-hydraulic-regime)
 
 ## Intro
 
-Aiming for digital transformation of technical engineering departments
-of heat generating and heat transferring companies the package
-aggregates to some extent the separate knowledge concerning engineering,
-reliability, diagnostics and predictive maintenance of pipeline systems.
-For the present time the package contains utilities for processing
+The package aggregates to some extent the separate knowledge concerning
+engineering, reliability, diagnostics and predictive maintenance of pipeline
+systems. For the present time the package contains utilities for processing
 corrosion data commonly gathered by *inline inspection*, as well as
 empirical models for calculations of local thermal-hydraulic regimes of
 district heating network.
@@ -244,7 +242,7 @@ $temperature
 $pressure
 [1] 0.5878607 0.5874226 0.5872143 0.5870330
 
-$consumption
+$flow_rate
 [1] 250 240 220 190
 ```
 
@@ -283,9 +281,9 @@ containing capability of the remaining pipe metal in terms of its
 ability to continue to operate safely at the maximum allowable operating
 pressure
 ([MAOP](https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure))
-of the pipeline system?
+of pipeline system?
 
-Thus, one of the needs of the pipeline industry has been a procedure
+Thus, one of the needs of pipeline industry has been a procedure
 that will help operators, particularly field personnel, make decisions
 on existing pipelines, when exposed for any purpose, as to whether any
 corroded region may be left in service or whether it needs to be
@@ -293,8 +291,7 @@ repaired or replaced. Such determinations must be based upon sound
 research and extensive testing in order to provide safe and conservative
 guidelines on which to base field decisions.
 
-[ASME
-B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf)
+[ASMEB31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf)
 and [ASME
 B31G-2012](https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines)
 codes have proven sound and have seen successful use in the pipeline
@@ -321,9 +318,9 @@ functions concerning corrosion diagnostics:
 - *maop* - maximum allowable operating pressure -
   [MAOP](https://en.wikipedia.org/wiki/Maximum_allowable_operating_pressure)
   in [PSI](https://en.wikipedia.org/wiki/Pounds_per_square_inch)
-- *d* - nominal outside diameter of the pipe,
+- *d* - nominal outside diameter of pipe,
     [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
-- *wth* - nominal wall thickness of the pipe,
+- *wth* - nominal wall thickness of pipe,
     [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
 - *smys* - specified minimum yield of stress -
     [SMYS](https://en.wikipedia.org/wiki/Specified_minimum_yield_strength)
@@ -336,7 +333,7 @@ functions concerning corrosion diagnostics:
 - *l* - measured maximum longitudinal length of the corroded area,
     [inch](https://en.wikipedia.org/wiki/Inch), or [mm](https://en.wikipedia.org/wiki/Millimetre)
 
-In the course of further development of the functionality of this package,
+In the course of further development of functionality of this package,
 some revisions or supplements to the existing concept are not excepted.
 
 ### Probability of failure
@@ -356,24 +353,24 @@ Package function `mepof()` is designed to calculate probability of failure (POF)
 for stochastic nature of corroded area length and depth, as well as engineering characteristics of pipe with
 thermal-hydraulic regime parameters.
 
-### Heat losses
+### Heat loss
 
-Heat loss is the energy characteristic of district heating networks. It
+*Heat loss* is the energy characteristic of district heating networks. It
 is the amount of heat energy spent on the transportation and
 distribution of heat energy from the source to the consumers.
 
-Heat losses depend on the operating temperature, technical condition,
-volume and configuration of the district heating network, as well as on
-climatic factors. Heat losses are additive being the sum of the heat
-losses of individual pipeline segments.
+*Heat loss* depends on the operating temperature, technical condition,
+volume and configuration of district heating network, as well as on
+climatic factors. *Heat loss* is additive being the sum of *heat
+losses* of individual pipeline segments.
 
-Determination of heat losses for pipeline segments hereinafter is called
+Determination of heat loss for pipeline segments hereinafter is called
 *heat loss localization*.
 
-It is assumed that actual heat loss ($Q_{\text{AHL}}$) of
-pipeline segment has two contributions: normative heat loss
-($Q_{\text{NHL}}$) and extra-normative heat loss
-($Q_{\text{ExNHL}}$). So we can write:
+It is assumed that actual heat loss ($Q_{\text{AHL}}$, [[kcal](https://en.wikipedia.org/wiki/Calorie)]) of
+pipeline segment in certain period of time (duration) has two contributions: normative heat loss
+($Q_{\text{NHL}}$, [[kcal](https://en.wikipedia.org/wiki/Calorie)])) and extra-normative heat loss
+($Q_{\text{ExNHL}}$, [[kcal](https://en.wikipedia.org/wiki/Calorie)])). So we can write:
 
 $$ Q_{\text{AHL}} = Q_{\text{NHL}} + Q_{\text{ExNHL}},\  Q_{\text{ExNHL}}> 0 $$
 
@@ -382,42 +379,55 @@ health maintenance activities of district heating network operation. One
 can determine $Q_{\text{ExNHL}}$ of pipeline segment as a
 positive difference between $Q_{\text{AHL}}$ and
 $Q_{\text{NHL}}$ and it is the most natural way. For that purpose
-[Minenergo-325](http://docs.cntd.ru/document/902148459) and
-[Minenergo-278](http://www.complexdoc.ru/ntdtext/547103) methods for
+[Minenergo-325](https://docs.cntd.ru/document/902148459) and
+[Minenergo-278](https://docs.cntd.ru/document/1200035568) methods for
 postulating $Q_{\text{NHL}}$ are considered.
 
-[Minenergo-325](http://docs.cntd.ru/document/902148459) lists legally
-affirmed maximum values of heat flux that is allowed to be emitted by
-steel pipes (see `m325nhl()`). Higher emission is treated as
-$Q_{\text{ExNHL}}$.
-[Minenergo-278](http://www.complexdoc.ru/ntdtext/547103) gives method
-for engineering calculation of $Q_{\text{NHL}}$ considering
-technical condition of pipeline segment (see `m278hlcha()`,
+[Minenergo-325](https://docs.cntd.ru/document/902148459) lists legally
+affirmed maximum values of *specific heat loss power* ($q_s$, *kcal/m/h*) which is allowed for fault-free
+steel pipes (see `m325nhl()`), so that normative heat loss of *L*-meter length pipe for a duration $\tau$ is
+
+$$Q_{NHL} = L\int_{\tau}^{}q_s(\tau)d\tau$$
+
+> &#8505; *Specific heat loss power* may also be referred as specific [rate of heat flow](https://en.wikipedia.org/wiki/Rate_of_heat_flow).
+
+> &#9888; Specific powers (specific rates of heat flow) higher than $q_s$ contribute to $Q_{\text{ExNHL}}$.
+
+[Minenergo-278](https://docs.cntd.ru/document/1200035568) gives mathematical models
+for calculation of *specific heat loss power* ($q_s$) as a function of
+thermal-hydraulic regime and technical condition of pipeline segment (see `m278hlcha()`,
 `m278hlund()`, and `m278hlair()`).
+
+*Specific heat loss power* ($q_{m}$, *kcal/m/h*) of cylindrical pipe can be more naturally expressed via the value of [heat flux](https://en.wikipedia.org/wiki/Heat_flux) ($\phi_q$, [W/m^2](https://en.wikipedia.org/wiki/Heat_flux)) output by pipe wall through unit area:
+
+$$q_s = \frac{3600}{4186.8} \cdot \phi_q \cdot \pi d$$
+
+where $d$ [m](https://en.wikipedia.org/wiki/Metre) is an outside diameter of pipe, and $\frac{3600}{4186.8}\pi = 2.701283$ (*kcal/h/W*) is a dimension factor (see `qs_fx()`, `fx_qs()`).
+
+*Heat loss power for a pipe* ($q_p$, *kcal/hour*) may be calculated as 
+$$q_p = q_s L$$
+
+where $L$ is a pipe length.
 
 ### Tracing of thermal-hydraulic regime
 
-Localization of extra-normative heat losses
+Localization of extra-normative heat loss
 $Q_{\text{ExNHL}}$ could be performed if they know
 thermal-hydraulic regime of district heating network for each pipeline
 segment. In most cases thermal-hydraulic field (values of temperature,
-pressure and heat carrier consumption) is measured only on heat-supply
-origins and near consumers, i.e. mostly on terminal nodes of the
-pipeline network. Middle segments of the network are rarely equipped and
+pressure and heat carrier flow rate) is measured only on heat-supply
+origins and near consumers, i.e. mostly on terminal nodes of
+pipeline network. Middle segments of network are rarely equipped and
 thus are not sensor-measured. For restoring of thermal-hydraulic field
 at each pipeline segment they can trace temperature, pressure and
-heat-carrier consumption using hydraulic and thermal laws and
+heat-carrier flow rate using hydraulic and thermal laws and
 engineering characteristics of each pipe. Since only normative values of
 heat flux are accessible for calculations the restored thermal-hydraulic
 field is a normative (not actual) one. Nevertheless, even tracing small
 networks may produce local inconsistencies in restored normative field
-and those facts signal for possible extra-normative heat-losses in-situ.
+and those facts signal for possible extra-normative heat loss in-situ.
 In accordance to sensor positions forward (see `m325tracefw()`,
 `m325traceline()`) and backward (see `m325tracebw()`,
 `m325traceline(forward = FALSE)`) tracing can be performed for the
-linear and the bunched pipelines on the basis of
-[Minenergo-325](http://docs.cntd.ru/document/902148459) norms.
-
-For more realistic cases when there are only partially measurable district heating network with massive data lack they may use `m325tracebwm()` for tracing
-values of thermal-hydraulic regime (temperature, pressure, consumption) in the
-bunched pipeline against the flow direction using norms of heat flux values prescribed by [Minenergo-325](http://docs.cntd.ru/document/902148459) norms.
+linear and the bunched pipelines (also with massive data lack) on the basis of
+[Minenergo-325](https://docs.cntd.ru/document/902148459) norms.

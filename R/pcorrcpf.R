@@ -22,18 +22,18 @@
 #'  This code should be applied only to
 #'  \itemize{
 #'    \item a single cross section of the pipeline containing a longitudinally
-#'          oriented, flat bottom surface defect of the corrosion/erosion type;
+#'          oriented, flat bottom surface defect of corrosion/erosion type;
 #'    \item pipelines, which operate at temperatures exceeding the temperature
 #'          of pipe material ductile–brittle transition, and for pipematerial
 #'          with the impact energy of Charpy 61 [\emph{J}] and above.
 #'  }
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{mm}].
+#'  nominal outside diameter of pipe, [\emph{mm}].
 #'  Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{mm}].
+#'  nominal wall thickness of pipe, [\emph{mm}].
 #'  Type: \code{\link{assert_double}}.
 #'
 #' @param uts
@@ -74,15 +74,16 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
 #'
-#' d     <- c(812.8, 219.0)  # [mm]
-#' wth   <- c( 19.1,  14.5)  # [mm]
-#' uts   <- c(530.9, 455.1)   # [N/mm^2]
-#' l     <- c(203.2, 200.0)  # [mm]
-#' depth <- c( 13.4,   9.0)   # [mm]
+#'  d     <- c(812.8, 219.0)  # [mm]
+#'  wth   <- c( 19.1,  14.5)  # [mm]
+#'  uts   <- c(530.9, 455.1)   # [N/mm^2]
+#'  l     <- c(203.2, 200.0)  # [mm]
+#'  depth <- c( 13.4,   9.0)   # [mm]
 #'
-#' pcorrcpf(d, wth, uts, depth, l)
-#' # [1] 16.35449 33.01288
+#'  pcorrcpf(d, wth, uts, depth, l)
+#'  # [1] 16.35449 33.01288
 #'
 pcorrcpf <- function(d, wth, uts, depth, l){
   checkmate::assert_double(

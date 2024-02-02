@@ -21,6 +21,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  inch_mm(c(25.4, 1))
 #'  # [1] 1.00000000 0.03937008  # [inch]
 #'

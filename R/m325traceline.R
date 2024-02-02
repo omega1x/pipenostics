@@ -1,13 +1,13 @@
 #' @title
-#'  Minenergo-325. Trace thermal-hydraulic regime for linear segment
+#'  Minenergo-325. Trace thermal-hydraulic regime for linear segment of district heating network
 #'
 #' @family Regime tracing
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
-#'  consumption) along the adjacent linear segments of pipeline using norms of
-#'  heat flux values prescribed by
-#'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  flow_rate, and other) along the adjacent linear segments of pipeline using norms of
+#'  heat loss values prescribed by
+#'  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'
 #' @details
 #'  The calculated (values of) regime may be considered as representation of
@@ -29,26 +29,28 @@
 #'  cannot be more than \code{elev_tol}.
 #'
 #' @param temperature
-#'  temperature of heat carrier (water) inside the pipe sensor-measured at the inlet
+#'  \emph{Traced thermal hydraulic regime}. Sensor-measured temperature of heat carrier (water) 
+#'  inside the pipe sensor-measured at the inlet
 #'  (forward tracing) or at the outlet (backward tracing) of path, [\emph{°C}].
 #'  Type: \code{\link{assert_number}}.
 #'
 #' @param pressure
+#'  \emph{Traced thermal hydraulic regime}. Sensor-measured
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 #'  of heat carrier (water) sensor-measured at the inlet
 #'  (forward tracing) or at the outlet (backward tracing) of path, [\emph{MPa}].
 #'  Type: \code{\link{assert_number}}.
 #'
-#' @param consumption
-#'  amount of heat carrier (water) sensor-measured at the inlet (forward tracing) or at
-#'  the outlet (backward tracing) of path, [\emph{ton/hour}].
+#' @param flow_rate
+#'  \emph{Traced thermal hydraulic regime}. Amount of heat carrier (water) sensor-measured
+#'  at the inlet (forward tracing) or at the outlet (backward tracing) of path, [\emph{ton/hour}].
 #'  Type: \code{\link{assert_number}}.
 #'
 #' @param g
 #'  amount of heat carrier discharge to network for each pipe segment in the
 #'  tracing path enumerated along the direction of flow. If flag \code{absg}
 #'  is \code{TRUE} then they treat argument \code{g} as absolute value in
-#'  [\emph{ton/hour}], otherwise they do as percentage of consumption in the
+#'  [\emph{ton/hour}], otherwise they do as percentage of flow_rate in the
 #'  pipe segment.
 #'  Type: \code{\link{assert_double}}.
 #'
@@ -90,13 +92,14 @@
 #'  Type: \code{\link{assert_character}} and \code{\link{assert_subset}}.
 #'
 #' @param beta
-#'  should they consider additional heat losses of fittings? Logical value
+#'  logical indicator: should they consider additional heat loss of fittings? Logical value
 #'  for each pipe in tracing path enumerated along the direction of flow.
 #'  Type: \code{\link{assert_logical}}.
 #'
 #' @param exp5k
-#'  pipe regime flag: is pipe operated more that \code{5000} hours per year? Logical
-#'  value for each pipe in tracing path enumerated along the direction of flow.
+#'  logical indicator for regime of pipe: is pipe operated more that 
+#'  \code{5000} hours per year? Logical value for each pipe in tracing path
+#'   enumerated along the direction of flow.
 #'  Type: \code{\link{assert_logical}}.
 #'
 #' @param roughness
@@ -133,35 +136,40 @@
 #' @param absg
 #'  Whether argument \code{g} (amount of heat carrier discharge to network) is an
 #'  absolute value in [\emph{ton/hour}] (\code{TRUE}) or is it a percentage of
-#'  consumption in the pipe segment (\code{FALSE})?
+#'  flow rate in the pipe segment (\code{FALSE})?
 #'  Type: \code{\link{assert_flag}}.
 #'
 #' @return
-#'   named list of regime parameters for the traced path with the next elements:
+#'  \code{\link{data.frame}} containing results (detailed log) of tracing in
+#'    \href{https://en.wikipedia.org/wiki/Wide_and_narrow_data}{narrow format}:
 #'  \describe{
-#'    \item{\code{temperature}}{calculated temperatures of heat carrier for all pipeline segments, [\emph{°C}].
-#'    Type: \code{\link{assert_double}}.}
-#'    \item{\code{pressure}}{calculated pressures of heat carrier for all pipeline segments, [\emph{MPa}].
-#'    Type: \code{\link{assert_double}}.}
-#'    \item{\code{consumption}}{calculated consumption(s) of heat carrier for all pipeline segments, [\emph{ton/hour}].
-#'    Type: \code{\link{assert_double}}.}
+#'    \item{\code{temperature}}{
+#'      \emph{Traced thermal hydraulic regime}. Traced temperature of heat
+#'       carrier (water) for each pipe in tracing path enumerated along the direction of flow, [\emph{°C}]. Type: \code{\link{assert_double}}.
+#'     }
+#'    \item{\code{pressure}}{
+#'      \emph{Traced thermal hydraulic regime}. Traced pressure of heat
+#'       carrier (water) for each pipe in tracing path enumerated along the direction of flow, [\emph{MPa}]. Type: \code{\link{assert_double}}.
+#'     }
+#'    \item{\code{flow_rate}}{
+#'      \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
+#'       carrier (water) for each pipe in tracing path enumerated along the direction of flow, [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
+#'     }
 #'  }
-#'
-#' @seealso
-#'  \code{\link{m325dropt}} for calculating normative temperature drop in
-#'  single pipeline segment
+#'  Type: \code{\link{assert_list}}.
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #' # Consider 4-segment tracing path depicted in ?m325regtrace help page.
 #' # First, let sensor readings for forward tracing:
 #' t_fw <- 130  # [°C]
-#' p_fw <- .588399*all.equal(.588399, mpa_kgf(6))  # [MPa]
+#' p_fw <- mpa_kgf(6)*all.equal(.588399, mpa_kgf(6))  # [MPa]
 #' g_fw <- 250  # [ton/hour]
 #'
 #' # Let discharges to network for each pipeline segment are somehow determined as
 #' discharges <- seq(0, 30, 10)  # [ton/hour]
 #'
-#' \donttest{
 #' # Then the calculated regime (red squares) for forward tracing is
 #' regime_fw <- m325traceline(t_fw, p_fw, g_fw, discharges, forward = TRUE)
 #' print(regime_fw)
@@ -172,16 +180,16 @@
 #' # $pressure
 #' # [1] 0.5878607 0.5874226 0.5872143 0.5870330
 #' #
-#' # $consumption
+#' # $flow_rate
 #' # [1] 250 240 220 190
-#'}
+#'
+#'
 #' # Next consider values of traced regime as sensor readings for backward tracing:
 #' t_bw <- 127.3367  # [°C]
 #' p_bw <- .5870330  # [MPa]
 #' g_bw <- 190  # [ton/hour]
 #'
 #' # Then the calculated regime (red squares) for backward tracing is
-#' \donttest{
 #' regime_bw <- m325traceline(t_bw, p_bw, g_bw, discharges, forward = FALSE)
 #' print(regime_bw)
 #'
@@ -191,7 +199,7 @@
 #' # $pressure
 #' # [1] 0.5883998 0.5878611 0.5874228 0.5872144
 #' #
-#' # $consumption
+#' # $flow_rate
 #' # [1] 250 250 240 220
 #'
 #' # Let compare sensor readings with backward tracing results:
@@ -204,10 +212,10 @@
 #'     rbind(
 #'       lambda(temperature[first], t_fw),
 #'       lambda(pressure[first],    p_fw),
-#'       lambda(consumption[first], g_fw)
+#'       lambda(flow_rate[first], g_fw)
 #'     ),
 #'     dimnames = list(
-#'       c("temperature", "pressure", "consumption"),
+#'       c("temperature", "pressure", "flow_rate"),
 #'       c("sensor.value", "traced.value", "abs.discr", "rel.discr")
 #'     )
 #'   )
@@ -217,11 +225,11 @@
 #' # sensor.value traced.value     abs.discr    rel.discr
 #' # temperature   130.000000  129.9952943  4.705723e-03 0.0036197868
 #' # pressure        0.588399    0.5883998 -8.290938e-07 0.0001409067
-#' # consumption   250.000000  250.0000000  0.000000e+00 0.0000000000
-#'}
+#' # flow_rate     250.000000  250.0000000  0.000000e+00 0.0000000000
+#'
 #' @export
 m325traceline <- function(
-  temperature = 130, pressure = mpa_kgf(6), consumption = 250,
+  temperature = 130, pressure = mpa_kgf(6), flow_rate = 250,
   g = 0,  # [ton/hour] or [] depending on
   d = 700,  # [mm]
   len = c(600, 530, 300, 350),  # [m]
@@ -240,10 +248,10 @@ m325traceline <- function(
   norms <- pipenostics::m325nhldata
   checkmate::assert_number(temperature, lower = 0, upper = 350, finite = TRUE)
   checkmate::assert_number(pressure, lower = 8.4e-2, upper = 100, finite = TRUE)
-  checkmate::assert_number(consumption, lower = 1e-3, upper = 1e5, finite = TRUE)
+  checkmate::assert_number(flow_rate, lower = 1e-3, upper = 1e5, finite = TRUE)
   checkmate::assert_flag(absg)
   checkmate::assert_double(g, lower = 0,
-                           upper = c(1, consumption)[[1 + absg]],
+                           upper = c(1, flow_rate)[[1 + absg]],
                            finite = TRUE, any.missing = FALSE,
                            min.len = 1L)
   checkmate::assert_double(d, lower = min(norms[["diameter"]]),
@@ -280,7 +288,7 @@ m325traceline <- function(
   )  # elevation consistency of tracing path
 
   # material balance constraint
-  if (forward) checkmate::assert_true(consumption - sum(g) >= 1e-3)
+  if (forward) checkmate::assert_true(flow_rate - sum(g) >= 1e-3)
 
   with(data.frame(g, d, len, year, insulation, laying, beta, exp5k,
                   roughness, inlet, outlet,
@@ -288,25 +296,36 @@ m325traceline <- function(
                   t_regime = NA_real_, p_regime = NA_real_, g_regime = NA_real_
                   ), {
     # declare temporary scalars for accumulation along the tracing path:
-    t_value <- temperature; p_value <- pressure; g_value <- consumption
+    t_value <- temperature; p_value <- pressure; g_value <- flow_rate
     pipe_enum <- with(list(enum = seq_len(length(g))), {
       if (forward) enum else rev(enum)
     })
     for (i in pipe_enum) {
       g_value <- g_value + c(0, -g[[i]])[[forward + 1]]*c(g_value, 1)[[1 + absg]]
       t_regime[[i]] <- t_value <- {
-        t_value + (-1)^forward *
-        pipenostics::m325dropt(
-          temperature = t_value, pressure = p_value, consumption = g_value,
-          d = d[[i]], len = len[[i]], year = year[[i]],
-          insulation = insulation[[i]], laying = laying[[i]], beta = beta[[i]],
-          exp5k = exp5k[[i]]
-        )
+        t_value + (-1)^forward * 
+          pipenostics::dropt(
+            temperature = t_value, 
+            pressure = p_value, 
+            flow_rate = g_value, 
+            loss_power = pipenostics::m325nhl(
+              year = year[[i]], 
+              laying = laying[[i]], 
+              exp5k = exp5k[[i]], 
+              insulation = insulation[[i]], 
+              d = d[[i]],
+              temperature = t_value, 
+              len = len[[i]], 
+              duration = 1,  # [hour]
+              beta = beta[[i]], 
+              extra = 2
+            )  # [kcal/hour]
+          )
       }
       p_regime[[i]] <- p_value <- {
         p_value + (-1)^forward *
         pipenostics::dropp(
-          temperature = t_value, pressure = p_value, consumption = g_value,
+          temperature = t_value, pressure = p_value, flow_rate = g_value,
           d = d[[i]]*1e-3, len = len[[i]], roughness = roughness[[i]],
           inlet = inlet[[i]], outlet = outlet[[i]], method = method
         )
@@ -314,6 +333,6 @@ m325traceline <- function(
       g_regime[[i]] <- g_value <-
         g_value + c(0, g[[i]])[[2 - forward]]*c(g_value, 1)[[1 + absg]]
     }
-  list(temperature = t_regime, pressure = p_regime, consumption = g_regime)
+  list(temperature = t_regime, pressure = p_regime, flow_rate = g_regime)
   })
 }

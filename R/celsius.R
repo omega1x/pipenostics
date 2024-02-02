@@ -1,5 +1,5 @@
 #' @title
-#'  Covert to Celsius scale
+#'  Convert to Celsius scale
 #'
 #' @family utils
 #'
@@ -24,6 +24,8 @@
 #'  \code{\link{k_c}} and \code{\link{f_c}} for converting from Celsius-scale.
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #' # Convert from Kelvin to Celsius:
 #' c_k(c(0, 373.15))
 #' # [1]  -273.15  100

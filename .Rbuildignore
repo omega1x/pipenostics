@@ -7,3 +7,7 @@
 ^docs$
 
 ^codecov\.yml$
+
+^\R\tracebw.R$
+^_pkgdown\.yml$
+^pkgdown$

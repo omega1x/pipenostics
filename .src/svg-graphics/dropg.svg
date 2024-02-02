@@ -805,7 +805,7 @@
          id="tspan3429"
          x="48.921627"
          y="-432.64789"
-         style="stroke-width:0.75">- consumption sensor</tspan></text><g
+         style="stroke-width:0.75">- flow rate sensor</tspan></text><g
        transform="matrix(-0.43464083,0,0,0.43625123,155.98717,349.27816)"
        id="g2973"
        style="stroke-width:1.77922;stroke-miterlimit:4;stroke-dasharray:none"><path
@@ -858,7 +858,7 @@
          sodipodi:role="line"
          id="tspan3782"
          x="48.933147"
-         y="-419.81122">- calculated consumption drop</tspan></text><rect
+         y="-419.81122">- calculated flow rate drop</tspan></text><rect
        style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:0.15;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect8498"
        width="5.612864"
@@ -971,7 +971,7 @@
          sodipodi:role="line"
          id="tspan7877"
          x="222.29747"
-         y="-526.43903">consumption[1]</tspan></text><path
+         y="-526.43903">flow_rate[1]</tspan></text><path
        style="fill:none;stroke:#000000;stroke-width:0.749999px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m 292.29571,509.34607 c -3.43667,14.46253 -3.43667,14.46253 -3.43667,14.46253"
        id="path7891" /><path

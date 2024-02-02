@@ -1,11 +1,11 @@
 #' @title
-#'  Temperature drop in pipe due heat losses
+#'  Temperature drop in cylindrical steel pipe due heat loss
 #'
 #' @family district heating
 #'
 #' @description
 #'  Calculate temperature drop in steel pipe of \emph{district heating system}
-#'  (where water is a heat carrier) that is a result of heat losses through
+#'  (where water is a heat carrier) that is a result of heat loss through
 #'  pipe wall and insulation.
 #'
 #' @param temperature
@@ -16,12 +16,12 @@
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 #'  of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.
 #'
-#' @param consumption
+#' @param flow_rate
 #'  amount of heat carrier (water) that is transferred by pipe during a period,
 #'  [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
 #'
-#' @param flux
-#'  heat flux emitted by pipe during a period, [\emph{kcal/hour}].
+#' @param loss_power
+#'  power of heat loss - heat loss through area of pipe wall per hour, [\emph{kcal/hour}].
 #'  Type: \code{\link{assert_double}}.
 #'
 #' @return
@@ -34,47 +34,45 @@
 #'   for \strong{Region 1} since it is assumed that state of water in
 #'   \emph{district heating system} is always in that region.
 #'
-#' @seealso
-#'  \code{\link{m325dropt}} for calculating normative values of temperature drop
-#'
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  # Calculate normative temperature drop based on Minenergo-325 for pipe segment
 #'  pipeline <- list(
-#'    year = 1968,
+#'    year   = 1968,
 #'    laying = "channel",
-#'    d = 700,
-#'    l = 1000
+#'    d      = 700, # [mm]
+#'    len    = 1000 # [m]
 #'  )
-#'  operation_temperature <- c(130, 150)  # [°C]
 #'
-#'  foo <- dropt(
-#'    temperature = operation_temperature,
-#'    flux = do.call(
+#'  regime <- list(
+#'    temperature = c(130, 150), # [°C]
+#'    pressure    = .588399,     # [MPa]
+#'    flow_rate   = 250          # [ton/hour]
+#'  )
+#'
+#'  pipe_loss_power <- do.call(
 #'      m325nhl,
-#'      c(pipeline, temperature = list(operation_temperature))
-#'    )
+#'      c(pipeline, temperature = list(regime[["temperature"]]), duration = 1)  # [kcal/hour]
 #'  )
 #'
-#'  foo
+#'  temperature_drop <- dropt(
+#'    temperature = regime[["temperature"]], # [°C]
+#'    loss_power  = pipe_loss_power          # [kcal/hour]
+#'  )                                        # [°C]
+#'
+#'  print(temperature_drop)
+#'
 #'  # [1] 1.366806 1.433840
-#'
-#'  # This is the same as using m325dropt:
-#'  bar <- m325dropt(temperature = operation_temperature,
-#'    year = 1968, laying = "channel", d = 700, len = 1000
-#'  )
-#'
-#'  bar
-#'  # [1] 1.366806 1.433840
-#'
 
 dropt <- function(
-  temperature = 130,
-  pressure = mpa_kgf(6),
-  consumption = 250,
-  flux = 7000
-  ){
+  temperature =        130, # [°C]
+  pressure    = mpa_kgf(6), # [MPa]
+  flow_rate   =        250, # [ton/hour]
+  loss_power  =       7000  # [kcal/hour]
+){
 
   checkmate::assert_double(
     temperature, lower = 0, upper = 350, finite = TRUE,  any.missing = FALSE,
@@ -85,19 +83,20 @@ dropt <- function(
     min.len = 1L
   )
   checkmate::assert_double(
-    consumption, lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = FALSE,
+    flow_rate, lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = FALSE,
     min.len = 1L
   )
   checkmate::assert_double(
-    flux, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
+    loss_power, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-   checkmate::assert_true(all.commensurable(c(
-   length(temperature), length(pressure), length(consumption), length(flux)
+  checkmate::assert_true(all.commensurable(c(
+   length(temperature), length(pressure), length(flow_rate), length(loss_power)
   )))
 
-  JOULE <- 0.2388458966  # [cal/J]
-  pipe_heat_loss <- flux/JOULE  # [kJ/hour]
-  g <- consumption * 1e3  # [kg/hour]
-  pipe_heat_loss / g / if97cptp1(temperature + 273.15, pressure)  # [°C]=[°K]
+  JOULE <- 0.2388458966                     # [cal/J]
+  loss_power_J <- loss_power/JOULE          # [kJ/hour]
+  g <- flow_rate * 1e3                    # [kg/hour]
+  loss_power_J / g / pipenostics::if97cptp1(
+    pipenostics::k_c(temperature), pressure
+  )                                         # [°C]=[°K]
 }
-

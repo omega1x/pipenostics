@@ -36,10 +36,10 @@
 #'   use are offended.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
+#'  nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
+#'  nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
 #'
 #' @param uts
 #'  ultimate tensile strength (\emph{UTS}) or
@@ -75,6 +75,7 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
 #'
 #' d     <- c(812.8, 219.0)  # [mm]
 #' wth   <- c( 19.1,  14.5)  # [mm]

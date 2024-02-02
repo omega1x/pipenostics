@@ -1,4 +1,5 @@
-#' Estimate pipe friction factor with Buzelli formula
+#' @title
+#'  Estimate pipe friction factor with Buzelli formula
 #'
 #' @family Fluid properties
 #'
@@ -41,6 +42,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  fric_buzelli(c(2118517, 2000, 2118517), c(1e-6, 70e-3/1, 7e-3/1))
 #'  # [1] 0.01031468 0.03200000 0.03375076  # []
 #'

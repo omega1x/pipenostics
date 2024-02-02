@@ -47,6 +47,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'\donttest{
 #' # Find path from A to B in trivial line topology:
 #' flowls("A", "B")

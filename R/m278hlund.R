@@ -1,14 +1,13 @@
-#' Minenergo-278. Heat losses of underground pipeline segment
-#'
+#' @title
+#'  Minenergo-278. Normative heat loss of underground pipe
 #'
 #' @family Minenergo
 #'
 #' @description
-#'  Calculate values of heat flux emitted by underground pipeline segment
-#'  which is not mounted in channel as a function of construction, operation,
+#'  Calculate normative heat loss of the supplying underground pipe as a function of construction, operation,
 #'  and technical condition specifications according to
 #'  Appendix 5.1 of \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
-#'
+#'  
 #'  This type of calculations is usually made on design stage of district
 #'  heating network (where water is a heat carrier) and is closely
 #'  related to building codes and regulations.
@@ -20,7 +19,7 @@
 #'   temperature of heat carrier (water) inside the returning pipe, [\emph{°C}].
 #'   Type: \code{\link{assert_double}}.
 #' @param t0
-#'   temperature of environment, [\emph{°C}]. In case of underground laying this is
+#'   temperature of environment, [\emph{°C}]. For underground pipe this is
 #'   the temperature of subsoil. Type: \code{\link{assert_double}}.
 #' @param insd1
 #'   thickness of the insulator which covers the supplying pipe, [\emph{m}].
@@ -29,9 +28,9 @@
 #'   thickness of the insulator which covers the returning pipe, [\emph{m}].
 #'   Type: \code{\link{assert_double}}.
 #' @param d1
-#'   external diameter of supplying pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'   outside diameter of supplying pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
 #' @param d2
-#'   external diameter of returning pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'   outside diameter of returning pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
 #' @param lambda1
 #'   thermal conductivity of insulator which covers the supplying pipe
 #'   [\emph{W/m/°C}]. Type: \code{\link{assert_double}}.
@@ -45,29 +44,28 @@
 #'   technical condition factor for insulator of returning pipe, [].
 #'   Type: \code{\link{assert_double}}.
 #' @param lambda0
-#'   thermal conductivity of environment, [\emph{W/m/°C}]. In case of underground
-#'   laying this is the thermal conductivity of subsoil.
+#'   thermal conductivity of environment, [\emph{W/m/°C}]. For underground pipe this is
+#'   the thermal conductivity of subsoil.
 #'   Type: \code{\link{assert_double}}.
 #' @param z
-#'   underground laying depth, [\emph{m}].
+#'   underground laying depth of supplying pipe, [\emph{m}].
 #'   Type: \code{\link{assert_double}}.
 #' @param s
 #'   distance between supplying and returning pipes, [\emph{m}].
 #'   Type: \code{\link{assert_double}}.
 #' @param len
-#'  length of pipeline segment, [\emph{m}].
+#'  length of supplying pipe, [\emph{m}].
 #'  Type: \code{\link{assert_double}}.
 #' @param duration
-#'  duration of heat flux emittance, [\emph{hour}].
+#'  duration of heat loss, [\emph{hour}].
 #'  Type: \code{\link{assert_double}}.
 #'
 #' @return
-#'  Heat flux emitted by pipeline segment during \code{duration}, [\emph{kcal}].
-#'  If \code{len} of pipeline segment is 1 \emph{m} and \code{duration} of
-#'  heat flux emittance is set to 1 \emph{hour} then the return value is equal
-#'  to that in [\emph{kcal/m/h}] units and so comparable with values of
-#'  heat flux listed in
-#'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  Normative heat loss of supplying underground cylindrical pipe during \code{duration}, [\emph{kcal}].
+#'  If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is set to
+#'  1 \emph{h} (hour) (default values) then the return value is also the
+#'  \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with those
+#'  prescribed by \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'  Type: \code{\link{assert_double}}.
 #'
 #' @details
@@ -76,6 +74,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  m278hlund()
 #'  # [1] 102.6226
 #'

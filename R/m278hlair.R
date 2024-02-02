@@ -1,12 +1,12 @@
-#' Minenergo-278. Heat losses of overhead pipeline segment
-#'
+#' @title
+#'   Minenergo-278. Normative heat loss of open-air pipe
 #'
 #' @family Minenergo
 #'
 #' @description
-#'  Calculate values of heat flux emitted by overhead pipeline segment
-#'  (surrounded by air) as a function of construction, operation,
-#'  and technical condition  specifications according to
+#'  Calculate normative heat loss of the open-air supplying pipe
+#'  as a function of construction, operation, and technical condition 
+#'  specifications according to
 #'  Appendix 5.1 of \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
 #'
 #'  This type of calculations is usually made on design stage of district
@@ -20,7 +20,7 @@
 #'   temperature of heat carrier (water) inside the returning pipe, [\emph{°C}].
 #'   Type: \code{\link{assert_double}}.
 #' @param t0
-#'   temperature of environment, [\emph{°C}]. In case of overhead laying this is
+#'   temperature of environment, [\emph{°C}]. In case of open-air pipe this is
 #'   the ambient temperature. Type: \code{\link{assert_double}}.
 #' @param insd1
 #'   thickness of the insulator which covers the supplying pipe, [\emph{m}].
@@ -29,10 +29,10 @@
 #'   thickness of the insulator which covers the returning pipe, [\emph{m}].
 #'   Type: \code{\link{assert_double}}.
 #' @param d1
-#'   external diameter of supplying pipe, [\emph{m}].
+#'   outside diameter of supplying pipe, [\emph{m}].
 #'   Type: \code{\link{assert_double}}.
 #' @param d2
-#'   external diameter of returning pipe, [\emph{m}].
+#'   outside diameter of returning pipe, [\emph{m}].
 #'   Type: \code{\link{assert_double}}.
 #' @param lambda1
 #'   thermal conductivity of insulator which covers the supplying pipe
@@ -51,18 +51,17 @@
 #'   laying this is the thermal conductivity of open air.
 #'   Type: \code{\link{assert_double}}.
 #' @param len
-#'  length of pipeline segment, [\emph{m}].
-#'  Type: \code{\link{assert_double}}.
+#'  length of supplying pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
 #' @param duration
-#'  duration of heat flux emittance, [\emph{hour}]. Type: \code{\link{assert_double}}.
+#'  duration of heat loss, [\emph{hour}]. Type: \code{\link{assert_double}}.
 #'
 #' @return
-#'  Heat flux emitted by pipeline segment during \code{duration}, [\emph{kcal}].
-#'  If \code{len} of pipeline segment is 1 \emph{m} and \code{duration} of
-#'  heat flux emittance is set to 1 \emph{hour} then the return value is equal
-#'  to that in [\emph{kcal/m/h}] units and so comparable with values of
-#'  heat flux listed in
-#'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  Normative heat loss of the open-air layed supplying cylindrical pipe 
+#'  during \code{duration}, [\emph{kcal}].
+#'  If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is set to
+#'  1 \emph{h} (hour) (default values) then the return value is also the
+#'  \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with those
+#'  prescribed by \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'  Type: \code{\link{assert_double}}.
 #'
 #' @details
@@ -71,6 +70,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  m278hlair()
 #'  # [1] 138.7736
 #'

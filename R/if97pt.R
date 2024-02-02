@@ -1,4 +1,5 @@
-#' IAPWS-IF97. Saturation pressure of water (steam)
+#' @title
+#'  IAPWS-IF97. Saturation pressure of water (steam)
 #'
 #' @family Fluid properties
 #'
@@ -25,6 +26,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  # Typical usage in district heating:
 #'  if97pt4(temperature = k_c(65))
 #'  # [1] 0.0250411  # [MPa]

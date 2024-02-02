@@ -1,10 +1,10 @@
-#' Minenergo-278. Heat losses of pipeline segment in channel
-#'
+#' @title
+#'   Minenergo-278. Normative heat loss of pipe in channel
 #'
 #' @family Minenergo
 #'
 #' @description
-#'  Calculate values of heat flux emitted by pipeline segment mounted in channel
+#'  Calculate normative heat loss of the supplying pipe mounted in underground channel
 #'  as a function of construction, operation, and technical condition
 #'  specifications according to
 #'  Appendix 5.1 of \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
@@ -29,9 +29,9 @@
 #'   thickness of the insulator which covers the returning pipe, [\emph{m}].
 #'   Type: \code{\link{assert_double}}.
 #' @param d1
-#'   external diameter of supplying pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'   outside diameter of supplying pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
 #' @param d2
-#'   external diameter of returning pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'   outside diameter of returning pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
 #' @param lambda1
 #'   thermal conductivity of insulator which covers the supplying pipe
 #'   [\emph{W/m/°C}]. Type: \code{\link{assert_double}}.
@@ -54,32 +54,33 @@
 #' @param h
 #'   channel height, [\emph{m}]. Type: \code{\link{assert_double}}.
 #' @param len
-#'  length of pipeline segment, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  length of supplying pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
 #' @param duration
-#'  duration of heat flux emittance, [\emph{hour}]. Type: \code{\link{assert_double}}.
+#'  duration of heat loss, [\emph{hour}]. Type: \code{\link{assert_double}}.
 #'
 #' @return
-#'  Heat flux emitted by pipeline segment during \code{duration}, [\emph{kcal}].
-#'  If \code{len} of pipeline segment is 1 \emph{m} and \code{duration} of
-#'  heat flux emittance is set to 1 \emph{hour} then the return value is equal
-#'  to that in [\emph{kcal/m/h}] units and so comparable with values of
-#'  heat flux listed in
-#'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  Normative heat loss of supplying cylindrical pipe mounted in channel during \code{duration}, [\emph{kcal}].
+#'  If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is set to
+#'  1 \emph{h} (hour) (default values) then the return value is also the
+#'  \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with those
+#'  prescribed by \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'  Type: \code{\link{assert_double}}.
 #'
 #' @details
-#'   \code{k1} and \code{k2} factor values equal to one mean the best technical
+#'   \code{k1} and \code{k2} factor values equal to \code{1} mean the best technical
 #'   condition of insulation of appropriate pipes, whereas for poor technical
-#'   state factor values tends to five or more.
+#'   state factor values tends to \code{5} or more.
 #'
-#'   Nevertheless, when \code{k1} and \code{k2} both equal to one the calculated
-#'   heat flux [\emph{kcal/m/h}] is sometimes higher than that listed in
-#'   \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'   Nevertheless, when \code{k1} and \code{k2} both equal to \code{1} the calculated
+#'   \emph{specific heat loss power} [\emph{kcal/m/h}] is sometimes higher than that listed in
+#'   \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'   One should consider that situation when choosing method for heat loss
 #'   calculations.
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  m278hlcha()
 #'  #
 #'

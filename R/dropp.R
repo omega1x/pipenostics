@@ -5,7 +5,7 @@
 #'
 #' @description
 #'  Calculate \href{https://en.wikipedia.org/wiki/Pressure_drop}{pressure drop}
-#'  in straight circular steel pipe of \emph{district heating system} (where
+#'  in straight cylidrical steel pipe of \emph{district heating system} (where
 #'  water is a heat carrier) that is a result of pipe orientation in space
 #'  (hydrostatic component), and friction between water and internal wall of pipe.
 #'
@@ -18,7 +18,7 @@
 #'  of heat carrier (water) measured at the
 #'  entrance (inlet) of pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.
 #'
-#' @param consumption
+#' @param flow_rate
 #'  amount of heat carrier (water) that is transferred by pipe during a period,
 #'  [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
 #'
@@ -70,7 +70,7 @@
 #'  The second component comes from
 #'  \href{https://en.wikipedia.org/wiki/Darcy-Weisbach_equation}{Darcy–Weisbach equation}
 #'  and is calculated using heating carrier regime parameters (\code{temperature},
-#'  \code{pressure}, \code{consumption}). Temperature and pressure values of
+#'  \code{pressure}, \code{flow_rate}). Temperature and pressure values of
 #'  heat carrier define water properties according to
 #'  \href{http://www.iapws.org/}{IAPWS} formulation.
 #'
@@ -108,7 +108,7 @@
 #'          \emph{Issue 1}, April 2011, Pages \emph{34-48}.
 #'
 #'    \item Romeo, E., Royo, C., Monzon, A., 2002. \emph{Improved explicit equation for
-#'          estimation of the friction factor in rough and smooth pipes.}
+#'          estimation of friction factor in rough and smooth pipes.}
 #'          Chem. Eng. J. \strong{86} (3), \emph{369–374}.
 #'
 #'    \item Vatankhah, A.R., Kouchakzadeh, S., 2009. \emph{Discussion: Exact equations
@@ -125,13 +125,15 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #' # Typical pressure drop for horizontal pipeline segments
 #' # in high-way heating network in Novosibirsk
 #' dropp(len = c(200, 300))
 #'
 #' #[1] 0.0007000666 0.0010500999
 #'
-dropp <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.,
+dropp <- function(temperature = 130., pressure = mpa_kgf(6), flow_rate = 1276.,
                   d = 1., len = 1., roughness = 6e-3,
                   inlet = 0., outlet = 0.,
                   method = "romeo"){
@@ -142,7 +144,7 @@ dropp <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.
     pressure, lower = 8.4e-2, upper = 100, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
-    consumption, lower = 1e-3, upper = 1e5, any.missing = FALSE, min.len = 1L
+    flow_rate, lower = 1e-3, upper = 1e5, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
     d, lower = 25e-3, upper = 2.0, any.missing = FALSE, min.len = 1L
@@ -160,7 +162,7 @@ dropp <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.
     outlet, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_true(all.commensurable(c(
-    length(temperature), length(pressure), length(consumption), length(d),
+    length(temperature), length(pressure), length(flow_rate), length(d),
     length(len), length(roughness), length(inlet), length(outlet)
   )))
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
@@ -169,7 +171,7 @@ dropp <- function(temperature = 130., pressure = mpa_kgf(6), consumption = 1276.
 
 
   rho <- 1/if97vtp1(temperature + 273.15, pressure)  # [kg/m^3]
-  u <- consumption*1e3/rho/(.25*pi*d^2)/3600  # [ton/hour]*[kg/ton]/[kg/m^3]/[m^2]/[s/hour] == [m/s]
+  u <- flow_rate*1e3/rho/(.25*pi*d^2)/3600  # [ton/hour]*[kg/ton]/[kg/m^3]/[m^2]/[s/hour] == [m/s]
   fric <- get(sprintf("fric_%s", method))
 
   # Friction component, [MPa]:

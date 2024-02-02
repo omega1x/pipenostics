@@ -1,14 +1,12 @@
 #' @title
-#'  Minenergo-325. Massively trace backwards thermal-hydraulic regime for
-#'  district heating network
+#'  Massively trace backwards thermal-hydraulic regime for district heating network
 #'
 #' @family Regime tracing
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
-#'  flow rate, and other) in the bunched pipeline against the flow direction using norms
-#'  of heat loss values prescribed by
-#'  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  flow rate, and other) in the bunched pipeline against the flow direction using provided values
+#'  of heat loss.
 #'
 #'  Algorithm also suits for partially measurable district heating network with
 #'  massive data lack conditions, when there are no temperature and pressure
@@ -267,7 +265,7 @@
 #' print(output)
 #'
 #' @export
-m325tracebw <- function(sender = 6,
+tracebw <- function(sender = 6,
                          acceptor = 7,
                          temperature = 70.0,
                          pressure = pipenostics::mpa_kgf(6),
@@ -288,7 +286,7 @@ m325tracebw <- function(sender = 6,
                          csv = FALSE,
                          file = "m325tracebw.csv") {
   # Trace thermal-hydraulic regime  ----
-  .func_name <- "m325tracebw"
+  .func_name <- "tracebw"
   
   # Meters in 1 millimeter
   METER <- 1e-3  # [m/mm]
@@ -430,29 +428,16 @@ m325tracebw <- function(sender = 6,
 
   # Calculate additional regime parameters:
   is_temperature_sensored <- !is.na(temperature)
-  flux <- Q <- loss <- rep.int(NA_real_, length(temperature))
+  flux <- Q <- rep.int(NA_real_, length(temperature))
   
-  ## Normative specific heat loss power, [kcal/m/h]
-  loss[is_temperature_sensored] <- pipenostics::m325nhl(
-    year        = year[is_temperature_sensored],
-    laying      = laying[is_temperature_sensored],
-    exp5k       = exp5k[is_temperature_sensored],
-    insulation  = insulation[is_temperature_sensored],
-    d           = d[is_temperature_sensored],
-    temperature = temperature[is_temperature_sensored],
-    len         = 1,
-    duration    = 1,
-    beta        = beta[is_temperature_sensored]
-  )
-
-  ## Normative heat flux, [W/m^2]
+  # Heat flux, [W/m^2]
   flux[is_temperature_sensored] <- pipenostics::flux_loss(
     x = loss[is_temperature_sensored],
-    d = d[is_temperature_sensored] * METER 
-    # TODO: Consider pipe wall width
+    d = d[is_temperature_sensored] * METER  
+    # TODO: Consider pipe wall width 
   )  
 
-  ## Normative heat loss per day, [kcal]
+  # Heat loss per day, [kcal]
   Q[is_temperature_sensored] <- pipenostics::m325nhl(
     year        = year[is_temperature_sensored],
     laying      = laying[is_temperature_sensored],
@@ -596,18 +581,7 @@ m325tracebw <- function(sender = 6,
     this_sender_loss <- rep.int(NA_real_, length(regime_index))
 
     if (any(is_tp_sensored)) {
-      this_sender_loss[is_tp_sensored] <-
-        pipenostics::m325nhl(
-          year        = year[is_processed_pipe][is_tp_sensored],
-          laying      = laying[is_processed_pipe][is_tp_sensored],
-          exp5k       = exp5k[is_processed_pipe][is_tp_sensored],
-          insulation  = insulation[is_processed_pipe][is_tp_sensored],
-          d           = d[is_processed_pipe][is_tp_sensored],
-          temperature = regime[["temperature"]][regime_index][is_tp_sensored],
-          len         = 1,
-          duration    = 1,
-          beta        = beta[is_processed_pipe][is_tp_sensored]
-        )
+      this_sender_loss[is_tp_sensored] <- loss[is_processed_pipe][is_tp_sensored]
       if (verbose)
         cat(
           sprintf(
@@ -668,18 +642,7 @@ m325tracebw <- function(sender = 6,
     this_sender_Q <- rep.int(NA_real_, length(regime_index))
 
     if (any(is_tp_sensored)) {
-      this_sender_Q[is_tp_sensored] <-
-        pipenostics::m325nhl(
-          year        = year[is_processed_pipe][is_tp_sensored],
-          laying      = laying[is_processed_pipe][is_tp_sensored],
-          exp5k       = exp5k[is_processed_pipe][is_tp_sensored],
-          insulation  = insulation[is_processed_pipe][is_tp_sensored],
-          d           = d[is_processed_pipe][is_tp_sensored],
-          temperature = regime[["temperature"]][regime_index][is_tp_sensored],
-          len         = len[is_processed_pipe][is_tp_sensored],
-          duration    = DAY, 
-          beta        = beta[is_processed_pipe][is_tp_sensored]
-        )
+      this_sender_Q[is_tp_sensored] <- loss[is_processed_pipe][is_tp_sensored] * len[is_processed_pipe][is_tp_sensored] * DAY
       if (verbose)
         cat(
           sprintf(

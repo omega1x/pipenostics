@@ -1,14 +1,14 @@
 #' @title
-#'  Minenergo-325. Trace forwards thermal-hydraulic regime for district heating
+#'  Minenergo-325. Massively trace forwards thermal-hydraulic regime for district heating
 #'  network
 #'
 #' @family Regime tracing
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
-#'  consumption) in the bunched pipeline along the flow direction using norms of
+#'  flow_rate, and other) in the bunched pipeline along the flow direction using norms of
 #'  heat flux values prescribed by
-#'  \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'
 #' @details
 #'  The calculated (values of) regime may be considered as representation of
@@ -53,26 +53,26 @@
 #'    \code{\link{as.character}}.
 #'
 #' @param temperature
-#'    \emph{snapshot of thermal-hydraulic regime state}: temperature of heat carrier
+#'    \emph{Traced thermal hydraulic regime}. Sensor-measured temperature of heat carrier
 #'    (water) sensor-measured on the root node, [\emph{°C}].
 #'    Type: \code{\link{assert_double}}.
 #'    Use \code{NA_float_}s for nodes without temperature sensor.
 #'
 #' @param pressure
-#'    \emph{snapshot of thermal-hydraulic regime state}: sensor-measured
+#'    \emph{Traced thermal hydraulic regime}. Sensor-measured
 #'    \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 #'    of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
 #'    [\emph{MPa}].
 #'    Type: \code{\link{assert_double}}.
 #'    Use \code{NA_float_}s for nodes without pressure sensor.
 #'
-#' @param consumption
-#'    \emph{snapshot of thermal-hydraulic regime state}:
-#'    sensor-measured amount of heat carrier (water) on root node that is
+#' @param flow_rate
+#'    \emph{Traced thermal hydraulic regime}.
+#'    Sensor-measured amount of heat carrier (water) on root node that is
 #'    transferred by pipe (i.e. acceptor's incoming edge) during a period,
 #'    [\emph{ton/hour}].
 #'    Type: \code{\link{assert_double}}.
-#'    Use \code{NA_float_}s for nodes without consumption sensor.
+#'    Use \code{NA_float_}s for nodes without flow_rate sensor.
 #'
 #' @param d
 #'    internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
@@ -111,7 +111,7 @@
 #'    Type: \code{\link{assert_subset}}.
 #'
 #' @param beta
-#'    logical indicator: should they consider additional heat losses of fittings
+#'    logical indicator: should they consider additional heat loss of fittings
 #'    located on this pipe (i.e. acceptor's incoming edge)?
 #'    Type: \code{\link{assert_logical}}.
 #'
@@ -173,64 +173,60 @@
 #'    mostly like it returned by function \code{\link{m325tracebw}}:
 #'    \describe{
 #'      \item{\code{node}}{
-#'        identifier of the node for which regime parameters is calculated.
+#'        \emph{Tracing job}. Identifier of the node which regime parameters is calculated for.
 #'        Values in this vector are identical to those in argument \code{acceptor}.
 #'        Type: \code{\link{assert_character}}.
 #'      }
 #'
 #'     \item{\code{tracing}}{
-#'       identifiers of nodes from which regime parameters are
+#'       \emph{Tracing job}. Identifiers of nodes from which regime parameters are
 #'       traced for the given node. Identifier \code{sensor} is used when
 #'       values of regime parameters for the node are sensor readings.
 #'       Type: \code{\link{assert_character}}.
 #'     }
 #'
 #'     \item{\code{backward}}{
-#'       identifier of tracing direction. It constantly equals to \code{FALSE}.
+#'       \emph{Tracing job}. Identifier of tracing direction. It constantly equals to \code{FALSE}.
 #'       Type: \code{\link{assert_logical}}.
 #'     }
 #'
 #'     \item{\code{aggregation}}{
-#'       aggregation method associated with values of calculated temperature or
-#'       pressure in \code{data.frame}'s row for the node. For forward tracing
-#'       the only option is \code{identity}.
+#'       \emph{Tracing job}. Identifier of the aggregation method associated with traced values.
+#'       For forward tracing the only option is \code{identity}.
 #'       Type: \code{\link{assert_character}}.
 #'     }
 #'
 #'    \item{\code{temperature}}{
-#'      \emph{snapshot of thermal-hydraulic regime state}: traced temperature of heat
+#'      \emph{Traced thermal hydraulic regime}. Traced temperature of heat
 #'      carrier (water) that is associated with the node, [\emph{°C}]
 #'      Type: \code{\link{assert_double}}.
 #'    }
 #'
 #'    \item{\code{pressure}}{
-#'      \emph{snapshot of thermal-hydraulic regime state}: traced pressure of heat
+#'      \emph{Traced thermal hydraulic regime}. Traced pressure of heat
 #'      carrier (water) that is associated with the node, [\emph{MPa}]
 #'      Type: \code{\link{assert_double}}.
 #'    }
 #'
-#'    \item{\code{consumption}}{
-#'      \emph{snapshot of thermal-hydraulic regime state}: traced pressure of heat
+#'    \item{\code{flow_rate}}{
+#'      \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
 #'      carrier (water) that is associated with the node, [\emph{ton/hour}]
 #'      Type: \code{\link{assert_double}}.
 #'    }
 #'
 #'    \item{\code{job}}{
-#'      value of tracing step counter. For forward tracing value of \code{job}
+#'      \emph{Tracing job}. Value of tracing job counter. For forward tracing value of \code{job}
 #'      counts the number of traced paths from root node.
 #'      Type: \code{\link{assert_integer}}.
 #'    }
-#'
 #'  }
+#'  Type: \code{\link{assert_data_frame}}.
 #'
 #' @examples
-#' \donttest{
+#'  library(pipenostics)
+#'
 #' # Minimum two nodes should be in district heating network graph:
 #' m325tracefw(verbose = FALSE)
-#'
-#' #   node  tracing backward aggregation temperature  pressure consumption job
-#' # 1    1 sensor    FALSE    identity    70.00000 0.5883990          20   0
-#' # 2    2      1    FALSE    identity    69.71603 0.5813153          20   1
 #'
 #' # Example with the test bench:
 #' nx <- pipenostics::m325testbench
@@ -244,11 +240,13 @@
 #'
 #' # Perform backward tracing to get regime on root node:
 #' bw_report <- do.call("m325tracebw", c(as.list(nx), verbose = FALSE))
-#'
-#' # Put the traced values to the root node of the test bench:
+# TODO: Remove after function correction and convert to test:
+#' bw_report <- bw_report[, setdiff(colnames(bw_report), c("loss", "flux", "Q"))]
+#' 
+#' # Put the traced values to the root node of test bench:
 #' root_node_idx <- 12
 #' root_node <- paste0("N", root_node_idx)
-#' regime_param  <- c("temperature", "pressure", "consumption")
+#' regime_param  <- c("temperature", "pressure", "flow_rate")
 #' nx[root_node_idx, regime_param] <-
 #'   subset(bw_report,
 #'          node == root_node & aggregation == "median",
@@ -271,16 +269,14 @@
 #'     subset(report, !backward, regime_param)
 #' )
 #' print(regime_delta)
-#' # temperature      pressure   consumption
-#' # -4.640201e-01 -5.208802e-03 -5.465713e-16
 #'
 #' stopifnot(sqrt(regime_delta %*% regime_delta) < 0.5)
-#'}
+#'
 #' @export
 m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
                         temperature = c(70.0, NA_real_),
                         pressure = c(pipenostics::mpa_kgf(6), NA_real_),
-                        consumption = c(20, NA_real_),
+                        flow_rate = c(20, NA_real_),
                         d = rep_len(100, 2), len = rep_len(72.446, 2),
                         year = rep_len(1986, 2), insulation = rep_len(0, 2),
                         laying = rep_len("tunnel", 2), beta = rep_len(FALSE, 2),
@@ -311,7 +307,7 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
     len = n
   )
   checkmate::assert_double(
-    consumption,
+    flow_rate,
     lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = TRUE,
     len = n
   )
@@ -390,7 +386,7 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
   # Validate initial data ----
   checkmate::assert_double(temperature[[root_node]], any.missing = FALSE, len = 1L)
   checkmate::assert_double(pressure[[root_node]], any.missing = FALSE, len = 1L)
-  checkmate::assert_double(consumption[[root_node]], any.missing = FALSE, len = 1L)
+  checkmate::assert_double(flow_rate[[root_node]], any.missing = FALSE, len = 1L)
 
 
   job_log <- data.frame(
@@ -400,7 +396,7 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
     aggregation = "identity",
     temperature = temperature[root_node],
     pressure = pressure[root_node],
-    consumption = consumption[root_node],
+    flow_rate = flow_rate[root_node],
     job = 0L
   )
 
@@ -430,7 +426,7 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
     )
 
     regime <- m325traceline(
-      temperature[root_node], pressure[root_node], consumption[root_node],
+      temperature[root_node], pressure[root_node], flow_rate[root_node],
       discharge[current_path], d[current_path], len[current_path],
       year[current_path], insulation[current_path], laying[current_path],
       beta[current_path], exp5k[current_path], roughness[current_path],

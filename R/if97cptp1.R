@@ -1,4 +1,5 @@
-#' IAPWS-IF97. Specific isobaric heat capacity of water
+#' @title
+#'  IAPWS-IF97. Specific isobaric heat capacity of water
 #'
 #' @family Fluid properties
 #'
@@ -29,6 +30,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  # Typical usage in district heating:
 #'  if97cptp1(temperature = k_c(65), pressure = mpa_kgf(6))
 #'  # [1] 4.184094  # [kJ/kg/K] = [kJ/kg/ºC]

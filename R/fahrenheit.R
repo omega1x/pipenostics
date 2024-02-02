@@ -1,5 +1,5 @@
 #' @title
-#'  Covert to Fahrenheit scale
+#'  Convert to Fahrenheit scale
 #'
 #' @family utils
 #'
@@ -24,6 +24,8 @@
 #'  \code{\link{k_f}} and \code{\link{c_f}} for converting from Fahrenheit-scale.
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #' # Convert from Kelvin to Fahrenheit:
 #' f_k(c(0, 373.15))
 #' # [1]  -459.67 212

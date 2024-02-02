@@ -22,6 +22,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  kgf_mpa(c(0.0980665, 1))
 #'  # [1]  1.00000 10.19716
 #'

@@ -1,11 +1,11 @@
 library(pipenostics)
 
-test_that("*dropg* errs in consumption drop", {
+test_that("*dropg* errs in flow rate drop", {
   d <- as.double(c(800, 900, 1000, 1400, 1200))
-  consumption <- .125*d
+  flow_rate <- .125*d
   adj <- c(450, -400, 950, -255, 1152)
   expect_equal(
-    consumption - dropg(adj, d, consumption),
+    flow_rate - dropg(adj, d, flow_rate),
     c(75.96439, 134.72222, 65.70302,180.80580,  78.05995),
     tolerance = 1e-5
   )
@@ -18,10 +18,10 @@ test_that("*dropg* errs in consumption drop", {
     c(50, 70, 1000, 32)  # diameter of 4 discharge pipes, [mm]
   )
   d <- c(800, 900, 1000, 1400, 1200)
-  consumption <- .125*d
+  flow_rate <- .125*d
 
   expect_equal(
-    consumption - dropg(adjp, d, consumption),
+    flow_rate - dropg(adjp, d, flow_rate),
     c(75.96439, 134.72222, 65.70302, 180.80580, 78.05995),
     tolerance = 1e-5
   )
@@ -44,26 +44,17 @@ test_that("*dropt* errs in temperature drop", {
     l = 1000
   )
   operation_temperature <- c(130, 150)  # [°C]
-  foo <- dropt(
+
+  temperature_drop <- dropt(
       temperature = operation_temperature,
-      flux = do.call(
+      loss_power = do.call(
         m325nhl,
         c(pipeline, temperature = list(operation_temperature))
       )
   )
   expect_equal(
-    foo,
+    temperature_drop,
     c(1.366806, 1.433840),
     tolerance = 1e-6
   )
-
-  expect_equal(
-    foo,
-    m325dropt(
-      temperature = operation_temperature, year = 1968, laying = "channel",
-      d = 700, len = 1000
-    ),
-    tolerance = 1e-6
-  )
-
 })

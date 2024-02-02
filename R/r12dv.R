@@ -1,4 +1,5 @@
-#' IAPWS R12-08. Dynamic viscosity of water (steam)
+#' @title
+#'  IAPWS R12-08. Dynamic viscosity of water (steam)
 #'
 #' @family Fluid properties
 #'
@@ -13,10 +14,10 @@
 #'  temperature of water (steam), [\emph{K}]. Type: \code{\link{assert_double}}.
 #'
 #' @param density
-#'  density of water, [kg/m^3]. Type: \code{\link{assert_double}}.
+#'  density of water, [\emph{kg/m^3}]. Type: \code{\link{assert_double}}.
 #'
 #' @return
-#'  Dynamic viscosity of water (steam), [Pa*s]*1e-6.Type: \code{\link{assert_double}}.
+#'  Dynamic viscosity of water (steam), [\emph{Pa*s}]*1e-6.Type: \code{\link{assert_double}}.
 #'
 #' @details
 #'  Even the provided function is vectorized its execution may be too slow for
@@ -30,6 +31,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  # Typical usage in district heating:
 #'  t <- 65 + 273.15
 #'  rho <- 1/if97vtp1(t, mpa_kgf(6))

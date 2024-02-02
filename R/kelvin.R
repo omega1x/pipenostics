@@ -24,6 +24,8 @@
 #'  \code{\link{c_k}} and \code{\link{f_k}} for converting from Kelvin-scale.
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #' # Convert from Celsius to Kelvin:
 #' k_c(c(-273.15, 100))
 #' # [1]  0  373.15

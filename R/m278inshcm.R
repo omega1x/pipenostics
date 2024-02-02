@@ -25,6 +25,7 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
 #'
 #' # Averaged thermal conductivity of pipe insulation at 110 °C
 #' print(m278insdata)

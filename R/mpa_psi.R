@@ -21,6 +21,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  mpa_psi(c(145.03773800721814, 1))
 #'  # [1] 1.000000000 0.006894757 # [MPa]
 #'
