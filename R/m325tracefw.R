@@ -1,13 +1,13 @@
 #' @title
-#'  Minenergo-325. Massively trace forwards thermal-hydraulic regime for district heating
-#'  network
+#'  Minenergo-325. Massively trace forwards thermal-hydraulic regime for district
+#'  heating network
 #'
 #' @family Regime tracing
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
-#'  flow_rate, and other) in the bunched pipeline along the flow direction using norms of
-#'  heat flux values prescribed by
+#'  flow_rate, and other) in the bunched pipeline along the flow direction using
+#'  norms of heat flux values prescribed by
 #'  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'
 #' @details
@@ -27,11 +27,11 @@
 #'  Sensors at other nodes are redundant in forward tracing, since the tracing
 #'  algorithm by no means consider them for tracing.
 #'
-#'  Moreover in the forward tracing algorithm they assume the flow of heat carrier is
-#'  distributed proportionally to the cross-sectional area of the outgoing
-#'  pipeline. Actually, a lot of reasons may cause significant deviations from
-#'  this assumption. As a result, the sequence of paired backward/forward
-#'  tracing may be divergent for regime parameters.
+#'  Moreover in the forward tracing algorithm they assume the flow of heat
+#'  carrier is distributed proportionally to the cross-sectional area of the
+#'  outgoing pipeline. Actually, a lot of reasons may cause significant
+#'  deviations from this assumption. As a result, the sequence of paired
+#'  backward/forward tracing may be divergent for regime parameters.
 #'
 #'  Though some input arguments are natively vectorized their individual values
 #'  all relate to common part of district heating network, i.e. associated with
@@ -53,8 +53,8 @@
 #'    \code{\link{as.character}}.
 #'
 #' @param temperature
-#'    \emph{Traced thermal hydraulic regime}. Sensor-measured temperature of heat carrier
-#'    (water) sensor-measured on the root node, [\emph{°C}].
+#'    \emph{Traced thermal hydraulic regime}. Sensor-measured temperature of
+#'    heat carrier (water) sensor-measured on the root node, [\emph{°C}].
 #'    Type: \code{\link{assert_double}}.
 #'    Use \code{NA_float_}s for nodes without temperature sensor.
 #'
@@ -134,8 +134,8 @@
 #'     Type: \code{\link{assert_double}}.
 #'
 #' @param elev_tol
-#'    maximum allowed discrepancy between adjacent outlet and inlet elevations of
-#'    two subsequent pipes in the traced path, [\emph{m}].
+#'    maximum allowed discrepancy between adjacent outlet and inlet elevations
+#'    of two subsequent pipes in the traced path, [\emph{m}].
 #'    Type: \code{\link{assert_number}}.
 #'
 #' @param method
@@ -153,8 +153,8 @@
 #'    Type: \code{\link{assert_flag}}.
 #'
 #' @param csv
-#'    logical indicator: should they incrementally dump results to \emph{csv}-file
-#'    while tracing?
+#'    logical indicator: should they incrementally dump results to \emph{csv}-
+#'    file while tracing?
 #'    Type: \code{\link{assert_flag}}.
 #'
 #' @param file
@@ -162,7 +162,7 @@
 #'    Type: \code{\link{assert_character}} of length 1 that can be used safely
 #'    to create a file and write to it.
 #'
-#' @param maxcores
+#' @param max_cores
 #'    maximum cores of CPU to use in parallel processing.
 #'    Type: \code{\link{assert_count}}.
 #'
@@ -173,26 +173,29 @@
 #'    mostly like it returned by function \code{\link{m325tracebw}}:
 #'    \describe{
 #'      \item{\code{node}}{
-#'        \emph{Tracing job}. Identifier of the node which regime parameters is calculated for.
-#'        Values in this vector are identical to those in argument \code{acceptor}.
+#'        \emph{Tracing job}. Identifier of the node which regime parameters is
+#'        calculated for. Values in this vector are identical to those in
+#'        argument \code{acceptor}.
 #'        Type: \code{\link{assert_character}}.
 #'      }
 #'
 #'     \item{\code{tracing}}{
-#'       \emph{Tracing job}. Identifiers of nodes from which regime parameters are
-#'       traced for the given node. Identifier \code{sensor} is used when
+#'       \emph{Tracing job}. Identifiers of nodes from which regime parameters
+#'       are traced for the given node. Identifier \code{sensor} is used when
 #'       values of regime parameters for the node are sensor readings.
 #'       Type: \code{\link{assert_character}}.
 #'     }
 #'
 #'     \item{\code{backward}}{
-#'       \emph{Tracing job}. Identifier of tracing direction. It constantly equals to \code{FALSE}.
+#'       \emph{Tracing job}. Identifier of tracing direction. It constantly
+#'       equals to \code{FALSE}.
 #'       Type: \code{\link{assert_logical}}.
 #'     }
 #'
 #'     \item{\code{aggregation}}{
-#'       \emph{Tracing job}. Identifier of the aggregation method associated with traced values.
-#'       For forward tracing the only option is \code{identity}.
+#'       \emph{Tracing job}. Identifier of the aggregation method associated
+#'       with traced values. For forward tracing the only option is
+#'       \code{identity}.
 #'       Type: \code{\link{assert_character}}.
 #'     }
 #'
@@ -215,8 +218,8 @@
 #'    }
 #'
 #'    \item{\code{job}}{
-#'      \emph{Tracing job}. Value of tracing job counter. For forward tracing value of \code{job}
-#'      counts the number of traced paths from root node.
+#'      \emph{Tracing job}. Value of tracing job counter. For forward tracing
+#'      value of \code{job} counts the number of traced paths from root node.
 #'      Type: \code{\link{assert_integer}}.
 #'    }
 #'  }
@@ -240,9 +243,7 @@
 #'
 #' # Perform backward tracing to get regime on root node:
 #' bw_report <- do.call("m325tracebw", c(as.list(nx), verbose = FALSE))
-# TODO: Remove after function correction and convert to test:
-#' bw_report <- bw_report[, setdiff(colnames(bw_report), c("loss", "flux", "Q"))]
-#' 
+#'
 #' # Put the traced values to the root node of test bench:
 #' root_node_idx <- 12
 #' root_node <- paste0("N", root_node_idx)
@@ -285,7 +286,7 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
                         elev_tol = 0.1,
                         method = "romeo", verbose = TRUE,
                         csv = FALSE, file = "m325tracefw.csv",
-                        maxcores = 2) {
+                        max_cores = 2) {
 
   # Perform forward tracing ----
   .func_name <- "m325tracefw"
@@ -314,7 +315,8 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
   norms <- pipenostics::m325nhldata  # use brief name
   checkmate::assert_double(
     d,
-    lower = min(norms[["diameter"]]), upper = max(norms[["diameter"]]), finite = TRUE,
+    lower = min(norms[["diameter"]]), upper = max(norms[["diameter"]]),
+    finite = TRUE,
     any.missing = FALSE, len = n
   )
   checkmate::assert_double(
@@ -373,7 +375,7 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
     structure(1 - d ^ 2 / tapply(d ^ 2, sender, sum)[sender], names = acceptor)
 
   # List search paths ----
-  tracing_path <- flowls(sender, acceptor, maxcores)
+  tracing_path <- flowls(sender, acceptor, max_cores)
   checkmate::assert_list(
     tracing_path,
     types = "integerish", any.missing = FALSE,
@@ -397,6 +399,9 @@ m325tracefw <- function(sender = c(0, 1), acceptor = c(1, 2),
     temperature = temperature[root_node],
     pressure = pressure[root_node],
     flow_rate = flow_rate[root_node],
+    loss = NA_real_,
+    flux = NA_real_,
+    Q    = NA_real_,
     job = 0L
   )
 

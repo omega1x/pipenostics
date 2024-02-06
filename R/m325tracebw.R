@@ -447,10 +447,10 @@ m325tracebw <- function(sender = 6,
 
   ## Normative heat flux, [W/m^2]
   flux[is_temperature_sensored] <- pipenostics::flux_loss(
-    x = loss[is_temperature_sensored],
-    d = d[is_temperature_sensored] * METER 
-    # TODO: Consider pipe wall width
-  )  
+    x   = loss[is_temperature_sensored],
+    d   = d[is_temperature_sensored] * METER ,
+    wth = pipenostics::wth_d(d[is_temperature_sensored])
+  )
 
   ## Normative heat loss per day, [kcal]
   Q[is_temperature_sensored] <- pipenostics::m325nhl(
@@ -637,8 +637,9 @@ m325tracebw <- function(sender = 6,
 
     if (any(is_tp_sensored)) {
       this_sender_flux[is_tp_sensored] <- pipenostics::flux_loss(
-          x = this_sender_loss[is_tp_sensored],
-          d = d[is_processed_pipe][is_tp_sensored] * METER,
+          x   =  this_sender_loss[is_tp_sensored],
+          d   = d[is_processed_pipe][is_tp_sensored] * METER,
+          wth = pipenostics::wth_d(d[is_processed_pipe][is_tp_sensored])
       )
       if (verbose)
         cat(
