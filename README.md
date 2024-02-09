@@ -415,7 +415,7 @@ Localization of extra-normative heat loss
 $Q_{\text{ExNHL}}$ could be performed if they know
 thermal-hydraulic regime of district heating network for each pipeline
 segment. In most cases thermal-hydraulic field (values of temperature,
-pressure and heat carrier flow rate) is measured only on heat-supply
+pressure and heat carrier mass flow rate) is measured only on heat-supply
 origins and near consumers, i.e. mostly on terminal nodes of
 pipeline network. Middle segments of network are rarely equipped and
 thus are not sensor-measured. For restoring of thermal-hydraulic field

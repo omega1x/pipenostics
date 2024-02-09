@@ -139,7 +139,7 @@
 #' @examples
 #'  library(pipenostics)
 #'
-#' # Do not hesitate to use data.table and igraph for larger chunks of network.
+#' # Do not hesitate to use `data.table` and `igraph` for larger chunks of network.
 #'
 #' # Check for declared topology isomorphism:
 #' stopifnot(

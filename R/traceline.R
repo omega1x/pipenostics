@@ -1,5 +1,5 @@
 #' @title
-#'  Minenergo-325. Trace thermal-hydraulic regime for linear segment of district
+#'  Trace thermal-hydraulic regime for linear segment of district
 #'  heating network
 #'
 #' @family Regime tracing
@@ -7,14 +7,9 @@
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
 #'  flow_rate, and other) along the adjacent linear segments of pipeline using
-#'  norms of heat loss values prescribed by
-#'  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  user-provided values of \emph{specific heat loss power}.
 #'
 #' @details
-#'  The calculated (values of) regime may be considered as representation of
-#'  district heating process in conditions of hypothetically perfect
-#'  technical state of pipe walls and insulation.
-#'
 #'  They consider only simple tracing paths which do not contain rings and any
 #'  kind of parallelization. At the same time bidirectional (forward and
 #'  backward) tracing is possible in accordance with sensor position. They also
@@ -23,7 +18,7 @@
 #'  adopted assumptions for 4-segment tracing path is depicted on the next
 #'  figure.
 #'
-#'  \figure{m325regtrace.png}
+#'  \figure{regtrace.png}
 #'
 #'  They make additional check for consistency of \code{inlet} and \code{outlet}
 #'  values for subsequent pipe segments. Discrepancy of appropriate elevations
@@ -71,43 +66,11 @@
 #'  along the direction of flow, [\emph{m}].
 #'  Type: \code{\link{assert_double}}.
 #'
-#' @param year
-#'   year when pipe is put in operation after laying or total overhaul for
-#'   each pipe in tracing path enumerated along the direction of flow.
-#'   Type: \code{\link{assert_integerish}}.
-#'
-#' @param insulation
-#'  insulation that covers the exterior of pipe:
-#'  \describe{
-#'    \item{\code{0}}{no insulation}
-#'    \item{\code{1}}{foamed polyurethane or analogue}
-#'    \item{\code{2}}{polymer concrete}
-#'  }
-#'  for each pipe in tracing path enumerated along the direction of flow.
-#'  Type: \code{\link{assert_numeric}} and \code{\link{assert_subset}}.
-#'
-#' @param laying
-#'  type of pipe laying depicting the position of pipe in space:
-#'  \itemize{
-#'    \item \code{air}
-#'    \item \code{channel}
-#'    \item \code{room}
-#'    \item \code{tunnel}
-#'    \item \code{underground}
-#'  }
-#'  for each pipe in tracing path enumerated along the direction of flow.
-#'  Type: \code{\link{assert_character}} and \code{\link{assert_subset}}.
-#'
-#' @param beta
-#'  logical indicator: should they consider additional heat loss of fittings?
-#'  Logical value for each pipe in tracing path enumerated along the direction
-#'  of flow. Type: \code{\link{assert_logical}}.
-#'
-#' @param exp5k
-#'  logical indicator for regime of pipe: is pipe operated more that
-#'  \code{5000} hours per year? Logical value for each pipe in tracing path
-#'   enumerated along the direction of flow.
-#'  Type: \code{\link{assert_logical}}.
+#' @param loss
+#'  user-provided value of \emph{specific heat loss} power for each pipe in tracing
+#'  path enumerated along the direction of flow, [\emph{kcal/m/h}]. Values of the
+#'  argument can be obtained experimentally, or taken from regulatory documents.
+#'  Type: \code{\link{assert_double}}.
 #'
 #' @param roughness
 #'  roughness of internal wall for each pipe in tracing path enumerated along
@@ -165,17 +128,17 @@
 #'       direction of flow, [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
 #'    }
 #'   \item{\code{loss}}{
-#'      \emph{Traced thermal hydraulic regime}. Normative specific heat
+#'      User-provided specific heat
 #'      loss power for each pipe in tracing path enumerated along the direction
-#'      of flow, [\emph{kcal/m/h}]. Type: \code{\link{assert_double}}.
+#'      of flow, [\emph{kcal/m/h}], - copy of input. Type: \code{\link{assert_double}}.
 #'    }
 #'   \item{\code{flux}}{
-#'      \emph{Traced thermal hydraulic regime}. Normative heat flux for each pipe
+#'      Heat flux for each pipe
 #'      in tracing path enumerated along the direction of flow, [\emph{W/m^2}].
 #'      Type: \code{\link{assert_double}}.
 #'    }
 #'    \item{\code{Q}}{
-#'      \emph{Traced thermal hydraulic regime}. Normative heat loss for each
+#'      Heat loss for each
 #'      pipe in tracing path enumerated along the direction of flow per day,
 #'      [\emph{kcal}]. Type: \code{\link{assert_double}}.
 #'    }
@@ -185,7 +148,7 @@
 #' @examples
 #'  library(pipenostics)
 #'
-#' # Consider 4-segment tracing path depicted in ?m325regtrace help page.
+#' # Consider 4-segment tracing path.
 #' # First, let sensor readings for forward tracing:
 #' t_fw <- 130  # [°C]
 #' p_fw <- mpa_kgf(6)*all.equal(.588399, mpa_kgf(6))  # [MPa]
@@ -194,8 +157,11 @@
 #' # Let discharges to network for each pipeline segment are somehow determined as
 #' discharges <- seq(0, 30, 10)  # [ton/hour]
 #'
+#' # Experimentally obtained values of specific heat loss power are
+#' actual_loss <- c(348.0000, 347.1389, 346.3483, 345.8610)
+#'
 #' # Then the calculated regime (red squares) for forward tracing is
-#' regime_fw <- m325traceline(t_fw, p_fw, g_fw, discharges, forward = TRUE)
+#' regime_fw <- traceline(t_fw, p_fw, g_fw, discharges, loss = actual_loss, forward = TRUE)
 #' print(regime_fw)
 #'
 #' # $temperature
@@ -223,26 +189,26 @@
 #' g_bw <- 190  # [ton/hour]
 #'
 #' # Then the calculated regime (red squares) for backward tracing is
-#' regime_bw <- m325traceline(t_bw, p_bw, g_bw, discharges, forward = FALSE)
+#' regime_bw <- traceline(t_bw, p_bw, g_bw, discharges, loss = actual_loss, forward = FALSE)
 #' print(regime_bw)
 #'
 #' # $temperature
-#' # [1] 129.9953 129.1769 128.4254 127.9619
+#' # [1] 130.000893685 129.180497939 128.427226907 127.963046346
 #' #
 #' # $pressure
-#' # [1] 0.5883998 0.5878611 0.5874228 0.5872144
+#' # [1] 0.588399833660 0.587861095778 0.587422779315 0.587214377798
 #' #
 #' # $flow_rate
 #' # [1] 250 250 240 220
 #' #
 #' # $loss
-#' # [1] 347.1358 346.3467 345.8599 345.2035
+#' # [1] 348.0000 347.1389 346.3483 345.8610
 #' #
 #' # $flux
-#' # [1] 181.5081 181.0955 180.8410 180.4978
+#' # [1] 181.959958158 181.509711836 181.096328092 180.841531863
 #' #
 #' # $Q
-#' # [1] 4998755 4405529 2490192 2899710
+#' # [1] 5011200.000 4415606.808 2493707.760 2905232.400
 #'
 #' # Let compare sensor readings with backward tracing results:
 #' tracing <- with(regime_bw, {
@@ -264,33 +230,23 @@
 #' })
 #' print(tracing)
 #'
-#' # sensor.value traced.value     abs.discr    rel.discr
-#' # temperature  129.9952943   130.000000  4.705723e-03 0.0036197868
-#' # pressure       0.5883998     0.588399 -8.215938e-07 0.0001396321
-#' # flow_rate    250.0000000   250.000000  0.000000e+00 0.0000000000
+#' # sensor.value   traced.value          abs.discr         rel.discr
+#' # temperature 130.00089368526 130.0000000000 -8.93685255676e-04 0.000687450196674
+#' # pressure      0.58839983366   0.5883990075 -8.26160099998e-07 0.000140408139624
+#' # flow_rate   250.00000000000 250.0000000000  0.00000000000e+00 0.000000000000000
 #'
 #' @export
-m325traceline <- function(temperature = 130,
+traceline <- function(temperature = 130,
                           pressure = mpa_kgf(6),
                           flow_rate = 250,
-                          g = 0,
-                          # [ton/hour] or [] depending on
-                          d = 700,
-                          # [mm]
-                          len = c(600, 530, 300, 350),
-                          # [m]
-                          year = 1986,
-                          insulation = 0,
-                          laying = "underground",
-                          beta = FALSE,
-                          exp5k = TRUE,
-                          roughness = 6e-3,
-                          # [m]
-                          inlet = 0.,
-                          outlet = 0.,
-                          # [m]
-                          elev_tol = .1,
-                          # [m]
+                          g = 0,    # [ton/hour] or [] depending on
+                          d = 700,  # [mm]
+                          len = c(600, 530, 300, 350),  # [m]
+                          loss = c(348, 347.1389,
+                                  346.3483, 345.861),   # [kcal/m/h]
+                          roughness = 6e-3,             # [m]
+                          inlet = 0., outlet = 0.,      # [m]
+                          elev_tol = .1,                # [m]
                           method = "romeo",
                           forward = TRUE,
                           absg = TRUE) {
@@ -334,18 +290,13 @@ m325traceline <- function(temperature = 130,
     any.missing = FALSE,
     min.len = 1L
   )
-  checkmate::assert_integerish(
-    year,
-    lower = 1900L,
-    upper = max(norms[["epoch"]]),
+  checkmate::assert_double(
+    loss,
+    lower       = 0,
+    upper       = 1500,
     any.missing = FALSE,
-    min.len = 1L
+    min.len     = 1L
   )
-  checkmate::assert_subset(insulation, choices = unique(norms[["insulation"]]))
-  checkmate::assert_subset(laying, choices = unique(norms[["laying"]]),
-                           empty.ok = FALSE)
-  checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1L)
-  checkmate::assert_logical(exp5k, any.missing = FALSE, min.len = 1L)
   checkmate::assert_double(
     roughness,
     lower = 0,
@@ -371,11 +322,7 @@ m325traceline <- function(temperature = 130,
     c(
       length(d),
       length(len),
-      length(year),
-      length(insulation),
-      length(laying),
-      length(beta),
-      length(exp5k),
+      length(loss),
       length(roughness),
       length(inlet),
       length(outlet)
@@ -404,11 +351,6 @@ m325traceline <- function(temperature = 130,
       g,
       d,
       len,
-      year,
-      insulation,
-      laying,
-      beta,
-      exp5k,
       roughness,
       inlet,
       outlet,
@@ -438,38 +380,14 @@ m325traceline <- function(temperature = 130,
       for (i in pipe_enum) {
         # Tracing of:
         # * Total heat loss of a pipe per day
-        Q_regime[[i]] <- Q_value <- pipenostics::m325nhl(
-          year = year[[i]],
-          laying = laying[[i]],
-          exp5k = exp5k[[i]],
-          insulation = insulation[[i]],
-          d = d[[i]],
-          temperature = t_value,
-          len = len[[i]],
-          duration = DAY,
-          beta = beta[[i]],
-          extra = 2
-        )  # [kcal]
+        Q_regime[[i]] <- Q_value <- loss[[i]] * len[[i]] * DAY  # [kcal]
 
         # * Specific heat loss power - magnitudes comparable with Minenergo-325 sources
-        loss_regime[[i]] <- loss_value <- pipenostics::m325nhl(
-          year = year[[i]],
-          laying = laying[[i]],
-          exp5k = exp5k[[i]],
-          insulation = insulation[[i]],
-          d = d[[i]],
-          temperature = t_value,
-          len = 1,
-          # [m]
-          duration = 1,
-          # [hour]
-          beta = beta[[i]],
-          extra = 2
-        )  # [kcal/m/h]
+        loss_regime[[i]] <- loss[[i]]  # [kcal/m/h]
 
         # * Heat flux
         flux_regime[[i]] <-
-          pipenostics::flux_loss(loss_value, d[[i]] * METER, pipenostics::wth_d(d[[i]]))  # [W/m^2]
+          pipenostics::flux_loss(loss[[i]], d[[i]] * METER, pipenostics::wth_d(d[[i]]))  # [W/m^2]
 
         # * Flow rate
         g_value <-

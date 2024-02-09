@@ -1,14 +1,13 @@
 #' @title
-#'  Minenergo-325. Massively trace backwards thermal-hydraulic regime for
-#'  district heating network
+#'  Massively trace backwards thermal-hydraulic regime for district
+#'  heating network
 #'
 #' @family Regime tracing
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
-#'  flow rate, and other) in the bunched pipeline against the flow direction using norms
-#'  of heat loss values prescribed by
-#'  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  flow rate, and other) in the bunched pipeline against the flow direction using
+#'  user-provided values of \emph{specific heat loss power}.
 #'
 #'  Algorithm also suits for partially measurable district heating network with
 #'  massive data lack conditions, when there are no temperature and pressure
@@ -84,42 +83,11 @@
 #'    pipe length (i.e. length of acceptor's incoming edge), [\emph{m}].
 #'    Type: \code{\link{assert_double}}.
 #'
-#' @param year
-#'    year when the pipe (i.e. acceptor's incoming edge) is put in operation
-#'    after laying or total overhaul.
-#'    Type: \code{\link{assert_integerish}}.
-#'
-#' @param insulation
-#'    identifier of insulation that covers the exterior of pipe (i.e. acceptor's
-#'    incoming edge):
-#'     \describe{
-#'       \item{\code{0}}{no insulation}
-#'       \item{\code{1}}{foamed polyurethane or analogue}
-#'       \item{\code{2}}{polymer concrete}
-#'     }
-#'    Type: \code{\link{assert_subset}}.
-#'
-#' @param laying
-#'    type of pipe laying depicting the position of pipe in space. Only five
-#'    types of pipe laying are considered:
-#'    \itemize{
-#'      \item \code{air},
-#'      \item \code{channel},
-#'      \item \code{room},
-#'      \item \code{tunnel},
-#'      \item \code{underground}.
-#'    }
-#'    Type: \code{\link{assert_subset}}.
-#'
-#' @param beta
-#'    logical indicator: should they consider additional heat loss of fittings
-#'    located on this pipe (i.e. acceptor's incoming edge)?
-#'    Type: \code{\link{assert_logical}}.
-#'
-#' @param exp5k
-#'    logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
-#'    \code{TRUE} pipe is operated more that \code{5000} hours per year.
-#'    Type: \code{\link{assert_logical}}.
+#' @param loss
+#'    user-provided value of \emph{specific heat loss} power for each pipe, 
+#'    [\emph{kcal/m/h}]. Values of the argument can be obtained experimentally,
+#'    or taken from regulatory documents. 
+#'    Type: \code{\link{assert_double}}.
 #'
 #' @param roughness
 #'    roughness of internal wall of pipe (i.e. acceptor's incoming edge), [\emph{m}].
@@ -232,82 +200,87 @@
 #' @examples
 #' library(pipenostics)
 #'
-#' ## It is possible to run without specification of argument values:
+#' # It is possible to run without specification of argument values:
 #' m325tracebw()
 #'
-#' ## Consider isomorphic representation of District Heating Network graph:
+#' # Consider isomorphic representation of District Heating Network graph:
 #' DHN <- pipenostics::m325testbench
+#' 
+#' # * Adapt units:
 #' DHN$d <- 1e3*DHN$d  # convert [m] to [mm]
+#' 
+#' # * Adapt node identifiers for ordering representation simplification:
+#' DHN[["sender"]]   <- sprintf("N%02i", DHN[["sender"]])
+#' DHN[["acceptor"]] <- sprintf("N%02i", DHN[["acceptor"]])
 #'
-#' ## When tracing large network graphs put screen log to file
-#' output <- do.call("m325tracebw", c(as.list(DHN), verbose = TRUE))
+#' # * Provided actual values of specific heat loss power (say, field measurements) for each
+#' #   pipe in DHN, [kcal/m/h]:
+#'  actual_loss <- c(
+#'                # acceptor:
+#'       96.236,  #  1 
+#'       96.288,  #  2
+#'       70.584,  #  3
+#'      116.045,  #  4
+#'       70.734,  #  5
+#'       96.211,  #  6
+#'       78.400,  #  7
+#'      116.016,  #  8
+#'       28.115,  #  9
+#'       24.918,  # 10
+#'      116.679,  # 11
+#'        0.000,  # 12, may be unmeasured!
+#'      153.134,  # 13 
+#'       96.733,  # 14 
+#'       96.600,  # 15 
+#'      116.667,  # 16
+#'       24.960,  # 17
+#'      115.923,  # 18
+#'       28.166,  # 19
+#'       96.123,  # 20
+#'       77.824,  # 21
+#'      115.946,  # 22
+#'       70.690,  # 23
+#'       96.184,  # 24
+#'       96.236,  # 25
+#'       70.540   # 26
+#'  )
+#' 
+#' # * Remove inappropriate attributes of the graph:
+#' DHN.1 <- DHN[, setdiff(colnames(DHN), c("year", "insulation", "laying", "beta", "exp5k"))]
 #'
-#' ## Distinct options for opinion aggregation lead to distinct traced
-#' ## temperature and pressure:
+#' # * Trace thermal-hydraulic regime for DHN:
+#' tracebw_report <- do.call("tracebw", c(as.list(DHN.1), list(loss = actual_loss)))
+#' 
+#' # * If the actual values of specific heat loss power presented above are close 
+#' #   to those in Minenergo-325, then the results of regime tracing match the 
+#' #   normative procedure:
+#' m325_report <- do.call("m325tracebw", DHN)
 #'
-#' ## * When aggregation is by mean:
-#' output_mean <- do.call(
-#'   "m325tracebw", c(as.list(DHN), verbose = FALSE, opinion = "mean")
-#' )
-#'
-#' ## * When aggregation is by median:
-#' output_median <- do.call(
-#'   "m325tracebw", c(as.list(DHN), verbose = FALSE, opinion = "median")
-#' )
-#'
-#' ## The differences between aggregations should be:
-#' aggregation_differences <- c(delta_t = 0.03732, delta_p = 0.00139, delta_g = 0)
-#' print(aggregation_differences)
-#'
-#' ## Check:
 #' stopifnot(
-#'   round(
-#'     subset(
-#'       output_mean,
-#'       node == 13 & aggregation == "median",
-#'       c("temperature", "pressure", "flow_rate")
-#'     ) - subset(
-#'       output_median,
-#'       node == 13 & aggregation == "median",
-#'       c("temperature", "pressure", "flow_rate")
-#'     ),
-#'     5
-#'     # difference between aggregation options
-#'   ) == aggregation_differences
-#' )
-#'
-#' ## It is possible to process partially measurable District Heating Network:
-#'
-#' ## * Simulate lack of temperature and pressure sensors:
-#' DHN[c(7, 10, 21, 24), c("temperature", "pressure")] <- NA_real_
-#'
-#' ## Trace thermal-hydraulic regime
-#' output <- do.call("m325tracebw", c(as.list(DHN)))
-#' print(output)
+#'    all.equal(tracebw_report$temperature, m325_report$temperature, tolerance = 1e-4),
+#'    all.equal(tracebw_report$pressure   , m325_report$pressure   , tolerance = 1e-4),
+#'    all.equal(tracebw_report$flow_rate  , m325_report$flow_rate  , tolerance = 1e-4)
+#'   )
 #'
 #' @export
-m325tracebw <- function(sender = 6,
-                         acceptor = 7,
-                         temperature = 70.0,
-                         pressure = pipenostics::mpa_kgf(6),
-                         flow_rate = 20,
-                         d = 100,
-                         len = 72.446,
-                         year = 1986,
-                         insulation = 0,
-                         laying = "tunnel",
-                         beta = FALSE,
-                         exp5k = TRUE,
-                         roughness = 1e-3,
-                         inlet = .5,
-                         outlet = 1.0,
-                         method = "romeo",
-                         opinion = "median",
-                         verbose = TRUE,
-                         csv = FALSE,
-                         file = "m325tracebw.csv") {
+tracebw <- function(sender = 6,
+                    acceptor = 7,
+                    temperature = 70.0,
+                    pressure = pipenostics::mpa_kgf(6),
+                    flow_rate = 20,
+                    d = 100,
+                    len = 72.446,
+                    loss = 78.4,
+                    roughness = 1e-3,
+                    inlet = .5,
+                    outlet = 1.0,
+                    method = "romeo",
+                    opinion = "median",
+                    verbose = TRUE,
+                    csv = FALSE,
+                    file = "tracebw.csv") {
   # Trace thermal-hydraulic regime  ----
-  .func_name <- "m325tracebw"
+  .func_name <- "tracebw"
   
   # Meters in 1 millimeter
   METER <- 1e-3  # [m/mm]
@@ -355,6 +328,7 @@ m325tracebw <- function(sender = 6,
     any.missing = FALSE,
     len = n
   )
+  rm(norms)
   checkmate::assert_double(
     len,
     lower = 0,
@@ -362,19 +336,13 @@ m325tracebw <- function(sender = 6,
     any.missing = FALSE,
     len = n
   )
-  checkmate::assert_integerish(
-    year,
-    lower = 1900L,
-    upper = max(norms[["epoch"]]),
+    checkmate::assert_double(
+    loss,
+    lower       = 0,
+    upper       = 1500,
     any.missing = FALSE,
-    len = n
+    len         = n
   )
-  checkmate::assert_subset(insulation, choices = unique(norms[["insulation"]]))
-  checkmate::assert_subset(laying,
-                           choices = unique(norms[["laying"]]), empty.ok = FALSE)
-  rm(norms)  # no need in any norms further
-  checkmate::assert_logical(beta, any.missing = FALSE, len = n)
-  checkmate::assert_logical(exp5k, any.missing = FALSE, len = n)
   checkmate::assert_double(
     roughness,
     lower = 0,
@@ -449,40 +417,18 @@ m325tracebw <- function(sender = 6,
 
   # Calculate additional regime parameters:
   is_temperature_sensored <- !is.na(temperature)
-  flux <- Q <- loss <- rep.int(NA_real_, length(temperature))
+  flux <- Q <- rep.int(NA_real_, length(temperature))
   
-  ## Normative specific heat loss power, [kcal/m/h]
-  loss[is_temperature_sensored] <- pipenostics::m325nhl(
-    year        = year[is_temperature_sensored],
-    laying      = laying[is_temperature_sensored],
-    exp5k       = exp5k[is_temperature_sensored],
-    insulation  = insulation[is_temperature_sensored],
-    d           = d[is_temperature_sensored],
-    temperature = temperature[is_temperature_sensored],
-    len         = 1,
-    duration    = 1,
-    beta        = beta[is_temperature_sensored]
-  )
 
-  ## Normative heat flux, [W/m^2]
+  ## Heat flux, [W/m^2]
   flux[is_temperature_sensored] <- pipenostics::flux_loss(
     x   = loss[is_temperature_sensored],
     d   = d[is_temperature_sensored] * METER ,
     wth = pipenostics::wth_d(d[is_temperature_sensored])
   )
 
-  ## Normative heat loss per day, [kcal]
-  Q[is_temperature_sensored] <- pipenostics::m325nhl(
-    year        = year[is_temperature_sensored],
-    laying      = laying[is_temperature_sensored],
-    exp5k       = exp5k[is_temperature_sensored],
-    insulation  = insulation[is_temperature_sensored],
-    d           = d[is_temperature_sensored],
-    temperature = temperature[is_temperature_sensored],
-    len         = len[is_temperature_sensored],
-    duration    = 24,
-    beta        = beta[is_temperature_sensored]
-  )
+  ## Heat loss per day, [kcal]
+  Q[is_temperature_sensored] <- loss[is_temperature_sensored] * len[is_temperature_sensored] * DAY
 
   # Start backward tracing ----
   time_stamp_posixct <- Sys.time()
@@ -615,18 +561,7 @@ m325tracebw <- function(sender = 6,
     this_sender_loss <- rep.int(NA_real_, length(regime_index))
 
     if (any(is_tp_sensored)) {
-      this_sender_loss[is_tp_sensored] <-
-        pipenostics::m325nhl(
-          year        = year[is_processed_pipe][is_tp_sensored],
-          laying      = laying[is_processed_pipe][is_tp_sensored],
-          exp5k       = exp5k[is_processed_pipe][is_tp_sensored],
-          insulation  = insulation[is_processed_pipe][is_tp_sensored],
-          d           = d[is_processed_pipe][is_tp_sensored],
-          temperature = regime[["temperature"]][regime_index][is_tp_sensored],
-          len         = 1,
-          duration    = 1,
-          beta        = beta[is_processed_pipe][is_tp_sensored]
-        )
+      this_sender_loss[is_tp_sensored] <- loss[is_processed_pipe][is_tp_sensored]
       if (verbose)
         cat(
           sprintf(
@@ -688,18 +623,7 @@ m325tracebw <- function(sender = 6,
     this_sender_Q <- rep.int(NA_real_, length(regime_index))
 
     if (any(is_tp_sensored)) {
-      this_sender_Q[is_tp_sensored] <-
-        pipenostics::m325nhl(
-          year        = year[is_processed_pipe][is_tp_sensored],
-          laying      = laying[is_processed_pipe][is_tp_sensored],
-          exp5k       = exp5k[is_processed_pipe][is_tp_sensored],
-          insulation  = insulation[is_processed_pipe][is_tp_sensored],
-          d           = d[is_processed_pipe][is_tp_sensored],
-          temperature = regime[["temperature"]][regime_index][is_tp_sensored],
-          len         = len[is_processed_pipe][is_tp_sensored],
-          duration    = DAY, 
-          beta        = beta[is_processed_pipe][is_tp_sensored]
-        )
+      this_sender_Q[is_tp_sensored] <- loss[is_processed_pipe][is_tp_sensored] * len[is_processed_pipe][is_tp_sensored] * DAY
       if (verbose)
         cat(
           sprintf(

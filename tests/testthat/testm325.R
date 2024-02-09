@@ -29,124 +29,125 @@ test_that("*m325beta* errs in calculation", {
 })
 
 test_that("*m325traceline* errs in tracing regime parameters", {
-  regime_fw <- m325traceline(130, .588399, 250, seq(0, 30, 10), forward = TRUE)
+  m325traceline_foward_report <- m325traceline(130, .588399, 250, seq(0, 30, 10), forward = TRUE)
   expect_equal(
-    names(regime_fw),
+    names(m325traceline_foward_report),
     c("temperature", "pressure", "flow_rate", "loss", "flux", "Q")
   )
   expect_equal(
-   regime_fw[["temperature"]],
+   m325traceline_foward_report[["temperature"]],
    c(129.1799, 128.4269, 127.9628, 127.3367),
    tolerance = 1e-4
   )
   expect_equal(
-    regime_fw[["pressure"]],
+    m325traceline_foward_report[["pressure"]],
     c(0.5878607, 0.5874226, 0.5872143, 0.5870330),
     tolerance = 1e-7
   )
   expect_equal(
-    regime_fw[["flow_rate"]],
+    m325traceline_foward_report[["flow_rate"]],
     c(250, 240, 220, 190)
   )
   expect_equal(
-    regime_fw[["loss"]],
+    m325traceline_foward_report[["loss"]],
     c(348, 347.138912477, 346.348251588, 345.860965187),
     tolerance = 1e-7
   )
   expect_equal(
-    regime_fw[["flux"]],
+    m325traceline_foward_report[["flux"]],
     c(181.959958158, 181.509718360, 181.096302779, 180.841513660),
     tolerance = 1e-7
   )
   expect_equal(
-    regime_fw[["Q"]],
+    m325traceline_foward_report[["Q"]],
     c(5011200, 4415607.97, 2493707.41, 2905232.11),
     tolerance = 1e-1
   )
 
-  regime_bw <- m325traceline(127.3367, .5870330, 190, seq(0, 30, 10), forward = FALSE)
+  m325traceline_backward_report <- m325traceline(127.3367, .5870330, 190, seq(0, 30, 10), forward = FALSE)
   expect_equal(
-    names(regime_bw),
+    names(m325traceline_backward_report),
     c("temperature", "pressure", "flow_rate", "loss", "flux", "Q")
   )
   expect_equal(
-    regime_bw[["temperature"]],
+    m325traceline_backward_report[["temperature"]],
     c(129.9953, 129.1769, 128.4254, 127.9619),
     tolerance = 1e-4
   )
   expect_equal(
-    regime_bw[["pressure"]],
+    m325traceline_backward_report[["pressure"]],
     c(0.5883998, 0.5878611, 0.5874228, 0.5872144),
     tolerance = 1e-7
   )
   expect_equal(
-    regime_bw[["flow_rate"]],
+    m325traceline_backward_report[["flow_rate"]],
     c(250, 250, 240, 220)
   )
   expect_equal(
-    regime_bw[["loss"]],
+    m325traceline_backward_report[["loss"]],
     c(347.135781269, 346.346651110, 345.859948477, 345.203535),
     tolerance = 1e-7
   )
   expect_equal(
-    regime_bw[["flux"]],
+    m325traceline_backward_report[["flux"]],
     c(181.508081135, 181.095465931, 180.840982050, 180.497760875),
     tolerance = 1e-7
   )
   expect_equal(
-    regime_bw[["Q"]],
+    m325traceline_backward_report[["Q"]],
     c(4998755.25, 4405529.40, 2490192.63, 2899710.69),
     tolerance = 1e-1
   )
 })
 
+
+m325tracefw_report <- m325tracefw(verbose = FALSE)
 test_that("*m325tracefw* errs in calculation", {
-  result <- m325tracefw(verbose = FALSE)
   expect_equal(
-    result[["node"]],
+    m325tracefw_report[["node"]],
     c("1", "2")
   )
   expect_equal(
-    result[["tracing"]],
+    m325tracefw_report[["tracing"]],
     c("sensor", "1")
   )
   expect_equal(
-    result[["backward"]],
+    m325tracefw_report[["backward"]],
     c(FALSE, FALSE)
   )
   expect_equal(
-    result[["aggregation"]],
+    m325tracefw_report[["aggregation"]],
     c("identity", "identity")
   )
   expect_equal(
-    result[["temperature"]],
+    m325tracefw_report[["temperature"]],
     c(70, 69.71603),
     tolerance = 1e-5
   )
   expect_equal(
-    result[["pressure"]],
+    m325tracefw_report[["pressure"]],
     c(.5883990, 0.5813153)
   )
   expect_equal(
-    result[["flow_rate"]],
+    m325tracefw_report[["flow_rate"]],
     c(20, 20)
   )
   expect_equal(
-    result[2, "loss"],
+    m325tracefw_report[2, "loss"],
     78.4
   )
   expect_equal(
-    result[2, "flux"],
+    m325tracefw_report[2, "flux"],
     279.06962283,
     tolerance = 1e-5
   )
   expect_equal(
-    result[2, "Q"],
+    m325tracefw_report[2, "Q"],
     136314.3936,
     tolerance = 1e-1
   )
   expect_equal(
-    result[["job"]],
+    m325tracefw_report[["job"]],
     c(0, 1)
   )
 })
@@ -162,12 +163,13 @@ test_that("*m325tracefw* does not write csv-file", {
 })
 
 # Test m325tracebw
-nx <- pipenostics::m325testbench
-nx[["d"]] <- 1e3*nx[["d"]]  # convert [m] to [mm]
-output <- do.call("m325tracebw", nx)
 
-test_that("*m325tracebw* errs in loss", {
-  with(subset(nx, acceptor == 2), {
+DHN <- pipenostics::m325testbench
+DHN[["d"]] <- 1e3*DHN[["d"]]  # convert [m] to [mm]
+m325tracebw_report <- do.call("m325tracebw", DHN)
+
+test_that("*m325tracebw* errs in loss or in balance calculation", {
+  with(subset(DHN, acceptor == 2), {
     expect_equal(
       temperature +
         dropt(
@@ -188,7 +190,7 @@ test_that("*m325tracebw* errs in loss", {
           )  # [kcal/hour]
         )
       ,
-      subset(output, node == 4 & tracing == 2 & aggregation == "identity",
+      subset(m325tracebw_report, node == 4 & tracing == 2 & aggregation == "identity",
              "temperature")[[1]]
     )
 
@@ -198,21 +200,20 @@ test_that("*m325tracebw* errs in loss", {
           temperature, pressure, flow_rate,
           d*1e-3, len, roughness, inlet, outlet, "romeo"
         ),
-        subset(output, node == 4 & tracing == 2 & aggregation == "identity",
+        subset(m325tracebw_report, node == 4 & tracing == 2 & aggregation == "identity",
                "pressure")[[1]]
     )
   })
 })
 
-
 test_that("*m325tracebw* errs in balance calculation", {
   expect_equal(
     subset(
-       output, node == 6 & aggregation == "median", "flow_rate"
+       m325tracebw_report, node == 6 & aggregation == "median", "flow_rate"
     )[1, ],
-    unname(colSums(subset(nx, acceptor %in% c(3, 7, 9), "flow_rate")))
+    unname(colSums(subset(DHN, acceptor %in% c(3, 7, 9), "flow_rate")))
   )
-})
+})  
 
 test_that("*m325tracebw* does not write csv-file", {
   file_name <- tempfile()
@@ -224,8 +225,9 @@ test_that("*m325tracebw* does not write csv-file", {
   unlink(file_name)
 })
 
-AGGREGATION_METHOD <- c("span", "median", "mean", "identity")
-ENSAMPLE_1 <- structure(
+test_that("*m325tracebw* does not produce ensample results", {
+  aggregation_method <- c("span", "median", "mean", "identity")
+  ensample_1 <- structure(
   list(
     node = c(
       "1", "2", "3", "7", "9", "10", "15",
@@ -253,12 +255,12 @@ ENSAMPLE_1 <- structure(
     ),
     backward = rep.int(TRUE, 116),
     aggregation = c(
-      rep.int(tail(AGGREGATION_METHOD, 1), 13),
-      rep(AGGREGATION_METHOD, each = 13),
-      rep(AGGREGATION_METHOD, each = 5),
-      rep.int(rep(AGGREGATION_METHOD, each = 2), 3),
-      AGGREGATION_METHOD,
-      head(AGGREGATION_METHOD, -1)
+      rep.int(tail(aggregation_method, 1), 13),
+      rep(aggregation_method, each = 13),
+      rep(aggregation_method, each = 5),
+      rep.int(rep(aggregation_method, each = 2), 3),
+      aggregation_method,
+      head(aggregation_method, -1)
     ),
     loss = c(
       96.236, 96.288, 70.584, 78.4, 28.1152, 24.9182,
@@ -411,24 +413,30 @@ ENSAMPLE_1 <- structure(
   ),
   class = "data.frame"
 )
-rm(AGGREGATION_METHOD)
+rm(aggregation_method)
 
-test_that("*m325tracebw* does not produce ensample results", {
-  expect_equal(all(colnames(output) == colnames(ENSAMPLE_1)), TRUE)
 
-  expect_equal(all(output[["node"]]        == ENSAMPLE_1[["node"]])       , TRUE)
-  expect_equal(all(output[["tracing"]]     == ENSAMPLE_1[["tracing"]])    , TRUE)
-  expect_equal(all(output[["backward"]]    == ENSAMPLE_1[["backward"]])   , TRUE)
-  expect_equal(all(output[["aggregation"]] == ENSAMPLE_1[["aggregation"]]), TRUE)
-  expect_equal(all(output[["job"]]         == ENSAMPLE_1[["job"]])        , TRUE)
+  expect_equal(all(colnames(m325tracebw_report) == colnames(ensample_1)), TRUE)
 
-  expect_equal(all.equal(output[["temperature"]], ENSAMPLE_1[["temperature"]], tolerance = 1e-8), TRUE)
-  expect_equal(all.equal(output[["pressure"]]   , ENSAMPLE_1[["pressure"]]   , tolerance = 1e-8), TRUE)
-  expect_equal(all.equal(output[["flow_rate"]]  , ENSAMPLE_1[["flow_rate"]]  , tolerance = 1e-8), TRUE)
+  expect_equal(all(m325tracebw_report[["node"]]        == ensample_1[["node"]])       , TRUE)
+  expect_equal(all(m325tracebw_report[["tracing"]]     == ensample_1[["tracing"]])    , TRUE)
+  expect_equal(all(m325tracebw_report[["backward"]]    == ensample_1[["backward"]])   , TRUE)
+  expect_equal(all(m325tracebw_report[["aggregation"]] == ensample_1[["aggregation"]]), TRUE)
+  expect_equal(all(m325tracebw_report[["job"]]         == ensample_1[["job"]])        , TRUE)
 
-  expect_equal(all.equal(output[["Q"]]     , ENSAMPLE_1[["Q"]]   , tolerance = 1e-8), TRUE)
-  expect_equal(all.equal(output[["loss"]]  , ENSAMPLE_1[["loss"]], tolerance = 1e-8), TRUE)
-  expect_equal(all.equal(output[["flux"]]  , ENSAMPLE_1[["flux"]], tolerance = 1e-8), TRUE)
+  expect_equal(all.equal(m325tracebw_report[["temperature"]], ensample_1[["temperature"]], tolerance = 1e-8), TRUE)
+  expect_equal(all.equal(m325tracebw_report[["pressure"]]   , ensample_1[["pressure"]]   , tolerance = 1e-8), TRUE)
+  expect_equal(all.equal(m325tracebw_report[["flow_rate"]]  , ensample_1[["flow_rate"]]  , tolerance = 1e-8), TRUE)
+
+  expect_equal(all.equal(m325tracebw_report[["Q"]]     , ensample_1[["Q"]]   , tolerance = 1e-8), TRUE)
+  expect_equal(all.equal(m325tracebw_report[["loss"]]  , ensample_1[["loss"]], tolerance = 1e-8), TRUE)
+  expect_equal(all.equal(m325tracebw_report[["flux"]]  , ensample_1[["flux"]], tolerance = 1e-8), TRUE)
 })
-rm(ENSAMPLE_1)
+rm(ensample_1)
 
+test_that("*m325tracefw* and *m325tracebw* have the same colnames", {
+  expect_equal(
+    all(colnames(m325tracefw_report) == colnames(m325tracebw_report)),
+    TRUE
+  )
+})

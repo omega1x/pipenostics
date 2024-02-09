@@ -1,27 +1,22 @@
 #' @title
-#'  Minenergo-325. Massively trace forwards thermal-hydraulic regime for district
+#'  Massively trace forwards thermal-hydraulic regime for district
 #'  heating network
 #'
 #' @family Regime tracing
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
-#'  flow rate, and other) in the bunched pipeline along the flow direction using norms
-#'  of heat loss values prescribed by
-#'  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  flow rate, and other) in the bunched pipeline along the flow direction using
+#'  user-provided values of \emph{specific heat loss power}.
 #'
 #' @details
-#'  The calculated (values of) regime may be considered as representation of
-#'  district heating process in conditions of hypothetically perfect
-#'  technical state of pipe walls and insulation.
-#'
 #'  They consider the topology of district heating network represented by
 #'  \code{\link{m325testbench}}:
 #'
-#'  \figure{m325tracefw.png}
+#'  \figure{tracefw.png}
 #'
 #'  Tracing starts from sensor-equipped root node and goes forward, i.e along
-#'  the flow direction. Function \code{\link{m325traceline}} serves under the
+#'  the flow direction. Function \code{\link{traceline}} serves under the
 #'  hood for tracing identified linear segments from root node to every
 #'  terminal node. Hence they only need root node to be equipped with sensors.
 #'  Sensors at other nodes are redundant in forward tracing, since the tracing
@@ -54,7 +49,7 @@
 #'    \code{\link{as.character}}.
 #'
 #' @param temperature
-#'    Sensor-measured temperature of heat carrier (water) sensor-measured on 
+#'    Sensor-measured temperature of heat carrier (water) sensor-measured on
 #'    the root node, [\emph{°C}].
 #'    Use \code{NA_float_}s for nodes without temperature sensor.
 #'    Type: \code{\link{assert_double}}.
@@ -81,42 +76,11 @@
 #'    pipe length (i.e. length of acceptor's incoming edge), [\emph{m}].
 #'    Type: \code{\link{assert_double}}.
 #'
-#' @param year
-#'    year when the pipe (i.e. acceptor's incoming edge) is put in operation
-#'    after laying or total overhaul.
-#'    Type: \code{\link{assert_integerish}}.
-#'
-#' @param insulation
-#'    identifier of insulation that covers the exterior of pipe (i.e. acceptor's
-#'    incoming edge):
-#'     \describe{
-#'       \item{\code{0}}{no insulation}
-#'       \item{\code{1}}{foamed polyurethane or analogue}
-#'       \item{\code{2}}{polymer concrete}
-#'     }
-#'    Type: \code{\link{assert_subset}}.
-#'
-#' @param laying
-#'    type of pipe laying depicting the position of pipe in space. Only five
-#'    types of pipe laying are considered:
-#'    \itemize{
-#'      \item \code{air},
-#'      \item \code{channel},
-#'      \item \code{room},
-#'      \item \code{tunnel},
-#'      \item \code{underground}.
-#'    }
-#'    Type: \code{\link{assert_subset}}.
-#'
-#' @param beta
-#'    logical indicator: should they consider additional heat loss of fittings
-#'    located on this pipe (i.e. acceptor's incoming edge)?
-#'    Type: \code{\link{assert_logical}}.
-#'
-#' @param exp5k
-#'    logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
-#'    \code{TRUE} pipe is operated more that \code{5000} hours per year.
-#'    Type: \code{\link{assert_logical}}.
+#' @param loss
+#'    user-provided value of \emph{specific heat loss} power for each pipe in tracing
+#'    path, [\emph{kcal/m/h}]. Values of the argument can be obtained experimentally,
+#'    or taken from regulatory documents. 
+#'    Type: \code{\link{assert_double}}.
 #'
 #' @param roughness
 #'    roughness of internal wall of pipe (i.e. acceptor's incoming edge), [\emph{m}].
@@ -222,10 +186,14 @@
 #' library(pipenostics)
 #'
 #' # Minimum two nodes should be in district heating network graph:
-#' m325tracefw(verbose = FALSE)
+#' tracefw(verbose = FALSE)
 #'
 #' # Consider isomorphic representation of District Heating Network graph:
 #' DHN <- pipenostics::m325testbench
+#'
+#' # * remove irrelevant parameters from the test bench
+#' DHN[c("year", "insulation", "laying", "beta", "exp5k")] <- NULL
+#' DHN[c("temperature", "pressure", "flow_rate")] <- NA_real_
 #'
 #' # * avoid using numeric identifiers for nodes:
 #' DHN$sender   <- sprintf("N%02i", DHN$sender)
@@ -234,62 +202,46 @@
 #' # * alter units:
 #' DHN$d <- 1e3 * DHN$d  # convert [m] to [mm]
 #'
-#' # Perform backward tracing to get regime on root node:
-#' bw_report <- do.call("m325tracebw", c(as.list(DHN), verbose = FALSE))
+#' # * provide current regime parameters for root node
+#' root_node <- 12
+#' DHN[root_node, "temperature"] <-  70.4942576978  # [°C]
+#' DHN[root_node, "pressure"]    <-   0.6135602014  # [MPa]
+#' DHN[root_node, "flow_rate"]   <- 274.0           # [ton/hour]
 #'
-#' # Put the traced values to the root node of test bench:
-#' root_node_idx <- 12
-#' root_node <- sprintf("N%02i", root_node_idx)
-#' regime_param  <- c("temperature", "pressure", "flow_rate")
-#' DHN[root_node_idx, regime_param] <-
-#'   subset(bw_report,
-#'          node == root_node & aggregation == "median",
-#'          regime_param)
-#' rm(root_node, root_node_idx)
+#' # * provide actual values of specific heat loss power, [kcal/m/h], for each
+#' # segment N01 - N26. Since N12 is a root node, the specific heat loss
+#' # power for this acceptor is set to 0 (or may be any other numeric value).
+#' actual_loss <- c(
+#'   96.8,  96.8,  71.2, 116.7, 71.3,  96.8, 78.5, 116.7, 28.6, 24.5, 
+#'  116.7,   0.0, 153.2,  96.8, 96.8, 116.7, 24.5, 116.7, 28.6, 96.8, 
+#'   78.5, 116.7,  71.3,  96.8, 96.8,  71.1
+#' )
 #'
 #' # Trace the test bench forward for the first time:
-#' fw_report <- do.call("m325tracefw",
-#'                      c(as.list(DHN), verbose = FALSE, elev_tol = .5))
-#'
-#' # Let's compare traced regime at terminal nodes back to test bench:
-#' report <- subset(
-#'   rbind(bw_report, fw_report),
-#'   node %in% subset(DHN, !(acceptor %in% sender))$acceptor &
-#'     aggregation == "identity"
+#' fw_report <- do.call(
+#'   "tracefw", c(as.list(DHN), list(loss = actual_loss), verbose = FALSE, elev_tol = .5)
 #' )
-#'
-#' regime_delta <- colMeans(
-#'   subset(report, backward, regime_param) -
-#'     subset(report, !backward, regime_param)
-#' )
-#' print(regime_delta)
-#'
-#' stopifnot(sqrt(regime_delta %*% regime_delta) < 0.5)
 #'
 #' @export
-m325tracefw <- function(sender = c(0, 1),
-                        acceptor = c(1, 2),
-                        temperature = c(70.0, NA_real_),
-                        pressure = c(pipenostics::mpa_kgf(6), NA_real_),
-                        flow_rate = c(20, NA_real_),
-                        d = rep_len(100, 2),
-                        len = rep_len(72.446, 2),
-                        year = rep_len(1986, 2),
-                        insulation = rep_len(0, 2),
-                        laying = rep_len("tunnel", 2),
-                        beta = rep_len(FALSE, 2),
-                        exp5k = rep_len(TRUE, 2),
-                        roughness = rep_len(1e-3, 2),
-                        inlet = c(.5, 1),
-                        outlet = c(1.0, 1),
-                        elev_tol = 0.1,
-                        method = "romeo",
-                        verbose = TRUE,
-                        csv = FALSE,
-                        file = "m325tracefw.csv",
-                        max_cores = 2) {
+tracefw <- function(sender = c(0, 1),
+                    acceptor = c(1, 2),
+                    temperature = c(70.0, NA_real_),
+                    pressure = c(pipenostics::mpa_kgf(6), NA_real_),
+                    flow_rate = c(20, NA_real_),
+                    d = rep_len(100, 2),
+                    len = rep_len(72.446, 2),
+                    loss =  rep_len(78.4, 2),
+                    roughness = rep_len(1e-3, 2),
+                    inlet = c(.5, 1),
+                    outlet = c(1.0, 1),
+                    elev_tol = 0.1,
+                    method = "romeo",
+                    verbose = TRUE,
+                    csv = FALSE,
+                    file = "tracefw.csv",
+                    max_cores = 2) {
   # Perform forward tracing ----
-  .func_name <- "m325tracefw"
+  .func_name <- "tracefw"
 
   # Assertions ----
   checkmate::assert_true(all(!is.na(acceptor)))
@@ -338,19 +290,13 @@ m325tracefw <- function(sender = c(0, 1),
     any.missing = FALSE,
     len = n
   )
-  checkmate::assert_integerish(
-    year,
-    lower = 1900L,
-    upper = max(norms[["epoch"]]),
+  checkmate::assert_double(
+    loss,
+    lower       = 0,
+    upper       = 1500,
     any.missing = FALSE,
-    len = n
+    len         = n
   )
-  checkmate::assert_subset(insulation, choices = unique(norms[["insulation"]]))
-  checkmate::assert_subset(laying,
-                           choices = unique(norms[["laying"]]), empty.ok = FALSE)
-  rm(norms)  # no need in any norms further
-  checkmate::assert_logical(beta, any.missing = FALSE, len = n)
-  checkmate::assert_logical(exp5k, any.missing = FALSE, len = n)
   checkmate::assert_double(
     roughness,
     lower = 0,
@@ -471,18 +417,14 @@ m325tracefw <- function(sender = c(0, 1),
       unique = TRUE
     )
 
-    regime <- m325traceline(
+    regime <- traceline(
       temperature[root_node],
       pressure[root_node],
       flow_rate[root_node],
       discharge[current_path],
       d[current_path],
       len[current_path],
-      year[current_path],
-      insulation[current_path],
-      laying[current_path],
-      beta[current_path],
-      exp5k[current_path],
+      loss[current_path],
       roughness[current_path],
       inlet[current_path],
       outlet[current_path],
