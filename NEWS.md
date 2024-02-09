@@ -1,10 +1,10 @@
 # pipenostics 0.2.0
 
-### Backlog
+## Backlog
 
 - Implement Lu Xing's two-harmonic model of ground temperature (Oklahoma State University).
 
-### Current version
+## Current version
 
 - functions `traceline()`, `tracefw()`, and `tracebw()` were added to process district heating networks with user-provided heat loss.
 - job log of `m325tracefw()` now does not contain duplicated traced flow paths.
