@@ -30,7 +30,7 @@
 #'
 #'  Positive values of diameters of adjacent pipes correspond to discharging
 #'  process through those pipe, whereas negative values of diameters mean
-#'  recharging. See \emph{Details} and \emph{Examples} for further explanations.
+#'  recharging. See \strong{Details} and \strong{Examples} for further explanations.
 #'
 #' @param d
 #'   diameter of pipe under consideration, [\emph{mm}]. Type: \code{\link{assert_double}}.
