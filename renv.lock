@@ -354,6 +354,16 @@
       ],
       "Hash": "f6844033201269bec3ca0097bc6c97b3"
     },
+    "iapws": {
+      "Package": "iapws",
+      "Version": "1.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "60b52dba7ec061891dbecc5991fc867b"
+    },
     "jquerylib": {
       "Package": "jquerylib",
       "Version": "0.1.4",

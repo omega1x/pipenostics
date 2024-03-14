@@ -2,11 +2,11 @@
 
 ## Backlog
 
-- transit to *iapws* package
 - improve code with functionality of package `parallel`
 
 ## Current version
 
+- functions for determining the state of water and steam ([IAPWS](http://www.iapws.org/)) have been excluded from the package due to the decision to use the built-in functions from [iapws](https://cran.r-project.org/web/packages/iapws/index.html)-package imported from [CRAN](https://cran.r-project.org/).
 - set of functions `mgtdhid()`, `mgtdhidt`, `mgtdhgeo`, `mgtdhgeot` are introduced to interface with *Modified Ground Temperature Double Harmonic Model*.
 - function `meteos()` is introduced to get a list of weather stations
 - functions `geodist()` and `geoarea()` for calculating geographical metrics are added.

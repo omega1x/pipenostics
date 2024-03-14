@@ -169,16 +169,16 @@ dropp <- function(temperature = 130., pressure = mpa_kgf(6), flow_rate = 1276.,
   dh <- outlet - inlet
   checkmate::assert_true(all(abs(dh) < len))
 
-
-  rho <- 1/if97vtp1(temperature + 273.15, pressure)  # [kg/m^3]
-  u <- flow_rate*1e3/rho/(.25*pi*d^2)/3600  # [ton/hour]*[kg/ton]/[kg/m^3]/[m^2]/[s/hour] == [m/s]
-  fric <- get(sprintf("fric_%s", method))
+  state <- iapws::if97(what = c("rho", "eta"), t = pipenostics::k_c(temperature), p = pressure)
+  rho   <- unname(state[, "rho"])
+  u     <- flow_rate*1e3/rho/(.25*pi*d^2)/3600  # [ton/hour]*[kg/ton]/[kg/m^3]/[m^2]/[s/hour] == [m/s]
+  fric  <- get(sprintf("fric_%s", method))
 
   # Friction component, [MPa]:
   dpf <- fric(
     reynolds = re_u(
       d,
-      mu = r12dv(temperature + 273.15, rho)*1e-6, # [kg/m/s]
+      mu = unname(state[, "eta"])*1e-6, # [kg/m/s]
       u = u,
       rho = rho
   ),  # []

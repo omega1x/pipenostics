@@ -95,8 +95,6 @@ dropt <- function(
 
   JOULE <- 0.2388458966                     # [cal/J]
   loss_power_J <- loss_power/JOULE          # [kJ/hour]
-  g <- flow_rate * 1e3                    # [kg/hour]
-  loss_power_J / g / pipenostics::if97cptp1(
-    pipenostics::k_c(temperature), pressure
-  )                                         # [°C]=[°K]
+  g <- flow_rate * 1e3                      # [kg/hour]
+  loss_power_J / g / unname(iapws::if97(what = "cp", t = pipenostics::k_c(temperature), pressure)[, 1])  # [°C]=[°K]
 }
