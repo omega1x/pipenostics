@@ -1,7 +1,7 @@
 #' @title
 #'  Covert to Kelvin scale
 #'
-#' @family utils
+#' @family units
 #'
 #' @description
 #'  Convert temperature measured in

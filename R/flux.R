@@ -1,7 +1,7 @@
 #' @title
 #'  Convert heat flux to specific heat loss power
 #'
-#' @family utils
+#' @family units
 #'
 #' @description
 #'  Convert \href{https://en.wikipedia.org/wiki/Heat_flux}{heat flux}

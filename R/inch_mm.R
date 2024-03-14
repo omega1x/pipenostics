@@ -1,7 +1,7 @@
 #' @title
 #'  Millimeters to inches
 #'
-#' @family utils
+#' @family units
 #'
 #' @description
 #'  Convert length measured in \href{https://en.wikipedia.org/wiki/Millimetre}{millimeters} (mm)

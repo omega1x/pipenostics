@@ -1,7 +1,7 @@
 #' @title
 #'  Convert to Celsius scale
 #'
-#' @family utils
+#' @family units
 #'
 #' @description
 #'  Convert temperature measured in

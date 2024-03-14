@@ -1,7 +1,7 @@
 #' @title
 #'  Pounds per square inch to megapascals
 #'
-#' @family utils
+#' @family units
 #'
 #' @description
 #'  Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pounds_per_square_inch}{pounds per square inch} (PSI)

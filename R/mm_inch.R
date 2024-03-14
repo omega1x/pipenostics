@@ -1,7 +1,7 @@
 #' @title
 #'  Inches to mm
 #'
-#' @family utils
+#' @family units
 #'
 #' @description
 #'  Convert length measured in \href{https://en.wikipedia.org/wiki/Inch}{inches}

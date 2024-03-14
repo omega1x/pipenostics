@@ -1,7 +1,7 @@
 #' @title
 #'  Kilogram-force per square cm to megapascals
 #'
-#' @family utils
+#' @family units
 #'
 #' @description
 #'  Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Kilogram-force_per_square_centimetre}{kilogram-force per square cm} (\eqn{kgf/cm^2})

@@ -1,31 +1,24 @@
 #' @title
-#'  Calculate distance between geographical objects
+#'  Calculate geographical metrics
 #'
 #' @family utils
 #'
 #' @description
-#'   Calculate distance between objects on \emph{Earth} using their absolute
-#'   positions described by
+#'   Calculate geographical metrics (distance, area) for two or three geographical locations.
+#'
+#' @details
+#'   \code{geodist} calculates distance between two geographical locations on \emph{Earth},
+#'   whereas \code{geoarea} calculates the area of spherical triangle between
+#'   three geographical locations.
+#'   Both functions use absolute positions of geographical locations described by
 #'   \href{https://en.wikipedia.org/wiki/Geographic_coordinate_system}{
 #'   geographical coordinate system}
 #'   in
 #'   \href{https://en.wikipedia.org/wiki/Decimal_degrees}{decimal degrees}
 #'   units denoted as \emph{DD}. The
 #'   \href{https://en.wikipedia.org/wiki/Haversine_formula}{haversine formula}
-#'   is applied to calculate the distance. The
-#'   \href{https://en.wikipedia.org/wiki/Haversine_formula}{haversine formula},
-#'   which considers the spherical model of \emph{Earth}, is well-used in
-#'   navigation, giving great-circle distances between two points on a sphere
-#'   from their longitudes and latitudes.
-#'
-#' @details
-#'   \emph{DD} express latitude and longitude of
-#'   \href{https://en.wikipedia.org/wiki/Geographic_coordinate_system}{
-#'   geographical coordinate system} as
-#'   decimal fractions and are used in many geographic information systems such
-#'   as \href{https://maps.google.com}{Google Maps}. It is strongly recommended
-#'   to use \href{https://maps.google.com}{Google Maps} to get
-#'   exact objects' position in \emph{DD}.
+#'   is applied to calculate the distance, and so the spherical model of
+#'   \emph{Earth} is considered in both functions.
 #'
 #'   Since several variants of \emph{Earth} radius can be accepted,
 #'   the user is welcome to provide its own value.
@@ -34,22 +27,32 @@
 #'   \eqn{R_1}, is the default value.
 #'
 #'   The resulting distance is expressed in
-#'   \href{https://en.wikipedia.org/wiki/Metre}{metres} (\emph{m}).
+#'   \href{https://en.wikipedia.org/wiki/Metre}{metres} (\emph{m}), 
+#'   whereas the area is expressed in 
+#'   \href{https://en.wikipedia.org/wiki/Square_kilometre}{square kilometers}(\emph{km^2}).
 #'
 #' @param lat1
-#'   latitude of the first geographical object, [\emph{DD}].
+#'   latitude of the first geographical location, [\emph{DD}].
 #'   Type: \code{\link{assert_double}}.
 #'
 #' @param lon1
-#'   longitude of the first geographical object, [\emph{DD}].
+#'   longitude of the first geographical location, [\emph{DD}].
 #'   Type: \code{\link{assert_double}}.
 #'
 #' @param lat2
-#'   latitude of the second geographical object, [\emph{DD}].
+#'   latitude of the second geographical location, [\emph{DD}].
 #'   Type: \code{\link{assert_double}}.
 #'
 #' @param lon2
-#'   longitude of the second geographical object, [\emph{DD}].
+#'   longitude of the second geographical location, [\emph{DD}].
+#'   Type: \code{\link{assert_double}}.
+#'
+#' @param lat3
+#'   latitude of the third geographical location, [\emph{DD}].
+#'   Type: \code{\link{assert_double}}.
+#'
+#' @param lon3
+#'   longitude of the third geographical location, [\emph{DD}].
 #'   Type: \code{\link{assert_double}}.
 #'
 #' @param earth
@@ -57,7 +60,10 @@
 #'   Type: \code{\link{assert_numeric}}.
 #'
 #' @return
-#'   Distance between two geographical objects, [\emph{m}].
+#'   \describe{
+#'     \item{For \code{geodist}:}{distance between two geographical locations, [\emph{m}].}
+#'     \item{For \code{geoarea}:}{area of spherical triangle between three geographical locations, [\emph{km^2}].}
+#'   }
 #'   Type: \code{\link{assert_double}}.
 #'
 #' @export
@@ -129,22 +135,35 @@
 #'
 #' cat(
 #'   paste(
-#'     sprintf("%s <-> %s: %1.4f km", path[, 1], path[, 2], d),
+#'     sprintf("%s <--- %1.4f km ---> %s", path[, 1], d, path[, 2]),
 #'     collapse = "\n"
 #' )
 #' )
-
-#' # Mount_Kailash <-> Easter_Island_Moai: 18890.9362 km
-#' # Mount_Kailash <-> Great_Pyramid: 4765.7923 km
-#' # Mount_Kailash <-> Antarctic_Pyramid: 14523.7267 km
-#' # Mount_Kailash <-> Stonehendge: 6917.4240 km
-#' # Easter_Island_Moai <-> Great_Pyramid: 16164.4674 km
-#' # Easter_Island_Moai <-> Antarctic_Pyramid: 6010.1422 km
-#' # Easter_Island_Moai <-> Stonehendge: 13520.3511 km
-#' # Great_Pyramid <-> Antarctic_Pyramid: 13726.9374 km
-#' # Great_Pyramid <-> Stonehendge: 3595.6153 km
-#' # Antarctic_Pyramid <-> Stonehendge: 15396.3978 km
-
+#'
+#' # Consider two areas 
+#' #         * Bermuda triangle     * Polynesian Triangle
+#' lat1 <- c(Miami   =  25.789106,  Hawaii       =   19.820680)
+#' lon1 <- c(Miami   = -80.226529,  Hawaii       = -155.467989)
+#'
+#' lat2 <- c(Bermuda =  32.294887,  NewZeland    =  -43.443219)
+#' lon2 <- c(Bermuda = -64.781380,  NewZeland    =  170.271360)
+#'
+#' lat3 <- c(SanJuan =  18.466319,  EasterIsland =  -27.112701)
+#' lon3 <- c(SanJuan = -66.105743,  EasterIsland = -109.349668)
+#'
+#' # Area provided by manually operated Google Earth:
+#' GETriangleArea <- c(
+#'   Bermuda    =  1147627.48,  # [km^2]
+#'   Polynesian = 28775517.77   # [km^2]
+#' )
+#' 
+#' # Show the discrepancy in calculations, [km^2]:
+#' print(geoarea(lat1, lon1, lat2, lon2, lat3, lon3)) 
+#'  
+#'  #   Bermuda Polynesian 
+#'  # 0.4673216 11.1030971    
+#'
+#' @export
 geodist <- function(lat1, lon1, lat2, lon2, earth = 6371008.7714){
   checkmate::assert_double(
     lat1, lower = -90, upper = 90, any.missing = FALSE, min.len = 1
@@ -180,4 +199,3 @@ geodist <- function(lat1, lon1, lat2, lon2, earth = 6371008.7714){
   x = sl1 * sl2 + cl1 * cl2 * cos_delta
   atan2(y,x) * earth
 }
-

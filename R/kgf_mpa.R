@@ -1,7 +1,7 @@
 #' @title
 #'  Megapascals to kilogram-force per square
 #'
-#' @family utils
+#' @family units
 #'
 #' @description
 #'  Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pascal_(unit)}{megapascals} (MPa)
