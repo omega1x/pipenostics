@@ -27,9 +27,9 @@
 #'    Type: any type that can be painlessly coerced to character by
 #'    \code{\link{as.character}}.
 #'
-#' @param maxcores
-#'    maximum cores of CPU to use in parallel processing.
-#'    Type: \code{\link{assert_count}}.
+#' @param use_cluster
+#'    utilize functionality of parallel processing on multi-core CPU.
+#'    Type: \code{\link{assert_flag}}.
 #'
 #' @return
 #'  named \code{list} that contains integer vectors as its elements. The name
@@ -91,7 +91,7 @@
 #' # [1] 12 13 11  8  6  7
 #'
 #'}
-flowls <- function(sender = "A", acceptor = "B", maxcores = 2L){
+flowls <- function(sender = "A", acceptor = "B", use_cluster = FALSE){
   # Validate function input ----
   checkmate::assert_true(all(!is.na(acceptor)))
   acceptor <- as.character(acceptor)
@@ -99,7 +99,7 @@ flowls <- function(sender = "A", acceptor = "B", maxcores = 2L){
   n <- length(acceptor)
   sender <- as.character(sender)
   checkmate::assert_character(sender, any.missing = FALSE, len = n)
-  checkmate::assert_count(maxcores, positive = TRUE)
+  checkmate::assert_flag(use_cluster)
 
   # Validate topology ----
   starting_node_idx <- which(!(sender %in% acceptor))
@@ -122,10 +122,27 @@ flowls <- function(sender = "A", acceptor = "B", maxcores = 2L){
     rev(path[path > 0L])
   }
 
-  lapply(
-    structure(
-      seq_along(terminal_node_idx), names = acceptor[terminal_node_idx]
-    ),
-    worker
-  )
+  if (use_cluster){
+    cluster <- parallel::makeCluster(parallel::detectCores() - 1)
+    parallel::clusterExport(
+      cluster,
+      c("n", "terminal_node_idx", "starting_node_idx", "acceptor", "sender"),
+      envir = environment()
+    )
+    stream <- parallel::parLapply(
+      cluster,
+      structure(
+        seq_along(terminal_node_idx), names = acceptor[terminal_node_idx]
+      ),
+      worker)
+    parallel::stopCluster(cluster)
+    return(stream)
+  } else {
+    lapply(
+      structure(
+        seq_along(terminal_node_idx), names = acceptor[terminal_node_idx]
+      ),
+      worker
+    )
+  }  
 }

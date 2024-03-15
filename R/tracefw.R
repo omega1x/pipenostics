@@ -121,9 +121,9 @@
 #'    Type: \code{\link{assert_character}} of length 1 that can be used safely
 #'    to create a file and write to it.
 #'
-#' @param max_cores
-#'    maximum cores of CPU to use in parallel processing.
-#'    Type: \code{\link{assert_count}}.
+#' @param use_cluster
+#'    utilize functionality of parallel processing on multi-core CPU.
+#'    Type: \code{\link{assert_flag}}.
 #'
 #' @return
 #'    \code{\link{data.frame}} containing results (detailed log) of tracing in
@@ -239,7 +239,7 @@ tracefw <- function(sender = c(0, 1),
                     verbose = TRUE,
                     csv = FALSE,
                     file = "tracefw.csv",
-                    max_cores = 2) {
+                    use_cluster = FALSE) {
   # Perform forward tracing ----
   .func_name <- "tracefw"
 
@@ -350,7 +350,7 @@ tracefw <- function(sender = c(0, 1),
     structure(1 - d ^ 2 / tapply(d ^ 2, sender, sum)[sender], names = acceptor)
 
   # List search paths ----
-  tracing_path <- pipenostics::flowls(sender, acceptor, max_cores)
+  tracing_path <- pipenostics::flowls(sender, acceptor, use_cluster)
   checkmate::assert_list(
     tracing_path,
     types = "integerish",

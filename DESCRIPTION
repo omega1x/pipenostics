@@ -14,7 +14,8 @@ Description: Functions representing some useful empirical and data-driven
     Timashev et al. (2016) <doi:10.1007/978-3-319-25307-7>,
     A.C.Reddy (2017) <doi:10.1016/j.matpr.2017.07.081>,
     Minenergo (2008) <https://docs.cntd.ru/document/902148459>,
-    Minenergo (2005) <https://docs.cntd.ru/document/1200035568>.
+    Minenergo (2005) <https://docs.cntd.ru/document/1200035568>,
+    Xing LU. (2014) <https://core.ac.uk/download/pdf/215277719.pdf>.
 URL: https://omega1x.github.io/pipenostics/
 BugReports: https://github.com/omega1x/pipenostics/issues
 License: GPL-3

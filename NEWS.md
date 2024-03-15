@@ -2,12 +2,13 @@
 
 ## Backlog
 
-- improve code with functionality of package `parallel`
+- introduce topological and dynamical severities for pipeline segments in a district heating network.
 
 ## Current version
 
+- where possible and justified, support for multi-threaded data processing, based on the capabilities of the parallel package, has been added.
 - functions for determining the state of water and steam ([IAPWS](http://www.iapws.org/)) have been excluded from the package due to the decision to use the built-in functions from [iapws](https://cran.r-project.org/web/packages/iapws/index.html)-package imported from [CRAN](https://cran.r-project.org/).
-- set of functions `mgtdhid()`, `mgtdhidt`, `mgtdhgeo`, `mgtdhgeot` are introduced to interface with *Modified Ground Temperature Double Harmonic Model*.
+- set of functions `mgtdhid()`, `mgtdhidt()`, `mgtdhgeo()`, `mgtdhgeot()` are introduced to interface with *Modified Ground Temperature Double Harmonic Model*.
 - function `meteos()` is introduced to get a list of weather stations
 - functions `geodist()` and `geoarea()` for calculating geographical metrics are added.
 - functions `traceline()`, `tracefw()`, and `tracebw()` were added to process district heating networks with user-provided heat loss.

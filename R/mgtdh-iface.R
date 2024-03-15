@@ -67,6 +67,10 @@
 #' @param depth
 #'  depth at which the ground temperature is calculated, [\emph{m}]. Type: \code{\link{assert_number}}.
 #'
+#' @param use_cluster
+#'    utilize functionality of parallel processing on multi-core CPU.
+#'    Type: \code{\link{assert_flag}}.
+#'
 #' @return
 #'  Undisturbed (median) ground temperature value calculated with 
 #'  the \emph{MGTDH}-model, specifically for the location of the 
@@ -170,7 +174,7 @@ mgtdhidt <- function(tau, id = 28434L, depth = 2.4){
 
 #' @rdname mgtdh-iface
 #' @export
-mgtdhgeo <- function(lat, lon, tau = 1440L, depth = 2.4){
+mgtdhgeo <- function(lat, lon, tau = 1440L, depth = 2.4, use_cluster = FALSE){
   L_YEAR_START <- "%Y-01-01 00:00:00"
   L_HOUR       <- 3600L  # [s]
 
@@ -192,11 +196,23 @@ mgtdhgeo <- function(lat, lon, tau = 1440L, depth = 2.4){
   checkmate::assert_double(
     depth, lower = 0.3, upper = 10.0, any.missing = FALSE, len = 1
   )
-  mapply(
-    function(x, y) pipenostics::mgtdhgeot(tau = tau, lat = x, lon = y, depth = depth),
-    lat, lon,
-    USE.NAMES = FALSE
-  )
+  if (use_cluster){
+    cluster <- parallel::makeCluster(parallel::detectCores() - 1)
+    stream <- parallel::clusterMap(
+      cluster,
+      function(x, y) pipenostics::mgtdhgeot(tau = tau, lat = x, lon = y, depth = depth),
+      lat, lon,
+      USE.NAMES = FALSE, SIMPLIFY = TRUE
+    )
+    parallel::stopCluster(cluster)
+    return(stream)
+  } else {
+    mapply(
+      function(x, y) pipenostics::mgtdhgeot(tau = tau, lat = x, lon = y, depth = depth),
+      lat, lon,
+      USE.NAMES = FALSE
+    )
+  }
 }
 
 

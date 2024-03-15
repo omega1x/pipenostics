@@ -101,8 +101,59 @@ test_that("*m325traceline* errs in tracing regime parameters", {
 })
 
 
-m325tracefw_report <- m325tracefw(verbose = FALSE)
-test_that("*m325tracefw* errs in calculation", {
+test_that("*m325tracefw* errs in calculation without execution parallelization", {
+  m325tracefw_report <- m325tracefw(verbose = FALSE)
+  expect_equal(
+    m325tracefw_report[["node"]],
+    c("1", "2")
+  )
+  expect_equal(
+    m325tracefw_report[["tracing"]],
+    c("sensor", "1")
+  )
+  expect_equal(
+    m325tracefw_report[["backward"]],
+    c(FALSE, FALSE)
+  )
+  expect_equal(
+    m325tracefw_report[["aggregation"]],
+    c("identity", "identity")
+  )
+  expect_equal(
+    m325tracefw_report[["temperature"]],
+    c(70, 69.71603),
+    tolerance = 1e-5
+  )
+  expect_equal(
+    m325tracefw_report[["pressure"]],
+    c(.5883990, 0.5813153)
+  )
+  expect_equal(
+    m325tracefw_report[["flow_rate"]],
+    c(20, 20)
+  )
+  expect_equal(
+    m325tracefw_report[2, "loss"],
+    78.4
+  )
+  expect_equal(
+    m325tracefw_report[2, "flux"],
+    279.06962283,
+    tolerance = 1e-5
+  )
+  expect_equal(
+    m325tracefw_report[2, "Q"],
+    136314.3936,
+    tolerance = 1e-1
+  )
+  expect_equal(
+    m325tracefw_report[["job"]],
+    c(0, 1)
+  )
+})
+
+m325tracefw_report <- m325tracefw(verbose = FALSE, use_cluster = TRUE)
+test_that("*m325tracefw* errs in calculation utilizing parallel execution", {
   expect_equal(
     m325tracefw_report[["node"]],
     c("1", "2")
