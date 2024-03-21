@@ -60,8 +60,8 @@ jobs:
         run: |
           while read -r cmd
           do
-            eval sudo $cmd
-          done < (Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "22.04"))')
+            eval sudo $cmd;
+          done < "(Rscript -e 'writeLines(remotes::system_requirements(\"ubuntu\", \"22.04\"))')"
 
       - name: Install dependencies
         run: |
