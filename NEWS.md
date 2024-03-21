@@ -1,9 +1,5 @@
 # pipenostics 0.2.0
 
-## Backlog
-
-- introduce topological and dynamical severities for pipeline segments in a district heating network.
-
 ## Current version
 
 - where possible and justified, support for multi-threaded data processing, based on the capabilities of the parallel package, has been added.

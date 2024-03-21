@@ -1,6 +1,6 @@
 Package: pipenostics
 Type: Package
-Title: 
+Title:
     Diagnostics, Reliability and Predictive Maintenance of Pipeline Systems
 Version: 0.2.0
 Authors@R: person("Yuri", "Possokhov", email = "possokhoff@gmail.com",
@@ -24,7 +24,8 @@ LazyData: true
 Depends: R (>= 3.5.0)
 Imports: checkmate, iapws
 RoxygenNote: 7.3.1
-Suggests: 
+Suggests:
     testthat (>= 3.0.0),
     covr
 Config/testthat/edition: 3
+Config/Needs/website: rmarkdown

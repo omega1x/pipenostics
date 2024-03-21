@@ -11,3 +11,4 @@
 ^\R\tracebw.R$
 ^_pkgdown\.yml$
 ^pkgdown$
+^vignettes/articles$
