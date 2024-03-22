@@ -2,6 +2,7 @@
 
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![R-CMD-check](https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml)
 [![pages-build-deployment](https://github.com/omega1x/pipenostics/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/omega1x/pipenostics/actions/workflows/pages/pages-build-deployment)
 [![pipenostics status badge](https://omega1x.r-universe.dev/badges/pipenostics)](https://omega1x.r-universe.dev)
 [![lintr](https://github.com/omega1x/pipenostics/actions/workflows/lintr.yml/badge.svg)](https://github.com/omega1x/pipenostics/actions/workflows/lintr.yml)
