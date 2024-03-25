@@ -191,7 +191,7 @@ print(max(pof))
 
 Let's consider the next 4-segment tracing path:
 
-![m325regtrace](https://raw.githubusercontent.com/omega1x/pipenostics/a26e1171f05d3cd4f2c25a71ccde9947a095409f/.src/svg-graphics/m325regtrace.svg)
+![](https://raw.githubusercontent.com/omega1x/pipenostics/a26e1171f05d3cd4f2c25a71ccde9947a095409f/.src/svg-graphics/m325regtrace.svg)
 
 Suppose we have the next sensor readings for *forward tracing*:
 
@@ -230,4 +230,4 @@ $flow_rate
 [1] 250 240 220 190
 ```
 
-> For further examples go to package function descriptions.
+> &#8505; Read [concepts and useful notes](articles/Concepts.html) for a deeper dive into the topic.

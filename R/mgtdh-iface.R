@@ -97,7 +97,7 @@
 #'
 #'  # * undisturbed ground temperature plot at Control Point:
 #'  days <- as.POSIXct("2023-01-01") + 3600*24*(seq.int(1, 365) - 1)
-#'  plot(days, mgtdhgeot(days, lat[["ControlPoint"]], lon[["ControlPoint"]]), type = "l")
+#'  plot(days, mgtdhgeot(days, lat[["ControlPoint"]], lon[["ControlPoint"]]), type = "l", ylab = "Temperature, °C")
 #'
 #' @rdname mgtdh-iface
 #' @export
@@ -207,10 +207,12 @@ mgtdhgeo <- function(lat, lon, tau = 1440L, depth = 2.4, use_cluster = FALSE){
     parallel::stopCluster(cluster)
     return(stream)
   } else {
-    mapply(
-      function(x, y) pipenostics::mgtdhgeot(tau = tau, lat = x, lon = y, depth = depth),
-      lat, lon,
-      USE.NAMES = FALSE
+    unlist(
+      Map(
+        function(x, y) pipenostics::mgtdhgeot(tau = tau, lat = x, lon = y, depth = depth),
+        lat, lon,
+        USE.NAMES = FALSE
+      )
     )
   }
 }

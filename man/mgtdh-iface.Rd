@@ -97,7 +97,7 @@ where
 
  # * undisturbed ground temperature plot at Control Point:
  days <- as.POSIXct("2023-01-01") + 3600*24*(seq.int(1, 365) - 1)
- plot(days, mgtdhgeot(days, lat[["ControlPoint"]], lon[["ControlPoint"]]), type = "l")
+ plot(days, mgtdhgeot(days, lat[["ControlPoint"]], lon[["ControlPoint"]]), type = "l", ylab = "Temperature, °C")
 
 }
 \references{
