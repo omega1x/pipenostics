@@ -4,7 +4,7 @@
 \alias{flowls}
 \title{List all possible flow paths in district heating network}
 \usage{
-flowls(sender = "A", acceptor = "B", maxcores = 2L)
+flowls(sender = "A", acceptor = "B", use_cluster = FALSE)
 }
 \arguments{
 \item{sender}{identifier of the node which heat carrier flows out.
@@ -16,8 +16,8 @@ of test bench considered this identifier should be unique.
 Type: any type that can be painlessly coerced to character by
 \code{\link{as.character}}.}
 
-\item{maxcores}{maximum cores of CPU to use in parallel processing.
-Type: \code{\link{assert_count}}.}
+\item{use_cluster}{utilize functionality of parallel processing on multi-core CPU.
+Type: \code{\link{assert_flag}}.}
 }
 \value{
 named \code{list} that contains integer vectors as its elements. The name
@@ -44,6 +44,8 @@ directed graph of this network. For more details of isomorphic topology
 description see \code{\link{m325testbench}}.
 }
 \examples{
+ library(pipenostics)
+
 \donttest{
 # Find path from A to B in trivial line topology:
 flowls("A", "B")

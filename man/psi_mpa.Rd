@@ -19,6 +19,8 @@ Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pascal
  to \href{https://en.wikipedia.org/wiki/Pounds_per_square_inch}{pounds per square inch} (PSI)
 }
 \examples{
+ library(pipenostics)
+
  psi_mpa(c(6.89475728e-3, 1))
  # [1] 1.0000 145.0377 # [PSI]
 
@@ -26,14 +28,15 @@ Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pascal
 \seealso{
 \code{\link{mpa_psi}} for converting \emph{pounds per square inch} to \emph{megapascals}
 
-Other utils: 
+Other units: 
 \code{\link{c_k}()},
 \code{\link{f_k}()},
 \code{\link{inch_mm}()},
 \code{\link{k_c}()},
 \code{\link{kgf_mpa}()},
+\code{\link{loss_flux}()},
 \code{\link{mm_inch}()},
 \code{\link{mpa_kgf}()},
 \code{\link{mpa_psi}()}
 }
-\concept{utils}
+\concept{units}

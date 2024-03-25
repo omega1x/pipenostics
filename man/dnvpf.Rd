@@ -7,9 +7,9 @@
 dnvpf(d, wth, uts, depth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of the pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 
 \item{uts}{ultimate tensile strength (\emph{UTS}) or
 specified minimum tensile strength (\emph{SMTS}) as a
@@ -56,6 +56,7 @@ In contrast to
   use are offended.
 }
 \examples{
+ library(pipenostics)
 
 d     <- c(812.8, 219.0)  # [mm]
 wth   <- c( 19.1,  14.5)  # [mm]

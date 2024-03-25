@@ -19,6 +19,7 @@ Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Kilogr
  to \href{https://en.wikipedia.org/wiki/Pascal_(unit)}{megapascals} (MPa)
 }
 \examples{
+ library(pipenostics)
 
  mpa_kgf(c(10.1971619998, 1))
  # [1] 1.0000000 0.0980665  # [MPa]
@@ -27,14 +28,15 @@ Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Kilogr
 \seealso{
 \code{\link{kgf_mpa}} for converting \emph{megapascals} to \emph{kilogram-force per square cm}
 
-Other utils: 
+Other units: 
 \code{\link{c_k}()},
 \code{\link{f_k}()},
 \code{\link{inch_mm}()},
 \code{\link{k_c}()},
 \code{\link{kgf_mpa}()},
+\code{\link{loss_flux}()},
 \code{\link{mm_inch}()},
 \code{\link{mpa_psi}()},
 \code{\link{psi_mpa}()}
 }
-\concept{utils}
+\concept{units}

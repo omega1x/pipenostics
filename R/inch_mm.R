@@ -1,7 +1,7 @@
 #' @title
 #'  Millimeters to inches
 #'
-#' @family utils
+#' @family units
 #'
 #' @description
 #'  Convert length measured in \href{https://en.wikipedia.org/wiki/Millimetre}{millimeters} (mm)
@@ -21,6 +21,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  inch_mm(c(25.4, 1))
 #'  # [1] 1.00000000 0.03937008  # [inch]
 #'

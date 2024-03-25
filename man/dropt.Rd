@@ -2,9 +2,14 @@
 % Please edit documentation in R/dropt.R
 \name{dropt}
 \alias{dropt}
-\title{Temperature drop in pipe due heat losses}
+\title{Temperature drop in cylindrical steel pipe due heat loss}
 \usage{
-dropt(temperature = 130, pressure = mpa_kgf(6), consumption = 250, flux = 7000)
+dropt(
+  temperature = 130,
+  pressure = mpa_kgf(6),
+  flow_rate = 250,
+  loss_power = 7000
+)
 }
 \arguments{
 \item{temperature}{temperature of heat carrier (water) inside the pipe measured at the
@@ -13,10 +18,10 @@ inlet of pipe, [\emph{°C}]. Type: \code{\link{assert_double}}.}
 \item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.}
 
-\item{consumption}{amount of heat carrier (water) that is transferred by pipe during a period,
+\item{flow_rate}{amount of heat carrier (water) that is transferred by pipe during a period,
 [\emph{ton/hour}]. Type: \code{\link{assert_double}}.}
 
-\item{flux}{heat flux emitted by pipe during a period, [\emph{kcal/hour}].
+\item{loss_power}{power of heat loss - heat loss through area of pipe wall per hour, [\emph{kcal/hour}].
 Type: \code{\link{assert_double}}.}
 }
 \value{
@@ -24,7 +29,7 @@ temperature drop at the outlet of pipe, [\emph{°C}]. Type: \code{\link{assert_d
 }
 \description{
 Calculate temperature drop in steel pipe of \emph{district heating system}
- (where water is a heat carrier) that is a result of heat losses through
+ (where water is a heat carrier) that is a result of heat loss through
  pipe wall and insulation.
 }
 \details{
@@ -35,38 +40,37 @@ Specific isobaric \href{https://en.wikipedia.org/wiki/Heat_capacity}{heat capaci
   \emph{district heating system} is always in that region.
 }
 \examples{
+ library(pipenostics)
+
  # Calculate normative temperature drop based on Minenergo-325 for pipe segment
  pipeline <- list(
-   year = 1968,
+   year   = 1968,
    laying = "channel",
-   d = 700,
-   l = 1000
+   d      = 700, # [mm]
+   len    = 1000 # [m]
  )
- operation_temperature <- c(130, 150)  # [°C]
 
- foo <- dropt(
-   temperature = operation_temperature,
-   flux = do.call(
+ regime <- list(
+   temperature = c(130, 150), # [°C]
+   pressure    = .588399,     # [MPa]
+   flow_rate   = 250          # [ton/hour]
+ )
+
+ pipe_loss_power <- do.call(
      m325nhl,
-     c(pipeline, temperature = list(operation_temperature))
-   )
+     c(pipeline, temperature = list(regime[["temperature"]]), duration = 1)  # [kcal/hour]
  )
 
- foo
+ temperature_drop <- dropt(
+   temperature = regime[["temperature"]], # [°C]
+   loss_power  = pipe_loss_power          # [kcal/hour]
+ )                                        # [°C]
+
+ print(temperature_drop)
+
  # [1] 1.366806 1.433840
-
- # This is the same as using m325dropt:
- bar <- m325dropt(temperature = operation_temperature,
-   year = 1968, laying = "channel", d = 700, len = 1000
- )
-
- bar
- # [1] 1.366806 1.433840
-
 }
 \seealso{
-\code{\link{m325dropt}} for calculating normative values of temperature drop
-
 Other district heating: 
 \code{\link{dropg}()},
 \code{\link{dropp}()}

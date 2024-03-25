@@ -2,15 +2,15 @@
 % Please edit documentation in R/m325tracebw.R
 \name{m325tracebw}
 \alias{m325tracebw}
-\title{Minenergo-325. Trace backwards thermal-hydraulic regime for district heating
- network}
+\title{Minenergo-325. Massively trace backwards thermal-hydraulic regime for
+ district heating network}
 \usage{
 m325tracebw(
   sender = 6,
   acceptor = 7,
   temperature = 70,
   pressure = pipenostics::mpa_kgf(6),
-  consumption = 20,
+  flow_rate = 20,
   d = 100,
   len = 72.446,
   year = 1986,
@@ -38,21 +38,21 @@ of test bench considered this identifier should be unique for every row.
 Type: any type that can be painlessly coerced to character by
 \code{\link{as.character}}.}
 
-\item{temperature}{\emph{snapshot of thermal-hydraulic regime state}: temperature of heat carrier
-(water) sensor-measured on the terminal acceptor node, [\emph{°C}].
-Use \code{NA_float_}s for nodes without temperature sensor.
-Type: \code{\link{assert_double}}.}
+\item{temperature}{Sensor-measured temperature of heat carrier (water) sensor-measured on 
+the terminal acceptor node, [\emph{°C}].
+ Use \code{NA_float_}s for (terminal) nodes without temperature sensor.
+ Type: \code{\link{assert_double}}.}
 
-\item{pressure}{\emph{snapshot of thermal-hydraulic regime state}: sensor-measured
+\item{pressure}{Sensor-measured
 \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
-[\emph{MPa}]. Type: \code{\link{assert_double}}.}
+[\emph{MPa}].
+Type: \code{\link{assert_double}}.}
 
-\item{consumption}{\emph{snapshot of thermal-hydraulic regime state}:
-sensor-measured amount of heat carrier (water) on terminal node that is
-transferred by pipe (i.e. acceptor's incoming edge) during a period,
-[\emph{ton/hour}]. Type: \code{\link{assert_double}}.
-Use \code{NA_float_}s for nodes without consumption sensor.}
+\item{flow_rate}{Sensor-measured amount of heat carrier (water) on terminal node that is
+transferred by pipe (i.e. acceptor's incoming edge) during a period, [\emph{ton/hour}]. 
+Type: \code{\link{assert_double}}.
+Use \code{NA_float_}s for nodes without flow rate sensor.}
 
 \item{d}{internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
 [\emph{mm}].
@@ -85,7 +85,7 @@ types of pipe laying are considered:
 }
 Type: \code{\link{assert_subset}}.}
 
-\item{beta}{logical indicator: should they consider additional heat losses of fittings
+\item{beta}{logical indicator: should they consider additional heat loss of fittings
 located on this pipe (i.e. acceptor's incoming edge)?
 Type: \code{\link{assert_logical}}.}
 
@@ -93,8 +93,8 @@ Type: \code{\link{assert_logical}}.}
 \code{TRUE} pipe is operated more that \code{5000} hours per year.
 Type: \code{\link{assert_logical}}.}
 
-\item{roughness}{roughness of internal wall of pipe (i.e. acceptor's incoming edge),
-[\emph{m}]. Type: \code{\link{assert_logical}}.}
+\item{roughness}{roughness of internal wall of pipe (i.e. acceptor's incoming edge), [\emph{m}].
+Type: \code{\link{assert_double}}.}
 
 \item{inlet}{elevation of pipe inlet, [\emph{m}]. Type: \code{\link{assert_double}}.}
 
@@ -122,8 +122,8 @@ Type: \code{\link{assert_choice}}.}
 \item{verbose}{logical indicator: should they watch tracing process on console?
 Type: \code{\link{assert_flag}}.}
 
-\item{csv}{logical indicator: should they incrementally dump results to \emph{csv}-file
-while tracing?
+\item{csv}{logical indicator: should they incrementally dump results to \emph{csv}-
+file while tracing?
 Type: \code{\link{assert_flag}}.}
 
 \item{file}{name of \emph{csv}-file which they dump results to.
@@ -131,89 +131,90 @@ Type: \code{\link{assert_character}} of length 1 that can be used safely
 to create a file and write to it.}
 }
 \value{
-\code{data.frame} containing results of tracing in
-   long format
-   (\href{https://en.wikipedia.org/wiki/Wide_and_narrow_data}{narrow format})
-   mostly like it returned by function \code{\link{m325tracefw}}:
+\code{\link{data.frame}} containing results (detailed log) of tracing in
+   \href{https://en.wikipedia.org/wiki/Wide_and_narrow_data}{narrow format}:
    \describe{
-     \item{\code{node}}{
-       identifier of the node for which regime parameters is calculated.
-       Values in this vector are identical to those in argument \code{acceptor}.
-       Type: \code{\link{assert_character}}.
-     }
-
-    \item{\code{tracing}}{
-      concatenated identifiers of nodes from which regime parameters are
-      traced for the given node. Identifier \code{sensor} is used when
-      values of regime parameters for the node are sensor readings.
-      Type: \code{\link{assert_character}}.
-    }
-
-    \item{\code{backward}}{
-      identifier of tracing direction. It constantly equals to \code{TRUE}.
-      Type: \code{\link{assert_logical}}.
-    }
-
-    \item{\code{aggregation}}{
-      aggregation method associated with values of calculated temperature or
-      pressure in \code{data.frame}'s row for the node:
-      \describe{
-         \item{\code{identity}}{
-           values (opinions) of temperature or pressure as they are
-           (no aggregation).
-         }
-         \item{\code{span}}{
-           span of values (opinions) of temperature or pressure for the node
-         }
-         \item{\code{median}}{
-           median of values (opinions) of temperature or pressure for the node
-         }
-         \item{\code{mean}}{
-           avaraged values (opinions) temperature or pressure for the node
-         }
+      \item{\code{node}}{
+        \emph{Tracing job}. Identifier of the node which regime parameters is
+        calculated for. Values in this vector are identical to those in
+        argument \code{acceptor}. 
+        Type: \code{\link{assert_character}}.
       }
-      Type: \code{\link{assert_character}}.
-    }
 
-   \item{\code{temperature}}{
-     \emph{snapshot of thermal-hydraulic regime state}: traced temperature of heat
-     carrier (water) that is associated with the node, [\emph{°C}]
-     Type: \code{\link{assert_double}}.
-   }
+      \item{\code{tracing}}{
+        \emph{Tracing job}. Identifiers of nodes from which regime parameters
+        are traced for the given node. Identifier \code{sensor} is used when
+        values of regime parameters for the node are sensor readings.
+        Type: \code{\link{assert_character}}.
+      }
 
-   \item{\code{pressure}}{
-     \emph{snapshot of thermal-hydraulic regime state}: traced pressure of heat
-     carrier (water) that is associated with the node, [\emph{MPa}]
-     Type: \code{\link{assert_double}}.
-   }
+      \item{\code{backward}}{
+         \emph{Tracing job}. Identifier of tracing direction. It constantly
+         equals to \code{TRUE}. 
+         Type: \code{\link{assert_logical}}.
+       }
 
-   \item{\code{consumption}}{
-     \emph{snapshot of thermal-hydraulic regime state}: traced pressure of heat
-     carrier (water) that is associated with the node, [\emph{ton/hour}]
-     Type: \code{\link{assert_double}}.
-   }
+      \item{\code{aggregation}}{
+         \emph{Tracing job}. Identifier of aggregation method: \emph{span}, \emph{median}, \emph{mean}, or \emph{identity}. Type: \code{\link{assert_character}}.
+       }
+      \item{\code{loss}}{
+         \emph{Traced thermal hydraulic regime}. Normative specific heat loss power of adjacent pipe, [\emph{kcal/m/h}]. Type: \code{\link{assert_double}}.
+       }
+      \item{/code{flux}}{
+         \emph{Traced thermal hydraulic regime}. Normative heat flux of adjacent pipe, [\emph{W/m^2}]. Type: \code{\link{assert_double}}.
+       }
+      \item{\code{Q}}{
+        \emph{Traced thermal hydraulic regime}. Normative heat loss of adjacent pipe per day, [\emph{kcal}]. 
+        Type: \code{\link{assert_character}}.
+      }
 
-   \item{\code{job}}{
-     value of tracing step counter.
-     Type: \code{\link{assert_integer}}.
-   }
+      \item{\code{temperature}}{
+        \emph{Traced thermal hydraulic regime}. Traced temperature of heat
+        carrier (water) that is associated with the node, [\emph{°C}].
+        Type: \code{\link{assert_double}}.
+      }
+
+      \item{\code{pressure}}{
+        \emph{Traced thermal hydraulic regime}. Traced pressure of heat
+        carrier (water) that is associated with the node, [\emph{MPa}].
+        Type: \code{\link{assert_double}}.
+      }
+
+      \item{\code{flow_rate}}{
+         \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
+         carrier (water) that is associated with the node, [\emph{ton/hour}].
+         Type: \code{\link{assert_double}}.
+      }
+
+      \item{\code{job}}{
+         \emph{Tracing job}. Value of tracing job counter. 
+         Type: \code{\link{assert_count}}.
+      }
  }
+ Type: \code{\link{assert_data_frame}}.
 }
 \description{
 Trace values of thermal-hydraulic regime (temperature, pressure,
- consumption) in the bunched pipeline against the flow direction using norms of
- heat flux values prescribed by
- \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+ flow rate, and other) in the bunched pipeline against the flow direction using norms
+ of heat loss values prescribed by
+ \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+
+ Algorithm also suits for partially measurable district heating network with
+ massive data lack conditions, when there are no temperature and pressure
+ sensor readings on the majority of terminal nodes.
 }
 \details{
-The calculated (values of) regime may be considered as representation of
- district heating process in conditions of hypothetically perfect
- technical state of pipe walls and insulation.
-
- They consider the topology of district heating network much similar to
+They consider the topology of district heating network represented by
  \code{\link{m325testbench}}:
 
- \figure{m325tracebw.png}
+ \figure{m325tracebw0.png}
+
+ The network may be partially sensor-equipped too:
+ 
+ \figure{m325tracebwp.png}
+
+ In latter case no more than two nodes must be equipped with pressure and temperature
+ sensors whereas for other nodes only flow rate sensors must be installed.
 
  Tracing starts from sensor-equipped nodes and goes backwards, i.e against
  the flow direction.
@@ -225,54 +226,76 @@ The calculated (values of) regime may be considered as representation of
  description see \code{\link{m325testbench}}.
 
  Before tracing starts for the next node, previously calculated values of
- temperature or pressure at the node are aggregated by either averaging or
- by median.
- The latter seems more robust for avoiding strong influence of possible
- outliers which may come from actual heating transfer anomalies, erroneous
- sensor readings or wrong pipeline specifications.
+ thermal-hydraulic parameters are aggregated by either averaging or
+ by median. The latter seems more robust for avoiding strong influence of
+ possible outliers which may come from actual heating transfer anomalies,
+ erroneous sensor readings or wrong pipeline specifications.
 
- Aggregation for values of consumption at the node is always \code{\link{sum}}.
+ Aggregation for values of flow rate at the node is always \code{\link{sum}}.
 }
 \examples{
-# It is possible to run without specification of argument values:
+library(pipenostics)
+
+## It is possible to run without specification of argument values:
 m325tracebw()
 
-# Get isomorphic representation of district heating network graph:
-nx <- pipenostics::m325testbench
-nx$d <- 1e3*nx$d  # convert [m] to [mm]
+## Consider isomorphic representation of District Heating Network graph:
+DHN <- pipenostics::m325testbench
+DHN$d <- 1e3*DHN$d  # convert [m] to [mm]
 
-# When tracing large network graphs put screen log to file
-output <- do.call("m325tracebw", c(as.list(nx), verbose = TRUE))
+## When tracing large network graphs put screen log to file
+output <- do.call("m325tracebw", c(as.list(DHN), verbose = TRUE))
 
-# Distinct options for opinion aggregation lead to distinct traced
-# temperature and pressure:
-output <- list(
-  mean   = do.call("m325tracebw",
-                   c(as.list(nx), verbose = FALSE, opinion = "mean")),
-  median = do.call("m325tracebw",
-                   c(as.list(nx), verbose = FALSE, opinion = "median"))
+## Distinct options for opinion aggregation lead to distinct traced
+## temperature and pressure:
+
+## * When aggregation is by mean:
+output_mean <- do.call(
+  "m325tracebw", c(as.list(DHN), verbose = FALSE, opinion = "mean")
 )
 
+## * When aggregation is by median:
+output_median <- do.call(
+  "m325tracebw", c(as.list(DHN), verbose = FALSE, opinion = "median")
+)
+
+## The differences between aggregations should be:
+aggregation_differences <- c(delta_t = 0.03732, delta_p = 0.00139, delta_g = 0)
+print(aggregation_differences)
+
+## Check:
 stopifnot(
   round(
     subset(
-      output$mean,
+      output_mean,
       node == 13 & aggregation == "median",
-      c("temperature", "pressure", "consumption")
+      c("temperature", "pressure", "flow_rate")
     ) - subset(
-      output$median,
+      output_median,
       node == 13 & aggregation == "median",
-      c("temperature", "pressure", "consumption")
+      c("temperature", "pressure", "flow_rate")
     ),
     5
     # difference between aggregation options
-  ) == c(dt = 0.03732, dp = 0.00139, dg = 0)
+  ) == aggregation_differences
 )
+
+## It is possible to process partially measurable District Heating Network:
+
+## * Simulate lack of temperature and pressure sensors:
+DHN[c(7, 10, 21, 24), c("temperature", "pressure")] <- NA_real_
+
+## Trace thermal-hydraulic regime
+output <- do.call("m325tracebw", c(as.list(DHN)))
+print(output)
+
 }
 \seealso{
 Other Regime tracing: 
-\code{\link{m325tracebwm}()},
 \code{\link{m325tracefw}()},
-\code{\link{m325traceline}()}
+\code{\link{m325traceline}()},
+\code{\link{tracebw}()},
+\code{\link{tracefw}()},
+\code{\link{traceline}()}
 }
 \concept{Regime tracing}

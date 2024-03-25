@@ -7,9 +7,9 @@
 b31gafr(d, wth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
 \item{l}{measured maximum longitudinal length of the corroded area, [\emph{inch}].
 Type: \code{\link{assert_double}}.}
@@ -19,9 +19,11 @@ Intermediate factor related to the geometry of the corroded area, [].
  Type: \code{\link{assert_double}}.
 }
 \description{
-Calculate intermediate factor related to the geometry of the corroded zone.
+Calculate intermediate factor related to the geometry of the corroded area.
 }
 \examples{
+ library(pipenostics)
+
  b31gafr(30, .438, 7.5)
  # [1] 1.847  # A-factor is less than 5, so the corrosion is not critical
 

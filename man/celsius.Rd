@@ -3,7 +3,7 @@
 \name{c_k}
 \alias{c_k}
 \alias{c_f}
-\title{Covert to Celsius scale}
+\title{Convert to Celsius scale}
 \usage{
 c_k(x)
 
@@ -27,6 +27,8 @@ Convert temperature measured in
  to \href{https://en.wikipedia.org/wiki/Celsius}{Celsius} (\emph{°C}).
 }
 \examples{
+ library(pipenostics)
+
 # Convert from Kelvin to Celsius:
 c_k(c(0, 373.15))
 # [1]  -273.15  100
@@ -39,14 +41,15 @@ c_f(c(-459.67, 212))
 \seealso{
 \code{\link{k_c}} and \code{\link{f_c}} for converting from Celsius-scale.
 
-Other utils: 
+Other units: 
 \code{\link{f_k}()},
 \code{\link{inch_mm}()},
 \code{\link{k_c}()},
 \code{\link{kgf_mpa}()},
+\code{\link{loss_flux}()},
 \code{\link{mm_inch}()},
 \code{\link{mpa_kgf}()},
 \code{\link{mpa_psi}()},
 \code{\link{psi_mpa}()}
 }
-\concept{utils}
+\concept{units}

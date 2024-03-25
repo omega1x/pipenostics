@@ -7,10 +7,10 @@
 shell92pf(d, wth, uts, depth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of the pipe, [\emph{mm}].
+\item{d}{nominal outside diameter of pipe, [\emph{mm}].
 Type: \code{\link{assert_double}}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{mm}].
+\item{wth}{nominal wall thickness of pipe, [\emph{mm}].
 Type: \code{\link{assert_double}}.}
 
 \item{uts}{ultimate tensile strength (\emph{UTS}) or
@@ -35,7 +35,7 @@ Calculate failure pressure of the corroded pipe according to \emph{Shell92}
  This code should be applied only to
  \itemize{
    \item single cross section of the pipeline containing a longitudinally
-         oriented, flat bottom surface defect of the corrosion/erosion type;
+         oriented, flat bottom surface defect of corrosion/erosion type;
    \item defects which depth is less than 85 \% of pipe wall thickness.
  }
 
@@ -51,6 +51,7 @@ Numeric \code{NA}s may appear in case prescribed conditions of
   use are offended.
 }
 \examples{
+ library(pipenostics)
 
 d     = c(812.8, 219.0)  # [mm]
 wth   = c( 19.1,  14.5)  # [mm]

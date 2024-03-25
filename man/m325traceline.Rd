@@ -2,12 +2,13 @@
 % Please edit documentation in R/m325traceline.R
 \name{m325traceline}
 \alias{m325traceline}
-\title{Minenergo-325. Trace thermal-hydraulic regime for linear segment}
+\title{Minenergo-325. Trace thermal-hydraulic regime for linear segment of district
+ heating network}
 \usage{
 m325traceline(
   temperature = 130,
   pressure = mpa_kgf(6),
-  consumption = 250,
+  flow_rate = 250,
   g = 0,
   d = 700,
   len = c(600, 530, 300, 350),
@@ -26,23 +27,26 @@ m325traceline(
 )
 }
 \arguments{
-\item{temperature}{temperature of heat carrier (water) inside the pipe sensor-measured at the inlet
+\item{temperature}{\emph{Traced thermal hydraulic regime}. Sensor-measured temperature of heat
+carrier (water)
+inside the pipe sensor-measured at the inlet
 (forward tracing) or at the outlet (backward tracing) of path, [\emph{°C}].
 Type: \code{\link{assert_number}}.}
 
-\item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-of heat carrier (water) sensor-measured at the inlet
+\item{pressure}{\emph{Traced thermal hydraulic regime}. Sensor-measured
+\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute
+pressure} of heat carrier (water) sensor-measured at the inlet
 (forward tracing) or at the outlet (backward tracing) of path, [\emph{MPa}].
 Type: \code{\link{assert_number}}.}
 
-\item{consumption}{amount of heat carrier (water) sensor-measured at the inlet (forward tracing) or at
-the outlet (backward tracing) of path, [\emph{ton/hour}].
-Type: \code{\link{assert_number}}.}
+\item{flow_rate}{\emph{Traced thermal hydraulic regime}. Amount of heat carrier (water)
+sensor-measured at the inlet (forward tracing) or at the outlet (backward
+tracing) of path, [\emph{ton/hour}]. Type: \code{\link{assert_number}}.}
 
 \item{g}{amount of heat carrier discharge to network for each pipe segment in the
 tracing path enumerated along the direction of flow. If flag \code{absg}
 is \code{TRUE} then they treat argument \code{g} as absolute value in
-[\emph{ton/hour}], otherwise they do as percentage of consumption in the
+[\emph{ton/hour}], otherwise they do as percentage of flow_rate in the
 pipe segment.
 Type: \code{\link{assert_double}}.}
 
@@ -78,12 +82,13 @@ Type: \code{\link{assert_numeric}} and \code{\link{assert_subset}}.}
 for each pipe in tracing path enumerated along the direction of flow.
 Type: \code{\link{assert_character}} and \code{\link{assert_subset}}.}
 
-\item{beta}{should they consider additional heat losses of fittings? Logical value
-for each pipe in tracing path enumerated along the direction of flow.
-Type: \code{\link{assert_logical}}.}
+\item{beta}{logical indicator: should they consider additional heat loss of fittings?
+Logical value for each pipe in tracing path enumerated along the direction
+of flow. Type: \code{\link{assert_logical}}.}
 
-\item{exp5k}{pipe regime flag: is pipe operated more that \code{5000} hours per year? Logical
-value for each pipe in tracing path enumerated along the direction of flow.
+\item{exp5k}{logical indicator for regime of pipe: is pipe operated more that
+\code{5000} hours per year? Logical value for each pipe in tracing path
+ enumerated along the direction of flow.
 Type: \code{\link{assert_logical}}.}
 
 \item{roughness}{roughness of internal wall for each pipe in tracing path enumerated along
@@ -113,25 +118,50 @@ Type: \code{\link{assert_flag}}.}
 
 \item{absg}{Whether argument \code{g} (amount of heat carrier discharge to network) is an
 absolute value in [\emph{ton/hour}] (\code{TRUE}) or is it a percentage of
-consumption in the pipe segment (\code{FALSE})?
+flow rate in the pipe segment (\code{FALSE})?
 Type: \code{\link{assert_flag}}.}
 }
 \value{
-named list of regime parameters for the traced path with the next elements:
+\code{\link{list}} containing results (detailed log) of tracing for each pipe
+      in tracing path enumerated along the direction of flow:
  \describe{
-   \item{\code{temperature}}{calculated temperatures of heat carrier for all pipeline segments, [\emph{°C}].
-   Type: \code{\link{assert_double}}.}
-   \item{\code{pressure}}{calculated pressures of heat carrier for all pipeline segments, [\emph{MPa}].
-   Type: \code{\link{assert_double}}.}
-   \item{\code{consumption}}{calculated consumption(s) of heat carrier for all pipeline segments, [\emph{ton/hour}].
-   Type: \code{\link{assert_double}}.}
+   \item{\code{temperature}}{
+     \emph{Traced thermal hydraulic regime}. Traced temperature of heat
+      carrier (water), [\emph{°C}]. Type: \code{\link{assert_double}}.
+   }
+   \item{\code{pressure}}{
+     \emph{Traced thermal hydraulic regime}. Traced pressure of heat
+      carrier (water) for each pipe in tracing path enumerated along the
+      direction of flow, [\emph{MPa}]. Type: \code{\link{assert_double}}.
+   }
+   \item{\code{flow_rate}}{
+     \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
+      carrier (water) for each pipe in tracing path enumerated along the
+      direction of flow, [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
+   }
+  \item{\code{loss}}{
+     \emph{Traced thermal hydraulic regime}. Normative specific heat
+     loss power for each pipe in tracing path enumerated along the direction
+     of flow, [\emph{kcal/m/h}]. Type: \code{\link{assert_double}}.
+   }
+  \item{\code{flux}}{
+     \emph{Traced thermal hydraulic regime}. Normative heat flux for each pipe
+     in tracing path enumerated along the direction of flow, [\emph{W/m^2}].
+     Type: \code{\link{assert_double}}.
+   }
+   \item{\code{Q}}{
+     \emph{Traced thermal hydraulic regime}. Normative heat loss for each
+     pipe in tracing path enumerated along the direction of flow per day,
+     [\emph{kcal}]. Type: \code{\link{assert_double}}.
+   }
  }
+ Type: \code{\link{assert_list}}.
 }
 \description{
 Trace values of thermal-hydraulic regime (temperature, pressure,
- consumption) along the adjacent linear segments of pipeline using norms of
- heat flux values prescribed by
- \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+ flow_rate, and other) along the adjacent linear segments of pipeline using
+ norms of heat loss values prescribed by
+ \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 }
 \details{
 The calculated (values of) regime may be considered as representation of
@@ -151,18 +181,24 @@ The calculated (values of) regime may be considered as representation of
  They make additional check for consistency of \code{inlet} and \code{outlet}
  values for subsequent pipe segments. Discrepancy of appropriate elevations
  cannot be more than \code{elev_tol}.
+
+ Since inner diameter of the pipe is used as input, the the thickness of the
+ pipe wall additionally considered in heat flux calculations. Pipe wall thickness
+ is derived from pipe diameter using
+ \href{https://docs.cntd.ru/document/1200174717}{GOST 30732} specifications.
 }
 \examples{
+ library(pipenostics)
+
 # Consider 4-segment tracing path depicted in ?m325regtrace help page.
 # First, let sensor readings for forward tracing:
 t_fw <- 130  # [°C]
-p_fw <- .588399*all.equal(.588399, mpa_kgf(6))  # [MPa]
+p_fw <- mpa_kgf(6)*all.equal(.588399, mpa_kgf(6))  # [MPa]
 g_fw <- 250  # [ton/hour]
 
 # Let discharges to network for each pipeline segment are somehow determined as
 discharges <- seq(0, 30, 10)  # [ton/hour]
 
-\donttest{
 # Then the calculated regime (red squares) for forward tracing is
 regime_fw <- m325traceline(t_fw, p_fw, g_fw, discharges, forward = TRUE)
 print(regime_fw)
@@ -173,16 +209,25 @@ print(regime_fw)
 # $pressure
 # [1] 0.5878607 0.5874226 0.5872143 0.5870330
 #
-# $consumption
+# $flow_rate
 # [1] 250 240 220 190
-}
+#
+# $loss
+# [1] 348.0000 347.1389 346.3483 345.8610
+#
+# $flux
+# [1] 181.9600 181.5097 181.0963 180.8415
+#
+# $Q
+# [1] 5011200 4415607 2493707 2905232
+
+
 # Next consider values of traced regime as sensor readings for backward tracing:
 t_bw <- 127.3367  # [°C]
 p_bw <- .5870330  # [MPa]
 g_bw <- 190  # [ton/hour]
 
 # Then the calculated regime (red squares) for backward tracing is
-\donttest{
 regime_bw <- m325traceline(t_bw, p_bw, g_bw, discharges, forward = FALSE)
 print(regime_bw)
 
@@ -192,8 +237,17 @@ print(regime_bw)
 # $pressure
 # [1] 0.5883998 0.5878611 0.5874228 0.5872144
 #
-# $consumption
+# $flow_rate
 # [1] 250 250 240 220
+#
+# $loss
+# [1] 347.1358 346.3467 345.8599 345.2035
+#
+# $flux
+# [1] 181.5081 181.0955 180.8410 180.4978
+#
+# $Q
+# [1] 4998755 4405529 2490192 2899710
 
 # Let compare sensor readings with backward tracing results:
 tracing <- with(regime_bw, {
@@ -205,10 +259,10 @@ tracing <- with(regime_bw, {
     rbind(
       lambda(temperature[first], t_fw),
       lambda(pressure[first],    p_fw),
-      lambda(consumption[first], g_fw)
+      lambda(flow_rate[first], g_fw)
     ),
     dimnames = list(
-      c("temperature", "pressure", "consumption"),
+      c("temperature", "pressure", "flow_rate"),
       c("sensor.value", "traced.value", "abs.discr", "rel.discr")
     )
   )
@@ -216,18 +270,17 @@ tracing <- with(regime_bw, {
 print(tracing)
 
 # sensor.value traced.value     abs.discr    rel.discr
-# temperature   130.000000  129.9952943  4.705723e-03 0.0036197868
-# pressure        0.588399    0.5883998 -8.290938e-07 0.0001409067
-# consumption   250.000000  250.0000000  0.000000e+00 0.0000000000
-}
+# temperature  129.9952943   130.000000  4.705723e-03 0.0036197868
+# pressure       0.5883998     0.588399 -8.215938e-07 0.0001396321
+# flow_rate    250.0000000   250.000000  0.000000e+00 0.0000000000
+
 }
 \seealso{
-\code{\link{m325dropt}} for calculating normative temperature drop in
- single pipeline segment
-
 Other Regime tracing: 
-\code{\link{m325tracebwm}()},
 \code{\link{m325tracebw}()},
-\code{\link{m325tracefw}()}
+\code{\link{m325tracefw}()},
+\code{\link{tracebw}()},
+\code{\link{tracefw}()},
+\code{\link{traceline}()}
 }
 \concept{Regime tracing}

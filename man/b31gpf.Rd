@@ -7,9 +7,9 @@
 b31gpf(d, wth, smys, depth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
 \item{smys}{specified minimum yield of stress (\emph{SMYS}) as a
 characteristics of steel strength, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
@@ -58,6 +58,8 @@ Since the definition of flow stress, \emph{Sflow}, in
   use are offended.
 }
 \examples{
+ library(pipenostics)
+
  ## Example: maximum percentage disparity of original B31G
  ## algorithm and modified B31G showed on CRVL.BAS data
  with(b31gdata, {

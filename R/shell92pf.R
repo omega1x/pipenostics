@@ -10,7 +10,7 @@
 #'  This code should be applied only to
 #'  \itemize{
 #'    \item single cross section of the pipeline containing a longitudinally
-#'          oriented, flat bottom surface defect of the corrosion/erosion type;
+#'          oriented, flat bottom surface defect of corrosion/erosion type;
 #'    \item defects which depth is less than 85 \% of pipe wall thickness.
 #'  }
 #'
@@ -26,11 +26,11 @@
 #'   use are offended.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{mm}].
+#'  nominal outside diameter of pipe, [\emph{mm}].
 #'  Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{mm}].
+#'  nominal wall thickness of pipe, [\emph{mm}].
 #'  Type: \code{\link{assert_double}}.
 #'
 #' @param uts
@@ -63,6 +63,7 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
 #'
 #' d     = c(812.8, 219.0)  # [mm]
 #' wth   = c( 19.1,  14.5)  # [mm]

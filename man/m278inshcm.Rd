@@ -25,6 +25,7 @@ Get normative values of thermal conductivity of pipe insulation
  a function of temperature of heat carrier (water).
 }
 \examples{
+ library(pipenostics)
 
 # Averaged thermal conductivity of pipe insulation at 110 °C
 print(m278insdata)
@@ -40,9 +41,8 @@ Other Minenergo:
 \code{\link{m278insdata}},
 \code{\link{m278soildata}},
 \code{\link{m325beta}()},
-\code{\link{m325dropt}()},
-\code{\link{m325nhldata}},
 \code{\link{m325nhl}()},
+\code{\link{m325nhldata}},
 \code{\link{m325testbench}}
 }
 \concept{Minenergo}

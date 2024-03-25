@@ -9,7 +9,7 @@
 #'  \emph{Level-1} algorithm listed
 #'  in \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012}.
 #'
-#'  The next assumption of the corrosion shape is adopted by \emph{Modified B31G}:
+#'  The next assumption of corrosion shape is adopted by \emph{Modified B31G}:
 #'
 #'  \figure{b31gmodpf.png}
 #'
@@ -34,10 +34,10 @@
 #'   use are offended.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
+#'  nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
+#'  nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param smys
 #'  specified minimum yield of stress (\emph{SMYS}) as a
@@ -69,6 +69,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  ## Example: maximum percentage disparity of original B31G
 #'  ## algorithm and modified B31G showed on CRVL.BAS data
 #'  with(b31gdata, {

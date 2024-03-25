@@ -2,7 +2,7 @@
 #'
 #' Data describes a virtual test bench of branched district heating network
 #' by exposing parameters associated with
-#' \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#' \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #' They treat data as a snapshot of network state and use it
 #' primarily for static thermal-hydraulic computations and topology effects.
 #'
@@ -58,12 +58,12 @@
 #'     without pressure sensor.
 #'   }
 #'
-#'   \item{consumption}{
+#'   \item{flow_rate}{
 #'     Snapshot of thermal-hydraulic regime state:
 #'     sensor-measured amount of heat carrier (water) on terminal node that is
 #'     transferred by pipe (i.e. acceptor's incoming edge) during a period,
 #'     [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
-#'     \code{NA}s are introduced for nodes without consumption sensor.
+#'     \code{NA}s are introduced for nodes without flow rate sensor.
 #'   }
 #'
 #'  \item{d}{
@@ -108,7 +108,7 @@
 #'   }
 #'
 #'  \item{beta}{
-#'    logical indicator: should they consider additional heat losses of fittings
+#'    logical indicator: should they consider additional heat loss of fittings
 #'    located on this pipe (i.e. acceptor's incoming edge)?
 #'    Type: \code{\link{assert_logical}}.
 #'  }
@@ -137,7 +137,9 @@
 #'}
 #'
 #' @examples
-#' # Do not hesitate to use data.table and igraph for larger chunks of network.
+#'  library(pipenostics)
+#'
+#' # Do not hesitate to use `data.table` and `igraph` for larger chunks of network.
 #'
 #' # Check for declared topology isomorphism:
 #' stopifnot(
@@ -147,7 +149,7 @@
 #' # Do all terminal nodes have sensor-measured regime parameters?:
 #' terminal_nodes <- subset(m325testbench, !(acceptor %in% sender))
 #' stopifnot(
-#'   all(!is.na(subset(terminal_nodes, select = c(temperature, pressure, consumption))))
+#'   all(!is.na(subset(terminal_nodes, select = c(temperature, pressure, flow_rate))))
 #' )
 #'
 "m325testbench"

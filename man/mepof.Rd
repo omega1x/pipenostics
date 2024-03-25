@@ -27,9 +27,9 @@ mepof(
 \item{l}{maximum longitudinal length of corroded area measured during
 \emph{inline inspection}, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 
-\item{d}{nominal outside diameter of the pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
 
 \item{strength}{one of the next characteristics of steel strength, [\emph{MPa}]:
 \itemize{
@@ -106,12 +106,12 @@ Calculate \emph{probability of failure} (POF) of the corroded pipe taking into
 
  That is why in the method they consider two possible failures for a single
  pipeline cross section with the on-surface and longitudinally oriented
- defect of the \emph{metal-loss} type:
+ defect of \emph{metal-loss} type:
 
  \describe{
-    \item{\emph{rupture}}{a decrease of the value of failure pressure down
+    \item{\emph{rupture}}{a decrease of value of failure pressure down
     to the operating pressure.}
-    \item{\emph{leak}}{increase of the corrosion depth (defect) up to the
+    \item{\emph{leak}}{increase of corrosion depth (defect) up to the
     specified ultimate permissible fraction of pipe wall thickness.}
  }
 
@@ -162,6 +162,8 @@ Since for all influence factors they can more or less assume range limits,
  corrosion rate.
 }
 \examples{
+ library(pipenostics)
+
 \donttest{
 # Let's consider a pipe in district heating network with
 diameter           <- 762         # [mm]
@@ -190,7 +192,7 @@ pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
 print(pof)
 # 0.000000 0.252510 0.368275 0.771595
 
-# So, the POF of the pipe is near
+# So, the POF of pipe is near
 print(max(pof))
 # 0.771595
 

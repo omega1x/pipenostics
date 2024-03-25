@@ -32,6 +32,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #' with(api5l3t, {
 #' print(strderate(mpa_psi(smys), 53))
 #' print(

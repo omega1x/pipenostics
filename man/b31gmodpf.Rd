@@ -7,9 +7,9 @@
 b31gmodpf(d, wth, smys, depth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
 \item{smys}{specified minimum yield of stress (\emph{SMYS}) as a
 characteristics of steel strength, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
@@ -27,7 +27,7 @@ Calculate failure pressure of the corroded pipe
  \emph{Level-1} algorithm listed
  in \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012}.
 
- The next assumption of the corrosion shape is adopted by \emph{Modified B31G}:
+ The next assumption of corrosion shape is adopted by \emph{Modified B31G}:
 
  \figure{b31gmodpf.png}
 
@@ -52,6 +52,8 @@ Since the definition of flow stress, \emph{Sflow}, in
   use are offended.
 }
 \examples{
+ library(pipenostics)
+
  ## Example: maximum percentage disparity of original B31G
  ## algorithm and modified B31G showed on CRVL.BAS data
  with(b31gdata, {

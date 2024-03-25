@@ -7,9 +7,9 @@
 b31gdep(d, wth, smys, def)
 }
 \arguments{
-\item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
 \item{smys}{specified minimum yield of stress (\emph{SMYS}) as a
 characteristics of steel strength, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
@@ -21,7 +21,7 @@ or \href{https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry
 Type: \code{\link{assert_double}}.}
 }
 \value{
-Design pressure of the pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.
+Design pressure of pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.
 }
 \description{
 Calculate the design pressure that according to
@@ -30,6 +30,8 @@ Calculate the design pressure that according to
  exceeded.
 }
 \examples{
+ library(pipenostics)
+
  b31gdep(30, .438, 52e3, .72)
  # [1] 1093.748  # [PSI]
 

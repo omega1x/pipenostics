@@ -2,7 +2,7 @@
 % Please edit documentation in R/m325nhl.R
 \name{m325nhl}
 \alias{m325nhl}
-\title{Minenergo-325. Normative heat losses of pipe}
+\title{Minenergo-325. Normative heat loss of pipe}
 \usage{
 m325nhl(
   year = 1986,
@@ -49,67 +49,104 @@ Type: \code{\link{assert_double}}.}
 
 \item{len}{length of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.}
 
-\item{duration}{duration of heat flux emittance, [\emph{hour}]. Type: \code{\link{assert_double}}.}
+\item{duration}{duration of heat loss, [\emph{hour}]. Type: \code{\link{assert_double}}.}
 
-\item{beta}{should they consider additional heat losses of fittings?
+\item{beta}{should they consider additional heat loss of fittings?
 Type: \code{\link{assert_logical}}.}
 
 \item{extra}{number of points used for temperature extrapolation: \code{2}, \code{3},
 or \code{4}. Type: \code{\link{assert_choice}}.}
 }
 \value{
-Heat flux emitted by pipe during \code{duration}, [\emph{kcal}].
- If \code{len} of pipe is 1 \emph{m} and \code{duration} of heat flux
- emittance is set to 1 \emph{hour} then the return value is in the same
- units as value of heat flux, [\emph{kcal/m/h}], accepted by
- \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+Normative heat loss of cylindrical pipe during \code{duration}, [\emph{kcal}].
+ If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is set to
+ 1 \emph{h} (hour) (default values) then the return value is also the
+ \emph{specific heat loss power}, [\emph{kcal/m/h}], prescribed by
+ \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
  Type: \code{\link{assert_double}}.
 }
 \description{
-Calculate normative values of heat flux that is legally affirmed by
- \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325} to be
- emitted by steel pipe of district heating system with water as a heat carrier.
+Calculate normative heat loss of pipe that is legally affirmed by
+ \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 }
 \details{
 Temperature extrapolation and pipe diameter interpolation are leveraged
  for better accuracy. Both are linear as it dictated by
- \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+ \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
  Nevertheless, one could control the extrapolation behavior by \code{extra}
  argument: use lower values of \code{extra} for soft curvature near extrapolation
  edges, and higher values for more physically reasoned behavior in far regions
  of extrapolation.
 }
 \examples{
+ library(pipenostics)
 
- with(m325nhldata, {
+ ## Consider a 1-meter length pipe with
+ pipe_diameter <-  700.0  # [mm]
+ pipe_dating   <- 1980
+ pipe_laying   <- "underground"
+
 
  ## Linear extrapolation adopted in Minenergo's Order 325 using last two points:
- temperature <- seq(0, 270, 10)  # [°C]
- flux <- m325nhl(1980, "underground", TRUE, 0, 73, temperature)  # [kcal/m/h]
- plot(temperature, flux, type = "b")
+ operation_temperature <- seq(0, 270, 10)
 
- ## Consider heat losses of fittings:
- stopifnot(
-   ## when beta becomes 1.15
-   all(
-     round(
-       m325nhl(1980, "underground", d = 73, temperature = 65,
-               beta = c(FALSE, TRUE)),
-       3
-     ) == c(65.500, 75.325)
-   ),
+ qs <- m325nhl(
+   year = pipe_dating, laying = pipe_laying, d = pipe_diameter,
+   temperature = operation_temperature
+ )  # [kcal/m/h]
 
-   ## when beta becomes 1.2
-   all(
-     round(
-       m325nhl(2000, "channel", d = 73, temperature = 65,
-               beta = c(FALSE, TRUE)),
-       3
-     ) == c(17.533, 21.040)
+ plot(
+     operation_temperature,
+     qs,
+     type = "b",
+     main = "Minenergo's Order 325. Normative heat loss of pipe",
+     sub = sprintf(
+       "\%s pipe of diameter \%i [mm] laid in \%i",
+        pipe_laying, pipe_diameter, pipe_dating
+     ),
+     xlab = "Temperature, [°C]",
+     ylab = "Specific heat loss power, [kcal/m/h]"
    )
- )
-})
 
+
+ ## Consider heat loss due fittings:
+ operation_temperature <- 65  # [°C]
+
+ fittings_qs <- m325nhl(
+   year = pipe_dating, laying = pipe_laying, d = pipe_diameter,
+   temperature = operation_temperature, beta = c(FALSE, TRUE)
+ )  # [kcal/m/h]
+
+ print(fittings_qs); stopifnot(all(round(fittings_qs ,1)  == c(272.0, 312.8)))
+
+ # [1] 272.0 312.8  # [kcal/m/h]
+
+
+
+ ## Calculate heat flux:
+ operation_temperature <- c(65, 105)  # [°C]
+
+ qs <- m325nhl(
+   year = pipe_dating, laying = pipe_laying, d = pipe_diameter,
+   temperature = operation_temperature
+ )  # [kcal/m/h]
+ print(qs)
+
+ # [1] 272.00 321.75  # [kcal/m/h]
+
+ pipe_diameter <- pipe_diameter * 1e-3          # [m]
+ factor        <- 2.701283                      # [kcal/h/W]
+
+ flux <- qs/factor/pipe_diameter -> a  # heat flux, [W/m^2]
+ print(flux)
+
+ # [1] 143.8470 170.1572  # [W/m^2]
+
+ ## The above line is equivalent to:
+
+ flux <- flux_loss(qs, pipe_diameter) -> b
+
+ stopifnot(all.equal(a, b, tolerance = 5e-6))
 
 }
 \seealso{
@@ -121,7 +158,6 @@ Other Minenergo:
 \code{\link{m278inshcm}()},
 \code{\link{m278soildata}},
 \code{\link{m325beta}()},
-\code{\link{m325dropt}()},
 \code{\link{m325nhldata}},
 \code{\link{m325testbench}}
 }

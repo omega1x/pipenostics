@@ -33,6 +33,8 @@ Romeo's formula is reported to be extremely accurate in the region:
  \code{reynolds < 2100.0}.
 }
 \examples{
+ library(pipenostics)
+
  fric_romeo(c(2118517, 2000, 2118517), c(0, 70e-3/1, 7e-3/1))
  # [1] 0.01028473 0.03200000 0.03373215  # []
 
@@ -44,7 +46,7 @@ Romeo's formula is reported to be extremely accurate in the region:
    \item Offor, U. and Alabi, S. (2016) \emph{An Accurate and Computationally Efficient Explicit Friction Factor Model}.
  Advances in Chemical Engineering and Science, \emph{6}, pp. 237-245. DOI: \href{http://dx.doi.org/10.4236/aces.2016.63024}{10.4236/aces.2016.63024}.
 
-   \item Eva Romeo, Carlos Royo, Antonio Monzón, \emph{Improved explicit equations for estimation of the friction factor in rough and smooth pipes},
+   \item Eva Romeo, Carlos Royo, Antonio Monzón, \emph{Improved explicit equations for estimation of friction factor in rough and smooth pipes},
  Chemical Engineering Journal, \emph{Volume 86}, Issue 3, 2002, Pages 369-374, ISSN 1385-8947. DOI: \href{https://doi.org/10.1016/S1385-8947(01)00254-6}{10.1016/S1385-8947(01)00254-6}.
  }
 }
@@ -52,10 +54,6 @@ Romeo's formula is reported to be extremely accurate in the region:
 Other Fluid properties: 
 \code{\link{fric_buzelli}()},
 \code{\link{fric_vatankhan}()},
-\code{\link{if97cptp1}()},
-\code{\link{if97pt4}()},
-\code{\link{if97vtp1}()},
-\code{\link{r12dv}()},
 \code{\link{re_u}()}
 }
 \concept{Fluid properties}

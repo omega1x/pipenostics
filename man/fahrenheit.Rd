@@ -3,7 +3,7 @@
 \name{f_k}
 \alias{f_k}
 \alias{f_c}
-\title{Covert to Fahrenheit scale}
+\title{Convert to Fahrenheit scale}
 \usage{
 f_k(x)
 
@@ -27,6 +27,8 @@ Convert temperature measured in
  to \href{https://en.wikipedia.org/wiki/Fahrenheit}{Fahrenheit} (\emph{°F}).
 }
 \examples{
+ library(pipenostics)
+
 # Convert from Kelvin to Fahrenheit:
 f_k(c(0, 373.15))
 # [1]  -459.67 212
@@ -39,14 +41,15 @@ f_c(c(-273.15, 100))
 \seealso{
 \code{\link{k_f}} and \code{\link{c_f}} for converting from Fahrenheit-scale.
 
-Other utils: 
+Other units: 
 \code{\link{c_k}()},
 \code{\link{inch_mm}()},
 \code{\link{k_c}()},
 \code{\link{kgf_mpa}()},
+\code{\link{loss_flux}()},
 \code{\link{mm_inch}()},
 \code{\link{mpa_kgf}()},
 \code{\link{mpa_psi}()},
 \code{\link{psi_mpa}()}
 }
-\concept{utils}
+\concept{units}

@@ -1,7 +1,7 @@
 #' @title
 #'  Kilogram-force per square cm to megapascals
 #'
-#' @family utils
+#' @family units
 #'
 #' @description
 #'  Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Kilogram-force_per_square_centimetre}{kilogram-force per square cm} (\eqn{kgf/cm^2})
@@ -21,6 +21,7 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
 #'
 #'  mpa_kgf(c(10.1971619998, 1))
 #'  # [1] 1.0000000 0.0980665  # [MPa]

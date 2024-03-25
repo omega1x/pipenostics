@@ -7,17 +7,17 @@
 #'  Calculate allowable length of the corroded area in the pipe.
 #'
 #' @param dep
-#'   design pressure of the pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.
+#'   design pressure of pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.
 #'
 #' @param maop
 #'  maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}].
 #'  Type: \code{\link{assert_double}}.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
+#'  nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
+#'  nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param depth
 #'   measured maximum depth of the corroded area, [\emph{inch}].
@@ -39,6 +39,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  b31gacl(1093, 910, 30, .438, .1, 7.5)
 #'  # [1] Inf  # [inch] - corrosion is low, no limit for the corroded area length
 #'

@@ -1,4 +1,5 @@
-#' Estimate pipe friction factor with Romeo's formula
+#' @title
+#'  Estimate pipe friction factor with Romeo's formula
 #'
 #' @family Fluid properties
 #'
@@ -35,12 +36,14 @@
 #'    \item Offor, U. and Alabi, S. (2016) \emph{An Accurate and Computationally Efficient Explicit Friction Factor Model}.
 #'  Advances in Chemical Engineering and Science, \emph{6}, pp. 237-245. DOI: \href{http://dx.doi.org/10.4236/aces.2016.63024}{10.4236/aces.2016.63024}.
 #'
-#'    \item Eva Romeo, Carlos Royo, Antonio Monzón, \emph{Improved explicit equations for estimation of the friction factor in rough and smooth pipes},
+#'    \item Eva Romeo, Carlos Royo, Antonio Monzón, \emph{Improved explicit equations for estimation of friction factor in rough and smooth pipes},
 #'  Chemical Engineering Journal, \emph{Volume 86}, Issue 3, 2002, Pages 369-374, ISSN 1385-8947. DOI: \href{https://doi.org/10.1016/S1385-8947(01)00254-6}{10.1016/S1385-8947(01)00254-6}.
 #'  }
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  fric_romeo(c(2118517, 2000, 2118517), c(0, 70e-3/1, 7e-3/1))
 #'  # [1] 0.01028473 0.03200000 0.03373215  # []
 #'

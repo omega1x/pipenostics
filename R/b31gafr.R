@@ -4,13 +4,13 @@
 #' @family ASME B31G functions
 #'
 #' @description
-#'  Calculate intermediate factor related to the geometry of the corroded zone.
+#'  Calculate intermediate factor related to the geometry of the corroded area.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
+#'  nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
+#'  nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param l
 #'  measured maximum longitudinal length of the corroded area, [\emph{inch}].
@@ -28,6 +28,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  b31gafr(30, .438, 7.5)
 #'  # [1] 1.847  # A-factor is less than 5, so the corrosion is not critical
 #'

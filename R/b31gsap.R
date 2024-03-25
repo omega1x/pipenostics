@@ -7,13 +7,13 @@
 #'  Calculate safe maximum pressure for the corroded area of pipe.
 #'
 #' @param dep
-#'  design pressure of the pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.
+#'  design pressure of pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.
 #'
 #' @param d
-#'  nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
+#'  nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
+#'  nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
 #'
 #' @param depth
 #'   measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.
@@ -32,6 +32,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  b31gsap(1093, 30, .438, .1, 7.5)
 #'  # [1] 1093  # [PSI], safe pressure is equal to design pressure
 #'

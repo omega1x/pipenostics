@@ -7,7 +7,7 @@
 dropp(
   temperature = 130,
   pressure = mpa_kgf(6),
-  consumption = 1276,
+  flow_rate = 1276,
   d = 1,
   len = 1,
   roughness = 0.006,
@@ -24,7 +24,7 @@ Type: \code{\link{assert_double}}.}
 of heat carrier (water) measured at the
 entrance (inlet) of pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.}
 
-\item{consumption}{amount of heat carrier (water) that is transferred by pipe during a period,
+\item{flow_rate}{amount of heat carrier (water) that is transferred by pipe during a period,
 [\emph{ton/hour}]. Type: \code{\link{assert_double}}.}
 
 \item{d}{internal diameter of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.}
@@ -46,7 +46,7 @@ pressure drop at the outlet of pipe, [\emph{MPa}]. Type: \code{\link{assert_doub
 }
 \description{
 Calculate \href{https://en.wikipedia.org/wiki/Pressure_drop}{pressure drop}
- in straight circular steel pipe of \emph{district heating system} (where
+ in straight cylidrical steel pipe of \emph{district heating system} (where
  water is a heat carrier) that is a result of pipe orientation in space
  (hydrostatic component), and friction between water and internal wall of pipe.
 }
@@ -78,7 +78,7 @@ The underlying engineering model for calculation of pressure drop considers
  The second component comes from
  \href{https://en.wikipedia.org/wiki/Darcy-Weisbach_equation}{Darcy–Weisbach equation}
  and is calculated using heating carrier regime parameters (\code{temperature},
- \code{pressure}, \code{consumption}). Temperature and pressure values of
+ \code{pressure}, \code{flow_rate}). Temperature and pressure values of
  heat carrier define water properties according to
  \href{http://www.iapws.org/}{IAPWS} formulation.
 
@@ -100,6 +100,8 @@ The underlying engineering model for calculation of pressure drop considers
  wall \href{https://en.wikipedia.org/wiki/Surface_roughness}{roughness} of pipe.
 }
 \examples{
+ library(pipenostics)
+
 # Typical pressure drop for horizontal pipeline segments
 # in high-way heating network in Novosibirsk
 dropp(len = c(200, 300))
@@ -121,7 +123,7 @@ dropp(len = c(200, 300))
          \emph{Issue 1}, April 2011, Pages \emph{34-48}.
 
    \item Romeo, E., Royo, C., Monzon, A., 2002. \emph{Improved explicit equation for
-         estimation of the friction factor in rough and smooth pipes.}
+         estimation of friction factor in rough and smooth pipes.}
          Chem. Eng. J. \strong{86} (3), \emph{369–374}.
 
    \item Vatankhah, A.R., Kouchakzadeh, S., 2009. \emph{Discussion: Exact equations

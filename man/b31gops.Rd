@@ -7,7 +7,7 @@
 b31gops(wth, depth)
 }
 \arguments{
-\item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 
 \item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.}
 }
@@ -25,6 +25,8 @@ Determine the operational status of pipe: is it excellent? or is
  technological control required? or is it critical situation?
 }
 \examples{
+ library(pipenostics)
+
  b31gops(.438, .1)
  # [1] 2  # typical status for the most of pipes
 

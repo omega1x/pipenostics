@@ -1,27 +1,28 @@
-#' @title Estimate Reynolds number
+#' @title 
+#'  Estimate Reynolds number
 #'
 #' @family Fluid properties
 #'
 #' @description
-#'  Estimate \emph{Reynolds number} for fluid flow in a circular pipe.
+#'  Estimate \emph{Reynolds number} for fluid flow in a cylindrical pipe.
 #'
 #' @param d
 #'  internal diameter of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
 #'
 #' @param mu
-#'  dynamic viscosity of the fluid in pipe, [\emph{kg/m/s}]. Type: \code{\link{assert_double}}.
+#'  dynamic viscosity of fluid in pipe, [\emph{kg/m/s}]. Type: \code{\link{assert_double}}.
 #'
 #' @param u
-#'  mean velocity of the fluid  in pipe, [\emph{m/s}]. Type: \code{\link{assert_double}}.
+#'  mean velocity of fluid  in pipe, [\emph{m/s}]. Type: \code{\link{assert_double}}.
 #'
 #' @param rho
-#'  mass density of the fluid  in pipe, [\emph{kg/m^3}]. Type: \code{\link{assert_double}}.
+#'  mass density of fluid  in pipe, [\emph{kg/m^3}]. Type: \code{\link{assert_double}}.
 #'
 #' @param v
-#'  volumetric flow rate of the fluid in pipe, [\emph{m^3/s}]. Type: \code{\link{assert_double}}.
+#'  volumetric flow rate of fluid in pipe, [\emph{m^3/s}]. Type: \code{\link{assert_double}}.
 #'
 #' @param m
-#'   mass flow rate of the fluid in pipe, [\emph{kg/s}]. Type: \code{\link{assert_double}}.
+#'   mass flow rate of fluid in pipe, [\emph{kg/s}]. Type: \code{\link{assert_double}}.
 #'
 #' @return
 #'  \emph{Reynolds number} - a dimensionless quantity that reveals the ratio
@@ -33,6 +34,8 @@
 #'  the package.
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  # Reynolds numbers for typical district heating water flows at temperature
 #'  # near 25 C in a set of pipes with different sizes:
 #'  range(re_u(seq(.25, 1, 0.05), .89, 1, 1000))

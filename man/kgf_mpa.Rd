@@ -20,6 +20,8 @@ Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pascal
  to \href{https://en.wikipedia.org/wiki/Kilogram-force_per_square_centimetre}{kilogram-force per square cm} (\eqn{kgf/cm^2}).
 }
 \examples{
+ library(pipenostics)
+
  kgf_mpa(c(0.0980665, 1))
  # [1]  1.00000 10.19716
 
@@ -28,14 +30,15 @@ Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pascal
 \seealso{
 \code{\link{mpa_kgf}} for converting \emph{kilogram-force per square cm} to \emph{megapascals}
 
-Other utils: 
+Other units: 
 \code{\link{c_k}()},
 \code{\link{f_k}()},
 \code{\link{inch_mm}()},
 \code{\link{k_c}()},
+\code{\link{loss_flux}()},
 \code{\link{mm_inch}()},
 \code{\link{mpa_kgf}()},
 \code{\link{mpa_psi}()},
 \code{\link{psi_mpa}()}
 }
-\concept{utils}
+\concept{units}

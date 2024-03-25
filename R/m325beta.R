@@ -5,12 +5,12 @@
 #'
 #' @description
 #'  Calculate \eqn{\beta} - \emph{local heat loss coefficient} according to rule \emph{11.3.3}
-#'  of \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
-#'  \emph{Local heat loss coefficient} is used to increase normative heat losses
-#'  of pipe by taking into account heat losses of fittings (shut-off valves,
+#'  of \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  \emph{Local heat loss coefficient} is used to increase normative heat loss
+#'  of pipe by taking into account heat loss of fittings (shut-off valves,
 #'  compensators and supports). This coefficient is applied mostly as a factor
 #'  during the summation of heat losses of pipes in pipeline leveraging
-#'  formula 14 of \href{http://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  formula 14 of \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'
 #' @param laying
 #'  type of pipe laying depicting the position of pipe in space:
@@ -33,6 +33,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #' norms <- within(m325nhldata, {
 #'   beta <- m325beta(laying, as.double(diameter))
 #' })

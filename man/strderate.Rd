@@ -32,6 +32,8 @@ Temperature is highly influence on pipe material properties and especially
   figure 2-3.
 }
 \examples{
+ library(pipenostics)
+
 with(api5l3t, {
 print(strderate(mpa_psi(smys), 53))
 print(

@@ -33,6 +33,8 @@ Buzelli's formula is reported to be extremely accurate in the region:
  \code{reynolds < 2100.0}.
 }
 \examples{
+ library(pipenostics)
+
  fric_buzelli(c(2118517, 2000, 2118517), c(1e-6, 70e-3/1, 7e-3/1))
  # [1] 0.01031468 0.03200000 0.03375076  # []
 
@@ -51,10 +53,6 @@ Buzelli's formula is reported to be extremely accurate in the region:
 Other Fluid properties: 
 \code{\link{fric_romeo}()},
 \code{\link{fric_vatankhan}()},
-\code{\link{if97cptp1}()},
-\code{\link{if97pt4}()},
-\code{\link{if97vtp1}()},
-\code{\link{r12dv}()},
 \code{\link{re_u}()}
 }
 \concept{Fluid properties}

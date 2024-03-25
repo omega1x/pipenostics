@@ -19,6 +19,8 @@ Convert length measured in \href{https://en.wikipedia.org/wiki/Inch}{inches}
  to \href{https://en.wikipedia.org/wiki/Millimetre}{millimeters} (mm)
 }
 \examples{
+ library(pipenostics)
+
  mm_inch(c(0.03937008, 1))
  # [1]  1.0 25.4  # [mm]
 
@@ -26,14 +28,15 @@ Convert length measured in \href{https://en.wikipedia.org/wiki/Inch}{inches}
 \seealso{
 \code{\link{inch_mm}} for converting \emph{mm} to \emph{inches}
 
-Other utils: 
+Other units: 
 \code{\link{c_k}()},
 \code{\link{f_k}()},
 \code{\link{inch_mm}()},
 \code{\link{k_c}()},
 \code{\link{kgf_mpa}()},
+\code{\link{loss_flux}()},
 \code{\link{mpa_kgf}()},
 \code{\link{mpa_psi}()},
 \code{\link{psi_mpa}()}
 }
-\concept{utils}
+\concept{units}

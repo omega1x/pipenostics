@@ -27,6 +27,8 @@ Convert temperature measured in
  to \href{https://en.wikipedia.org/wiki/Kelvin}{Kelvin} (\emph{K}).
 }
 \examples{
+ library(pipenostics)
+
 # Convert from Celsius to Kelvin:
 k_c(c(-273.15, 100))
 # [1]  0  373.15
@@ -39,14 +41,15 @@ k_f(c(-459.67, 212))
 \seealso{
 \code{\link{c_k}} and \code{\link{f_k}} for converting from Kelvin-scale.
 
-Other utils: 
+Other units: 
 \code{\link{c_k}()},
 \code{\link{f_k}()},
 \code{\link{inch_mm}()},
 \code{\link{kgf_mpa}()},
+\code{\link{loss_flux}()},
 \code{\link{mm_inch}()},
 \code{\link{mpa_kgf}()},
 \code{\link{mpa_psi}()},
 \code{\link{psi_mpa}()}
 }
-\concept{utils}
+\concept{units}

@@ -47,9 +47,8 @@ Other Minenergo:
 \code{\link{m278inshcm}()},
 \code{\link{m278soildata}},
 \code{\link{m325beta}()},
-\code{\link{m325dropt}()},
-\code{\link{m325nhldata}},
 \code{\link{m325nhl}()},
+\code{\link{m325nhldata}},
 \code{\link{m325testbench}}
 }
 \concept{Minenergo}

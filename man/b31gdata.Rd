@@ -8,8 +8,8 @@
 A data frame with 12 rows and 15 variables:
 \describe{
   \item{maop}{maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
-  \item{d}{nominal outside diameter of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
-  \item{wth}{nominal wall thickness of the pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+  \item{d}{nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+  \item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
   \item{smys}{specified minimum yield of stress (\emph{SMYS}) as a
               characteristics of steel strength, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
   \item{def}{appropriate (combined) design factor from
@@ -27,7 +27,7 @@ A data frame with 12 rows and 15 variables:
                 \emph{3} - alert! replace the pipe immediately!
                 Type: \code{\link{assert_numeric}}.
                 }
-  \item{design_pressure}{design pressure of the pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
+  \item{design_pressure}{design pressure of pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
   \item{safe_pressure}{safe maximum pressure for the corroded area, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
   \item{pressure_exceeding}{whether operator's action is required to reduce
                             \emph{MOAP} lower than the maximum safe pressure

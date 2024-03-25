@@ -1,4 +1,5 @@
-#' Estimate pipe friction factor with Vatankhah formula
+#' @title
+#'  Estimate pipe friction factor with Vatankhah formula
 #'
 #' @family Fluid properties
 #'
@@ -42,6 +43,8 @@
 #' @export
 #'
 #' @examples
+#'  library(pipenostics)
+#'
 #'  fric_vatankhan(c(2118517, 2000, 2118517), c(1e-6, 70e-3/1, 7e-3/1))
 #'  # [1] 0.01031665 0.03200000 0.03375210  # []
 #'

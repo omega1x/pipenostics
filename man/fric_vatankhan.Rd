@@ -33,6 +33,8 @@ Vatankhah's formula is reported to be extremely accurate in the region:
  \code{reynolds < 2100.0}.
 }
 \examples{
+ library(pipenostics)
+
  fric_vatankhan(c(2118517, 2000, 2118517), c(1e-6, 70e-3/1, 7e-3/1))
  # [1] 0.01031665 0.03200000 0.03375210  # []
 
@@ -52,10 +54,6 @@ Vatankhah's formula is reported to be extremely accurate in the region:
 Other Fluid properties: 
 \code{\link{fric_buzelli}()},
 \code{\link{fric_romeo}()},
-\code{\link{if97cptp1}()},
-\code{\link{if97pt4}()},
-\code{\link{if97vtp1}()},
-\code{\link{r12dv}()},
 \code{\link{re_u}()}
 }
 \concept{Fluid properties}
