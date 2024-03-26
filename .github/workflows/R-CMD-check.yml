@@ -48,4 +48,4 @@ jobs:
         with:
           upload-results: true
           args: 'c("--no-manual", "--as-cran")'
-          artifact-name: pipenostics-{os}-{arch}-R{rversion}
+          artifact-name: pipenostics-{id}-{os}-R{rversion}
