@@ -46,6 +46,6 @@ jobs:
 
       - uses: r-lib/actions/check-r-package@v2
         with:
-          upload-results: true
+          upload-snapshots: true
           args: 'c("--no-manual", "--as-cran")'
           artifact-name: pipenostics-{id}-{os}-R{rversion}
