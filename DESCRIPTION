@@ -3,7 +3,7 @@ Type: Package
 Title:
     Diagnostics, Reliability and Predictive Maintenance of Pipeline Systems
 Version: 0.2.0
-Authors@R: person("Yuri", "Possokhov", email = "possokhoff@gmail.com",
+Authors@R: person("Yuri", "Possokhov", email = "omega1x@gmail.com",
   role = c("aut", "cre"), comment = c(ORCID = "0000-0002-3570-4337"))
 Description: Functions representing some useful empirical and data-driven
     models of heat loss, corrosion diagnostics, reliability and predictive
