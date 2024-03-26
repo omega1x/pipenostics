@@ -2,6 +2,7 @@
 
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![R-CMD-check](https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml)
 [![pages-build-deployment](https://github.com/omega1x/pipenostics/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/omega1x/pipenostics/actions/workflows/pages/pages-build-deployment)
 [![pipenostics status badge](https://omega1x.r-universe.dev/badges/pipenostics)](https://omega1x.r-universe.dev)
 [![lintr](https://github.com/omega1x/pipenostics/actions/workflows/lintr.yml/badge.svg)](https://github.com/omega1x/pipenostics/actions/workflows/lintr.yml)
@@ -24,7 +25,7 @@ district heating network.
 
 ## Installation
 
-For the latest version leverage [r-universe](https://omega1x.r-universe.dev/ui#builds):
+For the latest version leverage [r-universe](https://omega1x.r-universe.dev/pipenostics):
 
 ```R
 install.packages("pipenostics", repos = "https://omega1x.r-universe.dev")
@@ -230,4 +231,4 @@ $flow_rate
 [1] 250 240 220 190
 ```
 
-> &#8505; Read [concepts and useful notes](articles/Concepts.html) for a deeper dive into the topic.
+> &#8505; Read article [Concepts and useful notes](https://omega1x.github.io/pipenostics/articles/Concepts.html) for a deeper dive into the topic.
