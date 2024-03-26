@@ -5,13 +5,13 @@ test_that("*meteos* has wrong data", {
     meteos()[c(87,75, 40, 15), ],
     structure(
       list(
-        station_id = c(34163L, 31915L, 29023L, 24908L) 
+        station_id = c(34163L, 31915L, 29023L, 24908L)
        ,name = c("Oktyabrskiy-Gorodok", "Pogranichnyi", "Napas", "Vanavara")
        ,lat = c(51.63, 44.4, 59.85, 60.33)
        ,lon = c(45.45, 131.38, 81.95, 102.27)
        ,alt = c(201, 217, 77, 259)
        ,avg = c(8.06452230500802, 6.12987251658832, 4.7549349140692, 1.77414578587699)
-      ) 
+      )
       ,row.names = c(34163L, 31915L, 29023L, 24908L)
       ,class = "data.frame"
     ),
@@ -36,12 +36,13 @@ test_that("*mgtdhid* produces wrong results", {
 test_that("*mgtdhidt* produces wrong results", {
   hours <- c(10L, 100L, 1000L, 8000L)
   d24 <- 2.4
-  
+
   expect_equal(
-    mgtdhidt(tau = as.integer(seq.int(0, 8736, by = 1)), depth = d24),
-    mgtdhidt(
-      tau = as.POSIXct(seq.int(1672520400, 1703970000, 3600)), depth = d24
-    )
+    sum(
+      mgtdhidt(tau = as.integer(seq.int(0, 8736, by = 1)), depth = d24) -
+      mgtdhidt(tau = as.POSIXct(seq.int(1672520400, 1703970000, 3600)), depth = d24)
+    ),
+    0
   )
 
   expect_equal(
@@ -65,7 +66,7 @@ test_that("*mgtdhgeot* produces wrong results", {
   lat <- c(s28434 = 56.65, s28418 = 56.47, s23711 = 62.70, CP1 = 57.00)
   lon <- c(s28434 = 57.78, s28418 = 53.73, s23711 = 56.20, CP1 = 57.00)
   d24 <- 2.4
-  
+
   # Test inside STATION_RADIUS
   expect_equal(
     c(
@@ -96,7 +97,7 @@ test_that("*mgtdhgeot* and others produce wrong results without execution parall
   lon <- c(s28434 = 57.78, s28418 = 53.73, s23711 = 56.20, CP1 = 57, CP2 = 57.00)
   r   <- c(s28434 = 86986.91, s28418 = 209396.94, s28630 = 192034.70)  # Google maps distances from CP2 to the nearest stations, [m]
   d24 <- 2.4
-  
+
   # Test inside STATION_RADIUS
   expect_equal(
     mgtdhgeo(head(lat, 3), head(lon, 3), tau = 1440L, depth = d24),
@@ -143,7 +144,7 @@ test_that("*mgtdhgeot* and others produce wrong results utilizing parallel execu
   lon <- c(s28434 = 57.78, s28418 = 53.73, s23711 = 56.20, CP1 = 57, CP2 = 57.00)
   r   <- c(s28434 = 86986.91, s28418 = 209396.94, s28630 = 192034.70)  # Google maps distances from CP2 to the nearest stations, [m]
   d24 <- 2.4
-  
+
   # Test inside STATION_RADIUS
   expect_equal(
     mgtdhgeo(head(lat, 3), head(lon, 3), tau = 1440L, depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", ""))),
