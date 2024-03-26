@@ -20,8 +20,8 @@ test_that("*flowls* errs in listing paths without execution parallelization", {
   for (i in union(seq_along(path), seq_along(all_paths))) expect_equal(path[[i]], all_paths[[i]])
 })
 
-test_that("*flowls* errs in listing paths utilizing parallel execution", {
-  path <- with(m325testbench, {flowls(sender, acceptor, use_cluster = TRUE)})
+test_that("*flowls* errs in listing paths utilizing parallel execution (if possible)", {
+  path <- with(m325testbench, {flowls(sender, acceptor, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))})
   for (i in union(seq_along(path), seq_along(all_paths))) expect_equal(path[[i]], all_paths[[i]])
 })
 

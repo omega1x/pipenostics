@@ -152,8 +152,8 @@ test_that("*m325tracefw* errs in calculation without execution parallelization",
   )
 })
 
-m325tracefw_report <- m325tracefw(verbose = FALSE, use_cluster = TRUE)
-test_that("*m325tracefw* errs in calculation utilizing parallel execution", {
+m325tracefw_report <- m325tracefw(verbose = FALSE, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
+test_that("*m325tracefw* errs in calculation utilizing parallel execution (if possible)", {
   expect_equal(
     m325tracefw_report[["node"]],
     c("1", "2")

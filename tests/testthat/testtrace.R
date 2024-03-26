@@ -209,10 +209,10 @@ test_that("*tracefw* errs in calculation without execution parallelization", {
   rm(tracefw_report)
 })
 
-test_that("*tracefw* errs in calculation utilizing parallel execution", {
+test_that("*tracefw* errs in calculation utilizing parallel execution (if possible)", {
   tracefw_report <- do.call(
     "tracefw", c(as.list(DHN), 
-    list(loss = actual_loss, use_cluster = TRUE), verbose = FALSE, elev_tol = .5)
+    list(loss = actual_loss, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", ""))), verbose = FALSE, elev_tol = .5)
   )
 
   expect_equal(

@@ -138,7 +138,7 @@ test_that("*mgtdhgeot* and others produce wrong results without execution parall
 })
 
 
-test_that("*mgtdhgeot* and others produce wrong results utilizing parallel execution", {
+test_that("*mgtdhgeot* and others produce wrong results utilizing parallel execution (if possible)", {
   lat <- c(s28434 = 56.65, s28418 = 56.47, s23711 = 62.70, CP1 = 57, CP2 = 56.00)
   lon <- c(s28434 = 57.78, s28418 = 53.73, s23711 = 56.20, CP1 = 57, CP2 = 57.00)
   r   <- c(s28434 = 86986.91, s28418 = 209396.94, s28630 = 192034.70)  # Google maps distances from CP2 to the nearest stations, [m]
@@ -146,19 +146,19 @@ test_that("*mgtdhgeot* and others produce wrong results utilizing parallel execu
   
   # Test inside STATION_RADIUS
   expect_equal(
-    mgtdhgeo(head(lat, 3), head(lon, 3), tau = 1440L, depth = d24, use_cluster = TRUE),
+    mgtdhgeo(head(lat, 3), head(lon, 3), tau = 1440L, depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", ""))),
     mgtdhid(id = c(28434L, 28418L, 23711L), tau = as.POSIXct("2023-03-02"), depth = d24)
   )
 
   # Test out of triangle
   expect_equal(
-    mgtdhgeo(lat[["CP1"]], lon[["CP1"]], tau = as.POSIXct("2023-03-02"), depth = d24, use_cluster = TRUE),
+    mgtdhgeo(lat[["CP1"]], lon[["CP1"]], tau = as.POSIXct("2023-03-02"), depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", ""))),
     mgtdhid(id = 28434L, tau = 1440L, depth = d24)
   )
 
   # Test inside triangle
   expect_equal(
-    mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = 1440L, depth = d24, use_cluster = TRUE),
+    mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = 1440L, depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", ""))),
     drop(
       mgtdhid(
         id = c(28434L, 28418L, 28630L), tau = as.POSIXct("2023-03-02"), depth = d24
@@ -170,15 +170,15 @@ test_that("*mgtdhgeot* and others produce wrong results utilizing parallel execu
   # Test inside triangle
   expect_equal(
     mgtdhgeot(tau = 1440L, lat[["CP2"]], lon[["CP2"]], depth = d24),
-    mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02"), depth = d24, use_cluster = TRUE)
+    mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02"), depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
   )
 
   expect_equal(
     mgtdhgeot(tau = c(1440L, 1450L, 1540L), lat[["CP2"]], lon[["CP2"]], depth = d24),
     c(
-       mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02"), depth = d24, use_cluster = TRUE)
-      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02") + 3600 * 10, depth = d24, use_cluster = TRUE)
-      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02") + 3600 * 100, depth = d24, use_cluster = TRUE)
+       mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02"), depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
+      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02") + 3600 * 10, depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
+      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02") + 3600 * 100, depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
     )
   )
   rm(d24, r, lon, lat)
