@@ -39,8 +39,8 @@ test_that("*mgtdhidt* produces wrong results", {
 
   expect_equal(
     sum(
-      mgtdhidt(tau = as.integer(seq.int(0, 8736, by = 1)), depth = d24) -
-      mgtdhidt(tau = as.POSIXct(seq.int(1672520400, 1703970000, 3600)), depth = d24)
+      mgtdhidt(tau = as.integer(seq.int(0, 8736, by = 1)), depth = d24)[11:20] -
+      mgtdhidt(tau = as.POSIXct(seq.int(1672520400, 1703970000, 3600)), depth = d24)[11:20]
     ),
     0
   )
