@@ -227,7 +227,7 @@
 #' data(b31gdata)
 #' examples <- with(b31gdata, b31crvl(maop, d, wth, smys, def, depth, l))
 #'
-b31crvl <- function(maop, d, wth, smys, def = .72, depth, l){
+b31crvl <- function(maop, d, wth, smys, def = .72, depth, l) {
   checkmate::assert_double(
     maop, lower = 25.4, upper = 1.27e5, finite = TRUE, any.missing = FALSE,
     min.len = 1L
