@@ -110,13 +110,15 @@ mgtdhid <- function(id, tau = 1440L, depth = 2.4){
   L_STATION_ID <- "station_id"
   L_YEAR_START <- "%Y-01-01 00:00:00"
   L_HOUR       <- 3600L  # [s]
+  L_TIMEZONE   <- "UTC"
  
   checkmate::assert_integer(
     id, lower = 0, upper = 1e5, any.missing = FALSE, min.len = 1
   )
   if (checkmate::test_posixct(tau, any.missing = FALSE, len = 1)) {
+    tau <- as.POSIXct(tau, tz = L_TIMEZONE)
     tau <- (
-      as.integer(tau) - as.integer(as.POSIXct(format(tau, L_YEAR_START)))
+      as.integer(tau) - as.integer(as.POSIXct(format(tau, L_YEAR_START), tz = L_TIMEZONE))
     ) %/% L_HOUR
   }
   checkmate::assert_integer(
@@ -146,10 +148,12 @@ mgtdhidt <- function(tau, id = 28434L, depth = 2.4){
   L_STATION_ID <- "station_id"
   L_YEAR_START <- "%Y-01-01 00:00:00"
   L_HOUR       <- 3600L  # [s]
+  L_TIMEZONE   <- "UTC"
  
   if (checkmate::test_posixct(tau, any.missing = FALSE, min.len = 1)) {
+    tau <- as.POSIXct(tau, tz = L_TIMEZONE)
     tau <- (
-      as.integer(tau) - as.integer(as.POSIXct(format(tau, L_YEAR_START)))
+      as.integer(tau) - as.integer(as.POSIXct(format(tau, L_YEAR_START), tz = L_TIMEZONE))
     ) %/% L_HOUR
   }
   checkmate::assert_integer(
@@ -182,6 +186,7 @@ mgtdhidt <- function(tau, id = 28434L, depth = 2.4){
 mgtdhgeo <- function(lat, lon, tau = 1440L, depth = 2.4, use_cluster = FALSE){
   L_YEAR_START <- "%Y-01-01 00:00:00"
   L_HOUR       <- 3600L  # [s]
+  L_TIMEZONE   <- "UTC"
 
   checkmate::assert_double(
     lat, lower = 42, upper = 68, any.missing = FALSE, min.len = 1
@@ -191,8 +196,9 @@ mgtdhgeo <- function(lat, lon, tau = 1440L, depth = 2.4, use_cluster = FALSE){
   )
   checkmate::assert_true(all.commensurable(c(length(lat), length(lon))))
   if (checkmate::test_posixct(tau, any.missing = FALSE, len = 1)) {
+    tau <- as.POSIXct(tau, tz = L_TIMEZONE)
     tau <- (
-      as.integer(tau) - as.integer(as.POSIXct(format(tau, L_YEAR_START)))
+      as.integer(tau) - as.integer(as.POSIXct(format(tau, L_YEAR_START), tz = L_TIMEZONE))
     ) %/% L_HOUR
   }
   checkmate::assert_integer(
@@ -228,10 +234,12 @@ mgtdhgeo <- function(lat, lon, tau = 1440L, depth = 2.4, use_cluster = FALSE){
 mgtdhgeot <- function(tau, lat = 57, lon = 57,  depth = 2.4){
   L_YEAR_START <- "%Y-01-01 00:00:00"
   L_HOUR       <- 3600L  # [s]
+  L_TIMEZONE   <- "UTC"
 
   if (checkmate::test_posixct(tau, any.missing = FALSE, min.len = 1)) {
+    tau <- as.POSIXct(tau, tz = L_TIMEZONE)
     tau <- (
-      as.integer(tau) - as.integer(as.POSIXct(format(tau, L_YEAR_START)))
+      as.integer(tau) - as.integer(as.POSIXct(format(tau, L_YEAR_START), tz = L_TIMEZONE))
     ) %/% L_HOUR
   }
   checkmate::assert_integer(

@@ -27,7 +27,7 @@ test_that("*mgtdhid* produces wrong results", {
   )
 
   expect_equal(
-    mgtdhid(id = c(22217L, 26094L, 30433L), tau = as.POSIXct("2023-04-11", tz = "Europe/Moscow"), depth = 2.4),
+    mgtdhid(id = c(22217L, 26094L, 30433L), tau = as.POSIXct("2023-04-11", tz = "UTC"), depth = 2.4),
     c(0.929297595932886, 3.45956953933863, -0.192953283493775)
   )
 })
@@ -40,7 +40,7 @@ test_that("*mgtdhidt* produces wrong results", {
   expect_equal(
     sum(
       mgtdhidt(tau = as.integer(seq.int(0, 8736, by = 1)), depth = d24)[11:20] -
-      mgtdhidt(tau = as.POSIXct(seq.int(1672520400, 1703970000, 3600), tz = "Europe/Moscow"), depth = d24)[11:20]
+      mgtdhidt(tau = as.POSIXct(seq.int(1672531200, 1703980800, 3600), tz = "UTC"), depth = d24)[11:20]
     ),
     0
   )
@@ -74,13 +74,13 @@ test_that("*mgtdhgeot* produces wrong results", {
       ,mgtdhgeot(tau = 1440L, lat = lat[["s28418"]], lon = lon[["s28418"]], depth = d24)
       ,mgtdhgeot(tau = 1440L, lat = lat[["s23711"]], lon = lon[["s23711"]], depth = d24)
     ),
-    mgtdhid(id = c(28434L, 28418L, 23711L), tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow"), depth = d24)
+    mgtdhid(id = c(28434L, 28418L, 23711L), tau = as.POSIXct("2023-03-02", tz = "UTC"), depth = d24)
   )
 
 # Test out of triangle
   expect_equal(
     mgtdhgeot(
-      tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow") + 3600 * c(0, 10, 100),
+      tau = as.POSIXct("2023-03-02", tz = "UTC") + 3600 * c(0, 10, 100),
       lat[["CP1"]], lon[["CP1"]], depth = d24
     ),
     c(
@@ -101,12 +101,12 @@ test_that("*mgtdhgeot* and others produce wrong results without execution parall
   # Test inside STATION_RADIUS
   expect_equal(
     mgtdhgeo(head(lat, 3), head(lon, 3), tau = 1440L, depth = d24),
-    mgtdhid(id = c(28434L, 28418L, 23711L), tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow"), depth = d24)
+    mgtdhid(id = c(28434L, 28418L, 23711L), tau = as.POSIXct("2023-03-02", tz = "UTC"), depth = d24)
   )
 
   # Test out of triangle
   expect_equal(
-    mgtdhgeo(lat[["CP1"]], lon[["CP1"]], tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow"), depth = d24),
+    mgtdhgeo(lat[["CP1"]], lon[["CP1"]], tau = as.POSIXct("2023-03-02", tz = "UTC"), depth = d24),
     mgtdhid(id = 28434L, tau = 1440L, depth = d24)
   )
 
@@ -115,7 +115,7 @@ test_that("*mgtdhgeot* and others produce wrong results without execution parall
     mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = 1440L, depth = d24),
     drop(
       mgtdhid(
-        id = c(28434L, 28418L, 28630L), tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow"), depth = d24
+        id = c(28434L, 28418L, 28630L), tau = as.POSIXct("2023-03-02", tz = "UTC"), depth = d24
       ) %*% drop(1/sapply(r, function(x) sum((x/r)^2)))
     )  ,
     tolerance = 1e-2
@@ -124,15 +124,15 @@ test_that("*mgtdhgeot* and others produce wrong results without execution parall
   # Test inside triangle
   expect_equal(
     mgtdhgeot(tau = 1440L, lat[["CP2"]], lon[["CP2"]], depth = d24),
-    mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow"), depth = d24)
+    mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "UTC"), depth = d24)
   )
 
   expect_equal(
     mgtdhgeot(tau = c(1440L, 1450L, 1540L), lat[["CP2"]], lon[["CP2"]], depth = d24),
     c(
-       mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow"), depth = d24)
-      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow") + 3600 * 10, depth = d24)
-      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow") + 3600 * 100, depth = d24)
+       mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "UTC"), depth = d24)
+      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "UTC") + 3600 * 10, depth = d24)
+      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "UTC") + 3600 * 100, depth = d24)
     )
   )
   rm(d24, r, lon, lat)
@@ -148,12 +148,12 @@ test_that("*mgtdhgeot* and others produce wrong results utilizing parallel execu
   # Test inside STATION_RADIUS
   expect_equal(
     mgtdhgeo(head(lat, 3), head(lon, 3), tau = 1440L, depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", ""))),
-    mgtdhid(id = c(28434L, 28418L, 23711L), tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow"), depth = d24)
+    mgtdhid(id = c(28434L, 28418L, 23711L), tau = as.POSIXct("2023-03-02", tz = "UTC"), depth = d24)
   )
 
   # Test out of triangle
   expect_equal(
-    mgtdhgeo(lat[["CP1"]], lon[["CP1"]], tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow"), depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", ""))),
+    mgtdhgeo(lat[["CP1"]], lon[["CP1"]], tau = as.POSIXct("2023-03-02", tz = "UTC"), depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", ""))),
     mgtdhid(id = 28434L, tau = 1440L, depth = d24)
   )
 
@@ -162,7 +162,7 @@ test_that("*mgtdhgeot* and others produce wrong results utilizing parallel execu
     mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = 1440L, depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", ""))),
     drop(
       mgtdhid(
-        id = c(28434L, 28418L, 28630L), tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow"), depth = d24
+        id = c(28434L, 28418L, 28630L), tau = as.POSIXct("2023-03-02", tz = "UTC"), depth = d24
       ) %*% drop(1/sapply(r, function(x) sum((x/r)^2)))
     )  ,
     tolerance = 1e-2
@@ -171,15 +171,15 @@ test_that("*mgtdhgeot* and others produce wrong results utilizing parallel execu
   # Test inside triangle
   expect_equal(
     mgtdhgeot(tau = 1440L, lat[["CP2"]], lon[["CP2"]], depth = d24),
-    mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow"), depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
+    mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "UTC"), depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
   )
 
   expect_equal(
     mgtdhgeot(tau = c(1440L, 1450L, 1540L), lat[["CP2"]], lon[["CP2"]], depth = d24),
     c(
-       mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow"), depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
-      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow") + 3600 * 10, depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
-      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "Europe/Moscow") + 3600 * 100, depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
+       mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "UTC"), depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
+      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "UTC") + 3600 * 10, depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
+      ,mgtdhgeo(lat[["CP2"]], lon[["CP2"]], tau = as.POSIXct("2023-03-02", tz = "UTC") + 3600 * 100, depth = d24, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
     )
   )
   rm(d24, r, lon, lat)
