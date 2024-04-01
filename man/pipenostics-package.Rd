@@ -17,6 +17,6 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Yuri Possokhov \email{possokhoff@gmail.com} (\href{https://orcid.org/0000-0002-3570-4337}{ORCID})
+\strong{Maintainer}: Yuri Possokhov \email{omega1x@gmail.com} (\href{https://orcid.org/0000-0002-3570-4337}{ORCID})
 
 }
