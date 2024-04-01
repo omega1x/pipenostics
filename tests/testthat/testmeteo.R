@@ -38,11 +38,8 @@ test_that("*mgtdhidt* produces wrong results", {
   d24 <- 2.4
 
   expect_equal(
-    sum(
-      mgtdhidt(tau = as.integer(seq.int(0, 8736, by = 1)), depth = d24)[11:20] -
-      mgtdhidt(tau = as.POSIXct(seq.int(1672531200, 1703980800, 3600), tz = "UTC"), depth = d24)[11:20]
-    ),
-    0
+    mgtdhidt(tau = as.integer(seq.int(0, 8736, by = 1)), depth = d24),
+    mgtdhidt(tau = as.POSIXct(seq.int(1672531200, 1703980800, 3600), tz = "UTC", origin = "1970-01-01"), depth = d24)
   )
 
   expect_equal(
