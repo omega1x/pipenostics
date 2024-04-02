@@ -59,7 +59,7 @@ b31gacd <- function(dep, maop, d, wth, l){
     l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
     min.len = 1L
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(dep), length(maop),  length(d), length(wth), length(l)
   )))
 

@@ -209,7 +209,7 @@ m278hlund <-
       any.missing = FALSE,
       min.len = 1L
     )
-    checkmate::assert_true(all.commensurable(c(
+    checkmate::assert_true(commensurable(c(
       length(t1), length(t2), length(t0), length(insd1), length(insd2),
       length(d1), length(d2), length(lambda1), length(lambda2), length(k1),
       length(k2), length(lambda0), length(z), length(s), length(len),

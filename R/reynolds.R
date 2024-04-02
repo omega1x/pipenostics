@@ -56,7 +56,7 @@ re_u <- function(d, mu, u, rho){
   checkmate::assert_double(
     u,   lower =  0.0, upper = 10, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(d), length(mu), length(u), length(rho)
   )))
 
@@ -78,7 +78,7 @@ re_v <- function(d, mu, v, rho){
   checkmate::assert_double(
     rho, lower =  0.0, upper = 2000, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(d), length(mu), length(v), length(rho)
   )))
 
@@ -95,7 +95,7 @@ re_m <- function(d, mu, m){
   checkmate::assert_double(
     mu, lower = 1.0e-8, upper = 2, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(d), length(mu), length(m)
   )))
 

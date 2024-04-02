@@ -61,7 +61,7 @@ b31gsap <- function(dep, d, wth, depth, l){
     l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
     min.len = 1L
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(dep), length(d), length(wth), length(depth), length(l)
   )))
 

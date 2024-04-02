@@ -54,7 +54,7 @@ strderate <- function(x, temperature = 24.3){
     temperature,
     lower = 0, upper = 350, finite = TRUE, any.missing = FALSE, min.len = 1
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(x), length(temperature)
   )))
 

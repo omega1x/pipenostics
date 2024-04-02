@@ -49,7 +49,7 @@ m325beta <- function(laying = "channel", d = 700){
                            min.len = 1L)
   checkmate::assert_subset(laying, choices = unique(norms[["laying"]]),
                            empty.ok = FALSE)
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(laying), length(d)
   )))
 

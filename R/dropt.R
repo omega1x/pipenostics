@@ -89,7 +89,7 @@ dropt <- function(
   checkmate::assert_double(
     loss_power, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
    length(temperature), length(pressure), length(flow_rate), length(loss_power)
   )))
 

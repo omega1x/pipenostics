@@ -194,7 +194,7 @@ mgtdhgeo <- function(lat, lon, tau = 1440L, depth = 2.4, use_cluster = FALSE){
   checkmate::assert_double(
     lon, lower = 30, upper = 166, any.missing = FALSE, min.len = 1
   )
-  checkmate::assert_true(all.commensurable(c(length(lat), length(lon))))
+  checkmate::assert_true(commensurable(c(length(lat), length(lon))))
   if (checkmate::test_posixct(tau, any.missing = FALSE, len = 1)) {
     tau <- as.POSIXct(tau, tz = L_TIMEZONE)
     tau <- (

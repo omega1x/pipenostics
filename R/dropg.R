@@ -123,7 +123,7 @@ dropg.default <- function(adj = 0, d = 700, flow_rate = 250){
                            any.missing = FALSE, min.len = 1L)
   checkmate::assert_double(flow_rate, lower = 1e-3, upper = 1e5,
                            finite = TRUE, min.len = 1L)
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(adj), length(d), length(flow_rate)
   )))
 

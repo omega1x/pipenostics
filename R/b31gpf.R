@@ -129,7 +129,7 @@ b31gpf <- function(d, wth, smys, depth, l) {
     l, lower = 0, upper = 196.8504, finite = TRUE, any.missing = FALSE,
     min.len = 1L
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(d), length(wth), length(smys), length(depth), length(l)
   )))
 

@@ -20,7 +20,7 @@ geoarea <- function(lat1, lon1, lat2, lon2, lat3, lon3, earth = 6371008.7714) {
   checkmate::assert_double(
     lon3, lower = -180, upper = 180, any.missing = FALSE, min.len = 1
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(lat1), length(lon1),
     length(lat2), length(lon2),
     length(lat3), length(lon3)

@@ -318,7 +318,7 @@ traceline <- function(temperature = 130,
     any.missing = FALSE,
     min.len = 1L
   )
-  checkmate::assert_true(all.commensurable(
+  checkmate::assert_true(commensurable(
     c(
       length(d),
       length(len),

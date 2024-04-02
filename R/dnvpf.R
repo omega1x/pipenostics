@@ -103,7 +103,7 @@ dnvpf <- function(d, wth, uts, depth, l){
   checkmate::assert_double(
     l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(d), length(wth), length(uts), length(depth), length(l)
   )))
 

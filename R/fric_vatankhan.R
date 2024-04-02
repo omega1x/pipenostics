@@ -58,7 +58,7 @@ fric_vatankhan <- function(reynolds, roughness = 0, strict = FALSE) {
   checkmate::assert_double(
     roughness, lower = 0, upper = 1, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(reynolds), length(roughness)
   )))
   checkmate::assert_flag(strict)

@@ -177,7 +177,7 @@ geodist <- function(lat1, lon1, lat2, lon2, earth = 6371008.7714){
   checkmate::assert_double(
     lon2, lower = -180, upper = 180, any.missing = FALSE, min.len = 1
   )
-  checkmate::assert_true(all.commensurable(c(
+  checkmate::assert_true(commensurable(c(
     length(lat1), length(lon1), length(lat2), length(lon2)
   )))
   checkmate::assert_number(earth, lower = 6335439.0000, upper = 6399593.6259)

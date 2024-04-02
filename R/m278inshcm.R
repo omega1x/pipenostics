@@ -39,7 +39,7 @@ m278inshcm <- function(temperature = 110, material = "aerocrete"){
     )
     norms <- pipenostics::m278insdata
     checkmate::assert_subset(material, choices = norms[["material"]])
-    checkmate::assert_true(all.commensurable(c(
+    checkmate::assert_true(commensurable(c(
       length(temperature), length(material)
     )))
 

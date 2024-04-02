@@ -47,7 +47,7 @@ b31gops <- function(wth, depth){
     depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE,
     min.len = 1L
   )
-  checkmate::assert_true(all.commensurable(c(length(wth), length(depth))))
+  checkmate::assert_true(commensurable(c(length(wth), length(depth))))
 
   a <- .8*wth  # alert setting
   as.integer(1 + (depth > .1*wth & depth <= a) + 2*(depth > a))

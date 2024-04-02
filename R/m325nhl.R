@@ -203,7 +203,7 @@ m325nhl <- function(year        =          1986,
     min.len = 1L
   )
   checkmate::assert_logical(beta, any.missing = FALSE, min.len = 1L)
-  checkmate::assert_true(all.commensurable(
+  checkmate::assert_true(commensurable(
     c(
       length(year),
       length(laying),
