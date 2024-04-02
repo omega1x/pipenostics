@@ -87,7 +87,7 @@ Since the definition of flow stress, \emph{Sflow}, in
 }
 \references{
 \enumerate{
- \item \href{https://www.techstreet.com/standards/asme-b31g-2012-r2017?product_id=1842873}{ASME B31G-2012}.
+ \item \href{https://store.accuristech.com:443/standards/asme-b31g-2012-r2017?product_id=1842873}{ASME B31G-2012}.
    Manual for determining the remaining strength of corroded pipelines:
    supplement to \emph{B31 Code} for pressure piping.
  \item  S. Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability

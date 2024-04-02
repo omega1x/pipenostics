@@ -78,8 +78,8 @@
 #'  Type: \code{\link{assert_double}}.
 #'
 #' @references
-#'  Xing LU. \href{https://core.ac.uk/download/pdf/215277719.pdf}{Estimations of undisturbed ground temperatures using numerical and analytical modeling}.
-#'  Oklahoma State University; 2014.
+#'  Lu Xing & Jeffrey D. Spitler (2017) \emph{Prediction of undisturbed ground temperature using analytical and numerical modeling. Part I: Model development and experimental validation}.
+#'  Science and Technology for the Built Environment, 23:5, 787-808, \doi{10.1080/23744731.2016.1258371}.
 #' 
 #' @seealso
 #'  \code{\link{geodist}} and \code{\link{geoarea}} for calculating geographical metrics.

@@ -11,7 +11,7 @@
 #'   values of \emph{SMYS} or \emph{UTS} are postulated at room conditions, in
 #'   case of higher temperature magnitudes they should be corrected. For that
 #'   purpose
-#'   \href{https://rules.dnvgl.com/docs/pdf/DNV/codes/docs/2010-10/RP-F101.pdf}{DNV-RP-F101}
+#'   \href{https://www.dnv.com/oilgas/download/dnv-rp-f101-corroded-pipelines/}{DNV-RP-F101}
 #'   offers linear de-rating for \emph{SMYS} or \emph{SMYS} according to
 #'   figure 2-3.
 #'

@@ -221,7 +221,7 @@ The calculated (values of) regime may be considered as representation of
  description see \code{\link{m325testbench}}.
 
  They are welcome to couple the algorithm with functionality of
- \href{https://cran.r-project.org/web/packages/data.table}{data.table}.
+ \href{https://CRAN.R-project.org/package=data.table}{data.table}.
 }
 \examples{
 library(pipenostics)

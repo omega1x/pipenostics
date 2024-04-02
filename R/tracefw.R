@@ -35,7 +35,7 @@
 #'  description see \code{\link{m325testbench}}.
 #'
 #'  They are welcome to couple the algorithm with functionality of
-#'  \href{https://cran.r-project.org/web/packages/data.table}{data.table}.
+#'  \href{https://CRAN.R-project.org/package=data.table}{data.table}.
 #'
 #' @param sender
 #'    identifier of the node which heat carrier flows out.

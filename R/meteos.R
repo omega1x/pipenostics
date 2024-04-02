@@ -27,7 +27,7 @@
 #'  depths measured at the listed weather stations.
 #'
 #' @references
-#'  \href{http://www.meteo.ru/structure/lipic}{Climate Change Investigation Laboratory}.
+#'  \href{http://meteo.ru/structure/lipik/}{Climate Change Investigation Laboratory}.
 #'  Description of the array of daily data on soil temperature at depths up to 320 centimeters
 #'  by meteorological stations of the \emph{Russian Federation}.
 #'

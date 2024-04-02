@@ -5,5 +5,5 @@ bibentry(
   organization = "SGC",
   address      = "Moscow, Russian Federation",
   year         = 2022,
-  url          = "https://omega1x.github.io/pipenostics"
+  url          = "https://omega1x.github.io/pipenostics/"
 )

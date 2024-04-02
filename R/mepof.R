@@ -42,7 +42,7 @@
 #' @details
 #'  Since for all influence factors they can more or less assume range limits,
 #'  the \emph{uniform distribution} gets the maximum entropy in this context
-#'  (see \href{https://www.bipm.org/utils/common/documents/jcgm/JCGM_101_2008_E.pdf}{JCGM 101:2008}).
+#'  (see \href{https://www.bipm.org/documents/20126/2071204/JCGM_101_2008_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c}{JCGM 101:2008}).
 #'  That is why parameters of corrosion defects measured during the
 #'  \emph{inline inspection} as well as regime parameters and engineering
 #'  characteristics of pipe segment - all they are simulated by
@@ -81,8 +81,8 @@
 #'    of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
 #'    \strong{DOI 10.1007/978-3-319-25307-7}.
 #'
-#'  \item \href{https://www.bipm.org/en/about-us/}{BIPM}. Guides in Metrology (GUM).
-#'    \href{https://www.bipm.org/utils/common/documents/jcgm/JCGM_101_2008_E.pdf}{JCGM 101:2008}.
+#'  \item \href{https://www.bipm.org/en/home}{BIPM}. Guides in Metrology (GUM).
+#'    \href{https://www.bipm.org/documents/20126/2071204/JCGM_101_2008_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c}{JCGM 101:2008}.
 #'    Evaluation of measurement data – \strong{Supplement 1} to the \emph{Guide to
 #'    the expression of uncertainty in measurement} –
 #'    Propagation of distributions using a \emph{Monte Carlo} method.

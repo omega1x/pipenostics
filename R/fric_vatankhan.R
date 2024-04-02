@@ -34,10 +34,10 @@
 #' @references
 #'   \enumerate{
 #'      \item Offor, U. and Alabi, S. (2016) \emph{An Accurate and Computationally Efficient Explicit Friction Factor Model}.
-#'  Advances in Chemical Engineering and Science, \emph{6}, pp. 237-245. DOI: \href{http://dx.doi.org/10.4236/aces.2016.63024}{10.4236/aces.2016.63024}.
+#'  Advances in Chemical Engineering and Science, \emph{6}, pp. 237-245. \doi{10.4236/aces.2016.63024}.
 #'
 #'      \item Ali R. Vatankhah, Salah Kouchakzadeh (2009) \emph{Exact equations for pipe-flow problems}.
-#'  Journal of Hydraulic Research, \emph{47:4}, pp. 537-538, DOI: \href{https://doi.org/10.1080/00221686.2009.9522031}{10.1080/00221686.2009.9522031}
+#'  Journal of Hydraulic Research, \emph{47:4}, pp. 537-538, DOI: \doi{10.1080/00221686.2009.9522031}
 #'   }
 #'
 #' @export

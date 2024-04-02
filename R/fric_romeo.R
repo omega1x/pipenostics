@@ -34,10 +34,10 @@
 #' @references
 #'   \enumerate{
 #'    \item Offor, U. and Alabi, S. (2016) \emph{An Accurate and Computationally Efficient Explicit Friction Factor Model}.
-#'  Advances in Chemical Engineering and Science, \emph{6}, pp. 237-245. DOI: \href{http://dx.doi.org/10.4236/aces.2016.63024}{10.4236/aces.2016.63024}.
+#'  Advances in Chemical Engineering and Science, \emph{6}, pp. 237-245. \doi{10.4236/aces.2016.63024}.
 #'
 #'    \item Eva Romeo, Carlos Royo, Antonio Monzón, \emph{Improved explicit equations for estimation of friction factor in rough and smooth pipes},
-#'  Chemical Engineering Journal, \emph{Volume 86}, Issue 3, 2002, Pages 369-374, ISSN 1385-8947. DOI: \href{https://doi.org/10.1016/S1385-8947(01)00254-6}{10.1016/S1385-8947(01)00254-6}.
+#'  Chemical Engineering Journal, \emph{Volume 86}, Issue 3, 2002, Pages 369-374, ISSN 1385-8947. \doi{10.1016/S1385-8947(01)00254-6}.
 #'  }
 #' @export
 #'

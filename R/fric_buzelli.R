@@ -34,7 +34,7 @@
 #' @references
 #'  \enumerate{
 #'   \item  Offor, U. and Alabi, S. (2016) \emph{An Accurate and Computationally Efficient Explicit Friction Factor Model}.
-#'  Advances in Chemical Engineering and Science, \emph{6}, pp. 237-245. DOI: \href{http://dx.doi.org/10.4236/aces.2016.63024}{10.4236/aces.2016.63024}.
+#'  Advances in Chemical Engineering and Science, \emph{6}, pp. 237-245. \doi{http://dx.doi.org/10.4236/aces.2016.63024}.
 #'
 #'   \item Buzzelli, D. (2008) \emph{Calculating friction in one step}. Machine Design, \emph{80} (12), pp. 54–55.
 #' }

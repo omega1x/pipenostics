@@ -279,7 +279,7 @@ to create a file and write to it.</p></dd>
       <dt><code>loss</code></dt>
 <dd><p><em>Traced thermal hydraulic regime</em>. Normative specific heat loss power of adjacent pipe, [<em>kcal/m/h</em>]. Type: <code>assert_double</code>.</p></dd>
 
-      <dt>/codeflux</dt>
+      <dt><code>flux</code></dt>
 <dd><p><em>Traced thermal hydraulic regime</em>. Normative heat flux of adjacent pipe, [<em>W/m^2</em>]. Type: <code>assert_double</code>.</p></dd>
 
       <dt><code>Q</code></dt>
@@ -352,23 +352,23 @@ to create a file and write to it.</p></dd>
 <span class="r-in"><span><span class="co">## It is possible to run without specification of argument values:</span></span></span>
 <span class="r-in"><span><span class="fu">m325tracebw</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | start backward tracing; segments 1;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | start job; job 0;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | now process; 1 node(s); [7]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | seen tracing; [1/1] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | OK! Specific heat loss power traced from 1 nodes;[7];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | OK! Heat flux traced from 1 nodes;[7];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | OK! Heat loss per day traced from 1 nodes;[7];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | OK! Temperature traced from 1 nodes;[7];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | OK! Pressure traced from 1 nodes;[7];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | finish job; job 0; processed node(s) 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:14.980125 m325tracebw | finish backward tracing;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | start backward tracing; segments 1;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | start job; job 0;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | now process; 1 node(s); [7]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | seen tracing; [1/1] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | OK! Specific heat loss power traced from 1 nodes;[7];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | OK! Heat flux traced from 1 nodes;[7];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | OK! Heat loss per day traced from 1 nodes;[7];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | OK! Temperature traced from 1 nodes;[7];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | OK! Pressure traced from 1 nodes;[7];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | finish job; job 0; processed node(s) 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.742211 m325tracebw | finish backward tracing;;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        node tracing backward aggregation loss     flux        Q temperature</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1         7  sensor     TRUE    identity 78.4 279.0696 136314.4          70</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> span      7  sensor     TRUE        span  0.0   0.0000      0.0           0</span>
@@ -387,113 +387,113 @@ to create a file and write to it.</p></dd>
 <span class="r-in"><span><span class="co">## When tracing large network graphs put screen log to file</span></span></span>
 <span class="r-in"><span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracebw"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">DHN</span><span class="op">)</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | start backward tracing; segments 26;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | start job; job 0;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | seen tracing; [13/13] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Specific heat loss power traced from 13 nodes;[1,2,3,7,9,10,15,17,19,21,24,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat flux traced from 13 nodes;[1,2,3,7,9,10,15,17,19,21,24,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat loss per day traced from 13 nodes;[1,2,3,7,9,10,15,17,19,21,24,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Temperature traced from 13 nodes;[1,2,3,7,9,10,15,17,19,21,24,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Pressure traced from 13 nodes;[1,2,3,7,9,10,15,17,19,21,24,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | finish job; job 0; processed node(s) 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | start job; job 1;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | now process; 5 node(s); [14,22,23,4,5]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | seen tracing; [5/5] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Specific heat loss power traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat flux traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat loss per day traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Temperature traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Pressure traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | finish job; job 1; processed node(s) 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | start job; job 2;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | now process; 2 node(s); [20,6]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat flux traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat loss per day traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Temperature traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Pressure traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | finish job; job 2; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | start job; job 3;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | now process; 2 node(s); [18,8]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat flux traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat loss per day traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Temperature traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Pressure traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | finish job; job 3; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | start job; job 4;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | now process; 2 node(s); [11,16]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat flux traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat loss per day traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Temperature traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Pressure traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | finish job; job 4; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | start job; job 5;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | now process; 1 node(s); [13]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | seen tracing; [1/1] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Specific heat loss power traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat flux traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat loss per day traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Temperature traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Pressure traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | finish job; job 5; processed node(s) 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | start job; job 6;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | now process; 1 node(s); [12]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | seen tracing; [1/1] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Specific heat loss power traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat flux traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Heat loss per day traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Temperature traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | OK! Pressure traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | finish job; job 6; processed node(s) 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.033226 m325tracebw | finish backward tracing;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | start backward tracing; segments 26;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | start job; job 0;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | seen tracing; [13/13] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Specific heat loss power traced from 13 nodes;[1,2,3,7,9,10,15,17,19,21,24,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat flux traced from 13 nodes;[1,2,3,7,9,10,15,17,19,21,24,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat loss per day traced from 13 nodes;[1,2,3,7,9,10,15,17,19,21,24,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Temperature traced from 13 nodes;[1,2,3,7,9,10,15,17,19,21,24,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Pressure traced from 13 nodes;[1,2,3,7,9,10,15,17,19,21,24,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | finish job; job 0; processed node(s) 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | start job; job 1;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | now process; 5 node(s); [14,22,23,4,5]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | seen tracing; [5/5] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Specific heat loss power traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat flux traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat loss per day traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Temperature traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Pressure traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | finish job; job 1; processed node(s) 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | start job; job 2;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | now process; 2 node(s); [20,6]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat flux traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat loss per day traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Temperature traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Pressure traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | finish job; job 2; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | start job; job 3;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | now process; 2 node(s); [18,8]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat flux traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat loss per day traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Temperature traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Pressure traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | finish job; job 3; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | start job; job 4;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | now process; 2 node(s); [11,16]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat flux traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat loss per day traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Temperature traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Pressure traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | finish job; job 4; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | start job; job 5;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | now process; 1 node(s); [13]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | seen tracing; [1/1] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Specific heat loss power traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat flux traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat loss per day traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Temperature traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Pressure traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | finish job; job 5; processed node(s) 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | start job; job 6;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | now process; 1 node(s); [12]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | seen tracing; [1/1] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Specific heat loss power traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat flux traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Heat loss per day traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Temperature traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | OK! Pressure traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | finish job; job 6; processed node(s) 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:53.792643 m325tracebw | finish backward tracing;;</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Distinct options for opinion aggregation lead to distinct traced</span></span></span>
 <span class="r-in"><span><span class="co">## temperature and pressure:</span></span></span>
@@ -539,113 +539,113 @@ to create a file and write to it.</p></dd>
 <span class="r-in"><span><span class="co">## Trace thermal-hydraulic regime</span></span></span>
 <span class="r-in"><span><span class="va">output</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="st">"m325tracebw"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">DHN</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | start backward tracing; segments 26;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | start job; job 0;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | seen tracing; [9/13] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Specific heat loss power traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat flux traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat loss per day traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Temperature traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Pressure traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | finish job; job 0; processed node(s) 13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | start job; job 1;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | now process; 5 node(s); [14,22,23,4,5]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | seen tracing; [5/5] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Specific heat loss power traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat flux traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat loss per day traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Temperature traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Pressure traced from 5 nodes;[4,5,14,22,23];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | finish job; job 1; processed node(s) 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | start job; job 2;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | now process; 2 node(s); [20,6]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat flux traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat loss per day traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Temperature traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Pressure traced from 2 nodes;[6,20];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | finish job; job 2; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | start job; job 3;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | now process; 2 node(s); [18,8]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat flux traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat loss per day traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Temperature traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Pressure traced from 2 nodes;[8,18];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | finish job; job 3; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | start job; job 4;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | now process; 2 node(s); [11,16]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat flux traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat loss per day traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Temperature traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Pressure traced from 2 nodes;[11,16];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | finish job; job 4; processed node(s) 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | start job; job 5;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | now process; 1 node(s); [13]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | seen tracing; [1/1] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Specific heat loss power traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat flux traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat loss per day traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Temperature traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Pressure traced from 1 nodes;[13];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | finish job; job 5; processed node(s) 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | start job; job 6;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | now process; 1 node(s); [12]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | seen tracing; [1/1] are TP-sensor-equipped;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing loss;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Specific heat loss power traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat flux;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat flux traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing heat loss per day;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Heat loss per day traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing temperature;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Temperature traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing pressure;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | OK! Pressure traced from 1 nodes;[12];</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | tracing flow_rate;;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | finish job; job 6; processed node(s) 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-03-25 17:32:15.565727 m325tracebw | finish backward tracing;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | start backward tracing; segments 26;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | start job; job 0;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | now process; 13 node(s); [1,10,15,17,19,2,21,24,25,26,3,7,9]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | seen tracing; [9/13] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Specific heat loss power traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat flux traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat loss per day traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Temperature traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Pressure traced from 9 nodes;[1,2,3,9,15,17,19,25,26];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | finish job; job 0; processed node(s) 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | start job; job 1;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | now process; 5 node(s); [14,22,23,4,5]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | seen tracing; [5/5] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Specific heat loss power traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat flux traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat loss per day traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Temperature traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Pressure traced from 5 nodes;[4,5,14,22,23];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | finish job; job 1; processed node(s) 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | start job; job 2;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | now process; 2 node(s); [20,6]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat flux traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat loss per day traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Temperature traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Pressure traced from 2 nodes;[6,20];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | finish job; job 2; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | start job; job 3;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | now process; 2 node(s); [18,8]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat flux traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat loss per day traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Temperature traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Pressure traced from 2 nodes;[8,18];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | finish job; job 3; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | start job; job 4;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | now process; 2 node(s); [11,16]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | seen tracing; [2/2] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Specific heat loss power traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat flux traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat loss per day traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Temperature traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Pressure traced from 2 nodes;[11,16];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | finish job; job 4; processed node(s) 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | start job; job 5;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | now process; 1 node(s); [13]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | seen tracing; [1/1] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Specific heat loss power traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat flux traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat loss per day traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Temperature traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Pressure traced from 1 nodes;[13];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | finish job; job 5; processed node(s) 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | start job; job 6;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | now process; 1 node(s); [12]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | seen tracing; [1/1] are TP-sensor-equipped;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing loss;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Specific heat loss power traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat flux;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat flux traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing heat loss per day;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Heat loss per day traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing temperature;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Temperature traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing pressure;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | OK! Pressure traced from 1 nodes;[12];</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | tracing flow_rate;;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | finish job; job 6; processed node(s) 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2024-04-02 09:26:54.282331 m325tracebw | finish backward tracing;;</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">output</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           node  tracing backward aggregation      loss        flux            Q</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1            1   sensor     TRUE    identity  96.23600 230.5891783  92028.56208</span>

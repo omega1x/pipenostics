@@ -26,13 +26,13 @@ Estimated failure pressure of the corroded pipe, [\emph{MPa}].
 \description{
 Calculate failure pressure of the corroded pipe
  according to \emph{Section 8.2} of
- in \href{https://rules.dnvgl.com/docs/pdf/DNV/codes/docs/2010-10/RP-F101.pdf}{DNV-RP-F101}.
+ in \href{https://www.dnv.com/oilgas/download/dnv-rp-f101-corroded-pipelines/}{DNV-RP-F101}.
  The estimation is valid for single isolated metal loss defects of
  the corrosion/erosion type and when only internal pressure loading
  is considered.
 
  The next assumption of the corrosion shape is adopted by
- \href{https://rules.dnvgl.com/docs/pdf/DNV/codes/docs/2010-10/RP-F101.pdf}{DNV-RP-F101}:
+ \href{https://www.dnv.com/oilgas/download/dnv-rp-f101-corroded-pipelines/}{DNV-RP-F101}:
 
  \figure{dnvpf.png}
 
@@ -70,9 +70,9 @@ dnvpf(d, wth, uts, depth, l)
 }
 \references{
 \enumerate{
- \item Recommended practice \href{https://rules.dnvgl.com/docs/pdf/DNV/codes/docs/2010-10/RP-F101.pdf}{DNV-RP-F101}.
+ \item Recommended practice \href{https://www.dnv.com/oilgas/download/dnv-rp-f101-corroded-pipelines/}{DNV-RP-F101}.
    Corroded pipelines. \strong{DET NORSKE VERITAS}, October 2010.
- \item \href{https://www.techstreet.com/standards/asme-b31g-2012-r2017?product_id=1842873}{ASME B31G-2012}.
+ \item \href{https://store.accuristech.com:443/standards/asme-b31g-2012-r2017?product_id=1842873}{ASME B31G-2012}.
    Manual for determining the remaining strength of corroded pipelines:
    supplement to \emph{B31 Code} for pressure piping.
  \item  S. Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability

@@ -164,7 +164,7 @@
 #'       \item{\code{loss}}{
 #'          \emph{Traced thermal hydraulic regime}. Normative specific heat loss power of adjacent pipe, [\emph{kcal/m/h}]. Type: \code{\link{assert_double}}.
 #'        }
-#'       \item{/code{flux}}{
+#'       \item{\code{flux}}{
 #'          \emph{Traced thermal hydraulic regime}. Normative heat flux of adjacent pipe, [\emph{W/m^2}]. Type: \code{\link{assert_double}}.
 #'        }
 #'       \item{\code{Q}}{
