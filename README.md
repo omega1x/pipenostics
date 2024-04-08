@@ -1,9 +1,10 @@
 # pipenostics
 
 [![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![](https://www.r-pkg.org/badges/version/pipenostics)](https://cran.r-project.org/package=pipenostics)
+[![pipenostics status badge](https://omega1x.r-universe.dev/badges/pipenostics)](https://omega1x.r-universe.dev)
 [![R-CMD-check](https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml/badge.svg)](https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml)
 [![pages-build-deployment](https://github.com/omega1x/pipenostics/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/omega1x/pipenostics/actions/workflows/pages/pages-build-deployment)
-[![pipenostics status badge](https://omega1x.r-universe.dev/badges/pipenostics)](https://omega1x.r-universe.dev)
 [![CodeFactor](https://www.codefactor.io/repository/github/omega1x/pipenostics/badge)](https://www.codefactor.io/repository/github/omega1x/pipenostics)
 [![codecov](https://codecov.io/gh/omega1x/pipenostics/branch/master/graph/badge.svg?token=LMVLTBPAY5)](https://app.codecov.io/gh/omega1x/pipenostics)
 
@@ -23,13 +24,17 @@ district heating network.
 
 ## Installation
 
+For the stable version install from [CRAN](https://cran.r-project.org/package=pipenostics):
+
+```R
+install.packages("pipenostics")
+```
+
 For the latest version leverage [r-universe](https://omega1x.r-universe.dev/pipenostics):
 
 ```R
 install.packages("pipenostics", repos = "https://omega1x.r-universe.dev")
 ```
-
-> &#9888; Starting from version 0.1.8 the package is not supported on [CRAN](https://cran.r-project.org/) due to its resource limitations of checking parallel algorithms
 
 ## Usage examples
 
