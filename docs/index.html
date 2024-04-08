@@ -91,7 +91,7 @@
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="pipenostics">pipenostics<a class="anchor" aria-label="anchor" href="#pipenostics"></a>
 </h1></div>
-<p><a href="https://www.gnu.org/licenses/gpl-3.0" class="external-link"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPLv3"></a> <a href="https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml" class="external-link"><img src="https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml/badge.svg" alt="R-CMD-check"></a> <a href="https://github.com/omega1x/pipenostics/actions/workflows/pages/pages-build-deployment" class="external-link"><img src="https://github.com/omega1x/pipenostics/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment"></a> <a href="https://omega1x.r-universe.dev" class="external-link"><img src="https://omega1x.r-universe.dev/badges/pipenostics" alt="pipenostics status badge"></a> <a href="https://www.codefactor.io/repository/github/omega1x/pipenostics" class="external-link"><img src="https://www.codefactor.io/repository/github/omega1x/pipenostics/badge" alt="CodeFactor"></a> <a href="https://app.codecov.io/gh/omega1x/pipenostics" class="external-link"><img src="https://codecov.io/gh/omega1x/pipenostics/branch/master/graph/badge.svg?token=LMVLTBPAY5" alt="codecov"></a></p>
+<p><a href="https://www.gnu.org/licenses/gpl-3.0" class="external-link"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPLv3"></a> <a href="https://cran.r-project.org/package=pipenostics" class="external-link"><img src="https://www.r-pkg.org/badges/version/pipenostics"></a> <a href="https://omega1x.r-universe.dev" class="external-link"><img src="https://omega1x.r-universe.dev/badges/pipenostics" alt="pipenostics status badge"></a> <a href="https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml" class="external-link"><img src="https://github.com/omega1x/pipenostics/actions/workflows/R-CMD-check.yml/badge.svg" alt="R-CMD-check"></a> <a href="https://github.com/omega1x/pipenostics/actions/workflows/pages/pages-build-deployment" class="external-link"><img src="https://github.com/omega1x/pipenostics/actions/workflows/pages/pages-build-deployment/badge.svg" alt="pages-build-deployment"></a> <a href="https://www.codefactor.io/repository/github/omega1x/pipenostics" class="external-link"><img src="https://www.codefactor.io/repository/github/omega1x/pipenostics/badge" alt="CodeFactor"></a> <a href="https://app.codecov.io/gh/omega1x/pipenostics" class="external-link"><img src="https://codecov.io/gh/omega1x/pipenostics/branch/master/graph/badge.svg?token=LMVLTBPAY5" alt="codecov"></a></p>
 <p><a href="https://cran.r-project.org/package=pipenostics" class="external-link">R-package</a> for diagnostics, reliability and predictive maintenance of pipeline systems.</p>
 <hr>
 <div class="section level2">
@@ -102,12 +102,12 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>For the latest version leverage <a href="https://omega1x.r-universe.dev/pipenostics" class="external-link">r-universe</a>:</p>
+<p>For the stable version install from <a href="https://cran.r-project.org/package=pipenostics" class="external-link">CRAN</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pipenostics"</span><span class="op">)</span></span></code></pre></div>
+<p>For the latest version leverage <a href="https://omega1x.r-universe.dev/pipenostics" class="external-link">r-universe</a>:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pipenostics"</span>, repos <span class="op">=</span> <span class="st">"https://omega1x.r-universe.dev"</span><span class="op">)</span></span></code></pre></div>
-<blockquote>
-<p>⚠ Starting from version 0.1.8 the package is not supported on <a href="https://cran.r-project.org/" class="external-link">CRAN</a> due to its resource limitations of checking parallel algorithms</p>
-</blockquote>
 </div>
 <div class="section level2">
 <h2 id="usage-examples">Usage examples<a class="anchor" aria-label="anchor" href="#usage-examples"></a>
@@ -116,80 +116,80 @@
 <h3 id="corrosion-diagnostics">Corrosion diagnostics<a class="anchor" aria-label="anchor" href="#corrosion-diagnostics"></a>
 </h3>
 <p>By using of <code><a href="reference/b31crvl.html">b31crvl()</a></code> simply imitate the output of <em>CRVL.BAS</em> which is the honored software for determining the allowable length and maximum allowable working pressure presented in <a href="https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf" class="external-link">ASME B31G-1991</a>:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://omega1x.github.io/pipenostics/" class="external-link">pipenostics</a></span><span class="op">)</span></span>
 <span>    </span>
 <span><span class="fu"><a href="reference/b31crvl.html">b31crvl</a></span><span class="op">(</span>maop <span class="op">=</span> <span class="fl">910</span>, d <span class="op">=</span> <span class="fl">30</span>, wth <span class="op">=</span> <span class="fl">.438</span>, smys <span class="op">=</span> <span class="fl">52000</span>, def  <span class="op">=</span> <span class="fl">.72</span>, depth <span class="op">=</span> <span class="fl">.1</span>, l <span class="op">=</span> <span class="fl">7.5</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>-- Calculated data --</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>Intermediate factor (A) = 1.847</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>Design pressure = 1093 PSI; Safe pressure = 1093 PSI</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>Pipe may be operated safely at MAOP, 910 PSI</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>-- Calculated data --</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>Intermediate factor (A) = 1.847</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>Design pressure = 1093 PSI; Safe pressure = 1093 PSI</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>Pipe may be operated safely at MAOP, 910 PSI</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>With corrosion length 7.500 inch, maximum allowed corrosion depth is 0.2490 inch; A = 1.847</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>With corrosion depth 0.100 inch, maximum allowed corrosion length is Inf inch; A = 5.000</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="probability-of-failure">Probability of failure<a class="anchor" aria-label="anchor" href="#probability-of-failure"></a>
 </h3>
 <p>Let’s consider a pipe in district heating network with</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">diameter</span>           <span class="op">&lt;-</span> <span class="fl">762</span>         <span class="co"># [mm]</span></span>
 <span><span class="va">wall_thickness</span>     <span class="op">&lt;-</span>  <span class="fl">10</span>         <span class="co"># [mm]</span></span>
 <span><span class="va">UTS</span>                <span class="op">&lt;-</span> <span class="fl">434.3697</span>    <span class="co"># [MPa]</span></span></code></pre></div>
 <p>which transfers heat-carrier (water) at</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">operating_pressure</span> <span class="op">&lt;-</span>   <span class="fl">0.588399</span>  <span class="co"># [MPa]</span></span>
 <span><span class="va">temperature</span>        <span class="op">&lt;-</span>  <span class="fl">95</span>         <span class="co"># [°C]</span></span></code></pre></div>
 <p>During <em>inline inspection</em> four corroded areas (defects) are detected with:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">depth</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2.45</span>,  <span class="fl">7.86</span>,   <span class="fl">7.93</span>,   <span class="fl">8.15</span><span class="op">)</span>  <span class="co"># [mm]</span></span></code></pre></div>
 <p>whereas the length of all defects is not greater 200 mm:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">length</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">200</span>, <span class="fl">4</span><span class="op">)</span>  <span class="co"># [mm]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">length</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">200</span> <span class="dv">200</span> <span class="dv">200</span> <span class="dv">200</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">200</span> <span class="dv">200</span> <span class="dv">200</span> <span class="dv">200</span></span></code></pre></div>
 <p>Corrosion rates in radial and in longitudinal directions are not well-known and may vary in range <code>.01</code> - <code>.30</code> mm/year:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rar</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">.01</span>, <span class="fl">.30</span><span class="op">)</span> <span class="op">/</span> <span class="fl">365</span></span>
 <span><span class="va">ral</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span> <span class="fu">stats</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="va">n</span>, <span class="fl">.01</span>, <span class="fl">.30</span><span class="op">)</span> <span class="op">/</span> <span class="fl">365</span></span></code></pre></div>
 <p>Then probabilities of failure (POFs) related to each corroded area are near:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pof</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/mepof.html">mepof</a></span><span class="op">(</span><span class="va">depth</span>, <span class="va">length</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">diameter</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">wall_thickness</span>, <span class="fl">4</span><span class="op">)</span>,</span>
 <span>             <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">UTS</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">operating_pressure</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">temperature</span>, <span class="fl">4</span><span class="op">)</span>,</span>
 <span>             <span class="va">rar</span>, <span class="va">ral</span>, method <span class="op">=</span> <span class="st">"dnv"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!                 </span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!                 </span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.000000</span> <span class="fl">0.252935</span> <span class="fl">0.368741</span> <span class="fl">0.771299</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.000000</span> <span class="fl">0.252935</span> <span class="fl">0.368741</span> <span class="fl">0.771299</span></span></code></pre></div>
 <p>So, the POF of the pipe is near</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.771299</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.771299</span></span></code></pre></div>
 <p>The value of POF changes in time. So, in a year after <em>inline inspection</em> of the pipe we can get something near</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pof</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/mepof.html">mepof</a></span><span class="op">(</span><span class="va">depth</span>, <span class="va">length</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">diameter</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">wall_thickness</span>, <span class="fl">4</span><span class="op">)</span>,</span>
 <span>             <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">UTS</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">operating_pressure</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">temperature</span>, <span class="fl">4</span><span class="op">)</span>,</span>
 <span>             <span class="va">rar</span>, <span class="va">ral</span>, method <span class="op">=</span> <span class="st">"dnv"</span>, days <span class="op">=</span> <span class="fl">365</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!             </span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!             </span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.000000</span> <span class="fl">0.526646</span> <span class="fl">0.647422</span> <span class="fl">0.928825</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.000000</span> <span class="fl">0.526646</span> <span class="fl">0.647422</span> <span class="fl">0.928825</span></span></code></pre></div>
 <p>For entire pipe we get something near:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.928825</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.928825</span></span></code></pre></div>
 <p>Two years ago before <em>inline inspection</em> the pipe state was rather good:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pof</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/mepof.html">mepof</a></span><span class="op">(</span><span class="va">depth</span>, <span class="va">length</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">diameter</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">wall_thickness</span>, <span class="fl">4</span><span class="op">)</span>,</span>
 <span>             <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">UTS</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">operating_pressure</span>, <span class="fl">4</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="va">temperature</span>, <span class="fl">4</span><span class="op">)</span>,</span>
 <span>             <span class="va">rar</span>, <span class="va">ral</span>, method <span class="op">=</span> <span class="st">"dnv"</span>, days <span class="op">=</span> <span class="op">-</span><span class="fl">2</span> <span class="op">*</span> <span class="fl">365</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!</span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>pipenostics::mepof: process case [4/4] - 100 % . All done, thanks!</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.000000</span> <span class="fl">0.040849</span> <span class="fl">0.072734</span> <span class="fl">0.272358</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.000000</span> <span class="fl">0.040849</span> <span class="fl">0.072734</span> <span class="fl">0.272358</span></span></code></pre></div>
 <p>For entire pipe we get something near:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">pof</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.272358</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.272358</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="regime-tracing">Regime tracing<a class="anchor" aria-label="anchor" href="#regime-tracing"></a>
@@ -197,27 +197,27 @@
 <p>Let’s consider the next 4-segment tracing path:</p>
 <p><img src="https://raw.githubusercontent.com/omega1x/pipenostics/a26e1171f05d3cd4f2c25a71ccde9947a095409f/.src/svg-graphics/m325regtrace.svg"></p>
 <p>Suppose we have the next sensor readings for <em>forward tracing</em>:</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">t_fw</span> <span class="op">&lt;-</span> <span class="fl">130</span>         <span class="co"># [°C]</span></span>
 <span><span class="va">p_fw</span> <span class="op">&lt;-</span>   <span class="fl">0.588399</span>  <span class="co"># [MPa]</span></span>
 <span><span class="va">g_fw</span> <span class="op">&lt;-</span> <span class="fl">250</span>         <span class="co"># [ton/hour]</span></span></code></pre></div>
 <p>Let’s discharges to network for each pipeline segment are somehow determined as</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">discharges</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">30</span>, <span class="fl">10</span><span class="op">)</span>  <span class="co"># [ton/hour]</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">discharges</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>[<span class="dv">1</span>]  <span class="dv">0</span> <span class="dv">10</span> <span class="dv">20</span> <span class="dv">30</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>[<span class="dv">1</span>]  <span class="dv">0</span> <span class="dv">10</span> <span class="dv">20</span> <span class="dv">30</span></span></code></pre></div>
 <p>Then the calculated regime (red squares) for forward tracing is</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">regime_fw</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/m325traceline.html">m325traceline</a></span><span class="op">(</span><span class="va">t_fw</span>, <span class="va">p_fw</span>, <span class="va">g_fw</span>, <span class="va">discharges</span>, forward <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">regime_fw</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="sc">$</span>temperature</span>
-<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">129.1799</span> <span class="fl">128.4269</span> <span class="fl">127.9628</span> <span class="fl">127.3367</span></span>
-<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a><span class="sc">$</span>pressure</span>
-<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.5878607</span> <span class="fl">0.5874226</span> <span class="fl">0.5872143</span> <span class="fl">0.5870330</span></span>
-<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a></span>
-<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a><span class="sc">$</span>flow_rate</span>
-<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">250</span> <span class="dv">240</span> <span class="dv">220</span> <span class="dv">190</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="sc">$</span>temperature</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">129.1799</span> <span class="fl">128.4269</span> <span class="fl">127.9628</span> <span class="fl">127.3367</span></span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a><span class="sc">$</span>pressure</span>
+<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">0.5878607</span> <span class="fl">0.5874226</span> <span class="fl">0.5872143</span> <span class="fl">0.5870330</span></span>
+<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a><span class="sc">$</span>flow_rate</span>
+<span id="cb33-8"><a href="#cb33-8" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">250</span> <span class="dv">240</span> <span class="dv">220</span> <span class="dv">190</span></span></code></pre></div>
 <blockquote>
 <p>ℹ Read article <a href="https://omega1x.github.io/pipenostics/articles/Concepts.html" class="external-link">Concepts and useful notes</a> for a deeper dive into the topic.</p>
 </blockquote>
