@@ -215,7 +215,7 @@ test_that("*m325tracefw* does not write csv-file", {
 
 # Test m325tracebw
 
-DHN <- pipenostics::m325testbench
+DHN <- pipenostics::m325nxdata
 DHN[["d"]] <- 1e3*DHN[["d"]]  # convert [m] to [mm]
 m325tracebw_report <- do.call("m325tracebw", DHN)
 

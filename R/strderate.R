@@ -32,13 +32,13 @@
 #' @export
 #'
 #' @examples
-#'  library(pipenostics)
-#'
-#' with(api5l3t, {
-#' print(strderate(mpa_psi(smys), 53))
-#' print(
-#'   strderate(mpa_psi(uts),seq(0, 250, length.out = length(smys)))
-#' )
+#' library(pipenostics)
+#' pipe_specs <- api5l3tdata[api5l3tdata$origin == 10,] 
+#' with(pipe_specs, {
+#'   print(strderate(mpa_psi(smys), 53))
+#'   print(
+#'     strderate(mpa_psi(uts),seq(0, 250, length.out = length(smys)))
+#'   )
 #'})
 #' # [1] 170.5689 205.0427 239.5165 287.7798 315.3588 356.7274 384.3064 411.8854 446.3592 480.8330
 #' # [11] 549.7806

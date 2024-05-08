@@ -113,6 +113,8 @@ Lu Xing & Jeffrey D. Spitler (2017) \emph{Prediction of undisturbed ground tempe
 \code{\link{geodist}} and \code{\link{geoarea}} for calculating geographical metrics.
 
 Other utils: 
+\code{\link{b36mass}()},
+\code{\link{b36pipedata}},
 \code{\link{geoarea}()},
 \code{\link{meteos}()},
 \code{\link{wth_d}()}

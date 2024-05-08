@@ -159,6 +159,6 @@ Other Minenergo:
 \code{\link{m278soildata}},
 \code{\link{m325beta}()},
 \code{\link{m325nhldata}},
-\code{\link{m325testbench}}
+\code{\link{m325nxdata}}
 }
 \concept{Minenergo}

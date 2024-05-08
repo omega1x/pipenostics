@@ -164,6 +164,8 @@ print(geoarea(lat1, lon1, lat2, lon2, lat3, lon3))
 }
 \seealso{
 Other utils: 
+\code{\link{b36mass}()},
+\code{\link{b36pipedata}},
 \code{\link{meteos}()},
 \code{\link{mgtdhid}()},
 \code{\link{wth_d}()}

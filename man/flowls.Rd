@@ -35,13 +35,13 @@ Find and list all possible paths of heat carrier flow (water) in the given
 \details{
 Only branched topology without cycles is considered where no more than one
 incoming edge exists for every \code{acceptor} node. For instance,
-\code{\link{m325testbench}} has permitted topology.
+\code{\link{m325nxdata}} has permitted topology.
 
 Though input arguments are natively vectorized their individual values
 all relate to common part of district heating network, i.e. associated with
 common object. It is due to isomorphism between vector representation and
 directed graph of this network. For more details of isomorphic topology
-description see \code{\link{m325testbench}}.
+description see \code{\link{m325nxdata}}.
 }
 \examples{
  library(pipenostics)
@@ -62,7 +62,7 @@ flowls(c("A", "B", "B"), c("B", "D", "E"))
 #$E
 #[1] 1 3
 
-# All possible flow paths in test bench illustrated in `?m325testbench`:
+# All possible flow paths in test bench illustrated in `?m325nxdata`:
 all_paths <- list(
   c(12, 13, 11, 8, 4, 1),  # hereinafter indexes of acceptor nodes
   c(12, 13, 11, 8, 4, 2),
@@ -80,7 +80,7 @@ all_paths <- list(
 )
 
 # find those paths:
-path <- with(pipenostics::m325testbench, {
+path <- with(pipenostics::m325nxdata, {
   flowls(sender, acceptor)
 })
 
@@ -90,6 +90,6 @@ path[[4]]
 }
 }
 \seealso{
-\code{\link{m325testbench}} for example of topology of district heating
+\code{\link{m325nxdata}} for example of topology of district heating
  system
 }

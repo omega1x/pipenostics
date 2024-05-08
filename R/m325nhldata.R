@@ -3,7 +3,7 @@
 #' Data represent values of specific heat loss power officially accepted by
 #' \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325} as
 #' norms. Those values are maximums which are legally
-#' affirmed to contribute to normative heat loss \eqn{Q_NHL} of
+#' affirmed to contribute to normative heat loss \eqn{Q_{NHL}} of
 #' district heating systems with water as a heat carrier.
 #'
 #' Data is organized as a full factorial design, whereas for some factorial

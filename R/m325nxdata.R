@@ -8,7 +8,7 @@
 #'
 #' The test bench has the next configuration:
 #'
-#' \figure{m325testbench.png}
+#' \figure{m325nxdata.png}
 #'
 #' As it may be seen from the figure there is a particularity in topology of
 #' the provided directed graph: each node has only single ancestor. Hence one
@@ -143,13 +143,13 @@
 #'
 #' # Check for declared topology isomorphism:
 #' stopifnot(
-#'   all(!duplicated(m325testbench$acceptor))
+#'   all(!duplicated(m325nxdata$acceptor))
 #' )
 #'
 #' # Do all terminal nodes have sensor-measured regime parameters?:
-#' terminal_nodes <- subset(m325testbench, !(acceptor %in% sender))
+#' terminal_nodes <- subset(m325nxdata, !(acceptor %in% sender))
 #' stopifnot(
 #'   all(!is.na(subset(terminal_nodes, select = c(temperature, pressure, flow_rate))))
 #' )
 #'
-"m325testbench"
+"m325nxdata"

@@ -40,6 +40,8 @@ Get a list of weather stations located primarily in the
  depths measured at the listed weather stations.
 
 Other utils: 
+\code{\link{b36mass}()},
+\code{\link{b36pipedata}},
 \code{\link{geoarea}()},
 \code{\link{mgtdhid}()},
 \code{\link{wth_d}()}

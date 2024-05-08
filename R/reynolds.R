@@ -13,10 +13,10 @@
 #'  dynamic viscosity of fluid in pipe, [\emph{kg/m/s}]. Type: \code{\link{assert_double}}.
 #'
 #' @param u
-#'  mean velocity of fluid  in pipe, [\emph{m/s}]. Type: \code{\link{assert_double}}.
+#'  mean velocity of fluid in pipe, [\emph{m/s}]. Type: \code{\link{assert_double}}.
 #'
 #' @param rho
-#'  mass density of fluid  in pipe, [\emph{kg/m^3}]. Type: \code{\link{assert_double}}.
+#'  mass density of fluid in pipe, [\emph{kg/m^3}]. Type: \code{\link{assert_double}}.
 #'
 #' @param v
 #'  volumetric flow rate of fluid in pipe, [\emph{m^3/s}]. Type: \code{\link{assert_double}}.

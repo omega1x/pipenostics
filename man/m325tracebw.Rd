@@ -205,7 +205,7 @@ Trace values of thermal-hydraulic regime (temperature, pressure,
 }
 \details{
 They consider the topology of district heating network represented by
- \code{\link{m325testbench}}:
+ \code{\link{m325nxdata}}:
 
  \figure{m325tracebw0.png}
 
@@ -223,7 +223,7 @@ They consider the topology of district heating network represented by
  all relate to common part of district heating network, i.e. associated with
  common object. It is due to isomorphism between vector representation and
  directed graph of this network. For more details of isomorphic topology
- description see \code{\link{m325testbench}}.
+ description see \code{\link{m325nxdata}}.
 
  Before tracing starts for the next node, previously calculated values of
  thermal-hydraulic parameters are aggregated by either averaging or
@@ -240,7 +240,7 @@ library(pipenostics)
 m325tracebw()
 
 ## Consider isomorphic representation of District Heating Network graph:
-DHN <- pipenostics::m325testbench
+DHN <- pipenostics::m325nxdata
 DHN$d <- 1e3*DHN$d  # convert [m] to [mm]
 
 ## When tracing large network graphs put screen log to file

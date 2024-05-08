@@ -197,7 +197,7 @@ The calculated (values of) regime may be considered as representation of
  technical state of pipe walls and insulation.
 
  They consider the topology of district heating network represented by
- \code{\link{m325testbench}}:
+ \code{\link{m325nxdata}}:
 
  \figure{m325tracefw.png}
 
@@ -218,7 +218,7 @@ The calculated (values of) regime may be considered as representation of
  all relate to common part of district heating network, i.e. associated with
  common object. It is due to isomorphism between vector representation and
  directed graph of this network. For more details of isomorphic topology
- description see \code{\link{m325testbench}}.
+ description see \code{\link{m325nxdata}}.
 
  They are welcome to couple the algorithm with functionality of
  \href{https://CRAN.R-project.org/package=data.table}{data.table}.
@@ -230,7 +230,7 @@ library(pipenostics)
 m325tracefw(verbose = FALSE)
 
 # Consider isomorphic representation of District Heating Network graph:
-DHN <- pipenostics::m325testbench
+DHN <- pipenostics::m325nxdata
 
 # * avoid using numeric identifiers for nodes:
 DHN$sender   <- sprintf("N\%02i", DHN$sender)

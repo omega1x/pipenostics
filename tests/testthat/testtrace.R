@@ -261,7 +261,7 @@ test_that("*tracebw* does not write csv-file", {
 })
 
 test_that("*tracebw* does not produce ensample results (formed by `m325tracebw`)", {
-  DHN <- pipenostics::m325testbench
+  DHN <- pipenostics::m325nxdata
   DHN[["d"]] <- 1e3*DHN[["d"]]  # convert [m] to [mm]
 
   DHN[["sender"]]   <- sprintf("N%02i", DHN[["sender"]])

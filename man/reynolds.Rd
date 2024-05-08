@@ -17,9 +17,9 @@ re_m(d, mu, m)
 
 \item{mu}{dynamic viscosity of fluid in pipe, [\emph{kg/m/s}]. Type: \code{\link{assert_double}}.}
 
-\item{u}{mean velocity of fluid  in pipe, [\emph{m/s}]. Type: \code{\link{assert_double}}.}
+\item{u}{mean velocity of fluid in pipe, [\emph{m/s}]. Type: \code{\link{assert_double}}.}
 
-\item{rho}{mass density of fluid  in pipe, [\emph{kg/m^3}]. Type: \code{\link{assert_double}}.}
+\item{rho}{mass density of fluid in pipe, [\emph{kg/m^3}]. Type: \code{\link{assert_double}}.}
 
 \item{v}{volumetric flow rate of fluid in pipe, [\emph{m^3/s}]. Type: \code{\link{assert_double}}.}
 

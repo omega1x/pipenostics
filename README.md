@@ -15,12 +15,13 @@ diagnostics, reliability and predictive maintenance of pipeline systems.
 
 ## Intro
 
-The package aggregates to some extent the separate knowledge concerning
-engineering, reliability, diagnostics and predictive maintenance of pipeline
-systems. For the present time the package contains utilities for processing
-corrosion data commonly gathered by *inline inspection*, as well as
-empirical models for calculations of local thermal-hydraulic regimes of
-district heating network.
+The package aggregates some of the separate knowledge regarding engineering,
+reliability, diagnostics, and predictive maintenance of pipeline systems.
+At the moment, the package includes utilities for processing corrosion data
+commonly collected by *inline inspection*, as well as empirical models for
+calculating local thermal-hydraulic conditions in district heating networks.
+Additionally, the package provides a variety of useful tools and datasets that
+can assist with solving a range of related issues.
 
 ## Installation
 

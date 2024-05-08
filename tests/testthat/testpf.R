@@ -52,9 +52,9 @@ test_that("*b31gpf* gives wrong results", {
 
 
 test_that("*strderate* gives specified minimum yield of stress", {
-  data(api5l3t)
+  pipe_specs <- api5l3tdata[api5l3tdata$origin == 10,] 
   expect_equal(
-    strderate(mpa_psi(api5l3t[["uts"]]),seq(0, 250, length.out = nrow(api5l3t))),
+    strderate(mpa_psi(pipe_specs[["uts"]]),seq(0, 250, length.out = nrow(pipe_specs))),
     c(310.2641, 330.9483, 413.6854, 398.6854, 404.3697, 415.0540, 439.5278,
       457.1068, 460.8963, 485.3701, 530.5282),
     tolerance = 1e-5
