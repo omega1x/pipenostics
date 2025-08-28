@@ -17,31 +17,31 @@ mgtdhgeot(tau, lat = 57, lon = 57, depth = 2.4)
 }
 \arguments{
 \item{id}{weather station unique identifier. Only identifiers from \code{\link{meteos}} dataset are accepted.
-Type: \code{\link{assert_integer}}. For \code{mgtdhidt} acceptable length is \code{1}.}
+Type: \code{\link[checkmate]{assert_integer}}. For \code{mgtdhidt} acceptable length is \code{1}.}
 
 \item{tau}{time point for which it is necessary to obtain the value of the soil
 temperature; it can be specified as an integer, representing the 
 number of hours that have passed since the beginning of the year, or 
 as a value of \code{\link{POSIXct}} type. 
-Type: \code{\link{assert_count}}, or \code{\link{assert_posixct}}. 
+Type: \code{\link[checkmate]{assert_count}}, or \code{\link[checkmate]{assert_posixct}}. 
 For \code{mgtdhid} acceptable length is \code{1}.}
 
-\item{depth}{depth at which the ground temperature is calculated, [\emph{m}]. Type: \code{\link{assert_number}}.}
+\item{depth}{depth at which the ground temperature is calculated, [\emph{m}]. Type: \code{\link[checkmate]{assert_number}}.}
 
 \item{lat}{latitude of the geographical location where the value of soil temperature needs to be determined, [\emph{DD}].
-Type: \code{\link{assert_double}}. For \code{mgtdhgeot} acceptable length is \code{1}.}
+Type: \code{\link[checkmate]{assert_double}}. For \code{mgtdhgeot} acceptable length is \code{1}.}
 
 \item{lon}{longitude of the geographical location where the value of soil temperature needs to be determined, [\emph{DD}].
-Type: \code{\link{assert_double}}. For \code{mgtdhgeot} acceptable length is \code{1}.}
+Type: \code{\link[checkmate]{assert_double}}. For \code{mgtdhgeot} acceptable length is \code{1}.}
 
 \item{use_cluster}{utilize functionality of parallel processing on multi-core CPU.
-Type: \code{\link{assert_flag}}.}
+Type: \code{\link[checkmate]{assert_flag}}.}
 }
 \value{
 Undisturbed (median) ground temperature value calculated with 
  the \emph{MGTDH}-model, specifically for the location of the 
  user-specified meteorological station, at specified depth, and time, [\emph{°C}].
- Type: \code{\link{assert_double}}.
+ Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Get the undisturbed (median) value of ground temperature at different depths
@@ -72,7 +72,7 @@ where
 
  For the convenience of using the \emph{MGTDH}-model, several interface 
  functions have been provided. Each function generates a vector of type
- \code{\link{assert_double}} as an output. 
+ \code{\link[checkmate]{assert_double}} as an output. 
 
  The \code{mgtdhid} and \code{mgtdhidt} functions are used to obtain 
  ground temperature data from specific meteorological stations. 
@@ -113,6 +113,7 @@ Lu Xing & Jeffrey D. Spitler (2017) \emph{Prediction of undisturbed ground tempe
 \code{\link{geodist}} and \code{\link{geoarea}} for calculating geographical metrics.
 
 Other utils: 
+\code{\link{b36dwthv}()},
 \code{\link{b36mass}()},
 \code{\link{b36pipedata}},
 \code{\link{geoarea}()},

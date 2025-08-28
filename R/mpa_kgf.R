@@ -9,11 +9,11 @@
 #'
 #' @param x
 #'  pressure (stress) measured in \emph{kilogram-force per square cm},
-#'  [\emph{kgf/cm^2}]. Type: \code{\link{assert_double}}.
+#'  [\emph{kgf/cm^2}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
 #'  pressure (stress) in \emph{megapascals}, [\emph{MPa}].
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @seealso
 #'  \code{\link{kgf_mpa}} for converting \emph{megapascals} to \emph{kilogram-force per square cm}

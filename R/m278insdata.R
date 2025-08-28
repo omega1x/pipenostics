@@ -14,17 +14,17 @@
 #' \describe{
 #'   \item{id}{Number of insulation material table 5.1 of Appendix 5.3 in
 #'    \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
-#'    Type: \code{\link{assert_integerish}}.
+#'    Type: \code{\link[checkmate]{assert_integerish}}.
 #'    }
 #'   \item{material}{Designation of insulation material more or less similar
 #'   to those in table 5.1 of Appendix 5.3 in
 #'   \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
-#'   Type: \code{\link{assert_character}}.
+#'   Type: \code{\link[checkmate]{assert_character}}.
 #'   }
 #'   \item{lambda}{Value for intercept, [\emph{mW/m/°C}].
-#'   Type: \code{\link{assert_integer}}.
+#'   Type: \code{\link[checkmate]{assert_integer}}.
 #'   }
-#'   \item{k}{Value for factor. Type: \code{\link{assert_integer}}.}
+#'   \item{k}{Value for factor. Type: \code{\link[checkmate]{assert_integer}}.}
 #'  }
 #' @source \url{https://docs.cntd.ru/document/1200035568}
 "m278insdata"

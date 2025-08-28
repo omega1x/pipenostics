@@ -7,10 +7,10 @@
 \format{
 A data frame with 15 rows and 3 variables:
 \describe{
-  \item{subsoil}{Geological name of subsoil. Type: \code{\link{assert_character}}.}
-  \item{state}{The degree of water penetration to the subsoil. Type: \code{\link{assert_character}}.}
+  \item{subsoil}{Geological name of subsoil. Type: \code{\link[checkmate]{assert_character}}.}
+  \item{state}{The degree of water penetration to the subsoil. Type: \code{\link[checkmate]{assert_character}}.}
   \item{lambda}{Value of thermal conductivity of subsoil regarding water penetration, [\emph{W/m/°C}].
-  Type: \code{\link{assert_double}}.
+  Type: \code{\link[checkmate]{assert_double}}.
   }
  }
 }
@@ -35,6 +35,7 @@ Other Minenergo:
 \code{\link{m325beta}()},
 \code{\link{m325nhl}()},
 \code{\link{m325nhldata}},
+\code{\link{m325nvl}()},
 \code{\link{m325nxdata}}
 }
 \concept{Minenergo}

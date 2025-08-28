@@ -11,7 +11,9 @@ m325tracebw(
   temperature = 70,
   pressure = pipenostics::mpa_kgf(6),
   flow_rate = 20,
+  a = 0,
   d = 100,
+  wth = 6.5,
   len = 72.446,
   year = 1986,
   insulation = 0,
@@ -38,32 +40,40 @@ of test bench considered this identifier should be unique for every row.
 Type: any type that can be painlessly coerced to character by
 \code{\link{as.character}}.}
 
-\item{temperature}{Sensor-measured temperature of heat carrier (water) sensor-measured on 
+\item{temperature}{sensor-measured temperature of heat carrier (water) sensor-measured on
 the terminal acceptor node, [\emph{°C}].
  Use \code{NA_float_}s for (terminal) nodes without temperature sensor.
- Type: \code{\link{assert_double}}.}
+ Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{pressure}{Sensor-measured
+\item{pressure}{sensor-measured
 \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
 [\emph{MPa}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{flow_rate}{Sensor-measured amount of heat carrier (water) on terminal node that is
-transferred by pipe (i.e. acceptor's incoming edge) during a period, [\emph{ton/hour}]. 
-Type: \code{\link{assert_double}}.
+\item{flow_rate}{sensor-measured amount of heat carrier (water) on terminal node that is
+transferred by pipe (i.e. acceptor's incoming edge) during a period, [\emph{ton/hour}].
+Type: \code{\link[checkmate]{assert_double}}.
 Use \code{NA_float_}s for nodes without flow rate sensor.}
 
-\item{d}{internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
+\item{a}{heat carrier volume loss factor of pipe:
+\code{0} - no loss of heat carrier;
+\code{0.0025} - maximum possible loss of heat carrier allowed.
+Type: \code{\link[checkmate]{assert_double}}.}
+
+\item{d}{nominal (outside) diameter of pipe (i.e.diameter of acceptor's incoming edge),
 [\emph{mm}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
+
+\item{wth}{nominal wall thickness of pipe, [\emph{mm}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{len}{pipe length (i.e. length of acceptor's incoming edge), [\emph{m}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{year}{year when the pipe (i.e. acceptor's incoming edge) is put in operation
 after laying or total overhaul.
-Type: \code{\link{assert_integerish}}.}
+Type: \code{\link[checkmate]{assert_integerish}}.}
 
 \item{insulation}{identifier of insulation that covers the exterior of pipe (i.e. acceptor's
 incoming edge):
@@ -72,7 +82,7 @@ incoming edge):
    \item{\code{1}}{foamed polyurethane or analogue}
    \item{\code{2}}{polymer concrete}
  }
-Type: \code{\link{assert_subset}}.}
+Type: \code{\link[checkmate]{assert_subset}}.}
 
 \item{laying}{type of pipe laying depicting the position of pipe in space. Only five
 types of pipe laying are considered:
@@ -83,22 +93,22 @@ types of pipe laying are considered:
   \item \code{tunnel},
   \item \code{underground}.
 }
-Type: \code{\link{assert_subset}}.}
+Type: \code{\link[checkmate]{assert_subset}}.}
 
 \item{beta}{logical indicator: should they consider additional heat loss of fittings
 located on this pipe (i.e. acceptor's incoming edge)?
-Type: \code{\link{assert_logical}}.}
+Type: \code{\link[checkmate]{assert_logical}}.}
 
 \item{exp5k}{logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
 \code{TRUE} pipe is operated more that \code{5000} hours per year.
-Type: \code{\link{assert_logical}}.}
+Type: \code{\link[checkmate]{assert_logical}}.}
 
 \item{roughness}{roughness of internal wall of pipe (i.e. acceptor's incoming edge), [\emph{m}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{inlet}{elevation of pipe inlet, [\emph{m}]. Type: \code{\link{assert_double}}.}
+\item{inlet}{elevation of pipe inlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{outlet}{elevation of pipe outlet, [\emph{m}]. Type: \code{\link{assert_double}}.}
+\item{outlet}{elevation of pipe outlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{method}{method of determining \emph{Darcy friction factor}:
 \itemize{
@@ -106,7 +116,7 @@ Type: \code{\link{assert_double}}.}
   \item \code{vatankhan}
   \item \code{buzelli}
 }
-Type: \code{\link{assert_choice}}.
+Type: \code{\link[checkmate]{assert_choice}}.
 For more details see \code{\link{dropp}}.}
 
 \item{opinion}{method for aggregating values of regime parameters on each node for the
@@ -117,17 +127,17 @@ next tracing step:
    \item{\code{median}}{median of parameter values are used for the next
    tracing step}
  }
-Type: \code{\link{assert_choice}}.}
+Type: \code{\link[checkmate]{assert_choice}}.}
 
 \item{verbose}{logical indicator: should they watch tracing process on console?
-Type: \code{\link{assert_flag}}.}
+Type: \code{\link[checkmate]{assert_flag}}.}
 
 \item{csv}{logical indicator: should they incrementally dump results to \emph{csv}-
 file while tracing?
-Type: \code{\link{assert_flag}}.}
+Type: \code{\link[checkmate]{assert_flag}}.}
 
 \item{file}{name of \emph{csv}-file which they dump results to.
-Type: \code{\link{assert_character}} of length 1 that can be used safely
+Type: \code{\link[checkmate]{assert_character}} of length 1 that can be used safely
 to create a file and write to it.}
 }
 \value{
@@ -137,61 +147,61 @@ to create a file and write to it.}
       \item{\code{node}}{
         \emph{Tracing job}. Identifier of the node which regime parameters is
         calculated for. Values in this vector are identical to those in
-        argument \code{acceptor}. 
-        Type: \code{\link{assert_character}}.
+        argument \code{acceptor}.
+        Type: \code{\link[checkmate]{assert_character}}.
       }
 
       \item{\code{tracing}}{
         \emph{Tracing job}. Identifiers of nodes from which regime parameters
         are traced for the given node. Identifier \code{sensor} is used when
         values of regime parameters for the node are sensor readings.
-        Type: \code{\link{assert_character}}.
+        Type: \code{\link[checkmate]{assert_character}}.
       }
 
       \item{\code{backward}}{
          \emph{Tracing job}. Identifier of tracing direction. It constantly
-         equals to \code{TRUE}. 
-         Type: \code{\link{assert_logical}}.
+         equals to \code{TRUE}.
+         Type: \code{\link[checkmate]{assert_logical}}.
        }
 
       \item{\code{aggregation}}{
-         \emph{Tracing job}. Identifier of aggregation method: \emph{span}, \emph{median}, \emph{mean}, or \emph{identity}. Type: \code{\link{assert_character}}.
+         \emph{Tracing job}. Identifier of aggregation method: \emph{span}, \emph{median}, \emph{mean}, or \emph{identity}. Type: \code{\link[checkmate]{assert_character}}.
        }
       \item{\code{loss}}{
-         \emph{Traced thermal hydraulic regime}. Normative specific heat loss power of adjacent pipe, [\emph{kcal/m/h}]. Type: \code{\link{assert_double}}.
+         \emph{Traced thermal hydraulic regime}. Normative specific heat loss power of adjacent pipe, [\emph{kcal/m/h}]. Type: \code{\link[checkmate]{assert_double}}.
        }
       \item{\code{flux}}{
-         \emph{Traced thermal hydraulic regime}. Normative heat flux of adjacent pipe, [\emph{W/m^2}]. Type: \code{\link{assert_double}}.
+         \emph{Traced thermal hydraulic regime}. Normative heat flux of adjacent pipe, [\emph{W/m^2}]. Type: \code{\link[checkmate]{assert_double}}.
        }
       \item{\code{Q}}{
-        \emph{Traced thermal hydraulic regime}. Normative heat loss of adjacent pipe per day, [\emph{kcal}]. 
-        Type: \code{\link{assert_character}}.
+        \emph{Traced thermal hydraulic regime}. Normative heat loss of adjacent pipe per day, [\emph{kcal}].
+        Type: \code{\link[checkmate]{assert_character}}.
       }
 
       \item{\code{temperature}}{
         \emph{Traced thermal hydraulic regime}. Traced temperature of heat
         carrier (water) that is associated with the node, [\emph{°C}].
-        Type: \code{\link{assert_double}}.
+        Type: \code{\link[checkmate]{assert_double}}.
       }
 
       \item{\code{pressure}}{
         \emph{Traced thermal hydraulic regime}. Traced pressure of heat
         carrier (water) that is associated with the node, [\emph{MPa}].
-        Type: \code{\link{assert_double}}.
+        Type: \code{\link[checkmate]{assert_double}}.
       }
 
       \item{\code{flow_rate}}{
          \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
          carrier (water) that is associated with the node, [\emph{ton/hour}].
-         Type: \code{\link{assert_double}}.
+         Type: \code{\link[checkmate]{assert_double}}.
       }
 
       \item{\code{job}}{
-         \emph{Tracing job}. Value of tracing job counter. 
-         Type: \code{\link{assert_count}}.
+         \emph{Tracing job}. Value of tracing job counter.
+         Type: \code{\link[checkmate]{assert_count}}.
       }
  }
- Type: \code{\link{assert_data_frame}}.
+ Type: \code{\link[checkmate]{assert_data_frame}}.
 }
 \description{
 Trace values of thermal-hydraulic regime (temperature, pressure,
@@ -210,7 +220,7 @@ They consider the topology of district heating network represented by
  \figure{m325tracebw0.png}
 
  The network may be partially sensor-equipped too:
- 
+
  \figure{m325tracebwp.png}
 
  In latter case no more than two nodes must be equipped with pressure and temperature
@@ -241,7 +251,6 @@ m325tracebw()
 
 ## Consider isomorphic representation of District Heating Network graph:
 DHN <- pipenostics::m325nxdata
-DHN$d <- 1e3*DHN$d  # convert [m] to [mm]
 
 ## When tracing large network graphs put screen log to file
 output <- do.call("m325tracebw", c(as.list(DHN), verbose = TRUE))

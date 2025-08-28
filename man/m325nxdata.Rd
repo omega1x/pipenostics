@@ -23,8 +23,8 @@ A data frame with 22 rows (number of nodes and incoming edges) and 15 variables:
   \item{temperature}{
     Snapshot of thermal-hydraulic regime state: temperature of heat carrier
     (water) sensor-measured on terminal acceptor node, [\emph{°C}].
-    Type: \code{\link{assert_double}}. \code{NA}s are introduced for nodes
-    without temperature sensor.
+    Type: \code{\link[checkmate]{assert_double}}. \code{NA}s are introduced
+    for nodes without temperature sensor.
   }
 
   \item{pressure}{
@@ -33,47 +33,56 @@ A data frame with 22 rows (number of nodes and incoming edges) and 15 variables:
     \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
     of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
     [\emph{MPa}].
-    Type: \code{\link{assert_double}}. \code{NA}s are introduced for nodes
-    without pressure sensor.
+    Type: \code{\link[checkmate]{assert_double}}. \code{NA}s are introduced
+    for nodes without pressure sensor.
   }
 
   \item{flow_rate}{
     Snapshot of thermal-hydraulic regime state:
     sensor-measured amount of heat carrier (water) on terminal node that is
     transferred by pipe (i.e. acceptor's incoming edge) during a period,
-    [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
+    [\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.
     \code{NA}s are introduced for nodes without flow rate sensor.
   }
 
- \item{d}{
-   internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
-   [\emph{m}].
-   Type: \code{\link{assert_double}}.
- }
+  \item{a}{
+    Heat carrier (water) volume loss factor of cylindrical pipe,
+    [\eqn{hour^{-1}}]. Type: \code{\link[checkmate]{assert_double}}.
+  }
 
- \item{len}{
-   pipe length (i.e. length of acceptor's incoming edge), [\emph{m}].
-   Type: \code{\link{assert_double}}.
- }
+  \item{d}{
+    nominal (outside) diameter of pipe (i.e.diameter of acceptor's incoming
+    edge), [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.
+  }
 
- \item{year}{
-   year when the pipe (i.e. acceptor's incoming edge) is put in operation after
-   laying or total overhaul.
-   Type: \code{\link{assert_integerish}}.
- }
+  \item{wth}{
+    nominal wall thickness of pipe, [\emph{mm}].
+    Type: \code{\link[checkmate]{assert_double}}.
+  }
 
- \item{insulation}{
-    identifier of insulation that covers the exterior of pipe (i.e. acceptor's
-    incoming edge):
+  \item{len}{
+    pipe length (i.e. length of acceptor's incoming edge), [\emph{m}].
+    Type: \code{\link[checkmate]{assert_double}}.
+  }
+
+  \item{year}{
+    year when the pipe (i.e. acceptor's incoming edge) is put in operation
+    after laying or total overhaul.
+    Type: \code{\link[checkmate]{assert_integerish}}.
+  }
+
+  \item{insulation}{
+    identifier of insulation that covers the exterior of pipe (i.e.
+    acceptor's incoming edge):
     \describe{
       \item{\code{0}}{no insulation}
       \item{\code{1}}{foamed polyurethane or analogue}
       \item{\code{2}}{polymer concrete}
     }
-   Type: \code{\link{assert_integerish}}.
- }
+    Type: \code{\link[checkmate]{assert_integerish}}.
+  }
 
- \item{laying}{
+  \item{laying}{
     type of pipe laying depicting the position of pipe in space. Only five
     types of pipe laying are considered:
     \itemize{
@@ -83,36 +92,35 @@ A data frame with 22 rows (number of nodes and incoming edges) and 15 variables:
       \item \code{tunnel},
       \item \code{underground}.
     }
-    Type: \code{\link{assert_character}}.
+    Type: \code{\link[checkmate]{assert_character}}.
   }
 
- \item{beta}{
-   logical indicator: should they consider additional heat loss of fittings
-   located on this pipe (i.e. acceptor's incoming edge)?
-   Type: \code{\link{assert_logical}}.
- }
+  \item{beta}{
+    logical indicator: should they consider additional heat loss of fittings
+    located on this pipe (i.e. acceptor's incoming edge)?
+    Type: \code{\link[checkmate]{assert_logical}}.
+  }
 
- \item{exp5k}{
+  \item{exp5k}{
     logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
     \code{TRUE} pipe is operated more that \code{5000} hours per year.
-    Type: \code{\link{assert_logical}}.
+    Type: \code{\link[checkmate]{assert_logical}}.
   }
 
- \item{roughness}{
-   roughness of internal wall of pipe (i.e. acceptor's incoming edge),
-   [\emph{m}].
-   Type: \code{\link{assert_double}}.
- }
+  \item{roughness}{
+    roughness of internal wall of pipe (i.e. acceptor's incoming edge),
+    [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
+  }
 
- \item{inlet}{
+  \item{inlet}{
     elevation of pipe inlet, [\emph{m}].
-    Type: \code{\link{assert_double}}.
- }
+    Type: \code{\link[checkmate]{assert_double}}.
+  }
 
- \item{outlet}{
+  \item{outlet}{
     elevation of pipe outlet, [\emph{m}].
-    Type: \code{\link{assert_double}}.
- }
+    Type: \code{\link[checkmate]{assert_double}}.
+  }
 }
 }
 \usage{
@@ -147,7 +155,8 @@ functionality for plotting there is a zero sender of flow.
 \examples{
  library(pipenostics)
 
-# Do not hesitate to use `data.table` and `igraph` for larger chunks of network.
+# Do not hesitate to use `data.table` and `igraph` for larger chunks of
+# network.
 
 # Check for declared topology isomorphism:
 stopifnot(
@@ -157,7 +166,11 @@ stopifnot(
 # Do all terminal nodes have sensor-measured regime parameters?:
 terminal_nodes <- subset(m325nxdata, !(acceptor \%in\% sender))
 stopifnot(
-  all(!is.na(subset(terminal_nodes, select = c(temperature, pressure, flow_rate))))
+  all(
+    !is.na(
+      subset(terminal_nodes, select = c(temperature, pressure, flow_rate))
+    )
+  )
 )
 
 }
@@ -171,7 +184,8 @@ Other Minenergo:
 \code{\link{m278soildata}},
 \code{\link{m325beta}()},
 \code{\link{m325nhl}()},
-\code{\link{m325nhldata}}
+\code{\link{m325nhldata}},
+\code{\link{m325nvl}()}
 }
 \concept{Minenergo}
 \keyword{datasets}

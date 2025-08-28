@@ -7,14 +7,14 @@
 fric_buzelli(reynolds, roughness = 0, strict = FALSE)
 }
 \arguments{
-\item{reynolds}{Reynolds number, []. Type: \code{\link{assert_double}}.}
+\item{reynolds}{Reynolds number, []. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{roughness}{relative roughness, []. Type: \code{\link{assert_double}}.}
+\item{roughness}{relative roughness, []. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{strict}{calculate only inside the precision region. Type: \code{\link{assert_flag}}.}
+\item{strict}{calculate only inside the precision region. Type: \code{\link[checkmate]{assert_flag}}.}
 }
 \value{
-pipe friction factor, []. Type: \code{\link{assert_double}}.
+pipe friction factor, []. Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Estimate \emph{Darcy friction factor} explicitly with extremely accurate

@@ -34,19 +34,19 @@
 #'  carrier (water)
 #'  inside the pipe sensor-measured at the inlet
 #'  (forward tracing) or at the outlet (backward tracing) of path, [\emph{°C}].
-#'  Type: \code{\link{assert_number}}.
+#'  Type: \code{\link[checkmate]{assert_number}}.
 #'
 #' @param pressure
 #'  \emph{Traced thermal hydraulic regime}. Sensor-measured
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute
 #'  pressure} of heat carrier (water) sensor-measured at the inlet
 #'  (forward tracing) or at the outlet (backward tracing) of path, [\emph{MPa}].
-#'  Type: \code{\link{assert_number}}.
+#'  Type: \code{\link[checkmate]{assert_number}}.
 #'
 #' @param flow_rate
 #'  \emph{Traced thermal hydraulic regime}. Amount of heat carrier (water)
 #'  sensor-measured at the inlet (forward tracing) or at the outlet (backward
-#'  tracing) of path, [\emph{ton/hour}]. Type: \code{\link{assert_number}}.
+#'  tracing) of path, [\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_number}}.
 #'
 #' @param g
 #'  amount of heat carrier discharge to network for each pipe segment in the
@@ -54,35 +54,35 @@
 #'  is \code{TRUE} then they treat argument \code{g} as absolute value in
 #'  [\emph{ton/hour}], otherwise they do as percentage of flow_rate in the
 #'  pipe segment.
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param d
 #'  internal diameters of subsequent pipes in tracing path that are enumerated
 #'  along the direction of flow, [\emph{mm}].
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param len
 #'  length of subsequent pipes in tracing path that are enumerated
 #'  along the direction of flow, [\emph{m}].
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param loss
 #'  user-provided value of \emph{specific heat loss} power for each pipe in tracing
 #'  path enumerated along the direction of flow, [\emph{kcal/m/h}]. Values of the
 #'  argument can be obtained experimentally, or taken from regulatory documents.
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param roughness
 #'  roughness of internal wall for each pipe in tracing path enumerated along
-#'  the direction of flow, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  the direction of flow, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param inlet
 #'  elevation of pipe inlet for each pipe in tracing path enumerated along
-#'  the direction of flow, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  the direction of flow, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param outlet
 #'  elevation of pipe outlet for each pipe in tracing path enumerated along
-#'  the direction of flow, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  the direction of flow, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param method
 #'  method of determining \emph{Darcy friction factor}
@@ -91,23 +91,23 @@
 #'    \item \code{vatankhan}
 #'    \item \code{buzelli}
 #'  }
-#'  Type: \code{\link{assert_choice}}. For more details see \code{\link{dropp}}.
+#'  Type: \code{\link[checkmate]{assert_choice}}. For more details see \code{\link{dropp}}.
 #'
 #' @param elev_tol
 #'  maximum allowed discrepancy between adjacent outlet and inlet elevations of
 #'  two subsequent pipes in the traced path, [\emph{m}].
-#'  Type: \code{\link{assert_number}}.
+#'  Type: \code{\link[checkmate]{assert_number}}.
 #'
 #' @param forward
 #'  tracing direction flag: is it a forward direction of tracing?
 #'  If \code{FALSE} the backward tracing is performed.
-#'  Type: \code{\link{assert_flag}}.
+#'  Type: \code{\link[checkmate]{assert_flag}}.
 #'
 #' @param absg
 #'  Whether argument \code{g} (amount of heat carrier discharge to network) is an
 #'  absolute value in [\emph{ton/hour}] (\code{TRUE}) or is it a percentage of
 #'  flow rate in the pipe segment (\code{FALSE})?
-#'  Type: \code{\link{assert_flag}}.
+#'  Type: \code{\link[checkmate]{assert_flag}}.
 #'
 #' @return
 #'  \code{\link{list}} containing results (detailed log) of tracing for each pipe
@@ -115,35 +115,35 @@
 #'  \describe{
 #'    \item{\code{temperature}}{
 #'      \emph{Traced thermal hydraulic regime}. Traced temperature of heat
-#'       carrier (water), [\emph{°C}]. Type: \code{\link{assert_double}}.
+#'       carrier (water), [\emph{°C}]. Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'    \item{\code{pressure}}{
 #'      \emph{Traced thermal hydraulic regime}. Traced pressure of heat
 #'       carrier (water) for each pipe in tracing path enumerated along the
-#'       direction of flow, [\emph{MPa}]. Type: \code{\link{assert_double}}.
+#'       direction of flow, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'    \item{\code{flow_rate}}{
 #'      \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
 #'       carrier (water) for each pipe in tracing path enumerated along the
-#'       direction of flow, [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
+#'       direction of flow, [\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'   \item{\code{loss}}{
 #'      User-provided specific heat
 #'      loss power for each pipe in tracing path enumerated along the direction
-#'      of flow, [\emph{kcal/m/h}], - copy of input. Type: \code{\link{assert_double}}.
+#'      of flow, [\emph{kcal/m/h}], - copy of input. Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'   \item{\code{flux}}{
 #'      Heat flux for each pipe
 #'      in tracing path enumerated along the direction of flow, [\emph{W/m^2}].
-#'      Type: \code{\link{assert_double}}.
+#'      Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'    \item{\code{Q}}{
 #'      Heat loss for each
 #'      pipe in tracing path enumerated along the direction of flow per day,
-#'      [\emph{kcal}]. Type: \code{\link{assert_double}}.
+#'      [\emph{kcal}]. Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'  }
-#'  Type: \code{\link{assert_list}}.
+#'  Type: \code{\link[checkmate]{assert_list}}.
 #'
 #' @examples
 #'  library(pipenostics)

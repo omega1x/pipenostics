@@ -7,9 +7,9 @@
 b31gops(wth, depth)
 }
 \arguments{
-\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 Operational status of pipe as an integer value:
@@ -18,7 +18,7 @@ Operational status of pipe as an integer value:
    \item \emph{2} - monitoring is recommended
    \item \emph{3} - alert! replace the pipe immediately!
  }
- Type: \code{\link{assert_numeric}} and \code{\link{assert_subset}}.
+ Type: \code{\link[checkmate]{assert_numeric}} and \code{\link[checkmate]{assert_subset}}.
 }
 \description{
 Determine the operational status of pipe: is it excellent? or is

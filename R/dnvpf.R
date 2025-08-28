@@ -36,25 +36,25 @@
 #'   use are offended.
 #'
 #' @param d
-#'  nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
+#'  nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param wth
-#'  nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
+#'  nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param uts
 #'  ultimate tensile strength (\emph{UTS}) or
 #'  specified minimum tensile strength (\emph{SMTS}) as a
-#'  characteristic of steel strength, [\emph{MPa}]. Type: \code{\link{assert_double}}.
+#'  characteristic of steel strength, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param depth
-#'  measured maximum depth of the corroded area, [\emph{mm}]. Type: \code{\link{assert_double}}.
+#'  measured maximum depth of the corroded area, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param l
-#'  measured maximum longitudinal length of corroded area, [\emph{mm}]. Type: \code{\link{assert_double}}.
+#'  measured maximum longitudinal length of corroded area, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
 #'  Estimated failure pressure of the corroded pipe, [\emph{MPa}].
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @references
 #'  \enumerate{

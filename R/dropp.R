@@ -11,35 +11,35 @@
 #'
 #' @param temperature
 #'  temperature of heat carrier (water) inside the pipe, [\emph{°C}].
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param pressure
 #'  \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 #'  of heat carrier (water) measured at the
-#'  entrance (inlet) of pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.
+#'  entrance (inlet) of pipe, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param flow_rate
 #'  amount of heat carrier (water) that is transferred by pipe during a period,
-#'  [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
+#'  [\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param d
-#'  internal diameter of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  internal diameter of pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param len
-#'  pipe length, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  pipe length, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param roughness
-#'  roughness of internal wall of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  roughness of internal wall of pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param inlet
-#'  elevation of pipe inlet, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  elevation of pipe inlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param outlet
-#'  elevation of pipe outlet, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  elevation of pipe outlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param method
 #'  method of determining \emph{Darcy friction factor}.
-#'  Type: \code{\link{assert_choice}}.
+#'  Type: \code{\link[checkmate]{assert_choice}}.
 #'  (see \strong{Details})
 #'
 #' @details
@@ -92,7 +92,7 @@
 #'  wall \href{https://en.wikipedia.org/wiki/Surface_roughness}{roughness} of pipe.
 #'
 #' @return
-#'  pressure drop at the outlet of pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.
+#'  pressure drop at the outlet of pipe, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @references
 #'  \itemize{

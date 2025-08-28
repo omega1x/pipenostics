@@ -7,7 +7,7 @@
 wth_d(x)
 }
 \arguments{
-\item{x}{outside diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
+\item{x}{outside diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
 }
 \description{
 Use \href{https://docs.cntd.ru/document/1200174717}{GOST 30732}
@@ -41,6 +41,7 @@ due to significant ambiguity.
 }
 \seealso{
 Other utils: 
+\code{\link{b36dwthv}()},
 \code{\link{b36mass}()},
 \code{\link{b36pipedata}},
 \code{\link{geoarea}()},

@@ -15,10 +15,10 @@
 #'    \item for \code{f_k(x)} - in \href{https://en.wikipedia.org/wiki/Kelvin}{Kelvin}-scale, [\emph{K}]
 #'    \item for \code{f_c(x)} - in \href{https://en.wikipedia.org/wiki/Celsius}{Celsius}-scale, [\emph{°C}]
 #'  }
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
-#'  temperature in \emph{Fahrenheit}-scale, [\emph{°F}]. Type: \code{\link{assert_double}}.
+#'  temperature in \emph{Fahrenheit}-scale, [\emph{°F}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @seealso
 #'  \code{\link{k_f}} and \code{\link{c_f}} for converting from Fahrenheit-scale.

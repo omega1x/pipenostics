@@ -19,15 +19,15 @@
 #'   specified minimum yield of stress (\emph{SMYS}), or ultimate tensile
 #'   strength (\emph{UTS}), or specified minimum tensile strength (\emph{SMTS})
 #'   as a characteristic of steel strength \strong{at room temperature},
-#'   [\emph{MPa}]. Type: \code{\link{assert_double}}.
+#'   [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param temperature
-#'   temperature of pipe wall, [\emph{°C}]. Type: \code{\link{assert_double}}.
+#'   temperature of pipe wall, [\emph{°C}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
 #'   de-rated value of \emph{x}, i.e. of appropriate pipe material property,
 #'   [\emph{MPa}] .
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @export
 #'

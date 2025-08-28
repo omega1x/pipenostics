@@ -6,31 +6,31 @@
 # @description
 #  Calculate ground temperature with \emph{Modified Ground Temperature Double Harmonic Model}
 # (MGTDH-model). This is the internal function that is used inside interface-specific package
-# functions. 
+# functions.
 #
 # @param x
-#   Time after year beginning, [hour].
+#   time after year beginning, [hour].
 #
 # @param depth
-#   Depth where temperature value is calculated, [m].
+#   depth where temperature value is calculated, [m].
 #
 # @param avg
-#   Average year temperature of ground, [°C]. 
+#   average year temperature of ground, [°C].
 #
 # @param ampl1
-#   First harmonic amplitude coefficient, [°C].
+#   first harmonic amplitude coefficient, [°C].
 #
 # @param ampl2
-#   Second harmonic amplitude coefficient, [°C].
+#   second harmonic amplitude coefficient, [°C].
 #
 # @param pl1
-#   Period correction coefficient 1, [].
+#   period correction coefficient 1, [].
 #
 # @param pl2
-#   Period correction coefficient 2, [].
+#   period correction coefficient 2, [].
 #
 # @param diffusivity
-#   Diffusivity of soil, [mm^2/s].
+#   diffusivity of soil, [mm^2/s].
 #
 # @return
 #   Ground temperature for the given time and depth.
@@ -41,7 +41,7 @@ mgtdh <- function(
     ,depth       =  1
     ,avg         =  4.1
     ,ampl1       = 12.1
-    ,ampl2       =  1  
+    ,ampl2       =  1
     ,pl1         = 31.0
     ,pl2         = 19.0
     ,diffusivity =   .490

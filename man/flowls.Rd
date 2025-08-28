@@ -17,16 +17,16 @@ Type: any type that can be painlessly coerced to character by
 \code{\link{as.character}}.}
 
 \item{use_cluster}{utilize functionality of parallel processing on multi-core CPU.
-Type: \code{\link{assert_flag}}.}
+Type: \code{\link[checkmate]{assert_flag}}.}
 }
 \value{
-named \code{list} that contains integer vectors as its elements. The name
- of each element in the \code{list} is the name of \code{acceptor} associated
+named \code{\link{list}} that contains integer vectors as its elements. The name
+ of each element in the \code{\link{list}} is the name of \code{acceptor} associated
  with terminal node of district heating network. Each vector in the
- \code{list} represents an ordered sequence of indexes in \code{acceptor}
+ \code{\link{list}} represents an ordered sequence of indexes in \code{acceptor}
  that enumerates incoming edges from starting node to terminal one. The
- length of returned \code{list} is equal to number of terminal nodes for
- topology considered. Type: \code{\link{assert_list}}.
+ length of returned \code{link{list}} is equal to number of terminal nodes for
+ topology considered. Type: \code{\link[checkmate]{assert_list}}.
 }
 \description{
 Find and list all possible paths of heat carrier flow (water) in the given

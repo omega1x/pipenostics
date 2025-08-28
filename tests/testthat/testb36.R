@@ -25,16 +25,16 @@ C <- data.frame(
 
 for (i in unique(b36pipedata[["origin"]])) {
   ensample <- b36pipedata[b36pipedata[["origin"]] == i, ]
-  
+
   test_that(
     sprintf("*b36mass* errs mass calculations when processing origin [%i] in knots", i), {
       output   <- b36mass(
         ensample[["d"]], ensample[["wth"]], rho = ensample[["rho"]], origin = as.integer(i)
-      )  
+      )
       expect_equal(output, ensample[["mass"]])
     }
   )
-  
+
   test_that(
     sprintf("*b36mass* errs mass calculations when processing origin [%i] out of knots", i), {
       ensample[["d"]]             <- ensample[["d"]] + 0.1
@@ -71,4 +71,30 @@ test_that("*b36wth* errs in wall thickness calculations", {
   output   <- b36wth(ensample[["d"]], ensample[["mass"]], rho = 7.85)
   expect_equal(median(abs(ensample[["wth"]] - output)) < 5e-4, TRUE)
   rm(ensample, output)
+})
+
+test_that("*b36dwthv* errs in diameter/wall thickness pair validation", {
+  dwth_pair <- rbind(
+    data.frame(
+      d = c(
+        351, 88.9, 325, 194, 140, 21, 56, 76, 530, 45, 57, 426, 56, 190, 60, 22,
+        50, 75, 32, 32, 53, 355.6, 63, 130, 51
+      ),
+      wth = c(
+        36, 7.14, 10, 13, 4.5, 6, 11, 1.4, 7, 12, 9.5, 13, 1.2, 14, 9, 3.5, 6,
+        4, 6, 2.5, 8.5, 22.23, 5.5, 14, 5
+      ),
+      status = TRUE
+    ),
+    data.frame(
+      d = c(351, 530, 153, 104, 190, 190), wth = c(37, 35, 9.5, 9.5, 3.1,  13),
+      status = FALSE
+    )
+  )
+  expect_equal(
+    all(b36dwthv(dwth_pair[["d"]], dwth_pair[["wth"]]) == dwth_pair[["status"]])
+    ,
+    TRUE
+  )
+  rm(dwth_pair)
 })

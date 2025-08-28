@@ -8,11 +8,11 @@ psi_mpa(x)
 }
 \arguments{
 \item{x}{pressure (stress) measured in \emph{megapascals}. [\emph{MPa}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 pressure (stress) in \emph{pounds per square inch},
- [\emph{PSI}]. Type: \code{\link{assert_double}}.
+ [\emph{PSI}]. Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pascal_(unit)}{megapascals} (MPa)

@@ -52,50 +52,50 @@
 #'    Sensor-measured temperature of heat carrier (water) sensor-measured on
 #'    the root node, [\emph{°C}].
 #'    Use \code{NA_float_}s for nodes without temperature sensor.
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param pressure
 #'    Sensor-measured
 #'    \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 #'    of heat carrier (water) inside the pipe on the root node, [\emph{MPa}].
 #'    Use \code{NA_float_}s for nodes without pressure sensor.
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param flow_rate
 #'    Sensor-measured amount of heat carrier (water) on root node that is
 #'    transferred by pipe during a period, [\emph{ton/hour}].
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'    Use \code{NA_float_}s for nodes without flow rate sensor.
 #'
 #' @param d
 #'    internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
 #'    [\emph{mm}].
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param len
 #'    pipe length (i.e. length of acceptor's incoming edge), [\emph{m}].
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param loss
 #'    user-provided value of \emph{specific heat loss} power for each pipe in tracing
 #'    path, [\emph{kcal/m/h}]. Values of the argument can be obtained experimentally,
-#'    or taken from regulatory documents. 
-#'    Type: \code{\link{assert_double}}.
+#'    or taken from regulatory documents.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param roughness
 #'    roughness of internal wall of pipe (i.e. acceptor's incoming edge), [\emph{m}].
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param inlet
-#'    elevation of pipe inlet, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'    elevation of pipe inlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param outlet
-#'    elevation of pipe outlet, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'    elevation of pipe outlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param elev_tol
 #'    maximum allowed discrepancy between adjacent outlet and inlet elevations
 #'    of two subsequent pipes in the traced path, [\emph{m}].
-#'    Type: \code{\link{assert_number}}.
+#'    Type: \code{\link[checkmate]{assert_number}}.
 #'
 #' @param method
 #'    method of determining \emph{Darcy friction factor}:
@@ -104,26 +104,26 @@
 #'      \item \code{vatankhan}
 #'      \item \code{buzelli}
 #'    }
-#'    Type: \code{\link{assert_choice}}.
+#'    Type: \code{\link[checkmate]{assert_choice}}.
 #'    For more details see \code{\link{dropp}}.
 #'
 #' @param verbose
 #'    logical indicator: should they watch tracing process on console?
-#'    Type: \code{\link{assert_flag}}.
+#'    Type: \code{\link[checkmate]{assert_flag}}.
 #'
 #' @param csv
 #'    logical indicator: should they incrementally dump results to \emph{csv}-
 #'    file while tracing?
-#'    Type: \code{\link{assert_flag}}.
+#'    Type: \code{\link[checkmate]{assert_flag}}.
 #'
 #' @param file
 #'    name of \emph{csv}-file which they dump results to.
-#'    Type: \code{\link{assert_character}} of length 1 that can be used safely
+#'    Type: \code{\link[checkmate]{assert_character}} of length 1 that can be used safely
 #'    to create a file and write to it.
 #'
 #' @param use_cluster
 #'    utilize functionality of parallel processing on multi-core CPU.
-#'    Type: \code{\link{assert_flag}}.
+#'    Type: \code{\link[checkmate]{assert_flag}}.
 #'
 #' @return
 #'    \code{\link{data.frame}} containing results (detailed log) of tracing in
@@ -133,54 +133,54 @@
 #'         \emph{Tracing job}. Identifier of the node which regime parameters is
 #'         calculated for. Values in this vector are identical to those in
 #'         argument \code{acceptor}.
-#'         Type: \code{\link{assert_character}}.
+#'         Type: \code{\link[checkmate]{assert_character}}.
 #'       }
 #'
 #'       \item{\code{tracing}}{
 #'         \emph{Tracing job}. Identifiers of nodes from which regime parameters
 #'         are traced for the given node. Identifier \code{sensor} is used when
 #'         values of regime parameters for the node are sensor readings.
-#'         Type: \code{\link{assert_character}}.
+#'         Type: \code{\link[checkmate]{assert_character}}.
 #'       }
 #'
 #'       \item{\code{backward}}{
 #'         \emph{Tracing job}. Identifier of tracing direction. It constantly
 #'         equals to \code{FALSE}.
-#'         Type: \code{\link{assert_logical}}.
+#'         Type: \code{\link[checkmate]{assert_logical}}.
 #'       }
 #'
 #'       \item{\code{aggregation}}{
 #'         \emph{Tracing job}. Identifier of the aggregation method associated
 #'         with traced values. For forward tracing the only option is
 #'         \code{identity}.
-#'         Type: \code{\link{assert_character}}.
+#'         Type: \code{\link[checkmate]{assert_character}}.
 #'       }
 #'
 #'       \item{\code{temperature}}{
 #'         \emph{Traced thermal hydraulic regime}. Traced temperature of heat
 #'         carrier (water) that is associated with the node, [\emph{°C}].
-#'         Type: \code{\link{assert_double}}.
+#'         Type: \code{\link[checkmate]{assert_double}}.
 #'       }
 #'
 #'       \item{\code{pressure}}{
 #'         \emph{Traced thermal hydraulic regime}. Traced pressure of heat
 #'         carrier (water) that is associated with the node, [\emph{MPa}].
-#'         Type: \code{\link{assert_double}}.
+#'         Type: \code{\link[checkmate]{assert_double}}.
 #'       }
 #'
 #'       \item{\code{flow_rate}}{
 #'          \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
 #'          carrier (water) that is associated with the node, [\emph{ton/hour}].
-#'          Type: \code{\link{assert_double}}.
+#'          Type: \code{\link[checkmate]{assert_double}}.
 #'       }
 #'
 #'       \item{\code{job}}{
 #'          \emph{Tracing job}. Value of tracing job counter.
 #'          For forward tracing value of \code{job} counts the number of traced paths from root node.
-#'          Type: \code{\link{assert_count}}.
+#'          Type: \code{\link[checkmate]{assert_count}}.
 #'       }
 #'  }
-#'  Type: \code{\link{assert_data_frame}}.
+#'  Type: \code{\link[checkmate]{assert_data_frame}}.
 #'
 #' @examples
 #' library(pipenostics)
@@ -192,15 +192,12 @@
 #' DHN <- pipenostics::m325nxdata
 #'
 #' # * remove irrelevant parameters from the test bench
-#' DHN[c("year", "insulation", "laying", "beta", "exp5k")] <- NULL
+#' DHN[c("a", "wth", "year", "insulation", "laying", "beta", "exp5k")] <- NULL
 #' DHN[c("temperature", "pressure", "flow_rate")] <- NA_real_
 #'
 #' # * avoid using numeric identifiers for nodes:
 #' DHN$sender   <- sprintf("N%02i", DHN$sender)
 #' DHN$acceptor <- sprintf("N%02i", DHN$acceptor)
-#'
-#' # * alter units:
-#' DHN$d <- 1e3 * DHN$d  # convert [m] to [mm]
 #'
 #' # * provide current regime parameters for root node
 #' root_node <- 12
@@ -212,8 +209,8 @@
 #' # segment N01 - N26. Since N12 is a root node, the specific heat loss
 #' # power for this acceptor is set to 0 (or may be any other numeric value).
 #' actual_loss <- c(
-#'   96.8,  96.8,  71.2, 116.7, 71.3,  96.8, 78.5, 116.7, 28.6, 24.5, 
-#'  116.7,   0.0, 153.2,  96.8, 96.8, 116.7, 24.5, 116.7, 28.6, 96.8, 
+#'   96.8,  96.8,  71.2, 116.7, 71.3,  96.8, 78.5, 116.7, 28.6, 24.5,
+#'  116.7,   0.0, 153.2,  96.8, 96.8, 116.7, 24.5, 116.7, 28.6, 96.8,
 #'   78.5, 116.7,  71.3,  96.8, 96.8,  71.1
 #' )
 #'

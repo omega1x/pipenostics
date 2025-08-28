@@ -18,31 +18,31 @@ dropp(
 }
 \arguments{
 \item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 of heat carrier (water) measured at the
-entrance (inlet) of pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.}
+entrance (inlet) of pipe, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{flow_rate}{amount of heat carrier (water) that is transferred by pipe during a period,
-[\emph{ton/hour}]. Type: \code{\link{assert_double}}.}
+[\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d}{internal diameter of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.}
+\item{d}{internal diameter of pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{len}{pipe length, [\emph{m}]. Type: \code{\link{assert_double}}.}
+\item{len}{pipe length, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{roughness}{roughness of internal wall of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.}
+\item{roughness}{roughness of internal wall of pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{inlet}{elevation of pipe inlet, [\emph{m}]. Type: \code{\link{assert_double}}.}
+\item{inlet}{elevation of pipe inlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{outlet}{elevation of pipe outlet, [\emph{m}]. Type: \code{\link{assert_double}}.}
+\item{outlet}{elevation of pipe outlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{method}{method of determining \emph{Darcy friction factor}.
-Type: \code{\link{assert_choice}}.
+Type: \code{\link[checkmate]{assert_choice}}.
 (see \strong{Details})}
 }
 \value{
-pressure drop at the outlet of pipe, [\emph{MPa}]. Type: \code{\link{assert_double}}.
+pressure drop at the outlet of pipe, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Calculate \href{https://en.wikipedia.org/wiki/Pressure_drop}{pressure drop}

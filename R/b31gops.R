@@ -8,10 +8,10 @@
 #'  technological control required? or is it critical situation?
 #'
 #' @param wth
-#'  nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.
+#'  nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param depth
-#'  measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link{assert_double}}.
+#'  measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
 #'  Operational status of pipe as an integer value:
@@ -20,7 +20,7 @@
 #'    \item \emph{2} - monitoring is recommended
 #'    \item \emph{3} - alert! replace the pipe immediately!
 #'  }
-#'  Type: \code{\link{assert_numeric}} and \code{\link{assert_subset}}.
+#'  Type: \code{\link[checkmate]{assert_numeric}} and \code{\link[checkmate]{assert_subset}}.
 #'
 #' @references
 #'  \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.

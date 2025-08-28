@@ -8,25 +8,25 @@ shell92pf(d, wth, uts, depth, l)
 }
 \arguments{
 \item{d}{nominal outside diameter of pipe, [\emph{mm}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{wth}{nominal wall thickness of pipe, [\emph{mm}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{uts}{ultimate tensile strength (\emph{UTS}) or
 specified minimum tensile strength (\emph{SMTS}) as a
 characteristic of steel strength, [\emph{MPa}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{depth}{measured maximum depth of the corroded area, [\emph{mm}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{l}{measured maximum longitudinal length of corroded area, [\emph{mm}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 Estimated failure pressure of the corroded pipe, [\emph{MPa}].
- Type: \code{\link{assert_double}}.
+ Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Calculate failure pressure of the corroded pipe according to \emph{Shell92}

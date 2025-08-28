@@ -27,23 +27,23 @@
 #' algebraically derived formulas.
 #'
 #' @param d
-#'  nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}
+#'  nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}
 #'
 #' @param wth
-#'  nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
+#'  nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param len
-#'  pipe length, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  pipe length, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param rho
-#'  mass density of pipe material, [\emph{g/cm^3}]. Type: \code{\link{assert_double}}.
+#'  mass density of pipe material, [\emph{g/cm^3}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param origin
 #'  identifier for the information origin regarding the specifications of pipe. 
-#'  Type: \code{\link{assert_integer}}.
+#'  Type: \code{\link[checkmate]{assert_integer}}.
 #'
 #' @param mass
-#'  actual mass of pipe, [\emph{kg}]. Type: \code{\link{assert_double}}.
+#'  actual mass of pipe, [\emph{kg}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
 #'  \describe{

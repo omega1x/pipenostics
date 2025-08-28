@@ -4,9 +4,9 @@
 #' @family Minenergo
 #'
 #' @description
-#'  Calculate normative heat loss of the supplying pipe mounted in underground channel
-#'  as a function of construction, operation, and technical condition
-#'  specifications according to
+#'  Calculate normative heat loss through the thermal insulation of the
+#'  supplying pipe mounted in underground channel as a function of construction,
+#'  operation, and technical condition specifications according to
 #'  Appendix 5.1 of \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
 #'
 #'  This type of calculations is usually made on design stage of district
@@ -15,48 +15,48 @@
 #'
 #' @param t1
 #'   temperature of heat carrier (water) inside the supplying pipe, [\emph{°C}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param t2
 #'   temperature of heat carrier (water) inside the returning pipe, [\emph{°C}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param t0
 #'   temperature of environment, [\emph{°C}]. In case of channel laying this is
-#'   the temperature of subsoil. Type: \code{\link{assert_double}}.
+#'   the temperature of subsoil. Type: \code{\link[checkmate]{assert_double}}.
 #' @param insd1
 #'   thickness of the insulator which covers the supplying pipe, [\emph{m}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param insd2
 #'   thickness of the insulator which covers the returning pipe, [\emph{m}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param d1
-#'   outside diameter of supplying pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'   outside diameter of supplying pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #' @param d2
-#'   outside diameter of returning pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'   outside diameter of returning pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #' @param lambda1
 #'   thermal conductivity of insulator which covers the supplying pipe
-#'   [\emph{W/m/°C}]. Type: \code{\link{assert_double}}.
+#'   [\emph{W/m/°C}]. Type: \code{\link[checkmate]{assert_double}}.
 #' @param lambda2
 #'   thermal conductivity of insulator which covers the returning pipe
-#'   [\emph{W/m/°C}]. Type: \code{\link{assert_double}}.
+#'   [\emph{W/m/°C}]. Type: \code{\link[checkmate]{assert_double}}.
 #' @param k1
 #'   technical condition factor for insulator of supplying pipe, [].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param k2
 #'   technical condition factor for insulator of returning pipe, [].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param lambda0
 #'   thermal conductivity of environment, [\emph{W/m/°C}]. In case of channel
-#'   laying this is the thermal conductivity of subsoil. Type: \code{\link{assert_double}}.
+#'   laying this is the thermal conductivity of subsoil. Type: \code{\link[checkmate]{assert_double}}.
 #' @param z
-#'   channel laying depth, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'   channel laying depth, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #' @param b
-#'   channel width, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'   channel width, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #' @param h
-#'   channel height, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'   channel height, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #' @param len
-#'  length of supplying pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  length of supplying pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #' @param duration
-#'  duration of heat loss, [\emph{hour}]. Type: \code{\link{assert_double}}.
+#'  duration of heat loss, [\emph{hour}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
 #'  Normative heat loss of supplying cylindrical pipe mounted in channel during \code{duration}, [\emph{kcal}].
@@ -64,7 +64,7 @@
 #'  1 \emph{h} (hour) (default values) then the return value is also the
 #'  \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with those
 #'  prescribed by \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @details
 #'   \code{k1} and \code{k2} factor values equal to \code{1} mean the best technical

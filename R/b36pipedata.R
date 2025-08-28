@@ -7,10 +7,10 @@
 #'
 #' @format A data frame with 6064 rows and 5 variables:
 #' \describe{
-#'   \item{d}{Nominal outside diameter of the manufactured pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
-#'   \item{wth}{Nominal wall thickness of the manufactured pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
-#'   \item{rho}{Nominal mass density of the steel rank applied in the pipe manufacturing, [\emph{g/cm³}]. Type: \code{\link{assert_double}}.}
-#'   \item{mass}{Nominal mass of one-meter length pipe segment, [\emph{kg}]. Type: \code{\link{assert_double}}.}
+#'   \item{d}{Nominal outside diameter of the manufactured pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+#'   \item{wth}{Nominal wall thickness of the manufactured pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+#'   \item{rho}{Nominal mass density of the steel rank applied in the pipe manufacturing, [\emph{g/cm³}]. Type: \code{\link[checkmate]{assert_double}}.}
+#'   \item{mass}{Nominal mass of one-meter length pipe segment, [\emph{kg}]. Type: \code{\link[checkmate]{assert_double}}.}
 #'   \item{origin}{
 #'      Identifier for the information origin regarding the specifications of pipe, []:
 #'      \describe{
@@ -24,7 +24,7 @@
 #'        \item{\code{8}}{\emph{GOST R 57423-2017}. Table 3}
 #'        \item{\code{9}}{\emph{GOST R 57423-2017}. Table 4}
 #'      }
-#'      Type: \code{\link{assert_integer}}.
+#'      Type: \code{\link[checkmate]{assert_integer}}.
 #'   }
 #' }
 #' \emph{NOTE!} Due to numerous typos in origins with identifiers \code{4}, \code{5} all mass values in those origins are the recalculations made with formula

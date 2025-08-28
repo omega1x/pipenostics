@@ -15,13 +15,13 @@ flux_loss(x, d, wth = 0)
   \item \emph{heat flux}, [\emph{W/m^2}], for \code{loss_flux(x, d, wth)}
   \item \emph{specific heat loss power}, [\emph{kcal/m/h}], for \code{flux_loss(x, d, wth)(x)}
 }
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{d}{outside (if \emph{wth = 0}) or internal (if \emph{wth > 0}) diameter of cylindrical pipe, [\emph{m}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{wth}{wall thickness of pipe, [\emph{mm}], or \emph{0} if argument \emph{d} is an outside diameter of pipe.
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 value of
@@ -29,7 +29,7 @@ value of
    \item \emph{specific heat loss power}, [\emph{kcal/m/h}], for \code{loss_flux(x, d, wth)}
    \item \emph{heat flux}, [\emph{W/m^2}], for \code{flux_loss(x, d, wth)(x)}
  }
- Type: \code{\link{assert_double}}.
+ Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Convert \href{https://en.wikipedia.org/wiki/Heat_flux}{heat flux}

@@ -22,9 +22,9 @@
 #'  Types:
 #'
 #'  \describe{
-#'    \item{\code{\link{assert_double}}}{
+#'    \item{\code{\link[checkmate]{assert_double}}}{
 #'      total diameter of all adjacent pipes (total diameter case)}
-#'    \item{\code{\link{assert_list}} of \code{\link{assert_double}}}{a set of
+#'    \item{\code{\link[checkmate]{assert_list}} of \code{\link[checkmate]{assert_double}}}{a set of
 #'       diameters of adjacent pipes (particular diameter case)}
 #'  }
 #'
@@ -33,11 +33,11 @@
 #'  recharging. See \strong{Details} and \strong{Examples} for further explanations.
 #'
 #' @param d
-#'   diameter of pipe under consideration, [\emph{mm}]. Type: \code{\link{assert_double}}.
+#'   diameter of pipe under consideration, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param flow_rate
 #'   sensor-measured amount of heat carrier (water) that is transferred through
-#'   the inlet of pipe during a period, [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
+#'   the inlet of pipe during a period, [\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
 #'  flow rate \emph{drop} or \emph{recovery} at the outlet of pipe,
@@ -45,7 +45,7 @@
 #'  whereas for \emph{recovery} it is negative. In both cases to calculate
 #'  flow rate on the outlet of pipe under consideration simply subtract the
 #'  calculated value from the sensor-measured flow rate on the inlet.
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @details
 #'  It is common that sensor-measured flow rate undergoes discharges to

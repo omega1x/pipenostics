@@ -54,37 +54,45 @@
 #'    \code{\link{as.character}}.
 #'
 #' @param temperature
-#'    Sensor-measured temperature of heat carrier (water) sensor-measured on 
+#'    sensor-measured temperature of heat carrier (water) sensor-measured on
 #'    the root node, [\emph{°C}].
 #'    Use \code{NA_float_}s for nodes without temperature sensor.
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param pressure
-#'    Sensor-measured
+#'    sensor-measured
 #'    \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 #'    of heat carrier (water) inside the pipe on the root node, [\emph{MPa}].
 #'    Use \code{NA_float_}s for nodes without pressure sensor.
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param flow_rate
-#'    Sensor-measured amount of heat carrier (water) on root node that is
+#'    sensor-measured amount of heat carrier (water) on root node that is
 #'    transferred by pipe during a period, [\emph{ton/hour}].
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'    Use \code{NA_float_}s for nodes without flow rate sensor.
 #'
+#' @param a
+#'  heat carrier (water) volume loss factor of cylindrical pipe,
+#'  [\eqn{hour^{-1}}]. Type: \code{\link[checkmate]{assert_double}}.
+#'
 #' @param d
-#'    internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
+#'    nominal (outside) diameter of pipe (i.e. diameter of acceptor's incoming edge),
 #'    [\emph{mm}].
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
+#'
+#' @param wth
+#'  nominal wall thickness of pipe, [\emph{mm}].
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param len
 #'    pipe length (i.e. length of acceptor's incoming edge), [\emph{m}].
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param year
 #'    year when the pipe (i.e. acceptor's incoming edge) is put in operation
 #'    after laying or total overhaul.
-#'    Type: \code{\link{assert_integerish}}.
+#'    Type: \code{\link[checkmate]{assert_integerish}}.
 #'
 #' @param insulation
 #'    identifier of insulation that covers the exterior of pipe (i.e. acceptor's
@@ -94,7 +102,7 @@
 #'       \item{\code{1}}{foamed polyurethane or analogue}
 #'       \item{\code{2}}{polymer concrete}
 #'     }
-#'    Type: \code{\link{assert_subset}}.
+#'    Type: \code{\link[checkmate]{assert_subset}}.
 #'
 #' @param laying
 #'    type of pipe laying depicting the position of pipe in space. Only five
@@ -106,32 +114,32 @@
 #'      \item \code{tunnel},
 #'      \item \code{underground}.
 #'    }
-#'    Type: \code{\link{assert_subset}}.
+#'    Type: \code{\link[checkmate]{assert_subset}}.
 #'
 #' @param beta
 #'    logical indicator: should they consider additional heat loss of fittings
 #'    located on this pipe (i.e. acceptor's incoming edge)?
-#'    Type: \code{\link{assert_logical}}.
+#'    Type: \code{\link[checkmate]{assert_logical}}.
 #'
 #' @param exp5k
 #'    logical indicator for regime of pipe (i.e. acceptor's incoming edge): if
 #'    \code{TRUE} pipe is operated more that \code{5000} hours per year.
-#'    Type: \code{\link{assert_logical}}.
+#'    Type: \code{\link[checkmate]{assert_logical}}.
 #'
 #' @param roughness
 #'    roughness of internal wall of pipe (i.e. acceptor's incoming edge), [\emph{m}].
-#'    Type: \code{\link{assert_double}}.
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param inlet
-#'    elevation of pipe inlet, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'    elevation of pipe inlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param outlet
-#'    elevation of pipe outlet, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'    elevation of pipe outlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param elev_tol
 #'    maximum allowed discrepancy between adjacent outlet and inlet elevations
 #'    of two subsequent pipes in the traced path, [\emph{m}].
-#'    Type: \code{\link{assert_number}}.
+#'    Type: \code{\link[checkmate]{assert_number}}.
 #'
 #' @param method
 #'    method of determining \emph{Darcy friction factor}:
@@ -140,26 +148,26 @@
 #'      \item \code{vatankhan}
 #'      \item \code{buzelli}
 #'    }
-#'    Type: \code{\link{assert_choice}}.
+#'    Type: \code{\link[checkmate]{assert_choice}}.
 #'    For more details see \code{\link{dropp}}.
 #'
 #' @param verbose
 #'    logical indicator: should they watch tracing process on console?
-#'    Type: \code{\link{assert_flag}}.
+#'    Type: \code{\link[checkmate]{assert_flag}}.
 #'
 #' @param csv
 #'    logical indicator: should they incrementally dump results to \emph{csv}-
 #'    file while tracing?
-#'    Type: \code{\link{assert_flag}}.
+#'    Type: \code{\link[checkmate]{assert_flag}}.
 #'
 #' @param file
 #'    name of \emph{csv}-file which they dump results to.
-#'    Type: \code{\link{assert_character}} of length 1 that can be used safely
+#'    Type: \code{\link[checkmate]{assert_character}} of length 1 that can be used safely
 #'    to create a file and write to it.
 #'
 #' @param use_cluster
 #'    utilize functionality of parallel processing on multi-core CPU.
-#'    Type: \code{\link{assert_flag}}.
+#'    Type: \code{\link[checkmate]{assert_flag}}.
 #'
 #' @return
 #'    \code{\link{data.frame}} containing results (detailed log) of tracing in
@@ -169,54 +177,54 @@
 #'         \emph{Tracing job}. Identifier of the node which regime parameters is
 #'         calculated for. Values in this vector are identical to those in
 #'         argument \code{acceptor}.
-#'         Type: \code{\link{assert_character}}.
+#'         Type: \code{\link[checkmate]{assert_character}}.
 #'       }
 #'
 #'       \item{\code{tracing}}{
 #'         \emph{Tracing job}. Identifiers of nodes from which regime parameters
 #'         are traced for the given node. Identifier \code{sensor} is used when
 #'         values of regime parameters for the node are sensor readings.
-#'         Type: \code{\link{assert_character}}.
+#'         Type: \code{\link[checkmate]{assert_character}}.
 #'       }
 #'
 #'       \item{\code{backward}}{
 #'         \emph{Tracing job}. Identifier of tracing direction. It constantly
 #'         equals to \code{FALSE}.
-#'         Type: \code{\link{assert_logical}}.
+#'         Type: \code{\link[checkmate]{assert_logical}}.
 #'       }
 #'
 #'       \item{\code{aggregation}}{
 #'         \emph{Tracing job}. Identifier of the aggregation method associated
 #'         with traced values. For forward tracing the only option is
 #'         \code{identity}.
-#'         Type: \code{\link{assert_character}}.
+#'         Type: \code{\link[checkmate]{assert_character}}.
 #'       }
 #'
 #'       \item{\code{temperature}}{
 #'         \emph{Traced thermal hydraulic regime}. Traced temperature of heat
 #'         carrier (water) that is associated with the node, [\emph{°C}].
-#'         Type: \code{\link{assert_double}}.
+#'         Type: \code{\link[checkmate]{assert_double}}.
 #'       }
 #'
 #'       \item{\code{pressure}}{
 #'         \emph{Traced thermal hydraulic regime}. Traced pressure of heat
 #'         carrier (water) that is associated with the node, [\emph{MPa}].
-#'         Type: \code{\link{assert_double}}.
+#'         Type: \code{\link[checkmate]{assert_double}}.
 #'       }
 #'
 #'       \item{\code{flow_rate}}{
 #'          \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
 #'          carrier (water) that is associated with the node, [\emph{ton/hour}].
-#'          Type: \code{\link{assert_double}}.
+#'          Type: \code{\link[checkmate]{assert_double}}.
 #'       }
 #'
 #'       \item{\code{job}}{
 #'          \emph{Tracing job}. Value of tracing job counter.
 #'          For forward tracing value of \code{job} counts the number of traced paths from root node.
-#'          Type: \code{\link{assert_count}}.
+#'          Type: \code{\link[checkmate]{assert_count}}.
 #'       }
 #'  }
-#'  Type: \code{\link{assert_data_frame}}.
+#'  Type: \code{\link[checkmate]{assert_data_frame}}.
 #'
 #' @examples
 #' library(pipenostics)
@@ -230,9 +238,6 @@
 #' # * avoid using numeric identifiers for nodes:
 #' DHN$sender   <- sprintf("N%02i", DHN$sender)
 #' DHN$acceptor <- sprintf("N%02i", DHN$acceptor)
-#'
-#' # * alter units:
-#' DHN$d <- 1e3 * DHN$d  # convert [m] to [mm]
 #'
 #' # Perform backward tracing to get regime on root node:
 #' bw_report <- do.call("m325tracebw", c(as.list(DHN), verbose = FALSE))
@@ -266,28 +271,33 @@
 #'
 #' stopifnot(sqrt(regime_delta %*% regime_delta) < 0.5)
 #'
+#' # To address the problem of possible norm losses of the heat carrier,
+#' # they could roughly define the leaks as follows:
+#' DHN[, "a"] <- 0.0025 * (365 - 90)/365
+#'
+#' # so that forward tracing
+#' fw_report_loss <- do.call("m325tracefw", c(as.list(DHN), verbose = FALSE, elev_tol = .5))
+#'
+#' # produces slightly different results:
+#' print(max(abs(fw_report[, "loss"] - fw_report_loss[, "loss"])))
+#'
 #' @export
-m325tracefw <- function(sender = c(0, 1),
-                        acceptor = c(1, 2),
-                        temperature = c(70.0, NA_real_),
-                        pressure = c(pipenostics::mpa_kgf(6), NA_real_),
-                        flow_rate = c(20, NA_real_),
-                        d = rep_len(100, 2),
-                        len = rep_len(72.446, 2),
-                        year = rep_len(1986, 2),
-                        insulation = rep_len(0, 2),
-                        laying = rep_len("tunnel", 2),
-                        beta = rep_len(FALSE, 2),
-                        exp5k = rep_len(TRUE, 2),
-                        roughness = rep_len(1e-3, 2),
-                        inlet = c(.5, 1),
-                        outlet = c(1.0, 1),
-                        elev_tol = 0.1,
-                        method = "romeo",
-                        verbose = TRUE,
-                        csv = FALSE,
-                        file = "m325tracefw.csv",
-                        use_cluster = FALSE) {
+m325tracefw <- function(
+  sender = c(0, 1),  acceptor = c(1, 2),
+
+  temperature = c(70.0, NA_real_),
+  pressure = c(pipenostics::mpa_kgf(6), NA_real_),
+  flow_rate = c(20, NA_real_), a = rep_len(0, 2),
+
+  d = rep_len(100, 2), wth = rep_len(12, 2), len = rep_len(72.446, 2),
+  year = rep_len(1986, 2), insulation = rep_len(0, 2),
+  laying = rep_len("tunnel", 2),
+  beta = rep_len(FALSE, 2), exp5k = rep_len(TRUE, 2),
+  roughness = rep_len(1e-3, 2),
+  inlet = c(.5, 1), outlet = c(1.0, 1), elev_tol = 0.1,
+  method = "romeo",
+  verbose = TRUE, csv = FALSE, file = "m325tracefw.csv", use_cluster = FALSE
+) {
   # Perform forward tracing ----
   .func_name <- "m325tracefw"
 
@@ -300,77 +310,62 @@ m325tracefw <- function(sender = c(0, 1),
   checkmate::assert_character(sender, any.missing = FALSE, len = n)
   checkmate::assert_double(
     temperature,
-    lower = 0,
-    upper = 350,
-    finite = TRUE,
-    any.missing = TRUE,
-    len = n
+    lower = 0, upper = 350, finite = TRUE, any.missing = TRUE, len = n
   )
   checkmate::assert_double(
     pressure,
-    lower = 8.4e-2,
-    upper = 100,
-    finite = TRUE,
-    any.missing = TRUE,
-    len = n
+    lower = 8.4e-2, upper = 100, finite = TRUE, any.missing = TRUE, len = n
   )
   checkmate::assert_double(
     flow_rate,
-    lower = 1e-3,
-    upper = 1e5,
-    finite = TRUE,
-    any.missing = TRUE,
-    len = n
+    lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = TRUE, len = n
   )
-  norms <- pipenostics::m325nhldata  # use brief name
+  checkmate::assert_double(
+    a,
+    lower = 0, upper = 25e-4, finite = TRUE, any.missing = FALSE, len = n
+  )
   checkmate::assert_double(
     d,
-    lower = min(norms[["diameter"]]),
-    upper = max(norms[["diameter"]]),
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
+    lower = min(pipenostics::m325nhldata[["diameter"]]),
+    upper = max(pipenostics::m325nhldata[["diameter"]]),
+    finite = TRUE, any.missing = FALSE, len = n
+  )
+  checkmate::assert_double(
+    wth,
+    lower = min(pipenostics::b36pipedata[["wth"]]),
+    upper = max(pipenostics::b36pipedata[["wth"]]),
+    finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
     len,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
+    lower = 0, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_integerish(
     year,
-    lower = 1900L,
-    upper = max(norms[["epoch"]]),
-    any.missing = FALSE,
-    len = n
+    lower = 1900L, upper = max(pipenostics::m325nhldata[["epoch"]]),
+    any.missing = FALSE, len = n
   )
-  checkmate::assert_subset(insulation, choices = unique(norms[["insulation"]]))
-  checkmate::assert_subset(laying,
-                           choices = unique(norms[["laying"]]), empty.ok = FALSE)
-  rm(norms)  # no need in any norms further
+  checkmate::assert_subset(
+    insulation,
+    choices = unique(pipenostics::m325nhldata[["insulation"]])
+  )
+  checkmate::assert_subset(
+    laying,
+    choices = unique(pipenostics::m325nhldata[["laying"]]), empty.ok = FALSE
+  )
   checkmate::assert_logical(beta, any.missing = FALSE, len = n)
   checkmate::assert_logical(exp5k, any.missing = FALSE, len = n)
   checkmate::assert_double(
     roughness,
-    lower = 0,
-    upper = .2,
-    any.missing = FALSE,
-    len = n
+    lower = 0, upper = .2, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
     outlet,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
+    lower = 0, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
     inlet,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
+    lower = 0, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
   checkmate::assert_flag(verbose)
@@ -470,13 +465,15 @@ m325tracefw <- function(sender = c(0, 1),
       max.len = length(acceptor),
       unique = TRUE
     )
-
+    tmp_wth <- 12  # TODO: put wth-argument value here
     regime <- m325traceline(
       temperature[root_node],
       pressure[root_node],
       flow_rate[root_node],
       discharge[current_path],
+      a[current_path],
       d[current_path],
+      tmp_wth,
       len[current_path],
       year[current_path],
       insulation[current_path],

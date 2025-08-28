@@ -11,16 +11,16 @@
 #'
 #' @param temperature
 #'  temperature of heat carrier (water) inside the pipe, [\emph{°C}].
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param material
 #'  designation of insulation material as it stated in \code{\link{m278insdata}},
-#'  Type: \code{\link{assert_subset}}.
+#'  Type: \code{\link[checkmate]{assert_subset}}.
 #'
 #' @return
 #'  Thermal conductivity of insulation materials at given
 #'  set of temperatures, [\emph{W/m/°C}], [\emph{W/m/K}].
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @export
 #'

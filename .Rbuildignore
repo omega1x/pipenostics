@@ -1,14 +1,19 @@
-^renv$
-^renv\.lock$
-^.*\.Rproj$
-^\.Rproj\.user$
+## Static targets to ignore:
+
 ^\.src$
 ^\.github$
 ^docs$
-
-^codecov\.yml$
-
-^\R\tracebw.R$
 ^_pkgdown\.yml$
 ^pkgdown$
 ^vignettes/articles$
+
+## temporary exlusions for debugging
+
+### Code & Tests
+tests/testthat/testtracexw\.R
+tests/testthat/testm325tracebw\.R
+
+### Datasets
+^data/m325nxdata\.bak*
+^.*\.Rproj$
+^\.Rproj\.user$

@@ -22,14 +22,14 @@ mepof(
 }
 \arguments{
 \item{depth}{maximum depth of the corroded area measured during \emph{inline inspection},
-[\emph{mm}]. Type: \code{\link{assert_double}}.}
+[\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{l}{maximum longitudinal length of corroded area measured during
-\emph{inline inspection}, [\emph{mm}]. Type: \code{\link{assert_double}}.}
+\emph{inline inspection}, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d}{nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{wth}{nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{strength}{one of the next characteristics of steel strength, [\emph{MPa}]:
 \itemize{
@@ -39,35 +39,35 @@ mepof(
         strength (\emph{SMTS}) for use with other failure pressure codes
         (\code{\link{dnvpf}}, \code{\link{pcorrcpf}}, \code{\link{shell92pf}}).
 }
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
 of substance (i.e. heat carrier) inside the pipe measured near defect
 position, [\emph{MPa}]. In most cases this is a nominal operating pressure.
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{temperature}{temperature of substance (i.e. heat carrier) inside the pipe measured near
 defect position, [\emph{°C}]. In case of district heating network this is
 usually a calculated value according to actual or normative thermal-hydraulic
-regime. Type: \code{\link{assert_double}}.}
+regime. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{rar}{random number generator for simulating of distribution of radial corrosion
 rate in pipe wall, [\emph{mm/day}]. The only
 argument \code{n} of the function should be the number of observations to
-generate. Type: \code{\link{assert_function}}.}
+generate. Type: \code{\link[checkmate]{assert_function}}.}
 
 \item{ral}{random number generator for simulating of distribution of longitudinal corrosion
 rate in pipe wall, [\emph{mm/day}]. The only
 argument \code{n} of the function should be the number of observations to
-generate. Type: \code{\link{assert_function}}.}
+generate. Type: \code{\link[checkmate]{assert_function}}.}
 
 \item{days}{number of days that have passed after or preceded the \emph{inline inspection}, [].
 Negative values are for retrospective assumptions whereas positives are for
-failure prognosis. Type: \code{\link{assert_int}}.}
+failure prognosis. Type: \code{\link[checkmate]{assert_int}}.}
 
 \item{k}{alarm threshold for leakage failure. It usually \code{0.6}, \code{0.7}, or
 \code{0.8}, []. If set to \code{1} no alarm before failure occurs.
-Type: \code{\link{assert_number}}.}
+Type: \code{\link[checkmate]{assert_number}}.}
 
 \item{method}{method for calculating failure pressure:
 \itemize{
@@ -77,15 +77,15 @@ Type: \code{\link{assert_number}}.}
   \item \emph{pcorrc} - using \code{\link{pcorrcpf}}.
   \item \emph{shell92} - using \code{\link{shell92pf}}.
 }
-Type: \code{\link{assert_choice}}.}
+Type: \code{\link[checkmate]{assert_choice}}.}
 
 \item{n}{number of observations to generate for
 \href{https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers}{Monte-Carlo simulations},
-Type: \code{\link{assert_count}}.}
+Type: \code{\link[checkmate]{assert_count}}.}
 }
 \value{
 Probability of pipe failure for each corroded area measured during
-  \emph{inline inspection}. Type: \code{\link{assert_double}}.
+  \emph{inline inspection}. Type: \code{\link[checkmate]{assert_double}}.
   If \code{NA}s returned use another method
   for calculating failure pressure.
 }
@@ -132,9 +132,9 @@ Since for all influence factors they can more or less assume range limits,
  That is why parameters of corrosion defects measured during the
  \emph{inline inspection} as well as regime parameters and engineering
  characteristics of pipe segment - all they are simulated by
- \code{\link{runif}}.
+ \code{\link[stats]{runif}}.
 
- \code{\link{runif}}-limits for depth of corrosion defect are associated
+ \code{\link[stats]{runif}}-limits for depth of corrosion defect are associated
  with precision of commonly applied measurement instruments. For traditionally
  exploited ultrasonic control those limits are well-known and can reach up to
  10 \% of pipe wall thickness. Whereas uncertainty of defect longitudinal
@@ -145,7 +145,7 @@ Since for all influence factors they can more or less assume range limits,
  strength) are taken from aggregated review of \emph{Timashev et al.} but
  gently transformed for compatibility with
  \href{https://en.wikipedia.org/wiki/Principle_of_maximum_entropy}{Principle of maximum entropy},
- i.e. \code{\link{runif}}.
+ i.e. \code{\link[stats]{runif}}.
 
  Uncertainties of regime parameters in stohastic models are set minimized
  by regarding only precision of metering devices which commonly applied in

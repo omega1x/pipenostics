@@ -20,7 +20,7 @@
 #' due to significant ambiguity.
 #'
 #' @param x
-#'  outside diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
+#'  outside diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @references
 #'   \href{https://docs.cntd.ru/document/1200174717}{GOST 30732}.

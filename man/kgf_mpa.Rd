@@ -8,12 +8,12 @@ kgf_mpa(x)
 }
 \arguments{
 \item{x}{pressure (stress) measured in \emph{megapascals},
-[\emph{MPa}]. Type: \code{\link{assert_double}}.}
+[\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 pressure (stress) in
  \emph{kilogram-force per square cm}, [\emph{kgf/cm^2}].
- Type: \code{\link{assert_double}}.
+ Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pascal_(unit)}{megapascals} (MPa)

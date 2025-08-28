@@ -13,14 +13,14 @@
 #' @return
 #'  list of weather stations (meteos) with the next fields:
 #'  \describe{
-#'    \item{\code{station_id}}{Weather station unique identifier. Type: \code{\link{assert_integer}}.}
-#'    \item{\code{name}}{Human-readable name of weather station. Type: \code{\link{assert_character}}.}
-#'    \item{\code{lat}}{Geographical position of wether station. Latitude, [\emph{DD}]. Type: \code{\link{assert_double}}.}
-#'    \item{\code{lon}}{Geographical position of wether station. Longitude, [\emph{DD}]. Type: \code{\link{assert_double}}.}
-#'    \item{\code{alt}}{Altitude - position of weather station above sea level, [m]. Type: \code{\link{assert_double}}.}
-#'    \item{\code{avg}}{Mean annual ground temperature averaged over depth, [\emph{°C}]. Type: \code{\link{assert_double}}.}
+#'    \item{\code{station_id}}{Weather station unique identifier. Type: \code{\link[checkmate]{assert_integer}}.}
+#'    \item{\code{name}}{Human-readable name of weather station. Type: \code{\link[checkmate]{assert_character}}.}
+#'    \item{\code{lat}}{Geographical position of wether station. Latitude, [\emph{DD}]. Type: \code{\link[checkmate]{assert_double}}.}
+#'    \item{\code{lon}}{Geographical position of wether station. Longitude, [\emph{DD}]. Type: \code{\link[checkmate]{assert_double}}.}
+#'    \item{\code{alt}}{Altitude - position of weather station above sea level, [m]. Type: \code{\link[checkmate]{assert_double}}.}
+#'    \item{\code{avg}}{Mean annual ground temperature averaged over depth, [\emph{°C}]. Type: \code{\link[checkmate]{assert_double}}.}
 #'  }
-#'  Type: \code{\link{assert_data_frame}}.
+#'  Type: \code{\link[checkmate]{assert_data_frame}}.
 #'
 #' @seealso
 #'  \code{\link{mgtdhid}} to get hourly ground temperature values at different 

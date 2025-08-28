@@ -7,21 +7,21 @@
 b31gdep(d, wth, smys, def)
 }
 \arguments{
-\item{d}{nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{smys}{specified minimum yield of stress (\emph{SMYS}) as a
-characteristics of steel strength, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
+characteristics of steel strength, [\emph{PSI}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{def}{appropriate (combined) design factor from
 \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.4.2002.pdf}{ASME B31.4},
 \href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31.8.2003.pdf}{ASME B31.8},
 or \href{https://www.asme.org/codes-standards/find-codes-standards/b31-11-slurry-transportation-piping-systems}{ASME B31.11}, [].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-Design pressure of pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.
+Design pressure of pipe, [\emph{PSI}]. Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Calculate the design pressure that according to

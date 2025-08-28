@@ -33,38 +33,38 @@
 #'
 #' @param lat1
 #'   latitude of the first geographical location, [\emph{DD}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param lon1
 #'   longitude of the first geographical location, [\emph{DD}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param lat2
 #'   latitude of the second geographical location, [\emph{DD}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param lon2
 #'   longitude of the second geographical location, [\emph{DD}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param lat3
 #'   latitude of the third geographical location, [\emph{DD}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param lon3
 #'   longitude of the third geographical location, [\emph{DD}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param earth
 #'   \emph{Earth} radius, [\emph{m}]. See \strong{Details}.
-#'   Type: \code{\link{assert_numeric}}.
+#'   Type: \code{\link[checkmate]{assert_numeric}}.
 #'
 #' @return
 #'   \describe{
 #'     \item{For \code{geodist}:}{distance between two geographical locations, [\emph{m}].}
 #'     \item{For \code{geoarea}:}{area of spherical triangle between three geographical locations, [\emph{km^2}].}
 #'   }
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @export
 #'

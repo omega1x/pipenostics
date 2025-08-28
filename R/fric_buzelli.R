@@ -8,16 +8,16 @@
 #'  \emph{Buzelli} approximation of \emph{Colebrook equation}.
 #'
 #' @param reynolds
-#'  Reynolds number, []. Type: \code{\link{assert_double}}.
+#'  Reynolds number, []. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param roughness
-#'  relative roughness, []. Type: \code{\link{assert_double}}.
+#'  relative roughness, []. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param strict
-#'  calculate only inside the precision region. Type: \code{\link{assert_flag}}.
+#'  calculate only inside the precision region. Type: \code{\link[checkmate]{assert_flag}}.
 #'
 #' @return
-#'  pipe friction factor, []. Type: \code{\link{assert_double}}.
+#'  pipe friction factor, []. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @details
 #'  Buzelli's formula is reported to be extremely accurate in the region:

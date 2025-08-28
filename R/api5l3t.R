@@ -7,9 +7,9 @@
 #' @format A data frame with 57 rows and 4 variables:
 #'
 #' \describe{
-#'   \item{grade}{designation of standard grade of manufactured pipe. Type: \code{\link{assert_character}}.}
-#'   \item{smys}{SMYS - specified minimum yield strength, [\emph{psi}]. Type: \code{\link{assert_double}}.}
-#'   \item{uts}{UTS - ultimate tensile strength, [\emph{psi}]. Type: \code{\link{assert_double}}.}
+#'   \item{grade}{designation of standard grade of manufactured pipe. Type: \code{\link[checkmate]{assert_character}}.}
+#'   \item{smys}{SMYS - specified minimum yield strength, [\emph{psi}]. Type: \code{\link[checkmate]{assert_double}}.}
+#'   \item{uts}{UTS - ultimate tensile strength, [\emph{psi}]. Type: \code{\link[checkmate]{assert_double}}.}
 #'   \item{origin}{
 #'      Identifier for the information origin regarding the specifications of pipe, []:
 #'      \describe{
@@ -17,7 +17,7 @@
 #'        \item{\code{3}}{\href{https://docs.cntd.ru/document/1200002056}{GOST 20295-85}. Table 7}
 #'        \item{\code{11}}{\href{https://docs.cntd.ru/document/1200103221}{GOST 31443-2012}. Tables 6, 7}
 #'      }
-#'      Type: \code{\link{assert_integer}}.
+#'      Type: \code{\link[checkmate]{assert_integer}}.
 #'   }
 #'  }
 #' @references

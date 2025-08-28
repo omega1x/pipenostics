@@ -7,26 +7,26 @@
 #'  Estimate \emph{Reynolds number} for fluid flow in a cylindrical pipe.
 #'
 #' @param d
-#'  internal diameter of pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  internal diameter of pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param mu
-#'  dynamic viscosity of fluid in pipe, [\emph{kg/m/s}]. Type: \code{\link{assert_double}}.
+#'  dynamic viscosity of fluid in pipe, [\emph{kg/m/s}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param u
-#'  mean velocity of fluid in pipe, [\emph{m/s}]. Type: \code{\link{assert_double}}.
+#'  mean velocity of fluid in pipe, [\emph{m/s}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param rho
-#'  mass density of fluid in pipe, [\emph{kg/m^3}]. Type: \code{\link{assert_double}}.
+#'  mass density of fluid in pipe, [\emph{kg/m^3}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param v
-#'  volumetric flow rate of fluid in pipe, [\emph{m^3/s}]. Type: \code{\link{assert_double}}.
+#'  volumetric flow rate of fluid in pipe, [\emph{m^3/s}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param m
-#'   mass flow rate of fluid in pipe, [\emph{kg/s}]. Type: \code{\link{assert_double}}.
+#'   mass flow rate of fluid in pipe, [\emph{kg/s}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
 #'  \emph{Reynolds number} - a dimensionless quantity that reveals the ratio
-#'  between inertial and viscous forces in the fluid, []. Type: \code{\link{assert_double}}.
+#'  between inertial and viscous forces in the fluid, []. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @details
 #'  The calculation of \emph{Reynolds number} is bounded by physically

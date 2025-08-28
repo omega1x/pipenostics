@@ -4,10 +4,10 @@
 #' @family Minenergo
 #'
 #' @description
-#'  Calculate normative heat loss of the open-air supplying pipe
-#'  as a function of construction, operation, and technical condition 
-#'  specifications according to
-#'  Appendix 5.1 of \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
+#'  Calculate normative heat loss through the thermal insulation of the open-air
+#'  supplying pipe as a function of construction, operation, and technical
+#'  condition specifications according to Appendix 5.1 of
+#'  \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
 #'
 #'  This type of calculations is usually made on design stage of district
 #'  heating network (where water is a heat carrier) and is closely related to
@@ -15,54 +15,54 @@
 #'
 #' @param t1
 #'   temperature of heat carrier (water) inside the supplying pipe, [\emph{°C}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param t2
 #'   temperature of heat carrier (water) inside the returning pipe, [\emph{°C}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param t0
 #'   temperature of environment, [\emph{°C}]. In case of open-air pipe this is
-#'   the ambient temperature. Type: \code{\link{assert_double}}.
+#'   the ambient temperature. Type: \code{\link[checkmate]{assert_double}}.
 #' @param insd1
 #'   thickness of the insulator which covers the supplying pipe, [\emph{m}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param insd2
 #'   thickness of the insulator which covers the returning pipe, [\emph{m}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param d1
 #'   outside diameter of supplying pipe, [\emph{m}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param d2
 #'   outside diameter of returning pipe, [\emph{m}].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param lambda1
 #'   thermal conductivity of insulator which covers the supplying pipe
-#'   [\emph{W/m/°C}]. Type: \code{\link{assert_double}}.
+#'   [\emph{W/m/°C}]. Type: \code{\link[checkmate]{assert_double}}.
 #' @param lambda2
 #'   thermal conductivity of insulator which covers the returning pipe
-#'   [\emph{W/m/°C}]. \code{\link{assert_double}}.
+#'   [\emph{W/m/°C}]. \code{\link[checkmate]{assert_double}}.
 #' @param k1
 #'   technical condition factor for insulator of supplying pipe, [].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param k2
 #'   technical condition factor for insulator of returning pipe, [].
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param lambda0
 #'   thermal conductivity of environment, [\emph{W/m/°C}]. In case of overhead
 #'   laying this is the thermal conductivity of open air.
-#'   Type: \code{\link{assert_double}}.
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param len
-#'  length of supplying pipe, [\emph{m}]. Type: \code{\link{assert_double}}.
+#'  length of supplying pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #' @param duration
-#'  duration of heat loss, [\emph{hour}]. Type: \code{\link{assert_double}}.
+#'  duration of heat loss, [\emph{hour}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
-#'  Normative heat loss of the open-air layed supplying cylindrical pipe 
+#'  Normative heat loss of the open-air layed supplying cylindrical pipe
 #'  during \code{duration}, [\emph{kcal}].
 #'  If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is set to
 #'  1 \emph{h} (hour) (default values) then the return value is also the
 #'  \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with those
 #'  prescribed by \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @details
 #'   Details on using \code{k1} and \code{k2} are the same as for

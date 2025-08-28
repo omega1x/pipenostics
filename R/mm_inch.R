@@ -9,11 +9,11 @@
 #'
 #' @param x
 #'  length measured in \emph{inches}, [\emph{inch}].
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
 #'  length in \emph{millimeters}, [\emph{mm}].
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @seealso
 #'  \code{\link{inch_mm}} for converting \emph{mm} to \emph{inches}

@@ -13,18 +13,18 @@ b36d(wth, mass, len = 1, rho = 7.85)
 b36wth(d, mass, len = 1, rho = 7.85)
 }
 \arguments{
-\item{d}{nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}}
+\item{d}{nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}}
 
-\item{wth}{nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{len}{pipe length, [\emph{m}]. Type: \code{\link{assert_double}}.}
+\item{len}{pipe length, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{rho}{mass density of pipe material, [\emph{g/cm^3}]. Type: \code{\link{assert_double}}.}
+\item{rho}{mass density of pipe material, [\emph{g/cm^3}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{origin}{identifier for the information origin regarding the specifications of pipe. 
-Type: \code{\link{assert_integer}}.}
+Type: \code{\link[checkmate]{assert_integer}}.}
 
-\item{mass}{actual mass of pipe, [\emph{kg}]. Type: \code{\link{assert_double}}.}
+\item{mass}{actual mass of pipe, [\emph{kg}]. Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 \describe{
@@ -84,6 +84,7 @@ algebraically derived formulas.
 }
 \seealso{
 Other utils: 
+\code{\link{b36dwthv}()},
 \code{\link{b36pipedata}},
 \code{\link{geoarea}()},
 \code{\link{meteos}()},

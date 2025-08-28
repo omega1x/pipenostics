@@ -8,11 +8,11 @@ mm_inch(x)
 }
 \arguments{
 \item{x}{length measured in \emph{inches}, [\emph{inch}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 length in \emph{millimeters}, [\emph{mm}].
- Type: \code{\link{assert_double}}.
+ Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Convert length measured in \href{https://en.wikipedia.org/wiki/Inch}{inches}

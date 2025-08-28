@@ -10,7 +10,9 @@ m325traceline(
   pressure = mpa_kgf(6),
   flow_rate = 250,
   g = 0,
+  a = 0,
   d = 700,
+  wth = 12,
   len = c(600, 530, 300, 350),
   year = 1986,
   insulation = 0,
@@ -31,36 +33,43 @@ m325traceline(
 carrier (water)
 inside the pipe sensor-measured at the inlet
 (forward tracing) or at the outlet (backward tracing) of path, [\emph{°C}].
-Type: \code{\link{assert_number}}.}
+Type: \code{\link[checkmate]{assert_number}}.}
 
 \item{pressure}{\emph{Traced thermal hydraulic regime}. Sensor-measured
 \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute
 pressure} of heat carrier (water) sensor-measured at the inlet
 (forward tracing) or at the outlet (backward tracing) of path, [\emph{MPa}].
-Type: \code{\link{assert_number}}.}
+Type: \code{\link[checkmate]{assert_number}}.}
 
 \item{flow_rate}{\emph{Traced thermal hydraulic regime}. Amount of heat carrier (water)
 sensor-measured at the inlet (forward tracing) or at the outlet (backward
-tracing) of path, [\emph{ton/hour}]. Type: \code{\link{assert_number}}.}
+tracing) of path, [\emph{ton/hour}].
+Type: \code{\link[checkmate]{assert_number}}.}
 
 \item{g}{amount of heat carrier discharge to network for each pipe segment in the
 tracing path enumerated along the direction of flow. If flag \code{absg}
 is \code{TRUE} then they treat argument \code{g} as absolute value in
 [\emph{ton/hour}], otherwise they do as percentage of flow_rate in the
 pipe segment.
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d}{internal diameters of subsequent pipes in tracing path that are enumerated
-along the direction of flow, [\emph{mm}].
-Type: \code{\link{assert_double}}.}
+\item{a}{heat carrier (water) volume loss factor of cylindrical pipe,
+[\eqn{hour^{-1}}]. Type: \code{\link[checkmate]{assert_double}}.}
+
+\item{d}{nominal (outside) diameters of subsequent pipes in tracing path that are
+enumerated along the direction of flow, [\emph{mm}].
+Type: \code{\link[checkmate]{assert_double}}.}
+
+\item{wth}{nominal wall thickness of pipe, [\emph{mm}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{len}{length of subsequent pipes in tracing path that are enumerated
 along the direction of flow, [\emph{m}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{year}{year when pipe is put in operation after laying or total overhaul for
 each pipe in tracing path enumerated along the direction of flow.
-Type: \code{\link{assert_integerish}}.}
+Type: \code{\link[checkmate]{assert_integerish}}.}
 
 \item{insulation}{insulation that covers the exterior of pipe:
 \describe{
@@ -69,7 +78,8 @@ Type: \code{\link{assert_integerish}}.}
   \item{\code{2}}{polymer concrete}
 }
 for each pipe in tracing path enumerated along the direction of flow.
-Type: \code{\link{assert_numeric}} and \code{\link{assert_subset}}.}
+Type: \code{\link[checkmate]{assert_numeric}} and
+\code{\link[checkmate]{assert_subset}}.}
 
 \item{laying}{type of pipe laying depicting the position of pipe in space:
 \itemize{
@@ -80,29 +90,33 @@ Type: \code{\link{assert_numeric}} and \code{\link{assert_subset}}.}
   \item \code{underground}
 }
 for each pipe in tracing path enumerated along the direction of flow.
-Type: \code{\link{assert_character}} and \code{\link{assert_subset}}.}
+Type: \code{\link[checkmate]{assert_character}} and
+\code{\link[checkmate]{assert_subset}}.}
 
 \item{beta}{logical indicator: should they consider additional heat loss of fittings?
 Logical value for each pipe in tracing path enumerated along the direction
-of flow. Type: \code{\link{assert_logical}}.}
+of flow. Type: \code{\link[checkmate]{assert_logical}}.}
 
 \item{exp5k}{logical indicator for regime of pipe: is pipe operated more that
 \code{5000} hours per year? Logical value for each pipe in tracing path
  enumerated along the direction of flow.
-Type: \code{\link{assert_logical}}.}
+Type: \code{\link[checkmate]{assert_logical}}.}
 
 \item{roughness}{roughness of internal wall for each pipe in tracing path enumerated along
-the direction of flow, [\emph{m}]. Type: \code{\link{assert_double}}.}
+the direction of flow, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{inlet}{elevation of pipe inlet for each pipe in tracing path enumerated along
-the direction of flow, [\emph{m}]. Type: \code{\link{assert_double}}.}
+the direction of flow, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{outlet}{elevation of pipe outlet for each pipe in tracing path enumerated along
-the direction of flow, [\emph{m}]. Type: \code{\link{assert_double}}.}
+the direction of flow, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{elev_tol}{maximum allowed discrepancy between adjacent outlet and inlet elevations of
 two subsequent pipes in the traced path, [\emph{m}].
-Type: \code{\link{assert_number}}.}
+Type: \code{\link[checkmate]{assert_number}}.}
 
 \item{method}{method of determining \emph{Darcy friction factor}
 \itemize{
@@ -110,52 +124,57 @@ Type: \code{\link{assert_number}}.}
   \item \code{vatankhan}
   \item \code{buzelli}
 }
-Type: \code{\link{assert_choice}}. For more details see \code{\link{dropp}}.}
+Type: \code{\link[checkmate]{assert_choice}}. For more details see
+\code{\link{dropp}}.}
 
 \item{forward}{tracing direction flag: is it a forward direction of tracing?
 If \code{FALSE} the backward tracing is performed.
-Type: \code{\link{assert_flag}}.}
+Type: \code{\link[checkmate]{assert_flag}}.}
 
-\item{absg}{Whether argument \code{g} (amount of heat carrier discharge to network) is an
-absolute value in [\emph{ton/hour}] (\code{TRUE}) or is it a percentage of
-flow rate in the pipe segment (\code{FALSE})?
-Type: \code{\link{assert_flag}}.}
+\item{absg}{Whether argument \code{g} (amount of heat carrier discharge to network) is
+an absolute value in [\emph{ton/hour}] (\code{TRUE}) or is it a percentage
+of flow rate in the pipe segment (\code{FALSE})?
+Type: \code{\link[checkmate]{assert_flag}}.}
 }
 \value{
-\code{\link{list}} containing results (detailed log) of tracing for each pipe
-      in tracing path enumerated along the direction of flow:
+\code{\link{list}} containing results (detailed log) of tracing for each
+ pipe in tracing path enumerated along the direction of flow:
  \describe{
    \item{\code{temperature}}{
      \emph{Traced thermal hydraulic regime}. Traced temperature of heat
-      carrier (water), [\emph{°C}]. Type: \code{\link{assert_double}}.
+      carrier (water), [\emph{°C}].
+      Type: \code{\link[checkmate]{assert_double}}.
    }
    \item{\code{pressure}}{
      \emph{Traced thermal hydraulic regime}. Traced pressure of heat
       carrier (water) for each pipe in tracing path enumerated along the
-      direction of flow, [\emph{MPa}]. Type: \code{\link{assert_double}}.
+      direction of flow, [\emph{MPa}].
+      Type: \code{\link[checkmate]{assert_double}}.
    }
    \item{\code{flow_rate}}{
      \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
       carrier (water) for each pipe in tracing path enumerated along the
-      direction of flow, [\emph{ton/hour}]. Type: \code{\link{assert_double}}.
+      direction of flow, [\emph{ton/hour}].
+      Type: \code{\link[checkmate]{assert_double}}.
    }
   \item{\code{loss}}{
      \emph{Traced thermal hydraulic regime}. Normative specific heat
      loss power for each pipe in tracing path enumerated along the direction
-     of flow, [\emph{kcal/m/h}]. Type: \code{\link{assert_double}}.
+     of flow, [\emph{kcal/m/h}].
+     Type: \code{\link[checkmate]{assert_double}}.
    }
   \item{\code{flux}}{
      \emph{Traced thermal hydraulic regime}. Normative heat flux for each pipe
      in tracing path enumerated along the direction of flow, [\emph{W/m^2}].
-     Type: \code{\link{assert_double}}.
+     Type: \code{\link[checkmate]{assert_double}}.
    }
    \item{\code{Q}}{
      \emph{Traced thermal hydraulic regime}. Normative heat loss for each
      pipe in tracing path enumerated along the direction of flow per day,
-     [\emph{kcal}]. Type: \code{\link{assert_double}}.
+     [\emph{kcal}]. Type: \code{\link[checkmate]{assert_double}}.
    }
  }
- Type: \code{\link{assert_list}}.
+ Type: \code{\link[checkmate]{assert_list}}.
 }
 \description{
 Trace values of thermal-hydraulic regime (temperature, pressure,
@@ -164,17 +183,14 @@ Trace values of thermal-hydraulic regime (temperature, pressure,
  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 }
 \details{
-The calculated (values of) regime may be considered as representation of
- district heating process in conditions of hypothetically perfect
- technical state of pipe walls and insulation.
-
- They consider only simple tracing paths which do not contain rings and any
+They consider only simple tracing paths which do not contain rings and any
  kind of parallelization. At the same time bidirectional (forward and
  backward) tracing is possible in accordance with sensor position. They also
- may consider discharges to network at the inlet of each pipeline segment
- as an approximation of actual forks of flows. Relevant illustration of
- adopted assumptions for 4-segment tracing path is depicted on the next
- figure.
+ may consider discharges to network at the inlet of each pipeline segment as
+ an approximation of actual forks of flows.
+
+ Relevant illustration of the adopted assumptions for 4-segment tracing path
+ is depicted on the next figure.
 
  \figure{m325regtrace.png}
 
@@ -182,15 +198,14 @@ The calculated (values of) regime may be considered as representation of
  values for subsequent pipe segments. Discrepancy of appropriate elevations
  cannot be more than \code{elev_tol}.
 
- Since inner diameter of the pipe is used as input, the the thickness of the
- pipe wall additionally considered in heat flux calculations. Pipe wall thickness
- is derived from pipe diameter using
- \href{https://docs.cntd.ru/document/1200174717}{GOST 30732} specifications.
+ They also may consider some normative volume loss of heat carrier (water) by
+ tuning volume loss factor \emph{a} in range \emph{0.0 -- 0.0025}
+ \eqn{hour^{-1}}.
 }
 \examples{
  library(pipenostics)
 
-# Consider 4-segment tracing path depicted in ?m325regtrace help page.
+# Consider 4-segment tracing path depicted.
 # First, let sensor readings for forward tracing:
 t_fw <- 130  # [°C]
 p_fw <- mpa_kgf(6)*all.equal(.588399, mpa_kgf(6))  # [MPa]
@@ -203,25 +218,6 @@ discharges <- seq(0, 30, 10)  # [ton/hour]
 regime_fw <- m325traceline(t_fw, p_fw, g_fw, discharges, forward = TRUE)
 print(regime_fw)
 
-# $temperature
-# [1] 129.1799 128.4269 127.9628 127.3367
-#
-# $pressure
-# [1] 0.5878607 0.5874226 0.5872143 0.5870330
-#
-# $flow_rate
-# [1] 250 240 220 190
-#
-# $loss
-# [1] 348.0000 347.1389 346.3483 345.8610
-#
-# $flux
-# [1] 181.9600 181.5097 181.0963 180.8415
-#
-# $Q
-# [1] 5011200 4415607 2493707 2905232
-
-
 # Next consider values of traced regime as sensor readings for backward tracing:
 t_bw <- 127.3367  # [°C]
 p_bw <- .5870330  # [MPa]
@@ -230,24 +226,6 @@ g_bw <- 190  # [ton/hour]
 # Then the calculated regime (red squares) for backward tracing is
 regime_bw <- m325traceline(t_bw, p_bw, g_bw, discharges, forward = FALSE)
 print(regime_bw)
-
-# $temperature
-# [1] 129.9953 129.1769 128.4254 127.9619
-#
-# $pressure
-# [1] 0.5883998 0.5878611 0.5874228 0.5872144
-#
-# $flow_rate
-# [1] 250 250 240 220
-#
-# $loss
-# [1] 347.1358 346.3467 345.8599 345.2035
-#
-# $flux
-# [1] 181.5081 181.0955 180.8410 180.4978
-#
-# $Q
-# [1] 4998755 4405529 2490192 2899710
 
 # Let compare sensor readings with backward tracing results:
 tracing <- with(regime_bw, {
@@ -269,10 +247,31 @@ tracing <- with(regime_bw, {
 })
 print(tracing)
 
-# sensor.value traced.value     abs.discr    rel.discr
-# temperature  129.9952943   130.000000  4.705723e-03 0.0036197868
-# pressure       0.5883998     0.588399 -8.215938e-07 0.0001396321
-# flow_rate    250.0000000   250.000000  0.000000e+00 0.0000000000
+# To address the problem of possible norm losses of the heat carrier,
+# they could roughly define the leaks as follows:
+
+# * maximum value prescribed to heat carrier loss factor, [hour^{-1}],
+#   multiplied by heating season relative duration:
+a <- 0.0025 * ( (365 - 90)/365 )
+
+# * length of subsequent pipes, [m]:
+l <- c(600, 530, 300, 350)
+
+# * nominal (outside) diameters of subsequent pipes, [m]:
+D <- rep.int(700, 4)*1e-3
+
+# * average year volumes of heat carrier (no heat carrier for 90 days in
+#   summer), [m^3]
+V <- pi * D^2/4 * l
+
+# * finally they get,  [ton/hour]:
+discharges <- a * V * drop(iapws::if97("rho", mpa_kgf(6), k_c(130)))*1e-3
+
+# * and the calculated regime (red squares) for forward tracing becomes
+print(m325traceline(g = discharges, forward = TRUE))
+
+# Let's compare it with more formal calculations:
+print(m325traceline(a = a, forward = TRUE))
 
 }
 \seealso{

@@ -9,11 +9,11 @@
 #'
 #' @param x
 #'  pressure (stress) measured in \emph{megapascals}. [\emph{MPa}].
-#'  Type: \code{\link{assert_double}}.
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
 #'  pressure (stress) in \emph{pounds per square inch},
-#'  [\emph{PSI}]. Type: \code{\link{assert_double}}.
+#'  [\emph{PSI}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @seealso
 #'  \code{\link{mpa_psi}} for converting \emph{pounds per square inch} to \emph{megapascals}

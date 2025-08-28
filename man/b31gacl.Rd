@@ -7,24 +7,24 @@
 b31gacl(dep, maop, d, wth, depth, l)
 }
 \arguments{
-\item{dep}{design pressure of pipe, [\emph{PSI}]. Type: \code{\link{assert_double}}.}
+\item{dep}{design pressure of pipe, [\emph{PSI}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{maop}{maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d}{nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{depth}{measured maximum depth of the corroded area, [\emph{inch}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{l}{measured maximum longitudinal length of the corroded area, [\emph{inch}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 allowable length of the corroded area in the pipe, [\emph{inch}].
- Type: \code{\link{assert_double}}.
+ Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Calculate allowable length of the corroded area in the pipe.

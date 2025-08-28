@@ -8,15 +8,15 @@ m278inshcm(temperature = 110, material = "aerocrete")
 }
 \arguments{
 \item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}].
-Type: \code{\link{assert_double}}.}
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{material}{designation of insulation material as it stated in \code{\link{m278insdata}},
-Type: \code{\link{assert_subset}}.}
+Type: \code{\link[checkmate]{assert_subset}}.}
 }
 \value{
 Thermal conductivity of insulation materials at given
  set of temperatures, [\emph{W/m/°C}], [\emph{W/m/K}].
- Type: \code{\link{assert_double}}.
+ Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Get normative values of thermal conductivity of pipe insulation
@@ -43,6 +43,7 @@ Other Minenergo:
 \code{\link{m325beta}()},
 \code{\link{m325nhl}()},
 \code{\link{m325nhldata}},
+\code{\link{m325nvl}()},
 \code{\link{m325nxdata}}
 }
 \concept{Minenergo}

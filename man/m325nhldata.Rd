@@ -12,10 +12,10 @@ A data frame with 17328 rows and 8 variables:
     \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325};
     identifier \emph{sgc} means that values are additionally
     postulated (see \emph{Details}).
-    Type: \code{\link{assert_character}}.
+    Type: \code{\link[checkmate]{assert_character}}.
   }
   \item{epoch}{Year depicting the epoch when the pipe is put in operation after laying or total overhaul.
-  Type: \code{\link{assert_integer}}.}
+  Type: \code{\link[checkmate]{assert_integer}}.}
   \item{laying}{Type of pipe laying depicting the position of pipe in space. Only five types of
     pipe laying are considered:
     \itemize{
@@ -25,13 +25,13 @@ A data frame with 17328 rows and 8 variables:
      \item \code{tunnel},
      \item \code{underground}.
     }
-    Type: \code{\link{assert_character}}.
+    Type: \code{\link[checkmate]{assert_character}}.
   }
 
   \item{exp5k}{
     Logical indicator for pipe regime: if \code{TRUE} pipe is
     operated more that \code{5000} hours per year.
-    Type: \code{\link{assert_logical}}.
+    Type: \code{\link[checkmate]{assert_logical}}.
   }
 
   \item{insulation}{
@@ -41,18 +41,18 @@ A data frame with 17328 rows and 8 variables:
       \item{\code{1}}{foamed polyurethane or analogue}
       \item{\code{2}}{polymer concrete}
     }
-   Type: \code{\link{assert_integerish}}.
+   Type: \code{\link[checkmate]{assert_integerish}}.
   }
 
-  \item{diameter}{Nominal internal diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.}
+  \item{diameter}{Nominal (outside) diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-  \item{temperature}{Operational temperature of pipe, [\emph{°C}]. Type: \code{\link{assert_double}}.}
+  \item{temperature}{Operational temperature of pipe, [\emph{°C}]. Type: \code{\link[checkmate]{assert_double}}.}
 
   \item{loss}{
     Normative value of specific heat loss power equal to heat flux output by
     1 meter length steel pipe during an hour,
     [\emph{kcal/m/hour}].
-    Type: \code{\link{assert_double}}.}
+    Type: \code{\link[checkmate]{assert_double}}.}
  }
 }
 \source{
@@ -62,7 +62,8 @@ A data frame with 17328 rows and 8 variables:
 m325nhldata
 }
 \description{
-Data represent values of specific heat loss power officially accepted by
+Data represent values of specific heat loss power through the thermal
+insulation officially accepted by
 \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325} as
 norms. Those values are maximums which are legally
 affirmed to contribute to normative heat loss \eqn{Q_{NHL}} of
@@ -86,6 +87,7 @@ Other Minenergo:
 \code{\link{m278soildata}},
 \code{\link{m325beta}()},
 \code{\link{m325nhl}()},
+\code{\link{m325nvl}()},
 \code{\link{m325nxdata}}
 }
 \concept{Minenergo}

@@ -4,13 +4,15 @@
 #' @family Minenergo
 #'
 #' @description
-#'  Calculate \eqn{\beta} - \emph{local heat loss coefficient} according to rule \emph{11.3.3}
-#'  of \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  Calculate \eqn{\beta} - \emph{local heat loss coefficient} according to rule
+#'  \emph{11.3.3} of
+#'  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'  \emph{Local heat loss coefficient} is used to increase normative heat loss
 #'  of pipe by taking into account heat loss of fittings (shut-off valves,
 #'  compensators and supports). This coefficient is applied mostly as a factor
 #'  during the summation of heat losses of pipes in pipeline leveraging
-#'  formula 14 of \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+#'  formula \emph{14} of
+#'  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 #'
 #' @param laying
 #'  type of pipe laying depicting the position of pipe in space:
@@ -21,14 +23,15 @@
 #'    \item \code{tunnel},
 #'    \item \code{underground}.
 #'  }
-#'  Type: \code{\link{assert_subset}}.
+#'  Type: \code{\link[checkmate]{assert_subset}}.
 #'
 #' @param d
-#'   internal diameter of pipe, [\emph{mm}]. Type: \code{\link{assert_double}}.
+#'   nominal (outside) diameter of pipe, [\emph{mm}].
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
 #'  Two possible values of \eqn{\beta}: \code{1.2} or \code{1.15} depending on
-#'  pipe laying and its diameter. Type: \code{\link{assert_double}}.
+#'  pipe laying and its diameter. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @export
 #'

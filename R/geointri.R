@@ -10,41 +10,41 @@
 #
 # @param lat
 #   latitude of geographical location to check, [\emph{DD}].
-#   Type: \code{\link{assert_number}}.
+#   Type: \code{\link[checkmate]{assert_number}}.
 #
 # @param lon
 #   longitude of geographical location to check, [\emph{DD}].
-#   Type: \code{\link{assert_number}}.
+#   Type: \code{\link[checkmate]{assert_number}}.
 #
 # @param lat1
 #   latitude of the first vertex of geographical triangle, [\emph{DD}].
-#   Type: \code{\link{assert_number}}.
+#   Type: \code{\link[checkmate]{assert_number}}.
 #
 # @param lon1
 #   longitude of the first vertex of geographical triangle, [\emph{DD}].
-#   Type: \code{\link{assert_number}}.
+#   Type: \code{\link[checkmate]{assert_number}}.
 #
 # @param lat2
 #   latitude of the second vertex of geographical triangle, [\emph{DD}].
-#   Type: \code{\link{assert_number}}.
+#   Type: \code{\link[checkmate]{assert_number}}.
 #
 # @param lon2
 #   longitude of the second vertex of geographical triangle, [\emph{DD}].
-#   Type: \code{\link{assert_number}}.
+#   Type: \code{\link[checkmate]{assert_number}}.
 #
 # @param lat3
 #   latitude of the third vertex of geographical triangle, [\emph{DD}].
-#   Type: \code{\link{assert_number}}.
+#   Type: \code{\link[checkmate]{assert_number}}.
 #
 # @param lon3
 #   longitude of the third  vertex of geographical triangle, [\emph{DD}].
-#   Type: \code{\link{assert_number}}.
+#   Type: \code{\link[checkmate]{assert_number}}.
 #
 # @param earth
-#   \emph{Earth} radius, [\emph{m}]. Type: \code{\link{assert_numeric}}.
+#   \emph{Earth} radius, [\emph{m}]. Type: \code{\link[checkmate]{assert_numeric}}.
 #
 # @return
-#   Is object in triangle? Type: \code{\link{assert_flag}}.
+#   Is object in triangle? Type: \code{\link[checkmate]{assert_flag}}.
 #
 # @export
 #
