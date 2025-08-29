@@ -201,11 +201,9 @@
 #'              rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
 #'              rar, ral, method = "dnv")
 #' print(pof)
-#' # 0.000000 0.252510 0.368275 0.771595
 #'
 #' # So, the POF of pipe is near
 #' print(max(pof))
-#' # 0.771595
 #'
 #' # The value of POF changes in time. So, in a year after inline inspection of
 #' # the pipe we can get something near
@@ -213,11 +211,9 @@
 #'              rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
 #'              rar, ral, method = "dnv", days = 365)
 #' print(pof)
-#' # 0.000000 0.525539 0.648359 0.929099
 #'
 #' # for entire pipe we get something near:
 #' print(max(pof))
-#' # 0.929099
 #'
 #' # Two years ago before inline inspection the pipe state was rather good:
 #' pof <- mepof(depth, length, rep(diameter, 4), rep(wall_thickness, 4),
@@ -225,13 +221,9 @@
 #'              rar, ral, method = "dnv", days = -2 * 365)
 #'
 #' print(pof)
-#' # 0.000000 0.040780 0.072923 0.271751
 #'
 #' # for entire pipe we get something near:
 #' print(max(pof))
-#' # 0.271751
-#'
-#'
 #'}
 mepof <- function(
   depth = seq(0, 10, length.out = 100), l = seq(40, 50, length.out = 100),

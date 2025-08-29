@@ -30,7 +30,6 @@ Get normative values of thermal conductivity of pipe insulation
 # Averaged thermal conductivity of pipe insulation at 110 °C
 print(m278insdata)
 mean(m278inshcm(110, m278insdata[["material"]]))
-# [1] 0.09033974  # [\emph{W/m/°C}]
 
 }
 \seealso{

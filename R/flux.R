@@ -40,8 +40,6 @@
 #' flux <- flux_loss(loss_max, d)
 #' print(flux)
 #'
-#' # [1]  80.86411 275.98722  # [W/m^2]
-#'
 #' stopifnot( all.equal(loss_flux(flux, d), loss_max, tolerance = 1e-5) )
 #'
 #' @rdname flux

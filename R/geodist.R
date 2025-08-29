@@ -111,9 +111,6 @@
 #'
 #' print(range(len))
 #'
-#' # [1] 1140.82331483 1152.37564656 #  [m]
-#'
-#'
 #' # Consider some remarkable objects on Earth, [DD]:
 #' objects <- rbind(
 #'   Mount_Kailash      = c(lat = 31.069831297551982, lon =  81.31215667724196),
@@ -160,9 +157,6 @@
 #' # Show the discrepancy in calculations, [km^2]:
 #' print(geoarea(lat1, lon1, lat2, lon2, lat3, lon3)) 
 #'  
-#'  #   Bermuda Polynesian 
-#'  # 0.4673216 11.1030971    
-#'
 #' @export
 geodist <- function(lat1, lon1, lat2, lon2, earth = 6371008.7714){
   checkmate::assert_double(

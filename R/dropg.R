@@ -97,8 +97,6 @@
 #' result <- flow_rate - dropg(adj, d, flow_rate)
 #' print(result)
 #'
-#' # [1]  75.96439 134.72222  65.70302 180.80580  78.05995
-#'
 #' # For more clarity they may perform calculations in `data.table`.
 dropg <- function(adj = 0, d = 700, flow_rate = 250) {
   UseMethod("dropg", adj)

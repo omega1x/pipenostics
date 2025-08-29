@@ -164,24 +164,6 @@
 #' regime_fw <- traceline(t_fw, p_fw, g_fw, discharges, loss = actual_loss, forward = TRUE)
 #' print(regime_fw)
 #'
-#' # $temperature
-#' # [1] 129.1799 128.4269 127.9628 127.3367
-#' #
-#' # $pressure
-#' # [1] 0.5878607 0.5874226 0.5872143 0.5870330
-#' #
-#' # $flow_rate
-#' # [1] 250 240 220 190
-#' #
-#' # $loss
-#' # [1] 348.0000 347.1389 346.3483 345.8610
-#' #
-#' # $flux
-#' # [1] 181.9600 181.5097 181.0963 180.8415
-#' #
-#' # $Q
-#' # [1] 5011200 4415607 2493707 2905232
-#'
 #'
 #' # Next consider values of traced regime as sensor readings for backward tracing:
 #' t_bw <- 127.3367  # [°C]
@@ -191,24 +173,6 @@
 #' # Then the calculated regime (red squares) for backward tracing is
 #' regime_bw <- traceline(t_bw, p_bw, g_bw, discharges, loss = actual_loss, forward = FALSE)
 #' print(regime_bw)
-#'
-#' # $temperature
-#' # [1] 130.000893685 129.180497939 128.427226907 127.963046346
-#' #
-#' # $pressure
-#' # [1] 0.588399833660 0.587861095778 0.587422779315 0.587214377798
-#' #
-#' # $flow_rate
-#' # [1] 250 250 240 220
-#' #
-#' # $loss
-#' # [1] 348.0000 347.1389 346.3483 345.8610
-#' #
-#' # $flux
-#' # [1] 181.959958158 181.509711836 181.096328092 180.841531863
-#' #
-#' # $Q
-#' # [1] 5011200.000 4415606.808 2493707.760 2905232.400
 #'
 #' # Let compare sensor readings with backward tracing results:
 #' tracing <- with(regime_bw, {
@@ -229,11 +193,6 @@
 #'   )
 #' })
 #' print(tracing)
-#'
-#' # sensor.value   traced.value          abs.discr         rel.discr
-#' # temperature 130.00089368526 130.0000000000 -8.93685255676e-04 0.000687450196674
-#' # pressure      0.58839983366   0.5883990075 -8.26160099998e-07 0.000140408139624
-#' # flow_rate   250.00000000000 250.0000000000  0.00000000000e+00 0.000000000000000
 #'
 #' @export
 traceline <- function(temperature = 130,

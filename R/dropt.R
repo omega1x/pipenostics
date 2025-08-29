@@ -65,8 +65,6 @@
 #'
 #'  print(temperature_drop)
 #'
-#'  # [1] 1.366806 1.433840
-
 dropt <- function(
   temperature =        130, # [°C]
   pressure    = mpa_kgf(6), # [MPa]

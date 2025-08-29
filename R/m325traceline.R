@@ -233,7 +233,7 @@
 #'     rbind(
 #'       lambda(temperature[first], t_fw),
 #'       lambda(pressure[first],    p_fw),
-#'       lambda(flow_rate[first], g_fw)
+#'       lambda(flow_rate[first],   g_fw)
 #'     ),
 #'     dimnames = list(
 #'       c("temperature", "pressure", "flow_rate"),
@@ -283,7 +283,6 @@ m325traceline <- function(
   forward = TRUE, absg = TRUE
 ){
   DAY   <- 24     # [hours]
-  METER <-  1e-3  # [m/mm]
 
   checkmate::assert_number(temperature, lower = 0,    upper = 350, finite = TRUE)
   checkmate::assert_number(pressure,  lower = 8.4e-2, upper = 100, finite = TRUE)
@@ -420,12 +419,12 @@ m325traceline <- function(
 
         # * Heat flux
         flux_regime[[i]] <-
-          pipenostics::flux_loss(loss_value, d[[i]] * METER, pipenostics::wth_d(d[[i]]))  # [W/m^2]
+          pipenostics::flux_loss(loss_value, d[[i]])  # [W/m^2]
 
         # * Heat carrier mass loss, [ton/hour]:
-        mass_loss <- pipenostics::m325nvl(
-          a[[i]], d[[i]], wth[[i]], len[[i]]
-        ) * drop(iapws::if97("rho", p_value, pipenostics::k_c(t_value)))*1e-3
+        mass_loss <- pipenostics::m325nml(
+          t_value, p_value, a[[i]], d[[i]], wth[[i]], len[[i]]
+        )
 
         # * Flow rate in forward tracing, [ton/hour]
         g_value <- {
@@ -450,7 +449,7 @@ m325traceline <- function(
               temperature = t_value,
               pressure = p_value,
               flow_rate = g_value,
-              d = d[[i]] * METER,
+              d = (d[[i]] - 2*wth[[i]])*1e-3,  # internal pipe diameter in [m]
               len = len[[i]],
               roughness = roughness[[i]],
               inlet = inlet[[i]],

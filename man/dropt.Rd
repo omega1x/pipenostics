@@ -68,7 +68,6 @@ Specific isobaric \href{https://en.wikipedia.org/wiki/Heat_capacity}{heat capaci
 
  print(temperature_drop)
 
- # [1] 1.366806 1.433840
 }
 \seealso{
 Other district heating: 
