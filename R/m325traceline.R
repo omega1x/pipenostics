@@ -301,8 +301,8 @@ m325traceline <- function(
   )
   checkmate::assert_double(
     d,
-    lower = min(pipenostics::m325nhldata[["diameter"]]),
-    upper = max(pipenostics::m325nhldata[["diameter"]]),
+    lower = min(pipenostics::m325nhldata[["d"]]),
+    upper = max(pipenostics::m325nhldata[["d"]]),
     finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
@@ -311,6 +311,7 @@ m325traceline <- function(
     upper = max(pipenostics::b36pipedata[["wth"]]),
     finite = TRUE, any.missing = FALSE, min.len = 1L
   )
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     len,
     lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
@@ -361,12 +362,12 @@ m325traceline <- function(
 
   if (forward) {
     # Material balance constraint:
-    rho       <- 1.0  # orientative water density, [ton/m^3]
+    rho       <- 1.0  # approximately the utmost water density in this context, [ton/m^3]
     mass_loss <- pipenostics::m325nvl(a, d, wth, len) * rho  # [ton/h]
 
-    material_balance <- flow_rate - sum(g, mass_loss) >= 1e-3
-    checkmate::assert_true(material_balance)
-    rm(material_balance, mass_loss, rho)
+    effective_flow <- flow_rate - sum(g, mass_loss)
+    checkmate::assert_true(effective_flow >= 1e-3)
+    rm(effective_flow, mass_loss, rho)
   }
 
   with(
@@ -405,7 +406,7 @@ m325traceline <- function(
           duration = DAY,
           beta = beta[[i]],
           extra = 2
-        )  # [kcal]
+        )  # [kcal/day]
 
         # * Specific heat loss power - magnitudes comparable with Minenergo-325
         #   sources

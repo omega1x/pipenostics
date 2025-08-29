@@ -84,8 +84,8 @@
 #'  ## Example: plot disparity of original B31G algorithm and
 #'  ## modified B31G showed on CRVL data
 #'  with(b31gdata[-(6:7),], {
-#'    b31g  <- b31gpf(depth, wth, smys, depth, l)
-#'    b31gmod  <- b31gmodpf(depth, wth, smys, depth, l)
+#'    b31g  <- b31gpf(d, wth, smys, depth, l)
+#'    b31gmod  <- b31gmodpf(d, wth, smys, depth, l)
 #'    axe_range <- range(c(b31g, b31gmod))
 #'    plot(b31g, b31g, type = 'b', pch = 16,
 #'         xlab = 'Pressure, [PSI]',
@@ -107,9 +107,10 @@ b31gmodpf <- function(d, wth, smys, depth, l) {
     min.len = 1L
   )
   checkmate::assert_double(
-    wth, lower = 0, upper = 19.68504, finite = TRUE, any.missing = FALSE,
+    wth, lower = 1.15e-2, upper = 19.68504, finite = TRUE, any.missing = FALSE,
     min.len = 1L
   )
+  checkmate::assert_true(all(d - 2*wth > 0.02))  # in inches
   checkmate::assert_double(
     smys, lower = 725.1887, upper = 290075.4760, finite = TRUE,
     any.missing = FALSE, min.len = 1L

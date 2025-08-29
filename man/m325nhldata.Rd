@@ -44,7 +44,7 @@ A data frame with 17328 rows and 8 variables:
    Type: \code{\link[checkmate]{assert_integerish}}.
   }
 
-  \item{diameter}{Nominal (outside) diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+  \item{d}{Nominal (outside) diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
 
   \item{temperature}{Operational temperature of pipe, [\emph{°C}]. Type: \code{\link[checkmate]{assert_double}}.}
 

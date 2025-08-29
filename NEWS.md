@@ -1,20 +1,21 @@
 # pipenostics 0.2.1
 
 ## Backlog
-
-- correct unit tests that are ignore for now. See the list of ignored tests in [.Rbuildignore](./.Rbuildignore) 
+- search and do job from *TODO*s
+- exclude printed results in examples to avoid mismatches
+- correct unit tests that are ignored for now. See the list of ignored tests in [.Rbuildignore](./.Rbuildignore) 
 - think if they should change internal diameter to outside diameter in simple `trace*()` functions
 - include `b36dwthv` into some tracers as an optional check
-- introduce `wth` argument to *m325*-tracers, and correct `flux_loss` calculations
-- in *m325*-tracers do not calculate total heat loss for a DAY since *a*-factor loss is introduced (is it right?)
-- unify column names in `m325nhldata` and `b36pipedata`
+- is total heat loss for a *DAY* calculation correct? 
 - deprecate function `wth_d`
-- add additional check for positivity of internal diameter $d - 2*wt$ (where $d$ denotes nominal (outside) diameter)
-- spread diameter `d` and wall thickness `wth` range checkmates to all functions with those arguments
 - add `rulc` - remain useful life calculator
 
 ## Current version
-- dataset `m325nxdata` now contains values of *a*-factor, pipe widths, and pipe diameters in *mm*, so that it's valid *b36pipedata* data.
+- breaking changes have been made to *m325*-tracers and *flux-loss* recalculations
+- in appropriate functions the checkmate asserts specify `~0.29 mm` as a minimum allowable value for pipe width `wth`
+- in `m325nhldata` column *diameter* has been renamed to *d* that unifies it with `b36pipedata` column names
+- additional check for positivity of internal diameter now is made inside those functions which accept outside diameter and wall thikness as arguments
+- dataset `m325nxdata` now contains values of *a*-factor, pipe widths, and pipe diameters in *mm*, so that it's valid *b36pipedata* data
 - function `b36dwthv` is introduced to perform validation of `d`/`wth` value pairs
 - functions `m325nvl()`, `m325nml()` are introduced to calculate normative material loss of heat carrierin pipe
 - issues with links in documentation are solved

@@ -67,8 +67,8 @@ Since the definition of flow stress, \emph{Sflow}, in
  ## Example: plot disparity of original B31G algorithm and
  ## modified B31G showed on CRVL data
  with(b31gdata[-(6:7),], {
-   b31g  <- b31gpf(depth, wth, smys, depth, l)
-   b31gmod  <- b31gmodpf(depth, wth, smys, depth, l)
+   b31g  <- b31gpf(d, wth, smys, depth, l)
+   b31gmod  <- b31gmodpf(d, wth, smys, depth, l)
    axe_range <- range(c(b31g, b31gmod))
    plot(b31g, b31g, type = 'b', pch = 16,
         xlab = 'Pressure, [PSI]',

@@ -120,35 +120,6 @@ Temperature extrapolation and pipe diameter interpolation are leveraged
 
  print(fittings_qs); stopifnot(all(round(fittings_qs ,1)  == c(272.0, 312.8)))
 
- # [1] 272.0 312.8  # [kcal/m/h]
-
-
-
- ## Calculate heat flux:
- operation_temperature <- c(65, 105)  # [°C]
-
- qs <- m325nhl(
-   year = pipe_dating, laying = pipe_laying, d = pipe_diameter,
-   temperature = operation_temperature
- )  # [kcal/m/h]
- print(qs)
-
- # [1] 272.00 321.75  # [kcal/m/h]
-
- pipe_diameter <- pipe_diameter * 1e-3          # [m]
- factor        <- 2.701283                      # [kcal/h/W]
-
- flux <- qs/factor/pipe_diameter -> a  # heat flux, [W/m^2]
- print(flux)
-
- # [1] 143.8470 170.1572  # [W/m^2]
-
- ## The above line is equivalent to:
-
- flux <- flux_loss(qs, pipe_diameter) -> b
-
- stopifnot(all.equal(a, b, tolerance = 5e-6))
-
 }
 \seealso{
 Other Minenergo: 

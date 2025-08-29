@@ -351,8 +351,8 @@ m325tracebw <- function(sender = 6,
   )
   checkmate::assert_double(
     d,
-    lower = min(pipenostics::m325nhldata[["diameter"]]),
-    upper = max(pipenostics::m325nhldata[["diameter"]]),
+    lower = min(pipenostics::m325nhldata[["d"]]),
+    upper = max(pipenostics::m325nhldata[["d"]]),
     finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
@@ -361,6 +361,7 @@ m325tracebw <- function(sender = 6,
     upper = max(pipenostics::b36pipedata[["wth"]]),
     finite = TRUE, any.missing = FALSE, min.len = 1L
   )
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     len,
     lower = 0, finite = TRUE, any.missing = FALSE, len = n
@@ -463,8 +464,7 @@ m325tracebw <- function(sender = 6,
   ## Normative heat flux, [W/m^2]
   flux[is_temperature_sensored] <- pipenostics::flux_loss(
     x   = loss[is_temperature_sensored],
-    d   = d[is_temperature_sensored] * METER ,
-    wth = pipenostics::wth_d(d[is_temperature_sensored])
+    d   = d[is_temperature_sensored]
   )
 
   ## Normative heat loss per day, [kcal]
@@ -653,8 +653,7 @@ m325tracebw <- function(sender = 6,
     if (any(is_tp_sensored)) {
       this_sender_flux[is_tp_sensored] <- pipenostics::flux_loss(
           x   =  this_sender_loss[is_tp_sensored],
-          d   = d[is_processed_pipe][is_tp_sensored] * METER,
-          wth = pipenostics::wth_d(d[is_processed_pipe][is_tp_sensored])
+          d   = d[is_processed_pipe][is_tp_sensored]
       )
       if (verbose)
         cat(

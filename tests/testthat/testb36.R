@@ -49,7 +49,7 @@ for (i in unique(b36pipedata[["origin"]])) {
     }
   )
 }
-rm(output, ensample, i)
+rm(ensample, i)
 
 test_that("*b36mass* errs in producing NAs for special cases", {
   ensample <- b36pipedata[b36pipedata[["origin"]] %in% c(8, 9) & b36pipedata[["d"]] < 25, ]

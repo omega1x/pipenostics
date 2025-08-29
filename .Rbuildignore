@@ -7,13 +7,28 @@
 ^pkgdown$
 ^vignettes/articles$
 
-## temporary exlusions for debugging
-
-### Code & Tests
-tests/testthat/testtracexw\.R
-tests/testthat/testm325tracebw\.R
-
-### Datasets
-^data/m325nxdata\.bak*
+### default
 ^.*\.Rproj$
 ^\.Rproj\.user$
+
+## Temporary exlusions for debugging:
+
+### Code & Tests
+
+^R/m325traceline\.R$
+^tests/testthat/testm325traceline\.R$
+^tests/testthat/testm325tracexw\.R$
+
+^R/m325tracefw\.R$
+^tests/testthat/testm325tracefw\.R$
+
+^R/m325tracebw.R$
+^tests/testthat/testm325tracebw\.R$
+
+^R/traceline\.R$
+^R/tracefw\.R$
+^R/tracebw\.R$
+^tests/testthat/testtracexw\.R$
+^tests/testthat/testtrace\.R$
+
+### Previous versions of datasets

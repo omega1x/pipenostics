@@ -326,8 +326,8 @@ m325tracefw <- function(
   )
   checkmate::assert_double(
     d,
-    lower = min(pipenostics::m325nhldata[["diameter"]]),
-    upper = max(pipenostics::m325nhldata[["diameter"]]),
+    lower = min(pipenostics::m325nhldata[["d"]]),
+    upper = max(pipenostics::m325nhldata[["d"]]),
     finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
@@ -336,6 +336,7 @@ m325tracefw <- function(
     upper = max(pipenostics::b36pipedata[["wth"]]),
     finite = TRUE, any.missing = FALSE, min.len = 1L
   )
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     len,
     lower = 0, finite = TRUE, any.missing = FALSE, len = n

@@ -274,8 +274,8 @@ tracefw <- function(sender = c(0, 1),
   norms <- pipenostics::m325nhldata  # use brief name
   checkmate::assert_double(
     d,
-    lower = min(norms[["diameter"]]),
-    upper = max(norms[["diameter"]]),
+    lower = min(norms[["d"]]),
+    upper = max(norms[["d"]]),
     finite = TRUE,
     any.missing = FALSE,
     len = n

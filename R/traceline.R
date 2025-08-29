@@ -277,8 +277,8 @@ traceline <- function(temperature = 130,
   )
   checkmate::assert_double(
     d,
-    lower = min(norms[["diameter"]]),
-    upper = max(norms[["diameter"]]),
+    lower = min(norms[["d"]]),
+    upper = max(norms[["d"]]),
     finite = TRUE,
     any.missing = FALSE,
     min.len = 1L

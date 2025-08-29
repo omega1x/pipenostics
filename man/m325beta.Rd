@@ -39,7 +39,7 @@ Calculate \eqn{\beta} - \emph{local heat loss coefficient} according to rule
  library(pipenostics)
 
 norms <- within(m325nhldata, {
-  beta <- m325beta(laying, as.double(diameter))
+  beta <- m325beta(laying, as.double(d))
 })
 unique(norms$beta)
 # [1] 1.15 1.20

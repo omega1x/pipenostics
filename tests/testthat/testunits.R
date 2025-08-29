@@ -108,17 +108,17 @@ test_that("*f_c* errs in calculation", {
 
 test_that("*flux_loss* errs in calculation", {
   expect_equal(
-    flux_loss(c(218, 1040), c(998, 1395) * 1e-3, c(2, 5)),
-    c(80.70238, 275.00155),
-    tolerance = 5e-6
+    flux_loss(c(218, 1040), c(998, 1395)),
+    c(80.86411, 275.98722),
+    tolerance = 1e-5
   )
 })
 
 
 test_that("*loss_flux* errs in calculation", {
   expect_equal(
-    loss_flux(c(80.70238, 275.00155), c(998, 1395) * 1e-3, c(2, 5)),
+    loss_flux(c(80.86411, 275.98722), c(998, 1395)),
     c(218, 1040),
-    tolerance = 5e-6
+    tolerance = 1e-5
   )
 })

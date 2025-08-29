@@ -16,11 +16,7 @@
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param d
-#'  outside (if \emph{wth = 0}) or internal (if \emph{wth > 0}) diameter of cylindrical pipe, [\emph{m}].
-#'  Type: \code{\link[checkmate]{assert_double}}.
-#'
-#' @param wth
-#'  wall thickness of pipe, [\emph{mm}], or \emph{0} if argument \emph{d} is an outside diameter of pipe.
+#'  nominal (outside) diameter of pipe, [\emph{mm}].
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
@@ -34,49 +30,54 @@
 #' @examples
 #' library(pipenostics)
 #'
-#' # Consider pipes:
-#' diameter      <- c(998, 1395)  # [mm]
-#' wall_thikness <- c(  2,    5)  # [mm]
+#' # Consider pipes with nominal (outside) diameters:
+#' d   <- c(998, 1395)  # [mm]
 #'
-#' # Then maximum possible normative neat loss according (Minenergo-325) for
-#' # these pipe diameters are
+#' # Then maximum possible normative neat loss according (Minenergo-325) is
 #' loss_max <- c(218, 1040)  # [kcal/m/h]
 #'
 #' # The appropriate flux is
-#' flux <- flux_loss(loss_max, diameter * 1e-3, wall_thikness)
+#' flux <- flux_loss(loss_max, d)
 #' print(flux)
 #'
-#' # [1] 80.70238 275.00155  # [W/m^2]
+#' # [1]  80.86411 275.98722  # [W/m^2]
 #'
-#' stopifnot(
-#'   all.equal(loss_flux(flux, diameter * 1e-3, wall_thikness), loss_max, tolerance = 5e-6)
-#' )
-#'
+#' stopifnot( all.equal(loss_flux(flux, d), loss_max, tolerance = 1e-5) )
 #'
 #' @rdname flux
 #' @export
-loss_flux <- function(x, d, wth = 0){
-  checkmate::assert_double(x, lower = 0, upper = 6e4)
-  checkmate::assert_double(d, lower = 10e-3, upper = 5, any.missing = FALSE)
-  checkmate::assert_double(wth, lower = 0, upper = .35 * max(d) * 1e3, any.missing = FALSE)
+loss_flux <- function(x, d = 720){
+  checkmate::assert_double(
+    x, lower = 0, upper = 6e4, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  commensurable(c(length(x), length(d)))
 
-  h <- 3600    # [s/h]
-  J <- 4186.8  # [J/kcal]
-  flux <- x    # [W/m^2]
-  loss <- h/J * flux * base::pi * (d + wth * 1e-3)  # [kcal/m/h]
-  loss
+   h <- 3600    # [s/h]
+   J <- 4186.8  # [J/kcal]
+   m <- 1e-3    # [m/mm]
+  #x <- flux    # [W/m^2]
+
+   x * h/J * base::pi * d * m  # [kcal/m/h]
 }
 
 #' @rdname flux
 #' @export
-flux_loss <- function(x, d, wth = 0){
-  checkmate::assert_double(x, lower = 0, upper = 1500)
-  checkmate::assert_double(d, lower = 10e-3, upper = 5, any.missing = FALSE)
-  checkmate::assert_double(wth, lower = 0, upper = .35 * max(d) * 1e3, any.missing = FALSE)
+flux_loss <- function(x, d = 720){
+  checkmate::assert_double(
+    x, lower = 0, upper = 1500, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  commensurable(c(length(x), length(d)))
 
-  h <- 3600    # [s/h]
-  J <- 4186.8  # [J/kcal]
-  loss <- x    # [kcal/m/h]
-  flux <- loss * J/h / base::pi / (d + wth * 1e-3)  # [W/m^2]
-  flux
+   h <- 3600    # [s/h]
+   J <- 4186.8  # [J/kcal]
+   m <- 1e-3    # [m/mm]
+  #x <- loss    # [kcal/m/h]
+
+  x * J/h / base::pi / d / m  # [W/m^2]
 }

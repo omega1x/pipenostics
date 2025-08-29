@@ -5,9 +5,9 @@
 \alias{flux_loss}
 \title{Convert heat flux to specific heat loss power}
 \usage{
-loss_flux(x, d, wth = 0)
+loss_flux(x, d = 720)
 
-flux_loss(x, d, wth = 0)
+flux_loss(x, d = 720)
 }
 \arguments{
 \item{x}{value of
@@ -17,10 +17,7 @@ flux_loss(x, d, wth = 0)
 }
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d}{outside (if \emph{wth = 0}) or internal (if \emph{wth > 0}) diameter of cylindrical pipe, [\emph{m}].
-Type: \code{\link[checkmate]{assert_double}}.}
-
-\item{wth}{wall thickness of pipe, [\emph{mm}], or \emph{0} if argument \emph{d} is an outside diameter of pipe.
+\item{d}{nominal (outside) diameter of pipe, [\emph{mm}].
 Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
@@ -38,24 +35,19 @@ Convert \href{https://en.wikipedia.org/wiki/Heat_flux}{heat flux}
 \examples{
 library(pipenostics)
 
-# Consider pipes:
-diameter      <- c(998, 1395)  # [mm]
-wall_thikness <- c(  2,    5)  # [mm]
+# Consider pipes with nominal (outside) diameters:
+d   <- c(998, 1395)  # [mm]
 
-# Then maximum possible normative neat loss according (Minenergo-325) for
-# these pipe diameters are
+# Then maximum possible normative neat loss according (Minenergo-325) is
 loss_max <- c(218, 1040)  # [kcal/m/h]
 
 # The appropriate flux is
-flux <- flux_loss(loss_max, diameter * 1e-3, wall_thikness)
+flux <- flux_loss(loss_max, d)
 print(flux)
 
-# [1] 80.70238 275.00155  # [W/m^2]
+# [1]  80.86411 275.98722  # [W/m^2]
 
-stopifnot(
-  all.equal(loss_flux(flux, diameter * 1e-3, wall_thikness), loss_max, tolerance = 5e-6)
-)
-
+stopifnot( all.equal(loss_flux(flux, d), loss_max, tolerance = 1e-5) )
 
 }
 \seealso{

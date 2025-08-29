@@ -52,9 +52,10 @@ b31gacd <- function(dep, maop, d, wth, l){
     min.len = 1L
   )
   checkmate::assert_double(
-    wth, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
+    wth, lower = 1.15e-2, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
     min.len = 1L
   )
+  checkmate::assert_true(all(d - 2*wth > 0.02))  # in inch
   checkmate::assert_double(
     l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
     min.len = 1L

@@ -78,7 +78,7 @@ It is common that sensor-measured flow rate undergoes discharges to
 # in [?dropg] help-page.
 
 # Typical large diameters of pipes under consideration, [mm]:
-d <- as.double(unique(subset(pipenostics::m325nhldata, diameter > 700)$diameter))
+d <- as.double(unique(subset(pipenostics::m325nhldata, d > 700)$d))
 
 # Let sensor-measured flow rate in the inlet of pipe
 # under consideration be proportional to d, [ton/hour]:

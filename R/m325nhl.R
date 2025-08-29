@@ -117,36 +117,7 @@
 #'
 #'  print(fittings_qs); stopifnot(all(round(fittings_qs ,1)  == c(272.0, 312.8)))
 #'
-#'  # [1] 272.0 312.8  # [kcal/m/h]
-#'
-#'
-#'
-#'  ## Calculate heat flux:
-#'  operation_temperature <- c(65, 105)  # [°C]
-#'
-#'  qs <- m325nhl(
-#'    year = pipe_dating, laying = pipe_laying, d = pipe_diameter,
-#'    temperature = operation_temperature
-#'  )  # [kcal/m/h]
-#'  print(qs)
-#'
-#'  # [1] 272.00 321.75  # [kcal/m/h]
-#'
-#'  pipe_diameter <- pipe_diameter * 1e-3          # [m]
-#'  factor        <- 2.701283                      # [kcal/h/W]
-#'
-#'  flux <- qs/factor/pipe_diameter -> a  # heat flux, [W/m^2]
-#'  print(flux)
-#'
-#'  # [1] 143.8470 170.1572  # [W/m^2]
-#'
-#'  ## The above line is equivalent to:
-#'
-#'  flux <- flux_loss(qs, pipe_diameter) -> b
-#'
-#'  stopifnot(all.equal(a, b, tolerance = 5e-6))
-#'
-
+#' @export
 m325nhl <- function(year        =          1986,
                     laying      = "underground",
                     exp5k       =          TRUE,
@@ -175,8 +146,8 @@ m325nhl <- function(year        =          1986,
   checkmate::assert_subset(insulation, choices = unique(norms[["insulation"]]))
   checkmate::assert_double(
     d,
-    lower = min(norms[["diameter"]]),
-    upper = max(norms[["diameter"]]),
+    lower = min(norms[["d"]]),
+    upper = max(norms[["d"]]),
     finite = TRUE,
     any.missing = FALSE,
     min.len = 1L
@@ -238,7 +209,7 @@ m325nhl <- function(year        =          1986,
                        norms[["exp5k"]] == exp5k_value &
                        norms[["insulation"]] == insulation_value,]
       neighbor_diameter <-
-        with(list(norms_diameter = unique(norms[["diameter"]])), {
+        with(list(norms_diameter = unique(norms[["d"]])), {
           checkmate::assert_double(
             d_value,
             lower = min(norms_diameter),
@@ -254,7 +225,7 @@ m325nhl <- function(year        =          1986,
         vapply(neighbor_diameter, function(x, t_carrier) {
           if (is.na(x))
             return(NA_real_)
-          with(norms[norms[["diameter"]] == x, c("temperature", "loss")], {
+          with(norms[norms[["d"]] == x, c("temperature", "loss")], {
             zone <- findInterval(t_carrier, range(temperature),
                                  rightmost.closed = TRUE)
             if (zone == 1L) {

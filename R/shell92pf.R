@@ -76,7 +76,8 @@
 #'
 shell92pf <- function(d, wth, uts, depth, l){
   checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L)
-  checkmate::assert_double(wth, lower = 0, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_double(wth, lower = 0.29, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1L)
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(uts, lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1L)
   checkmate::assert_double(depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE, min.len = 1L)
   checkmate::assert_double(l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L)

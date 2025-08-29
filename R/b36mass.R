@@ -101,6 +101,7 @@ b36mass <- function(d, wth, len = 1, rho = 7.85, origin = NULL) {
     lower = min(md[[L_THICKNESS]]), upper = max(md[[L_THICKNESS]]),
     any.missing = FALSE, min.len = L_ONE
   )
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     len,
     lower = 0, finite = TRUE, any.missing = FALSE, min.len = L_ONE
