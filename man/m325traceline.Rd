@@ -274,4 +274,9 @@ print(m325traceline(g = discharges, forward = TRUE))
 print(m325traceline(a = a, forward = TRUE))
 
 }
+\seealso{
+Other Regime tracing: 
+\code{\link{m325tracebw}()},
+\code{\link{m325tracefw}()}
+}
 \concept{Regime tracing}

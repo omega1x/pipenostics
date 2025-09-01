@@ -216,7 +216,7 @@ mgtdhgeo <- function(lat, lon, tau = 1440L, depth = 2.4, use_cluster = FALSE){
       USE.NAMES = FALSE, SIMPLIFY = TRUE
     )
     parallel::stopCluster(cluster)
-    return(stream)
+    stream
   } else {
     unlist(
       Map(

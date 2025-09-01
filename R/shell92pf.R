@@ -72,7 +72,6 @@
 #' depth = c( 13.4,   9.0)  # [mm]
 #'
 #' shell92pf(d, wth, uts, depth, l)
-#' # [1] 11.09262 25.27286
 #'
 shell92pf <- function(d, wth, uts, depth, l){
   checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L)

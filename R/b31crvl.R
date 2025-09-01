@@ -289,7 +289,7 @@ b31crvl <- function(maop, d, wth, smys, def = .72, depth, l) {
         round(pipe[["allowed_corrosion_length"]] / sqrt(d * wth) / 1.12, 3)
   )
   class(pipe) <- c("crvl", class(pipe))
-  return(pipe)
+  pipe
 }
 
 #' @export

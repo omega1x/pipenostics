@@ -60,7 +60,6 @@ l     = c(203.2, 200.0)  # [mm]
 depth = c( 13.4,   9.0)  # [mm]
 
 shell92pf(d, wth, uts, depth, l)
-# [1] 11.09262 25.27286
 
 }
 \references{

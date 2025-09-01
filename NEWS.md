@@ -1,13 +1,11 @@
 # pipenostics 0.2.1
 
 ## Backlog
-- in *b36mass.R* check (d - wth) factor
-- use *mm* for all pipe diameters in all functions
+- do not use a tracer inside examples of another tracer
 - search and do job from *TODO*s
 - correct unit tests that are ignored for now. See the list of ignored tests in [.Rbuildignore](./.Rbuildignore) 
 - think if they should change internal diameter to outside diameter in simple `trace*()` functions
 - include `b36dwthv` into some tracers as an optional check
-- is total heat loss for a *DAY* calculation correct? 
 - deprecate function `wth_d`
 - add `rulc` - remain useful life calculator
 

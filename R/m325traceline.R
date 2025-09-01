@@ -282,7 +282,8 @@ m325traceline <- function(
   method = "romeo",
   forward = TRUE, absg = TRUE
 ){
-  DAY   <- 24     # [hours]
+  DAY         <- 24 # [hours]
+  NHL_N_POINT <- 2  # constan value for `extra` argument of m325nhl
 
   checkmate::assert_number(temperature, lower = 0,    upper = 350, finite = TRUE)
   checkmate::assert_number(pressure,  lower = 8.4e-2, upper = 100, finite = TRUE)
@@ -385,7 +386,7 @@ m325traceline <- function(
       g_value <- flow_rate
       Q_value <- loss_value <- flux_value <- NA_real_
 
-      pipe_enum <- with(list(enum = seq_len(length(g))), {
+      pipe_enum <- with(list(enum = seq_along(g)), {
         if (forward)
           enum
         else
@@ -404,7 +405,7 @@ m325traceline <- function(
           len = len[[i]],
           duration = DAY,
           beta = beta[[i]],
-          extra = 2
+          extra = NHL_N_POINT
         )  # [kcal/day]
 
         # * Specific heat loss power - magnitudes comparable with Minenergo-325
@@ -414,7 +415,7 @@ m325traceline <- function(
           insulation = insulation[[i]],  d = d[[i]],  temperature = t_value,
           len = 1,  # [m]
           duration = 1,  # [hour]
-          beta = beta[[i]],  extra = 2
+          beta = beta[[i]],  extra = NHL_N_POINT
         )  # [kcal/m/h]
 
         # * Heat flux

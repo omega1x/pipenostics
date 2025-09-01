@@ -15,16 +15,6 @@
 
 ### Code & Tests
 
-#^R/m325traceline\.R$
-^tests/testthat/testm325traceline\.R$
-^tests/testthat/testm325tracexw\.R$
-
-^R/m325tracefw\.R$
-^tests/testthat/testm325tracefw\.R$
-
-^R/m325tracebw.R$
-^tests/testthat/testm325tracebw\.R$
-
 ^R/traceline\.R$
 ^R/tracefw\.R$
 ^R/tracebw\.R$

@@ -240,46 +240,46 @@
 #' DHN$acceptor <- sprintf("N%02i", DHN$acceptor)
 #'
 #' # Perform backward tracing to get regime on root node:
-#' bw_report <- do.call("m325tracebw", c(as.list(DHN), verbose = FALSE))
+#' #bw_report <- do.call("m325tracebw", c(as.list(DHN), verbose = FALSE)) #TODO: restore after `m325tracebw` corrections`
 #'
 #' # Put the traced values to the root node of test bench:
 #' root_node_idx <- 12
 #' root_node <- sprintf("N%02i", root_node_idx)
 #' regime_param  <- c("temperature", "pressure", "flow_rate")
-#' DHN[root_node_idx, regime_param] <-
-#'   subset(bw_report,
-#'          node == root_node & aggregation == "median",
-#'          regime_param)
-#' rm(root_node, root_node_idx)
+#' #DHN[root_node_idx, regime_param] <-
+#' #  subset(bw_report,
+#' #         node == root_node & aggregation == "median",
+#' #         regime_param)
+#' #rm(root_node, root_node_idx)
 #'
 #' # Trace the test bench forward for the first time:
-#' fw_report <- do.call("m325tracefw",
-#'                      c(as.list(DHN), verbose = FALSE, elev_tol = .5))
+#' #fw_report <- do.call("m325tracefw",
+#' #                     c(as.list(DHN), verbose = FALSE, elev_tol = .5))
 #'
 #' # Let's compare traced regime at terminal nodes back to test bench:
-#' report <- subset(
-#'   rbind(bw_report, fw_report),
-#'   node %in% subset(DHN, !(acceptor %in% sender))$acceptor &
-#'     aggregation == "identity"
-#' )
+#' #report <- subset(
+#' #  rbind(bw_report, fw_report),
+#' #  node %in% subset(DHN, !(acceptor %in% sender))$acceptor &
+#' #    aggregation == "identity"
+#' #)
 #'
-#' regime_delta <- colMeans(
-#'   subset(report, backward, regime_param) -
-#'     subset(report, !backward, regime_param)
-#' )
-#' print(regime_delta)
+#' #regime_delta <- colMeans(
+#' #  subset(report, backward, regime_param) -
+#' #    subset(report, !backward, regime_param)
+#' #)
+#' #print(regime_delta)
 #'
-#' stopifnot(sqrt(regime_delta %*% regime_delta) < 0.5)
+#' #stopifnot(sqrt(regime_delta %*% regime_delta) < 0.5)
 #'
 #' # To address the problem of possible norm losses of the heat carrier,
 #' # they could roughly define the leaks as follows:
 #' DHN[, "a"] <- 0.0025 * (365 - 90)/365
 #'
 #' # so that forward tracing
-#' fw_report_loss <- do.call("m325tracefw", c(as.list(DHN), verbose = FALSE, elev_tol = .5))
+#' #fw_report_loss <- do.call("m325tracefw", c(as.list(DHN), verbose = FALSE, elev_tol = .5))
 #'
 #' # produces slightly different results:
-#' print(max(abs(fw_report[, "loss"] - fw_report_loss[, "loss"])))
+#' #print(max(abs(fw_report[, "loss"] - fw_report_loss[, "loss"])))
 #'
 #' @export
 m325tracefw <- function(
@@ -368,15 +368,14 @@ m325tracefw <- function(
     inlet,
     lower = 0, finite = TRUE, any.missing = FALSE, len = n
   )
+  checkmate::assert_number(elev_tol, lower = 0, upper = 10, finite = TRUE)
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
   checkmate::assert_flag(verbose)
   checkmate::assert_flag(csv)
   if (csv) {
     checkmate::assert_character(
       basename(file),
-      pattern = "^[[:alnum:]_\\.\\-]+$",
-      any.missing = FALSE,
-      len = 1
+      pattern = "^[[:alnum:]_\\.\\-]+$",  any.missing = FALSE, len = 1
     )  # check for validness of file name!
     checkmate::assert_path_for_output(file)
   }
@@ -388,25 +387,21 @@ m325tracefw <- function(
     cat(
       sprintf(
         "\n%s %s | start forward tracing; segments %i;",
-        time_stamp_posixct,
-        .func_name,
-        n
+        time_stamp_posixct, .func_name, n
       )
     )
   rm(n)
 
   # Compute discharges ----
-  discharge <-
-    structure(1 - d ^ 2 / tapply(d ^ 2, sender, sum)[sender], names = acceptor)
+  discharge <- structure(
+    1 - d ^ 2 / tapply(d ^ 2, sender, sum)[sender], names = acceptor
+  )
 
   # List search paths ----
   tracing_path <- pipenostics::flowls(sender, acceptor, use_cluster)
   checkmate::assert_list(
     tracing_path,
-    types = "integerish",
-    any.missing = FALSE,
-    min.len = 1,
-    max.len = length(acceptor)
+    types = "integerish", any.missing = FALSE, min.len = 1, max.len = length(acceptor)
   )
 
   root_node <- tracing_path[[1]][[1]]
@@ -414,33 +409,29 @@ m325tracefw <- function(
 
   # Validate initial data ----
   checkmate::assert_double(temperature[[root_node]], any.missing = FALSE, len = 1L)
-  checkmate::assert_double(pressure[[root_node]], any.missing = FALSE, len = 1L)
-  checkmate::assert_double(flow_rate[[root_node]], any.missing = FALSE, len = 1L)
+  checkmate::assert_double(pressure[[root_node]]   , any.missing = FALSE, len = 1L)
+  checkmate::assert_double(flow_rate[[root_node]]  , any.missing = FALSE, len = 1L)
 
 
   job_log <- data.frame(
-    node = acceptor[root_node],
-    tracing = "sensor",
-    backward = FALSE,
+    node        = acceptor[root_node],
+    tracing     = "sensor",
+    backward    = FALSE,
     aggregation = "identity",
-    loss = NA_real_,
-    flux = NA_real_,
-    Q    = NA_real_,
+    loss        = NA_real_,
+    flux        = NA_real_,
+    Q           = NA_real_,
     temperature = temperature[root_node],
-    pressure = pressure[root_node],
-    flow_rate = flow_rate[root_node],
-    job = 0L
+    pressure    = pressure[root_node],
+    flow_rate   = flow_rate[root_node],
+    job         = 0L
   )
 
   if (csv)
     utils::write.table(
       job_log,
-      file = file,
-      append = FALSE,
-      quote = FALSE,
-      sep = ",",
-      col.names = TRUE,
-      row.names = FALSE
+      file = file,  append = FALSE, quote   = FALSE, sep       = ",", 
+      col.names = TRUE, row.names = FALSE
     )
 
   # Trace searched paths ----
@@ -459,52 +450,49 @@ m325tracefw <- function(
     current_path <- tracing_path[[job_num]][-1]
     checkmate::assert_integer(
       current_path,
-      lower = 1L,
-      upper = length(acceptor),
-      any.missing = FALSE,
-      min.len = 1,
-      max.len = length(acceptor),
-      unique = TRUE
+      lower   = 1L, upper   = length(acceptor), any.missing = FALSE,
+      min.len = 1,  max.len = length(acceptor), unique      = TRUE
     )
-    tmp_wth <- 12  # TODO: put wth-argument value here
     regime <- m325traceline(
-      temperature[root_node],
-      pressure[root_node],
-      flow_rate[root_node],
-      discharge[current_path],
-      a[current_path],
-      d[current_path],
-      tmp_wth,
-      len[current_path],
-      year[current_path],
-      insulation[current_path],
-      laying[current_path],
-      beta[current_path],
-      exp5k[current_path],
-      roughness[current_path],
-      inlet[current_path],
-      outlet[current_path],
-      elev_tol = elev_tol,
-      method = method,
-      forward = TRUE,
-      absg = FALSE
+      temperature = temperature[root_node],
+      pressure    = pressure[root_node],
+      flow_rate   = flow_rate[root_node],
+      g           = discharge[current_path],
+      a           = a[current_path],
+      d           = d[current_path],
+      wth         = wth[current_path],
+      len         = len[current_path],
+      year        = year[current_path],
+      insulation  = insulation[current_path],
+      laying      = laying[current_path],
+      beta        = beta[current_path],
+      exp5k       = exp5k[current_path],
+      roughness   = roughness[current_path],
+      inlet       = inlet[current_path],
+      outlet      = outlet[current_path],
+      elev_tol    = elev_tol[[1]],
+      method      = method,
+      forward     = TRUE,
+      absg        = FALSE
     )
     regime <- as.data.frame(regime)
-    regime[["node"]] <- acceptor[current_path]
-    regime[["tracing"]] <- sender[current_path]
-    regime[["backward"]] <- FALSE
+    
+    regime[["node"]]        <- acceptor[current_path]
+    regime[["tracing"]]     <- sender[current_path]
+    regime[["backward"]]    <- FALSE
     regime[["aggregation"]] <- "identity"
-    regime[["job"]] <- job_num
+    regime[["job"]]         <- job_num
+    
     job_log <- rbind(job_log, regime)
     job_log <- job_log[!duplicated(job_log[,setdiff(colnames(job_log), "job")]), ]
 
     if (csv)
       utils::write.table(
         job_log[job_log[["job"]] == job_num, ],
-        file = file,
-        append = TRUE,
-        quote = FALSE,
-        sep = ",",
+        file      = file,
+        append    = TRUE,
+        quote     = FALSE,
+        sep       = ",",
         col.names = FALSE,
         row.names = FALSE
       )

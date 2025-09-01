@@ -28,11 +28,9 @@
 #'
 #' # Convert from Kelvin to Fahrenheit:
 #' f_k(c(0, 373.15))
-#' # [1]  -459.67 212
 #'
 #' # Convert from Celsius to Fahrenheit:
 #' f_c(c(-273.15, 100))
-#' # [1]  -459.67, 212
 #'
 #' @rdname fahrenheit
 #' @export

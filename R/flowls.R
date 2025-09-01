@@ -53,17 +53,8 @@
 #' # Find path from A to B in trivial line topology:
 #' flowls("A", "B")
 #'
-#' # $B
-#' # [1] 1
-#'
 #' # More complex example with two terminal nodes D and E:
 #' flowls(c("A", "B", "B"), c("B", "D", "E"))
-#'
-#' #$D
-#' #[1] 1 2
-#' #
-#' #$E
-#' #[1] 1 3
 #'
 #' # All possible flow paths in test bench illustrated in `?m325nxdata`:
 #' all_paths <- list(
@@ -83,13 +74,10 @@
 #' )
 #'
 #' # find those paths:
-#' path <- with(pipenostics::m325nxdata, {
+#' with(pipenostics::m325nxdata, {
 #'   flowls(sender, acceptor)
 #' })
-#'
-#' path[[4]]
-#' # [1] 12 13 11  8  6  7
-#'
+#' 
 #'}
 flowls <- function(sender = "A", acceptor = "B", use_cluster = FALSE){
   # Validate function input ----
@@ -136,7 +124,7 @@ flowls <- function(sender = "A", acceptor = "B", use_cluster = FALSE){
       ),
       worker)
     parallel::stopCluster(cluster)
-    return(stream)
+    stream
   } else {
     lapply(
       structure(

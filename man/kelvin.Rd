@@ -31,11 +31,9 @@ Convert temperature measured in
 
 # Convert from Celsius to Kelvin:
 k_c(c(-273.15, 100))
-# [1]  0  373.15
 
 # Convert from Fahrenheit to Kelvin:
 k_f(c(-459.67, 212))
-# [1]  0  373.15
 
 }
 \seealso{

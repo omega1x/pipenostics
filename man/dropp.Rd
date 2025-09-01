@@ -106,8 +106,6 @@ The underlying engineering model for calculation of pressure drop considers
 # in high-way heating network in Novosibirsk
 dropp(len = c(200, 300))
 
-#[1] 0.0007000666 0.0010500999
-
 }
 \references{
 \itemize{

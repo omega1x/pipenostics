@@ -42,7 +42,6 @@
 #'   beta <- m325beta(laying, as.double(d))
 #' })
 #' unique(norms$beta)
-#' # [1] 1.15 1.20
 #'
 m325beta <- function(laying = "channel", d = 700){
   norms <- pipenostics::m325nhldata

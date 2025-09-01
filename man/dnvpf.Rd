@@ -65,7 +65,6 @@ l     <- c(203.2, 200.0)  # [mm]
 depth <- c( 13.4,   9.0)  # [mm]
 
 dnvpf(d, wth, uts, depth, l)
-# [1] 15.86626 34.01183
 
 }
 \references{

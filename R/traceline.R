@@ -330,7 +330,7 @@ traceline <- function(temperature = 130,
       g_value <- flow_rate
       Q_value <- loss_value <- flux_value <- NA_real_
 
-      pipe_enum <- with(list(enum = seq_len(length(g))), {
+      pipe_enum <- with(list(enum = seq_along(g)), {
         if (forward)
           enum
         else

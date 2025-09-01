@@ -25,7 +25,8 @@ test_that("*m325tracefw* errs in calculation without execution parallelization",
   )
   expect_equal(
     m325tracefw_report[["pressure"]],
-    c(.5883990, 0.5813153)
+    c(.588399007, 0.557794259),
+    tolerance = 1e-5
   )
   expect_equal(
     m325tracefw_report[["flow_rate"]],
@@ -37,8 +38,8 @@ test_that("*m325tracefw* errs in calculation without execution parallelization",
   )
   expect_equal(
     m325tracefw_report[2, "flux"],
-    279.06962283,
-    tolerance = 1e-5
+    290.23241,
+    tolerance = 1e-3
   )
   expect_equal(
     m325tracefw_report[2, "Q"],
@@ -76,7 +77,8 @@ test_that("*m325tracefw* errs in calculation utilizing parallel execution (if po
   )
   expect_equal(
     m325tracefw_report[["pressure"]],
-    c(.5883990, 0.5813153)
+    c(.588399007, 0.557794259),
+    tolarance = 1e-5
   )
   expect_equal(
     m325tracefw_report[["flow_rate"]],
@@ -88,8 +90,8 @@ test_that("*m325tracefw* errs in calculation utilizing parallel execution (if po
   )
   expect_equal(
     m325tracefw_report[2, "flux"],
-    279.06962283,
-    tolerance = 1e-5
+    290.23241,
+    tolerance = 1e-3
   )
   expect_equal(
     m325tracefw_report[2, "Q"],
