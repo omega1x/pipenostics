@@ -51,7 +51,6 @@ b31gdep <- function(d, wth, smys, def){
     wth, lower = 1.15e-2, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
     min.len = 1L
   )
-  checkmate::assert_true(all(d - 2*wth > 0.02))  # in inches
   checkmate::assert_double(
     smys, lower = 1e3, upper = 3e5, finite = TRUE, any.missing = FALSE,
     min.len = 1L
@@ -62,6 +61,7 @@ b31gdep <- function(d, wth, smys, def){
   checkmate::assert_true(commensurable(c(
     length(d), length(wth), length(smys), length(def)
   )))
+  checkmate::assert_true(all(d - 2*wth > 0.02))  # in inches
 
   2.0*smys*wth*def/d + .5
 }

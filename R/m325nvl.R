@@ -70,12 +70,14 @@ m325nvl <- function(a = 0, d = 720, wth = 12, len = 1) { # TODO: add examples fo
     upper = max(pipenostics::b36pipedata[["wth"]]),
     finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     len,
     lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  commensurable(c(length(a), length(d), length(wth), length(len)))
+  checkmate::assert_true(
+    commensurable(c(length(a), length(d), length(wth), length(len)))
+  )
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
 
   METER <- 1e-3  # [m/mm]
   0.25*a*base::pi*( (d - 2*wth)*METER )^2*len
@@ -105,7 +107,10 @@ m325nml <- function(temperature = 130, pressure = mpa_kgf(6), a = 0, d = 720, wt
     len,
     lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  commensurable(c(length(a), length(d), length(wth), length(len)))
+  checkmate::assert_true(
+    commensurable(c(length(a), length(d), length(wth), length(len)))
+  )
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
 
   METER <- 1e-3  # [m/mm]
   TON   <- 1e-3  # [ton/kg]

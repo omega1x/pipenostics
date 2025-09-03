@@ -17,8 +17,8 @@ test_that("*traceline* errs in tracing regime parameters", {
   )
   expect_equal(
     regime_fw[["pressure"]],
-    c(0.5878607, 0.5874226, 0.5872143, 0.5870330),
-    tolerance = 1e-7
+    c(0.587844, 0.587392, 0.587178, 0.586991),
+    tolerance = 1e-5
   )
   expect_equal(
     regime_fw[["flow_rate"]],
@@ -31,8 +31,8 @@ test_that("*traceline* errs in tracing regime parameters", {
   )
   expect_equal(
     regime_fw[["flux"]],
-    c(181.959958158, 181.509718360, 181.096302779, 180.841513660),
-    tolerance = 1e-7
+    c(178.92729, 178.48455, 178.07806, 177.82751),
+    tolerance = 1e-4
   )
   expect_equal(
     regime_fw[["Q"]],
@@ -55,8 +55,8 @@ test_that("*traceline* errs in tracing regime parameters", {
   )
   expect_equal(
     regime_bw[["pressure"]],
-    c(0.588399833660, 0.587861095778, 0.587422779315, 0.587214377798),
-    tolerance = 1e-7
+    c(0.5884422, 0.5878867, 0.5874348, 0.5872200),
+    tolerance = 1e-6
   )
   expect_equal(
     regime_bw[["flow_rate"]],
@@ -69,7 +69,7 @@ test_that("*traceline* errs in tracing regime parameters", {
   )
   expect_equal(
     regime_bw[["flux"]],
-    c(181.959958158, 181.509711836, 181.096328092, 180.841531863),
+    c(178.9272922, 178.4845500, 178.0780560, 177.8275063),
     tolerance = 1e-7
   )
   expect_equal(

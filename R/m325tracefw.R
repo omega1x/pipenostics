@@ -77,8 +77,8 @@
 #'  [\eqn{hour^{-1}}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param d
-#'    nominal (outside) diameter of pipe (i.e. diameter of acceptor's incoming edge),
-#'    [\emph{mm}].
+#'    nominal (outside) diameter of pipe (i.e.diameter of acceptor's incoming
+#'    edge), [\emph{mm}].
 #'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param wth
@@ -336,7 +336,6 @@ m325tracefw <- function(
     upper = max(pipenostics::b36pipedata[["wth"]]),
     finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     len,
     lower = 0, finite = TRUE, any.missing = FALSE, len = n
@@ -379,6 +378,8 @@ m325tracefw <- function(
     )  # check for validness of file name!
     checkmate::assert_path_for_output(file)
   }
+  # TODO: add commensurable check
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
 
   # Configuration ----
   time_stamp_posixct <- Sys.time()
@@ -430,7 +431,7 @@ m325tracefw <- function(
   if (csv)
     utils::write.table(
       job_log,
-      file = file,  append = FALSE, quote   = FALSE, sep       = ",", 
+      file = file,  append = FALSE, quote   = FALSE, sep       = ",",
       col.names = TRUE, row.names = FALSE
     )
 
@@ -476,13 +477,13 @@ m325tracefw <- function(
       absg        = FALSE
     )
     regime <- as.data.frame(regime)
-    
+
     regime[["node"]]        <- acceptor[current_path]
     regime[["tracing"]]     <- sender[current_path]
     regime[["backward"]]    <- FALSE
     regime[["aggregation"]] <- "identity"
     regime[["job"]]         <- job_num
-    
+
     job_log <- rbind(job_log, regime)
     job_log <- job_log[!duplicated(job_log[,setdiff(colnames(job_log), "job")]), ]
 

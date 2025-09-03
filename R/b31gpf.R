@@ -117,7 +117,6 @@ b31gpf <- function(d, wth, smys, depth, l) {
     wth, lower = 1.15e-2, upper = 19.68504, finite = TRUE, any.missing = FALSE,
     min.len = 1L
   )
-  checkmate::assert_true(all(d - 2*wth > 0.02))  # in inches
   checkmate::assert_double(
     smys, lower = 725.1887, upper = 290075.4760, finite = TRUE,
     any.missing = FALSE, min.len = 1L
@@ -133,6 +132,7 @@ b31gpf <- function(d, wth, smys, depth, l) {
   checkmate::assert_true(commensurable(c(
     length(d), length(wth), length(smys), length(depth), length(l)
   )))
+  checkmate::assert_true(all(d - 2*wth > 0.02))  # in inches
 
   z  <- l^2/d/wth
   s_flow <- 1.1*smys

@@ -8,7 +8,7 @@
 #'
 #' @details
 #' The mass of a one-meter pipe segment is determined by linear interpolation based on
-#' the tabular data provided in the specified origins (see \code{\link{b36pipedata}}). If 
+#' the tabular data provided in the specified origins (see \code{\link{b36pipedata}}). If
 #' the \code{origin} of the initial data is \code{NULL} (default), the mass of the pipe is calculated using a formula:
 #' \deqn{M = 10^{-3} \pi \rho w \left(d - w \right ) \cdot l}
 #' where
@@ -19,11 +19,11 @@
 #'    \item \eqn{d} - nominal outside diameter of the manufactured pipe, [\emph{mm}]
 #'    \item \eqn{l} - actual pipe length, [\emph{m}]
 #'  }
-#' For \code{origin} in \code{c(1, 2, 4, 5)} the values provided in the 
+#' For \code{origin} in \code{c(1, 2, 4, 5)} the values provided in the
 #' \code{\link{b36pipedata}} match the calculated values obtained from the formula
-#' with an accuracy of 1 \%. 
-#' 
-#' Inverse calculations \code{\link{b36wth}} and \code{\link{b36d}} are performed using 
+#' with an accuracy of 1 \%.
+#'
+#' Inverse calculations \code{\link{b36wth}} and \code{\link{b36d}} are performed using
 #' algebraically derived formulas.
 #'
 #' @param d
@@ -39,7 +39,7 @@
 #'  mass density of pipe material, [\emph{g/cm^3}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param origin
-#'  identifier for the information origin regarding the specifications of pipe. 
+#'  identifier for the information origin regarding the specifications of pipe.
 #'  Type: \code{\link[checkmate]{assert_integer}}.
 #'
 #' @param mass
@@ -55,21 +55,21 @@
 #' @examples
 #'  library(pipenostics)
 #'  # Since some specification origins provide the mass of a one-meter pipe segment taking
-#'  # into account possible deviations during its production process, when the user 
-#'  # specifies the origin ID directly, the mass values are calculated using linear 
+#'  # into account possible deviations during its production process, when the user
+#'  # specifies the origin ID directly, the mass values are calculated using linear
 #'  # interpolation:
 #'  b36mass(68, 13, rho = 7.9, origin = 7L)
-#'  # [1] 16.43 
-#'  
+#'  # [1] 16.43
+#'
 #'  # The discrepancy with the calculations based on the formula can be more than 7 %:
 #'  b36mass(68, 13, rho = 7.9, origin = NULL)
 #'  # [1] 17.74529
-#'  
+#'
 #'  # For origins which are ASME B36 standards such differences should be minimal:
 #'  b36mass(965, 10.31, origin = 1L) - b36mass(965, 10.31, origin = NULL)
 #'  # [1] 0.0004356046
-#'  
-#'  # The calculations of diameter and wall thickness are straightforward and use 
+#'
+#'  # The calculations of diameter and wall thickness are straightforward and use
 #'  # only inverse formulas without origin references:
 #'  b36d(10.31, 242.74)
 #'  # [1] 965.0017
@@ -101,7 +101,6 @@ b36mass <- function(d, wth, len = 1, rho = 7.85, origin = NULL) {
     lower = min(md[[L_THICKNESS]]), upper = max(md[[L_THICKNESS]]),
     any.missing = FALSE, min.len = L_ONE
   )
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     len,
     lower = 0, finite = TRUE, any.missing = FALSE, min.len = L_ONE
@@ -111,6 +110,7 @@ b36mass <- function(d, wth, len = 1, rho = 7.85, origin = NULL) {
     lower = 7.75, upper =  8.05, any.missing = FALSE, min.len = L_ONE
   )
   checkmate::assert_true(commensurable(c(length(d), length(wth), length(len), length(rho))))
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     wth/d,
     lower = .Machine[["double.eps"]], upper = max(md[[L_THICKNESS]]/md[[L_DIAMETER]])

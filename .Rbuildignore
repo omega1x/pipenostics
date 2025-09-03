@@ -15,10 +15,9 @@
 
 ### Code & Tests
 
-^R/traceline\.R$
-^R/tracefw\.R$
+#^R/tracefw\.R$
 ^R/tracebw\.R$
 ^tests/testthat/testtracexw\.R$
-^tests/testthat/testtrace\.R$
+
 
 ### Previous versions of datasets

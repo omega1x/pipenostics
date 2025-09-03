@@ -314,6 +314,8 @@ print(output)
 \seealso{
 Other Regime tracing: 
 \code{\link{m325tracefw}()},
-\code{\link{m325traceline}()}
+\code{\link{m325traceline}()},
+\code{\link{tracefw}()},
+\code{\link{traceline}()}
 }
 \concept{Regime tracing}

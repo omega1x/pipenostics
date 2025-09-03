@@ -92,7 +92,6 @@ pcorrcpf <- function(d, wth, uts, depth, l){
   checkmate::assert_double(
     wth, lower = 0.29, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     uts, lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
@@ -106,6 +105,7 @@ pcorrcpf <- function(d, wth, uts, depth, l){
   checkmate::assert_true(commensurable(c(
     length(d), length(wth), length(uts), length(depth), length(l)
   )))
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
 
   Q <- 1 - exp(-.16*l/sqrt(.5*d*(wth - depth)))
   2*wth*uts/d*(1 - depth/wth*Q)

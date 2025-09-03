@@ -40,6 +40,7 @@ b36dwthv <- function(d, wth){  # TODO: write examples here
     finite = TRUE, any.missing = FALSE,
     len = n
   )
+  checkmate::assert_true(commensurable(c(length(d), length(wth))))
   checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
 
   interaction(d, wth, drop = TRUE) %in%

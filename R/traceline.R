@@ -57,8 +57,12 @@
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param d
-#'  internal diameters of subsequent pipes in tracing path that are enumerated
+#'  outside diameters of subsequent pipes in tracing path that are enumerated
 #'  along the direction of flow, [\emph{mm}].
+#'  Type: \code{\link[checkmate]{assert_double}}.
+#'
+#' @param wth
+#'  wall thickness of pipe, [\emph{mm}].
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param len
@@ -125,12 +129,14 @@
 #'    \item{\code{flow_rate}}{
 #'      \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
 #'       carrier (water) for each pipe in tracing path enumerated along the
-#'       direction of flow, [\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.
+#'       direction of flow, [\emph{ton/hour}].
+#'       Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'   \item{\code{loss}}{
 #'      User-provided specific heat
 #'      loss power for each pipe in tracing path enumerated along the direction
-#'      of flow, [\emph{kcal/m/h}], - copy of input. Type: \code{\link[checkmate]{assert_double}}.
+#'      of flow, [\emph{kcal/m/h}], - copy of input.
+#'      Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'   \item{\code{flux}}{
 #'      Heat flux for each pipe
@@ -150,28 +156,33 @@
 #'
 #' # Consider 4-segment tracing path.
 #' # First, let sensor readings for forward tracing:
-#' t_fw <- 130  # [°C]
-#' p_fw <- mpa_kgf(6)*all.equal(.588399, mpa_kgf(6))  # [MPa]
-#' g_fw <- 250  # [ton/hour]
+#' t_fw <- 130         # [°C]
+#' p_fw <- mpa_kgf(6)  # [MPa]
+#' g_fw <- 250         # [ton/hour]
 #'
-#' # Let discharges to network for each pipeline segment are somehow determined as
+#' # Let discharges to network for each pipeline segment are somehow determined
+#' # as
 #' discharges <- seq(0, 30, 10)  # [ton/hour]
 #'
 #' # Experimentally obtained values of specific heat loss power are
-#' actual_loss <- c(348.0000, 347.1389, 346.3483, 345.8610)
+#' actual_loss <- c(348.0000, 347.1389, 346.3483, 345.8610)  # [kcal/m/h]
 #'
 #' # Then the calculated regime (red squares) for forward tracing is
-#' regime_fw <- traceline(t_fw, p_fw, g_fw, discharges, loss = actual_loss, forward = TRUE)
+#' regime_fw <- traceline(
+#'   t_fw, p_fw, g_fw, discharges, loss = actual_loss, forward = TRUE
+#' )
 #' print(regime_fw)
 #'
-#'
-#' # Next consider values of traced regime as sensor readings for backward tracing:
+#' # Next consider values of traced regime as sensor readings for backward
+#' # tracing:
 #' t_bw <- 127.3367  # [°C]
 #' p_bw <- .5870330  # [MPa]
-#' g_bw <- 190  # [ton/hour]
+#' g_bw <- 190       # [ton/hour]
 #'
 #' # Then the calculated regime (red squares) for backward tracing is
-#' regime_bw <- traceline(t_bw, p_bw, g_bw, discharges, loss = actual_loss, forward = FALSE)
+#' regime_bw <- traceline(
+#'   t_bw, p_bw, g_bw, discharges, loss = actual_loss, forward = FALSE
+#' )
 #' print(regime_bw)
 #'
 #' # Let compare sensor readings with backward tracing results:
@@ -195,103 +206,74 @@
 #' print(tracing)
 #'
 #' @export
-traceline <- function(temperature = 130,
-                          pressure = mpa_kgf(6),
-                          flow_rate = 250,
-                          g = 0,    # [ton/hour] or [] depending on
-                          d = 700,  # [mm]
-                          len = c(600, 530, 300, 350),  # [m]
-                          loss = c(348, 347.1389,
-                                  346.3483, 345.861),   # [kcal/m/h]
-                          roughness = 6e-3,             # [m]
-                          inlet = 0., outlet = 0.,      # [m]
-                          elev_tol = .1,                # [m]
-                          method = "romeo",
-                          forward = TRUE,
-                          absg = TRUE) {
+traceline <- function(
+  temperature = 130, pressure = mpa_kgf(6), flow_rate = 250, g = 0,
+
+  d = 720,  wth = 12, len = c(600, 530, 300, 350),
+  loss = c(348, 347.1389, 346.3483, 345.861), roughness = 6e-3,
+
+  inlet = 0., outlet = 0., elev_tol = .1,
+
+  method = "romeo", forward = TRUE, absg = TRUE
+  ) {
   DAY   <- 24     # [hours]
   METER <-  1e-3  # [m/mm]
 
-  norms <- pipenostics::m325nhldata
-  checkmate::assert_number(temperature,
-                           lower = 0,
-                           upper = 350,
-                           finite = TRUE)
-  checkmate::assert_number(pressure,
-                           lower = 8.4e-2,
-                           upper = 100,
-                           finite = TRUE)
-  checkmate::assert_number(flow_rate,
-                           lower = 1e-3,
-                           upper = 1e5,
-                           finite = TRUE)
+  checkmate::assert_number(
+    temperature,
+    lower = 0, upper = 350, finite = TRUE
+  )
+  checkmate::assert_number(
+    pressure,
+    lower = 8.4e-2, upper = 100, finite = TRUE
+  )
+  checkmate::assert_number(
+    flow_rate,
+    lower = 1e-3, upper = 1e5, finite = TRUE
+  )
   checkmate::assert_flag(absg)
   checkmate::assert_double(
     g,
-    lower = 0,
-    upper = c(1, flow_rate)[[1 + absg]],
-    finite = TRUE,
-    any.missing = FALSE,
-    min.len = 1L
+    lower = 0, upper = c(1, flow_rate)[[1 + absg]], finite = TRUE,
+    any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
     d,
-    lower = min(norms[["d"]]),
-    upper = max(norms[["d"]]),
-    finite = TRUE,
-    any.missing = FALSE,
-    min.len = 1L
+    lower = 25, upper = 1400, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    wth,
+    lower = 0.3, upper = 90, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
     len,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    min.len = 1L
+    lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
     loss,
-    lower       = 0,
-    upper       = 1500,
-    any.missing = FALSE,
-    min.len     = 1L
+    lower = 0, upper = 1500, any.missing = FALSE, min.len     = 1L
   )
   checkmate::assert_double(
     roughness,
-    lower = 0,
-    upper = .2,
-    any.missing = FALSE,
-    min.len = 1L
+    lower = 0, upper = .2, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
     inlet,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    min.len = 1L
+    lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
     outlet,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    min.len = 1L
+    lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(commensurable(
-    c(
-      length(d),
-      length(len),
-      length(loss),
-      length(roughness),
-      length(inlet),
-      length(outlet)
-    )
-  ))
-
-  checkmate::assert_number(elev_tol,
-                           lower = 0,
-                           upper = 10,
-                           finite = TRUE)
+  checkmate::assert_true(commensurable(c(
+    length(d), length(len), length(loss), length(roughness), length(inlet),
+    length(outlet)
+  )))
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
+  checkmate::assert_number(
+    elev_tol,
+    lower = 0, upper = 10, finite = TRUE
+  )
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
   checkmate::assert_flag(forward)
 
@@ -307,57 +289,44 @@ traceline <- function(temperature = 130,
 
   with(
     data.frame(
-      g,
-      d,
-      len,
-      roughness,
-      inlet,
-      outlet,
+      g, d, wth, len, roughness, inlet, outlet,
 
       # calculated regime parameters:
-      t_regime = NA_real_,
-      p_regime = NA_real_,
-      g_regime = NA_real_,
-      Q_regime = NA_real_,
-      loss_regime = NA_real_,
-      flux_regime = NA_real_
+      t_regime = NA_real_,  p_regime = NA_real_,  g_regime = NA_real_,
+      Q_regime = NA_real_,  loss_regime = NA_real_,  flux_regime = NA_real_
     ),
     {
       # declare temporary scalars for accumulation along the tracing path:
-      t_value <-
-        temperature
+      t_value <- temperature
       p_value <- pressure
       g_value <- flow_rate
-      Q_value <- loss_value <- flux_value <- NA_real_
+      Q_value <- loss_value <- NA_real_
 
       pipe_enum <- with(list(enum = seq_along(g)), {
-        if (forward)
-          enum
-        else
-          rev(enum)
+        if (forward) enum else rev(enum)
       })
       for (i in pipe_enum) {
         # Tracing of:
         # * Total heat loss of a pipe per day
         Q_regime[[i]] <- Q_value <- loss[[i]] * len[[i]] * DAY  # [kcal]
 
-        # * Specific heat loss power - magnitudes comparable with Minenergo-325 sources
-        loss_regime[[i]] <- loss[[i]]  # [kcal/m/h]
+        # * Specific heat loss power - magnitudes comparable with Minenergo-325
+        #   sources
+        loss_regime[[i]] <- loss_value <- loss[[i]]  # [kcal/m/h]
 
         # * Heat flux
-        flux_regime[[i]] <-
-          pipenostics::flux_loss(loss[[i]], d[[i]] * METER, pipenostics::wth_d(d[[i]]))  # [W/m^2]
+        flux_regime[[i]] <- pipenostics::flux_loss(loss_value, d[[i]])  # [W/m^2]
 
         # * Flow rate
-        g_value <-
-          g_value + c(0, -g[[i]])[[forward + 1]] * c(g_value, 1)[[1 + absg]]  # [ton/hour]
+        g_value <- {
+          g_value +
+          c(0, -g[[i]])[[forward + 1]] * c(g_value, 1)[[1 + absg]]  # [ton/hour]
+        }
 
         # * Temperature
         t_regime[[i]] <- t_value <- {
           t_value + (-1) ^ forward * pipenostics::dropt(
-            temperature = t_value,
-            pressure = p_value,
-            flow_rate = g_value,
+            temperature = t_value, pressure = p_value, flow_rate = g_value,
             loss_power = Q_value / DAY
           )  # [°C]
         }
@@ -366,30 +335,23 @@ traceline <- function(temperature = 130,
         p_regime[[i]] <- p_value <- {
           p_value + (-1) ^ forward *
             pipenostics::dropp(
-              temperature = t_value,
-              pressure = p_value,
-              flow_rate = g_value,
-              d = d[[i]] * METER,
-              len = len[[i]],
-              roughness = roughness[[i]],
-              inlet = inlet[[i]],
-              outlet = outlet[[i]],
-              method = method
+              temperature = t_value, pressure = p_value, flow_rate = g_value,
+              d = (d[[i]] - 2*wth[[i]]) * METER, len = len[[i]],
+              roughness = roughness[[i]], inlet = inlet[[i]],
+              outlet = outlet[[i]], method = method
             )
         }  # [MPa]
 
         # * Flow rate
-        g_regime[[i]] <- g_value <-
-          g_value + c(0, g[[i]])[[2 - forward]] * c(g_value, 1)[[1 + absg]]  # [ton/hour]
+        g_regime[[i]] <- g_value <- {
+          g_value +
+          c(0, g[[i]])[[2 - forward]] * c(g_value, 1)[[1 + absg]]  # [ton/hour]
+        }
 
       }
       list(
-        temperature = t_regime,
-        pressure = p_regime,
-        flow_rate = g_regime,
-        loss = loss_regime,
-        flux = flux_regime,
-        Q = Q_regime
+        temperature = t_regime, pressure = p_regime, flow_rate = g_regime,
+        loss = loss_regime, flux = flux_regime, Q = Q_regime
       )
     }
   )

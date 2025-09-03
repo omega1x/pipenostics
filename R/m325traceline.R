@@ -311,7 +311,6 @@ m325traceline <- function(
     upper = max(pipenostics::b36pipedata[["wth"]]),
     finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     len,
     lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
@@ -343,15 +342,16 @@ m325traceline <- function(
     outlet,
     lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
+  checkmate::assert_number(elev_tol, lower = 0, upper = 10, finite = TRUE)
+  checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
+  checkmate::assert_flag(forward)
   checkmate::assert_true(commensurable(c(
     length(g), length(a), length(d), length(wth), length(len), length(year),
     length(insulation), length(laying), length(beta), length(exp5k),
     length(roughness), length(inlet), length(outlet)
-    )
+  )
   ))
-  checkmate::assert_number(elev_tol, lower = 0, upper = 10, finite = TRUE)
-  checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
-  checkmate::assert_flag(forward)
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
 
   dh <- outlet - inlet
   checkmate::assert_true(all(abs(dh) < len))  # geometric constraint
@@ -384,7 +384,7 @@ m325traceline <- function(
       t_value <- temperature
       p_value <- pressure
       g_value <- flow_rate
-      Q_value <- loss_value <- flux_value <- NA_real_
+      Q_value <- loss_value <-  NA_real_
 
       pipe_enum <- with(list(enum = seq_along(g)), {
         if (forward)

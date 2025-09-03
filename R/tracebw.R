@@ -374,6 +374,8 @@ tracebw <- function(sender = 6,
     )  # check for validness of file name!
     checkmate::assert_path_for_output(file)
   }
+  # TODO: add commensurable check
+
   # Validate method aspects ----
   is_terminal_node <- !(acceptor %in% sender)
   checkmate::assert_double(

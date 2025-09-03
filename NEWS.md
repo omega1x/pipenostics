@@ -1,6 +1,9 @@
 # pipenostics 0.2.1
 
 ## Backlog
+- use `assert_vector` in checking acceptor and sender arguments in tracers
+- change `rep_len` to simple vector declarations in tracer arguments 
+- add commensurable check in tracers
 - do not use a tracer inside examples of another tracer
 - search and do job from *TODO*s
 - correct unit tests that are ignored for now. See the list of ignored tests in [.Rbuildignore](./.Rbuildignore) 

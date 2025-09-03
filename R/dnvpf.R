@@ -92,7 +92,6 @@ dnvpf <- function(d, wth, uts, depth, l){
   checkmate::assert_double(
     wth, lower = .29, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     uts, lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
@@ -106,6 +105,7 @@ dnvpf <- function(d, wth, uts, depth, l){
   checkmate::assert_true(commensurable(c(
     length(d), length(wth), length(uts), length(depth), length(l)
   )))
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
 
   Q <- sqrt(1.0 + .31*l^2/d/wth)
   Pf <- 2.0*wth*uts*(1 - depth/wth)/(d - wth)/(1.0 - depth/wth/Q)

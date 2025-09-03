@@ -253,7 +253,6 @@ mepof <- function(
     wth,
     lower = 0.29, upper = 5e2, finite = TRUE, any.missing = FALSE, len = n_case
   )
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     strength,
     lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, len = n_case

@@ -68,8 +68,11 @@
 #'    Use \code{NA_float_}s for nodes without flow rate sensor.
 #'
 #' @param d
-#'    internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
-#'    [\emph{mm}].
+#'    outside diameter of pipe (i.e.diameter of acceptor's incoming edge),
+#'    [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.
+#'
+#' @param wth
+#'    wall thickness of pipe, [\emph{mm}].
 #'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param len
@@ -77,20 +80,22 @@
 #'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param loss
-#'    user-provided value of \emph{specific heat loss} power for each pipe in tracing
-#'    path, [\emph{kcal/m/h}]. Values of the argument can be obtained experimentally,
-#'    or taken from regulatory documents.
+#'    user-provided value of \emph{specific heat loss} power for each pipe in
+#'    tracing path, [\emph{kcal/m/h}]. Values of the argument can be obtained
+#'    experimentally, or taken from regulatory documents.
 #'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param roughness
-#'    roughness of internal wall of pipe (i.e. acceptor's incoming edge), [\emph{m}].
-#'    Type: \code{\link[checkmate]{assert_double}}.
+#'    roughness of internal wall of pipe (i.e. acceptor's incoming edge),
+#'    [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param inlet
-#'    elevation of pipe inlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
+#'    elevation of pipe inlet, [\emph{m}].
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param outlet
-#'    elevation of pipe outlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
+#'    elevation of pipe outlet, [\emph{m}].
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param elev_tol
 #'    maximum allowed discrepancy between adjacent outlet and inlet elevations
@@ -118,8 +123,8 @@
 #'
 #' @param file
 #'    name of \emph{csv}-file which they dump results to.
-#'    Type: \code{\link[checkmate]{assert_character}} of length 1 that can be used safely
-#'    to create a file and write to it.
+#'    Type: \code{\link[checkmate]{assert_character}} of length 1 that can be
+#'    used safely to create a file and write to it.
 #'
 #' @param use_cluster
 #'    utilize functionality of parallel processing on multi-core CPU.
@@ -176,7 +181,8 @@
 #'
 #'       \item{\code{job}}{
 #'          \emph{Tracing job}. Value of tracing job counter.
-#'          For forward tracing value of \code{job} counts the number of traced paths from root node.
+#'          For forward tracing value of \code{job} counts the number of traced
+#'          paths from root node.
 #'          Type: \code{\link[checkmate]{assert_count}}.
 #'       }
 #'  }
@@ -192,7 +198,7 @@
 #' DHN <- pipenostics::m325nxdata
 #'
 #' # * remove irrelevant parameters from the test bench
-#' DHN[c("a", "wth", "year", "insulation", "laying", "beta", "exp5k")] <- NULL
+#' DHN[c("a", "year", "insulation", "laying", "beta", "exp5k")] <- NULL
 #' DHN[c("temperature", "pressure", "flow_rate")] <- NA_real_
 #'
 #' # * avoid using numeric identifiers for nodes:
@@ -216,104 +222,69 @@
 #'
 #' # Trace the test bench forward for the first time:
 #' fw_report <- do.call(
-#'   "tracefw", c(as.list(DHN), list(loss = actual_loss), verbose = FALSE, elev_tol = .5)
+#'   "tracefw",
+#'   c(as.list(DHN), list(loss = actual_loss), verbose = FALSE, elev_tol = .5)
 #' )
 #'
 #' @export
-tracefw <- function(sender = c(0, 1),
-                    acceptor = c(1, 2),
-                    temperature = c(70.0, NA_real_),
-                    pressure = c(pipenostics::mpa_kgf(6), NA_real_),
-                    flow_rate = c(20, NA_real_),
-                    d = rep_len(100, 2),
-                    len = rep_len(72.446, 2),
-                    loss =  rep_len(78.4, 2),
-                    roughness = rep_len(1e-3, 2),
-                    inlet = c(.5, 1),
-                    outlet = c(1.0, 1),
-                    elev_tol = 0.1,
-                    method = "romeo",
-                    verbose = TRUE,
-                    csv = FALSE,
-                    file = "tracefw.csv",
-                    use_cluster = FALSE) {
+tracefw <- function(
+  sender = c(0, 1), acceptor = c(1, 2),
+
+  temperature = c(70.0, NA_real_), pressure = c(0.588399, NA_real_),
+  flow_rate = c(20, NA_real_),
+
+  d = c(100, 100), wth = c(8, 8), len = c(72.446, 72.446), loss = c(78.4, 78.4),
+  roughness = c(1e-3, 1e-3),
+
+  inlet = c(.5, 1), outlet = c(1.0, 1), elev_tol = 0.1, method = "romeo",
+  verbose = TRUE, csv = FALSE, file = "tracefw.csv", use_cluster = FALSE
+) {
   # Perform forward tracing ----
   .func_name <- "tracefw"
 
-  # Assertions ----
-  checkmate::assert_true(all(!is.na(acceptor)))
-  acceptor <- as.character(acceptor)
-  checkmate::assert_true(!any(duplicated(acceptor)))  # only single income edge!
+  checkmate::assert_vector(
+    acceptor, any.missing = FALSE, min.len = 1, unique = TRUE
+  )
   n <- length(acceptor)
-  sender <- as.character(sender)
-  checkmate::assert_character(sender, any.missing = FALSE, len = n)
+  checkmate::assert_vector(sender, any.missing = FALSE, len = n)
   checkmate::assert_double(
     temperature,
-    lower = 0,
-    upper = 350,
-    finite = TRUE,
-    any.missing = TRUE,
-    len = n
+    lower = 0, upper = 350, finite = TRUE, any.missing = TRUE, len = n
   )
   checkmate::assert_double(
     pressure,
-    lower = 8.4e-2,
-    upper = 100,
-    finite = TRUE,
-    any.missing = TRUE,
-    len = n
+    lower = 8.4e-2, upper = 100, finite = TRUE, any.missing = TRUE, len = n
   )
   checkmate::assert_double(
     flow_rate,
-    lower = 1e-3,
-    upper = 1e5,
-    finite = TRUE,
-    any.missing = TRUE,
-    len = n
+    lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = TRUE, len = n
   )
-  norms <- pipenostics::m325nhldata  # use brief name
   checkmate::assert_double(
-    d,
-    lower = min(norms[["d"]]),
-    upper = max(norms[["d"]]),
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
+    d, lower = 25, upper = 1440, finite = TRUE, any.missing = FALSE, len = n
+  )
+  checkmate::assert_double(
+    wth,
+    lower = 0.3, upper = 90, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
     len,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
+    lower = 0, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
     loss,
-    lower       = 0,
-    upper       = 1500,
-    any.missing = FALSE,
-    len         = n
+    lower = 0, upper = 1500, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
     roughness,
-    lower = 0,
-    upper = .2,
-    any.missing = FALSE,
-    len = n
+    lower = 0, upper = .2, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
     outlet,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
+    lower = 0, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
     inlet,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
+    lower = 0, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
   checkmate::assert_flag(verbose)
@@ -321,14 +292,20 @@ tracefw <- function(sender = c(0, 1),
   if (csv) {
     checkmate::assert_character(
       basename(file),
-      pattern = "^[[:alnum:]_\\.\\-]+$",
-      any.missing = FALSE,
-      len = 1
+      pattern = "^[[:alnum:]_\\.\\-]+$", any.missing = FALSE, len = 1
     )  # check for validness of file name!
     checkmate::assert_path_for_output(file)
   }
+  checkmate::assert_true(commensurable(c(
+    length(sender), length(acceptor), length(temperature), length(pressure),
+    length(flow_rate), length(d), length(wth), length(len), length(loss),
+    length(roughness), length(inlet), length(outlet)
+  )))
+  checkmate::assert_true(all(d - 2*wth > 0.5))  #
 
-  # Configuration ----
+  acceptor <- as.character(acceptor)
+  sender   <- as.character(sender)
+
   time_stamp_posixct <- Sys.time()
 
   if (verbose)
@@ -343,16 +320,14 @@ tracefw <- function(sender = c(0, 1),
   rm(n)
 
   # Compute discharges ----
-  discharge <-
-    structure(1 - d ^ 2 / tapply(d ^ 2, sender, sum)[sender], names = acceptor)
+  discharge <- structure(
+    1 - d ^ 2 / tapply(d ^ 2, sender, sum)[sender], names = acceptor
+  )
 
   # List search paths ----
   tracing_path <- pipenostics::flowls(sender, acceptor, use_cluster)
   checkmate::assert_list(
-    tracing_path,
-    types = "integerish",
-    any.missing = FALSE,
-    min.len = 1,
+    tracing_path, types = "integerish", any.missing = FALSE, min.len = 1,
     max.len = length(acceptor)
   )
 
@@ -360,34 +335,29 @@ tracefw <- function(sender = c(0, 1),
   checkmate::assert_count(root_node, positive = TRUE)
 
   # Validate initial data ----
-  checkmate::assert_double(temperature[[root_node]], any.missing = FALSE, len = 1L)
-  checkmate::assert_double(pressure[[root_node]], any.missing = FALSE, len = 1L)
-  checkmate::assert_double(flow_rate[[root_node]], any.missing = FALSE, len = 1L)
-
+  checkmate::assert_double(
+    temperature[[root_node]], any.missing = FALSE, len = 1L
+  )
+  checkmate::assert_double(
+    pressure[[root_node]], any.missing = FALSE, len = 1L
+  )
+  checkmate::assert_double(
+    flow_rate[[root_node]], any.missing = FALSE, len = 1L
+  )
 
   job_log <- data.frame(
-    node = acceptor[root_node],
-    tracing = "sensor",
-    backward = FALSE,
+    node = acceptor[root_node], tracing = "sensor", backward = FALSE, # TODO: `[[` instaed of `[`?
     aggregation = "identity",
-    loss = NA_real_,
-    flux = NA_real_,
-    Q    = NA_real_,
-    temperature = temperature[root_node],
-    pressure = pressure[root_node],
-    flow_rate = flow_rate[root_node],
+    loss = NA_real_, flux = NA_real_, Q = NA_real_,
+    temperature = temperature[root_node], pressure    = pressure[root_node],
+    flow_rate   = flow_rate[root_node],
     job = 0L
   )
 
   if (csv)
     utils::write.table(
-      job_log,
-      file = file,
-      append = FALSE,
-      quote = FALSE,
-      sep = ",",
-      col.names = TRUE,
-      row.names = FALSE
+      job_log, file = file, append = FALSE, quote = FALSE, sep = ",",
+      col.names = TRUE, row.names = FALSE
     )
 
   # Trace searched paths ----
@@ -406,29 +376,26 @@ tracefw <- function(sender = c(0, 1),
     current_path <- tracing_path[[job_num]][-1]
     checkmate::assert_integer(
       current_path,
-      lower = 1L,
-      upper = length(acceptor),
-      any.missing = FALSE,
-      min.len = 1,
-      max.len = length(acceptor),
-      unique = TRUE
+      lower = 1L, upper = length(acceptor), any.missing = FALSE, min.len = 1,
+      max.len = length(acceptor), unique = TRUE
     )
 
     regime <- traceline(
-      temperature[root_node],
-      pressure[root_node],
-      flow_rate[root_node],
-      discharge[current_path],
-      d[current_path],
-      len[current_path],
-      loss[current_path],
-      roughness[current_path],
-      inlet[current_path],
-      outlet[current_path],
-      elev_tol = elev_tol,
-      method = method,
-      forward = TRUE,
-      absg = FALSE
+      temperature = temperature[root_node],
+      pressure    = pressure[root_node],
+      flow_rate   = flow_rate[root_node],
+      g           = discharge[current_path],
+      d           = d[current_path],
+      wth         = wth[current_path],
+      len         = len[current_path],
+      loss        = loss[current_path],
+      roughness   = roughness[current_path],
+      inlet       = inlet[current_path],
+      outlet      = outlet[current_path],
+      elev_tol    = elev_tol,
+      method      = method,
+      forward     = TRUE,
+      absg        = FALSE
     )
     regime <- as.data.frame(regime)
     regime[["node"]] <- acceptor[current_path]
@@ -437,17 +404,14 @@ tracefw <- function(sender = c(0, 1),
     regime[["aggregation"]] <- "identity"
     regime[["job"]] <- job_num
     job_log <- rbind(job_log, regime)
-    job_log <- job_log[!duplicated(job_log[,setdiff(colnames(job_log), "job")]), ]
+    job_log <- job_log[
+      !duplicated(job_log[,setdiff(colnames(job_log), "job")]),
+    ]
 
     if (csv)
       utils::write.table(
-        job_log[job_log[["job"]] == job_num, ],
-        file = file,
-        append = TRUE,
-        quote = FALSE,
-        sep = ",",
-        col.names = FALSE,
-        row.names = FALSE
+        job_log[job_log[["job"]] == job_num, ], file = file, append = TRUE,
+        quote = FALSE, sep = ",", col.names = FALSE,row.names = FALSE
       )
   }
 

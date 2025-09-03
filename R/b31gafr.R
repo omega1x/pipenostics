@@ -42,7 +42,6 @@ b31gafr <- function(d, wth, l){
     wth, lower = 1.15e-2, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
     min.len = 1L
   )
-  checkmate::assert_true(all(d - 2*wth > 0.02))  # in inch
   checkmate::assert_double(
     l, lower = 0, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
     min.len = 1L
@@ -50,6 +49,7 @@ b31gafr <- function(d, wth, l){
   checkmate::assert_true(commensurable(c(
     length(d), length(wth), length(l)
   )))
+  checkmate::assert_true(all(d - 2*wth > 0.02))  # in inch
 
   1e-3*trunc(1e3*.893*l/sqrt(d*wth))
 }

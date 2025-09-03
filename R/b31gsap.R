@@ -53,7 +53,6 @@ b31gsap <- function(dep, d, wth, depth, l){
     wth, lower = 1.15e-2, upper = 1.275e4, finite = TRUE, any.missing = FALSE,
     min.len = 1L
   )
-  checkmate::assert_true(all(d - 2*wth > 0.02))  # in inches
   checkmate::assert_double(
     depth, lower = 0, upper = 2.54e4, finite = TRUE, any.missing = FALSE,
     min.len = 1L
@@ -65,6 +64,7 @@ b31gsap <- function(dep, d, wth, depth, l){
   checkmate::assert_true(commensurable(c(
     length(dep), length(d), length(wth), length(depth), length(l)
   )))
+  checkmate::assert_true(all(d - 2*wth > 0.02))  # in inches
 
   A <- b31gafr(d, wth, l)
   d2w <- depth/wth

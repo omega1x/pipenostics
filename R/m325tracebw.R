@@ -368,7 +368,6 @@ m325tracebw <- function(
     upper = max(pipenostics::b36pipedata[["wth"]]),
     finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   checkmate::assert_double(
     len,
     lower = 0, finite = TRUE, any.missing = FALSE, len = n
@@ -411,8 +410,10 @@ m325tracebw <- function(
     )  # check for validness of file name!
     checkmate::assert_path_for_output(file)
   }
+  # TODO: add commensurable check
 
   # Validate method aspects ----
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
   is_terminal_node <- !(acceptor %in% sender)
   checkmate::assert_double(
     temperature[is_terminal_node],
@@ -855,7 +856,7 @@ m325tracebw <- function(
           )
         )
     )
-    
+
     # Log ThHy-regime ----
     job_log <- rbind(
       job_log,

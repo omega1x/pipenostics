@@ -1,5 +1,5 @@
 # The function is aimed to test whether several vectors being arguments of a
-# function commensurable just to strictly prevent wrong values on the
+# function are commensurable just to strictly prevent wrong values on the
 # function input instead of default warnings. This function should be used in
 # conjunction with `checkmate::assert_true`
 
