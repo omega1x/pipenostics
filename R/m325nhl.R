@@ -221,8 +221,9 @@ m325nhl <- function(year        =          1986,
           n <- findInterval(d_value, norms_diameter)
           norms_diameter[c(n, n + 1L)]
         })
-      unit_loss <-
-        vapply(neighbor_diameter, function(x, t_carrier) {
+      unit_loss <- vapply(
+        neighbor_diameter,
+        function(x, t_carrier) {
           if (is.na(x))
             return(NA_real_)
           with(norms[norms[["d"]] == x, c("temperature", "loss")], {
@@ -237,24 +238,20 @@ m325nhl <- function(year        =          1986,
               drop(coef(lsfit(temperature[j], loss[j])) %*% c(1., t_carrier))
             }
           })
-        }, FUN.VALUE = 1., t_carrier = temperature_value)
-      unit_loss <-
+        },
+        FUN.VALUE = 1., t_carrier = temperature_value
+      )
+      unit_loss <- {
         if (all(!is.na(unit_loss)))
           stats::approx(neighbor_diameter, unit_loss, d_value)[["y"]]
-      else
-        unit_loss[!is.na(unit_loss)][[1L]]
-      unit_loss * len_value * duration_value * (pipenostics::m325beta(laying_value, d_value) * beta_value+!beta_value)
+        else unit_loss[!is.na(unit_loss)][[1L]]
+      }
+      unit_loss * len_value * duration_value * (
+        pipenostics::m325beta(laying_value, d_value) * beta_value + !beta_value
+      )
     }
   unlist(Map(
-    worker,
-    year,
-    laying,
-    exp5k,
-    insulation,
-    d,
-    temperature,
-    len,
-    duration,
+    worker, year, laying, exp5k, insulation, d, temperature, len, duration,
     beta
   ))
 }

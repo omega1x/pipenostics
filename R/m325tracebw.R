@@ -479,7 +479,7 @@ m325tracebw <- function(
     d           = d[is_temperature_sensored],
     temperature = temperature[is_temperature_sensored],
     len         = len[is_temperature_sensored],
-    duration    = 24,
+    duration    = DAY,
     beta        = beta[is_temperature_sensored],
     extra       = NHL_N_POINT
   )

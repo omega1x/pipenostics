@@ -433,16 +433,8 @@ tracebw <- function(
   job_num <- 0L
   # Set up job log columns ----
   job_log <- data.frame(
-    node = acceptor,
-    tracing = "sensor",
-    backward = TRUE,
-    aggregation = "identity",
-    loss,
-    flux,
-    Q,
-    temperature,
-    pressure,
-    flow_rate,
+    node = acceptor, tracing = "sensor", backward = TRUE,
+    aggregation = "identity", loss, flux, Q, temperature, pressure, flow_rate,
     job = job_num
   )[is_terminal_node, ]
   rm(is_terminal_node)
