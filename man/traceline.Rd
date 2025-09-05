@@ -216,6 +216,7 @@ Other Regime tracing:
 \code{\link{m325tracebw}()},
 \code{\link{m325tracefw}()},
 \code{\link{m325traceline}()},
+\code{\link{tracebw}()},
 \code{\link{tracefw}()}
 }
 \concept{Regime tracing}

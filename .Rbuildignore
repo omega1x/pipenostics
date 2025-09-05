@@ -15,9 +15,8 @@
 
 ### Code & Tests
 
-#^R/tracefw\.R$
-^R/tracebw\.R$
-^tests/testthat/testtracexw\.R$
+#^R/tracebw\.R$
+^tests/testthat/testtracebw\.R$
 
 
 ### Previous versions of datasets

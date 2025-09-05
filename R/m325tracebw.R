@@ -334,6 +334,7 @@ m325tracebw <- function(
   NHL_N_POINT <- 2
 
   # Validate function input ----
+  # TODO: improve checks with `assert_vector` as in simpler tracers
   checkmate::assert_true(all(!is.na(acceptor)))
   acceptor <- as.character(acceptor)
   checkmate::assert_true(!any(duplicated(acceptor)))  # only single income edge!

@@ -278,6 +278,7 @@ print(m325traceline(a = a, forward = TRUE))
 Other Regime tracing: 
 \code{\link{m325tracebw}()},
 \code{\link{m325tracefw}()},
+\code{\link{tracebw}()},
 \code{\link{tracefw}()},
 \code{\link{traceline}()}
 }

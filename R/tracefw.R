@@ -301,7 +301,7 @@ tracefw <- function(
     length(flow_rate), length(d), length(wth), length(len), length(loss),
     length(roughness), length(inlet), length(outlet)
   )))
-  checkmate::assert_true(all(d - 2*wth > 0.5))  #
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in [mm]
 
   acceptor <- as.character(acceptor)
   sender   <- as.character(sender)

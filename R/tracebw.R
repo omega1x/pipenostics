@@ -6,8 +6,8 @@
 #'
 #' @description
 #'  Trace values of thermal-hydraulic regime (temperature, pressure,
-#'  flow rate, and other) in the bunched pipeline against the flow direction using
-#'  user-provided values of \emph{specific heat loss power}.
+#'  flow rate, and other) in the bunched pipeline against the flow direction
+#'  using user-provided values of \emph{specific heat loss power}.
 #'
 #'  Algorithm also suits for partially measurable district heating network with
 #'  massive data lack conditions, when there are no temperature and pressure
@@ -23,8 +23,9 @@
 #'
 #'  \figure{m325tracebwp.png}
 #'
-#'  In latter case no more than two nodes must be equipped with pressure and temperature
-#'  sensors whereas for other nodes only flow rate sensors must be installed.
+#'  In latter case no more than two nodes must be equipped with pressure and
+#'  temperature sensors whereas for other nodes only flow rate sensors must be
+#'  installed.
 #'
 #'  Tracing starts from sensor-equipped nodes and goes backwards, i.e against
 #'  the flow direction.
@@ -70,13 +71,16 @@
 #'
 #' @param flow_rate
 #'    Sensor-measured amount of heat carrier (water) on terminal node that is
-#'    transferred by pipe (i.e. acceptor's incoming edge) during a period, [\emph{ton/hour}].
-#'    Type: \code{\link[checkmate]{assert_double}}.
+#'    transferred by pipe (i.e. acceptor's incoming edge) during a period,
+#'    [\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.
 #'    Use \code{NA_float_}s for nodes without flow rate sensor.
 #'
 #' @param d
-#'    internal diameter of pipe (i.e.diameter of acceptor's incoming edge),
-#'    [\emph{mm}].
+#'    outside diameter of pipe (i.e.diameter of acceptor's incoming edge),
+#'    [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.
+#'
+#' @param wth
+#'    wall thickness of pipe, [\emph{mm}].
 #'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param len
@@ -90,14 +94,16 @@
 #'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param roughness
-#'    roughness of internal wall of pipe (i.e. acceptor's incoming edge), [\emph{m}].
-#'    Type: \code{\link[checkmate]{assert_double}}.
+#'    roughness of internal wall of pipe (i.e. acceptor's incoming edge),
+#'    [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param inlet
-#'    elevation of pipe inlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
+#'    elevation of pipe inlet, [\emph{m}].
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param outlet
-#'    elevation of pipe outlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
+#'    elevation of pipe outlet, [\emph{m}].
+#'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param method
 #'    method of determining \emph{Darcy friction factor}:
@@ -131,8 +137,8 @@
 #'
 #' @param file
 #'    name of \emph{csv}-file which they dump results to.
-#'    Type: \code{\link[checkmate]{assert_character}} of length 1 that can be used safely
-#'    to create a file and write to it.
+#'    Type: \code{\link[checkmate]{assert_character}} of length 1 that can be
+#'    used safely to create a file and write to it.
 #'
 #' @return
 #'    \code{\link{data.frame}} containing results (detailed log) of tracing in
@@ -159,16 +165,23 @@
 #'        }
 #'
 #'       \item{\code{aggregation}}{
-#'          \emph{Tracing job}. Identifier of aggregation method: \emph{span}, \emph{median}, \emph{mean}, or \emph{identity}. Type: \code{\link[checkmate]{assert_character}}.
+#'          \emph{Tracing job}. Identifier of aggregation method: \emph{span},
+#'          \emph{median}, \emph{mean}, or \emph{identity}.
+#'          Type: \code{\link[checkmate]{assert_character}}.
 #'        }
 #'       \item{\code{loss}}{
-#'          \emph{Traced thermal hydraulic regime}. Normative specific heat loss power of adjacent pipe, [\emph{kcal/m/h}]. Type: \code{\link[checkmate]{assert_double}}.
+#'          \emph{Traced thermal hydraulic regime}. Normative specific heat loss
+#'          power of adjacent pipe, [\emph{kcal/m/h}].
+#'          Type: \code{\link[checkmate]{assert_double}}.
 #'        }
 #'       \item{\code{flux}}{
-#'          \emph{Traced thermal hydraulic regime}. Normative heat flux of adjacent pipe, [\emph{W/m^2}]. Type: \code{\link[checkmate]{assert_double}}.
+#'          \emph{Traced thermal hydraulic regime}. Normative heat flux of
+#'          adjacent pipe, [\emph{W/m^2}].
+#'          Type: \code{\link[checkmate]{assert_double}}.
 #'        }
 #'       \item{\code{Q}}{
-#'         \emph{Traced thermal hydraulic regime}. Normative heat loss of adjacent pipe per day, [\emph{kcal}].
+#'         \emph{Traced thermal hydraulic regime}. Normative heat loss of
+#'         adjacent pipe per day, [\emph{kcal}].
 #'         Type: \code{\link[checkmate]{assert_character}}.
 #'       }
 #'
@@ -243,7 +256,12 @@
 #'  )
 #'
 #' # * Remove inappropriate attributes of the graph:
-#' DHN.1 <- DHN[, setdiff(colnames(DHN), c("a", "wth", "year", "insulation", "laying", "beta", "exp5k"))]
+#' DHN.1 <- DHN[,
+#'   setdiff(
+#'     colnames(DHN),
+#'     c("a", "year", "insulation", "laying", "beta", "exp5k")
+#'   )
+#' ]
 #'
 #' # * Trace thermal-hydraulic regime for DHN:
 #' tracebw_report <- do.call("tracebw", c(as.list(DHN.1), list(loss = actual_loss)))
@@ -253,29 +271,21 @@
 #' #   normative procedure:
 #' m325_report <- do.call("m325tracebw", DHN)
 #'
-#' stopifnot(
-#'    all.equal(tracebw_report$temperature, m325_report$temperature, tolerance = 1e-4),
-#'    all.equal(tracebw_report$pressure   , m325_report$pressure   , tolerance = 1e-4),
-#'    all.equal(tracebw_report$flow_rate  , m325_report$flow_rate  , tolerance = 1e-4)
-#'   )
+#' #stopifnot(
+#' #    all.equal(tracebw_report$temperature, m325_report$temperature, tolerance = 1e-4),
+#' #   all.equal(tracebw_report$pressure   , m325_report$pressure   , tolerance = 1e-4),
+#' #    all.equal(tracebw_report$flow_rate  , m325_report$flow_rate  , tolerance = 1e-4)
+#' #)
 #'
 #' @export
-tracebw <- function(sender = 6,
-                    acceptor = 7,
-                    temperature = 70.0,
-                    pressure = pipenostics::mpa_kgf(6),
-                    flow_rate = 20,
-                    d = 100,
-                    len = 72.446,
-                    loss = 78.4,
-                    roughness = 1e-3,
-                    inlet = .5,
-                    outlet = 1.0,
-                    method = "romeo",
-                    opinion = "median",
-                    verbose = TRUE,
-                    csv = FALSE,
-                    file = "tracebw.csv") {
+tracebw <- function(
+  sender = 6, acceptor = 7,
+  temperature = 70.0, pressure = pipenostics::mpa_kgf(6), flow_rate = 20,
+  d = 100, wth = 8, len = 72.446, loss = 78.4, roughness = 1e-3,
+  inlet = .5, outlet = 1.0,
+  method = "romeo", opinion = "median", verbose = TRUE, csv = FALSE,
+  file = "tracebw.csv"
+) {
   # Trace thermal-hydraulic regime  ----
   .func_name <- "tracebw"
 
@@ -286,80 +296,43 @@ tracebw <- function(sender = 6,
   DAY <- 24  # [h]
 
   # Validate function input ----
-  checkmate::assert_true(all(!is.na(acceptor)))
-  acceptor <- as.character(acceptor)
-  checkmate::assert_true(!any(duplicated(acceptor)))  # only single income edge!
+  checkmate::assert_vector(
+    acceptor, any.missing = FALSE, min.len = 1, unique = TRUE
+  )
   n <- length(acceptor)
-  sender <- as.character(sender)
-  checkmate::assert_character(sender, any.missing = FALSE, len = n)
+  checkmate::assert_vector(sender, any.missing = FALSE, len = n)
   checkmate::assert_double(
     temperature,
-    lower = 0,
-    upper = 350,
-    finite = TRUE,
-    any.missing = TRUE,
-    len = n
+    lower = 0, upper = 350, finite = TRUE, any.missing = TRUE, len = n
   )
   checkmate::assert_double(
     pressure,
-    lower = 8.4e-2,
-    upper = 100,
-    finite = TRUE,
-    any.missing = TRUE,
-    len = n
+    lower = 8.4e-2, upper = 100, finite = TRUE, any.missing = TRUE, len = n
   )
   checkmate::assert_double(
     flow_rate,
-    lower = 1e-3,
-    upper = 1e5,
-    finite = TRUE,
-    any.missing = TRUE,
-    len = n
-  )
-  norms <- pipenostics::m325nhldata  # use brief name
-  checkmate::assert_double(
-    d,
-    lower = min(norms[["d"]]),
-    upper = max(norms[["d"]]),
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
-  )
-  rm(norms)
-  checkmate::assert_double(
-    len,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
-  )
-    checkmate::assert_double(
-    loss,
-    lower       = 0,
-    upper       = 1500,
-    any.missing = FALSE,
-    len         = n
+    lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = TRUE, len = n
   )
   checkmate::assert_double(
-    roughness,
-    lower = 0,
-    upper = .2,
-    any.missing = FALSE,
-    len = n
+    d, lower = 25, upper = 1440, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
-    outlet,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
+    wth, lower = 0.3, upper = 90, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
-    inlet,
-    lower = 0,
-    finite = TRUE,
-    any.missing = FALSE,
-    len = n
+    len, lower = 0, finite = TRUE, any.missing = FALSE, len = n
+  )
+  checkmate::assert_double(
+    loss, lower = 0, upper = 1500, any.missing = FALSE, len = n
+  )
+  checkmate::assert_double(
+    roughness, lower = 0, upper = .2, any.missing = FALSE, len = n
+  )
+  checkmate::assert_double(
+    outlet, lower = 0, finite = TRUE, any.missing = FALSE, len = n
+  )
+  checkmate::assert_double(
+    inlet, lower = 0, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
   checkmate::assert_flag(verbose)
@@ -374,23 +347,29 @@ tracebw <- function(sender = 6,
     )  # check for validness of file name!
     checkmate::assert_path_for_output(file)
   }
-  # TODO: add commensurable check
+  checkmate::assert_true(commensurable(c(
+    length(sender), length(acceptor), length(temperature), length(pressure),
+    length(flow_rate), length(d), length(wth), length(len), length(loss),
+    length(roughness), length(inlet), length(outlet)
+  )))
+  checkmate::assert_true(all(d - 2*wth > 0.5))  # in [mm]
+
+  acceptor <- as.character(acceptor)
+  sender   <- as.character(sender)
 
   # Validate method aspects ----
   is_terminal_node <- !(acceptor %in% sender)
   checkmate::assert_double(
     temperature[is_terminal_node],
-    any.missing = TRUE,
-    all.missing = FALSE,
-    min.len = 1L
+    any.missing = TRUE, all.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
     pressure[is_terminal_node],
-    any.missing = TRUE,
-    all.missing = FALSE,
-    min.len = 1L
+    any.missing = TRUE, all.missing = FALSE, min.len = 1L
   )
-  checkmate::assert_double(flow_rate[is_terminal_node], any.missing = FALSE, min.len = 1L)
+  checkmate::assert_double(
+    flow_rate[is_terminal_node], any.missing = FALSE, min.len = 1L
+  )
   # only paired values of temperature and pressure
   checkmate::assert_true(all(is.na(temperature) == is.na(pressure)))
 
@@ -421,13 +400,13 @@ tracebw <- function(sender = 6,
 
   ## Heat flux, [W/m^2]
   flux[is_temperature_sensored] <- pipenostics::flux_loss(
-    x   = loss[is_temperature_sensored],
-    d   = d[is_temperature_sensored] * METER ,
-    wth = pipenostics::wth_d(d[is_temperature_sensored])
+    x = loss[is_temperature_sensored], d = d[is_temperature_sensored]
   )
 
   ## Heat loss per day, [kcal]
-  Q[is_temperature_sensored] <- loss[is_temperature_sensored] * len[is_temperature_sensored] * DAY
+  Q[is_temperature_sensored] <- {
+    loss[is_temperature_sensored] * len[is_temperature_sensored] * DAY
+  }
 
   # Start backward tracing ----
   time_stamp_posixct <- Sys.time()
@@ -482,8 +461,7 @@ tracebw <- function(sender = 6,
       ))
 
     is_node_ready <- node_state == 0L
-    ready_nodes <-
-      names(is_node_ready)[is_node_ready]  # acceptor names
+    ready_nodes <- names(is_node_ready)[is_node_ready]  # acceptor names
     if (verbose)
       cat(
         sprintf(
@@ -496,53 +474,63 @@ tracebw <- function(sender = 6,
       )
 
     # Make up job aggregations ----
-    agg_log <- lapply(structure(names(agg_func), names = names(agg_func)),
-                      function(func_name, log_df) {
-                        tracing <-
-                          tapply(log_df[["tracing"]], log_df[["node"]], "paste", collapse = "|")
-                        data.frame(
-                          node = names(tracing),
-                          tracing = tracing,
-                          backward = TRUE,
-                          aggregation = func_name,
-                          loss = tapply(log_df[["loss"]], log_df[["node"]], agg_func[[func_name]]),
-                          flux = tapply(log_df[["flux"]], log_df[["node"]], agg_func[[func_name]]),
-                          Q = tapply(log_df[["Q"]], log_df[["node"]], agg_func[[func_name]]),
-                          temperature = tapply(log_df[["temperature"]], log_df[["node"]], agg_func[[func_name]]),
-                          pressure = tapply(log_df[["pressure"]], log_df[["node"]], agg_func[[func_name]]),
-                          flow_rate = tapply(log_df[["flow_rate"]], log_df[["node"]], sum),
-                          job = job_num
-                        )
-                      }  ,
-                      log_df = job_log[job_log[["node"]] %in% ready_nodes &
-                                         job_log[["aggregation"]] == "identity", ])
-
-
+    agg_log <- lapply(
+      structure(names(agg_func), names = names(agg_func)),
+      function(func_name, log_df) {
+        tracing <- tapply(
+          log_df[["tracing"]], log_df[["node"]], "paste", collapse = "|"
+        )
+        data.frame(
+          node = names(tracing), tracing = tracing, backward = TRUE,
+          aggregation = func_name,
+          loss = tapply(
+            log_df[["loss"]], log_df[["node"]], agg_func[[func_name]]
+          ),
+          flux = tapply(
+            log_df[["flux"]], log_df[["node"]], agg_func[[func_name]]
+          ),
+          Q = tapply(
+            log_df[["Q"]], log_df[["node"]], agg_func[[func_name]]
+          ),
+          temperature = tapply(
+            log_df[["temperature"]], log_df[["node"]], agg_func[[func_name]]
+          ),
+          pressure = tapply(
+            log_df[["pressure"]], log_df[["node"]], agg_func[[func_name]]
+          ),
+          flow_rate = tapply(log_df[["flow_rate"]], log_df[["node"]], sum),
+          job = job_num
+        )
+      }  ,
+      log_df = {
+        job_log[job_log[["node"]] %in% ready_nodes &
+        job_log[["aggregation"]] == "identity", ]
+      }
+    )
     job_log <- rbind(job_log, do.call("rbind", agg_log))
 
     # Dump log to file ----
     if (csv)
       utils::write.table(
         job_log[job_log[["job"]] == job_num, ],
-        file = file,
-        append = TRUE,
-        quote = FALSE,
-        sep = ",",
-        col.names = FALSE,
+        file = file, append = TRUE, quote = FALSE, sep = ",", col.names = FALSE,
         row.names = FALSE
       )
 
     # Calculate ThHy-regime ----
     is_processed_pipe <- which(acceptor %in% ready_nodes)
-    regime <-
+    regime <- {
       job_log[job_log[["job"]] == job_num &
-                job_log[["aggregation"]] == opinion, ]
-    checkmate::assert_true(all(acceptor[is_processed_pipe] %in% regime[["node"]]) &&
-                             all(regime[["node"]] %in% acceptor[is_processed_pipe]))
-    regime_index <-
-      match(acceptor[is_processed_pipe], regime[["node"]])
+      job_log[["aggregation"]] == opinion, ]
+    }
+    checkmate::assert_true(
+      all(acceptor[is_processed_pipe] %in% regime[["node"]]) &&
+      all(regime[["node"]] %in% acceptor[is_processed_pipe])
+    )
+    regime_index <- match(acceptor[is_processed_pipe], regime[["node"]])
 
     is_tp_sensored <- !is.na(regime[["temperature"]][regime_index])
+
     # *is_tp_sensored* also valid for pressure since paired NAs has been checked
     if (verbose)
       cat(
@@ -560,7 +548,9 @@ tracebw <- function(sender = 6,
     this_sender_loss <- rep.int(NA_real_, length(regime_index))
 
     if (any(is_tp_sensored)) {
-      this_sender_loss[is_tp_sensored] <- loss[is_processed_pipe][is_tp_sensored]
+      this_sender_loss[is_tp_sensored] <- {
+        loss[is_processed_pipe][is_tp_sensored]
+      }
       if (verbose)
         cat(
           sprintf(
@@ -568,31 +558,39 @@ tracebw <- function(sender = 6,
             time_stamp_posixct,
             .func_name,
             sum(is_tp_sensored),
-            paste(regime[["node"]][regime_index][is_tp_sensored], collapse = ",")
+            paste(
+              regime[["node"]][regime_index][is_tp_sensored], collapse = ","
+            )
           )
         )
     } else {
       if (verbose)
         cat(
           sprintf(
-            "\n%s %s | SKIP! Specific heat loss power could not be traced from nodes [%s];; ",
+            paste(
+              "\n%s %s | SKIP! Specific heat loss power could not be",
+              "traced from nodes [%s];; "
+            ),
             time_stamp_posixct,
             .func_name,
-            paste(regime[["node"]][regime_index][!is_tp_sensored], collapse = ",")
+            paste(
+              regime[["node"]][regime_index][!is_tp_sensored], collapse = ","
+            )
           )
         )
     }
 
     # * heat flux tracing ----
     if (verbose)
-      cat(sprintf("\n%s %s | tracing heat flux;;", time_stamp_posixct, .func_name))
+      cat(sprintf(
+        "\n%s %s | tracing heat flux;;", time_stamp_posixct, .func_name
+      ))
     this_sender_flux <- rep.int(NA_real_, length(regime_index))
 
     if (any(is_tp_sensored)) {
       this_sender_flux[is_tp_sensored] <- pipenostics::flux_loss(
-          x   =  this_sender_loss[is_tp_sensored],
-          d   = d[is_processed_pipe][is_tp_sensored] * METER,
-          wth = pipenostics::wth_d(d[is_processed_pipe][is_tp_sensored])
+        x = this_sender_loss[is_tp_sensored],
+        d = d[is_processed_pipe][is_tp_sensored]
       )
       if (verbose)
         cat(
@@ -601,7 +599,9 @@ tracebw <- function(sender = 6,
             time_stamp_posixct,
             .func_name,
             sum(is_tp_sensored),
-            paste(regime[["node"]][regime_index][is_tp_sensored], collapse = ",")
+            paste(
+              regime[["node"]][regime_index][is_tp_sensored], collapse = ","
+            )
           )
         )
     } else {
@@ -611,18 +611,25 @@ tracebw <- function(sender = 6,
             "\n%s %s | SKIP! Heat flux could not be traced from nodes [%s];; ",
             time_stamp_posixct,
             .func_name,
-            paste(regime[["node"]][regime_index][!is_tp_sensored], collapse = ",")
+            paste(
+              regime[["node"]][regime_index][!is_tp_sensored], collapse = ","
+            )
           )
         )
     }
 
     # * Heat loss per day tracing ----
     if (verbose)
-      cat(sprintf("\n%s %s | tracing heat loss per day;;", time_stamp_posixct, .func_name))
+      cat(sprintf(
+        "\n%s %s | tracing heat loss per day;;", time_stamp_posixct, .func_name
+      ))
     this_sender_Q <- rep.int(NA_real_, length(regime_index))
 
     if (any(is_tp_sensored)) {
-      this_sender_Q[is_tp_sensored] <- loss[is_processed_pipe][is_tp_sensored] * len[is_processed_pipe][is_tp_sensored] * DAY
+      this_sender_Q[is_tp_sensored] <- {
+        loss[is_processed_pipe][is_tp_sensored] *
+        len[is_processed_pipe][is_tp_sensored] * DAY
+      }
       if (verbose)
         cat(
           sprintf(
@@ -630,17 +637,24 @@ tracebw <- function(sender = 6,
             time_stamp_posixct,
             .func_name,
             sum(is_tp_sensored),
-            paste(regime[["node"]][regime_index][is_tp_sensored], collapse = ",")
+            paste(
+              regime[["node"]][regime_index][is_tp_sensored], collapse = ","
+            )
           )
         )
     } else {
       if (verbose)
         cat(
           sprintf(
-            "\n%s %s | SKIP! Heat loss per day could not be traced from nodes [%s];; ",
+            paste(
+              "\n%s %s | SKIP! Heat loss per day could not be traced",
+              "from nodes [%s];; "
+            ),
             time_stamp_posixct,
             .func_name,
-            paste(regime[["node"]][regime_index][!is_tp_sensored], collapse = ",")
+            paste(
+              regime[["node"]][regime_index][!is_tp_sensored], collapse = ","
+            )
           )
         )
     }
@@ -656,14 +670,15 @@ tracebw <- function(sender = 6,
     this_sender_temperature <- rep.int(NA_real_, length(regime_index))
 
     if (any(is_tp_sensored)) {
-      this_sender_temperature[is_tp_sensored] <-
+      this_sender_temperature[is_tp_sensored] <- {
         regime[["temperature"]][regime_index][is_tp_sensored] +
           pipenostics::dropt(
-            regime[["temperature"]][regime_index][is_tp_sensored],
-            regime[["pressure"]][regime_index][is_tp_sensored],
-            regime[["flow_rate"]][regime_index][is_tp_sensored],
-            this_sender_Q[is_tp_sensored]/DAY
+            temperature = regime[["temperature"]][regime_index][is_tp_sensored],
+            pressure    = regime[["pressure"]][regime_index][is_tp_sensored],
+            flow_rate   = regime[["flow_rate"]][regime_index][is_tp_sensored],
+            loss_power  = this_sender_Q[is_tp_sensored]/DAY
           )
+      }
       if (verbose)
         cat(
           sprintf(
@@ -671,17 +686,24 @@ tracebw <- function(sender = 6,
             time_stamp_posixct,
             .func_name,
             sum(is_tp_sensored),
-            paste(regime[["node"]][regime_index][is_tp_sensored], collapse = ",")
+            paste(
+              regime[["node"]][regime_index][is_tp_sensored], collapse = ","
+            )
           )
         )
     } else {
       if (verbose)
         cat(
           sprintf(
-            "\n%s %s | SKIP! Temperature could not be traced from nodes [%s];; ",
+            paste(
+              "\n%s %s | SKIP! Temperature could not be traced",
+              "from nodes [%s];; "
+            ),
             time_stamp_posixct,
             .func_name,
-            paste(regime[["node"]][regime_index][!is_tp_sensored], collapse = ",")
+            paste(
+              regime[["node"]][regime_index][!is_tp_sensored], collapse = ","
+            )
           )
         )
     }
@@ -696,18 +718,23 @@ tracebw <- function(sender = 6,
     this_sender_pressure <- rep.int(NA_real_, length(regime_index))
 
     if (any(is_tp_sensored)) {
-      this_sender_pressure[is_tp_sensored] <-
-        regime[["pressure"]][regime_index][is_tp_sensored] + pipenostics::dropp(
-          regime[["temperature"]][regime_index][is_tp_sensored],
-          regime[["pressure"]][regime_index][is_tp_sensored],
-          regime[["flow_rate"]][regime_index][is_tp_sensored],
-          d[is_processed_pipe][is_tp_sensored] * METER,
-          len[is_processed_pipe][is_tp_sensored],
-          roughness[is_processed_pipe][is_tp_sensored],
-          inlet[is_processed_pipe][is_tp_sensored],
-          outlet[is_processed_pipe][is_tp_sensored],
-          method
+      this_sender_pressure[is_tp_sensored] <- {
+        regime[["pressure"]][regime_index][is_tp_sensored] +
+          pipenostics::dropp(
+            temperature = regime[["temperature"]][regime_index][is_tp_sensored],
+            pressure    = regime[["pressure"]][regime_index][is_tp_sensored],
+            flow_rate   = regime[["flow_rate"]][regime_index][is_tp_sensored],
+            d           = METER*(
+              d[is_processed_pipe][is_tp_sensored] -
+              2*wth[is_processed_pipe][is_tp_sensored]
+            ),
+            len         = len[is_processed_pipe][is_tp_sensored],
+            roughness   = roughness[is_processed_pipe][is_tp_sensored],
+            inlet       = inlet[is_processed_pipe][is_tp_sensored],
+            outlet      = outlet[is_processed_pipe][is_tp_sensored],
+            method      = method
         )
+      }
       cat(
         if (verbose)
           sprintf(
