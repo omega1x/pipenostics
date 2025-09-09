@@ -278,29 +278,6 @@ output_median <- do.call(
   "m325tracebw", c(as.list(DHN), verbose = FALSE, opinion = "median")
 )
 
-## The differences between aggregations should be:
-aggregation_differences <- c(
-  delta_t = 0.03732, delta_p = 0.00139, delta_g = 0
-)
-print(aggregation_differences)
-
-## Check:
-#stopifnot(
-#   round(
-#    subset(
-#       output_mean,
-#       node == 13 & aggregation == "median",
-#       c("temperature", "pressure", "flow_rate")
-#     ) - subset(
-#       output_median,
-#       node == 13 & aggregation == "median",
-#       c("temperature", "pressure", "flow_rate")
-#     ),
-#     5
-#     # difference between aggregation options
-#   ) == aggregation_differences
-#)
-
 ## It is possible to process partially measurable District Heating Network:
 
 ## * Simulate lack of temperature and pressure sensors:

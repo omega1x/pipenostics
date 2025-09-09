@@ -240,46 +240,48 @@
 #' DHN$acceptor <- sprintf("N%02i", DHN$acceptor)
 #'
 #' # Perform backward tracing to get regime on root node:
-#' #bw_report <- do.call("m325tracebw", c(as.list(DHN), verbose = FALSE)) #TODO: restore after `m325tracebw` corrections`
+#' bw_report <- do.call("m325tracebw", c(as.list(DHN), verbose = FALSE))
 #'
 #' # Put the traced values to the root node of test bench:
 #' root_node_idx <- 12
 #' root_node <- sprintf("N%02i", root_node_idx)
 #' regime_param  <- c("temperature", "pressure", "flow_rate")
-#' #DHN[root_node_idx, regime_param] <-
-#' #  subset(bw_report,
-#' #         node == root_node & aggregation == "median",
-#' #         regime_param)
-#' #rm(root_node, root_node_idx)
+#' DHN[root_node_idx, regime_param] <-
+#'   subset(bw_report,
+#'          node == root_node & aggregation == "median",
+#'          regime_param)
+#' rm(root_node, root_node_idx)
 #'
 #' # Trace the test bench forward for the first time:
-#' #fw_report <- do.call("m325tracefw",
-#' #                     c(as.list(DHN), verbose = FALSE, elev_tol = .5))
+#' fw_report <- do.call("m325tracefw",
+#'                      c(as.list(DHN), verbose = FALSE, elev_tol = .5))
 #'
 #' # Let's compare traced regime at terminal nodes back to test bench:
-#' #report <- subset(
-#' #  rbind(bw_report, fw_report),
-#' #  node %in% subset(DHN, !(acceptor %in% sender))$acceptor &
-#' #    aggregation == "identity"
-#' #)
+#' report <- subset(
+#'   rbind(bw_report, fw_report),
+#'   node %in% subset(DHN, !(acceptor %in% sender))$acceptor &
+#'     aggregation == "identity"
+#' )
 #'
-#' #regime_delta <- colMeans(
-#' #  subset(report, backward, regime_param) -
-#' #    subset(report, !backward, regime_param)
-#' #)
-#' #print(regime_delta)
+#' regime_delta <- colMeans(
+#'   subset(report, backward, regime_param) -
+#'     subset(report, !backward, regime_param)
+#' )
+#' print(regime_delta)
 #'
-#' #stopifnot(sqrt(regime_delta %*% regime_delta) < 0.5)
+#' stopifnot(sqrt(regime_delta %*% regime_delta) < 0.5)
 #'
 #' # To address the problem of possible norm losses of the heat carrier,
 #' # they could roughly define the leaks as follows:
 #' DHN[, "a"] <- 0.0025 * (365 - 90)/365
 #'
 #' # so that forward tracing
-#' #fw_report_loss <- do.call("m325tracefw", c(as.list(DHN), verbose = FALSE, elev_tol = .5))
+#' fw_report_loss <- do.call(
+#'   "m325tracefw", c(as.list(DHN), verbose = FALSE, elev_tol = .5)
+#' )
 #'
 #' # produces slightly different results:
-#' #print(max(abs(fw_report[, "loss"] - fw_report_loss[, "loss"])))
+#' print(max(abs(fw_report[, "loss"] - fw_report_loss[, "loss"])))
 #'
 #' @export
 m325tracefw <- function(
@@ -287,13 +289,13 @@ m325tracefw <- function(
 
   temperature = c(70.0, NA_real_),
   pressure = c(pipenostics::mpa_kgf(6), NA_real_),
-  flow_rate = c(20, NA_real_), a = rep_len(0, 2),
+  flow_rate = c(20, NA_real_), a = c(0, 0),
 
-  d = rep_len(100, 2), wth = rep_len(12, 2), len = rep_len(72.446, 2),
-  year = rep_len(1986, 2), insulation = rep_len(0, 2),
-  laying = rep_len("tunnel", 2),
-  beta = rep_len(FALSE, 2), exp5k = rep_len(TRUE, 2),
-  roughness = rep_len(1e-3, 2),
+  d = c(100, 100), wth = c(12, 12), len = c(72.446, 72.446),
+  year = c(1986, 1986), insulation = c(0, 0),
+  laying = c("tunnel", "tunnel"),
+  beta = c(FALSE, FALSE), exp5k = c(TRUE, TRUE),
+  roughness = c(1e-3, 1e-3),
   inlet = c(.5, 1), outlet = c(1.0, 1), elev_tol = 0.1,
   method = "romeo",
   verbose = TRUE, csv = FALSE, file = "m325tracefw.csv", use_cluster = FALSE
@@ -302,12 +304,11 @@ m325tracefw <- function(
   .func_name <- "m325tracefw"
 
   # Assertions ----
-  checkmate::assert_true(all(!is.na(acceptor)))
-  acceptor <- as.character(acceptor)
-  checkmate::assert_true(!any(duplicated(acceptor)))  # only single income edge!
+  checkmate::assert_vector(
+    acceptor, any.missing = FALSE, min.len = 1, unique = TRUE
+  )
   n <- length(acceptor)
-  sender <- as.character(sender)
-  checkmate::assert_character(sender, any.missing = FALSE, len = n)
+  checkmate::assert_vector(sender, any.missing = FALSE, len = n)
   checkmate::assert_double(
     temperature,
     lower = 0, upper = 350, finite = TRUE, any.missing = TRUE, len = n
@@ -378,8 +379,16 @@ m325tracefw <- function(
     )  # check for validness of file name!
     checkmate::assert_path_for_output(file)
   }
-  # TODO: add commensurable check
+  checkmate::assert_true(commensurable(c(
+    length(sender), length(acceptor), length(temperature), length(pressure),
+    length(flow_rate), length(d), length(wth), length(len),
+    length(year), length(insulation), length(laying), length(beta),
+    length(exp5k),length(roughness), length(inlet), length(outlet)
+  )))
   checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
+
+  acceptor <- as.character(acceptor)
+  sender <- as.character(sender)
 
   # Configuration ----
   time_stamp_posixct <- Sys.time()

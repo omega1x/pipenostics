@@ -21,16 +21,14 @@ m325_tracebw_ensample <- subset(
     order(m325_tracebw_ensample[["node"]]),
   ], aggregation == "median"
 )
-actual_loss <- m325_tracebw_ensample[["loss"]]
 
+# The next is also a result of `m325tracebw`-tracing:
 actual_loss <- c(
-  96.7797507566675, 96.7797507566675,  71.1808264048755,     116.65263776791  ,
-  71.2923787993057, 96.7931935872254,  78.5007768719699,     116.676286487434 ,
-  28.6262356192016, 24.5482097144085, 116.698548270144 , 0, 153.175635850318 ,
-  96.8283016183455, 96.7711148826053, 116.698548270144 ,      24.5482097144085,
-  116.676286487434 , 28.6172734296851,  96.7927053107223,      78.4922751902151,
-  116.651999252483 , 71.2845855910305,  96.7636915531738,      96.7636915531738,
-  71.1243060409466
+  96.236, 96.288, 70.584, 116.044943125762, 70.7340165868372,
+  96.2114863150603, 78.4, 116.015881619773, 28.1152, 24.9182, 116.679050351562,
+  152.831147448797, 152.789332127695, 96.7331745004449, 96.6, 116.666828494072,
+  24.9596, 115.922823255434, 28.1658, 96.1226072815915, 77.824,
+  115.945514486784, 70.6899252508703, 96.184, 96.236, 70.54
 )
 
 DHN[c("a", "year", "insulation", "laying", "beta", "exp5k")] <- NULL
@@ -96,13 +94,13 @@ test_that(
   }
 )
 
-#test_that(
-#  "*tracebw* does not reproduce ensample values of *Q*", {
-#  expect_equal(
-#    tracebw_report[["Q"]], m325_tracebw_ensample[["Q"]], tolerance = 1e-4
-#  )
-#  }
-#)
+test_that(
+  "*tracebw* does not reproduce ensample values of *Q*", {
+  expect_equal(
+    tracebw_report[["Q"]], m325_tracebw_ensample[["Q"]], tolerance = 1e-4
+  )
+  }
+)
 
 test_that(
   "*tracebw* does not reproduce ensample values of *loss*", {

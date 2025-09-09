@@ -346,7 +346,7 @@ tracefw <- function(
   )
 
   job_log <- data.frame(
-    node = acceptor[root_node], tracing = "sensor", backward = FALSE, # TODO: `[[` instaed of `[`?
+    node = acceptor[[root_node]], tracing = "sensor", backward = FALSE,
     aggregation = "identity",
     loss = NA_real_, flux = NA_real_, Q = NA_real_,
     temperature = temperature[root_node], pressure    = pressure[root_node],

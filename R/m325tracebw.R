@@ -274,29 +274,6 @@
 #'   "m325tracebw", c(as.list(DHN), verbose = FALSE, opinion = "median")
 #' )
 #'
-#' ## The differences between aggregations should be:
-#' aggregation_differences <- c(
-#'   delta_t = 0.03732, delta_p = 0.00139, delta_g = 0
-#' )
-#' print(aggregation_differences)
-#'
-#' ## Check:
-#' #stopifnot(
-#' #   round(
-#' #    subset(
-#' #       output_mean,
-#' #       node == 13 & aggregation == "median",
-#' #       c("temperature", "pressure", "flow_rate")
-#' #     ) - subset(
-#' #       output_median,
-#' #       node == 13 & aggregation == "median",
-#' #       c("temperature", "pressure", "flow_rate")
-#' #     ),
-#' #     5
-#' #     # difference between aggregation options
-#' #   ) == aggregation_differences
-#' #)
-#'
 #' ## It is possible to process partially measurable District Heating Network:
 #'
 #' ## * Simulate lack of temperature and pressure sensors:
@@ -334,13 +311,11 @@ m325tracebw <- function(
   NHL_N_POINT <- 2
 
   # Validate function input ----
-  # TODO: improve checks with `assert_vector` as in simpler tracers
-  checkmate::assert_true(all(!is.na(acceptor)))
-  acceptor <- as.character(acceptor)
-  checkmate::assert_true(!any(duplicated(acceptor)))  # only single income edge!
+  checkmate::assert_vector(
+    acceptor, any.missing = FALSE, min.len = 1, unique = TRUE
+  )
   n <- length(acceptor)
-  sender <- as.character(sender)
-  checkmate::assert_character(sender, any.missing = FALSE, len = n)
+  checkmate::assert_vector(sender, any.missing = FALSE, len = n)
   checkmate::assert_double(
     temperature,
     lower = 0, upper = 350, finite = TRUE, any.missing = TRUE, len = n
@@ -408,13 +383,21 @@ m325tracebw <- function(
     checkmate::assert_character(
       basename(file),
       pattern = "^[[:alnum:]_\\.\\-]+$", any.missing = FALSE, len = 1L
-    )  # check for validness of file name!
+    )
     checkmate::assert_path_for_output(file)
   }
-  # TODO: add commensurable check
+  checkmate::assert_true(commensurable(c(
+    length(sender), length(acceptor), length(temperature), length(pressure),
+    length(flow_rate), length(d), length(wth), length(len),
+    length(year), length(insulation), length(laying), length(beta),
+    length(exp5k),length(roughness), length(inlet), length(outlet)
+  )))
 
   # Validate method aspects ----
   checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
+  acceptor <- as.character(acceptor)
+  sender <- as.character(sender)
+
   is_terminal_node <- !(acceptor %in% sender)
   checkmate::assert_double(
     temperature[is_terminal_node],

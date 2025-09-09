@@ -1,18 +1,13 @@
 # pipenostics 0.2.1
 
 ## Backlog
-- use `assert_vector` in checking acceptor and sender arguments in tracers
-- change `rep_len` to simple vector declarations in tracer arguments 
-- add commensurable check in tracers
-- do not use a tracer inside examples of another tracer
-- search and do job from *TODO*s
-- correct unit tests that are ignored for now. See the list of ignored tests in [.Rbuildignore](./.Rbuildignore) 
-- think if they should change internal diameter to outside diameter in simple `trace*()` functions
+- add `actual_loss` to `m325nxdata`
 - include `b36dwthv` into some tracers as an optional check
-- deprecate function `wth_d`
+- write correct usage examples for `b36dwthv`, `m325nvl`, `m325nml`
 - add `rulc` - remain useful life calculator
 
 ## Current version
+- function `wth_d` has been deprecated
 - breaking changes have been made to *m325*-tracers and *flux-loss* recalculations
 - in appropriate functions the checkmate asserts specify `~0.29 mm` as a minimum allowable value for pipe width `wth`
 - in `m325nhldata` column *diameter* has been renamed to *d* that unifies it with `b36pipedata` column names

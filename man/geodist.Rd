@@ -162,7 +162,6 @@ Other utils:
 \code{\link{b36mass}()},
 \code{\link{b36pipedata}},
 \code{\link{meteos}()},
-\code{\link{mgtdhid}()},
-\code{\link{wth_d}()}
+\code{\link{mgtdhid}()}
 }
 \concept{utils}

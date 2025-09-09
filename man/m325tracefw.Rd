@@ -11,16 +11,16 @@ m325tracefw(
   temperature = c(70, NA_real_),
   pressure = c(pipenostics::mpa_kgf(6), NA_real_),
   flow_rate = c(20, NA_real_),
-  a = rep_len(0, 2),
-  d = rep_len(100, 2),
-  wth = rep_len(12, 2),
-  len = rep_len(72.446, 2),
-  year = rep_len(1986, 2),
-  insulation = rep_len(0, 2),
-  laying = rep_len("tunnel", 2),
-  beta = rep_len(FALSE, 2),
-  exp5k = rep_len(TRUE, 2),
-  roughness = rep_len(0.001, 2),
+  a = c(0, 0),
+  d = c(100, 100),
+  wth = c(12, 12),
+  len = c(72.446, 72.446),
+  year = c(1986, 1986),
+  insulation = c(0, 0),
+  laying = c("tunnel", "tunnel"),
+  beta = c(FALSE, FALSE),
+  exp5k = c(TRUE, TRUE),
+  roughness = c(0.001, 0.001),
   inlet = c(0.5, 1),
   outlet = c(1, 1),
   elev_tol = 0.1,
@@ -245,46 +245,48 @@ DHN$sender   <- sprintf("N\%02i", DHN$sender)
 DHN$acceptor <- sprintf("N\%02i", DHN$acceptor)
 
 # Perform backward tracing to get regime on root node:
-#bw_report <- do.call("m325tracebw", c(as.list(DHN), verbose = FALSE)) #TODO: restore after `m325tracebw` corrections`
+bw_report <- do.call("m325tracebw", c(as.list(DHN), verbose = FALSE))
 
 # Put the traced values to the root node of test bench:
 root_node_idx <- 12
 root_node <- sprintf("N\%02i", root_node_idx)
 regime_param  <- c("temperature", "pressure", "flow_rate")
-#DHN[root_node_idx, regime_param] <-
-#  subset(bw_report,
-#         node == root_node & aggregation == "median",
-#         regime_param)
-#rm(root_node, root_node_idx)
+DHN[root_node_idx, regime_param] <-
+  subset(bw_report,
+         node == root_node & aggregation == "median",
+         regime_param)
+rm(root_node, root_node_idx)
 
 # Trace the test bench forward for the first time:
-#fw_report <- do.call("m325tracefw",
-#                     c(as.list(DHN), verbose = FALSE, elev_tol = .5))
+fw_report <- do.call("m325tracefw",
+                     c(as.list(DHN), verbose = FALSE, elev_tol = .5))
 
 # Let's compare traced regime at terminal nodes back to test bench:
-#report <- subset(
-#  rbind(bw_report, fw_report),
-#  node \%in\% subset(DHN, !(acceptor \%in\% sender))$acceptor &
-#    aggregation == "identity"
-#)
+report <- subset(
+  rbind(bw_report, fw_report),
+  node \%in\% subset(DHN, !(acceptor \%in\% sender))$acceptor &
+    aggregation == "identity"
+)
 
-#regime_delta <- colMeans(
-#  subset(report, backward, regime_param) -
-#    subset(report, !backward, regime_param)
-#)
-#print(regime_delta)
+regime_delta <- colMeans(
+  subset(report, backward, regime_param) -
+    subset(report, !backward, regime_param)
+)
+print(regime_delta)
 
-#stopifnot(sqrt(regime_delta \%*\% regime_delta) < 0.5)
+stopifnot(sqrt(regime_delta \%*\% regime_delta) < 0.5)
 
 # To address the problem of possible norm losses of the heat carrier,
 # they could roughly define the leaks as follows:
 DHN[, "a"] <- 0.0025 * (365 - 90)/365
 
 # so that forward tracing
-#fw_report_loss <- do.call("m325tracefw", c(as.list(DHN), verbose = FALSE, elev_tol = .5))
+fw_report_loss <- do.call(
+  "m325tracefw", c(as.list(DHN), verbose = FALSE, elev_tol = .5)
+)
 
 # produces slightly different results:
-#print(max(abs(fw_report[, "loss"] - fw_report_loss[, "loss"])))
+print(max(abs(fw_report[, "loss"] - fw_report_loss[, "loss"])))
 
 }
 \seealso{

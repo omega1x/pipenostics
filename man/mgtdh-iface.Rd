@@ -117,7 +117,6 @@ Other utils:
 \code{\link{b36mass}()},
 \code{\link{b36pipedata}},
 \code{\link{geoarea}()},
-\code{\link{meteos}()},
-\code{\link{wth_d}()}
+\code{\link{meteos}()}
 }
 \concept{utils}

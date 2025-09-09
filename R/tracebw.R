@@ -223,37 +223,19 @@
 #' DHN[["sender"]]   <- sprintf("N%02i", DHN[["sender"]])
 #' DHN[["acceptor"]] <- sprintf("N%02i", DHN[["acceptor"]])
 #'
-#' # * Provided actual values of specific heat loss power (say, field measurements) for each
-#' #   pipe in DHN, [kcal/m/h]:
+#' # * Provided actual values of specific heat loss power
+#' #   (say, field measurements) for each pipe in DHN, [kcal/m/h]:
 #'  actual_loss <- c(
-#'                # acceptor:
-#'       96.236,  #  1
-#'       96.288,  #  2
-#'       70.584,  #  3
-#'      116.045,  #  4
-#'       70.734,  #  5
-#'       96.211,  #  6
-#'       78.400,  #  7
-#'      116.016,  #  8
-#'       28.115,  #  9
-#'       24.918,  # 10
-#'      116.679,  # 11
-#'        0.000,  # 12, may be unmeasured!
-#'      153.134,  # 13
-#'       96.733,  # 14
-#'       96.600,  # 15
-#'      116.667,  # 16
-#'       24.960,  # 17
-#'      115.923,  # 18
-#'       28.166,  # 19
-#'       96.123,  # 20
-#'       77.824,  # 21
-#'      115.946,  # 22
-#'       70.690,  # 23
-#'       96.184,  # 24
-#'       96.236,  # 25
-#'       70.540   # 26
-#'  )
+#'    96.2360000000000,  96.2880000000000,  70.5840000000000,
+#'   116.0449431257620,  70.7340165868372,  96.2114863150603,
+#'    78.4000000000000, 116.0158816197730,  28.1152000000000,
+#'    24.9182000000000, 116.6790503515620, 152.8311474487970,
+#'   152.7893321276950,  96.7331745004449,  96.6000000000000,
+#'   116.6668284940720,  24.9596000000000, 115.9228232554340,
+#'    28.1658000000000,  96.1226072815915,  77.8240000000000,
+#'   115.9455144867840,  70.6899252508703,  96.1840000000000,
+#'    96.2360000000000,  70.5400000000000
+#' )
 #'
 #' # * Remove inappropriate attributes of the graph:
 #' DHN.1 <- DHN[,
@@ -264,18 +246,21 @@
 #' ]
 #'
 #' # * Trace thermal-hydraulic regime for DHN:
-#' tracebw_report <- do.call("tracebw", c(as.list(DHN.1), list(loss = actual_loss)))
+#' tracebw_report <- do.call(
+#'   "tracebw", c(as.list(DHN.1), list(loss = actual_loss))
+#' )
 #'
-#' # * If the actual values of specific heat loss power presented above are close
-#' #   to those in Minenergo-325, then the results of regime tracing match the
-#' #   normative procedure:
+#' # * If the actual values of specific heat loss power presented above are
+#' #   close to those in Minenergo-325, then the results of regime tracing match
+#' #   the normative procedure:
+#'
 #' m325_report <- do.call("m325tracebw", DHN)
 #'
-#' #stopifnot(
-#' #    all.equal(tracebw_report$temperature, m325_report$temperature, tolerance = 1e-4),
-#' #   all.equal(tracebw_report$pressure   , m325_report$pressure   , tolerance = 1e-4),
-#' #    all.equal(tracebw_report$flow_rate  , m325_report$flow_rate  , tolerance = 1e-4)
-#' #)
+#' stopifnot(
+#'   all.equal(tracebw_report$temperature, m325_report$temperature, tol = 1e-4),
+#'   all.equal(tracebw_report$pressure   , m325_report$pressure   , tol = 1e-4),
+#'   all.equal(tracebw_report$flow_rate  , m325_report$flow_rate  , tol = 1e-4)
+#' )
 #'
 #' @export
 tracebw <- function(
