@@ -18,7 +18,7 @@ m325nml(
 }
 \arguments{
 \item{a}{heat carrier (water) volume loss factor of cylindrical pipe,
-[\eqn{hour^{-1}}]. Type: \code{\link[checkmate]{assert_double}}.}
+[\emph{h⁻¹}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{d}{nominal (outside) diameter of pipe, [\emph{mm}].
 Type: \code{\link[checkmate]{assert_double}}.}
@@ -38,8 +38,12 @@ Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 \describe{
-   \item{For \code{m325nvl}}{volume loss of heat carrier per hour, [\emph{m^3/hour}].}
-   \item{For \code{m325nml}}{mass loss of heat carrier per hour, [\emph{ton/hour}].}
+   \item{
+     For \code{m325nvl}}{volume loss of heat carrier per hour, [\emph{m³/h}].
+   }
+   \item{
+     For \code{m325nml}}{mass loss of heat carrier per hour, [\emph{ton/h}].
+   }
  }
  Type: \code{\link[checkmate]{assert_double}}.
 }
@@ -51,12 +55,17 @@ Calculate normative material loss of heat carrier (water) from
 \details{
 The calculations are based on the \emph{a}-factor, which may be treated as
  the maximum allowed rate of heat carrier (water) volume loss per hour. So,
- its value varies from \emph{0.0} \eqn{hour^{-1}} (no loss of heat carrier)
- up to \emph{0.0025} \eqn{hour^{-1}} (maximum possible loss allowed). The
+ its value varies from \emph{0.0} \emph{h⁻¹} (no loss of heat carrier)
+ up to \emph{0.0025} \emph{h⁻¹} (maximum possible loss allowed). The
  cylindrical form of pipe is always assumed in calculations.
 }
 \examples{
  library(pipenostics)
+
+ # According to Minenergo-325 it may be granted to loose right up to the next
+ # value of tons of heat carrier (water) per year (nine-month heating season)
+ # for the typical supplying 100-meter length pipe:
+ m325nml(a = 0.0025, len = 100) * 24 * 90
 
 }
 \seealso{

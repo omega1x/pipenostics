@@ -12,6 +12,7 @@
 ^\.Rproj\.user$
 
 ## Temporary exlusions for debugging:
+^R/gr55596rul\.R$
 
 ### Code & Tests
 

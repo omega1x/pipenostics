@@ -7,12 +7,19 @@
 \format{
 A data frame with 15 rows and 3 variables:
 \describe{
-  \item{subsoil}{Geological name of subsoil. Type: \code{\link[checkmate]{assert_character}}.}
-  \item{state}{The degree of water penetration to the subsoil. Type: \code{\link[checkmate]{assert_character}}.}
-  \item{lambda}{Value of thermal conductivity of subsoil regarding water penetration, [\emph{W/m/°C}].
-  Type: \code{\link[checkmate]{assert_double}}.
+  \item{subsoil}{
+    Geological name of subsoil.
+    Type: \code{\link[checkmate]{assert_character}}.
   }
- }
+  \item{state}{
+    The degree of water penetration to the subsoil.
+    Type: \code{\link[checkmate]{assert_character}}.
+  }
+  \item{lambda}{
+    Value of thermal conductivity of subsoil regarding water penetration,
+    [\emph{W/m/°C}]. Type: \code{\link[checkmate]{assert_double}}.
+  }
+}
 }
 \source{
 \url{https://docs.cntd.ru/document/1200035568}

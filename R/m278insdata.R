@@ -3,11 +3,14 @@
 #' Data represent values of terms (intercept and factor) for calculating thermal
 #' conductivity of pipe insulation as a linear function of temperature of
 #' heat carrier (water).
+#'
 #' Those values are set for different insulation materials in
-#' Appendix 5.3 of \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}
+#' Appendix 5.3 of
+#' \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}
 #' as norms.
 #'
-#' Usually the data is not used directly. Instead use function \code{\link{m278inshcm}}.
+#' Usually the data is not used directly. Instead use function
+#' \code{\link{m278inshcm}}.
 #'
 #' @family Minenergo
 #' @format A data frame with 39 rows and 4 variables:

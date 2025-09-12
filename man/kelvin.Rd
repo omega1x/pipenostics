@@ -12,13 +12,19 @@ k_f(x)
 \arguments{
 \item{x}{temperature in initial scale:
 \itemize{
-  \item for \code{k_c(x)} - in \href{https://en.wikipedia.org/wiki/Celsius}{Celsius}-scale, [\emph{°C}]
-  \item for \code{k_f(x)} - in \href{https://en.wikipedia.org/wiki/Fahrenheit}{Fahrenheit}-scale, [\emph{°F}]
+  \item for \code{k_c(x)} -
+        in \href{https://en.wikipedia.org/wiki/Celsius}{Celsius}-scale,
+        [\emph{°C}]
+  \item for \code{k_f(x)} -
+        in
+        \href{https://en.wikipedia.org/wiki/Fahrenheit}{Fahrenheit}-scale,
+        [\emph{°F}]
 }
 Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-temperature in \emph{Kelvin}-scale, [\emph{K}]. Type: \code{\link[checkmate]{assert_double}}.
+Temperature in \emph{Kelvin}-scale, [\emph{K}].
+ Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Convert temperature measured in

@@ -13,21 +13,28 @@ re_v(d, mu, v, rho)
 re_m(d, mu, m)
 }
 \arguments{
-\item{d}{internal diameter of pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{d}{internal diameter of pipe, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{mu}{dynamic viscosity of fluid in pipe, [\emph{kg/m/s}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{mu}{dynamic viscosity of fluid in pipe, [\emph{kg/m/s}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{u}{mean velocity of fluid in pipe, [\emph{m/s}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{u}{mean velocity of fluid in pipe, [\emph{m/s}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{rho}{mass density of fluid in pipe, [\emph{kg/m^3}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{rho}{mass density of fluid in pipe, [\emph{kg/m³}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{v}{volumetric flow rate of fluid in pipe, [\emph{m^3/s}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{v}{volumetric flow rate of fluid in pipe, [\emph{m³/s}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{m}{mass flow rate of fluid in pipe, [\emph{kg/s}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{m}{mass flow rate of fluid in pipe, [\emph{kg/s}].
+Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 \emph{Reynolds number} - a dimensionless quantity that reveals the ratio
- between inertial and viscous forces in the fluid, []. Type: \code{\link[checkmate]{assert_double}}.
+ between inertial and viscous forces in the fluid, [].
+ Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Estimate \emph{Reynolds number} for fluid flow in a cylindrical pipe.

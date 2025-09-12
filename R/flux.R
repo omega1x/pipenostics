@@ -5,13 +5,15 @@
 #'
 #' @description
 #'  Convert \href{https://en.wikipedia.org/wiki/Heat_flux}{heat flux}
-#'  measured for a cylindrical steel pipe to \emph{specific heat loss power} of pipe.
+#'  measured for a cylindrical steel pipe to \emph{specific heat loss power} of
+#'  pipe.
 #'
 #' @param x
 #'  value of
 #'  \itemize{
-#'    \item \emph{heat flux}, [\emph{W/m^2}], for \code{loss_flux(x, d, wth)}
-#'    \item \emph{specific heat loss power}, [\emph{kcal/m/h}], for \code{flux_loss(x, d, wth)(x)}
+#'    \item \emph{heat flux}, [\emph{W/m²}], for \code{loss_flux(x, d, wth)}
+#'    \item \emph{specific heat loss power}, [\emph{kcal/m/h}], for
+#'    \code{flux_loss(x, d, wth)(x)}
 #'  }
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
@@ -20,10 +22,11 @@
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
-#'  value of
+#'  Value of
 #'  \itemize{
-#'    \item \emph{specific heat loss power}, [\emph{kcal/m/h}], for \code{loss_flux(x, d, wth)}
-#'    \item \emph{heat flux}, [\emph{W/m^2}], for \code{flux_loss(x, d, wth)(x)}
+#'    \item \emph{specific heat loss power}, [\emph{kcal/m/h}], for
+#'          \code{loss_flux(x, d, wth)}
+#'    \item \emph{heat flux}, [\emph{W/m²}], for \code{flux_loss(x, d, wth)(x)}
 #'  }
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
@@ -44,38 +47,40 @@
 #'
 #' @rdname flux
 #' @export
-loss_flux <- function(x, d = 720){
+loss_flux <- function(x, d = 720) {
   checkmate::assert_double(
-    x, lower = 0, upper = 6e4, finite = TRUE, any.missing = FALSE, min.len = 1L
+    x,
+    lower = 0, upper = 6e4, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
-    d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+    d,
+    lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   commensurable(c(length(x), length(d)))
 
-   h <- 3600    # [s/h]
-   J <- 4186.8  # [J/kcal]
-   m <- 1e-3    # [m/mm]
-  #x <- flux    # [W/m^2]
+  h <- 3600    # [s/h]
+  J <- 4186.8  # [J/kcal]
+  m <- 1e-3    # [m/mm]  #x <- flux  # [W/m²]
 
-   x * h/J * base::pi * d * m  # [kcal/m/h]
+  x * h / J * base::pi * d * m  # [kcal/m/h]
 }
 
 #' @rdname flux
 #' @export
-flux_loss <- function(x, d = 720){
+flux_loss <- function(x, d = 720) {
   checkmate::assert_double(
-    x, lower = 0, upper = 1500, finite = TRUE, any.missing = FALSE, min.len = 1L
+    x,
+    lower = 0, upper = 1500, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
-    d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+    d,
+    lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   commensurable(c(length(x), length(d)))
 
-   h <- 3600    # [s/h]
-   J <- 4186.8  # [J/kcal]
-   m <- 1e-3    # [m/mm]
-  #x <- loss    # [kcal/m/h]
+  h <- 3600    # [s/h]
+  J <- 4186.8  # [J/kcal]
+  m <- 1e-3    # [m/mm] #x <- loss    # [kcal/m/h]
 
-  x * J/h / base::pi / d / m  # [W/m^2]
+  x * J / h / base::pi / d / m  # [W/m²]
 }

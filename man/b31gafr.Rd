@@ -7,9 +7,11 @@
 b31gafr(d, wth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{inch}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{inch}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{l}{measured maximum longitudinal length of the corroded area, [\emph{inch}].
 Type: \code{\link[checkmate]{assert_double}}.}
@@ -24,14 +26,14 @@ Calculate intermediate factor related to the geometry of the corroded area.
 \examples{
  library(pipenostics)
 
+ # A-factor is less than 5, so the corrosion is not critical:
  b31gafr(30, .438, 7.5)
- # [1] 1.847  # A-factor is less than 5, so the corrosion is not critical
 
 }
 \references{
-\href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.
- Manual for determining the remaining strength of corroded pipelines. A
- supplement to \emph{ASTME B31} code for pressure piping.
+\href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{
+  ASME B31G-1991}. Manual for determining the remaining strength of corroded
+ pipelines. A supplement to \emph{ASTME B31} code for pressure piping.
 }
 \seealso{
 Other ASME B31G functions: 

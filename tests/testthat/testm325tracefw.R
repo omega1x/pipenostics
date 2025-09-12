@@ -1,7 +1,8 @@
 library(pipenostics)
 
-test_that("*m325tracefw* errs in calculation without execution parallelization", {
-  m325tracefw_report <- m325tracefw(verbose = FALSE)
+test_that(
+  "*m325tracefw* errs in calculation without execution parallelization", {
+  m325tracefw_report <- m325tracefw(verbose = FALSE, strict_sizes = TRUE)
   expect_equal(
     m325tracefw_report[["node"]],
     c("1", "2")
@@ -52,8 +53,11 @@ test_that("*m325tracefw* errs in calculation without execution parallelization",
   )
 })
 
-test_that("*m325tracefw* errs in calculation utilizing parallel execution (if possible)", {
-  m325tracefw_report <- m325tracefw(verbose = FALSE, use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", "")))
+test_that("*m325tracefw* errs in calculation utilizing parallel execution", {
+  m325tracefw_report <- m325tracefw(
+    verbose = FALSE,
+    use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", ""))
+  )
   expect_equal(
     m325tracefw_report[["node"]],
     c("1", "2")
@@ -78,7 +82,7 @@ test_that("*m325tracefw* errs in calculation utilizing parallel execution (if po
   expect_equal(
     m325tracefw_report[["pressure"]],
     c(.588399007, 0.557794259),
-    tolarance = 1e-5
+    tolerance = 1e-5
   )
   expect_equal(
     m325tracefw_report[["flow_rate"]],
@@ -113,4 +117,3 @@ test_that("*m325tracefw* does not write csv-file", {
   )
   unlink(file_name)
 })
-

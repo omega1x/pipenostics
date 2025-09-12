@@ -12,8 +12,9 @@ flux_loss(x, d = 720)
 \arguments{
 \item{x}{value of
 \itemize{
-  \item \emph{heat flux}, [\emph{W/m^2}], for \code{loss_flux(x, d, wth)}
-  \item \emph{specific heat loss power}, [\emph{kcal/m/h}], for \code{flux_loss(x, d, wth)(x)}
+  \item \emph{heat flux}, [\emph{W/m²}], for \code{loss_flux(x, d, wth)}
+  \item \emph{specific heat loss power}, [\emph{kcal/m/h}], for
+  \code{flux_loss(x, d, wth)(x)}
 }
 Type: \code{\link[checkmate]{assert_double}}.}
 
@@ -21,16 +22,18 @@ Type: \code{\link[checkmate]{assert_double}}.}
 Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-value of
+Value of
  \itemize{
-   \item \emph{specific heat loss power}, [\emph{kcal/m/h}], for \code{loss_flux(x, d, wth)}
-   \item \emph{heat flux}, [\emph{W/m^2}], for \code{flux_loss(x, d, wth)(x)}
+   \item \emph{specific heat loss power}, [\emph{kcal/m/h}], for
+         \code{loss_flux(x, d, wth)}
+   \item \emph{heat flux}, [\emph{W/m²}], for \code{flux_loss(x, d, wth)(x)}
  }
  Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Convert \href{https://en.wikipedia.org/wiki/Heat_flux}{heat flux}
- measured for a cylindrical steel pipe to \emph{specific heat loss power} of pipe.
+ measured for a cylindrical steel pipe to \emph{specific heat loss power} of
+ pipe.
 }
 \examples{
 library(pipenostics)

@@ -6,4 +6,3 @@ test_that("*m325tracefw* and *m325tracebw* have the same colnames", {
     TRUE
   )
 })
-

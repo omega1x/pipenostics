@@ -7,17 +7,22 @@
 dnvpf(d, wth, uts, depth, l)
 }
 \arguments{
-\item{d}{nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{mm}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{wth}{nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{mm}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{uts}{ultimate tensile strength (\emph{UTS}) or
 specified minimum tensile strength (\emph{SMTS}) as a
-characteristic of steel strength, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.}
+characteristic of steel strength, [\emph{MPa}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{depth}{measured maximum depth of the corroded area, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{depth}{measured maximum depth of the corroded area, [\emph{mm}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{l}{measured maximum longitudinal length of corroded area, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{l}{measured maximum longitudinal length of corroded area, [\emph{mm}].
+Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 Estimated failure pressure of the corroded pipe, [\emph{MPa}].
@@ -26,13 +31,14 @@ Estimated failure pressure of the corroded pipe, [\emph{MPa}].
 \description{
 Calculate failure pressure of the corroded pipe
  according to \emph{Section 8.2} of
- in \href{https://www.dnv.com/oilgas/download/dnv-rp-f101-corroded-pipelines/}{DNV-RP-F101}.
- The estimation is valid for single isolated metal loss defects of
- the corrosion/erosion type and when only internal pressure loading
- is considered.
+ \href{https://www.dnv.com/oilgas/download/dnv-rp-f101-corroded-pipelines/}{
+  DNV-RP-F101}. The estimation is valid for single isolated metal loss
+ defects of the corrosion/erosion type and when only internal pressure
+ loading is considered.
 
  The next assumption of the corrosion shape is adopted by
- \href{https://www.dnv.com/oilgas/download/dnv-rp-f101-corroded-pipelines/}{DNV-RP-F101}:
+ \href{https://www.dnv.com/oilgas/download/dnv-rp-f101-corroded-pipelines/}{
+  DNV-RP-F101}:
 
  \figure{dnvpf.png}
 
@@ -40,12 +46,14 @@ Calculate failure pressure of the corroded pipe
 }
 \details{
 In contrast to
-  \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{ASME B31G-2012}
-  property of pipe metal is characterized by specified minimum tensile
-  strength - \emph{SMTS}, [\eqn{N/mm^2}], and \href{https://en.wikipedia.org/wiki/International_System_of_Units}{SI}
+  \href{https://www.asme.org/codes-standards/find-codes-standards/b31g-manual-determining-remaining-strength-corroded-pipelines}{
+   ASME B31G-2012} property of pipe metal is characterized by specified
+  minimum tensile strength - \emph{SMTS}, [\emph{N/mm²}], and
+  \href{https://en.wikipedia.org/wiki/International_System_of_Units}{SI}
   is default unit system. \emph{SMTS} is given in the linepipe steel
-  material specifications (e.g. \href{https://www.api.org/products-and-services/standards/important-standards-announcements/standard-5l}{API 5L})
-  for each material grade.
+  material specifications (e.g.
+  \href{https://www.api.org/products-and-services/standards/important-standards-announcements/standard-5l}{
+   API 5L}) for each material grade.
 
   At the same time \emph{Timashev et al.} used ultimate tensile strength
   - \href{https://en.wikipedia.org/wiki/Ultimate_tensile_strength}{UTS}
@@ -60,7 +68,7 @@ In contrast to
 
 d     <- c(812.8, 219.0)  # [mm]
 wth   <- c( 19.1,  14.5)  # [mm]
-uts   <- c(530.9, 455.1)  # [N/mm^2]
+uts   <- c(530.9, 455.1)  # [N/mm²]
 l     <- c(203.2, 200.0)  # [mm]
 depth <- c( 13.4,   9.0)  # [mm]
 
@@ -69,19 +77,21 @@ dnvpf(d, wth, uts, depth, l)
 }
 \references{
 \enumerate{
- \item Recommended practice \href{https://www.dnv.com/oilgas/download/dnv-rp-f101-corroded-pipelines/}{DNV-RP-F101}.
-   Corroded pipelines. \strong{DET NORSKE VERITAS}, October 2010.
- \item \href{https://store.accuristech.com:443/standards/asme-b31g-2012-r2017?product_id=1842873}{ASME B31G-2012}.
-   Manual for determining the remaining strength of corroded pipelines:
-   supplement to \emph{B31 Code} for pressure piping.
- \item  S. Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
-   of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
-   \strong{DOI 10.1007/978-3-319-25307-7}.
+   \item Recommended practice
+     \href{https://www.dnv.com/oilgas/download/dnv-rp-f101-corroded-pipelines/}{
+      DNV-RP-F101}. Corroded pipelines. \strong{DET NORSKE VERITAS}, October
+     2010.
+   \item \href{https://store.accuristech.com:443/standards/asme-b31g-2012-r2017?product_id=1842873}{
+      ASME B31G-2012}. Manual for determining the remaining strength of
+     corroded pipelines: supplement to \emph{B31 Code} for pressure piping.
+   \item  S. Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
+     of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality
+     30, \strong{DOI 10.1007/978-3-319-25307-7}.
  }
 }
 \seealso{
-Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{b31gmodpf}},
-  \code{\link{shell92pf}}, \code{\link{pcorrcpf}}
+Other fail pressure functions: \code{\link{b31gpf}},
+  \code{\link{b31gmodpf}}, \code{\link{shell92pf}}, \code{\link{pcorrcpf}}
 
 Other DNV-RP-F101 functions: 
 \code{\link{strderate}()}

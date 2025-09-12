@@ -54,9 +54,9 @@ test_that("*psi_mpa* errs in calculation", {
 
 test_that("*k_c* errs in calculation", {
   expect_equal(
-   k_c(c(-273.15, 100)),
-   c(0, 373.15),
-   tolerance = 1e-8
+    k_c(c(-273.15, 100)),
+    c(0, 373.15),
+    tolerance = 1e-8
   )
 })
 

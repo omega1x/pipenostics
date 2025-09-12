@@ -12,13 +12,17 @@
 #' @param x
 #'  temperature in initial scale:
 #'  \itemize{
-#'    \item for \code{c_k(x)} - in \href{https://en.wikipedia.org/wiki/Kelvin}{Kelvin}-scale, [\emph{K}]
-#'    \item for \code{c_f(x)} - in \href{https://en.wikipedia.org/wiki/Fahrenheit}{Fahrenheit}-scale, [\emph{°F}]
+#'    \item for \code{c_k(x)} -
+#'      in \href{https://en.wikipedia.org/wiki/Kelvin}{Kelvin}-scale, [\emph{K}]
+#'    \item for \code{c_f(x)} -
+#'      in \href{https://en.wikipedia.org/wiki/Fahrenheit}{Fahrenheit}-scale,
+#'      [\emph{°F}]
 #'  }
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
-#'  temperature in \emph{Celsius}-scale, [\emph{°C}]. Type: \code{\link[checkmate]{assert_double}}.
+#'  Temperature in \emph{Celsius}-scale, [\emph{°C}].
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @seealso
 #'  \code{\link{k_c}} and \code{\link{f_c}} for converting from Celsius-scale.
@@ -34,7 +38,7 @@
 #'
 #' @rdname celsius
 #' @export
-c_k <- function(x){
+c_k <- function(x) {
   checkmate::assert_double(
     x, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
@@ -43,9 +47,9 @@ c_k <- function(x){
 
 #' @rdname celsius
 #' @export
-c_f <- function(x){
+c_f <- function(x) {
   checkmate::assert_double(
     x, lower = -459.67, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
-  (x - 32)/1.8
+  (x - 32) / 1.8
 }

@@ -10,12 +10,12 @@ m278inshcm(temperature = 110, material = "aerocrete")
 \item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}].
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{material}{designation of insulation material as it stated in \code{\link{m278insdata}},
-Type: \code{\link[checkmate]{assert_subset}}.}
+\item{material}{designation of insulation material as it stated in
+\code{\link{m278insdata}}. Type: \code{\link[checkmate]{assert_subset}}.}
 }
 \value{
-Thermal conductivity of insulation materials at given
- set of temperatures, [\emph{W/m/°C}], [\emph{W/m/K}].
+Thermal conductivity of insulation materials at given set of temperatures,
+ [\emph{W/m/°C}], [\emph{W/m/K}].
  Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{

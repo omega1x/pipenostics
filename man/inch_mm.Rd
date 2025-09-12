@@ -11,19 +11,18 @@ inch_mm(x)
 Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-length in \emph{inches}, [\emph{inch}].
+Length in \emph{inches}, [\emph{inch}].
  Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
-Convert length measured in \href{https://en.wikipedia.org/wiki/Millimetre}{millimeters} (mm)
+Convert length measured in
+ \href{https://en.wikipedia.org/wiki/Millimetre}{millimeters} (mm)
  to \href{https://en.wikipedia.org/wiki/Inch}{inches}
 }
 \examples{
  library(pipenostics)
 
  inch_mm(c(25.4, 1))
- # [1] 1.00000000 0.03937008  # [inch]
-
 
 }
 \seealso{

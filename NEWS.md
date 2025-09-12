@@ -1,37 +1,68 @@
-# pipenostics 0.2.1
+# pipenostics 0.3.0
 
-## Backlog
-- add `actual_loss` to `m325nxdata`
-- include `b36dwthv` into some tracers as an optional check
-- write correct usage examples for `b36dwthv`, `m325nvl`, `m325nml`
-- add `rulc` - remain useful life calculator
+## CRAN-release preparations
+
+- Check help-texts for possible problems.
+- Generate `docs`-site.
+- Split [REAME.md](./README.md) and
+  [Concepts.Rmd](vignettes/articles/Concepts.Rmd) to separate articles
+- Add link to [NEWS.md](./NEWS.md) to [REAME.md](./README.md).
+- Enrich tests for `tracebw.R` and `m325tracebw.R` to make 100-percent coverage.
 
 ## Current version
-- function `wth_d` has been deprecated
-- breaking changes have been made to *m325*-tracers and *flux-loss* recalculations
-- in appropriate functions the checkmate asserts specify `~0.29 mm` as a minimum allowable value for pipe width `wth`
-- in `m325nhldata` column *diameter* has been renamed to *d* that unifies it with `b36pipedata` column names
-- additional check for positivity of internal diameter now is made inside those functions which accept outside diameter and wall thikness as arguments
-- dataset `m325nxdata` now contains values of *a*-factor, pipe widths, and pipe diameters in *mm*, so that it's valid *b36pipedata* data
-- function `b36dwthv` is introduced to perform validation of `d`/`wth` value pairs
-- functions `m325nvl()`, `m325nml()` are introduced to calculate normative material loss of heat carrierin pipe
-- issues with links in documentation are solved
-- datasets `api5l3t` and `m325testbench` are renamed to `api5l3tdata` and `m325nxdata` appropriately for the purpose of unification with dataset naming rules
-- functions `b36mass()`, `b36wth()` `b36d()` are introduced to calculate mass and geometric characteristics of actually manufactured pipes
-- nominal specifications of the manufactured pipes now are represented in `b36pipedata`-dataset
+
+- Active [issues](https://github.com/omega1x/pipenostics/issues/) has been
+  solved.
+- Function `wth_d` has been deprecated.
+- Breaking changes have been made to *m325*-tracers and *flux-loss*
+  recalculations.
+- In appropriate functions the checkmate asserts specify `~0.29 mm` as a minimum
+  allowable value for pipe thickness `wth`.
+- In `m325nhldata` column *diameter* has been renamed to *d* that unifies it
+  with `b36pipedata` column names.
+- Additional check for positivity of internal diameter now is made inside those
+  functions which accept outside diameter and wall thickness as arguments.
+- Dataset `m325nxdata` now contains values of *a*-factor, pipe widths, and pipe
+  diameters in *mm*, so that it's valid `b36pipedata` data.
+- Function `b36dwthv` is introduced to perform validation of `d`/`wth` value
+  pairs.
+- Functions `m325nvl()`, `m325nml()` are introduced to calculate normative
+  material loss of heat carrierin pipe.
+- Issues with links in documentation are solved.
+- Datasets `api5l3t` and `m325testbench` are renamed to `api5l3tdata` and
+  `m325nxdata` appropriately for the purpose of unification with dataset naming
+  rules.
+- Functions `b36mass()`, `b36wth()` `b36d()` are introduced to calculate mass
+  and geometric characteristics of actually manufactured pipes nominal
+  specifications of the manufactured pipes now are represented in
+  `b36pipedata`-dataset.
 
 ## Version 0.2.0
 
-- where possible and justified, support for multi-threaded data processing, based on the capabilities of the parallel package, has been added.
-- functions for determining the state of water and steam ([IAPWS](http://www.iapws.org/)) have been excluded from the package due to the decision to use the built-in functions from [iapws](https://CRAN.R-project.org/package=iapws)-package imported from [CRAN](https://cran.r-project.org/).
-- set of functions `mgtdhid()`, `mgtdhidt()`, `mgtdhgeo()`, `mgtdhgeot()` are introduced to interface with *Modified Ground Temperature Double Harmonic Model*.
-- function `meteos()` is introduced to get a list of weather stations
-- functions `geodist()` and `geoarea()` for calculating geographical metrics are added.
-- functions `traceline()`, `tracefw()`, and `tracebw()` were added to process district heating networks with user-provided heat loss.
-- job log of `m325tracefw()` now does not contain duplicated traced flow paths.
-- job logs of `m325tracefw()` and `m325tracebw()` now contain `loss`, `flux`, `Q`.
-- function `m325tracebw()`now can trace partially sensor-equipped district networks.
-- functions `m325dropt()` and `m325tracebwm()` were excluded.
-- functions `flux_loss()` and `loss_flux()` were added to convert between *specific heat loss power*, [*kcal/m/h*] , and *heat flux*, [*W/m^2*].
-- the heat loss related terminology was clarified and adjusted: terms *specific heat loss power*, [*kcal/m/h*],
-  and *heat flux*, [*W/m^2*], are viewed separately while stay closely related. Term `consumption` replaced with `flow_rate`.
+- Where possible and justified, support for multi-threaded data processing,
+  based on the capabilities of the parallel package, has been added.
+- Functions for determining the state of water and steam
+  ([IAPWS](http://www.iapws.org/)) have been excluded from the package due to
+  the decision to use the built-in functions from
+  [iapws](https://CRAN.R-project.org/package=iapws)-package imported from
+  [CRAN](https://cran.r-project.org/).
+- Set of functions `mgtdhid()`, `mgtdhidt()`, `mgtdhgeo()`, `mgtdhgeot()`
+  are introduced to interface with
+  *Modified Ground Temperature Double Harmonic Model*.
+- Function `meteos()` is introduced to get a list of weather stations
+- Functions `geodist()` and `geoarea()` for calculating geographical metrics are
+  added.
+- Functions `traceline()`, `tracefw()`, and `tracebw()` were added to process
+  district heating networks with user-provided heat loss.
+- Job log of `m325tracefw()` now does not contain duplicated traced flow paths
+- job logs of `m325tracefw()` and `m325tracebw()` now contain `loss`, `flux`,
+  and `Q`.
+- Function `m325tracebw()`now can trace partially sensor-equipped district
+  networks.
+- Functions `m325dropt()` and `m325tracebwm()` were excluded.
+- Functions `flux_loss()` and `loss_flux()` were added to convert between
+  *specific heat loss power*, [*kcal/m/h*] , and *heat flux*, [*W/m²*].
+- The heat loss related terminology was clarified and adjusted:
+  terms *specific heat loss power*, [*kcal/m/h*], and *heat flux*, [*W/m²*],
+  are viewed separately while stay closely related. Term `consumption` replaced
+  with `flow_rate`.

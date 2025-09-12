@@ -39,9 +39,11 @@ Type: \code{\link[checkmate]{assert_double}}.}
 \item{insd2}{thickness of the insulator which covers the returning pipe, [\emph{m}].
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d1}{outside diameter of supplying pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{d1}{outside diameter of supplying pipe, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d2}{outside diameter of returning pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{d2}{outside diameter of returning pipe, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{lambda1}{thermal conductivity of insulator which covers the supplying pipe
 [\emph{W/m/°C}]. Type: \code{\link[checkmate]{assert_double}}.}
@@ -55,8 +57,8 @@ Type: \code{\link[checkmate]{assert_double}}.}
 \item{k2}{technical condition factor for insulator of returning pipe, [].
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{lambda0}{thermal conductivity of environment, [\emph{W/m/°C}]. For underground pipe this is
-the thermal conductivity of subsoil.
+\item{lambda0}{thermal conductivity of environment, [\emph{W/m/°C}]. For underground pipe
+this is the thermal conductivity of subsoil.
 Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{z}{underground laying depth of supplying pipe, [\emph{m}].
@@ -68,22 +70,24 @@ Type: \code{\link[checkmate]{assert_double}}.}
 \item{len}{length of supplying pipe, [\emph{m}].
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{duration}{duration of heat loss, [\emph{hour}].
+\item{duration}{duration of heat loss, [\emph{h}].
 Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-Normative heat loss of supplying underground cylindrical pipe during \code{duration}, [\emph{kcal}].
- If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is set to
- 1 \emph{h} (hour) (default values) then the return value is also the
- \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with those
- prescribed by \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+Normative heat loss of supplying underground cylindrical pipe during
+  \code{duration}, [\emph{kcal}]. If \code{len} of pipe is 1 \emph{m} (meter)
+ as well as \code{duration} is set to 1 \emph{h} (hour) (default values) then
+ the return value is also the \emph{specific heat loss power},
+ [\emph{kcal/m/h}] and so comparable with those prescribed by
+ \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
  Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Calculate normative heat loss through the thermal insulation of the
  supplying underground pipe as a function of construction, operation,
  and technical condition specifications according to
- Appendix 5.1 of \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
+ Appendix 5.1 of
+ \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
 
  This type of calculations is usually made on design stage of district
  heating network (where water is a heat carrier) and is closely

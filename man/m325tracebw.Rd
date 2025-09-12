@@ -25,6 +25,7 @@ m325tracebw(
   outlet = 1,
   method = "romeo",
   opinion = "median",
+  strict_sizes = FALSE,
   verbose = TRUE,
   csv = FALSE,
   file = "m325tracebw.csv"
@@ -41,19 +42,19 @@ Type: any type that can be painlessly coerced to character by
 \code{\link{as.character}}.}
 
 \item{temperature}{sensor-measured temperature of heat carrier (water) sensor-measured on
-the terminal acceptor node, [\emph{°C}].
- Use \code{NA_float_}s for (terminal) nodes without temperature sensor.
- Type: \code{\link[checkmate]{assert_double}}.}
+the terminal acceptor node, [\emph{°C}]. Use \code{NA_float_}s for
+(terminal) nodes without temperature sensor.
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{pressure}{sensor-measured
-\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
-[\emph{MPa}].
+\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{
+  absolute pressure} of heat carrier (water) inside the pipe (i.e.
+  acceptor's incoming edge), [\emph{MPa}].
 Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{flow_rate}{sensor-measured amount of heat carrier (water) on terminal node that is
 transferred by pipe (i.e. acceptor's incoming edge) during a period,
-[\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.
+[\emph{ton/h}]. Type: \code{\link[checkmate]{assert_double}}.
 Use \code{NA_float_}s for nodes without flow rate sensor.}
 
 \item{a}{heat carrier volume loss factor of pipe:
@@ -76,12 +77,12 @@ Type: \code{\link[checkmate]{assert_integerish}}.}
 
 \item{insulation}{identifier of insulation that covers the exterior of pipe (i.e. acceptor's
 incoming edge):
- \describe{
-   \item{\code{0}}{no insulation}
-   \item{\code{1}}{foamed polyurethane or analogue}
-   \item{\code{2}}{polymer concrete}
- }
-Type: \code{\link[checkmate]{assert_subset}}.}
+  \describe{
+    \item{\code{0}}{no insulation}
+    \item{\code{1}}{foamed polyurethane or analogue}
+    \item{\code{2}}{polymer concrete}
+  }
+ Type: \code{\link[checkmate]{assert_subset}}.}
 
 \item{laying}{type of pipe laying depicting the position of pipe in space. Only five
 types of pipe laying are considered:
@@ -131,6 +132,9 @@ next tracing step:
  }
 Type: \code{\link[checkmate]{assert_choice}}.}
 
+\item{strict_sizes}{verify diameter and wall thickness with the actual pipe specifications
+produced. Type: \code{\link[checkmate]{assert_flag}}.}
+
 \item{verbose}{logical indicator: should they watch tracing process on console?
 Type: \code{\link[checkmate]{assert_flag}}.}
 
@@ -143,7 +147,7 @@ Type: \code{\link[checkmate]{assert_character}} of length 1 that can be
 used safely to create a file and write to it.}
 }
 \value{
-\code{\link{data.frame}} containing results (detailed log) of tracing in
+A \code{\link{data.frame}} containing results (detailed log) of tracing in
    \href{https://en.wikipedia.org/wiki/Wide_and_narrow_data}{narrow format}:
    \describe{
       \item{\code{node}}{
@@ -178,7 +182,7 @@ used safely to create a file and write to it.}
        }
       \item{\code{flux}}{
          \emph{Traced thermal hydraulic regime}. Normative heat flux of
-         adjacent pipe, [\emph{W/m^2}].
+         adjacent pipe, [\emph{W/m²}].
          Type: \code{\link[checkmate]{assert_double}}.
        }
       \item{\code{Q}}{
@@ -201,7 +205,7 @@ used safely to create a file and write to it.}
 
       \item{\code{flow_rate}}{
          \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
-         carrier (water) that is associated with the node, [\emph{ton/hour}].
+         carrier (water) that is associated with the node, [\emph{ton/h}].
          Type: \code{\link[checkmate]{assert_double}}.
       }
 
@@ -252,6 +256,9 @@ They consider the topology of district heating network represented by
  erroneous sensor readings or wrong pipeline specifications.
 
  Aggregation for values of flow rate at the node is always \code{\link{sum}}.
+
+ Optional verification of pipe diameters and wall thicknesses is performed
+ against \code{\link{b36pipedata}} data.
 }
 \examples{
 library(pipenostics)

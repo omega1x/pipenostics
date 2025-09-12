@@ -4,16 +4,16 @@
 #' @family utils
 #'
 #' @description
-#'   Calculate geographical metrics (distance, area) for two or three geographical locations.
+#'   Calculate geographical metrics (distance, area) for two or three
+#'   geographical locations.
 #'
 #' @details
-#'   \code{geodist} calculates distance between two geographical locations on \emph{Earth},
-#'   whereas \code{geoarea} calculates the area of spherical triangle between
-#'   three geographical locations.
-#'   Both functions use absolute positions of geographical locations described by
-#'   \href{https://en.wikipedia.org/wiki/Geographic_coordinate_system}{
-#'   geographical coordinate system}
-#'   in
+#'   \code{geodist} calculates distance between two geographical locations on
+#'   \emph{Earth}, whereas \code{geoarea} calculates the area of spherical
+#'   triangle between three geographical locations.
+#'   Both functions use absolute positions of geographical locations described
+#'   by \href{https://en.wikipedia.org/wiki/Geographic_coordinate_system}{
+#'   geographical coordinate system} in
 #'   \href{https://en.wikipedia.org/wiki/Decimal_degrees}{decimal degrees}
 #'   units denoted as \emph{DD}. The
 #'   \href{https://en.wikipedia.org/wiki/Haversine_formula}{haversine formula}
@@ -23,13 +23,14 @@
 #'   Since several variants of \emph{Earth} radius can be accepted,
 #'   the user is welcome to provide its own value.
 #'   \href{https://en.wikipedia.org/wiki/World_Geodetic_System#WGS84}{WGS-84}
-#'   \href{https://en.wikipedia.org/wiki/Earth_radius}{mean radius of semi-axes},
-#'   \eqn{R_1}, is the default value.
+#'   \href{https://en.wikipedia.org/wiki/Earth_radius}{mean radius of
+#'   semi-axes},\eqn{R_1}, is the default value.
 #'
 #'   The resulting distance is expressed in
-#'   \href{https://en.wikipedia.org/wiki/Metre}{metres} (\emph{m}), 
-#'   whereas the area is expressed in 
-#'   \href{https://en.wikipedia.org/wiki/Square_kilometre}{square kilometers}(\emph{km^2}).
+#'   \href{https://en.wikipedia.org/wiki/Metre}{metres} (\emph{m}), whereas the
+#'   area is expressed in
+#'   \href{https://en.wikipedia.org/wiki/Square_kilometre}{square kilometers}
+#'    (\emph{km²}).
 #'
 #' @param lat1
 #'   latitude of the first geographical location, [\emph{DD}].
@@ -61,8 +62,13 @@
 #'
 #' @return
 #'   \describe{
-#'     \item{For \code{geodist}:}{distance between two geographical locations, [\emph{m}].}
-#'     \item{For \code{geoarea}:}{area of spherical triangle between three geographical locations, [\emph{km^2}].}
+#'     \item{For \code{geodist}:}{
+#'       distance between two geographical locations, [\emph{m}].
+#'     }
+#'     \item{For \code{geoarea}:}{
+#'       area of spherical triangle between three geographical locations,
+#'       [\emph{km²}].
+#'     }
 #'   }
 #'   Type: \code{\link[checkmate]{assert_double}}.
 #'
@@ -128,7 +134,7 @@
 #'   lon1 = objects[path[, 1], "lon"],
 #'   lat2 = objects[path[, 2], "lat"],
 #'   lon2 = objects[path[, 2], "lon"]
-#' )*1e-3
+#' ) * 1e-3
 #'
 #' cat(
 #'   paste(
@@ -137,7 +143,7 @@
 #' )
 #' )
 #'
-#' # Consider two areas 
+#' # Consider two areas
 #' #         * Bermuda triangle     * Polynesian Triangle
 #' lat1 <- c(Miami   =  25.789106,  Hawaii       =   19.820680)
 #' lon1 <- c(Miami   = -80.226529,  Hawaii       = -155.467989)
@@ -150,46 +156,54 @@
 #'
 #' # Area provided by manually operated Google Earth:
 #' GETriangleArea <- c(
-#'   Bermuda    =  1147627.48,  # [km^2]
-#'   Polynesian = 28775517.77   # [km^2]
+#'   Bermuda    =  1147627.48,  # [km²]
+#'   Polynesian = 28775517.77   # [km²]
 #' )
-#' 
-#' # Show the discrepancy in calculations, [km^2]:
-#' print(geoarea(lat1, lon1, lat2, lon2, lat3, lon3)) 
-#'  
+#'
+#' # Show the discrepancy in calculations, [km²]:
+#' print(geoarea(lat1, lon1, lat2, lon2, lat3, lon3))
+#'
 #' @export
-geodist <- function(lat1, lon1, lat2, lon2, earth = 6371008.7714){
+geodist <- function(lat1, lon1, lat2, lon2, earth = 6371008.7714) {
   checkmate::assert_double(
-    lat1, lower = -90, upper = 90, any.missing = FALSE, min.len = 1
+    lat1,
+    lower = -90, upper = 90, any.missing = FALSE, min.len = 1
   )
   checkmate::assert_double(
-    lon1, lower = -180, upper = 180, any.missing = FALSE, min.len = 1
+    lon1,
+    lower = -180, upper = 180, any.missing = FALSE, min.len = 1
   )
   checkmate::assert_double(
-    lat2, lower = -90, upper = 90, any.missing = FALSE, min.len = 1
+    lat2,
+    lower = -90, upper = 90, any.missing = FALSE, min.len = 1
   )
   checkmate::assert_double(
-    lon2, lower = -180, upper = 180, any.missing = FALSE, min.len = 1
+    lon2,
+    lower = -180, upper = 180, any.missing = FALSE, min.len = 1
   )
   checkmate::assert_true(commensurable(c(
     length(lat1), length(lon1), length(lat2), length(lon2)
   )))
-  checkmate::assert_number(earth, lower = 6335439.0000, upper = 6399593.6259)
+  checkmate::assert_number(
+    earth,
+    lower = 6335439.0000, upper = 6399593.6259
+  )
 
-  POW <- .Primitive("^")
-  PI  <- base::pi
+  pow <- .Primitive("^")
 
-  lat1 = lat1*PI/180
-  lat2 = lat2*PI/180
+  lat1 <- lat1 * base::pi / 180
+  lat2 <- lat2 * base::pi / 180
 
-  cl1 = cos(lat1)
-  cl2 = cos(lat2)
-  sl1 = sin(lat1)
-  sl2 = sin(lat2)
-  delta = (lon2 - lon1)*PI/180
-  cos_delta = cos(delta)
+  cl1 <- cos(lat1)
+  cl2 <- cos(lat2)
+  sl1 <- sin(lat1)
+  sl2 <- sin(lat2)
+  delta <- (lon2 - lon1) * base::pi / 180
+  cos_delta <- cos(delta)
 
-  y = sqrt(POW(cl2 * sin(delta), 2) + POW(cl1 * sl2 - sl1 * cl2 * cos_delta, 2))
-  x = sl1 * sl2 + cl1 * cl2 * cos_delta
-  atan2(y,x) * earth
+  y <- sqrt(
+    pow(cl2 * sin(delta), 2) + pow(cl1 * sl2 - sl1 * cl2 * cos_delta, 2)
+  )
+  x <- sl1 * sl2 + cl1 * cl2 * cos_delta
+  atan2(y, x) * earth
 }

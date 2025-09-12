@@ -12,7 +12,7 @@
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
-#'  length in \emph{millimeters}, [\emph{mm}].
+#'  Length in \emph{millimeters}, [\emph{mm}].
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @seealso
@@ -24,9 +24,8 @@
 #'  library(pipenostics)
 #'
 #'  mm_inch(c(0.03937008, 1))
-#'  # [1]  1.0 25.4  # [mm]
 #'
 mm_inch <- function(x) {
   checkmate::assert_double(x, finite = TRUE, any.missing = FALSE, min.len = 1L)
-  25.4*x
+  25.4 * x
 }

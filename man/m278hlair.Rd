@@ -59,18 +59,20 @@ Type: \code{\link[checkmate]{assert_double}}.}
 laying this is the thermal conductivity of open air.
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{len}{length of supplying pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{len}{length of supplying pipe, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{duration}{duration of heat loss, [\emph{hour}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{duration}{duration of heat loss, [\emph{h}].
+Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 Normative heat loss of the open-air layed supplying cylindrical pipe
- during \code{duration}, [\emph{kcal}].
- If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is set to
- 1 \emph{h} (hour) (default values) then the return value is also the
- \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with those
- prescribed by \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
- Type: \code{\link[checkmate]{assert_double}}.
+  during \code{duration}, [\emph{kcal}].
+  If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is
+  set to 1 \emph{h} (hour) (default values) then the return value is also the
+  \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with
+  those prescribed by \href{https://docs.cntd.ru/document/902148459}{
+  Minenergo Order 325}. Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Calculate normative heat loss through the thermal insulation of the open-air
@@ -90,8 +92,6 @@ Details on using \code{k1} and \code{k2} are the same as for
  library(pipenostics)
 
  m278hlair()
- # [1] 138.7736
-
 }
 \seealso{
 Other Minenergo: 

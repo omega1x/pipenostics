@@ -15,7 +15,7 @@ Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{uts}{ultimate tensile strength (\emph{UTS}) or
 specified minimum tensile strength (\emph{SMTS}) as a
-characteristic of steel strength, [\eqn{MPa}].
+characteristic of steel strength, [\emph{MPa}].
 Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{depth}{measured maximum depth of the corroded area, [\emph{mm}].
@@ -25,7 +25,7 @@ Type: \code{\link[checkmate]{assert_double}}.}
 Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-Estimated failure pressure of the corroded pipe, [\eqn{MPa}].
+Estimated failure pressure of the corroded pipe, [\emph{MPa}].
  Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
@@ -58,29 +58,28 @@ Calculate failure pressure of the corroded pipe according to \emph{PCORRC}
 
  d     <- c(812.8, 219.0)  # [mm]
  wth   <- c( 19.1,  14.5)  # [mm]
- uts   <- c(530.9, 455.1)   # [N/mm^2]
+ uts   <- c(530.9, 455.1)   # [N/mm²]
  l     <- c(203.2, 200.0)  # [mm]
  depth <- c( 13.4,   9.0)   # [mm]
 
  pcorrcpf(d, wth, uts, depth, l)
- # [1] 16.35449 33.01288
 
 }
 \references{
 \enumerate{
    \item S. Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
-         of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
-         \strong{DOI 10.1007/978-3-319-25307-7}
+         of Pipeline Systems}, Topics in Safety, Risk, Reliability and
+         Quality 30, \strong{DOI 10.1007/978-3-319-25307-7}.
 
    \item A.C.Reddy, \emph{Safety Failure Criteria of Fluorocarbon Plastic
          Pipes for Dry Chlorine Transport using Finite Element Analysis}
          Materials today: proceedings, Vol. \strong{4}(8), 2017,
          pp. \strong{7498}-\strong{7506}.
-         \strong{DOI 10.1016/j.matpr.2017.07.081}
+         \strong{DOI 10.1016/j.matpr.2017.07.081}.
  }
 }
 \seealso{
-Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{b31gmodpf}},
-  \code{\link{dnvpf}}, \code{\link{shell92pf}}
+Other fail pressure functions: \code{\link{b31gpf}},
+ \code{\link{b31gmodpf}}, \code{\link{dnvpf}}, \code{\link{shell92pf}}
 }
 \concept{PCORRC}

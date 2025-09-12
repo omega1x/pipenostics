@@ -2,7 +2,8 @@
 % Please edit documentation in R/b36dwthv.R
 \name{b36dwthv}
 \alias{b36dwthv}
-\title{Verify the alignment between nominal pipe diameter and wall thickness}
+\title{ASME B36.10M. Verify the alignment between nominal pipe diameter and wall
+ thickness}
 \usage{
 b36dwthv(d, wth)
 }
@@ -14,17 +15,23 @@ Type: \code{\link[checkmate]{assert_double}}.}
 Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-Verification status.Type: \code{\link[checkmate]{assert_logical}}.
+Verification status. Type: \code{\link[checkmate]{assert_logical}}.
 }
 \description{
 Check the correspondence inside nominal diameter/wall thickness value pair
  for pipes manufactured in accordance with regulatory standards.
 
  Verification is performed using reference values from the
- \code{\link{b36pipedata}}-table.
+ \code{\link{b36pipedata}}-table. So, the result is \code{TRUE} if \code{d}-
+ and \code{w}-value combination can be found in rows of this dataset.
 }
 \examples{
  library(pipenostics)
+
+ # All pipes in test best of district heating network have strictly
+ # consistent diameters and wall thiknesses:
+
+ all(b36dwthv(m325nxdata[["d"]], m325nxdata[["wth"]]))
 
 }
 \seealso{

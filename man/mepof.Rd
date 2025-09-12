@@ -25,11 +25,14 @@ mepof(
 [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{l}{maximum longitudinal length of corroded area measured during
-\emph{inline inspection}, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+\emph{inline inspection}, [\emph{mm}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d}{nominal outside diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{mm}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{wth}{nominal wall thickness of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{mm}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{strength}{one of the next characteristics of steel strength, [\emph{MPa}]:
 \itemize{
@@ -37,33 +40,35 @@ mepof(
         for use with \code{\link{b31gpf}} and \code{\link{b31gmodpf}}.
   \item ultimate tensile strength (\emph{UTS}) or specified minimum tensile
         strength (\emph{SMTS}) for use with other failure pressure codes
-        (\code{\link{dnvpf}}, \code{\link{pcorrcpf}}, \code{\link{shell92pf}}).
+        (\code{\link{dnvpf}}, \code{\link{pcorrcpf}},
+         \code{\link{shell92pf}}).
 }
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-of substance (i.e. heat carrier) inside the pipe measured near defect
-position, [\emph{MPa}]. In most cases this is a nominal operating pressure.
-Type: \code{\link[checkmate]{assert_double}}.}
+\item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{
+ absolute pressure} of substance (i.e. heat carrier) inside the pipe
+measured near defect position, [\emph{MPa}]. In most cases this is a nominal
+operating pressure. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{temperature}{temperature of substance (i.e. heat carrier) inside the pipe measured near
 defect position, [\emph{°C}]. In case of district heating network this is
-usually a calculated value according to actual or normative thermal-hydraulic
-regime. Type: \code{\link[checkmate]{assert_double}}.}
+usually a calculated value according to actual or normative
+thermal-hydraulic regime. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{rar}{random number generator for simulating of distribution of radial corrosion
 rate in pipe wall, [\emph{mm/day}]. The only
 argument \code{n} of the function should be the number of observations to
 generate. Type: \code{\link[checkmate]{assert_function}}.}
 
-\item{ral}{random number generator for simulating of distribution of longitudinal corrosion
-rate in pipe wall, [\emph{mm/day}]. The only
-argument \code{n} of the function should be the number of observations to
-generate. Type: \code{\link[checkmate]{assert_function}}.}
+\item{ral}{random number generator for simulating of distribution of longitudinal
+corrosion rate in pipe wall, [\emph{mm/day}]. The only argument \code{n} of
+the function should be the number of observations to generate.
+Type: \code{\link[checkmate]{assert_function}}.}
 
-\item{days}{number of days that have passed after or preceded the \emph{inline inspection}, [].
-Negative values are for retrospective assumptions whereas positives are for
-failure prognosis. Type: \code{\link[checkmate]{assert_int}}.}
+\item{days}{number of days that have passed after or preceded the
+\emph{inline inspection}, []. Negative values are for retrospective
+assumptions whereas positives are for failure prognosis.
+Type: \code{\link[checkmate]{assert_int}}.}
 
 \item{k}{alarm threshold for leakage failure. It usually \code{0.6}, \code{0.7}, or
 \code{0.8}, []. If set to \code{1} no alarm before failure occurs.
@@ -80,20 +85,24 @@ Type: \code{\link[checkmate]{assert_number}}.}
 Type: \code{\link[checkmate]{assert_choice}}.}
 
 \item{n}{number of observations to generate for
-\href{https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers}{Monte-Carlo simulations},
+\href{https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers}{
+ Monte-Carlo simulations
+},
 Type: \code{\link[checkmate]{assert_count}}.}
 }
 \value{
 Probability of pipe failure for each corroded area measured during
-  \emph{inline inspection}. Type: \code{\link[checkmate]{assert_double}}.
-  If \code{NA}s returned use another method
-  for calculating failure pressure.
+ \emph{inline inspection}. Type: \code{\link[checkmate]{assert_double}}.
+ If \code{NA}s returned use another method
+ for calculating failure pressure.
 }
 \description{
-Calculate \emph{probability of failure} (POF) of the corroded pipe taking into
- account its actual level of defectiveness and exploiting
- \href{https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers}{Monte-Carlo simulation}
- within \href{https://en.wikipedia.org/wiki/Principle_of_maximum_entropy}{Principle of maximum entropy}.
+Calculate \emph{probability of failure} (POF) of the corroded pipe taking
+ into account its actual level of defectiveness and exploiting
+ \href{https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers}{
+ Monte-Carlo simulation} within
+ \href{https://en.wikipedia.org/wiki/Principle_of_maximum_entropy}{Principle
+  of maximum entropy}.
 
  Consistent estimate of POF for pipeline systems plays
  a critical role in optimizing their operation. To prevent pipeline failures
@@ -119,8 +128,10 @@ Since up to now no methods existed which would give absolutely correct POF
 assessments they suggest simple fiddling with random values of affecting
 factors without deeping into intrinsic mechanisms of corrossion. For this
 purpose they choose classical
-\href{https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers}{Monte-Carlo simulation}
-within the \href{https://en.wikipedia.org/wiki/Principle_of_maximum_entropy}{Principle of maximum entropy}.
+\href{https://en.wikipedia.org/wiki/Monte_Carlo_method#Monte_Carlo_and_random_numbers}{
+ Monte-Carlo simulation} within the
+\href{https://en.wikipedia.org/wiki/Principle_of_maximum_entropy}{Principle
+ of maximum entropy}.
 The latter allows to avoid doubtful and excessive preferences and
 detalization when choosing probability distribution models for failure
 factors and for \emph{inline inspection} measurements.
@@ -128,24 +139,27 @@ factors and for \emph{inline inspection} measurements.
 \details{
 Since for all influence factors they can more or less assume range limits,
  the \emph{uniform distribution} gets the maximum entropy in this context
- (see \href{https://www.bipm.org/documents/20126/2071204/JCGM_101_2008_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c}{JCGM 101:2008}).
+ (see
+  \href{https://www.bipm.org/documents/20126/2071204/JCGM_101_2008_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c}{
+   JCGM 101:2008}
+ ).
  That is why parameters of corrosion defects measured during the
  \emph{inline inspection} as well as regime parameters and engineering
  characteristics of pipe segment - all they are simulated by
  \code{\link[stats]{runif}}.
 
- \code{\link[stats]{runif}}-limits for depth of corrosion defect are associated
- with precision of commonly applied measurement instruments. For traditionally
- exploited ultrasonic control those limits are well-known and can reach up to
- 10 \% of pipe wall thickness. Whereas uncertainty of defect longitudinal
- length may be more than enough constrained with 5 \%.
+ \code{\link[stats]{runif}}-limits for depth of corrosion defect are
+ associated with precision of commonly applied measurement instruments. For
+ traditionally exploited ultrasonic control those limits are well-known and
+ can reach up to 10 \% of pipe wall thickness. Whereas uncertainty of defect
+ longitudinal length may be more than enough constrained with 5 \%.
 
  Recommendations for choosing stochastic characteristics of pipe
  engineering factors (i.e. crossection diameter, wall thickness and material
  strength) are taken from aggregated review of \emph{Timashev et al.} but
  gently transformed for compatibility with
- \href{https://en.wikipedia.org/wiki/Principle_of_maximum_entropy}{Principle of maximum entropy},
- i.e. \code{\link[stats]{runif}}.
+ \href{https://en.wikipedia.org/wiki/Principle_of_maximum_entropy}{Principle
+  of maximum entropy}, i.e. \code{\link[stats]{runif}}.
 
  Uncertainties of regime parameters in stohastic models are set minimized
  by regarding only precision of metering devices which commonly applied in
@@ -180,8 +194,8 @@ depth  <- c(2.45,  7.86,   7.93,   8.15)  # [mm]
 # whereas the length of all defects is not greater 200 mm:
 length <- rep(200, 4)  # [mm]
 
-# Corrosion rates in radial and in longitudinal directions are not well-known and
-# may vary in range .01 - .30 mm/year:
+# Corrosion rates in radial and in longitudinal directions are not well-known
+# and may vary in range .01 - .30 mm/year:
 rar = function(n) stats::runif(n, .01, .30) / 365
 ral = function(n) stats::runif(n, .01, .30) / 365
 
@@ -217,15 +231,16 @@ print(max(pof))
 }
 \references{
 \enumerate{
- \item  S. Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
-   of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
-   \strong{DOI 10.1007/978-3-319-25307-7}.
+  \item  S. Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
+    of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
+    \strong{DOI 10.1007/978-3-319-25307-7}.
 
- \item \href{https://www.bipm.org/en/home}{BIPM}. Guides in Metrology (GUM).
-   \href{https://www.bipm.org/documents/20126/2071204/JCGM_101_2008_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c}{JCGM 101:2008}.
-   Evaluation of measurement data – \strong{Supplement 1} to the \emph{Guide to
-   the expression of uncertainty in measurement} –
-   Propagation of distributions using a \emph{Monte Carlo} method.
+  \item \href{https://www.bipm.org/en/home}{BIPM}. Guides in Metrology (GUM).
+    \href{https://www.bipm.org/documents/20126/2071204/JCGM_101_2008_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c}{
+      JCGM 101:2008
+    }. Evaluation of measurement data – \strong{Supplement 1} to the
+    \emph{Guide to the expression of uncertainty in measurement} –
+    Propagation of distributions using a \emph{Monte Carlo} method.
  }
 }
-\concept{Failure probability}
+\concept{Failure estimation}

@@ -7,14 +7,15 @@
 fric_vatankhan(reynolds, roughness = 0, strict = FALSE)
 }
 \arguments{
-\item{reynolds}{Reynolds number, []. Type: \code{\link[checkmate]{assert_double}}.}
+\item{reynolds}{\emph{Reynolds number}, []. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{roughness}{relative roughness, []. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{strict}{calculate only inside the precision region. Type: \code{\link[checkmate]{assert_flag}}.}
+\item{strict}{calculate only inside the precision region.
+Type: \code{\link[checkmate]{assert_flag}}.}
 }
 \value{
-pipe friction factor, []. Type: \code{\link[checkmate]{assert_double}}.
+Pipe friction factor, []. Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Estimate \emph{Darcy friction factor} explicitly with extremely accurate
@@ -36,18 +37,20 @@ Vatankhah's formula is reported to be extremely accurate in the region:
  library(pipenostics)
 
  fric_vatankhan(c(2118517, 2000, 2118517), c(1e-6, 70e-3/1, 7e-3/1))
- # [1] 0.01031665 0.03200000 0.03375210  # []
 
  fric_vatankhan(c(2118517, 5500, 2118517), c(1e-6, 50e-3/1, 7e-3/1), TRUE)
- # [1] 0.01031665 0.07556163 0.03375210
 }
 \references{
 \enumerate{
-     \item Offor, U. and Alabi, S. (2016) \emph{An Accurate and Computationally Efficient Explicit Friction Factor Model}.
- Advances in Chemical Engineering and Science, \emph{6}, pp. 237-245. \doi{10.4236/aces.2016.63024}.
+     \item Offor, U. and Alabi, S. (2016) \emph{An Accurate and
+           Computationally Efficient Explicit Friction Factor Model}.Advances
+           in Chemical Engineering and Science, \emph{6}, pp. 237-245.
+           \doi{10.4236/aces.2016.63024}.
 
-     \item Ali R. Vatankhah, Salah Kouchakzadeh (2009) \emph{Exact equations for pipe-flow problems}.
- Journal of Hydraulic Research, \emph{47:4}, pp. 537-538, DOI: \doi{10.1080/00221686.2009.9522031}
+     \item Ali R. Vatankhah, Salah Kouchakzadeh (2009) \emph{Exact equations
+           for pipe-flow problems}.Journal of Hydraulic Research,
+           \emph{47:4}, pp. 537-538,
+           DOI: \doi{10.1080/00221686.2009.9522031}.
   }
 }
 \seealso{

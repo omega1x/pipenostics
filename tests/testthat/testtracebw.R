@@ -10,12 +10,12 @@ test_that("*tracebw* does not write csv-file", {
   unlink(file_name)
 })
 
-DHN <- pipenostics::m325nxdata
+dhn <- pipenostics::m325nxdata
 
-DHN[["sender"]]   <- sprintf("N%02i", DHN[["sender"]])
-DHN[["acceptor"]] <- sprintf("N%02i", DHN[["acceptor"]])
+dhn[["sender"]]   <- sprintf("N%02i", dhn[["sender"]])
+dhn[["acceptor"]] <- sprintf("N%02i", dhn[["acceptor"]])
 
-m325_tracebw_ensample <- do.call("m325tracebw", DHN)
+m325_tracebw_ensample <- do.call("m325tracebw", dhn)
 m325_tracebw_ensample <- subset(
   m325_tracebw_ensample[
     order(m325_tracebw_ensample[["node"]]),
@@ -31,8 +31,8 @@ actual_loss <- c(
   115.945514486784, 70.6899252508703, 96.184, 96.236, 70.54
 )
 
-DHN[c("a", "year", "insulation", "laying", "beta", "exp5k")] <- NULL
-tracebw_report <- do.call("tracebw", c(as.list(DHN), list(loss = actual_loss)))
+dhn[c("a", "year", "insulation", "laying", "beta", "exp5k")] <- NULL
+tracebw_report <- do.call("tracebw", c(as.list(dhn), list(loss = actual_loss)))
 tracebw_report <- subset(
   tracebw_report[
     order(tracebw_report[["node"]]),
@@ -67,49 +67,39 @@ test_that(
   )
 })
 
-test_that(
-  "*tracebw* does not reproduce ensample values of *temperature*", {
+test_that("*tracebw* does not reproduce ensample values of *temperature*", {
   expect_equal(
     tracebw_report[["temperature"]], m325_tracebw_ensample[["temperature"]],
     tolerance = 0.1
   )
-  }
-)
+})
 
-test_that(
-  "*tracebw* does not reproduce ensample values of *pressure*", {
+test_that("*tracebw* does not reproduce ensample values of *pressure*", {
   expect_equal(
     tracebw_report[["pressure"]], m325_tracebw_ensample[["pressure"]],
     tolerance = 1e-5
   )
-  }
-)
+})
 
-test_that(
-  "*tracebw* does not reproduce ensample values of *flow_rate*", {
+test_that("*tracebw* does not reproduce ensample values of *flow_rate*", {
   expect_equal(
     tracebw_report[["flow_rate"]], m325_tracebw_ensample[["flow_rate"]],
     tolerance = 1e-4
   )
-  }
-)
+})
 
-test_that(
-  "*tracebw* does not reproduce ensample values of *Q*", {
+test_that("*tracebw* does not reproduce ensample values of *Q*", {
   expect_equal(
     tracebw_report[["Q"]], m325_tracebw_ensample[["Q"]], tolerance = 1e-4
   )
-  }
-)
+})
 
-test_that(
-  "*tracebw* does not reproduce ensample values of *loss*", {
+test_that("*tracebw* does not reproduce ensample values of *loss*", {
   expect_equal(
     tracebw_report[["loss"]], m325_tracebw_ensample[["loss"]],
     tolerance = 1e-4
   )
-  }
-)
+})
 
 test_that(
   "*tracebw* does not reproduce ensample values of *flux*", {
@@ -118,5 +108,4 @@ test_that(
   )
   }
 )
-rm(tracebw_report, actual_loss, m325_tracebw_ensample, DHN)
-
+rm(tracebw_report, actual_loss, m325_tracebw_ensample, dhn)

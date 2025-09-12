@@ -15,17 +15,19 @@ dropt(
 \item{temperature}{temperature of heat carrier (water) inside the pipe measured at the
 inlet of pipe, [\emph{°C}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-of heat carrier (water) inside the pipe, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{
+ absolute pressure} of heat carrier (water) inside the pipe, [\emph{MPa}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{flow_rate}{amount of heat carrier (water) that is transferred by pipe during a period,
-[\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.}
+[\emph{ton/h}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{loss_power}{power of heat loss - heat loss through area of pipe wall per hour, [\emph{kcal/hour}].
-Type: \code{\link[checkmate]{assert_double}}.}
+\item{loss_power}{power of heat loss - heat loss through area of pipe wall per hour,
+[\emph{kcal/h}]. Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-temperature drop at the outlet of pipe, [\emph{°C}]. Type: \code{\link[checkmate]{assert_double}}.
+Temperature drop at the outlet of pipe, [\emph{°C}].
+ Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Calculate temperature drop in steel pipe of \emph{district heating system}
@@ -33,8 +35,9 @@ Calculate temperature drop in steel pipe of \emph{district heating system}
  pipe wall and insulation.
 }
 \details{
-Specific isobaric \href{https://en.wikipedia.org/wiki/Heat_capacity}{heat capacity}
-  used in calculations is calculated according to
+Specific isobaric
+  \href{https://en.wikipedia.org/wiki/Heat_capacity}{heat capacity} used in
+  calculations is calculated according to
   \href{http://www.iapws.org/relguide/IF97-Rev.pdf}{IAPWS R7-97(2012)}
   for \strong{Region 1} since it is assumed that state of water in
   \emph{district heating system} is always in that region.
@@ -42,7 +45,8 @@ Specific isobaric \href{https://en.wikipedia.org/wiki/Heat_capacity}{heat capaci
 \examples{
  library(pipenostics)
 
- # Calculate normative temperature drop based on Minenergo-325 for pipe segment
+ # Calculate normative temperature drop based on Minenergo-325 for pipe
+ # segment
  pipeline <- list(
    year   = 1968,
    laying = "channel",
@@ -53,17 +57,17 @@ Specific isobaric \href{https://en.wikipedia.org/wiki/Heat_capacity}{heat capaci
  regime <- list(
    temperature = c(130, 150), # [°C]
    pressure    = .588399,     # [MPa]
-   flow_rate   = 250          # [ton/hour]
+   flow_rate   = 250          # [ton/h]
  )
 
  pipe_loss_power <- do.call(
      m325nhl,
-     c(pipeline, temperature = list(regime[["temperature"]]), duration = 1)  # [kcal/hour]
+     c(pipeline, temperature = list(regime[["temperature"]]), duration = 1)
  )
 
  temperature_drop <- dropt(
    temperature = regime[["temperature"]], # [°C]
-   loss_power  = pipe_loss_power          # [kcal/hour]
+   loss_power  = pipe_loss_power          # [kcal/h]
  )                                        # [°C]
 
  print(temperature_drop)

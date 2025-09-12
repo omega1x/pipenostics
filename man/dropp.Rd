@@ -20,35 +20,41 @@ dropp(
 \item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}].
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-of heat carrier (water) measured at the
-entrance (inlet) of pipe, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{pressure}{\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{
+ absolute pressure} of heat carrier (water) measured at the entrance (inlet)
+of pipe, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{flow_rate}{amount of heat carrier (water) that is transferred by pipe during a period,
-[\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.}
+[\emph{ton/h}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d}{internal diameter of pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{d}{internal diameter of pipe, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{len}{pipe length, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{roughness}{roughness of internal wall of pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{roughness}{roughness of internal wall of pipe, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{inlet}{elevation of pipe inlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{inlet}{elevation of pipe inlet, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{outlet}{elevation of pipe outlet, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{outlet}{elevation of pipe outlet, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{method}{method of determining \emph{Darcy friction factor}.
 Type: \code{\link[checkmate]{assert_choice}}.
 (see \strong{Details})}
 }
 \value{
-pressure drop at the outlet of pipe, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.
+Pressure drop at the outlet of pipe, [\emph{MPa}].
+ Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Calculate \href{https://en.wikipedia.org/wiki/Pressure_drop}{pressure drop}
  in straight cylidrical steel pipe of \emph{district heating system} (where
  water is a heat carrier) that is a result of pipe orientation in space
- (hydrostatic component), and friction between water and internal wall of pipe.
+ (hydrostatic component), and friction between water and internal wall of
+ pipe.
 }
 \details{
 The underlying engineering model for calculation of pressure drop considers
@@ -68,24 +74,24 @@ The underlying engineering model for calculation of pressure drop considers
 
  So, the expression for the first component can be written as:
 
- \deqn{g \rho (outlet - inlet)}
+ \deqn{g \rho (o - i)}
 
- where \code{g} - is gravity factor, \eqn{m/s^2}, and \eqn{\rho} - density
- of water (heat carrier), \eqn{kg/m^3}; \code{inlet} and \code{outlet}
- are appropriate pipe elevations (under sea or any other adopted level),
- \eqn{m}.
+ where \eqn{g} - is gravity factor, \emph{m/s²}, and \eqn{\rho} - density
+ of water (heat carrier), \emph{kg/m³}; \eqn{i} (\code{inlet}) and
+ \eqn{o} (\code{outlet}) are appropriate pipe elevations (under sea or any
+ other adopted level), \emph{m}.
 
  The second component comes from
- \href{https://en.wikipedia.org/wiki/Darcy-Weisbach_equation}{Darcy–Weisbach equation}
- and is calculated using heating carrier regime parameters (\code{temperature},
- \code{pressure}, \code{flow_rate}). Temperature and pressure values of
- heat carrier define water properties according to
+ \href{https://en.wikipedia.org/wiki/Darcy-Weisbach_equation}{Darcy–Weisbach
+  equation} and is calculated using heating carrier regime parameters
+ (\code{temperature},\code{pressure}, \code{flow_rate}). Temperature and
+ pressure values of heat carrier define water properties according to
  \href{http://www.iapws.org/}{IAPWS} formulation.
 
- Several methods for calculating of
- \emph{Darcy friction factor} are possible and limited to the next
- direct approximations of
- \href{https://en.wikipedia.org/wiki/Darcy_friction_factor_formulae#Brkić-Praks_solution}{Colebrook equation}:
+ Several methods for calculating of \emph{Darcy friction factor} are possible
+ and limited to the next direct approximations of
+ \href{https://en.wikipedia.org/wiki/Darcy_friction_factor_formulae#Brkić-Praks_solution}{
+  Colebrook equation}:
 
  \describe{
   \item{romeo}{Romeo, Royo and Monzon, 2002}
@@ -93,11 +99,12 @@ The underlying engineering model for calculation of pressure drop considers
   \item{buzelli}{Buzzelli, 2008}
  }
 
- According to \emph{Brkic, 2011} approximations errors of those methods do not
- exceed \code{0.15} \% for the most combinations of
+ According to \emph{Brkic, 2011} approximations errors of those methods do
+ not exceed \code{0.15} \% for the most combinations of
  \href{https://en.wikipedia.org/wiki/Reynolds_number}{Reynolds} numbers and
  actual values of internal
- wall \href{https://en.wikipedia.org/wiki/Surface_roughness}{roughness} of pipe.
+ wall \href{https://en.wikipedia.org/wiki/Surface_roughness}{roughness} of
+ pipe.
 }
 \examples{
  library(pipenostics)
@@ -109,24 +116,24 @@ dropp(len = c(200, 300))
 }
 \references{
 \itemize{
-   \item W.Wagner et al. \emph{The IAPWS Industrial Formulation 1997 for the Thermodynamic
-         Properties of Water and Steam}, J. Eng. Gas Turbines Power. Jan 2000,
-         \strong{122}(1): \emph{150-184} (35 pages)
+   \item W.Wagner et al. \emph{The IAPWS Industrial Formulation 1997 for the
+         Thermodynamic Properties of Water and Steam}, J. Eng. Gas Turbines
+         Power. Jan 2000, \strong{122}(1): \emph{150-184} (35 pages).
 
    \item M.L.Huber et al.\emph{New International Formulation for the
-         Viscosity of \eqn{H_2O}}, Journal of Physical and Chemical Reference Data
-         \strong{38}, 101 (2009);
+         Viscosity of \eqn{H_2O}}, Journal of Physical and Chemical Reference
+         Data \strong{38}, 101 (2009).
 
-   \item D.Brkic. \emph{Journal of Petroleum Science and Engineering}, Vol. \strong{77},
-         \emph{Issue 1}, April 2011, Pages \emph{34-48}.
+   \item D.Brkic. \emph{Journal of Petroleum Science and Engineering},
+         Vol. \strong{77},\emph{Issue 1}, April 2011, Pages \emph{34-48}.
 
-   \item Romeo, E., Royo, C., Monzon, A., 2002. \emph{Improved explicit equation for
-         estimation of friction factor in rough and smooth pipes.}
-         Chem. Eng. J. \strong{86} (3), \emph{369–374}.
+   \item Romeo, E., Royo, C., Monzon, A., 2002. \emph{Improved explicit
+         equation for estimation of friction factor in rough and smooth
+         pipes.} Chem. Eng. J. \strong{86} (3), \emph{369–374}.
 
-   \item Vatankhah, A.R., Kouchakzadeh, S., 2009. \emph{Discussion: Exact equations
-         for pipeflow problems, by P.K. Swamee and P.N. Rathie}. J. Hydraul. Res.
-         IAHR \strong{47} (7), \emph{537–538}.
+   \item Vatankhah, A.R., Kouchakzadeh, S., 2009. \emph{Discussion: Exact
+         equations for pipeflow problems, by P.K. Swamee and P.N. Rathie}.
+         J. Hydraul. Res. IAHR \strong{47} (7), \emph{537–538}.
 
    \item Buzzelli, D., 2008. \emph{Calculating friction in one step}.
          Mach. Des. \strong{80} (12), \emph{54–55}.

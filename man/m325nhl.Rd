@@ -40,16 +40,19 @@ Type: \code{\link[checkmate]{assert_logical}}.}
   \item{\code{1}}{foamed polyurethane or analogue}
   \item{\code{2}}{polymer concrete}
 }
-Type: \code{\link[checkmate]{assert_integer}} and \code{\link[checkmate]{assert_subset}}.}
+Type: \code{\link[checkmate]{assert_integer}} and
+      \code{\link[checkmate]{assert_subset}}.}
 
-\item{d}{nominal (outside) diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{d}{nominal (outside) diameter of pipe, [\emph{mm}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{temperature}{temperature of heat carrier (water) inside the pipe, [\emph{°C}].
 Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{len}{length of pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{duration}{duration of heat loss, [\emph{hour}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{duration}{duration of heat loss, [\emph{h}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{beta}{should they consider additional heat loss of fittings?
 Type: \code{\link[checkmate]{assert_logical}}.}
@@ -58,26 +61,27 @@ Type: \code{\link[checkmate]{assert_logical}}.}
 or \code{4}. Type: \code{\link[checkmate]{assert_choice}}.}
 }
 \value{
-Normative heat loss of cylindrical pipe during \code{duration}, [\emph{kcal}].
- If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is set to
- 1 \emph{h} (hour) (default values) then the return value is also the
- \emph{specific heat loss power}, [\emph{kcal/m/h}], prescribed by
- \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
- Type: \code{\link[checkmate]{assert_double}}.
+Normative heat loss of cylindrical pipe during \code{duration},
+  [\emph{kcal}]. If \code{len} of pipe is 1 \emph{m} (meter) as well as
+  \code{duration} is set to 1 \emph{h} (hour) (default values) then the
+  return value is also the \emph{specific heat loss power},
+  [\emph{kcal/m/h}], prescribed by
+  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+  Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Calculate normative heat loss of pipe through the thermal insulation
- that is legally affirmed by
- \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+  that is legally affirmed by
+  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
 }
 \details{
 Temperature extrapolation and pipe diameter interpolation are leveraged
- for better accuracy. Both are linear as it dictated by
- \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
- Nevertheless, one could control the extrapolation behavior by \code{extra}
- argument: use lower values of \code{extra} for soft curvature near extrapolation
- edges, and higher values for more physically reasoned behavior in far regions
- of extrapolation.
+  for better accuracy. Both are linear as it dictated by
+  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+  Nevertheless, one could control the extrapolation behaviour by \code{extra}
+  argument: use lower values of \code{extra} for soft curvature near
+  extrapolation edges, and higher values for more physically reasoned
+  behaviour in far regions of extrapolation.
 }
 \examples{
  library(pipenostics)
@@ -88,7 +92,8 @@ Temperature extrapolation and pipe diameter interpolation are leveraged
  pipe_laying   <- "underground"
 
 
- ## Linear extrapolation adopted in Minenergo's Order 325 using last two points:
+ ## Linear extrapolation adopted in Minenergo's Order 325 using last two
+ ## points:
  operation_temperature <- seq(0, 270, 10)
 
  qs <- m325nhl(
@@ -118,7 +123,8 @@ Temperature extrapolation and pipe diameter interpolation are leveraged
    temperature = operation_temperature, beta = c(FALSE, TRUE)
  )  # [kcal/m/h]
 
- print(fittings_qs); stopifnot(all(round(fittings_qs ,1)  == c(272.0, 312.8)))
+ print(fittings_qs)
+ stopifnot(all(round(fittings_qs, 1)  == c(272.0, 312.8)))
 
 }
 \seealso{

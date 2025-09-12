@@ -39,7 +39,7 @@
 #' @param uts
 #'  ultimate tensile strength (\emph{UTS}) or
 #'  specified minimum tensile strength (\emph{SMTS}) as a
-#'  characteristic of steel strength, [\eqn{MPa}].
+#'  characteristic of steel strength, [\emph{MPa}].
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param depth
@@ -51,25 +51,25 @@
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
-#'  Estimated failure pressure of the corroded pipe, [\eqn{MPa}].
+#'  Estimated failure pressure of the corroded pipe, [\emph{MPa}].
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @references
 #'  \enumerate{
 #'    \item S. Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
-#'          of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
-#'          \strong{DOI 10.1007/978-3-319-25307-7}
+#'          of Pipeline Systems}, Topics in Safety, Risk, Reliability and
+#'          Quality 30, \strong{DOI 10.1007/978-3-319-25307-7}.
 #'
 #'    \item A.C.Reddy, \emph{Safety Failure Criteria of Fluorocarbon Plastic
 #'          Pipes for Dry Chlorine Transport using Finite Element Analysis}
 #'          Materials today: proceedings, Vol. \strong{4}(8), 2017,
 #'          pp. \strong{7498}-\strong{7506}.
-#'          \strong{DOI 10.1016/j.matpr.2017.07.081}
+#'          \strong{DOI 10.1016/j.matpr.2017.07.081}.
 #'  }
 #'
 #' @seealso
-#'   Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{b31gmodpf}},
-#'   \code{\link{dnvpf}}, \code{\link{shell92pf}}
+#'  Other fail pressure functions: \code{\link{b31gpf}},
+#'  \code{\link{b31gmodpf}}, \code{\link{dnvpf}}, \code{\link{shell92pf}}
 #'
 #' @export
 #'
@@ -78,36 +78,38 @@
 #'
 #'  d     <- c(812.8, 219.0)  # [mm]
 #'  wth   <- c( 19.1,  14.5)  # [mm]
-#'  uts   <- c(530.9, 455.1)   # [N/mm^2]
+#'  uts   <- c(530.9, 455.1)   # [N/mm²]
 #'  l     <- c(203.2, 200.0)  # [mm]
 #'  depth <- c( 13.4,   9.0)   # [mm]
 #'
 #'  pcorrcpf(d, wth, uts, depth, l)
-#'  # [1] 16.35449 33.01288
 #'
-pcorrcpf <- function(d, wth, uts, depth, l){
+pcorrcpf <- function(d, wth, uts, depth, l) {
   checkmate::assert_double(
-    d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+    d,
+    lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
-    wth, lower = 0.29, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1L
+    wth,
+    lower = 0.29, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
-    uts, lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+    uts,
+    lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
-    depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE,
-    min.len = 1L
+    depth,
+    lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_double(
-    l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+    l,
+    lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
   )
   checkmate::assert_true(commensurable(c(
     length(d), length(wth), length(uts), length(depth), length(l)
   )))
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
+  checkmate::assert_true(all(d - 2 * wth > 0.5))  # in mm
 
-  Q <- 1 - exp(-.16*l/sqrt(.5*d*(wth - depth)))
-  2*wth*uts/d*(1 - depth/wth*Q)
+  Q <- 1 - exp(-.16 * l / sqrt(.5 * d * (wth - depth)))
+  2 * wth * uts / d * (1 - depth / wth * Q)
 }
-

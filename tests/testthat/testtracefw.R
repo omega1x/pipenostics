@@ -1,6 +1,6 @@
 library(pipenostics)
 
-DHN <- list(
+dhn <- list(
   sender = c(
     "N04", "N04", "N05", "N08", "N06",
     "N08", "N06", "N11", "N06", "N11", "N13", "N00", "N12", "N13",
@@ -85,21 +85,22 @@ DHN <- list(
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0, 0, 0.5
   )
 )
+
 m325_tracefw_ensample <- do.call(
-  "m325tracefw", c(DHN, verbose = FALSE, elev_tol = .5)
+  "m325tracefw", c(dhn, verbose = FALSE, elev_tol = .5)
 )
 
-DHN[c("a", "year", "insulation", "laying", "beta", "exp5k")] <- NULL
-n <- length(DHN[["sender"]])
+dhn[c("a", "year", "insulation", "laying", "beta", "exp5k")] <- NULL
+n <- length(dhn[["sender"]])
 
 root_node <- 12
-DHN[["temperature"]] <- append(
+dhn[["temperature"]] <- append(
   rep.int(NA_real_, n - 1), 70.4942576978, root_node - 1
 )
-DHN[["pressure"]]    <- append(
+dhn[["pressure"]]    <- append(
   rep.int(NA_real_, n - 1), 0.6135602014, root_node - 1
 )
-DHN[["flow_rate"]]   <- append(
+dhn[["flow_rate"]]   <- append(
   rep.int(NA_real_, n - 1), 274.0, root_node - 1
 )
 
@@ -112,7 +113,7 @@ actual_loss[[root_node]] <- 0
 test_that("*tracefw* errs in calculation without execution parallelization", {
   tracefw_report <- do.call(
     "tracefw",
-    c(as.list(DHN), list(loss = actual_loss), verbose = FALSE, elev_tol = .5)
+    c(as.list(dhn), list(loss = actual_loss), verbose = FALSE, elev_tol = .5)
   )
 
   expect_equal(
@@ -140,11 +141,10 @@ test_that("*tracefw* errs in calculation without execution parallelization", {
 
 test_that(
   "*tracefw* errs in calculation utilizing parallel execution (if possible)", {
-
   tracefw_report <- do.call(
     "tracefw",
     c(
-      as.list(DHN),
+      as.list(dhn),
       list(
         loss = actual_loss,
         use_cluster = !nzchar(Sys.getenv("_R_CHECK_LIMIT_CORES_", ""))
@@ -176,7 +176,7 @@ test_that(
   rm(tracefw_report)
 })
 
-rm(actual_loss, root_node, n, m325_tracefw_ensample, DHN)
+rm(actual_loss, root_node, n, m325_tracefw_ensample, dhn)
 
 test_that("*tracefw* does not write csv-file", {
   file_name <- tempfile()
@@ -185,5 +185,5 @@ test_that("*tracefw* does not write csv-file", {
     file.exists(file_name),
     TRUE
   )
-   unlink(file_name)
+  unlink(file_name)
 })

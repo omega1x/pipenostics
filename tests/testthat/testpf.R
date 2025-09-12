@@ -1,10 +1,10 @@
 library(pipenostics)
 
 d     <- c(812.8, 219.0)  # [mm]
-wth   <- c( 19.1,  14.5)  # [mm]
-uts   <- c(530.9, 455.1)  # [N/mm^2]
+wth   <- c(19.1,  14.5)  # [mm]
+uts   <- c(530.9, 455.1)  # [N/mm²]
 l     <- c(203.2, 200.0)  # [mm]
-depth <- c( 13.4,   9.0)  # [mm]
+depth <- c(13.4,   9.0)  # [mm]
 
 test_that("*dnvpf* errs in failure pressure", {
   expect_equal(
@@ -41,20 +41,22 @@ test_that("*b31gmodpf* errs in failure pressure", {
 
 test_that("*b31gpf* gives wrong results", {
   with(b31gdata[-(6:7), ],
-       expect_equal(
-         b31gpf(d, wth, smys, depth, l),
-         c(1526.4724, 566.4437, 1439.5333, 629.2, 958.1, 1690.7166, 1581.4999,
-           1579.8054, 1577.7257, 1578.7589),
-         tolerance = 1e-4
-       )
+    expect_equal(
+      b31gpf(d, wth, smys, depth, l),
+      c(1526.4724, 566.4437, 1439.5333, 629.2, 958.1, 1690.7166, 1581.4999,
+        1579.8054, 1577.7257, 1578.7589),
+      tolerance = 1e-4
+    )
   )
 })
 
 
 test_that("*strderate* gives specified minimum yield of stress", {
-  pipe_specs <- api5l3tdata[api5l3tdata$origin == 10,] 
+  pipe_specs <- api5l3tdata[api5l3tdata$origin == 10, ]
   expect_equal(
-    strderate(mpa_psi(pipe_specs[["uts"]]),seq(0, 250, length.out = nrow(pipe_specs))),
+    strderate(
+      mpa_psi(pipe_specs[["uts"]]), seq(0, 250, length.out = nrow(pipe_specs))
+    ),
     c(310.2641, 330.9483, 413.6854, 398.6854, 404.3697, 415.0540, 439.5278,
       457.1068, 460.8963, 485.3701, 530.5282),
     tolerance = 1e-5

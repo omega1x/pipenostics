@@ -51,18 +51,20 @@
 #'   laying this is the thermal conductivity of open air.
 #'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param len
-#'  length of supplying pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
+#'   length of supplying pipe, [\emph{m}].
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #' @param duration
-#'  duration of heat loss, [\emph{hour}]. Type: \code{\link[checkmate]{assert_double}}.
+#'   duration of heat loss, [\emph{h}].
+#'   Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @return
-#'  Normative heat loss of the open-air layed supplying cylindrical pipe
-#'  during \code{duration}, [\emph{kcal}].
-#'  If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is set to
-#'  1 \emph{h} (hour) (default values) then the return value is also the
-#'  \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with those
-#'  prescribed by \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
-#'  Type: \code{\link[checkmate]{assert_double}}.
+#'   Normative heat loss of the open-air layed supplying cylindrical pipe
+#'   during \code{duration}, [\emph{kcal}].
+#'   If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is
+#'   set to 1 \emph{h} (hour) (default values) then the return value is also the
+#'   \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with
+#'   those prescribed by \href{https://docs.cntd.ru/document/902148459}{
+#'   Minenergo Order 325}. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @details
 #'   Details on using \code{k1} and \code{k2} are the same as for
@@ -73,127 +75,81 @@
 #'  library(pipenostics)
 #'
 #'  m278hlair()
-#'  # [1] 138.7736
-#'
-m278hlair <-
-  function(t1 = 110, t2 = 60, t0 = 5, insd1 = 0.1, insd2 = insd1, d1 = .25,
-           d2 = d1, lambda1 = 0.09, lambda2 = 0.07, k1 = 1, k2 = k1,
-           lambda0 = 26, len = 1, duration = 1
-           ) {
-    checkmate::assert_double(
-      t1,
-      lower = 0,
-      upper = 450,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      t2,
-      lower = 0,
-      upper = 450,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      t0,
-      lower = -15,
-      upper = 30,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      insd1,
-      lower = 0,
-      upper = .5,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      insd2,
-      lower = 0,
-      upper = .5,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      d1,
-      lower = .2,
-      upper = 1.5,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      d2,
-      lower = .2,
-      upper = 1.5,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      lambda1,
-      lower = 1e-3,
-      upper = 1,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      lambda2,
-      lower = 1e-3,
-      upper = 1,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      k1,
-      lower = 1,
-      upper = 4.5,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      k2,
-      lower = 1,
-      upper = 4.5,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      lambda0,
-      lower = 1,
-      upper = 100,
-      finite = TRUE,
-      any.missing = FALSE,
-      min.len = 1L
-    )
-    checkmate::assert_double(
-      len, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
-    )
-    checkmate::assert_double(
-      duration, lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
-    )
-    checkmate::assert_true(commensurable(c(
-      length(t1), length(t2), length(t0), length(insd1), length(insd2),
-      length(d1), length(d2), length(lambda1), length(lambda2), length(k1),
-      length(k2), length(lambda0), length(len), length(duration)
-    )))
+m278hlair <- function(
+  t1 = 110, t2 = 60, t0 = 5, insd1 = 0.1, insd2 = insd1, d1 = .25, d2 = d1,
+  lambda1 = 0.09, lambda2 = 0.07, k1 = 1, k2 = k1, lambda0 = 26, len = 1,
+  duration = 1
+) {
+  checkmate::assert_double(
+    t1,
+    lower = 0, upper = 450, finite = TRUE, any.missing = FALSE,  min.len = 1L
+  )
+  checkmate::assert_double(
+    t2,
+    lower = 0, upper = 450, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    t0,
+    lower = -15, upper = 30, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    insd1,
+    lower = 0, upper = .5, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    insd2,
+    lower = 0, upper = .5, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    d1,
+    lower = .2, upper = 1.5, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    d2,
+    lower = .2, upper = 1.5, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    lambda1,
+    lower = 1e-3, upper = 1, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    lambda2,
+    lower = 1e-3, upper = 1, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    k1,
+    lower = 1, upper = 4.5, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    k2,
+    lower = 1, upper = 4.5, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    lambda0,
+    lower = 1, upper = 100, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    len,
+    lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    duration,
+    lower = 0, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_true(commensurable(c(
+    length(t1), length(t2), length(t0), length(insd1), length(insd2),
+    length(d1), length(d2), length(lambda1), length(lambda2), length(k1),
+    length(k2), length(lambda0), length(len), length(duration)
+  )))
 
-    q1 <-
-      pi * (t1 - t0) / (log((d1 + 2 * insd1) / d1) / (2 * k1 * lambda1) + 1 /
-                          (lambda0 * (d1 + 2 * insd1)))
-    q2 <-
-      pi * (t2 - t0) / (log((d2 + 2 * insd2) / d2) / (2 * k2 * lambda2) + 1 /
-                          (lambda0 * (d2 + 2 * insd2)))
-    q <- q1 + q2
-    q * len * duration
+  q1 <- {
+    pi * (t1 - t0) / (log((d1 + 2 * insd1) / d1) / (2 * k1 * lambda1) +
+    1 / (lambda0 * (d1 + 2 * insd1)))
+  }
+  q2 <- {
+    pi * (t2 - t0) / (log((d2 + 2 * insd2) / d2) / (2 * k2 * lambda2) +
+    1 / (lambda0 * (d2 + 2 * insd2)))
+  }
+  q <- q1 + q2
+  q * len * duration
 }

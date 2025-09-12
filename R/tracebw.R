@@ -56,23 +56,23 @@
 #'    \code{\link{as.character}}.
 #'
 #' @param temperature
-#'   Sensor-measured temperature of heat carrier (water) sensor-measured on
-#'   the terminal acceptor node, [\emph{°C}].
+#'    sensor-measured temperature of heat carrier (water) sensor-measured on
+#'    the terminal acceptor node, [\emph{°C}].
 #'    Use \code{NA_float_}s for (terminal) nodes without temperature sensor.
 #'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param pressure
-#'    Sensor-measured
-#'    \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-#'    of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
-#'    [\emph{MPa}].
+#'    sensor-measured
+#'    \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{
+#'    absolute pressure} of heat carrier (water) inside the pipe (i.e.
+#'    acceptor's incoming edge), [\emph{MPa}].
 #     Use \code{NA_float_}s for (terminal) nodes without pressure sensor.
 #'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param flow_rate
-#'    Sensor-measured amount of heat carrier (water) on terminal node that is
+#'    sensor-measured amount of heat carrier (water) on terminal node that is
 #'    transferred by pipe (i.e. acceptor's incoming edge) during a period,
-#'    [\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.
+#'    [\emph{ton/h}]. Type: \code{\link[checkmate]{assert_double}}.
 #'    Use \code{NA_float_}s for nodes without flow rate sensor.
 #'
 #' @param d
@@ -176,7 +176,7 @@
 #'        }
 #'       \item{\code{flux}}{
 #'          \emph{Traced thermal hydraulic regime}. Normative heat flux of
-#'          adjacent pipe, [\emph{W/m^2}].
+#'          adjacent pipe, [\emph{W/m²}].
 #'          Type: \code{\link[checkmate]{assert_double}}.
 #'        }
 #'       \item{\code{Q}}{
@@ -199,7 +199,7 @@
 #'
 #'       \item{\code{flow_rate}}{
 #'          \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
-#'          carrier (water) that is associated with the node, [\emph{ton/hour}].
+#'          carrier (water) that is associated with the node, [\emph{ton/h}].
 #'          Type: \code{\link[checkmate]{assert_double}}.
 #'       }
 #'
@@ -258,8 +258,8 @@
 #'
 #' stopifnot(
 #'   all.equal(tracebw_report$temperature, m325_report$temperature, tol = 1e-4),
-#'   all.equal(tracebw_report$pressure   , m325_report$pressure   , tol = 1e-4),
-#'   all.equal(tracebw_report$flow_rate  , m325_report$flow_rate  , tol = 1e-4)
+#'   all.equal(tracebw_report$pressure,    m325_report$pressure,    tol = 1e-4),
+#'   all.equal(tracebw_report$flow_rate,   m325_report$flow_rate,   tol = 1e-4)
 #' )
 #'
 #' @export
@@ -299,25 +299,32 @@ tracebw <- function(
     lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = TRUE, len = n
   )
   checkmate::assert_double(
-    d, lower = 25, upper = 1440, finite = TRUE, any.missing = FALSE, len = n
+    d,
+    lower = 25, upper = 1440, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
-    wth, lower = 0.3, upper = 90, finite = TRUE, any.missing = FALSE, len = n
+    wth,
+    lower = 0.3, upper = 90, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
-    len, lower = 0, finite = TRUE, any.missing = FALSE, len = n
+    len,
+    lower = 0, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
-    loss, lower = 0, upper = 1500, any.missing = FALSE, len = n
+    loss,
+    lower = 0, upper = 1500, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
-    roughness, lower = 0, upper = .2, any.missing = FALSE, len = n
+    roughness,
+    lower = 0, upper = .2, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
-    outlet, lower = 0, finite = TRUE, any.missing = FALSE, len = n
+    outlet,
+    lower = 0, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
-    inlet, lower = 0, finite = TRUE, any.missing = FALSE, len = n
+    inlet,
+    lower = 0, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_choice(method, c("romeo", "vatankhan", "buzelli"))
   checkmate::assert_flag(verbose)
@@ -337,7 +344,7 @@ tracebw <- function(
     length(flow_rate), length(d), length(wth), length(len), length(loss),
     length(roughness), length(inlet), length(outlet)
   )))
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in [mm]
+  checkmate::assert_true(all(d - 2 * wth > 0.5))  # in [mm]
 
   acceptor <- as.character(acceptor)
   sender   <- as.character(sender)
@@ -367,8 +374,7 @@ tracebw <- function(
       else
         NA_real_
     },
-    median = function(x)
-      stats::median(x, na.rm = TRUE),
+    median = function(x) stats::median(x, na.rm = TRUE),
     mean   = function(x) {
       y <- stats::na.omit(x)
       if (length(y) > 0L)
@@ -382,8 +388,7 @@ tracebw <- function(
   is_temperature_sensored <- !is.na(temperature)
   flux <- Q <- rep.int(NA_real_, length(temperature))
 
-
-  ## Heat flux, [W/m^2]
+  ## Heat flux, [W/m²]
   flux[is_temperature_sensored] <- pipenostics::flux_loss(
     x = loss[is_temperature_sensored], d = d[is_temperature_sensored]
   )
@@ -478,7 +483,7 @@ tracebw <- function(
           flow_rate = tapply(log_df[["flow_rate"]], log_df[["node"]], sum),
           job = job_num
         )
-      }  ,
+      },
       log_df = {
         job_log[job_log[["node"]] %in% ready_nodes &
         job_log[["aggregation"]] == "identity", ]
@@ -653,7 +658,7 @@ tracebw <- function(
             temperature = regime[["temperature"]][regime_index][is_tp_sensored],
             pressure    = regime[["pressure"]][regime_index][is_tp_sensored],
             flow_rate   = regime[["flow_rate"]][regime_index][is_tp_sensored],
-            loss_power  = this_sender_Q[is_tp_sensored]/DAY
+            loss_power  = this_sender_Q[is_tp_sensored] / DAY
           )
       }
       if (verbose)
@@ -701,9 +706,9 @@ tracebw <- function(
             temperature = regime[["temperature"]][regime_index][is_tp_sensored],
             pressure    = regime[["pressure"]][regime_index][is_tp_sensored],
             flow_rate   = regime[["flow_rate"]][regime_index][is_tp_sensored],
-            d           = METER*(
+            d           = METER * (
               d[is_processed_pipe][is_tp_sensored] -
-              2*wth[is_processed_pipe][is_tp_sensored]
+              2 * wth[is_processed_pipe][is_tp_sensored]
             ),
             len         = len[is_processed_pipe][is_tp_sensored],
             roughness   = roughness[is_processed_pipe][is_tp_sensored],
@@ -719,7 +724,9 @@ tracebw <- function(
             time_stamp_posixct,
             .func_name,
             sum(is_tp_sensored),
-            paste(regime[["node"]][regime_index][is_tp_sensored], collapse = ",")
+            paste(
+              regime[["node"]][regime_index][is_tp_sensored], collapse = ","
+            )
           )
       )
     } else {
@@ -729,7 +736,9 @@ tracebw <- function(
             "\n%s %s | SKIP! Pressure could not be traced from nodes [%s];; ",
             time_stamp_posixct,
             .func_name,
-            paste(regime[["node"]][regime_index][!is_tp_sensored], collapse = ",")
+            paste(
+              regime[["node"]][regime_index][!is_tp_sensored], collapse = ","
+            )
           )
         )
     }
@@ -813,5 +822,5 @@ tracebw <- function(
       .func_name
     ))
   # Finish backward tracing ----
-  job_log[job_log[["job"]] != job_num,]
+  job_log[job_log[["job"]] != job_num, ]
 }

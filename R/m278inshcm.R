@@ -14,12 +14,12 @@
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param material
-#'  designation of insulation material as it stated in \code{\link{m278insdata}},
-#'  Type: \code{\link[checkmate]{assert_subset}}.
+#'  designation of insulation material as it stated in
+#'  \code{\link{m278insdata}}. Type: \code{\link[checkmate]{assert_subset}}.
 #'
 #' @return
-#'  Thermal conductivity of insulation materials at given
-#'  set of temperatures, [\emph{W/m/°C}], [\emph{W/m/K}].
+#'  Thermal conductivity of insulation materials at given set of temperatures,
+#'  [\emph{W/m/°C}], [\emph{W/m/K}].
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @export
@@ -31,30 +31,30 @@
 #' print(m278insdata)
 #' mean(m278inshcm(110, m278insdata[["material"]]))
 #'
-m278inshcm <- function(temperature = 110, material = "aerocrete"){
-    checkmate::assert_double(
-      temperature, lower = 0, upper = 450, finite = TRUE,
-      any.missing = FALSE, min.len = 1L
-    )
-    norms <- pipenostics::m278insdata
-    checkmate::assert_subset(material, choices = norms[["material"]])
-    checkmate::assert_true(commensurable(c(
-      length(temperature), length(material)
-    )))
+m278inshcm <- function(temperature = 110, material = "aerocrete") {
+  checkmate::assert_double(
+    temperature, lower = 0, upper = 450, finite = TRUE,
+    any.missing = FALSE, min.len = 1L
+  )
+  norms <- pipenostics::m278insdata
+  checkmate::assert_subset(material, choices = norms[["material"]])
+  checkmate::assert_true(commensurable(c(
+    length(temperature), length(material)
+  )))
 
-    cf <- merge(
-      data.frame(
-        idm = seq.int(length(material)),
-        material = material
-      ),
-      norms,
-      all.x = TRUE, by = "material", sort = FALSE
-    )
-    rm(norms)
-    checkmate::assert_true(!is.null(cf[["material"]]))
-    checkmate::assert_true(!is.null(cf[["idm"]]))
-    rank <- order(cf[["idm"]])
-    checkmate::assert_true(all(material == cf[rank, "material"]))
+  cf <- merge(
+    data.frame(
+      idm = seq.int(length(material)),
+      material = material
+    ),
+    norms,
+    all.x = TRUE, by = "material", sort = FALSE
+  )
+  rm(norms)
+  checkmate::assert_true(!is.null(cf[["material"]]))
+  checkmate::assert_true(!is.null(cf[["idm"]]))
+  rank <- order(cf[["idm"]])
+  checkmate::assert_true(all(material == cf[rank, "material"]))
 
-    1e-3*cf[rank, "lambda"] + 1e-6*cf[rank, "k"] * .5 * (temperature + 40.0)
+  1e-3 * cf[rank, "lambda"] + 1e-6 * cf[rank, "k"] * .5 * (temperature + 40.0)
 }

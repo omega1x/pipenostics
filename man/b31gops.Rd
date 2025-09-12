@@ -7,9 +7,11 @@
 b31gops(wth, depth)
 }
 \arguments{
-\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{inch}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{depth}{measured maximum depth of the corroded area, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{depth}{measured maximum depth of the corroded area, [\emph{inch}].
+Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
 Operational status of pipe as an integer value:
@@ -18,7 +20,8 @@ Operational status of pipe as an integer value:
    \item \emph{2} - monitoring is recommended
    \item \emph{3} - alert! replace the pipe immediately!
  }
- Type: \code{\link[checkmate]{assert_numeric}} and \code{\link[checkmate]{assert_subset}}.
+ Type: \code{\link[checkmate]{assert_numeric}} and
+       \code{\link[checkmate]{assert_subset}}.
 }
 \description{
 Determine the operational status of pipe: is it excellent? or is
@@ -27,17 +30,17 @@ Determine the operational status of pipe: is it excellent? or is
 \examples{
  library(pipenostics)
 
+ # Typical status for the most of pipes:
  b31gops(.438, .1)
- # [1] 2  # typical status for the most of pipes
 
+ # Alert! Corrosion depth is too high! Replace the pipe!
  b31gops(.5, .41)
- # [1] 3  # alert! Corrosion depth is too high! Replace the pipe!
 
 }
 \references{
-\href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.
- Manual for determining the remaining strength of corroded pipelines. A
- supplement to \emph{ASTME B31} code for pressure piping.
+\href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{
+  ASME B31G-1991}. Manual for determining the remaining strength of corroded
+ pipelines. A supplement to \emph{ASTME B31} code for pressure piping.
 }
 \seealso{
 Other ASME B31G functions: 

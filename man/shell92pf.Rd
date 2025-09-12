@@ -55,7 +55,7 @@ Numeric \code{NA}s may appear in case prescribed conditions of
 
 d     = c(812.8, 219.0)  # [mm]
 wth   = c( 19.1,  14.5)  # [mm]
-uts  = c(530.9, 455.1)   # [N/mm^2]
+uts  = c(530.9, 455.1)   # [N/mm²]
 l     = c(203.2, 200.0)  # [mm]
 depth = c( 13.4,   9.0)  # [mm]
 
@@ -65,10 +65,10 @@ shell92pf(d, wth, uts, depth, l)
 \references{
 Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
  of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
- \strong{DOI 10.1007/978-3-319-25307-7}
+ \strong{DOI 10.1007/978-3-319-25307-7}.
 }
 \seealso{
-Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{b31gmodpf}},
-  \code{\link{dnvpf}}, \code{\link{pcorrcpf}}
+Other fail pressure functions: \code{\link{b31gpf}},
+  \code{\link{b31gmodpf}}, \code{\link{dnvpf}}, \code{\link{pcorrcpf}}
 }
 \concept{Shell92}

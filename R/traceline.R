@@ -25,8 +25,8 @@
 #'  cannot be more than \code{elev_tol}.
 #'
 #'  Since inner diameter of the pipe is used as input, the the thickness of the
-#'  pipe wall additionally considered in heat flux calculations. Pipe wall thickness
-#'  is derived from pipe diameter using
+#'  pipe wall additionally considered in heat flux calculations. Pipe wall
+#'  thickness is derived from pipe diameter using
 #'  \href{https://docs.cntd.ru/document/1200174717}{GOST 30732} specifications.
 #'
 #' @param temperature
@@ -46,13 +46,14 @@
 #' @param flow_rate
 #'  \emph{Traced thermal hydraulic regime}. Amount of heat carrier (water)
 #'  sensor-measured at the inlet (forward tracing) or at the outlet (backward
-#'  tracing) of path, [\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_number}}.
+#'  tracing) of path, [\emph{ton/h}].
+#'  Type: \code{\link[checkmate]{assert_number}}.
 #'
 #' @param g
 #'  amount of heat carrier discharge to network for each pipe segment in the
 #'  tracing path enumerated along the direction of flow. If flag \code{absg}
 #'  is \code{TRUE} then they treat argument \code{g} as absolute value in
-#'  [\emph{ton/hour}], otherwise they do as percentage of flow_rate in the
+#'  [\emph{ton/h}], otherwise they do as percentage of flow_rate in the
 #'  pipe segment.
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
@@ -71,22 +72,25 @@
 #'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param loss
-#'  user-provided value of \emph{specific heat loss} power for each pipe in tracing
-#'  path enumerated along the direction of flow, [\emph{kcal/m/h}]. Values of the
-#'  argument can be obtained experimentally, or taken from regulatory documents.
-#'  Type: \code{\link[checkmate]{assert_double}}.
+#'  user-provided value of \emph{specific heat loss} power for each pipe in
+#'  tracing path enumerated along the direction of flow, [\emph{kcal/m/h}].
+#'  Values of the argument can be obtained experimentally, or taken from
+#'  regulatory documents. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param roughness
 #'  roughness of internal wall for each pipe in tracing path enumerated along
-#'  the direction of flow, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
+#'  the direction of flow, [\emph{m}].
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param inlet
 #'  elevation of pipe inlet for each pipe in tracing path enumerated along
-#'  the direction of flow, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
+#'  the direction of flow, [\emph{m}].
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param outlet
 #'  elevation of pipe outlet for each pipe in tracing path enumerated along
-#'  the direction of flow, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.
+#'  the direction of flow, [\emph{m}].
+#'  Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param method
 #'  method of determining \emph{Darcy friction factor}
@@ -95,7 +99,8 @@
 #'    \item \code{vatankhan}
 #'    \item \code{buzelli}
 #'  }
-#'  Type: \code{\link[checkmate]{assert_choice}}. For more details see \code{\link{dropp}}.
+#'  Type: \code{\link[checkmate]{assert_choice}}.
+#'  For more details see \code{\link{dropp}}.
 #'
 #' @param elev_tol
 #'  maximum allowed discrepancy between adjacent outlet and inlet elevations of
@@ -108,28 +113,30 @@
 #'  Type: \code{\link[checkmate]{assert_flag}}.
 #'
 #' @param absg
-#'  Whether argument \code{g} (amount of heat carrier discharge to network) is an
-#'  absolute value in [\emph{ton/hour}] (\code{TRUE}) or is it a percentage of
+#'  Whether argument \code{g} (amount of heat carrier discharge to network) is
+#'  an absolute value in [\emph{ton/h}] (\code{TRUE}) or is it a percentage of
 #'  flow rate in the pipe segment (\code{FALSE})?
 #'  Type: \code{\link[checkmate]{assert_flag}}.
 #'
 #' @return
-#'  \code{\link{list}} containing results (detailed log) of tracing for each pipe
-#'       in tracing path enumerated along the direction of flow:
+#'  \code{\link{list}} containing results (detailed log) of tracing for each
+#'  pipe in tracing path enumerated along the direction of flow:
 #'  \describe{
 #'    \item{\code{temperature}}{
 #'      \emph{Traced thermal hydraulic regime}. Traced temperature of heat
-#'       carrier (water), [\emph{°C}]. Type: \code{\link[checkmate]{assert_double}}.
+#'       carrier (water), [\emph{°C}].
+#'       Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'    \item{\code{pressure}}{
 #'      \emph{Traced thermal hydraulic regime}. Traced pressure of heat
 #'       carrier (water) for each pipe in tracing path enumerated along the
-#'       direction of flow, [\emph{MPa}]. Type: \code{\link[checkmate]{assert_double}}.
+#'       direction of flow, [\emph{MPa}].
+#'       Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'    \item{\code{flow_rate}}{
 #'      \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
 #'       carrier (water) for each pipe in tracing path enumerated along the
-#'       direction of flow, [\emph{ton/hour}].
+#'       direction of flow, [\emph{ton/h}].
 #'       Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'   \item{\code{loss}}{
@@ -140,7 +147,7 @@
 #'    }
 #'   \item{\code{flux}}{
 #'      Heat flux for each pipe
-#'      in tracing path enumerated along the direction of flow, [\emph{W/m^2}].
+#'      in tracing path enumerated along the direction of flow, [\emph{W/m²}].
 #'      Type: \code{\link[checkmate]{assert_double}}.
 #'    }
 #'    \item{\code{Q}}{
@@ -158,11 +165,11 @@
 #' # First, let sensor readings for forward tracing:
 #' t_fw <- 130         # [°C]
 #' p_fw <- mpa_kgf(6)  # [MPa]
-#' g_fw <- 250         # [ton/hour]
+#' g_fw <- 250         # [ton/h]
 #'
 #' # Let discharges to network for each pipeline segment are somehow determined
 #' # as
-#' discharges <- seq(0, 30, 10)  # [ton/hour]
+#' discharges <- seq(0, 30, 10)  # [ton/h]
 #'
 #' # Experimentally obtained values of specific heat loss power are
 #' actual_loss <- c(348.0000, 347.1389, 346.3483, 345.8610)  # [kcal/m/h]
@@ -177,7 +184,7 @@
 #' # tracing:
 #' t_bw <- 127.3367  # [°C]
 #' p_bw <- .5870330  # [MPa]
-#' g_bw <- 190       # [ton/hour]
+#' g_bw <- 190       # [ton/h]
 #'
 #' # Then the calculated regime (red squares) for backward tracing is
 #' regime_bw <- traceline(
@@ -189,7 +196,7 @@
 #' tracing <- with(regime_bw, {
 #'   lambda <- function(val, constraint)
 #'     c(val, constraint, constraint - val,
-#'       abs(constraint - val)*100/constraint)
+#'       abs(constraint - val) * 100/constraint)
 #'   first <- 1
 #'   structure(
 #'     rbind(
@@ -215,7 +222,8 @@ traceline <- function(
   inlet = 0., outlet = 0., elev_tol = .1,
 
   method = "romeo", forward = TRUE, absg = TRUE
-  ) {
+) {
+  pow   <- .Primitive("^")
   DAY   <- 24     # [hours]
   METER <-  1e-3  # [m/mm]
 
@@ -269,7 +277,7 @@ traceline <- function(
     length(d), length(len), length(loss), length(roughness), length(inlet),
     length(outlet)
   )))
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
+  checkmate::assert_true(all(d - 2 * wth > 0.5))  # in mm
   checkmate::assert_number(
     elev_tol,
     lower = 0, upper = 10, finite = TRUE
@@ -315,17 +323,17 @@ traceline <- function(
         loss_regime[[i]] <- loss_value <- loss[[i]]  # [kcal/m/h]
 
         # * Heat flux
-        flux_regime[[i]] <- pipenostics::flux_loss(loss_value, d[[i]])  # [W/m^2]
+        flux_regime[[i]] <- pipenostics::flux_loss(loss_value, d[[i]])  # [W/m²]
 
         # * Flow rate
         g_value <- {
           g_value +
-          c(0, -g[[i]])[[forward + 1]] * c(g_value, 1)[[1 + absg]]  # [ton/hour]
+          c(0, -g[[i]])[[forward + 1]] * c(g_value, 1)[[1 + absg]]  # [ton/h]
         }
 
         # * Temperature
         t_regime[[i]] <- t_value <- {
-          t_value + (-1) ^ forward * pipenostics::dropt(
+          t_value + pow(-1, forward) * pipenostics::dropt(
             temperature = t_value, pressure = p_value, flow_rate = g_value,
             loss_power = Q_value / DAY
           )  # [°C]
@@ -333,10 +341,10 @@ traceline <- function(
 
         # * Pressure
         p_regime[[i]] <- p_value <- {
-          p_value + (-1) ^ forward *
+          p_value + pow(-1, forward) *
             pipenostics::dropp(
               temperature = t_value, pressure = p_value, flow_rate = g_value,
-              d = (d[[i]] - 2*wth[[i]]) * METER, len = len[[i]],
+              d = (d[[i]] - 2 * wth[[i]]) * METER, len = len[[i]],
               roughness = roughness[[i]], inlet = inlet[[i]],
               outlet = outlet[[i]], method = method
             )
@@ -345,7 +353,7 @@ traceline <- function(
         # * Flow rate
         g_regime[[i]] <- g_value <- {
           g_value +
-          c(0, g[[i]])[[2 - forward]] * c(g_value, 1)[[1 + absg]]  # [ton/hour]
+          c(0, g[[i]])[[2 - forward]] * c(g_value, 1)[[1 + absg]]  # [ton/h]
         }
 
       }

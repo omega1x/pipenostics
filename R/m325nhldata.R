@@ -8,11 +8,13 @@
 #' district heating systems with water as a heat carrier.
 #'
 #' Data is organized as a full factorial design, whereas for some factorial
-#' combinations \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}
+#' combinations
+#' \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}
 #' does not provide values. For that cases values are postulated by practical
 #' reasons in Siberian cities and marked with source label \emph{sgc}.
 #'
-#' Usually the data is not used directly. Instead use function \code{\link{m325nhl}}.
+#' Usually the data is not used directly. Instead use function
+#' \code{\link{m325nhl}}.
 #'
 #' @family Minenergo
 #'
@@ -25,10 +27,13 @@
 #'     postulated (see \emph{Details}).
 #'     Type: \code{\link[checkmate]{assert_character}}.
 #'   }
-#'   \item{epoch}{Year depicting the epoch when the pipe is put in operation after laying or total overhaul.
-#'   Type: \code{\link[checkmate]{assert_integer}}.}
-#'   \item{laying}{Type of pipe laying depicting the position of pipe in space. Only five types of
-#'     pipe laying are considered:
+#'   \item{epoch}{
+#'     Year depicting the epoch when the pipe is put in operation after laying
+#'     or total overhaul. Type: \code{\link[checkmate]{assert_integer}}.
+#'   }
+#'   \item{laying}{
+#'     Type of pipe laying depicting the position of pipe in space. Only five
+#'     types of pipe laying are considered:
 #'     \itemize{
 #'      \item \code{air},
 #'      \item \code{channel},
@@ -55,14 +60,20 @@
 #'    Type: \code{\link[checkmate]{assert_integerish}}.
 #'   }
 #'
-#'   \item{d}{Nominal (outside) diameter of pipe, [\emph{mm}]. Type: \code{\link[checkmate]{assert_double}}.}
+#'   \item{d}{
+#'     Nominal (outside) diameter of pipe, [\emph{mm}].
+#'     Type: \code{\link[checkmate]{assert_double}}.
+#'   }
 #'
-#'   \item{temperature}{Operational temperature of pipe, [\emph{°C}]. Type: \code{\link[checkmate]{assert_double}}.}
+#'   \item{temperature}{
+#'     Operational temperature of pipe, [\emph{°C}].
+#'     Type: \code{\link[checkmate]{assert_double}}.
+#'   }
 #'
 #'   \item{loss}{
 #'     Normative value of specific heat loss power equal to heat flux output by
 #'     1 meter length steel pipe during an hour,
-#'     [\emph{kcal/m/hour}].
+#'     [\emph{kcal/m/h}].
 #'     Type: \code{\link[checkmate]{assert_double}}.}
 #'  }
 #'

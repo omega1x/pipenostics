@@ -11,9 +11,9 @@ test_that("*traceline* errs in tracing regime parameters", {
     c("temperature", "pressure", "flow_rate", "loss", "flux", "Q")
   )
   expect_equal(
-   regime_fw[["temperature"]],
-   c(129.1799, 128.4269, 127.9628, 127.3367),
-   tolerance = 1e-4
+    regime_fw[["temperature"]],
+    c(129.1799, 128.4269, 127.9628, 127.3367),
+    tolerance = 1e-4
   )
   expect_equal(
     regime_fw[["pressure"]],

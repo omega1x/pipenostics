@@ -54,11 +54,11 @@
 #' @references
 #'  Timashev and A. Bushinskaya, \emph{Diagnostics and Reliability
 #'  of Pipeline Systems}, Topics in Safety, Risk, Reliability and Quality 30,
-#'  \strong{DOI 10.1007/978-3-319-25307-7}
+#'  \strong{DOI 10.1007/978-3-319-25307-7}.
 #'
 #' @seealso
-#'   Other fail pressure functions: \code{\link{b31gpf}}, \code{\link{b31gmodpf}},
-#'   \code{\link{dnvpf}}, \code{\link{pcorrcpf}}
+#'   Other fail pressure functions: \code{\link{b31gpf}},
+#'   \code{\link{b31gmodpf}}, \code{\link{dnvpf}}, \code{\link{pcorrcpf}}
 #'
 #' @export
 #'
@@ -67,26 +67,40 @@
 #'
 #' d     = c(812.8, 219.0)  # [mm]
 #' wth   = c( 19.1,  14.5)  # [mm]
-#' uts  = c(530.9, 455.1)   # [N/mm^2]
+#' uts  = c(530.9, 455.1)   # [N/mm²]
 #' l     = c(203.2, 200.0)  # [mm]
 #' depth = c( 13.4,   9.0)  # [mm]
 #'
 #' shell92pf(d, wth, uts, depth, l)
 #'
-shell92pf <- function(d, wth, uts, depth, l){
-  checkmate::assert_double(d, lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L)
-  checkmate::assert_double(wth, lower = 0.29, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1L)
-  checkmate::assert_double(uts, lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1L)
-  checkmate::assert_double(depth, lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE, min.len = 1L)
-  checkmate::assert_double(l, lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L)
+shell92pf <- function(d, wth, uts, depth, l) {
+  checkmate::assert_double(
+    d,
+    lower = 1, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    wth,
+    lower = 0.29, upper = 5e2, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    uts,
+    lower = 5, upper = 2e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    depth,
+    lower = 0, upper = 1e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
+  checkmate::assert_double(
+    l,
+    lower = 0, upper = 5e3, finite = TRUE, any.missing = FALSE, min.len = 1L
+  )
   checkmate::assert_true(commensurable(c(
     length(d), length(wth), length(uts), length(depth), length(l)
   )))
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in mm
+  checkmate::assert_true(all(d - 2 * wth > 0.5))  # in mm
 
-  Q <- sqrt(1 + .805*l^2/d/wth)
-  Pf <- 2*wth*.9*uts*(1 - depth/wth)/d/(1 - depth/wth/Q)
-  Pf[depth >= .85*wth] <- NA_real_
+  Q <- sqrt(1 + .805 * l^2 / d / wth)
+  Pf <- 2 * wth * .9 * uts * (1 - depth / wth) / d / (1 - depth / wth / Q)
+  Pf[depth >= .85 * wth] <- NA_real_
   Pf
 }
-

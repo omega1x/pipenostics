@@ -35,20 +35,20 @@ of test bench considered this identifier should be unique for every row.
 Type: any type that can be painlessly coerced to character by
 \code{\link{as.character}}.}
 
-\item{temperature}{Sensor-measured temperature of heat carrier (water) sensor-measured on
+\item{temperature}{sensor-measured temperature of heat carrier (water) sensor-measured on
 the terminal acceptor node, [\emph{°C}].
- Use \code{NA_float_}s for (terminal) nodes without temperature sensor.
- Type: \code{\link[checkmate]{assert_double}}.}
-
-\item{pressure}{Sensor-measured
-\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
-[\emph{MPa}].
+Use \code{NA_float_}s for (terminal) nodes without temperature sensor.
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{flow_rate}{Sensor-measured amount of heat carrier (water) on terminal node that is
+\item{pressure}{sensor-measured
+\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{
+absolute pressure} of heat carrier (water) inside the pipe (i.e.
+acceptor's incoming edge), [\emph{MPa}].
+Type: \code{\link[checkmate]{assert_double}}.}
+
+\item{flow_rate}{sensor-measured amount of heat carrier (water) on terminal node that is
 transferred by pipe (i.e. acceptor's incoming edge) during a period,
-[\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.
+[\emph{ton/h}]. Type: \code{\link[checkmate]{assert_double}}.
 Use \code{NA_float_}s for nodes without flow rate sensor.}
 
 \item{d}{outside diameter of pipe (i.e.diameter of acceptor's incoming edge),
@@ -140,7 +140,7 @@ used safely to create a file and write to it.}
        }
       \item{\code{flux}}{
          \emph{Traced thermal hydraulic regime}. Normative heat flux of
-         adjacent pipe, [\emph{W/m^2}].
+         adjacent pipe, [\emph{W/m²}].
          Type: \code{\link[checkmate]{assert_double}}.
        }
       \item{\code{Q}}{
@@ -163,7 +163,7 @@ used safely to create a file and write to it.}
 
       \item{\code{flow_rate}}{
          \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
-         carrier (water) that is associated with the node, [\emph{ton/hour}].
+         carrier (water) that is associated with the node, [\emph{ton/h}].
          Type: \code{\link[checkmate]{assert_double}}.
       }
 
@@ -262,8 +262,8 @@ m325_report <- do.call("m325tracebw", DHN)
 
 stopifnot(
   all.equal(tracebw_report$temperature, m325_report$temperature, tol = 1e-4),
-  all.equal(tracebw_report$pressure   , m325_report$pressure   , tol = 1e-4),
-  all.equal(tracebw_report$flow_rate  , m325_report$flow_rate  , tol = 1e-4)
+  all.equal(tracebw_report$pressure,    m325_report$pressure,    tol = 1e-4),
+  all.equal(tracebw_report$flow_rate,   m325_report$flow_rate,   tol = 1e-4)
 )
 
 }

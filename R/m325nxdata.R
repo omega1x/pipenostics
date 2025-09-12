@@ -26,7 +26,8 @@
 #'
 #' @family Minenergo
 #'
-#' @format A data frame with 22 rows (number of nodes and incoming edges) and 15 variables:
+#' @format A data frame with 26 rows (number of nodes and incoming edges) and 17
+#'         variables:
 #' \describe{
 #'   \item{sender}{
 #'     An identifier of node which heat carrier flows out.
@@ -51,9 +52,9 @@
 #'   \item{pressure}{
 #'     Snapshot of thermal-hydraulic regime state:
 #'     sensor-measured
-#'     \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-#'     of heat carrier (water) inside the pipe (i.e. acceptor's incoming edge),
-#'     [\emph{MPa}].
+#'     \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{
+#'      absolute pressure} of heat carrier (water) inside the pipe (i.e.
+#'     acceptor's incoming edge), [\emph{MPa}].
 #'     Type: \code{\link[checkmate]{assert_double}}. \code{NA}s are introduced
 #'     for nodes without pressure sensor.
 #'   }
@@ -62,13 +63,13 @@
 #'     Snapshot of thermal-hydraulic regime state:
 #'     sensor-measured amount of heat carrier (water) on terminal node that is
 #'     transferred by pipe (i.e. acceptor's incoming edge) during a period,
-#'     [\emph{ton/hour}]. Type: \code{\link[checkmate]{assert_double}}.
+#'     [\emph{ton/h}]. Type: \code{\link[checkmate]{assert_double}}.
 #'     \code{NA}s are introduced for nodes without flow rate sensor.
 #'   }
 #'
 #'   \item{a}{
 #'     Heat carrier (water) volume loss factor of cylindrical pipe,
-#'     [\eqn{hour^{-1}}]. Type: \code{\link[checkmate]{assert_double}}.
+#'     [\emph{h⁻¹}]. Type: \code{\link[checkmate]{assert_double}}.
 #'   }
 #'
 #'   \item{d}{

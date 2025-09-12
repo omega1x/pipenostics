@@ -36,19 +36,19 @@ of test bench considered this identifier should be unique for every row.
 Type: any type that can be painlessly coerced to character by
 \code{\link{as.character}}.}
 
-\item{temperature}{Sensor-measured temperature of heat carrier (water) sensor-measured on
+\item{temperature}{sensor-measured temperature of heat carrier (water) sensor-measured on
 the root node, [\emph{°C}].
 Use \code{NA_float_}s for nodes without temperature sensor.
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{pressure}{Sensor-measured
-\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-of heat carrier (water) inside the pipe on the root node, [\emph{MPa}].
-Use \code{NA_float_}s for nodes without pressure sensor.
-Type: \code{\link[checkmate]{assert_double}}.}
+\item{pressure}{sensor-measured
+\href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{
+ absolute pressure} of heat carrier (water) inside the pipe on the root
+node, [\emph{MPa}]. Use \code{NA_float_}s for nodes without pressure
+sensor. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{flow_rate}{Sensor-measured amount of heat carrier (water) on root node that is
-transferred by pipe during a period, [\emph{ton/hour}].
+\item{flow_rate}{sensor-measured amount of heat carrier (water) on root node that is
+transferred by pipe during a period, [\emph{ton/h}].
 Type: \code{\link[checkmate]{assert_double}}.
 Use \code{NA_float_}s for nodes without flow rate sensor.}
 
@@ -147,7 +147,7 @@ Type: \code{\link[checkmate]{assert_flag}}.}
 
       \item{\code{flow_rate}}{
          \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
-         carrier (water) that is associated with the node, [\emph{ton/hour}].
+         carrier (water) that is associated with the node, [\emph{ton/h}].
          Type: \code{\link[checkmate]{assert_double}}.
       }
 
@@ -214,7 +214,7 @@ DHN$acceptor <- sprintf("N\%02i", DHN$acceptor)
 root_node <- 12
 DHN[root_node, "temperature"] <-  70.4942576978  # [°C]
 DHN[root_node, "pressure"]    <-   0.6135602014  # [MPa]
-DHN[root_node, "flow_rate"]   <- 274.0           # [ton/hour]
+DHN[root_node, "flow_rate"]   <- 274.0           # [ton/h]
 
 # * provide actual values of specific heat loss power, [kcal/m/h], for each
 # segment N01 - N26. Since N12 is a root node, the specific heat loss

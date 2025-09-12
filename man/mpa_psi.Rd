@@ -11,22 +11,24 @@ mpa_psi(x)
 Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-pressure (stress) in \emph{megapascals} (\emph{MPa}).
- Type: \code{\link[checkmate]{assert_double}}.
+Pressure (stress) in \emph{megapascals} (\emph{MPa}).
+  Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
-Convert pressure (stress) measured in \href{https://en.wikipedia.org/wiki/Pounds_per_square_inch}{pounds per square inch} (PSI)
- to \href{https://en.wikipedia.org/wiki/Pascal_(unit)}{megapascals} (MPa)
+Convert pressure (stress) measured in
+ \href{https://en.wikipedia.org/wiki/Pounds_per_square_inch}{pounds per
+  square inch} (PSI) to \href{https://en.wikipedia.org/wiki/Pascal_(unit)}{
+  megapascals} (MPa)
 }
 \examples{
  library(pipenostics)
 
  mpa_psi(c(145.03773800721814, 1))
- # [1] 1.000000000 0.006894757 # [MPa]
 
 }
 \seealso{
-\code{\link{psi_mpa}} for converting \emph{megapascals} to \emph{pounds per square inch}
+\code{\link{psi_mpa}} for converting \emph{megapascals} to
+  \emph{pounds per square inch}
 
 Other units: 
 \code{\link{c_k}()},

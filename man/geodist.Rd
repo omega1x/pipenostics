@@ -33,22 +33,27 @@ Type: \code{\link[checkmate]{assert_numeric}}.}
 }
 \value{
 \describe{
-    \item{For \code{geodist}:}{distance between two geographical locations, [\emph{m}].}
-    \item{For \code{geoarea}:}{area of spherical triangle between three geographical locations, [\emph{km^2}].}
+    \item{For \code{geodist}:}{
+      distance between two geographical locations, [\emph{m}].
+    }
+    \item{For \code{geoarea}:}{
+      area of spherical triangle between three geographical locations,
+      [\emph{km²}].
+    }
   }
   Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
-Calculate geographical metrics (distance, area) for two or three geographical locations.
+Calculate geographical metrics (distance, area) for two or three
+  geographical locations.
 }
 \details{
-\code{geodist} calculates distance between two geographical locations on \emph{Earth},
-  whereas \code{geoarea} calculates the area of spherical triangle between
-  three geographical locations.
-  Both functions use absolute positions of geographical locations described by
-  \href{https://en.wikipedia.org/wiki/Geographic_coordinate_system}{
-  geographical coordinate system}
-  in
+\code{geodist} calculates distance between two geographical locations on
+  \emph{Earth}, whereas \code{geoarea} calculates the area of spherical
+  triangle between three geographical locations.
+  Both functions use absolute positions of geographical locations described
+  by \href{https://en.wikipedia.org/wiki/Geographic_coordinate_system}{
+  geographical coordinate system} in
   \href{https://en.wikipedia.org/wiki/Decimal_degrees}{decimal degrees}
   units denoted as \emph{DD}. The
   \href{https://en.wikipedia.org/wiki/Haversine_formula}{haversine formula}
@@ -58,13 +63,14 @@ Calculate geographical metrics (distance, area) for two or three geographical lo
   Since several variants of \emph{Earth} radius can be accepted,
   the user is welcome to provide its own value.
   \href{https://en.wikipedia.org/wiki/World_Geodetic_System#WGS84}{WGS-84}
-  \href{https://en.wikipedia.org/wiki/Earth_radius}{mean radius of semi-axes},
-  \eqn{R_1}, is the default value.
+  \href{https://en.wikipedia.org/wiki/Earth_radius}{mean radius of
+  semi-axes},\eqn{R_1}, is the default value.
 
   The resulting distance is expressed in
-  \href{https://en.wikipedia.org/wiki/Metre}{metres} (\emph{m}), 
-  whereas the area is expressed in 
-  \href{https://en.wikipedia.org/wiki/Square_kilometre}{square kilometers}(\emph{km^2}).
+  \href{https://en.wikipedia.org/wiki/Metre}{metres} (\emph{m}), whereas the
+  area is expressed in
+  \href{https://en.wikipedia.org/wiki/Square_kilometre}{square kilometers}
+   (\emph{km²}).
 }
 \examples{
 library(pipenostics)
@@ -126,7 +132,7 @@ d <- geodist(
   lon1 = objects[path[, 1], "lon"],
   lat2 = objects[path[, 2], "lat"],
   lon2 = objects[path[, 2], "lon"]
-)*1e-3
+) * 1e-3
 
 cat(
   paste(
@@ -135,7 +141,7 @@ cat(
 )
 )
 
-# Consider two areas 
+# Consider two areas
 #         * Bermuda triangle     * Polynesian Triangle
 lat1 <- c(Miami   =  25.789106,  Hawaii       =   19.820680)
 lon1 <- c(Miami   = -80.226529,  Hawaii       = -155.467989)
@@ -148,13 +154,13 @@ lon3 <- c(SanJuan = -66.105743,  EasterIsland = -109.349668)
 
 # Area provided by manually operated Google Earth:
 GETriangleArea <- c(
-  Bermuda    =  1147627.48,  # [km^2]
-  Polynesian = 28775517.77   # [km^2]
+  Bermuda    =  1147627.48,  # [km²]
+  Polynesian = 28775517.77   # [km²]
 )
 
-# Show the discrepancy in calculations, [km^2]:
-print(geoarea(lat1, lon1, lat2, lon2, lat3, lon3)) 
- 
+# Show the discrepancy in calculations, [km²]:
+print(geoarea(lat1, lon1, lat2, lon2, lat3, lon3))
+
 }
 \seealso{
 Other utils: 

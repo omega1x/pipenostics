@@ -7,14 +7,15 @@
 fric_romeo(reynolds, roughness = 0, strict = FALSE)
 }
 \arguments{
-\item{reynolds}{Reynolds number, []. Type: \code{\link[checkmate]{assert_double}}.}
+\item{reynolds}{\emph{Reynolds number}, []. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{roughness}{relative roughness, []. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{strict}{calculate only inside the precision region. Type: \code{\link[checkmate]{assert_flag}}.}
+\item{strict}{calculate only inside the precision region.
+Type: \code{\link[checkmate]{assert_flag}}.}
 }
 \value{
-pipe friction factor, []. Type: \code{\link[checkmate]{assert_double}}.
+Pipe friction factor, []. Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Estimate \emph{Darcy friction factor} explicitly with extremely accurate
@@ -36,18 +37,21 @@ Romeo's formula is reported to be extremely accurate in the region:
  library(pipenostics)
 
  fric_romeo(c(2118517, 2000, 2118517), c(0, 70e-3/1, 7e-3/1))
- # [1] 0.01028473 0.03200000 0.03373215  # []
 
  fric_romeo(c(2118517, 3030, 2118517), c(0, 50e-3/1, 7e-3/1), TRUE)
- # [1] 0.01028473 0.07859636 0.03373215  # []
 }
 \references{
 \enumerate{
-   \item Offor, U. and Alabi, S. (2016) \emph{An Accurate and Computationally Efficient Explicit Friction Factor Model}.
- Advances in Chemical Engineering and Science, \emph{6}, pp. 237-245. \doi{10.4236/aces.2016.63024}.
+   \item Offor, U. and Alabi, S. (2016) \emph{An Accurate and Computationally
+         Efficient Explicit Friction Factor Model}. Advances in Chemical
+         Engineering and Science, \emph{6}, pp. 237-245.
+         \doi{10.4236/aces.2016.63024}.
 
-   \item Eva Romeo, Carlos Royo, Antonio Monzón, \emph{Improved explicit equations for estimation of friction factor in rough and smooth pipes},
- Chemical Engineering Journal, \emph{Volume 86}, Issue 3, 2002, Pages 369-374, ISSN 1385-8947. \doi{10.1016/S1385-8947(01)00254-6}.
+   \item Eva Romeo, Carlos Royo, Antonio Monzón, \emph{Improved explicit
+         equations for estimation of friction factor in rough and smooth
+         pipes}, Chemical Engineering Journal, \emph{Volume 86}, Issue 3,
+         2002, Pages 369-374, ISSN 1385-8947.
+         \doi{10.1016/S1385-8947(01)00254-6}.
  }
 }
 \seealso{

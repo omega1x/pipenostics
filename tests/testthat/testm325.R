@@ -2,7 +2,9 @@ library(pipenostics)
 
 test_that("*m325nhl* errs in normative heat loss", {
   expect_equal(
-    m325nhl(1980, "underground", d = 73, temperature = 65, beta = c(FALSE, TRUE)),
+    m325nhl(
+      1980, "underground", d = 73, temperature = 65, beta = c(FALSE, TRUE)
+    ),
     c(65.500, 75.325),
     tolerance = 1e-3
   )
@@ -28,7 +30,7 @@ test_that("*m325beta* errs in calculation", {
   )
 })
 
-a   <- c(0.0025, 0.0010)     # [1/hour]
+a   <- c(0.0025, 0.0010)     # [h⁻¹]
 p   <- c(0.588399, 0.588399) # [MPa]
 tmp <- c(60, 130)            # [°C]
 

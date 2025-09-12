@@ -11,7 +11,7 @@ mm_inch(x)
 Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-length in \emph{millimeters}, [\emph{mm}].
+Length in \emph{millimeters}, [\emph{mm}].
  Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
@@ -22,7 +22,6 @@ Convert length measured in \href{https://en.wikipedia.org/wiki/Inch}{inches}
  library(pipenostics)
 
  mm_inch(c(0.03937008, 1))
- # [1]  1.0 25.4  # [mm]
 
 }
 \seealso{

@@ -40,9 +40,11 @@ Type: \code{\link[checkmate]{assert_double}}.}
 \item{insd2}{thickness of the insulator which covers the returning pipe, [\emph{m}].
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d1}{outside diameter of supplying pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{d1}{outside diameter of supplying pipe, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d2}{outside diameter of returning pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{d2}{outside diameter of returning pipe, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{lambda1}{thermal conductivity of insulator which covers the supplying pipe
 [\emph{W/m/°C}]. Type: \code{\link[checkmate]{assert_double}}.}
@@ -57,43 +59,51 @@ Type: \code{\link[checkmate]{assert_double}}.}
 Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{lambda0}{thermal conductivity of environment, [\emph{W/m/°C}]. In case of channel
-laying this is the thermal conductivity of subsoil. Type: \code{\link[checkmate]{assert_double}}.}
+laying this is the thermal conductivity of subsoil.
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{z}{channel laying depth, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{z}{channel laying depth, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{b}{channel width, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{h}{channel height, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{len}{length of supplying pipe, [\emph{m}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{len}{length of supplying pipe, [\emph{m}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{duration}{duration of heat loss, [\emph{hour}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{duration}{duration of heat loss, [\emph{h}].
+Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-Normative heat loss of supplying cylindrical pipe mounted in channel during \code{duration}, [\emph{kcal}].
- If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is set to
- 1 \emph{h} (hour) (default values) then the return value is also the
- \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with those
- prescribed by \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
- Type: \code{\link[checkmate]{assert_double}}.
+Normative heat loss of supplying cylindrical pipe mounted in channel during
+   \code{duration}, [\emph{kcal}].
+  If \code{len} of pipe is 1 \emph{m} (meter) as well as \code{duration} is
+  set to 1 \emph{h} (hour) (default values) then the return value is also the
+  \emph{specific heat loss power}, [\emph{kcal/m/h}] and so comparable with
+  those prescribed by
+  \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
+  Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
 Calculate normative heat loss through the thermal insulation of the
  supplying pipe mounted in underground channel as a function of construction,
  operation, and technical condition specifications according to
- Appendix 5.1 of \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
+ Appendix 5.1 of
+ \href{https://docs.cntd.ru/document/1200035568}{Minenergo Method 278}.
 
  This type of calculations is usually made on design stage of district
  heating network (where water is a heat carrier) and is closely related
  to building codes and regulations.
 }
 \details{
-\code{k1} and \code{k2} factor values equal to \code{1} mean the best technical
-  condition of insulation of appropriate pipes, whereas for poor technical
-  state factor values tends to \code{5} or more.
+\code{k1} and \code{k2} factor values equal to \code{1} mean the best
+  technical condition of insulation of appropriate pipes, whereas for poor
+  technical state factor values tends to \code{5} or more.
 
-  Nevertheless, when \code{k1} and \code{k2} both equal to \code{1} the calculated
-  \emph{specific heat loss power} [\emph{kcal/m/h}] is sometimes higher than that listed in
+  Nevertheless, when \code{k1} and \code{k2} both equal to \code{1} the
+  calculated \emph{specific heat loss power} [\emph{kcal/m/h}] is sometimes
+  higher than that listed in
   \href{https://docs.cntd.ru/document/902148459}{Minenergo Order 325}.
   One should consider that situation when choosing method for heat loss
   calculations.
@@ -102,7 +112,6 @@ Calculate normative heat loss through the thermal insulation of the
  library(pipenostics)
 
  m278hlcha()
- #
 
  ## Naive way to find out technical state (factors k1 and k2) for pipe
  ## segments constructed in 1980:
@@ -112,13 +121,14 @@ Calculate normative heat loss through the thermal insulation of the
      # functional to optimize
        abs(
            m278hlcha(k1 = x[1], k2 = x[2]) -
-           m325nhl(year = 1980, laying = "channel", d = 250, temperature = 110)
+           m325nhl(
+             year = 1980, laying = "channel", d = 250, temperature = 110
+           )
        )
      },
      method = "L-BFGS-B",
      lower = 1.01, upper = 4.4
    )$par
-   # [1] 4.285442 4.323628
 
 }
 \seealso{

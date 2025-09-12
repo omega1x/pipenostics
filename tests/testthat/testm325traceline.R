@@ -2,20 +2,20 @@ library(pipenostics)
 
 test_that("*m325traceline* errs in tracing regime parameters", {
   m325traceline_forward_report <- m325traceline(
-    130, .588399, 250, seq(0, 30, 10), forward = TRUE
+    130, .588399, 250, seq(0, 30, 10), forward = TRUE, strict_sizes = TRUE
   )
   expect_equal(
     names(m325traceline_forward_report),
     c("temperature", "pressure", "flow_rate", "loss", "flux", "Q")
   )
   expect_equal(
-   m325traceline_forward_report[["temperature"]],
-   c(129.1799, 128.4269, 127.9628, 127.3367),
-   tolerance = 1e-4
+    m325traceline_forward_report[["temperature"]],
+    c(129.16981, 128.40753, 127.93775, 127.30389),
+    tolerance = 1e-4
   )
   expect_equal(
     m325traceline_forward_report[["pressure"]],
-    c(0.5877508, 0.5872233, 0.5869725, 0.5867542),
+    c(0.58779766, 0.58730839, 0.58707571, 0.58687323),
     tolerance = 1e-7
   )
   expect_equal(
@@ -24,17 +24,17 @@ test_that("*m325traceline* errs in tracing regime parameters", {
   )
   expect_equal(
     m325traceline_forward_report[["loss"]],
-    c(348, 347.1389, 346.3483, 345.8610),
+    c(352.29000, 351.40917, 350.60039, 350.10195),
     tolerance = 1e-4
   )
   expect_equal(
     m325traceline_forward_report[["flux"]],
-    c(184.0395, 183.5841, 183.1660, 182.9083),
+    c(183.42585702, 182.96723522, 182.54613218, 182.28661038),
     tolerance = 1e-7
   )
   expect_equal(
     m325traceline_forward_report[["Q"]],
-    c(5011200, 4415607.97, 2493707.41, 2905232.11),
+    c(5072976, 4469924.58163786, 2524322.80394798, 2940856.36847728),
     tolerance = 1e-7
   )
 
@@ -47,12 +47,14 @@ test_that("*m325traceline* errs in tracing regime parameters", {
   )
   expect_equal(
     m325traceline_backward_report[["temperature"]],
-    c(129.9953, 129.1769, 128.4254, 127.9619),
+    c(130.028177269546, 129.199677143122, 128.438826847396, 127.969571729179),
     tolerance = 1e-4
   )
   expect_equal(
     m325traceline_backward_report[["pressure"]],
-    c(0.5886788, 0.5880301, 0.5875023, 0.5872514),
+    c(
+      0.588559787214791, 0.58795799303854, 0.587468380652964, 0.587235594628342
+    ),
     tolerance = 1e-7
   )
   expect_equal(
@@ -61,17 +63,17 @@ test_that("*m325traceline* errs in tracing regime parameters", {
   )
   expect_equal(
     m325traceline_backward_report[["loss"]],
-    c(347.135781269, 346.346651110, 345.859948477, 345.203535),
+    c(351.440857448852, 350.633595285087, 350.135715604659, 349.4642387),
     tolerance = 1e-7
   )
   expect_equal(
     m325traceline_backward_report[["flux"]],
-    c(183.5825, 183.1651, 182.9077, 182.5606),
+    c(182.983736324139, 182.563421372738, 182.304191740686, 181.954575723466),
     tolerance = 1e-4
   )
   expect_equal(
     m325traceline_backward_report[["Q"]],
-    c(4998755.25, 4405529.40, 2490192.63, 2899710.69),
+    c(5060748.34726347, 4460059.3320263, 2520977.15235354, 2935499.60508),
     tolerance = 1e-1
   )
 })

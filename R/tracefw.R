@@ -49,21 +49,21 @@
 #'    \code{\link{as.character}}.
 #'
 #' @param temperature
-#'    Sensor-measured temperature of heat carrier (water) sensor-measured on
+#'    sensor-measured temperature of heat carrier (water) sensor-measured on
 #'    the root node, [\emph{°C}].
 #'    Use \code{NA_float_}s for nodes without temperature sensor.
 #'    Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param pressure
-#'    Sensor-measured
-#'    \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{absolute pressure}
-#'    of heat carrier (water) inside the pipe on the root node, [\emph{MPa}].
-#'    Use \code{NA_float_}s for nodes without pressure sensor.
-#'    Type: \code{\link[checkmate]{assert_double}}.
+#'    sensor-measured
+#'    \href{https://en.wikipedia.org/wiki/Pressure_measurement#Absolute}{
+#'     absolute pressure} of heat carrier (water) inside the pipe on the root
+#'    node, [\emph{MPa}]. Use \code{NA_float_}s for nodes without pressure
+#'    sensor. Type: \code{\link[checkmate]{assert_double}}.
 #'
 #' @param flow_rate
-#'    Sensor-measured amount of heat carrier (water) on root node that is
-#'    transferred by pipe during a period, [\emph{ton/hour}].
+#'    sensor-measured amount of heat carrier (water) on root node that is
+#'    transferred by pipe during a period, [\emph{ton/h}].
 #'    Type: \code{\link[checkmate]{assert_double}}.
 #'    Use \code{NA_float_}s for nodes without flow rate sensor.
 #'
@@ -175,7 +175,7 @@
 #'
 #'       \item{\code{flow_rate}}{
 #'          \emph{Traced thermal hydraulic regime}. Traced flow rate of heat
-#'          carrier (water) that is associated with the node, [\emph{ton/hour}].
+#'          carrier (water) that is associated with the node, [\emph{ton/h}].
 #'          Type: \code{\link[checkmate]{assert_double}}.
 #'       }
 #'
@@ -209,7 +209,7 @@
 #' root_node <- 12
 #' DHN[root_node, "temperature"] <-  70.4942576978  # [°C]
 #' DHN[root_node, "pressure"]    <-   0.6135602014  # [MPa]
-#' DHN[root_node, "flow_rate"]   <- 274.0           # [ton/hour]
+#' DHN[root_node, "flow_rate"]   <- 274.0           # [ton/h]
 #'
 #' # * provide actual values of specific heat loss power, [kcal/m/h], for each
 #' # segment N01 - N26. Since N12 is a root node, the specific heat loss
@@ -243,7 +243,8 @@ tracefw <- function(
   .func_name <- "tracefw"
 
   checkmate::assert_vector(
-    acceptor, any.missing = FALSE, min.len = 1, unique = TRUE
+    acceptor,
+    any.missing = FALSE, min.len = 1, unique = TRUE
   )
   n <- length(acceptor)
   checkmate::assert_vector(sender, any.missing = FALSE, len = n)
@@ -260,7 +261,8 @@ tracefw <- function(
     lower = 1e-3, upper = 1e5, finite = TRUE, any.missing = TRUE, len = n
   )
   checkmate::assert_double(
-    d, lower = 25, upper = 1440, finite = TRUE, any.missing = FALSE, len = n
+    d,
+    lower = 25, upper = 1440, finite = TRUE, any.missing = FALSE, len = n
   )
   checkmate::assert_double(
     wth,
@@ -301,7 +303,7 @@ tracefw <- function(
     length(flow_rate), length(d), length(wth), length(len), length(loss),
     length(roughness), length(inlet), length(outlet)
   )))
-  checkmate::assert_true(all(d - 2*wth > 0.5))  # in [mm]
+  checkmate::assert_true(all(d - 2 * wth > 0.5))  # in [mm]
 
   acceptor <- as.character(acceptor)
   sender   <- as.character(sender)
@@ -321,7 +323,7 @@ tracefw <- function(
 
   # Compute discharges ----
   discharge <- structure(
-    1 - d ^ 2 / tapply(d ^ 2, sender, sum)[sender], names = acceptor
+    1 - d^2 / tapply(d^2, sender, sum)[sender], names = acceptor
   )
 
   # List search paths ----
@@ -405,13 +407,13 @@ tracefw <- function(
     regime[["job"]] <- job_num
     job_log <- rbind(job_log, regime)
     job_log <- job_log[
-      !duplicated(job_log[,setdiff(colnames(job_log), "job")]),
+      !duplicated(job_log[, setdiff(colnames(job_log), "job")]),
     ]
 
     if (csv)
       utils::write.table(
         job_log[job_log[["job"]] == job_num, ], file = file, append = TRUE,
-        quote = FALSE, sep = ",", col.names = FALSE,row.names = FALSE
+        quote = FALSE, sep = ",", col.names = FALSE, row.names = FALSE
       )
   }
 

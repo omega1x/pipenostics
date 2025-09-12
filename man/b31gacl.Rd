@@ -7,14 +7,17 @@
 b31gacl(dep, maop, d, wth, depth, l)
 }
 \arguments{
-\item{dep}{design pressure of pipe, [\emph{PSI}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{dep}{design pressure of pipe, [\emph{PSI}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{maop}{maximum allowable operating pressure - \emph{MAOP}, [\emph{PSI}].
 Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{d}{nominal outside diameter of pipe, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{d}{nominal outside diameter of pipe, [\emph{inch}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
-\item{wth}{nominal wall thickness of pipe, [\emph{inch}]. Type: \code{\link[checkmate]{assert_double}}.}
+\item{wth}{nominal wall thickness of pipe, [\emph{inch}].
+Type: \code{\link[checkmate]{assert_double}}.}
 
 \item{depth}{measured maximum depth of the corroded area, [\emph{inch}].
 Type: \code{\link[checkmate]{assert_double}}.}
@@ -23,7 +26,7 @@ Type: \code{\link[checkmate]{assert_double}}.}
 Type: \code{\link[checkmate]{assert_double}}.}
 }
 \value{
-allowable length of the corroded area in the pipe, [\emph{inch}].
+Allowable length of the corroded area in the pipe, [\emph{inch}].
  Type: \code{\link[checkmate]{assert_double}}.
 }
 \description{
@@ -32,18 +35,17 @@ Calculate allowable length of the corroded area in the pipe.
 \examples{
  library(pipenostics)
 
+ # Corrosion is low, no limit for the corroded area length:
  b31gacl(1093, 910, 30, .438, .1, 7.5)
- # [1] Inf  # [inch] - corrosion is low, no limit for the corroded area length
 
+ # Finite allowed length of the corroded area
  b31gacl(438, 400, 20, .25, .18, 10)
- # [1] 2.018  # [inch] - finite allowed length of the corroded area
-
 
 }
 \references{
-\href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{ASME B31G-1991}.
- Manual for determining the remaining strength of corroded pipelines. A
- supplement to \emph{ASTME B31} code for pressure piping.
+\href{https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf}{
+  ASME B31G-1991}. Manual for determining the remaining strength of corroded
+ pipelines. A supplement to \emph{ASTME B31} code for pressure piping.
 }
 \seealso{
 Other ASME B31G functions: 
