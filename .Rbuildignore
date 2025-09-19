@@ -1,0 +1,19 @@
+## Static targets to ignore:
+
+^\.src$
+^\.github$
+^docs$
+^_pkgdown\.yml$
+^pkgdown$
+^vignettes/articles$
+
+### default
+^.*\.Rproj$
+^\.Rproj\.user$
+
+## Temporary exlusions for debugging:
+^R/gr55596rul\.R$
+
+### Code & Tests
+
+### Previous versions of datasets

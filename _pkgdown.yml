@@ -1,0 +1,6 @@
+url: https://omega1x.github.io/pipenostics
+template:
+  bootstrap: 5
+  bootswatch: cerulean
+  math-rendering: mathjax
+

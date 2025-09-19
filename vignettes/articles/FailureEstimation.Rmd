@@ -1,0 +1,118 @@
+---
+title: "Pipeline Failure Estimation"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Corrosion diagnostics
+
+By using of `b31crvl()` simply imitate the output of *CRVL.BAS* which is the 
+honored software for determining the allowable length and maximum allowable 
+working pressure presented in 
+[ASME B31G-1991](https://law.resource.org/pub/us/cfr/ibr/002/asme.b31g.1991.pdf):
+
+```{r}
+library(pipenostics)
+    
+b31crvl(
+  maop = 910, d = 30, wth = .438, smys = 52000, def  = .72, depth = .1, l = 7.5
+)
+```
+
+# Probability of failure
+
+Let's consider a pipe in district heating network with
+
+```{r}
+diameter           <- 762         # [mm]
+wall_thickness     <-  10         # [mm]
+UTS                <- 434.3697    # [MPa]
+```
+
+which transfers heat-carrier (water) at
+
+```{r}
+operating_pressure <-   0.588399  # [MPa]
+temperature        <-  95         # [°C]
+```
+
+During *inline inspection* four corroded areas (defects) are detected with:
+
+```{r}
+depth  <- c(2.45,  7.86,   7.93,   8.15)  # [mm]
+```
+
+whereas the length of all defects is not greater 200 mm:
+
+```{r}
+length <- rep(200, 4)  # [mm]
+print(length)
+```
+
+Corrosion rates in radial and in longitudinal directions are not well-known and
+may vary in range 0.01--0.30 mm/year:
+
+```{r}
+rar = function(n) stats::runif(n, .01, .30) / 365
+ral = function(n) stats::runif(n, .01, .30) / 365
+```
+
+Then probabilities of failure (*POF*s) related to each corroded area are near:
+
+```{r}
+pof <- mepof(
+  depth, length, rep(diameter, 4), rep(wall_thickness, 4),
+  rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
+  rar, ral, method = "dnv"
+)
+```
+
+So, the POF of the pipe is near
+
+```{r}
+print(max(pof))
+```
+
+The value of POF changes in time. So, in a year after *inline inspection* of
+the pipe we can get something near
+
+```{r}
+pof <- mepof(
+  depth, length, rep(diameter, 4), rep(wall_thickness, 4),
+  rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
+  rar, ral, method = "dnv", days = 365
+)
+print(pof)
+```
+
+For entire pipe we get something near:
+
+```{r}
+print(max(pof))
+```
+
+Two years ago before *inline inspection* the pipe state was rather good:
+
+```{r}
+pof <- mepof(
+  depth, length, rep(diameter, 4), rep(wall_thickness, 4),
+  rep(UTS, 4), rep(operating_pressure, 4), rep(temperature, 4),
+  rar, ral, method = "dnv", days = -2 * 365
+)
+print(pof)
+```
+
+For entire pipe we get something near:
+
+```{r}
+print(max(pof))
+```
+
+> &#8505;
+  For underlying concepts and other usage examples refer to
+  [Concepts and Useful Notes](pipenostics.html)

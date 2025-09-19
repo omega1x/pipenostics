@@ -1,0 +1,44 @@
+---
+title: "District Heating Regime Tracing"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+Let's consider a tiny district heating model which consists with the next 
+4-segment tracing path:
+
+![<sup>*Figure: Regime tracing*</sup>](https://raw.githubusercontent.com/omega1x/pipenostics/a26e1171f05d3cd4f2c25a71ccde9947a095409f/.src/svg-graphics/m325regtrace.svg)
+
+Suppose we have the next sensor readings for *forward tracing*:
+
+```{r}
+t_fw <- 130         # [°C]
+p_fw <-   0.588399  # [MPa]
+g_fw <- 250         # [ton/hour]
+```
+
+Let's discharges to network for each pipeline segment are somehow determined as
+
+```{r}
+discharges <- seq(0, 30, 10)  # [ton/hour]
+print(discharges)
+```
+
+Then the calculated regime (red squares) for forward tracing is
+
+```{r}
+library(pipenostics)
+
+regime_fw <- m325traceline(t_fw, p_fw, g_fw, discharges, forward = TRUE)
+print(regime_fw)
+```
+
+> &#8505;
+  Read [Concepts and useful notes](pipenostics.html) for a deeper dive into the
+  topic.
